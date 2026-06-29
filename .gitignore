@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.idea/
+data/*.csv
+models/*.npz
+results/*
+*.task
+!.gitkeep

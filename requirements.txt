@@ -1,0 +1,17 @@
+# Contactless Voluntary-Blink Sensing — requirements
+# Offline pipeline (features/model/train) needs only NumPy.
+# The live front-end (collect.py / liveness.py) additionally needs OpenCV +
+# MediaPipe.
+
+numpy>=1.24.0
+
+# Live front-end (optional for offline experiments):
+mediapipe>=0.10.0
+opencv-python>=4.8.0
+
+# Plots (evaluate.py):
+matplotlib>=3.7.0
+
+# Raspberry Pi note:
+#   sudo apt-get install -y python3-opencv libatlas-base-dev
+#   pip install mediapipe-rpi4   # or platform-appropriate mediapipe build
