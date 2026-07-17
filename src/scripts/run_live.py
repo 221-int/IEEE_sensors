@@ -7,8 +7,6 @@
     --source url     (기본) MJPEG 서버에서 수신.  --url http://HOST:8000/stream.mjpg
     --source webcam  로컬 카메라 직접.             --camera 0
 
-캘리브: 처음에 "눈 뜨고 대기" -> 안내되면 "눈 꼭 감기" 로 몇 초 측정(개인화).
-
 실행 (src/ 에서):
     python -m scripts.run_live --source webcam --show
     python -m scripts.run_live --source url --url http://192.168.0.20:8000/stream.mjpg --show
@@ -30,6 +28,9 @@ def frame_source(args):
     if args.source == "webcam":
         import cv2
         cap = cv2.VideoCapture(args.camera)
+        if not cap.isOpened():
+            raise SystemExit(f"카메라를 열 수 없습니다 (--camera {args.camera}). "
+                             "다른 인덱스(0/1) 를 시도하거나 카메라 권한을 확인하세요.")
         try:
             while True:
                 ok, frame = cap.read()
@@ -61,7 +62,10 @@ def main():
     import mediapipe as mp
 
     pre = get_preprocessor(a.preprocess)
-    landmarker = L.build_landmarker()
+    try:
+        landmarker = L.build_landmarker()           # 모델 파일 없으면 안내 후 종료
+    except (FileNotFoundError, RuntimeError) as e:
+        raise SystemExit(str(e))
     pipe = BlinkPipeline()
     fps = FpsMeter(window=30)
     timer = StageTimer()
@@ -118,6 +122,8 @@ def main():
                 break
     except KeyboardInterrupt:
         pass
+    except ConnectionError as e:                      # MJPEG 접속/수신 실패
+        print(f"[live] {e}")
     finally:
         if fh:
             fh.close()

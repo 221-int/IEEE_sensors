@@ -4,17 +4,18 @@
   - MediaPipe FaceLandmarker 초기화(엣지에서 돌릴 대상)
   - 6점 랜드마크로 EAR(Eye Aspect Ratio) 계산 + 머리자세 보정
   - 개안 baseline + 폐안 floor 를 모두 학습하는 2단계 캘리브레이터
-    (완성도/불완전 깜빡임 측정에 폐안 기준이 필요)
 
 카메라 루프는 scripts/run_live.py 에 있고, 이 모듈은 신호 프론트엔드만
 담당하므로 정지 프레임으로 단위 테스트가 가능하다.
 """
+import os
+
 import numpy as np
 
 from . import config
 
-# MediaPipe 는 라이브 프론트엔드에만 필요. 오프라인(features/model/train/
-# benchmark)이 MediaPipe 없이도 돌도록 지연 import.
+# MediaPipe 는 라이브 프론트엔드에만 필요. 순수 로직(std/metrics/pipeline)이
+# MediaPipe 없이도 돌도록 지연 import.
 try:
     from mediapipe.tasks import python as mp_python
     from mediapipe.tasks.python import vision as mp_vision
@@ -22,15 +23,32 @@ try:
 except Exception:                       # pragma: no cover - 플랫폼 의존
     _MP_AVAILABLE = False
 
+_TASK_URL = ("https://storage.googleapis.com/mediapipe-models/face_landmarker/"
+             "face_landmarker/float16/1/face_landmarker.task")
+
 
 def mediapipe_available() -> bool:
     return _MP_AVAILABLE
 
 
 def build_landmarker(task_path: str = config.TASK_PATH):
-    """MediaPipe FaceLandmarker 를 VIDEO 모드(시계열 트래킹)로 생성."""
+    """MediaPipe FaceLandmarker 를 VIDEO 모드(시계열 트래킹)로 생성.
+
+    mediapipe 미설치 또는 모델 파일(.task) 부재 시, 원인과 해결법을 담은
+    예외를 던진다(트레이스백만 남기고 죽지 않도록).
+    """
     if not _MP_AVAILABLE:
-        raise RuntimeError("mediapipe 가 없습니다. 라이브 프론트엔드에 필요합니다.")
+        raise RuntimeError(
+            "mediapipe 가 설치되어 있지 않습니다 (라이브 프론트엔드에 필요).\n"
+            "  설치:  pip install mediapipe\n"
+            "  Pi5/aarch64 에서 실패하면 버전 지정:  pip install 'mediapipe==0.10.14'")
+    if not os.path.exists(task_path):
+        raise FileNotFoundError(
+            "face_landmarker.task 모델 파일이 없습니다.\n"
+            f"  기대 경로: {task_path}\n"
+            "  (.gitignore 의 *.task 때문에 git clone 에 포함되지 않습니다 — 직접 받아 두세요)\n"
+            "  다운로드 (프로젝트 루트에서):\n"
+            f"    curl -L -o face_landmarker.task {_TASK_URL}")
     base = mp_python.BaseOptions(model_asset_path=task_path)
     opts = mp_vision.FaceLandmarkerOptions(
         base_options=base,
@@ -69,13 +87,9 @@ class TwoPhaseCalibrator:
     """개안 baseline 과 폐안 floor 를 순차로 수집.
 
     흐름:
-        phase == "open"   : 눈 뜨고 CALIB_OPEN_FRAMES 프레임   -> baseline
+        phase == "open"   : 눈 뜨고 CALIB_OPEN_FRAMES 프레임    -> baseline
         phase == "closed" : 눈 꼭 감고 CALIB_CLOSED_FRAMES 프레임 -> closed_floor
         phase == "done"
-
-    완성도 = (baseline - min_EAR) / (baseline - closed_floor) 에 쓰인다.
-    폐안 캘리브를 건너뛰려면 closed_floor=0 으로 두면 되고, 그 경우 완성도는
-    "개안 baseline 대비 진폭"으로 퇴화한다(구버전과 동일).
     """
 
     def __init__(self,
@@ -125,7 +139,6 @@ class TwoPhaseCalibrator:
 
     @property
     def closed_ratio(self):
-        """폐안 floor 를 baseline 기준으로 정규화한 값(features 로 넘김)."""
         if not self.done or self.baseline <= 0:
             return 0.0
         return float(np.clip(self.closed_floor / self.baseline, 0.0, 0.95))
