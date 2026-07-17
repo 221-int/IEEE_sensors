@@ -1,17 +1,22 @@
-# Contactless Voluntary-Blink Sensing — requirements
-# Offline pipeline (features/model/train) needs only NumPy.
-# The live front-end (collect.py / liveness.py) additionally needs OpenCV +
-# MediaPipe.
+# eyeblink — 라즈베리파이5 실시간 깜빡임 검출 + 엣지 강건화
+# 순수 로직(std/metrics/pipeline)은 표준 라이브러리만으로 동작(단위 테스트 가능).
+# 아래는 라이브 실행에 필요한 의존성.
 
 numpy>=1.24.0
 
-# Live front-end (optional for offline experiments):
+# 랜드마크 프론트엔드 + 프레임 처리
 mediapipe>=0.10.0
 opencv-python>=4.8.0
 
-# Plots (evaluate.py):
+# MJPEG 스트리밍 서버 (streaming/server.py)
+flask>=3.0.0
+
+# (선택) 벤치마크 리소스 지표: CPU/메모리
+psutil>=5.9.0
+
+# (선택) 완성도 실험 그림
 matplotlib>=3.7.0
 
-# Raspberry Pi note:
+# Raspberry Pi 5 note (64-bit Raspberry Pi OS / Bookworm):
 #   sudo apt-get install -y python3-opencv libatlas-base-dev
-#   pip install mediapipe-rpi4   # or platform-appropriate mediapipe build
+#   pip install mediapipe opencv-python flask numpy psutil

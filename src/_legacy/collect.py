@@ -90,7 +90,8 @@ def main():
     ap.add_argument("--subject", required=True, help="피험자 id, 예: S01")
     args = ap.parse_args()
 
-    import cv2                               # TODO: pip install opencv-python
+    import cv2
+    import mediapipe as mp
     import detector as D
     from blink_segmenter import BlinkSegmenter
 
@@ -110,27 +111,32 @@ def main():
             break
         now = time.time()
         ts_ms = int(now * 1000)
-        # TODO: frame 을 mediapipe 이미지로 변환 후 landmarker.detect_for_video 호출
-        # res = landmarker.detect_for_video(mp_image, ts_ms)
-        # if not res.face_landmarks: continue
-        # lms = res.face_landmarks[0]
-        # ear = D.frame_ear(lms, w, h)
-        ear = None  # 위 프론트엔드를 연결하기 전까지의 placeholder
+        h, w = frame.shape[:2]
+        rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        mp_image = mp.Image(image_format=mp.ImageFormat.SRGB, data=rgb)
+        res = landmarker.detect_for_video(mp_image, ts_ms)
 
-        if ear is None:
-            # ── 위 landmarker 블록을 구현하면 이 가드는 삭제 ──
+        # 얼굴 미검출 프레임은 건너뛰되, 종료키는 받는다
+        if not res.face_landmarks:
             cv2.imshow("collect", frame)
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
             continue
+        lms = res.face_landmarks[0]
+        ear = D.frame_ear(lms, w, h)
 
         if not calib.done:
-            calib.update(ear)
+            prog = calib.update(ear)
+            cv2.putText(frame, f"Calibrating {int(prog*100)}%  (eyes open)",
+                        (30, 40), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 200, 0), 2)
+            cv2.imshow("collect", frame)
+            if cv2.waitKey(1) & 0xFF == ord('q'):
+                break
             continue
         if seg is None:
             seg = BlinkSegmenter(calib.baseline, calib.threshold)
 
-        # voluntary 신호 (TODO: 신호를 크게 표시 / 소리 재생)
+        kind, _ = proto.phase(now)
         if proto.due_for_cue(now):
             print(">>> 지금 깜빡이세요 (BLINK NOW)")
 
@@ -140,6 +146,16 @@ def main():
             if label is not None:
                 append_blink(args.subject, label, ev.features)
                 saved += 1
+
+        # ── 화면 피드백 ──
+        if kind == "voluntary" and now - proto.last_cue_t < 0.9:
+            cv2.putText(frame, "BLINK NOW", (w // 2 - 140, h // 2),
+                        cv2.FONT_HERSHEY_SIMPLEX, 1.6, (0, 0, 255), 4)
+        cv2.putText(frame, f"{kind}  saved={saved}", (30, 40),
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.7, (200, 200, 0), 2)
+        cv2.imshow("collect", frame)
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
 
         if proto.phase(now)[0] == "done":
             break

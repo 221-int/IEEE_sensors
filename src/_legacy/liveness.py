@@ -74,7 +74,8 @@ def verify_blinks(clf, blink_events):
 def main():
     clf = BlinkClassifier.load()
 
-    import cv2                               # TODO: pip install opencv-python
+    import cv2
+    import mediapipe as mp
     import detector as D
     from blink_segmenter import BlinkSegmenter
 
@@ -83,6 +84,7 @@ def main():
     calib = D.Calibrator()
     seg = None
     challenge = None
+    last_verdict = ""
 
     print(f"[liveness] 캘리브레이션 중; 눈 뜨고 기다리세요...")
     while True:
@@ -90,16 +92,27 @@ def main():
         if not ok:
             break
         now = time.time()
-        # TODO: landmarker.detect_for_video -> lms -> ear (collect.py 참고)
-        ear = None
-        if ear is None:
+        ts_ms = int(now * 1000)
+        h, w = frame.shape[:2]
+        rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        mp_image = mp.Image(image_format=mp.ImageFormat.SRGB, data=rgb)
+        res = landmarker.detect_for_video(mp_image, ts_ms)
+
+        if not res.face_landmarks:
             cv2.imshow("liveness", frame)
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
             continue
+        lms = res.face_landmarks[0]
+        ear = D.frame_ear(lms, w, h)
 
         if not calib.done:
-            calib.update(ear)
+            prog = calib.update(ear)
+            cv2.putText(frame, f"Calibrating {int(prog*100)}%", (30, 40),
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 200, 0), 2)
+            cv2.imshow("liveness", frame)
+            if cv2.waitKey(1) & 0xFF == ord('q'):
+                break
             continue
         if seg is None:
             seg = BlinkSegmenter(calib.baseline, calib.threshold)
@@ -113,8 +126,22 @@ def main():
 
         v = challenge.verdict()
         if v != "pending":
-            print(f"[liveness] 판정: {v.upper()}")
+            last_verdict = v.upper()
+            print(f"[liveness] 판정: {last_verdict}")
             challenge = None                 # 다음 시도를 위해 재시작
+
+        # ── 화면 피드백 ──
+        n_vol = sum(1 for ok_, _ in challenge.results if ok_) if challenge else 0
+        cv2.putText(frame, f"Blink {config.CHALLENGE_N_BLINKS}x  "
+                    f"voluntary={n_vol}", (30, 40),
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 200, 0), 2)
+        if last_verdict:
+            col = (0, 200, 0) if last_verdict == "PASS" else (0, 0, 255)
+            cv2.putText(frame, last_verdict, (30, h - 30),
+                        cv2.FONT_HERSHEY_SIMPLEX, 1.4, col, 3)
+        cv2.imshow("liveness", frame)
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
 
     cap.release()
     cv2.destroyAllWindows()

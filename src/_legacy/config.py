@@ -65,7 +65,8 @@ CHALLENGE_TIMEOUT_SEC = 6.0  # 챌린지 제한 시간 (초)
 CHALLENGE_MIN_VOLUNTARY = 3  # 통과에 필요한 voluntary 판정 깜빡임 수
 
 # ── 경로 ────────────────────────────────────────────────────────────────────
-_BASE     = os.path.dirname(os.path.abspath(__file__))
+_HERE     = os.path.dirname(os.path.abspath(__file__))
+_BASE     = os.path.dirname(_HERE)   # src/ 의 상위(프로젝트 루트). data/models/results는 루트에 유지.
 TASK_PATH = os.path.join(_BASE, "face_landmarker.task")   # MediaPipe 모델
 DATA_DIR  = os.path.join(_BASE, "data")                   # 라벨링된 깜빡임 CSV
 MODEL_DIR = os.path.join(_BASE, "models")                 # 학습된 분류기

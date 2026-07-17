@@ -2,9 +2,9 @@
 train.py — 깜빡임-종류 분류기를 피험자 단위 평가로 학습.
 
 핵심 방법론 선택 (이전 프로젝트의 누수 문제 해결):
-  ► Leave-One-Subject-Out(LOSO) 교차검증. 같은 피험자의 깜빡임이 train 과
+  - Leave-One-Subject-Out(LOSO) 교차검증. 같은 피험자의 깜빡임이 train 과
     test 에 동시에 들어가지 않으므로, 보고 정확도가 외운 프레임이 아니라
-    *새로운 사람*에 대한 일반화를 반영한다.
+    새로운 사람에 대한 일반화를 반영한다.
 
 데이터 형식 (data/blinks.csv), 깜빡임 1건당 한 행:
     subject_id, label, f0..f10   (특징명은 config.FEATURE_NAMES)
