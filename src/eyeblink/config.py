@@ -56,3 +56,9 @@ MODEL_DIR   = os.path.join(_BASE, "models")
 RESULTS_DIR = os.path.join(_BASE, "results")
 for _d in (DATA_DIR, MODEL_DIR, RESULTS_DIR):
     os.makedirs(_d, exist_ok=True)
+
+# ── 피험자별 캘리브레이션 실험 (박사님 프로토콜) ─────────────────────────────
+CALIB_OPEN_SEC   = 5.0    # 개안 EAR 수집 시간(초)
+CALIB_CLOSED_SEC = 3.0    # 폐안 EAR 수집 시간(초)
+CALIB_TRIALS     = 10     # 깜빡임 검증 시행 횟수(피험자당)
+CALIB_TRIAL_SEC  = 4.0    # 시행 1회당 창(초) — 이 안에 1회 깜빡이도록 지시
