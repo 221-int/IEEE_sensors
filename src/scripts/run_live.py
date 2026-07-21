@@ -19,7 +19,8 @@ import time
 from eyeblink import config
 from eyeblink import landmarks as L
 from eyeblink.pipeline import BlinkPipeline
-from eyeblink.robust import get_preprocessor
+from eyeblink.robust import get_preprocessor, SuperResolution
+from eyeblink.frontend import EarFrontend
 from eyeblink.profiling import FpsMeter, StageTimer
 
 
@@ -61,11 +62,16 @@ def main():
     import cv2
     import mediapipe as mp
 
-    pre = get_preprocessor(a.preprocess)
+    # SR 은 프론트엔드의 조건부 얼굴 ROI two-pass 로 처리(전체 프레임 아님).
+    # lowlight 만 전체 프레임 전처리로 유지, none 은 무동작.
+    pre = get_preprocessor("lowlight") if a.preprocess == "lowlight" \
+        else get_preprocessor("none")
+    sr = SuperResolution() if a.preprocess == "sr" else None
     try:
         landmarker = L.build_landmarker()           # 모델 파일 없으면 안내 후 종료
     except (FileNotFoundError, RuntimeError) as e:
         raise SystemExit(str(e))
+    frontend = EarFrontend(landmarker, sr=sr)       # pass1(VIDEO) + 조건부 pass2(IMAGE)
     pipe = BlinkPipeline()
     fps = FpsMeter(window=30)
     timer = StageTimer()
@@ -74,29 +80,28 @@ def main():
     if a.log:
         fh = open(a.log, "w", newline="")
         writer = csv.writer(fh)
-        writer.writerow(["time", "cap_fps", "landmark_ms", "ear",
-                         "calibrating", "state", "blink", "total_blinks", "bpm"])
+        writer.writerow(["time", "cap_fps", "landmark_ms", "sr_ms", "w_eye", "used_sr",
+                         "ear", "calibrating", "state", "blink", "total_blinks", "bpm"])
 
     print("[live] Calib: keep eyes OPEN first -> when prompted, CLOSE eyes tight. (q: quit)")
     t_start = time.perf_counter()
     try:
         for frame in frame_source(a):
-            frame = pre(frame)                       # 강건화 훅(기본 무동작)
+            if a.preprocess == "lowlight":
+                frame = pre(frame)                   # 전체 프레임 저조도 보정(선택)
             fps.tick()
             t = time.time()
-            h, w = frame.shape[:2]
-            rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-            with timer.timed("landmark"):
-                res = landmarker.detect_for_video(
-                    mp.Image(image_format=mp.ImageFormat.SRGB, data=rgb), int(t * 1000))
-            lm_ms = timer._s["landmark"][-1]
+            r = frontend.process(frame, int(t * 1000))   # pass1(VIDEO)[+조건부 SR pass2]
+            timer.add("landmark", r.lm_ms)
+            if r.used_sr:
+                timer.add("sr", r.sr_ms)
+            lm_ms = r.lm_ms
 
-            if not res.face_landmarks:
+            if not r.has_face:
                 if a.show and _show(cv2, frame, f"no face  fps={fps.fps:.1f}"):
                     break
             else:
-                ear = L.frame_ear(res.face_landmarks[0], w, h)
-                st = pipe.update(t, ear)
+                st = pipe.update(t, r.ear)
                 blink = 0
                 if st["calibrating"]:
                     hint = "OPEN eyes" if st["phase"] == "open" else "CLOSE eyes tight"
@@ -104,15 +109,18 @@ def main():
                     m = {"total_blinks": 0, "blink_rate_bpm": 0.0}
                 else:
                     m = st["metrics"]
+                    sr_tag = " SR" if r.used_sr else ""
                     label = (f"{st['state']} blinks={m['total_blinks']} "
-                             f"bpm={m['blink_rate_bpm']:.1f} fps={fps.fps:.1f} lm={lm_ms:.0f}ms")
+                             f"bpm={m['blink_rate_bpm']:.1f} fps={fps.fps:.1f} "
+                             f"lm={lm_ms:.0f}ms we={r.w_eye:.0f}{sr_tag}")
                     if st["blink"] is not None:
                         blink = 1
                         print(f"blink #{m['total_blinks']} dur={st['blink'].duration*1000:.0f}ms "
                               f"completeness={st['blink'].completeness:.2f}")
                 if writer:
                     writer.writerow([f"{t:.4f}", f"{fps.fps:.2f}", f"{lm_ms:.2f}",
-                                     f"{ear:.4f}", int(st['calibrating']),
+                                     f"{r.sr_ms:.2f}", f"{r.w_eye:.1f}", int(r.used_sr),
+                                     f"{r.ear:.4f}", int(st['calibrating']),
                                      st.get('state', ''), blink,
                                      m['total_blinks'], f"{m['blink_rate_bpm']:.2f}"])
                 if a.show and _show(cv2, frame, label):
@@ -132,8 +140,12 @@ def main():
 
     s = timer.summary().get("landmark")
     if s:
-        print(f"\n[profile] landmark: mean={s['mean_ms']:.1f}ms p95={s['p95_ms']:.1f}ms "
-              f"-> max ~{s['max_fps']:.1f} fps  (frames measured {s['n']})")
+        print(f"\n[profile] landmark(pass1[+pass2]): mean={s['mean_ms']:.1f}ms "
+              f"p95={s['p95_ms']:.1f}ms -> max ~{s['max_fps']:.1f} fps  (frames measured {s['n']})")
+    s2 = timer.summary().get("sr")
+    if s2:
+        print(f"[profile] sr upsample (SR-on frames only): mean={s2['mean_ms']:.1f}ms "
+              f"p95={s2['p95_ms']:.1f}ms  n={s2['n']}")
     print(f"[profile] capture fps(recent)={fps.fps:.1f}")
 
 

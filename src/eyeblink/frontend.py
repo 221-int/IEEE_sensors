@@ -1,38 +1,35 @@
 """frontend — 프레임 → EAR '프론트엔드' (랜드마커 + 조건부 얼굴 ROI two-pass SR).
 
-【위치/역할】 파이프라인 계층. 지금까지 scripts/run_live.py 와 scripts/fps_sweep.py 에
-인라인 중복돼 있던 "프레임 -> FaceLandmarker -> frame_ear" 로직을 한 곳으로 모으고,
-그 사이에 조건부 SR(two-pass)을 끼운다. robust.SuperResolution 은 순수 SR 유틸로
-두고(관심사 분리), 여기서 landmarker 핸들을 쥐고 오케스트레이션한다.
+【위치/역할】 파이프라인 계층. 프레임 -> FaceLandmarker -> frame_ear 사이에 조건부
+SR(two-pass)을 끼운다. robust.SuperResolution 은 순수 SR 유틸(frame→frame)로 두고,
+여기서 landmarker 핸들을 쥐고 오케스트레이션한다.
 
-【데이터 흐름 (설계)】
-    frame ──▶ pass1: FaceLandmarker(원본) ──▶ 얼굴 없음? → EAR=None 반환
+【데이터 흐름】
+    frame ──▶ pass1: FaceLandmarker(VIDEO, 원본) ──▶ 얼굴 없음? → EAR=None
                      │ 얼굴 있음
                      ▼
               w_eye = eye_width_px(landmarks)
                      │
-          Gate: SR_ENABLE 이고 w_eye < SR_W_EYE_MIN ?
+          Gate: SR 이고 w_eye < SR_W_EYE_MIN ?
              │ 아니오                         │ 예
              ▼                                ▼
        EAR = frame_ear(pass1)      face_crop = crop(face_bbox, margin)
        used_sr = False             face_hr   = SR.upsample(face_crop)   [robust]
-                                   pass2: FaceLandmarker(face_hr)
-                                   EAR = frame_ear(pass2 or pass1 폴백)
+                                   pass2: FaceLandmarker(IMAGE, face_hr)
+                                   EAR = frame_ear(pass2) | 폴백(pass1)
                                    used_sr = True
-    반환: FrameResult(ear, w_eye, used_sr, lm_ms, sr_ms, has_face)
+    반환: FrameResult(ear, has_face, w_eye, used_sr, lm_ms, sr_ms)
 
-【스캐폴딩 상태 2026-07-20 — 다음 라운드에 반드시 해결할 미결(★)】
-  ★1 VIDEO 모드 타임스탬프: detect_for_video 는 단조 증가 ts 를 요구한다. pass1/pass2 를
-     같은 ts 로 부르면 규약 위반. 해결안 후보: (a) pass2 는 별도 IMAGE 모드 landmarker,
-     (b) pass2 용 landmarker 인스턴스 분리, (c) ts 를 +1ms. → 결정 후 _detect 확정.
-  ★2 MediaPipe 내부 리사이즈: FaceLandmarker 가 얼굴 crop 을 자체 입력크기로 리사이즈하면
-     업스케일 이득이 상쇄될 수 있음(STAGE1 열린질문). go/no-go 파일럿에서 먼저 확인.
-  ★3 EAR 스케일 불변(STAGE1 F3): pass2 EAR 은 정규화좌표 비율이라 역매핑 불필요. 단
-     pass2 가 crop 좌표계라 얼굴 외 다른 지표를 쓸 땐 offset/scale 역매핑 필요 — 지금은
-     EAR 만 쓰므로 불필요(확인).
+【★1 결정(2026-07-20)】 pass2 는 **별도 IMAGE 모드 landmarker(stateless detect)**. 이유:
+  - VIDEO 트래커에 업스케일 crop 을 섞으면 트래킹 상태가 오염됨(다음 프레임 품질 저하).
+  - detect_for_video 의 타임스탬프 단조성 제약을 우회.
+pass2 landmarker 는 SR 이 처음 필요할 때 지연 생성(메모리 절약).
 
-Gate 로직/FrameResult 는 MediaPipe 없이 단위 테스트 가능(순수). 프레임 처리부(process)는
-landmarker 가 주입돼야 동작하며, ★1 결정 전까지 SR 경로는 명시적으로 막아둔다.
+【★2 미검증】 MediaPipe 가 얼굴 crop 을 내부 고정크기로 리사이즈하면 업스케일 이득이
+상쇄될 수 있음 → go/no-go 파일럿(scripts.sr_eval)에서 EAR/검출 델타로 확인.
+【★3】 EAR 은 스케일 불변 비율이라 pass2 crop 좌표계에서 계산해도 역매핑 불필요.
+
+Gate 로직/FrameResult 는 MediaPipe 없이 단위 테스트 가능(순수).
 """
 from dataclasses import dataclass
 from typing import Optional
@@ -88,67 +85,80 @@ class SrGate:
 class EarFrontend:
     """프레임 -> EAR 프론트엔드. two-pass SR 오케스트레이션의 소유자.
 
-    landmarker : L.build_landmarker() 결과 (VIDEO 모드). 스캐폴딩 단계에선 None 허용.
+    landmarker : L.build_landmarker() (VIDEO 모드) — pass1. 스캐폴딩용 None 허용.
     sr         : robust.SuperResolution 인스턴스 또는 None(=SR 비활성).
     gate       : SrGate 또는 None(=기본 생성).
+    task_path  : pass2(IMAGE 모드) landmarker 지연 생성용 .task 경로.
     """
 
-    def __init__(self, landmarker=None, sr=None, gate=None):
+    def __init__(self, landmarker=None, sr=None, gate=None, task_path=config.TASK_PATH):
         self.landmarker = landmarker
         self.sr = sr
+        self.task_path = task_path
         self.gate = gate or SrGate(enable=(config.SR_ENABLE and sr is not None))
+        self._pass2 = None            # 지연 생성되는 IMAGE 모드 landmarker
 
-    # ── 내부: 단일 landmarker 호출 (★1 타임스탬프 정책 확정 지점) ──────────────
-    def _detect(self, image_bgr, ts_ms):
-        """BGR 이미지 -> MediaPipe FaceLandmarker 결과. 랜드마크 리스트(or None) 반환.
-
-        TODO(★1): pass1/pass2 타임스탬프 단조성 정책 확정 후 이 메서드로 일원화.
-        """
+    # ── pass1: VIDEO 모드(시계열 트래킹) ───────────────────────────────────────
+    def _detect_video(self, frame_bgr, ts_ms):
         import cv2
         import mediapipe as mp
-        rgb = cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB)
+        rgb = cv2.cvtColor(frame_bgr, cv2.COLOR_BGR2RGB)
         res = self.landmarker.detect_for_video(
             mp.Image(image_format=mp.ImageFormat.SRGB, data=rgb), int(ts_ms))
         return res.face_landmarks[0] if res.face_landmarks else None
 
+    # ── pass2: IMAGE 모드(stateless) — 업스케일 crop 전용 ──────────────────────
+    def _detect_image(self, img_bgr):
+        import cv2
+        import mediapipe as mp
+        if self._pass2 is None:
+            self._pass2 = L.build_landmarker(self.task_path, mode="image")
+        rgb = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2RGB)
+        res = self._pass2.detect(mp.Image(image_format=mp.ImageFormat.SRGB, data=rgb))
+        return res.face_landmarks[0] if res.face_landmarks else None
+
     def process(self, frame, ts_ms) -> FrameResult:
-        """프레임 하나 -> FrameResult. (스캐폴딩: SR 경로는 ★1 결정 전까지 폴백)"""
+        """프레임 하나 -> FrameResult."""
         import time
         if self.landmarker is None:
-            raise RuntimeError("EarFrontend.process: landmarker 미주입 (스캐폴딩 상태)")
+            raise RuntimeError("EarFrontend.process: landmarker 미주입")
 
         h, w = frame.shape[:2]
 
-        # pass1 (원본)
+        # pass1 (원본, VIDEO)
         t0 = time.perf_counter()
-        lms = self._detect(frame, ts_ms)
+        lms = self._detect_video(frame, ts_ms)
         lm_ms = (time.perf_counter() - t0) * 1e3
         if lms is None:
             return FrameResult(ear=None, has_face=False, lm_ms=lm_ms)
 
         w_eye = L.eye_width_px(lms, w, h)
         want_sr = self.gate.decide(w_eye) and (self.sr is not None)
-
         if not want_sr:
-            ear = L.frame_ear(lms, w, h)
-            return FrameResult(ear=ear, has_face=True, w_eye=w_eye,
-                               used_sr=False, lm_ms=lm_ms)
+            return FrameResult(ear=L.frame_ear(lms, w, h), has_face=True,
+                               w_eye=w_eye, used_sr=False, lm_ms=lm_ms)
 
-        # ── SR two-pass 경로 (스캐폴딩) ─────────────────────────────────────
-        # TODO(★1): pass2 타임스탬프 정책 확정 전까지 실제 pass2 를 켜지 않는다.
-        #           확정 후 아래 블록을 활성화하고 폴백 제거.
-        raise NotImplementedError(
-            "SR two-pass 경로는 스캐폴딩 상태 — 타임스탬프 정책(★1)·"
-            "MediaPipe 내부 리사이즈(★2) 확인 후 활성화. 설계노트 참조.")
-        # x0, y0, x1, y1 = L.face_bbox(lms, w, h, margin=config.SR_FACE_MARGIN)
-        # crop = frame[y0:y1, x0:x1]
-        # t1 = time.perf_counter()
-        # crop_hr = self.sr(crop)                 # robust.SuperResolution (frame→frame)
-        # sr_ms = (time.perf_counter() - t1) * 1e3
-        # t2 = time.perf_counter()
-        # lms2 = self._detect(crop_hr, ts_ms + 1) # ★1: 임시 +1ms
-        # lm_ms += (time.perf_counter() - t2) * 1e3
-        # ch, cw = crop_hr.shape[:2]
-        # ear = L.frame_ear(lms2, cw, ch) if lms2 is not None else L.frame_ear(lms, w, h)
-        # return FrameResult(ear=ear, has_face=True, w_eye=w_eye,
-        #                    used_sr=lms2 is not None, lm_ms=lm_ms, sr_ms=sr_ms)
+        # ── SR two-pass ────────────────────────────────────────────────────
+        x0, y0, x1, y1 = L.face_bbox(lms, w, h, margin=config.SR_FACE_MARGIN)
+        crop = frame[y0:y1, x0:x1]
+        if crop.size == 0:                       # 퇴화 bbox → SR 폴백
+            return FrameResult(ear=L.frame_ear(lms, w, h), has_face=True,
+                               w_eye=w_eye, used_sr=False, lm_ms=lm_ms)
+
+        t1 = time.perf_counter()
+        crop_hr = self.sr(crop)                  # robust.SuperResolution (frame→frame)
+        sr_ms = (time.perf_counter() - t1) * 1e3
+
+        t2 = time.perf_counter()
+        lms2 = self._detect_image(crop_hr)
+        lm_ms += (time.perf_counter() - t2) * 1e3
+
+        if lms2 is not None:
+            ch, cw = crop_hr.shape[:2]
+            ear = L.frame_ear(lms2, cw, ch)      # EAR 스케일 불변 → 역매핑 불필요
+            used = True
+        else:
+            ear = L.frame_ear(lms, w, h)         # pass2 얼굴 못찾으면 pass1 폴백
+            used = False
+        return FrameResult(ear=ear, has_face=True, w_eye=w_eye,
+                           used_sr=used, lm_ms=lm_ms, sr_ms=sr_ms)

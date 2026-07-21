@@ -31,8 +31,13 @@ def mediapipe_available() -> bool:
     return _MP_AVAILABLE
 
 
-def build_landmarker(task_path: str = config.TASK_PATH):
-    """MediaPipe FaceLandmarker 를 VIDEO 모드(시계열 트래킹)로 생성.
+def build_landmarker(task_path: str = config.TASK_PATH, mode: str = "video"):
+    """MediaPipe FaceLandmarker 생성.
+
+    mode="video" : 시계열 트래킹(기본, 라이브 파이프라인 pass1).
+    mode="image" : stateless 단발 검출. 조건부 SR 의 pass2(업스케일 crop)에 사용 —
+        VIDEO 트래커에 crop 을 섞어 트래킹 상태를 오염시키지 않고, detect_for_video
+        의 타임스탬프 단조성 제약도 회피한다.
 
     mediapipe 미설치 또는 모델 파일(.task) 부재 시, 원인과 해결법을 담은
     예외를 던진다(트레이스백만 남기고 죽지 않도록).
@@ -49,6 +54,8 @@ def build_landmarker(task_path: str = config.TASK_PATH):
             "  (.gitignore 의 *.task 때문에 git clone 에 포함되지 않습니다 — 직접 받아 두세요)\n"
             "  다운로드 (프로젝트 루트에서):\n"
             f"    curl -L -o face_landmarker.task {_TASK_URL}")
+    rm = (mp_vision.RunningMode.IMAGE if str(mode).lower() == "image"
+          else mp_vision.RunningMode.VIDEO)
     base = mp_python.BaseOptions(model_asset_path=task_path)
     opts = mp_vision.FaceLandmarkerOptions(
         base_options=base,
@@ -56,7 +63,7 @@ def build_landmarker(task_path: str = config.TASK_PATH):
         min_face_detection_confidence=0.5,
         min_face_presence_confidence=0.5,
         min_tracking_confidence=0.5,
-        running_mode=mp_vision.RunningMode.VIDEO,
+        running_mode=rm,
     )
     return mp_vision.FaceLandmarker.create_from_options(opts)
 
