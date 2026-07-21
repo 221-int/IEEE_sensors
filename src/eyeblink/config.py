@@ -37,6 +37,28 @@ STD_CLOSE_FRAC     = 0.25
 STD_OPEN_FRAC      = 0.55
 STD_MAX_CLOSED_SEC = 1.0     # 이보다 오래 감김 = 깜빡임 아님(졸음/내려봄) -> 실격
 
+# ── STAGE 2: 실시간 예산 / 조건부 SR / 합성 열화 (2026-07-17 승인) ──────────
+# 근거: 참고자료/STAGE2_결정사항.md(A·B·C), 참고자료/SR_STAGE2_설계노트.md
+# fps 운영점: no-SR ~30fps / 목표 24fps / 하한 15fps(필수)
+TARGET_FPS_MIN = 15          # 필수 하한 (이 아래로 떨어지면 SR 강등/오프)
+TARGET_FPS     = 24          # SR-on 목표 운영점
+
+# 조건부 얼굴 ROI two-pass SR (frontend.EarFrontend 가 사용)
+SR_ENABLE      = True        # 전역 스위치
+SR_W_EYE_MIN   = 24          # 게이트: 눈 가로 px < 이 값이면 SR 켬 (초안 — w_eye 분포로 확정)
+SR_W_EYE_HYST  = 30          # (선택) 채터링 억제용 히스테리시스 해제 임계 (>= SR_W_EYE_MIN)
+SR_MODEL       = "fsrcnn"    # cv2.dnn_superres 모델키: "fsrcnn" | "espcn"
+SR_SCALE       = 2           # 업스케일 배율 (2 우선; 3/4 는 STAGE2 스윕)
+SR_FACE_MARGIN = 0.3         # 얼굴 bbox 여유 비율 (crop 시 상하좌우 확장)
+# SR 사전학습 .pb 파일은 MODEL_DIR 에 둔다. 파일명 규약(대소문자 주의):
+#   FSRCNN: "FSRCNN-small_x{scale}.pb"  /  ESPCN: "ESPCN_x{scale}.pb"
+# 실제 경로 해석은 robust.resolve_sr_model_path() 가 담당(config 는 로직 없음).
+
+# 합성 열화 표준 (이번 라운드: 자체 4인 영상에 적용 — scripts/sr_eval.py)
+DEGRADE_DOWNSCALE   = (2, 3, 4)         # 원본 대비 축소 배율
+DEGRADE_GAMMA       = (1.0, 0.6, 0.4)   # 감마(<1 = 어둡게)
+DEGRADE_NOISE_SIGMA = (0, 5, 10)        # 가우시안 노이즈 표준편차(8bit 기준)
+
 # ── MJPEG 스트리밍 (서버-클라이언트) ────────────────────────────────────────
 STREAM_HOST    = "0.0.0.0"
 STREAM_PORT    = 8000

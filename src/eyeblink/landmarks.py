@@ -83,6 +83,39 @@ def frame_ear(landmarks, img_w, img_h):
     return ((le + re) / 2.0) * head_pose_correction(landmarks)
 
 
+def eye_width_px(landmarks, img_w, img_h):
+    """양안 평균 '눈 가로 픽셀 폭'(w_eye) — 조건부 SR 게이트 신호.
+
+    각 눈의 안/바깥 눈꼬리(EAR 규약의 pts[0], pts[3]) 사이 유클리드 거리(px)를
+    구해 좌우 평균. 머리 기울임에 견디도록 대각 거리를 쓴다.
+
+    반환값이 config.SR_W_EYE_MIN 미만이면 '눈이 작다(멀다/저해상도)'로 보고
+    frontend 에서 얼굴 ROI SR 을 켠다. (STAGE2: 값 자체는 EAR 과 무관, 게이트 전용)
+    """
+    def _w(idx):
+        a, b = landmarks[idx[0]], landmarks[idx[3]]
+        return float(np.hypot((a.x - b.x) * img_w, (a.y - b.y) * img_h))
+    return 0.5 * (_w(config.LEFT_EYE) + _w(config.RIGHT_EYE))
+
+
+def face_bbox(landmarks, img_w, img_h, margin=config.SR_FACE_MARGIN):
+    """전체 얼굴 랜드마크의 경계상자(px, 정수) + 여유 마진, 이미지 경계로 클램프.
+
+    two-pass SR 의 pass1 결과로 '얼굴 crop' 을 떠서 SR 에 넣을 때 사용.
+    반환: (x0, y0, x1, y1)  — crop = frame[y0:y1, x0:x1].
+    """
+    xs = [lm.x for lm in landmarks]
+    ys = [lm.y for lm in landmarks]
+    x0, x1 = min(xs) * img_w, max(xs) * img_w
+    y0, y1 = min(ys) * img_h, max(ys) * img_h
+    bw, bh = (x1 - x0), (y1 - y0)
+    x0 -= margin * bw; x1 += margin * bw
+    y0 -= margin * bh; y1 += margin * bh
+    x0 = int(max(0, round(x0)));      y0 = int(max(0, round(y0)))
+    x1 = int(min(img_w, round(x1)));  y1 = int(min(img_h, round(y1)))
+    return x0, y0, x1, y1
+
+
 class TwoPhaseCalibrator:
     """개안 baseline 과 폐안 floor 를 순차로 수집.
 
