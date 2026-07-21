@@ -23,11 +23,11 @@ def mjpeg_frames(url, chunk_size=4096, timeout=10):
         stream = urllib.request.urlopen(url, timeout=timeout)
     except (urllib.error.URLError, OSError) as e:
         raise ConnectionError(
-            f"MJPEG 서버 접속 실패: {url}\n"
-            "  확인: (1) 맥에서 'python -m scripts.run_server' 가 켜져 있는지\n"
-            "        (2) --url 의 IP:포트가 맞는지 (맥 IP: ipconfig getifaddr en0)\n"
-            "        (3) 맥·Pi 같은 WiFi인지, 방화벽에서 python 연결을 허용했는지\n"
-            f"  (원인: {e})") from None
+            f"Failed to connect to MJPEG server: {url}\n"
+            "  Check: (1) is 'python -m scripts.run_server' running on the Mac?\n"
+            "         (2) is --url IP:port correct? (Mac IP: ipconfig getifaddr en0)\n"
+            "         (3) same WiFi, and firewall allows the python connection?\n"
+            f"  (cause: {e})") from None
 
     import cv2  # 연결 성공 후 디코더 로드 (지연 import)
     buf = b""
@@ -35,7 +35,7 @@ def mjpeg_frames(url, chunk_size=4096, timeout=10):
         try:
             data = stream.read(chunk_size)
         except (OSError, socket.timeout) as e:
-            raise ConnectionError(f"MJPEG 스트림 수신 중 끊김: {e}") from None
+            raise ConnectionError(f"MJPEG stream dropped while receiving: {e}") from None
         if not data:
             break
         buf += data

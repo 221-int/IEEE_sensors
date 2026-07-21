@@ -29,8 +29,8 @@ def frame_source(args):
         import cv2
         cap = cv2.VideoCapture(args.camera)
         if not cap.isOpened():
-            raise SystemExit(f"카메라를 열 수 없습니다 (--camera {args.camera}). "
-                             "다른 인덱스(0/1) 를 시도하거나 카메라 권한을 확인하세요.")
+            raise SystemExit(f"Cannot open camera (--camera {args.camera}). "
+                             "Try another index (0/1) or check camera permission.")
         try:
             while True:
                 ok, frame = cap.read()
@@ -57,7 +57,7 @@ def main():
     a = ap.parse_args()
 
     if not L.mediapipe_available():
-        raise SystemExit("mediapipe 가 필요합니다:  pip install mediapipe")
+        raise SystemExit("mediapipe is required:  pip install mediapipe")
     import cv2
     import mediapipe as mp
 
@@ -77,7 +77,7 @@ def main():
         writer.writerow(["time", "cap_fps", "landmark_ms", "ear",
                          "calibrating", "state", "blink", "total_blinks", "bpm"])
 
-    print("[live] 캘리브: 먼저 '눈 뜨고' 대기 -> 안내되면 '눈 꼭 감기'. (q: 종료)")
+    print("[live] Calib: keep eyes OPEN first -> when prompted, CLOSE eyes tight. (q: quit)")
     t_start = time.perf_counter()
     try:
         for frame in frame_source(a):
@@ -133,8 +133,8 @@ def main():
     s = timer.summary().get("landmark")
     if s:
         print(f"\n[profile] landmark: mean={s['mean_ms']:.1f}ms p95={s['p95_ms']:.1f}ms "
-              f"-> max ~{s['max_fps']:.1f} fps  (측정 프레임 {s['n']})")
-    print(f"[profile] capture fps(최근)={fps.fps:.1f}")
+              f"-> max ~{s['max_fps']:.1f} fps  (frames measured {s['n']})")
+    print(f"[profile] capture fps(recent)={fps.fps:.1f}")
 
 
 def _show(cv2, frame, label):
