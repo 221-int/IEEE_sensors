@@ -20,7 +20,7 @@ from eyeblink import config
 from eyeblink import landmarks as L
 from eyeblink.pipeline import BlinkPipeline
 from eyeblink.robust import get_preprocessor, SuperResolution
-from eyeblink.frontend import EarFrontend
+from eyeblink.frontend import EarFrontend, SrGate
 from eyeblink.profiling import FpsMeter, StageTimer
 
 
@@ -52,9 +52,14 @@ def main():
                     default=f"http://127.0.0.1:{config.STREAM_PORT}{config.STREAM_PATH}")
     ap.add_argument("--camera", type=int, default=config.CAM_INDEX)
     ap.add_argument("--preprocess", choices=["none", "sr", "lowlight"], default="none")
-    ap.add_argument("--show", action="store_true", help="OpenCV 창으로 표시")
-    ap.add_argument("--log", default=None, help="프레임별 CSV 경로")
-    ap.add_argument("--seconds", type=float, default=0.0, help="N초 후 자동 종료(0=무한)")
+    ap.add_argument("--sr-model", choices=["fsrcnn", "espcn"], default=config.SR_MODEL,
+                    help="conditional SR model (needs models/<MODEL>_x<scale>.pb)")
+    ap.add_argument("--sr-scale", type=int, default=config.SR_SCALE, help="SR upscale factor")
+    ap.add_argument("--sr-w-eye", type=float, default=config.SR_W_EYE_MIN,
+                    help="gate: turn SR on when eye width(px) < this")
+    ap.add_argument("--show", action="store_true", help="show OpenCV window")
+    ap.add_argument("--log", default=None, help="per-frame CSV path")
+    ap.add_argument("--seconds", type=float, default=0.0, help="auto-stop after N s (0=inf)")
     a = ap.parse_args()
 
     if not L.mediapipe_available():
@@ -66,12 +71,13 @@ def main():
     # lowlight 만 전체 프레임 전처리로 유지, none 은 무동작.
     pre = get_preprocessor("lowlight") if a.preprocess == "lowlight" \
         else get_preprocessor("none")
-    sr = SuperResolution() if a.preprocess == "sr" else None
+    sr = SuperResolution(model=a.sr_model, scale=a.sr_scale) if a.preprocess == "sr" else None
     try:
         landmarker = L.build_landmarker()           # 모델 파일 없으면 안내 후 종료
     except (FileNotFoundError, RuntimeError) as e:
         raise SystemExit(str(e))
-    frontend = EarFrontend(landmarker, sr=sr)       # pass1(VIDEO) + 조건부 pass2(IMAGE)
+    gate = SrGate(on_below=a.sr_w_eye, enable=(sr is not None))
+    frontend = EarFrontend(landmarker, sr=sr, gate=gate)   # pass1(VIDEO) + 조건부 pass2(IMAGE)
     pipe = BlinkPipeline()
     fps = FpsMeter(window=30)
     timer = StageTimer()
