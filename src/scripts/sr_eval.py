@@ -121,29 +121,35 @@ def main():
     ap.add_argument("--video", required=True, help="깨끗한 자체 영상(참조)")
     ap.add_argument("--sr", choices=["off", "on"], default="off")
     ap.add_argument("--truth", type=int, default=None,
-                    help="큐 기반 정답 깜빡임 수(있으면 오차 계산). TODO: 큐 로그 연동")
+                    help="cue-based ground-truth blink count (optional error calc)")
+    ap.add_argument("--quick", action="store_true",
+                    help="downscale-only sweep (gamma=1, noise=0): 3 rows, fast")
     a = ap.parse_args()
     use_sr = (a.sr == "on")
 
-    # 참조(무열화)로 캘리브 기준 확보
+    # reference (clean) -> calibration baseline
     t0, e0, native, _ = extract_ears(a.video, dict(downscale=1, gamma=1.0, noise_sigma=0.0),
                                      use_sr=False)
     baseline, floor = auto_calib(e0)
     ref_blinks = count_blinks(t0, e0, baseline, floor)
-    print(f"[sr_eval] native_fps={native:.1f}  ref(무열화) blinks={ref_blinks}"
+    print(f"[sr_eval] native_fps={native:.1f}  ref(clean) blinks={ref_blinks}"
           + (f"  truth={a.truth}" if a.truth is not None else ""))
-    print(f"[sr_eval] calib baseline={baseline:.3f} floor={floor:.3f}  sr={a.sr}\n")
+    print(f"[sr_eval] calib baseline={baseline:.3f} floor={floor:.3f}  sr={a.sr}"
+          + ("  [quick: downscale-only]" if a.quick else "") + "\n")
 
-    # 열화 그리드 스윕
-    grid = itertools.product(config.DEGRADE_DOWNSCALE, config.DEGRADE_GAMMA,
-                             config.DEGRADE_NOISE_SIGMA)
+    # degradation sweep
+    if a.quick:
+        grid = [(ds, 1.0, 0) for ds in config.DEGRADE_DOWNSCALE]
+    else:
+        grid = itertools.product(config.DEGRADE_DOWNSCALE, config.DEGRADE_GAMMA,
+                                 config.DEGRADE_NOISE_SIGMA)
     print(f"{'down':>5}{'gamma':>7}{'noise':>7}{'frames':>8}{'blinks':>8}"
           f"{'sr_used':>9}{'d_ref':>7}")
     for ds, gm, ns in grid:
         params = dict(downscale=ds, gamma=gm, noise_sigma=ns)
         t, e, _, n_sr = extract_ears(a.video, params, use_sr=use_sr)
         if len(e) == 0:
-            print(f"{ds:>5}{gm:>7.1f}{ns:>7}{0:>8}{'(무검출)':>8}")
+            print(f"{ds:>5}{gm:>7.1f}{ns:>7}{0:>8}{'(no face)':>8}")
             continue
         n = count_blinks(t, e, baseline, floor)     # 참조 캘리브 재사용(공정 비교)
         d_ref = n - ref_blinks
