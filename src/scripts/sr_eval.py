@@ -123,7 +123,9 @@ def main():
     ap.add_argument("--truth", type=int, default=None,
                     help="cue-based ground-truth blink count (optional error calc)")
     ap.add_argument("--quick", action="store_true",
-                    help="downscale-only sweep (gamma=1, noise=0): 3 rows, fast")
+                    help="downscale-only sweep (gamma=1, noise=0): fast")
+    ap.add_argument("--downscales", type=int, nargs="+", default=None,
+                    help="override downscale factors, e.g. --downscales 4 6 8 10")
     a = ap.parse_args()
     use_sr = (a.sr == "on")
 
@@ -138,10 +140,11 @@ def main():
           + ("  [quick: downscale-only]" if a.quick else "") + "\n")
 
     # degradation sweep
+    downscales = a.downscales if a.downscales else list(config.DEGRADE_DOWNSCALE)
     if a.quick:
-        grid = [(ds, 1.0, 0) for ds in config.DEGRADE_DOWNSCALE]
+        grid = [(ds, 1.0, 0) for ds in downscales]
     else:
-        grid = itertools.product(config.DEGRADE_DOWNSCALE, config.DEGRADE_GAMMA,
+        grid = itertools.product(downscales, config.DEGRADE_GAMMA,
                                  config.DEGRADE_NOISE_SIGMA)
     print(f"{'down':>5}{'gamma':>7}{'noise':>7}{'frames':>8}{'blinks':>8}"
           f"{'sr_used':>9}{'d_ref':>7}")
