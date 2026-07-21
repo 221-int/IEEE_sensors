@@ -2,6 +2,9 @@ __pycache__/
 *.pyc
 .idea/
 data/*.csv
+# 데이터 폴더 및 영상 파일 업로드 제외
+data/
+*.avi
 models/*.npz
 results/*
 *.task
