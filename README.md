@@ -18,23 +18,51 @@
 ## 폴더 구조
 
 ```
-data/            # 눈 크롭 데이터셋 + O/X 레이블 (data/_legacy_public/ = 옛 공개 데이터셋)
+data/            # 눈 크롭 데이터셋 + 레이블 (data/_legacy_public/ = 공개 데이터셋)
 src/
-  dataset/       # 크롭 전처리 규격 · 레이블링
-  encoder/       # 벡터 인코더 (기성 다운로드 / 직접 구현 2갈래)
+  dataset/       # 크롭 전처리 규격(canonical) · 레이블링
+  encoder/       # 벡터 인코더 (오토인코더)
   classifier/    # 벡터 → 깜빡임 여부 판정 모델
-  deploy/        # ONNX 컴파일 · Pi5 운용 코드
-  tools/         # 검증 전용 디코더 · SR (로컬 한정, 배포 안 함)
-docs/            # 참고자료 정리본
+  eval/          # 이벤트 단위 평가 · EAR 베이스라인 · 프라이버시 지표
+  experiments/   # 잠재 차원 스윕 등 실험 드라이버
+  deploy/        # ONNX 변환 · MediaPipe 프론트엔드 · Pi5 벤치마크 하네스
+  tools/         # 검증 전용 유틸 (로컬 한정, 배포 안 함)
+docs/            # 배경·결과·의사결정 로그
+results/         # 측정 원자료 (논문 표의 1차 증거)
 paper/           # IEEE 논문 초안
-benchmark/       # Pi5 벤치마크
 ```
 
-## 상태
+## 상태 (2026-07-29)
 
-- [ ] 눈 크롭 + O/X 레이블 데이터셋 구축
-- [ ] 벡터 인코더 선정/구현 (`src/encoder/`)
-- [ ] 판정 모델 학습 (`src/classifier/`)
-- [ ] ONNX 컴파일 + Pi5 실측 벤치마크 (`src/deploy/`, `benchmark/`)
+- [x] 눈 크롭 + 레이블 데이터셋 구축 — Eyeblink8 8명, 양눈 64×160, 35,496 프레임
+- [x] 벡터 인코더 구현 (`src/encoder/`) — 오토인코더, 128차원
+- [x] 판정 모델 학습 (`src/classifier/`) — MLP
+- [x] **ONNX 컴파일 + Pi5 실측 벤치마크** (`src/deploy/run_video.py`)
+- [ ] 정식 train/val/**test** 분할 + 시드 반복 ← 다음
+- [ ] 다신원 데이터 (**mEBAL2 180명, 약 1주 뒤 도착 예정**)
+- [ ] 신원 disentanglement 정식 평가
+- [ ] 눈 건강 지표 (빈도 · 불완전 깜빡임 · PERCLOS)
 
-세부 배경·의사결정 로그는 `docs/`를 참고.
+### 지금까지 나온 답
+
+| | |
+|---|---|
+| **엣지** | ✅ Pi 5에서 e2e p99 **12.06 ms** (30fps 예산의 36%), 86 fps, 스로틀 없음. EAR 대비 +2.67 ms |
+| **유용성** | ⚠️ EAR과 대등하나 **8명으로는 우열 판정 불가** (시드에 따라 70–73/74, EAR 70/74) |
+| **프라이버시** | ❌ 차원을 16배 좁혀도 선형 재식별 99%+ → **차원 축소는 프라이버시가 아니다.** disentanglement 필수 |
+
+## 문서
+
+| 문서 | 내용 |
+|---|---|
+| [`docs/OVERVIEW.md`](docs/OVERVIEW.md) | 한 장 요약 · 현재 위치 |
+| [`docs/PROJECT_DETAILED.md`](docs/PROJECT_DETAILED.md) | 배경·방법·데이터·모델·결과 전체 |
+| [`docs/RESULTS.md`](docs/RESULTS.md) | 측정 결과 스냅샷 |
+| [`docs/PI5_BENCHMARK.md`](docs/PI5_BENCHMARK.md) | Pi5 실측 결과와 **측정 조건의 근거** |
+| [`docs/Pi_실행_가이드.md`](docs/Pi_실행_가이드.md) | Pi 환경 구축·실행 절차 (Python 3.13 함정 포함) |
+| [`docs/STATUS_AND_DIRECTION_1.md`](docs/STATUS_AND_DIRECTION_1.md) | 로드맵·지도 의견·남은 고민 |
+
+## 실행
+
+리포지토리 루트에서 `python -m src.<하위>.<모듈>` 로 실행한다 (파일 직접 실행 금지).
+데스크탑은 `requirements.txt`, 라즈베리파이는 **`requirements-pi.txt`** 를 쓴다.
