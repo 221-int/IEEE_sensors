@@ -1,22 +1,24 @@
-# eyeblink — 라즈베리파이5 실시간 깜빡임 검출 + 엣지 강건화
-# 순수 로직(std/metrics/pipeline)은 표준 라이브러리만으로 동작(단위 테스트 가능).
-# 아래는 라이브 실행에 필요한 의존성.
+# 눈 깜빡임 감지 — 벡터 인코더 + 학습 판정 모델
+# 초안. 인코더/판정 모델 구현체가 정해지면 버전 고정 필요.
 
 numpy>=1.24.0
-
-# 랜드마크 프론트엔드 + 프레임 처리
-mediapipe>=0.10.0
 opencv-python>=4.8.0
 
-# MJPEG 스트리밍 서버 (streaming/server.py)
-flask>=3.0.0
+# 눈 크롭 (얼굴/랜드마크 검출)
+mediapipe>=0.10.0
 
-# (선택) 벤치마크 리소스 지표: CPU/메모리
+# 학습 프레임워크 (택1 — 확정 후 다른 쪽 제거)
+torch>=2.2.0
+# tensorflow>=2.15.0
+
+# ONNX 변환 + Pi5 런타임 추론
+onnx>=1.15.0
+onnxruntime>=1.17.0
+
+# 벤치마크/실험
 psutil>=5.9.0
-
-# (선택) 완성도 실험 그림
 matplotlib>=3.7.0
 
-# Raspberry Pi 5 note (64-bit Raspberry Pi OS / Bookworm):
+# Raspberry Pi 5 (64-bit Raspberry Pi OS / Bookworm):
 #   sudo apt-get install -y python3-opencv libatlas-base-dev
-#   pip install mediapipe opencv-python flask numpy psutil
+#   pip install onnxruntime opencv-python numpy
