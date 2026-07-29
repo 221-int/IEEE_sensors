@@ -1,0 +1,81 @@
+{
+  "env": {
+    "machine": "aarch64",
+    "platform": "Linux-6.18.34+rpt-rpi-2712-aarch64-with-glibc2.41",
+    "python": "3.11.15",
+    "numpy": "1.26.4",
+    "opencv": "4.11.0",
+    "input_hw": [
+      64,
+      160
+    ],
+    "mode": "ours",
+    "video": "27122013_152435_cam.avi",
+    "os": "Debian GNU/Linux 13 (trixie)",
+    "mediapipe": "0.10.18",
+    "onnxruntime": "1.19.2",
+    "ort_providers": [
+      "CPUExecutionProvider"
+    ],
+    "ort_intra_threads": 2,
+    "ort_spinning": "disabled",
+    "cpu_count": 4,
+    "mem_total_gb": 17.01,
+    "cpu_governor": "performance",
+    "board": "Raspberry Pi 5 Model B Rev 1.1",
+    "cooling_device0": "pwm-fan",
+    "opencv_simd_baseline": "NEON FP16"
+  },
+  "frames_processed": 19308,
+  "frames_measured": 19240,
+  "detect_miss": 40,
+  "clip_loops": 3,
+  "wall_s": 300.02,
+  "sustained_fps": 64.357,
+  "stages_ms": {
+    "read": {
+      "p50": 0.951,
+      "p95": 0.997,
+      "p99": 1.019,
+      "max": 5.753
+    },
+    "detect": {
+      "p50": 7.817,
+      "p95": 8.053,
+      "p99": 8.361,
+      "max": 48.014
+    },
+    "crop": {
+      "p50": 4.35,
+      "p95": 4.492,
+      "p99": 4.541,
+      "max": 6.56
+    },
+    "infer": {
+      "p50": 2.327,
+      "p95": 2.357,
+      "p99": 2.384,
+      "max": 3.589
+    }
+  },
+  "e2e_ms": {
+    "p50": 15.455,
+    "p95": 15.74,
+    "p99": 16.192,
+    "max": 55.649
+  },
+  "budget_ms": 33.3,
+  "temp_c": {
+    "start": 51.0,
+    "end": 57.6,
+    "min": 52.1,
+    "max": 59.8
+  },
+  "cpu_percent_mean": 187.4,
+  "rss_mb_peak": 213.3,
+  "throttled": {
+    "start": "0x0",
+    "end": "0x0",
+    "flags_seen": []
+  }
+}

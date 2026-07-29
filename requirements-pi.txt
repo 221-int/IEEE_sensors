@@ -1,0 +1,33 @@
+# Raspberry Pi 5 (aarch64) 추론·벤치마크 전용 의존성
+#
+# 검증 환경: Pi 5 Model B Rev 1.1 / Debian 13 (trixie) / Python 3.11.15 (Miniforge)
+# 이 조합으로 docs/PI5_BENCHMARK.md 의 측정을 수행했다.
+#
+# ★ Python 3.11 또는 3.12 에서만 설치된다.
+#   mediapipe는 aarch64용 Python 3.13 휠이 존재하지 않는다 (어떤 버전도).
+#   Debian 13의 시스템 파이썬은 3.13이므로 conda로 3.11 환경을 만들어야 한다.
+#   자세한 내용은 docs/Pi_실행_가이드.md §1.
+#
+# 설치:
+#   conda create -y -n eyeblink -c conda-forge python=3.11
+#   conda activate eyeblink
+#   pip install -r requirements-pi.txt
+#
+# 학습용 패키지(torch 등)는 여기 없다. 파이에서는 추론만 한다 -> requirements.txt 참조.
+
+# --- 왜 이 버전들인가 ---------------------------------------------------------
+# numpy       : mediapipe 0.10.18 이 numpy<2 를 요구. 1.26.4가 3.11/3.12 마지막 지원.
+# mediapipe   : aarch64 휠이 0.10.18 에서 끊긴다. 0.10.20 이상은 aarch64 빌드가 없다.
+# onnxruntime : 우리 ONNX가 IR version 10 이라 1.18.0 미만은 로드 자체가 실패한다
+#               ("Unsupported model IR version: 10, max supported IR version: 9").
+#               1.18.x 는 numpy 2 에서 import가 깨지므로 1.19.2 를 쓴다.
+# opencv      : 핀하지 않으면 pip가 5.0.x 를 끌어온다. mediapipe 0.10.18 과의
+#               호환이 보장되지 않으므로 4.x 로 고정. aarch64 휠 있음.
+#               apt python3-opencv 는 conda 환경에서 보이지 않으므로 pip으로 받는다.
+# -----------------------------------------------------------------------------
+
+numpy==1.26.4
+mediapipe==0.10.18
+onnxruntime==1.19.2
+opencv-contrib-python==4.11.0.86
+psutil>=5.9.0

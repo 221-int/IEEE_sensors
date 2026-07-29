@@ -1,11 +1,27 @@
 __pycache__/
 *.pyc
 .idea/
-data/*.csv
-# 데이터 폴더 및 영상 파일 업로드 제외
+
+# --- 원본 데이터셋 · 영상 (용량) ---
 data/
+eye_dataset/
 *.avi
-models/*.npz
-results/*
 *.task
+
+# --- 학습 체크포인트 ---
+# 추적함: models/onnx/** (배포 아티팩트, 14MB)
+#         models/autoencoder/encoder.pt (ONNX 재생성에 필요, 6.8MB)
+#         models/classifier/classifier.pt (36KB)
+#         config.json / metrics.json / pareto.json (실험 메타데이터)
+# 제외함: 아래. 용량이 크고 배포 대상이 아니다.
+#         (디코더 미배포는 이 프로젝트의 설계 원칙이기도 하다)
+models/*.npz
+models/autoencoder/autoencoder.pt
+models/autoencoder/decoder.pt
+models/disentangled/*.pt
+
+# --- 측정 결과 ---
+# results/ 는 추적한다. Pi5 벤치마크의 1차 증거이고 3.8MB로 작다.
+# (이전에는 results/* 를 통째로 무시했으나, 논문 표의 근거를 잃게 되므로 해제)
+
 !.gitkeep

@@ -1,0 +1,11 @@
+subject,trial,expected,detected,correct
+dahyun,1,1,2,0
+dahyun,2,1,1,1
+dahyun,3,1,1,1
+dahyun,4,1,1,1
+dahyun,5,1,1,1
+dahyun,6,1,0,0
+dahyun,7,1,1,1
+dahyun,8,1,1,1
+dahyun,9,1,0,0
+dahyun,10,1,0,0

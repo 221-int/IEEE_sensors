@@ -1,0 +1,10 @@
+{
+  "latent": 128,
+  "input": "1x64x160",
+  "norm": "0..1",
+  "val_subjects": [
+    "eb04",
+    "eb11"
+  ],
+  "best_val_mse": 0.0047140437671710335
+}

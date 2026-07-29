@@ -1,0 +1,11 @@
+subject,trial,expected,detected,correct
+hanul,1,1,2,0
+hanul,2,1,1,1
+hanul,3,1,1,1
+hanul,4,1,1,1
+hanul,5,1,1,1
+hanul,6,1,1,1
+hanul,7,1,1,1
+hanul,8,1,1,1
+hanul,9,1,1,1
+hanul,10,1,1,1

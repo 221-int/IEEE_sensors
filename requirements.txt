@@ -1,24 +1,28 @@
 # 눈 깜빡임 감지 — 벡터 인코더 + 학습 판정 모델
-# 초안. 인코더/판정 모델 구현체가 정해지면 버전 고정 필요.
+#
+# 데스크탑(학습·ONNX export·평가)용. 라즈베리파이 추론·벤치마크는 requirements-pi.txt.
 
 numpy>=1.24.0
 opencv-python>=4.8.0
 
 # 눈 크롭 (얼굴/랜드마크 검출)
-mediapipe>=0.10.0
+mediapipe>=0.10.0,<0.10.20
 
-# 학습 프레임워크 (택1 — 확정 후 다른 쪽 제거)
+# 학습 프레임워크
 torch>=2.2.0
-# tensorflow>=2.15.0
 
-# ONNX 변환 + Pi5 런타임 추론
+# ONNX 변환 + 런타임 추론
 onnx>=1.15.0
-onnxruntime>=1.17.0
+# ★ 1.18.0 이상. export_onnx.py 가 만드는 그래프는 IR version 10 이라
+#   1.17 이하에서는 "Unsupported model IR version: 10" 으로 로드가 실패한다.
+onnxruntime>=1.18.0
 
 # 벤치마크/실험
 psutil>=5.9.0
 matplotlib>=3.7.0
 
-# Raspberry Pi 5 (64-bit Raspberry Pi OS / Bookworm):
-#   sudo apt-get install -y python3-opencv libatlas-base-dev
-#   pip install onnxruntime opencv-python numpy
+# ---------------------------------------------------------------------------
+# Raspberry Pi 5 는 이 파일을 쓰지 말 것 (torch 불필요, 버전 제약이 다름).
+#   requirements-pi.txt + docs/Pi_실행_가이드.md 참조.
+#   요약: mediapipe에 aarch64/Python 3.13 휠이 없어 conda로 3.11 환경이 필요하다.
+# ---------------------------------------------------------------------------
