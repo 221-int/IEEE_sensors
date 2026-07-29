@@ -25,3 +25,5 @@ models/disentangled/*.pt
 # (이전에는 results/* 를 통째로 무시했으나, 논문 표의 근거를 잃게 되므로 해제)
 
 !.gitkeep
+
+models/sweep/

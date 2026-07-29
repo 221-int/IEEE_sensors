@@ -168,7 +168,8 @@ def main():
                             os.path.join(args.out, "recon_val.png"))
 
     with open(os.path.join(args.out, "config.json"), "w") as f:
-        json.dump({"latent": args.latent, "input": "1x64x64", "norm": "0..1",
+        json.dump({"latent": args.latent,
+                   "input": f"1x{IN_HW[0]}x{IN_HW[1]}", "norm": "0..1",
                    "val_subjects": args.val_subjects, "best_val_mse": best_val}, f, indent=2)
     print(f"Done. best val MSE={best_val:.5f}. Artifacts in '{args.out}'.")
     print("recon_val.png: top row = input eye, bottom row = reconstruction.")

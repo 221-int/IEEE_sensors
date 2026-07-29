@@ -1,0 +1,16 @@
+# 줄바꿈 정규화.
+# 이게 없으면 Windows에서 CRLF/LF 차이 때문에 손대지 않은 파일까지
+# "전체 줄 변경"으로 잡혀 git status 가 읽을 수 없게 된다.
+# (예: results/pi_ours.csv 25,735줄 전부가 변경으로 표시됨)
+* text=auto
+
+# 바이너리 — 줄바꿈 변환 금지 (변환되면 파일이 깨진다)
+*.png  binary
+*.jpg  binary
+*.pt   binary
+*.pth  binary
+*.onnx binary
+*.data binary
+*.npz  binary
+*.avi  binary
+*.pdf  binary

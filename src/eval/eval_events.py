@@ -35,7 +35,16 @@ def main():
     ap.add_argument("--config", default="models/autoencoder/config.json")
     ap.add_argument("--val-subjects", nargs="*", default=["eb04", "eb11"])
     ap.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
+    ap.add_argument("--thresholds", nargs="*", type=float, default=None,
+                    help="probability thresholds to report (default: dense 0.02..0.98). "
+                         "The old fixed grid 0.3..0.8 stopped before the low "
+                         "false-alarm region and made the model look worse than "
+                         "it is -- metrics.json puts the best F1 at thr 0.9.")
+    ap.add_argument("--dense", type=int, default=25,
+                    help="number of points in the default dense sweep")
     args = ap.parse_args()
+    if args.thresholds is None:
+        args.thresholds = [round(t, 4) for t in np.linspace(0.02, 0.98, args.dense)]
 
     latent = json.load(open(args.config))["latent"] if os.path.exists(args.config) else 128
     d = np.load(args.data, allow_pickle=True)
@@ -68,7 +77,7 @@ def main():
 
     print(f"val subjects={args.val_subjects} | events={n_events} | non-blink frames={n_neg}\n")
     print(f"{'thr':>5} {'event_recall':>13} {'events_hit':>11} {'frame_false_alarm':>18}")
-    for thr in [0.3, 0.4, 0.5, 0.6, 0.7, 0.8]:
+    for thr in args.thresholds:
         hit = sum(1 for ps in events.values() if max(ps) >= thr)
         far = float((prob[neg_mask] >= thr).mean()) if n_neg else 0.0
         print(f"{thr:5.2f} {hit / n_events:13.3f} {hit:6d}/{n_events:<4d} {far:18.4f}")
