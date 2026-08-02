@@ -36,6 +36,31 @@ ALIGN_ROTATION = True    # rotate so the eye-corner line is horizontal
 MP_EYE_PAIR_A = (33, 133)     # one eye: outer / inner corner
 MP_EYE_PAIR_B = (362, 263)    # the other eye: inner / outer corner
 
+# 6-point EAR landmark sets (Soukupova & Cech), same FaceMesh. Kept here rather
+# than in src/eval/ear_baseline.py so the EAR baseline and the mEBAL2 loader
+# cannot drift apart -- this project has already been bitten three times by the
+# same constant living in two files. ear_baseline.py imports these.
+EAR_EYE_A = {"corner_out": 33,  "corner_in": 133,
+             "top1": 160, "bot1": 144, "top2": 158, "bot2": 153}
+EAR_EYE_B = {"corner_out": 263, "corner_in": 362,
+             "top1": 385, "bot1": 380, "top2": 387, "bot2": 373}
+
+
+def ear_from_indices_xy(xy, idx):
+    """EAR for one eye from an (N, 2) PIXEL array of mesh points.
+
+    Array form of ear_baseline.ear_from_indices, which takes MediaPipe landmark
+    objects and normalized coords. Same formula, so the two agree to float
+    rounding; this one is what the mEBAL2 path (pixel coords, plain ndarray)
+    uses.
+    """
+    p_out, p_in = xy[idx["corner_out"]], xy[idx["corner_in"]]
+    t1, b1 = xy[idx["top1"]], xy[idx["bot1"]]
+    t2, b2 = xy[idx["top2"]], xy[idx["bot2"]]
+    horiz = float(np.linalg.norm(p_out - p_in)) + 1e-6
+    vert = float(np.linalg.norm(t1 - b1)) + float(np.linalg.norm(t2 - b2))
+    return float(vert / (2.0 * horiz))
+
 
 def crop_eye_from_corners(frame_bgr, corner_a, corner_b):
     """Crop one eye given its two corner points (pixel coords).
@@ -176,24 +201,42 @@ def crop_both_eyes_from_corners(frame_bgr, le_a, le_b, re_a, re_b,
 # feeds corners from these helpers. Both then call the SAME crop function, so
 # train/serve geometry cannot drift.
 
-def _landmark_xy(landmarks, idx, w, h):
+COORDS_NORM = "norm"      # [0, 1] normalized (MediaPipe convention)
+COORDS_PIXEL = "pixel"    # already in pixels (mEBAL2 Processed_Data convention)
+
+
+def _landmark_xy(landmarks, idx, w, h, coords=COORDS_NORM):
     """One landmark -> (x, y) in pixels.
 
     `landmarks` may be a MediaPipe NormalizedLandmarkList.landmark sequence
     (objects with .x/.y) or any indexable sequence of (x, y[, z]).
-    Coordinates are assumed NORMALIZED to [0, 1] (MediaPipe convention).
+
+    coords:
+        "norm"  (default) -- input is normalized to [0, 1]; multiplied by w, h.
+                             This is the MediaPipe / serve-path convention and
+                             keeps every existing caller bit-identical.
+        "pixel"            -- input is already in pixels; w, h are ignored.
+                             mEBAL2 `Processed_Data/*/landmarks.csv` stores
+                             absolute pixel coordinates (verified: x in
+                             [809, 1071] on a 1280x720 frame), so multiplying
+                             by w, h there would inflate them ~1000x.
     """
+    if coords not in (COORDS_NORM, COORDS_PIXEL):
+        raise ValueError(f"coords must be 'norm' or 'pixel', got {coords!r}")
     lm = landmarks[idx]
     x = getattr(lm, "x", None)
     if x is None:
         x, y = float(lm[0]), float(lm[1])
     else:
         x, y = float(x), float(lm.y)
+    if coords == COORDS_PIXEL:
+        return np.array([x, y], dtype=np.float32)
     return np.array([x * w, y * h], dtype=np.float32)
 
 
 def eye_corners_from_landmarks(landmarks, w, h,
-                               pair_a=MP_EYE_PAIR_A, pair_b=MP_EYE_PAIR_B):
+                               pair_a=MP_EYE_PAIR_A, pair_b=MP_EYE_PAIR_B,
+                               coords=COORDS_NORM):
     """Landmarks -> (le_a, le_b, re_a, re_b), the 4 eye corners in pixels.
 
     `le_*` is always the IMAGE-LEFT eye and `re_*` the image-right one: the two
@@ -204,25 +247,31 @@ def eye_corners_from_landmarks(landmarks, w, h,
     pairs -- centre and span are both symmetric, and the alignment angle is
     normalized to +/-90 deg -- so this ordering is for callers that care, e.g.
     per-eye asymmetry features. The crop itself is safe either way.)
+
+    `coords` selects the input coordinate system -- see _landmark_xy.
     """
-    a1 = _landmark_xy(landmarks, pair_a[0], w, h)
-    a2 = _landmark_xy(landmarks, pair_a[1], w, h)
-    b1 = _landmark_xy(landmarks, pair_b[0], w, h)
-    b2 = _landmark_xy(landmarks, pair_b[1], w, h)
+    a1 = _landmark_xy(landmarks, pair_a[0], w, h, coords)
+    a2 = _landmark_xy(landmarks, pair_a[1], w, h, coords)
+    b1 = _landmark_xy(landmarks, pair_b[0], w, h, coords)
+    b2 = _landmark_xy(landmarks, pair_b[1], w, h, coords)
     if (a1[0] + a2[0]) <= (b1[0] + b2[0]):
         return a1, a2, b1, b2
     return b1, b2, a1, a2
 
 
 def crop_both_eyes_from_landmarks(frame_bgr, landmarks,
-                                  out_h=OUT_H, out_w=OUT_W):
+                                  out_h=OUT_H, out_w=OUT_W,
+                                  coords=COORDS_NORM):
     """CANONICAL inference-time crop: frame + landmarks -> out_h x out_w uint8.
 
     Same output as crop_both_eyes_from_corners on the dataset path.
     Returns None if the eyes are too close together / the crop is degenerate.
+
+    `coords` selects the input coordinate system -- see _landmark_xy.
     """
     h, w = frame_bgr.shape[:2]
-    le_a, le_b, re_a, re_b = eye_corners_from_landmarks(landmarks, w, h)
+    le_a, le_b, re_a, re_b = eye_corners_from_landmarks(landmarks, w, h,
+                                                        coords=coords)
     return crop_both_eyes_from_corners(frame_bgr, le_a, le_b, re_a, re_b,
                                        out_h=out_h, out_w=out_w)
 

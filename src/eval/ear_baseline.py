@@ -51,15 +51,16 @@ import numpy as np
 
 from src.dataset.prepare_eyeblink8 import parse_tag
 from src.dataset.capture_eye_dataset import compute_ear, _face_mesh_mod
+from src.dataset.eye_preprocess import EAR_EYE_A, EAR_EYE_B
 
-# 6-point EAR landmark sets, MediaPipe FaceMesh.
+# 6-point EAR landmark sets, MediaPipe FaceMesh. Defined in eye_preprocess.py so
+# that this baseline and the mEBAL2 loader share ONE copy; re-exported under the
+# original names so existing callers keep working.
 # EYE_A is the set the original one-eye baseline used (see capture_eye_dataset.EYE).
 # EYE_B is its mirror on the other eye. Which one falls on the image-left depends
 # on mirroring, so we resolve that at runtime from the corner x coordinates.
-EYE_A = {"corner_out": 33,  "corner_in": 133,
-         "top1": 160, "bot1": 144, "top2": 158, "bot2": 153}
-EYE_B = {"corner_out": 263, "corner_in": 362,
-         "top1": 385, "bot1": 380, "top2": 387, "bot2": 373}
+EYE_A = EAR_EYE_A
+EYE_B = EAR_EYE_B
 
 
 def _pt(landmarks, idx, w, h):
@@ -105,7 +106,7 @@ def subj_to_folder(subj):
 
 
 def collect_clip(avi, tag, face_mesh, stride, check_legacy=True):
-    """Return list of (blink_id, ears_dict_or_None) for the stride-sampled frames."""
+    """-> list of (blink_id, ears_dict_or_None, frame_id) for stride-sampled frames."""
     tags = parse_tag(tag)
     cap = cv2.VideoCapture(avi)
     out = []
@@ -132,7 +133,7 @@ def collect_clip(avi, tag, face_mesh, stride, check_legacy=True):
                     checked = True
             else:
                 ears = None  # no detection -> cannot flag a blink
-            out.append((tags[fid]["blink_id"], ears))
+            out.append((tags[fid]["blink_id"], ears, fid))
         fid += 1
     cap.release()
     return out
@@ -163,6 +164,10 @@ def main():
                          "head-to-head is not fair.")
     ap.add_argument("--dense", type=int, default=51)
     ap.add_argument("--json", default=None, help="write the sweep to a JSON file")
+    ap.add_argument("--dump", default=None,
+                    help="save PER-FRAME EAR values to an .npz. Run this once over "
+                         "ALL subjects; any later split/fold evaluation can then be "
+                         "done offline without re-running MediaPipe.")
     args = ap.parse_args()
     if args.thresholds is None:
         args.thresholds = [round(t, 4) for t in np.linspace(0.10, 0.35, args.dense)]
@@ -184,8 +189,8 @@ def main():
         avi = avis[0]
         tag = avi[:-4] + ".tag"
         data = collect_clip(avi, tag, face_mesh, args.stride)
-        for bid, ears in data:
-            rows.append((subj, bid, ears))
+        for bid, ears, fid in data:
+            rows.append((subj, bid, ears, fid))
             if ears is None:
                 n_missing += 1
         print(f"  {subj}: {len(data)} frames processed", flush=True)
@@ -224,6 +229,18 @@ def main():
         print()
         out["variants"][v] = [{"thr": t, "event_recall": r, "events_hit": h,
                                "frame_false_alarm": f} for t, r, h, f in res]
+
+    if args.dump:
+        os.makedirs(os.path.dirname(args.dump) or ".", exist_ok=True)
+        subj_arr = np.array([r[0] for r in rows])
+        bid_arr = np.array([r[1] for r in rows], np.int32)
+        fid_arr = np.array([r[3] for r in rows], np.int32)
+        cols = {v: np.array([(r[2][v] if r[2] is not None else np.nan)
+                             for r in rows], np.float32) for v in VARIANTS}
+        np.savez_compressed(args.dump, subject=subj_arr, blink_id=bid_arr,
+                            frame_id=fid_arr, **cols)
+        print(f"per-frame EAR dump -> {args.dump}  ({len(rows)} frames, "
+              f"variants: {', '.join(VARIANTS)})")
 
     if args.json:
         import json

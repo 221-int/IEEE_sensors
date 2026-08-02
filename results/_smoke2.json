@@ -1,0 +1,215 @@
+{
+  "config": {
+    "data": "data/processed/eyeblink8_eyes.npz",
+    "ear_dump": "results/ear_frames.npz",
+    "ear_variant": "mean",
+    "latent": 128,
+    "seeds": [
+      0
+    ],
+    "fa_budget": 0.03,
+    "epochs_ae": 2,
+    "epochs_clf": 3,
+    "batch": 256,
+    "lr": 0.001,
+    "json": "results/_smoke2.json",
+    "device": "cuda",
+    "quiet": false
+  },
+  "folds": [
+    {
+      "test": [
+        "eb01",
+        "eb02"
+      ],
+      "val": [
+        "eb03",
+        "eb04"
+      ],
+      "train": [
+        "eb08",
+        "eb09",
+        "eb10",
+        "eb11"
+      ]
+    },
+    {
+      "test": [
+        "eb03",
+        "eb04"
+      ],
+      "val": [
+        "eb08",
+        "eb09"
+      ],
+      "train": [
+        "eb01",
+        "eb02",
+        "eb10",
+        "eb11"
+      ]
+    },
+    {
+      "test": [
+        "eb08",
+        "eb09"
+      ],
+      "val": [
+        "eb10",
+        "eb11"
+      ],
+      "train": [
+        "eb01",
+        "eb02",
+        "eb03",
+        "eb04"
+      ]
+    },
+    {
+      "test": [
+        "eb10",
+        "eb11"
+      ],
+      "val": [
+        "eb01",
+        "eb02"
+      ],
+      "train": [
+        "eb03",
+        "eb04",
+        "eb08",
+        "eb09"
+      ]
+    }
+  ],
+  "results": [
+    {
+      "fold": 0,
+      "seed": 0,
+      "test": [
+        "eb01",
+        "eb02"
+      ],
+      "val": [
+        "eb03",
+        "eb04"
+      ],
+      "recon_val_mse": 0.014622838910943422,
+      "thr_from_val": 0.65,
+      "val_recall": 0.6875,
+      "val_fa": 0.029711622487620156,
+      "val_budget_met": true,
+      "test_recall": 0.5634920634920635,
+      "test_hit": 71,
+      "test_events": 126,
+      "test_fa": 0.011455472734405649,
+      "ear": {
+        "thr": 0.21500000000000002,
+        "val_recall": 0.9895833333333334,
+        "val_fa": 0.028546460821438975,
+        "val_budget_met": true,
+        "test_recall": 1.0,
+        "test_hit": 126,
+        "test_events": 126,
+        "test_fa": 0.06457434287956061
+      },
+      "seconds": 4.9
+    },
+    {
+      "fold": 1,
+      "seed": 0,
+      "test": [
+        "eb03",
+        "eb04"
+      ],
+      "val": [
+        "eb08",
+        "eb09"
+      ],
+      "recon_val_mse": 0.017077791746928472,
+      "thr_from_val": 0.98,
+      "val_recall": 1.0,
+      "val_fa": 0.9889759596227918,
+      "val_budget_met": false,
+      "test_recall": 0.07291666666666667,
+      "test_hit": 7,
+      "test_events": 96,
+      "test_fa": 0.00873871249635887,
+      "ear": {
+        "thr": 0.1,
+        "val_recall": 1.0,
+        "val_fa": 0.0002656395271616417,
+        "val_budget_met": true,
+        "test_recall": 0.5208333333333334,
+        "test_hit": 50,
+        "test_events": 96,
+        "test_fa": 0.0
+      },
+      "seconds": 4.6
+    },
+    {
+      "fold": 2,
+      "seed": 0,
+      "test": [
+        "eb08",
+        "eb09"
+      ],
+      "val": [
+        "eb10",
+        "eb11"
+      ],
+      "recon_val_mse": 0.019755866451422556,
+      "thr_from_val": 0.7000000000000001,
+      "val_recall": 0.16521739130434782,
+      "val_fa": 0.02741413830278762,
+      "val_budget_met": true,
+      "test_recall": 0.971830985915493,
+      "test_hit": 69,
+      "test_events": 71,
+      "test_fa": 0.4147961216629034,
+      "ear": {
+        "thr": 0.165,
+        "val_recall": 0.9826086956521739,
+        "val_fa": 0.021715693824118282,
+        "val_budget_met": true,
+        "test_recall": 1.0,
+        "test_hit": 71,
+        "test_events": 71,
+        "test_fa": 0.017532208792668348
+      },
+      "seconds": 4.5
+    },
+    {
+      "fold": 3,
+      "seed": 0,
+      "test": [
+        "eb10",
+        "eb11"
+      ],
+      "val": [
+        "eb01",
+        "eb02"
+      ],
+      "recon_val_mse": 0.010274960745586637,
+      "thr_from_val": 0.48000000000000004,
+      "val_recall": 0.9047619047619048,
+      "val_fa": 0.02981561396626128,
+      "val_budget_met": true,
+      "test_recall": 0.3391304347826087,
+      "test_hit": 39,
+      "test_events": 115,
+      "test_fa": 0.030956414600338825,
+      "ear": {
+        "thr": 0.1875,
+        "val_recall": 1.0,
+        "val_fa": 0.029344841114162416,
+        "val_budget_met": true,
+        "test_recall": 0.991304347826087,
+        "test_hit": 114,
+        "test_events": 115,
+        "test_fa": 0.054520252579701216
+      },
+      "seconds": 4.0
+    }
+  ]
+}

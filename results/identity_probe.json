@@ -1,0 +1,85 @@
+{
+  "config": {
+    "data": "data/processed/eyeblink8_eyes.npz",
+    "ear_dump": "results/ear_frames.npz",
+    "ear_variant": "mean",
+    "encoder": "models/autoencoder/encoder.pt",
+    "config": "models/autoencoder/config.json",
+    "window": 128,
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "epochs": 60,
+    "json": "results/identity_probe.json",
+    "device": "cuda"
+  },
+  "chance": 0.125,
+  "n_subjects": 8,
+  "results": [
+    {
+      "rep": "[A] ours  \ubca1\ud130 1\uac1c (\ud504\ub808\uc784)",
+      "dim": "128",
+      "n": 35493,
+      "linear_mean": 0.9938967136150234,
+      "linear_std": 0.0006639500292831423,
+      "mlp_mean": 0.9938341158059467,
+      "mlp_std": 0.0030784505304379925
+    },
+    {
+      "rep": "[A] ear   \uc2a4\uce7c\ub77c 1\uac1c (\ud504\ub808\uc784)",
+      "dim": "1",
+      "n": 35493,
+      "linear_mean": 0.1703286384976526,
+      "linear_std": 0.0012897275604404706,
+      "mlp_mean": 0.23417840375586854,
+      "mlp_std": 0.0018590600819927906
+    },
+    {
+      "rep": "[B] ours  \ubca1\ud130 1\uac1c",
+      "dim": "128",
+      "n": 35493,
+      "linear_mean": 0.9938967136150234,
+      "linear_std": 0.0006639500292831423,
+      "mlp_mean": 0.9938341158059467,
+      "mlp_std": 0.0030784505304379925
+    },
+    {
+      "rep": "[B] ear   \ucc3d 128\ud504\ub808\uc784",
+      "dim": "128",
+      "n": 1081,
+      "linear_mean": 0.2242798353909465,
+      "linear_std": 0.005245904849375295,
+      "mlp_mean": 0.25,
+      "mlp_std": 0.015737714548125874
+    },
+    {
+      "rep": "[C] ear   \ucc3d \uc694\uc57d\ud1b5\uacc4",
+      "dim": "10",
+      "n": 1081,
+      "linear_mean": 0.324074074074074,
+      "linear_std": 0.05363625678081099,
+      "mlp_mean": 0.3683127572016461,
+      "mlp_std": 0.007698883511880548
+    },
+    {
+      "rep": "[\ucc38\uace0] ours \ucc3d \ud3c9\uade0\ubca1\ud130",
+      "dim": "128",
+      "n": 1082,
+      "linear_mean": 0.977366255144033,
+      "linear_std": 0.0014549522246636846,
+      "mlp_mean": 0.9783950617283951,
+      "mlp_std": 0.0
+    },
+    {
+      "rep": "ours random-frame split",
+      "dim": "128",
+      "n": 35493,
+      "linear_mean": 0.9984973703981969,
+      "linear_std": 0.0001328149476307943,
+      "mlp_mean": null,
+      "mlp_std": null
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "config": {
+    "data": "data/processed/eyeblink8_eyes.npz",
+    "encoder": "models/autoencoder/encoder.pt",
+    "decoder": "models/autoencoder/decoder.pt",
+    "config": "models/autoencoder/config.json",
+    "victims": [
+      "eb01",
+      "eb02"
+    ],
+    "all_folds": true,
+    "epochs": 30,
+    "batch": 256,
+    "lr": 0.001,
+    "seed": 0,
+    "figure": "docs/figures/recon_attack.png",
+    "json": "results/recon_attack.json",
+    "device": "cuda",
+    "quiet": false
+  },
+  "latent": 128,
+  "results": [
+    {
+      "victims": [
+        "eb01",
+        "eb02"
+      ],
+      "n_victim_frames": 13417,
+      "n_attacker_train_frames": 22079,
+      "ours": {
+        "psnr_db": 38.74,
+        "mae": 0.0079
+      },
+      "attacker": {
+        "psnr_db": 22.62,
+        "mae": 0.0567
+      },
+      "mean": {
+        "psnr_db": 16.18,
+        "mae": 0.1189
+      },
+      "shuffled": {
+        "psnr_db": 20.71,
+        "mae": 0.07
+      }
+    },
+    {
+      "victims": [
+        "eb03",
+        "eb04"
+      ],
+      "n_victim_frames": 7265,
+      "n_attacker_train_frames": 28231,
+      "ours": {
+        "psnr_db": 34.71,
+        "mae": 0.0112
+      },
+      "attacker": {
+        "psnr_db": 26.38,
+        "mae": 0.0349
+      },
+      "mean": {
+        "psnr_db": 20.34,
+        "mae": 0.0767
+      },
+      "shuffled": {
+        "psnr_db": 21.43,
+        "mae": 0.0592
+      }
+    },
+    {
+      "victims": [
+        "eb08",
+        "eb09"
+      ],
+      "n_victim_frames": 7862,
+      "n_attacker_train_frames": 27634,
+      "ours": {
+        "psnr_db": 37.12,
+        "mae": 0.0096
+      },
+      "attacker": {
+        "psnr_db": 23.32,
+        "mae": 0.0492
+      },
+      "mean": {
+        "psnr_db": 16.17,
+        "mae": 0.1191
+      },
+      "shuffled": {
+        "psnr_db": 20.57,
+        "mae": 0.0654
+      }
+    },
+    {
+      "victims": [
+        "eb10",
+        "eb11"
+      ],
+      "n_victim_frames": 6952,
+      "n_attacker_train_frames": 28544,
+      "ours": {
+        "psnr_db": 24.58,
+        "mae": 0.0291
+      },
+      "attacker": {
+        "psnr_db": 20.22,
+        "mae": 0.0693
+      },
+      "mean": {
+        "psnr_db": 16.36,
+        "mae": 0.1238
+      },
+      "shuffled": {
+        "psnr_db": 17.38,
+        "mae": 0.0959
+      }
+    }
+  ]
+}

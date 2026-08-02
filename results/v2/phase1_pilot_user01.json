@@ -1,0 +1,128 @@
+{
+ "env": {
+  "seed": 0,
+  "deterministic": true,
+  "sealed": true,
+  "python": "3.10.12",
+  "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.35",
+  "numpy": "2.2.6",
+  "pythonhashseed": "0",
+  "cublas_workspace_config": null,
+  "git_commit": "6881f694f0e5638faf73fe89bb0f4712fabcdbdc",
+  "git_dirty": true,
+  "torch": null
+ },
+ "user": 1,
+ "part_a": {
+  "seconds": 8.7,
+  "detection": {
+   "frames": 37641,
+   "ok": 34340,
+   "no_face": 3301,
+   "no_face_rate": 0.08769692622406419,
+   "multi_face": 1435,
+   "multi_face_rate": 0.03812332297229085,
+   "count_disagree": 2258,
+   "count_disagree_rate": 0.0599877792832284,
+   "mesh_without_box": 0
+  },
+  "events": {
+   "n_blink": 56,
+   "n_unblink": 56,
+   "distinct_window_len": [
+    18
+   ],
+   "events_with_no_face_at_all": 0
+  },
+  "coverage": {
+   "video_frames": 37641,
+   "unique_labelled_frames": 2118,
+   "coverage": 0.05626843070056587
+  },
+  "ear_center_alignment": {
+   "note": "blink 창 19프레임 중 EAR 최저 지점의 위치. 중앙 = 9",
+   "blink_argmin_median": 9.0,
+   "blink_argmin_mean": 8.232142857142858,
+   "blink_within_1_of_centre": 0.75,
+   "blink_within_3_of_centre": 0.8214285714285714,
+   "unblink_argmin_median": 10.0,
+   "unblink_within_3_of_centre": 0.3392857142857143
+  },
+  "ear_drop_ratio_blink": {
+   "note": "(창 양끝 평균 EAR - 창 최저 EAR) / 양끝 평균. 완전 폐안일수록 1에 가깝다",
+   "median": 0.12789056225916573,
+   "p10": 0.07672627524917991,
+   "p90": 0.17307293637094595,
+   "n": 56
+  }
+ },
+ "part_b": {
+  "video": {
+   "path": "data/raw/mEBAL2/User 1/RealSense/Color_Webcam/color.mp4",
+   "w": 1280,
+   "h": 720,
+   "frames": 37641
+  },
+  "max_frame_limit": 17000,
+  "session_fraction_covered": 0.444,
+  "sampled_frames": 20,
+  "crops_ok": 20,
+  "crop_failed": 0,
+  "throughput": {
+   "seconds": 30.0,
+   "frames_traversed": 16705,
+   "grab_fps": 556.8,
+   "note": "순차 grab 으로 마지막 표본까지 도달하는 데 걸린 시간 기준",
+   "est_full_pass_s": 67.6
+  },
+  "geometry": {
+   "span_px": {
+    "mean": 128.54591102600097,
+    "std": 2.748919454822235,
+    "min": 124.9854507446289,
+    "max": 136.1902618408203
+   },
+   "tilt_deg": {
+    "mean": -4.50571790933609,
+    "std": 2.003275403509525,
+    "min": -7.748845100402832,
+    "max": -0.9134501218795776
+   },
+   "crop_w_px": {
+    "mean": 282.75,
+    "std": 5.931905258852336,
+    "min": 275.0,
+    "max": 299.0
+   }
+  },
+  "interp_cubic_rate": 0.0,
+  "padded_rate": 0.0,
+  "photometrics": {
+   "brightness": {
+    "mean": 39.645947265625,
+    "std": 1.141526227490173,
+    "min": 36.57685546875,
+    "max": 41.549609375
+   },
+   "contrast": {
+    "mean": 29.088886022075894,
+    "std": 0.9197396437505747,
+    "min": 27.270855541895326,
+    "max": 30.882177174462814
+   },
+   "sharpness": {
+    "mean": 139.82941133451462,
+    "std": 17.531785493362293,
+    "min": 94.81782431602478,
+    "max": 161.48662375450132
+   }
+  },
+  "crop_spec": {
+   "out_h": 64,
+   "out_w": 160,
+   "margin": 2.2,
+   "status": "미확정 — Phase 1/2 에서 확정"
+  },
+  "contact_sheet": "docs/v2/figures/pilot_user01_crops.png"
+ }
+}
