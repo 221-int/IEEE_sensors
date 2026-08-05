@@ -1,0 +1,2108 @@
+{
+ "env": {
+  "seed": 0,
+  "deterministic": true,
+  "sealed": true,
+  "python": "3.12.10",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "numpy": "2.4.2",
+  "pythonhashseed": "0",
+  "cublas_workspace_config": ":4096:8",
+  "git_commit": "fa6f590382a14f0388f21d72bf64f419fec50633",
+  "git_dirty": true,
+  "torch": "2.11.0+cu128",
+  "cuda_available": true,
+  "cuda_version": "12.8",
+  "cudnn_deterministic": true,
+  "cudnn_benchmark": false,
+  "gpu": "NVIDIA GeForce RTX 5080"
+ },
+ "config": {
+  "data": "data/processed/v2",
+  "tag": "m22",
+  "arch": "vpres",
+  "latent": 16,
+  "n_per_subject": 200,
+  "pca_dim": 32,
+  "seeds": [
+   0,
+   1,
+   2
+  ],
+  "folds": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "model_seeds": [
+   0,
+   1,
+   2
+  ],
+  "epochs": 60,
+  "agg_n": [
+   1,
+   10,
+   100
+  ],
+  "agg_per_subject": 2000,
+  "skip_baselines": false,
+  "out": "results/v2/phase5_reid.json"
+ },
+ "input_norm": "frame_standardize",
+ "sample": {
+  "n_samples": 11400,
+  "n_classes": 57,
+  "uniform_chance": 0.017543859649122806,
+  "majority_baseline": 0.017543859649122806,
+  "balanced": true,
+  "counts_min": 200,
+  "counts_max": 200
+ },
+ "n_valid_frames_pool": 518965,
+ "phase0_58_reference": {
+  "random_encoder_tb_mlp": 0.6329,
+  "pixels_tb_mlp": 0.9099,
+  "pca32_tb_mlp": 0.8656,
+  "photometric_tb_mlp": 0.2018,
+  "ear_tb_mlp": 0.0508,
+  "uniform_chance": 0.017241379310344827
+ },
+ "phase0_comparability": "비교 불가. Phase 0 은 58명·좌석 필터 이전·전체 프레임에서 쟀다. 해석 기준선은 이 실행에서 재측정한 값을 쓴다.",
+ "ours": {
+  "fold0_seed0": {
+   "cells": {
+    "time_block/linear": {
+     "mean": 0.5094850948509485,
+     "std": 0.0019668692103047007,
+     "per_seed": [
+      0.5118940078289672,
+      0.5094850948509485,
+      0.5070761818729298
+     ],
+     "chance": {
+      "n_samples": 3321,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.02830472749171936,
+      "balanced": false,
+      "counts_min": 29,
+      "counts_max": 94
+     },
+     "n_train": 8079,
+     "n_test": 3321,
+     "dim": 16
+    },
+    "time_block/mlp": {
+     "mean": 0.6752986048379003,
+     "std": 0.001135572468030153,
+     "per_seed": [
+      0.676904546823246,
+      0.6744956338452274,
+      0.6744956338452274
+     ],
+     "chance": {
+      "n_samples": 3321,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.02830472749171936,
+      "balanced": false,
+      "counts_min": 29,
+      "counts_max": 94
+     },
+     "n_train": 8079,
+     "n_test": 3321,
+     "dim": 16
+    },
+    "random/linear": {
+     "mean": 0.6132553606237817,
+     "std": 0.006669117112887337,
+     "per_seed": [
+      0.6149122807017544,
+      0.6043859649122807,
+      0.62046783625731
+     ],
+     "chance": {
+      "n_samples": 3420,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.021052631578947368,
+      "balanced": false,
+      "counts_min": 48,
+      "counts_max": 72
+     },
+     "n_train": 7980,
+     "n_test": 3420,
+     "dim": 16
+    },
+    "random/mlp": {
+     "mean": 0.7975633528265108,
+     "std": 0.006460745972388527,
+     "per_seed": [
+      0.7950292397660819,
+      0.7912280701754386,
+      0.8064327485380117
+     ],
+     "chance": {
+      "n_samples": 3420,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.021052631578947368,
+      "balanced": false,
+      "counts_min": 48,
+      "counts_max": 72
+     },
+     "n_train": 7980,
+     "n_test": 3420,
+     "dim": 16
+    }
+   },
+   "seen_unseen": {
+    "seen": {
+     "mean": 0.6226384886327249,
+     "n_seeds": 3
+    },
+    "unseen": {
+     "mean": 0.7637880010761368,
+     "n_seeds": 3
+    }
+   }
+  },
+  "fold0_seed1": {
+   "cells": {
+    "time_block/linear": {
+     "mean": 0.4533774967379303,
+     "std": 0.003698790680053848,
+     "per_seed": [
+      0.45046672688949113,
+      0.4510689551339958,
+      0.45859680819030413
+     ],
+     "chance": {
+      "n_samples": 3321,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.02830472749171936,
+      "balanced": false,
+      "counts_min": 29,
+      "counts_max": 94
+     },
+     "n_train": 8079,
+     "n_test": 3321,
+     "dim": 16
+    },
+    "time_block/mlp": {
+     "mean": 0.6280236876442838,
+     "std": 0.002870691487719589,
+     "per_seed": [
+      0.6287262872628726,
+      0.6242095754290876,
+      0.6311352002408913
+     ],
+     "chance": {
+      "n_samples": 3321,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.02830472749171936,
+      "balanced": false,
+      "counts_min": 29,
+      "counts_max": 94
+     },
+     "n_train": 8079,
+     "n_test": 3321,
+     "dim": 16
+    },
+    "random/linear": {
+     "mean": 0.5668615984405458,
+     "std": 0.0014587358233036885,
+     "per_seed": [
+      0.5684210526315789,
+      0.5649122807017544,
+      0.5672514619883041
+     ],
+     "chance": {
+      "n_samples": 3420,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.021052631578947368,
+      "balanced": false,
+      "counts_min": 48,
+      "counts_max": 72
+     },
+     "n_train": 7980,
+     "n_test": 3420,
+     "dim": 16
+    },
+    "random/mlp": {
+     "mean": 0.7685185185185185,
+     "std": 0.00564124605399131,
+     "per_seed": [
+      0.7660818713450293,
+      0.7631578947368421,
+      0.7763157894736842
+     ],
+     "chance": {
+      "n_samples": 3420,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.021052631578947368,
+      "balanced": false,
+      "counts_min": 48,
+      "counts_max": 72
+     },
+     "n_train": 7980,
+     "n_test": 3420,
+     "dim": 16
+    }
+   },
+   "seen_unseen": {
+    "seen": {
+     "mean": 0.585814921549792,
+     "n_seeds": 3
+    },
+    "unseen": {
+     "mean": 0.698950766747377,
+     "n_seeds": 3
+    }
+   }
+  },
+  "fold0_seed2": {
+   "cells": {
+    "time_block/linear": {
+     "mean": 0.4762621700291077,
+     "std": 0.0021480412083742535,
+     "per_seed": [
+      0.4784703402589581,
+      0.47696476964769646,
+      0.47335140018066846
+     ],
+     "chance": {
+      "n_samples": 3321,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.02830472749171936,
+      "balanced": false,
+      "counts_min": 29,
+      "counts_max": 94
+     },
+     "n_train": 8079,
+     "n_test": 3321,
+     "dim": 16
+    },
+    "time_block/mlp": {
+     "mean": 0.6125664960353308,
+     "std": 0.0019872518190528336,
+     "per_seed": [
+      0.6097560975609756,
+      0.6139716952725083,
+      0.6139716952725083
+     ],
+     "chance": {
+      "n_samples": 3321,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.02830472749171936,
+      "balanced": false,
+      "counts_min": 29,
+      "counts_max": 94
+     },
+     "n_train": 8079,
+     "n_test": 3321,
+     "dim": 16
+    },
+    "random/linear": {
+     "mean": 0.5912280701754385,
+     "std": 0.004317199725214459,
+     "per_seed": [
+      0.591812865497076,
+      0.5961988304093567,
+      0.585672514619883
+     ],
+     "chance": {
+      "n_samples": 3420,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.021052631578947368,
+      "balanced": false,
+      "counts_min": 48,
+      "counts_max": 72
+     },
+     "n_train": 7980,
+     "n_test": 3420,
+     "dim": 16
+    },
+    "random/mlp": {
+     "mean": 0.7544834307992203,
+     "std": 0.0013575427170744966,
+     "per_seed": [
+      0.7526315789473684,
+      0.7558479532163743,
+      0.7549707602339182
+     ],
+     "chance": {
+      "n_samples": 3420,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.021052631578947368,
+      "balanced": false,
+      "counts_min": 48,
+      "counts_max": 72
+     },
+     "n_train": 7980,
+     "n_test": 3420,
+     "dim": 16
+    }
+   },
+   "seen_unseen": {
+    "seen": {
+     "mean": 0.5416266410502723,
+     "n_seeds": 3
+    },
+    "unseen": {
+     "mean": 0.7317729351627656,
+     "n_seeds": 3
+    }
+   }
+  },
+  "fold1_seed0": {
+   "cells": {
+    "time_block/linear": {
+     "mean": 0.4471544715447154,
+     "std": 0.0006504808489820126,
+     "per_seed": [
+      0.4468533574224631,
+      0.4480578139114724,
+      0.44655224330021076
+     ],
+     "chance": {
+      "n_samples": 3321,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.02830472749171936,
+      "balanced": false,
+      "counts_min": 29,
+      "counts_max": 94
+     },
+     "n_train": 8079,
+     "n_test": 3321,
+     "dim": 16
+    },
+    "time_block/mlp": {
+     "mean": 0.5840610257954432,
+     "std": 0.0062890495625095195,
+     "per_seed": [
+      0.5805480277024992,
+      0.592893706714845,
+      0.5787413429689853
+     ],
+     "chance": {
+      "n_samples": 3321,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.02830472749171936,
+      "balanced": false,
+      "counts_min": 29,
+      "counts_max": 94
+     },
+     "n_train": 8079,
+     "n_test": 3321,
+     "dim": 16
+    },
+    "random/linear": {
+     "mean": 0.539766081871345,
+     "std": 0.003581125354946178,
+     "per_seed": [
+      0.539766081871345,
+      0.5353801169590643,
+      0.5441520467836257
+     ],
+     "chance": {
+      "n_samples": 3420,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.021052631578947368,
+      "balanced": false,
+      "counts_min": 48,
+      "counts_max": 72
+     },
+     "n_train": 7980,
+     "n_test": 3420,
+     "dim": 16
+    },
+    "random/mlp": {
+     "mean": 0.7271929824561404,
+     "std": 0.002351332959418079,
+     "per_seed": [
+      0.7304093567251462,
+      0.7263157894736842,
+      0.7248538011695906
+     ],
+     "chance": {
+      "n_samples": 3420,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.021052631578947368,
+      "balanced": false,
+      "counts_min": 48,
+      "counts_max": 72
+     },
+     "n_train": 7980,
+     "n_test": 3420,
+     "dim": 16
+    }
+   },
+   "seen_unseen": {
+    "seen": {
+     "mean": 0.5632242672119973,
+     "n_seeds": 3
+    },
+    "unseen": {
+     "mean": 0.613919413919414,
+     "n_seeds": 3
+    }
+   }
+  },
+  "fold1_seed1": {
+   "cells": {
+    "time_block/linear": {
+     "mean": 0.4661246612466125,
+     "std": 0.0016122029914894024,
+     "per_seed": [
+      0.4643179765130985,
+      0.4682324601023788,
+      0.46582354712436014
+     ],
+     "chance": {
+      "n_samples": 3321,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.02830472749171936,
+      "balanced": false,
+      "counts_min": 29,
+      "counts_max": 94
+     },
+     "n_train": 8079,
+     "n_test": 3321,
+     "dim": 16
+    },
+    "time_block/mlp": {
+     "mean": 0.5950015055706113,
+     "std": 0.0027924174933742214,
+     "per_seed": [
+      0.5934959349593496,
+      0.5925925925925926,
+      0.5989159891598916
+     ],
+     "chance": {
+      "n_samples": 3321,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.02830472749171936,
+      "balanced": false,
+      "counts_min": 29,
+      "counts_max": 94
+     },
+     "n_train": 8079,
+     "n_test": 3321,
+     "dim": 16
+    },
+    "random/linear": {
+     "mean": 0.5671539961013644,
+     "std": 0.004668198836190241,
+     "per_seed": [
+      0.5616959064327486,
+      0.5666666666666667,
+      0.5730994152046783
+     ],
+     "chance": {
+      "n_samples": 3420,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.021052631578947368,
+      "balanced": false,
+      "counts_min": 48,
+      "counts_max": 72
+     },
+     "n_train": 7980,
+     "n_test": 3420,
+     "dim": 16
+    },
+    "random/mlp": {
+     "mean": 0.7265107212475633,
+     "std": 0.0031792410195516973,
+     "per_seed": [
+      0.7274853801169591,
+      0.7222222222222222,
+      0.7298245614035088
+     ],
+     "chance": {
+      "n_samples": 3420,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.021052631578947368,
+      "balanced": false,
+      "counts_min": 48,
+      "counts_max": 72
+     },
+     "n_train": 7980,
+     "n_test": 3420,
+     "dim": 16
+    }
+   },
+   "seen_unseen": {
+    "seen": {
+     "mean": 0.5753237900477165,
+     "n_seeds": 3
+    },
+    "unseen": {
+     "mean": 0.6231990231990232,
+     "n_seeds": 3
+    }
+   }
+  },
+  "fold1_seed2": {
+   "cells": {
+    "time_block/linear": {
+     "mean": 0.4659239184984443,
+     "std": 0.0015806499797273524,
+     "per_seed": [
+      0.4673291177356218,
+      0.4667268894911171,
+      0.4637157482685938
+     ],
+     "chance": {
+      "n_samples": 3321,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.02830472749171936,
+      "balanced": false,
+      "counts_min": 29,
+      "counts_max": 94
+     },
+     "n_train": 8079,
+     "n_test": 3321,
+     "dim": 16
+    },
+    "time_block/mlp": {
+     "mean": 0.6073471845829569,
+     "std": 0.004286692061439868,
+     "per_seed": [
+      0.6097560975609756,
+      0.6013249021379102,
+      0.610960554049985
+     ],
+     "chance": {
+      "n_samples": 3321,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.02830472749171936,
+      "balanced": false,
+      "counts_min": 29,
+      "counts_max": 94
+     },
+     "n_train": 8079,
+     "n_test": 3321,
+     "dim": 16
+    },
+    "random/linear": {
+     "mean": 0.5524366471734893,
+     "std": 0.004655973065300672,
+     "per_seed": [
+      0.558187134502924,
+      0.5523391812865497,
+      0.5467836257309941
+     ],
+     "chance": {
+      "n_samples": 3420,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.021052631578947368,
+      "balanced": false,
+      "counts_min": 48,
+      "counts_max": 72
+     },
+     "n_train": 7980,
+     "n_test": 3420,
+     "dim": 16
+    },
+    "random/mlp": {
+     "mean": 0.7450292397660818,
+     "std": 0.0021486752129676614,
+     "per_seed": [
+      0.7450292397660818,
+      0.7423976608187135,
+      0.7476608187134502
+     ],
+     "chance": {
+      "n_samples": 3420,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.021052631578947368,
+      "balanced": false,
+      "counts_min": 48,
+      "counts_max": 72
+     },
+     "n_train": 7980,
+     "n_test": 3420,
+     "dim": 16
+    }
+   },
+   "seen_unseen": {
+    "seen": {
+     "mean": 0.5770279481935924,
+     "n_seeds": 3
+    },
+    "unseen": {
+     "mean": 0.6507936507936507,
+     "n_seeds": 3
+    }
+   }
+  },
+  "fold2_seed0": {
+   "cells": {
+    "time_block/linear": {
+     "mean": 0.465723175750276,
+     "std": 0.0007511105865249225,
+     "per_seed": [
+      0.46552243300210777,
+      0.4667268894911171,
+      0.46492020475760315
+     ],
+     "chance": {
+      "n_samples": 3321,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.02830472749171936,
+      "balanced": false,
+      "counts_min": 29,
+      "counts_max": 94
+     },
+     "n_train": 8079,
+     "n_test": 3321,
+     "dim": 16
+    },
+    "time_block/mlp": {
+     "mean": 0.6669677807889189,
+     "std": 0.0024951927922625787,
+     "per_seed": [
+      0.6636555254441433,
+      0.66967780788919,
+      0.6675700090334237
+     ],
+     "chance": {
+      "n_samples": 3321,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.02830472749171936,
+      "balanced": false,
+      "counts_min": 29,
+      "counts_max": 94
+     },
+     "n_train": 8079,
+     "n_test": 3321,
+     "dim": 16
+    },
+    "random/linear": {
+     "mean": 0.5806042884990253,
+     "std": 0.00675404137975455,
+     "per_seed": [
+      0.5710526315789474,
+      0.5853801169590643,
+      0.5853801169590643
+     ],
+     "chance": {
+      "n_samples": 3420,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.021052631578947368,
+      "balanced": false,
+      "counts_min": 48,
+      "counts_max": 72
+     },
+     "n_train": 7980,
+     "n_test": 3420,
+     "dim": 16
+    },
+    "random/mlp": {
+     "mean": 0.7954191033138401,
+     "std": 0.0043061836324316954,
+     "per_seed": [
+      0.7903508771929825,
+      0.7950292397660819,
+      0.8008771929824562
+     ],
+     "chance": {
+      "n_samples": 3420,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.021052631578947368,
+      "balanced": false,
+      "counts_min": 48,
+      "counts_max": 72
+     },
+     "n_train": 7980,
+     "n_test": 3420,
+     "dim": 16
+    }
+   },
+   "seen_unseen": {
+    "seen": {
+     "mean": 0.7107438016528925,
+     "n_seeds": 3
+    },
+    "unseen": {
+     "mean": 0.6057761732851986,
+     "n_seeds": 3
+    }
+   }
+  },
+  "fold2_seed1": {
+   "cells": {
+    "time_block/linear": {
+     "mean": 0.45317675398976215,
+     "std": 0.0029909995836096184,
+     "per_seed": [
+      0.4573923517012948,
+      0.45076784101174344,
+      0.4513700692562481
+     ],
+     "chance": {
+      "n_samples": 3321,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.02830472749171936,
+      "balanced": false,
+      "counts_min": 29,
+      "counts_max": 94
+     },
+     "n_train": 8079,
+     "n_test": 3321,
+     "dim": 16
+    },
+    "time_block/mlp": {
+     "mean": 0.6252132891699287,
+     "std": 0.0035315892975528026,
+     "per_seed": [
+      0.6202950918398072,
+      0.6284251731406203,
+      0.6269196025293586
+     ],
+     "chance": {
+      "n_samples": 3321,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.02830472749171936,
+      "balanced": false,
+      "counts_min": 29,
+      "counts_max": 94
+     },
+     "n_train": 8079,
+     "n_test": 3321,
+     "dim": 16
+    },
+    "random/linear": {
+     "mean": 0.5578947368421052,
+     "std": 0.004072628151223439,
+     "per_seed": [
+      0.5523391812865497,
+      0.5619883040935673,
+      0.5593567251461988
+     ],
+     "chance": {
+      "n_samples": 3420,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.021052631578947368,
+      "balanced": false,
+      "counts_min": 48,
+      "counts_max": 72
+     },
+     "n_train": 7980,
+     "n_test": 3420,
+     "dim": 16
+    },
+    "random/mlp": {
+     "mean": 0.7625730994152047,
+     "std": 0.004183092345784615,
+     "per_seed": [
+      0.7576023391812865,
+      0.762280701754386,
+      0.7678362573099415
+     ],
+     "chance": {
+      "n_samples": 3420,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.021052631578947368,
+      "balanced": false,
+      "counts_min": 48,
+      "counts_max": 72
+     },
+     "n_train": 7980,
+     "n_test": 3420,
+     "dim": 16
+    }
+   },
+   "seen_unseen": {
+    "seen": {
+     "mean": 0.6738980716253443,
+     "n_seeds": 3
+    },
+    "unseen": {
+     "mean": 0.5571600481347774,
+     "n_seeds": 3
+    }
+   }
+  },
+  "fold2_seed2": {
+   "cells": {
+    "time_block/linear": {
+     "mean": 0.5151058917996588,
+     "std": 0.003974503638105678,
+     "per_seed": [
+      0.5203252032520326,
+      0.5106895513399579,
+      0.5143029208069858
+     ],
+     "chance": {
+      "n_samples": 3321,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.02830472749171936,
+      "balanced": false,
+      "counts_min": 29,
+      "counts_max": 94
+     },
+     "n_train": 8079,
+     "n_test": 3321,
+     "dim": 16
+    },
+    "time_block/mlp": {
+     "mean": 0.646190906353508,
+     "std": 0.0017729119474711777,
+     "per_seed": [
+      0.6467931345980127,
+      0.6437819933754894,
+      0.6479975910870219
+     ],
+     "chance": {
+      "n_samples": 3321,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.02830472749171936,
+      "balanced": false,
+      "counts_min": 29,
+      "counts_max": 94
+     },
+     "n_train": 8079,
+     "n_test": 3321,
+     "dim": 16
+    },
+    "random/linear": {
+     "mean": 0.6219298245614034,
+     "std": 0.0016540509501439759,
+     "per_seed": [
+      0.6207602339181286,
+      0.6207602339181286,
+      0.6242690058479532
+     ],
+     "chance": {
+      "n_samples": 3420,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.021052631578947368,
+      "balanced": false,
+      "counts_min": 48,
+      "counts_max": 72
+     },
+     "n_train": 7980,
+     "n_test": 3420,
+     "dim": 16
+    },
+    "random/mlp": {
+     "mean": 0.8038986354775828,
+     "std": 0.0032589188103899513,
+     "per_seed": [
+      0.802046783625731,
+      0.8011695906432749,
+      0.8084795321637427
+     ],
+     "chance": {
+      "n_samples": 3420,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.021052631578947368,
+      "balanced": false,
+      "counts_min": 48,
+      "counts_max": 72
+     },
+     "n_train": 7980,
+     "n_test": 3420,
+     "dim": 16
+    }
+   },
+   "seen_unseen": {
+    "seen": {
+     "mean": 0.6918044077134987,
+     "n_seeds": 3
+    },
+    "unseen": {
+     "mean": 0.5824308062575211,
+     "n_seeds": 3
+    }
+   }
+  },
+  "fold3_seed0": {
+   "cells": {
+    "time_block/linear": {
+     "mean": 0.4529760112415939,
+     "std": 0.0030344708336507028,
+     "per_seed": [
+      0.45709123757904246,
+      0.4519722975007528,
+      0.44986449864498645
+     ],
+     "chance": {
+      "n_samples": 3321,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.02830472749171936,
+      "balanced": false,
+      "counts_min": 29,
+      "counts_max": 94
+     },
+     "n_train": 8079,
+     "n_test": 3321,
+     "dim": 16
+    },
+    "time_block/mlp": {
+     "mean": 0.634447455585667,
+     "std": 0.007700519031944864,
+     "per_seed": [
+      0.645287563986751,
+      0.628124059018368,
+      0.629930743751882
+     ],
+     "chance": {
+      "n_samples": 3321,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.02830472749171936,
+      "balanced": false,
+      "counts_min": 29,
+      "counts_max": 94
+     },
+     "n_train": 8079,
+     "n_test": 3321,
+     "dim": 16
+    },
+    "random/linear": {
+     "mean": 0.5843079922027291,
+     "std": 0.0057314582565259654,
+     "per_seed": [
+      0.5894736842105263,
+      0.5763157894736842,
+      0.5871345029239766
+     ],
+     "chance": {
+      "n_samples": 3420,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.021052631578947368,
+      "balanced": false,
+      "counts_min": 48,
+      "counts_max": 72
+     },
+     "n_train": 7980,
+     "n_test": 3420,
+     "dim": 16
+    },
+    "random/mlp": {
+     "mean": 0.7886939571150098,
+     "std": 0.0075282540028567225,
+     "per_seed": [
+      0.7906432748538011,
+      0.7786549707602339,
+      0.7967836257309941
+     ],
+     "chance": {
+      "n_samples": 3420,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.021052631578947368,
+      "balanced": false,
+      "counts_min": 48,
+      "counts_max": 72
+     },
+     "n_train": 7980,
+     "n_test": 3420,
+     "dim": 16
+    }
+   },
+   "seen_unseen": {
+    "seen": {
+     "mean": 0.6639676113360324,
+     "n_seeds": 3
+    },
+    "unseen": {
+     "mean": 0.5910780669144983,
+     "n_seeds": 3
+    }
+   }
+  },
+  "fold3_seed1": {
+   "cells": {
+    "time_block/linear": {
+     "mean": 0.5211281742447055,
+     "std": 0.0026288870528372436,
+     "per_seed": [
+      0.5239385727190605,
+      0.5176151761517616,
+      0.5218307738632942
+     ],
+     "chance": {
+      "n_samples": 3321,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.02830472749171936,
+      "balanced": false,
+      "counts_min": 29,
+      "counts_max": 94
+     },
+     "n_train": 8079,
+     "n_test": 3321,
+     "dim": 16
+    },
+    "time_block/mlp": {
+     "mean": 0.6888487403392552,
+     "std": 0.0033015927337947523,
+     "per_seed": [
+      0.6934658235471244,
+      0.6871424269798253,
+      0.6859379704908161
+     ],
+     "chance": {
+      "n_samples": 3321,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.02830472749171936,
+      "balanced": false,
+      "counts_min": 29,
+      "counts_max": 94
+     },
+     "n_train": 8079,
+     "n_test": 3321,
+     "dim": 16
+    },
+    "random/linear": {
+     "mean": 0.6244639376218323,
+     "std": 0.0031792410195516474,
+     "per_seed": [
+      0.6201754385964913,
+      0.625438596491228,
+      0.6277777777777778
+     ],
+     "chance": {
+      "n_samples": 3420,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.021052631578947368,
+      "balanced": false,
+      "counts_min": 48,
+      "counts_max": 72
+     },
+     "n_train": 7980,
+     "n_test": 3420,
+     "dim": 16
+    },
+    "random/mlp": {
+     "mean": 0.8028265107212476,
+     "std": 0.005155567701925227,
+     "per_seed": [
+      0.7961988304093567,
+      0.8035087719298246,
+      0.8087719298245614
+     ],
+     "chance": {
+      "n_samples": 3420,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.021052631578947368,
+      "balanced": false,
+      "counts_min": 48,
+      "counts_max": 72
+     },
+     "n_train": 7980,
+     "n_test": 3420,
+     "dim": 16
+    }
+   },
+   "seen_unseen": {
+    "seen": {
+     "mean": 0.7403846153846154,
+     "n_seeds": 3
+    },
+    "unseen": {
+     "mean": 0.6131350681536555,
+     "n_seeds": 3
+    }
+   }
+  },
+  "fold3_seed2": {
+   "cells": {
+    "time_block/linear": {
+     "mean": 0.49844424370169627,
+     "std": 0.004004805248069844,
+     "per_seed": [
+      0.49623607347184584,
+      0.5040650406504065,
+      0.4950316169828365
+     ],
+     "chance": {
+      "n_samples": 3321,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.02830472749171936,
+      "balanced": false,
+      "counts_min": 29,
+      "counts_max": 94
+     },
+     "n_train": 8079,
+     "n_test": 3321,
+     "dim": 16
+    },
+    "time_block/mlp": {
+     "mean": 0.6394660242898725,
+     "std": 0.007360719509103343,
+     "per_seed": [
+      0.649804275820536,
+      0.6332429990966576,
+      0.635350797952424
+     ],
+     "chance": {
+      "n_samples": 3321,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.02830472749171936,
+      "balanced": false,
+      "counts_min": 29,
+      "counts_max": 94
+     },
+     "n_train": 8079,
+     "n_test": 3321,
+     "dim": 16
+    },
+    "random/linear": {
+     "mean": 0.5920077972709552,
+     "std": 0.008278291371378595,
+     "per_seed": [
+      0.5807017543859649,
+      0.5950292397660819,
+      0.6002923976608188
+     ],
+     "chance": {
+      "n_samples": 3420,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.021052631578947368,
+      "balanced": false,
+      "counts_min": 48,
+      "counts_max": 72
+     },
+     "n_train": 7980,
+     "n_test": 3420,
+     "dim": 16
+    },
+    "random/mlp": {
+     "mean": 0.7748538011695906,
+     "std": 0.0025152997856849866,
+     "per_seed": [
+      0.7716374269005848,
+      0.7751461988304094,
+      0.7777777777777778
+     ],
+     "chance": {
+      "n_samples": 3420,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.021052631578947368,
+      "balanced": false,
+      "counts_min": 48,
+      "counts_max": 72
+     },
+     "n_train": 7980,
+     "n_test": 3420,
+     "dim": 16
+    }
+   },
+   "seen_unseen": {
+    "seen": {
+     "mean": 0.6616059379217275,
+     "n_seeds": 3
+    },
+    "unseen": {
+     "mean": 0.6069392812887237,
+     "n_seeds": 3
+    }
+   }
+  },
+  "fold4_seed0": {
+   "cells": {
+    "time_block/linear": {
+     "mean": 0.44454481581852856,
+     "std": 0.0030740525606973053,
+     "per_seed": [
+      0.4408310749774164,
+      0.4444444444444444,
+      0.4483589280337248
+     ],
+     "chance": {
+      "n_samples": 3321,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.02830472749171936,
+      "balanced": false,
+      "counts_min": 29,
+      "counts_max": 94
+     },
+     "n_train": 8079,
+     "n_test": 3321,
+     "dim": 16
+    },
+    "time_block/mlp": {
+     "mean": 0.6250125464217605,
+     "std": 0.006819346683313465,
+     "per_seed": [
+      0.6272207166516109,
+      0.6157783800060223,
+      0.6320385426076482
+     ],
+     "chance": {
+      "n_samples": 3321,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.02830472749171936,
+      "balanced": false,
+      "counts_min": 29,
+      "counts_max": 94
+     },
+     "n_train": 8079,
+     "n_test": 3321,
+     "dim": 16
+    },
+    "random/linear": {
+     "mean": 0.5530214424951266,
+     "std": 0.006088303191712026,
+     "per_seed": [
+      0.5456140350877193,
+      0.5529239766081872,
+      0.5605263157894737
+     ],
+     "chance": {
+      "n_samples": 3420,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.021052631578947368,
+      "balanced": false,
+      "counts_min": 48,
+      "counts_max": 72
+     },
+     "n_train": 7980,
+     "n_test": 3420,
+     "dim": 16
+    },
+    "random/mlp": {
+     "mean": 0.7763157894736842,
+     "std": 0.005170287411257238,
+     "per_seed": [
+      0.7798245614035088,
+      0.7690058479532164,
+      0.7801169590643274
+     ],
+     "chance": {
+      "n_samples": 3420,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.021052631578947368,
+      "balanced": false,
+      "counts_min": 48,
+      "counts_max": 72
+     },
+     "n_train": 7980,
+     "n_test": 3420,
+     "dim": 16
+    }
+   },
+   "seen_unseen": {
+    "seen": {
+     "mean": 0.6282497102169233,
+     "n_seeds": 3
+    },
+    "unseen": {
+     "mean": 0.6200305810397554,
+     "n_seeds": 3
+    }
+   }
+  },
+  "fold4_seed1": {
+   "cells": {
+    "time_block/linear": {
+     "mean": 0.49181973301214493,
+     "std": 0.006417491664416665,
+     "per_seed": [
+      0.4835892803372478,
+      0.49262270400481784,
+      0.49924721469436917
+     ],
+     "chance": {
+      "n_samples": 3321,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.02830472749171936,
+      "balanced": false,
+      "counts_min": 29,
+      "counts_max": 94
+     },
+     "n_train": 8079,
+     "n_test": 3321,
+     "dim": 16
+    },
+    "time_block/mlp": {
+     "mean": 0.6471946200943491,
+     "std": 0.0024871046257881565,
+     "per_seed": [
+      0.6455886781090033,
+      0.650707618187293,
+      0.645287563986751
+     ],
+     "chance": {
+      "n_samples": 3321,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.02830472749171936,
+      "balanced": false,
+      "counts_min": 29,
+      "counts_max": 94
+     },
+     "n_train": 8079,
+     "n_test": 3321,
+     "dim": 16
+    },
+    "random/linear": {
+     "mean": 0.5543859649122808,
+     "std": 0.009147265658206684,
+     "per_seed": [
+      0.5467836257309941,
+      0.5672514619883041,
+      0.5491228070175439
+     ],
+     "chance": {
+      "n_samples": 3420,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.021052631578947368,
+      "balanced": false,
+      "counts_min": 48,
+      "counts_max": 72
+     },
+     "n_train": 7980,
+     "n_test": 3420,
+     "dim": 16
+    },
+    "random/mlp": {
+     "mean": 0.762962962962963,
+     "std": 0.0034541998336587634,
+     "per_seed": [
+      0.7608187134502924,
+      0.7602339181286549,
+      0.7678362573099415
+     ],
+     "chance": {
+      "n_samples": 3420,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.021052631578947368,
+      "balanced": false,
+      "counts_min": 48,
+      "counts_max": 72
+     },
+     "n_train": 7980,
+     "n_test": 3420,
+     "dim": 16
+    }
+   },
+   "seen_unseen": {
+    "seen": {
+     "mean": 0.6297400231826461,
+     "n_seeds": 3
+    },
+    "unseen": {
+     "mean": 0.6740570846075432,
+     "n_seeds": 3
+    }
+   }
+  },
+  "fold4_seed2": {
+   "cells": {
+    "time_block/linear": {
+     "mean": 0.513499949814313,
+     "std": 0.0009308058311247125,
+     "per_seed": [
+      0.5140018066847335,
+      0.5121951219512195,
+      0.5143029208069858
+     ],
+     "chance": {
+      "n_samples": 3321,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.02830472749171936,
+      "balanced": false,
+      "counts_min": 29,
+      "counts_max": 94
+     },
+     "n_train": 8079,
+     "n_test": 3321,
+     "dim": 16
+    },
+    "time_block/mlp": {
+     "mean": 0.641674194519723,
+     "std": 0.003138913132813787,
+     "per_seed": [
+      0.6449864498644986,
+      0.6374585968081903,
+      0.64257753688648
+     ],
+     "chance": {
+      "n_samples": 3321,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.02830472749171936,
+      "balanced": false,
+      "counts_min": 29,
+      "counts_max": 94
+     },
+     "n_train": 8079,
+     "n_test": 3321,
+     "dim": 16
+    },
+    "random/linear": {
+     "mean": 0.6195906432748538,
+     "std": 0.002711584355408109,
+     "per_seed": [
+      0.6210526315789474,
+      0.6219298245614036,
+      0.6157894736842106
+     ],
+     "chance": {
+      "n_samples": 3420,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.021052631578947368,
+      "balanced": false,
+      "counts_min": 48,
+      "counts_max": 72
+     },
+     "n_train": 7980,
+     "n_test": 3420,
+     "dim": 16
+    },
+    "random/mlp": {
+     "mean": 0.7853801169590643,
+     "std": 0.001490941378243509,
+     "per_seed": [
+      0.7847953216374269,
+      0.7839181286549708,
+      0.7874269005847954
+     ],
+     "chance": {
+      "n_samples": 3420,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.021052631578947368,
+      "balanced": false,
+      "counts_min": 48,
+      "counts_max": 72
+     },
+     "n_train": 7980,
+     "n_test": 3420,
+     "dim": 16
+    }
+   },
+   "seen_unseen": {
+    "seen": {
+     "mean": 0.5876800794833582,
+     "n_seeds": 3
+    },
+    "unseen": {
+     "mean": 0.7247706422018348,
+     "n_seeds": 3
+    }
+   }
+  }
+ },
+ "baselines": {
+  "(a) 랜덤 인코더 D=16": {
+   "rep": "(a) 랜덤 인코더 D=16",
+   "dim": 16,
+   "cells": {
+    "time_block/linear": {
+     "mean": 0.5016561276723879,
+     "std": 0.002737766073870511,
+     "per_seed": [
+      0.5022583559168925,
+      0.4980427582053598,
+      0.5046672688949112
+     ],
+     "chance": {
+      "n_samples": 3321,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.02830472749171936,
+      "balanced": false,
+      "counts_min": 29,
+      "counts_max": 94
+     },
+     "n_train": 8079,
+     "n_test": 3321,
+     "dim": 16
+    },
+    "time_block/mlp": {
+     "mean": 0.6261166315366857,
+     "std": 0.003347050486908193,
+     "per_seed": [
+      0.6293285155073773,
+      0.6214995483288166,
+      0.6275218307738633
+     ],
+     "chance": {
+      "n_samples": 3321,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.02830472749171936,
+      "balanced": false,
+      "counts_min": 29,
+      "counts_max": 94
+     },
+     "n_train": 8079,
+     "n_test": 3321,
+     "dim": 16
+    },
+    "random/linear": {
+     "mean": 0.6190058479532164,
+     "std": 0.0037521201861443155,
+     "per_seed": [
+      0.6137426900584795,
+      0.6210526315789474,
+      0.6222222222222222
+     ],
+     "chance": {
+      "n_samples": 3420,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.021052631578947368,
+      "balanced": false,
+      "counts_min": 48,
+      "counts_max": 72
+     },
+     "n_train": 7980,
+     "n_test": 3420,
+     "dim": 16
+    },
+    "random/mlp": {
+     "mean": 0.7762183235867446,
+     "std": 0.00632703016261891,
+     "per_seed": [
+      0.7728070175438596,
+      0.7707602339181286,
+      0.7850877192982456
+     ],
+     "chance": {
+      "n_samples": 3420,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.021052631578947368,
+      "balanced": false,
+      "counts_min": 48,
+      "counts_max": 72
+     },
+     "n_train": 7980,
+     "n_test": 3420,
+     "dim": 16
+    }
+   },
+   "random_minus_timeblock": 0.11734972028082857
+  },
+  "(b) 원본 픽셀": {
+   "rep": "(b) 원본 픽셀",
+   "dim": 10240,
+   "cells": {
+    "time_block/linear": {
+     "mean": 0.8856770049181972,
+     "std": 0.009219972595535432,
+     "per_seed": [
+      0.8744354110207768,
+      0.8970189701897019,
+      0.8855766335441132
+     ],
+     "chance": {
+      "n_samples": 3321,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.02830472749171936,
+      "balanced": false,
+      "counts_min": 29,
+      "counts_max": 94
+     },
+     "n_train": 8079,
+     "n_test": 3321,
+     "dim": 10240
+    },
+    "time_block/mlp": {
+     "mean": 0.9079594499648701,
+     "std": 0.005211584858274451,
+     "per_seed": [
+      0.9021379102679916,
+      0.9069557362240289,
+      0.9147847034025895
+     ],
+     "chance": {
+      "n_samples": 3321,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.02830472749171936,
+      "balanced": false,
+      "counts_min": 29,
+      "counts_max": 94
+     },
+     "n_train": 8079,
+     "n_test": 3321,
+     "dim": 10240
+    },
+    "random/linear": {
+     "mean": 0.983430799220273,
+     "std": 0.003241381900256517,
+     "per_seed": [
+      0.9839181286549707,
+      0.9792397660818714,
+      0.9871345029239766
+     ],
+     "chance": {
+      "n_samples": 3420,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.021052631578947368,
+      "balanced": false,
+      "counts_min": 48,
+      "counts_max": 72
+     },
+     "n_train": 7980,
+     "n_test": 3420,
+     "dim": 10240
+    },
+    "random/mlp": {
+     "mean": 0.9867446393762184,
+     "std": 0.0022054012668586173,
+     "per_seed": [
+      0.9883040935672515,
+      0.9836257309941521,
+      0.9883040935672515
+     ],
+     "chance": {
+      "n_samples": 3420,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.021052631578947368,
+      "balanced": false,
+      "counts_min": 48,
+      "counts_max": 72
+     },
+     "n_train": 7980,
+     "n_test": 3420,
+     "dim": 10240
+    }
+   },
+   "random_minus_timeblock": 0.09775379430207576
+  },
+  "(c) 픽셀 PCA-32": {
+   "rep": "(c) 픽셀 PCA-32",
+   "dim": 10240,
+   "cells": {
+    "time_block/linear": {
+     "mean": 0.7912275419050486,
+     "std": 0.0008634272073715617,
+     "per_seed": [
+      0.7913279132791328,
+      0.7922312556458898,
+      0.7901234567901234
+     ],
+     "chance": {
+      "n_samples": 3321,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.02830472749171936,
+      "balanced": false,
+      "counts_min": 29,
+      "counts_max": 94
+     },
+     "n_train": 8079,
+     "n_test": 3321,
+     "dim": 32
+    },
+    "time_block/mlp": {
+     "mean": 0.8669075579644686,
+     "std": 0.001071673015359933,
+     "per_seed": [
+      0.8663053297199639,
+      0.8684131285757302,
+      0.8660042155977116
+     ],
+     "chance": {
+      "n_samples": 3321,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.02830472749171936,
+      "balanced": false,
+      "counts_min": 29,
+      "counts_max": 94
+     },
+     "n_train": 8079,
+     "n_test": 3321,
+     "dim": 32
+    },
+    "random/linear": {
+     "mean": 0.9084795321637427,
+     "std": 0.006646287376698769,
+     "per_seed": [
+      0.9157894736842105,
+      0.8997076023391812,
+      0.9099415204678363
+     ],
+     "chance": {
+      "n_samples": 3420,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.021052631578947368,
+      "balanced": false,
+      "counts_min": 48,
+      "counts_max": 72
+     },
+     "n_train": 7980,
+     "n_test": 3420,
+     "dim": 32
+    },
+    "random/mlp": {
+     "mean": 0.9722222222222222,
+     "std": 0.002711584355408077,
+     "per_seed": [
+      0.9760233918128655,
+      0.9698830409356726,
+      0.9707602339181286
+     ],
+     "chance": {
+      "n_samples": 3420,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.021052631578947368,
+      "balanced": false,
+      "counts_min": 48,
+      "counts_max": 72
+     },
+     "n_train": 7980,
+     "n_test": 3420,
+     "dim": 32
+    }
+   },
+   "random_minus_timeblock": 0.11725199025869404
+  },
+  "(d') 광학 3차원": {
+   "rep": "(d') 광학 3차원",
+   "dim": 3,
+   "cells": {
+    "time_block/linear": {
+     "mean": 0.03292181069958847,
+     "std": 0.001971984613508831,
+     "per_seed": [
+      0.03523035230352303,
+      0.0331225534477567,
+      0.0304125263474857
+     ],
+     "chance": {
+      "n_samples": 3321,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.02830472749171936,
+      "balanced": false,
+      "counts_min": 29,
+      "counts_max": 94
+     },
+     "n_train": 8079,
+     "n_test": 3321,
+     "dim": 3
+    },
+    "time_block/mlp": {
+     "mean": 0.08250526949713942,
+     "std": 0.003784945826551201,
+     "per_seed": [
+      0.08130081300813008,
+      0.07859078590785908,
+      0.08762420957542909
+     ],
+     "chance": {
+      "n_samples": 3321,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.02830472749171936,
+      "balanced": false,
+      "counts_min": 29,
+      "counts_max": 94
+     },
+     "n_train": 8079,
+     "n_test": 3321,
+     "dim": 3
+    },
+    "random/linear": {
+     "mean": 0.04103313840155945,
+     "std": 0.004286283319161019,
+     "per_seed": [
+      0.03508771929824561,
+      0.04502923976608187,
+      0.04298245614035088
+     ],
+     "chance": {
+      "n_samples": 3420,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.021052631578947368,
+      "balanced": false,
+      "counts_min": 48,
+      "counts_max": 72
+     },
+     "n_train": 7980,
+     "n_test": 3420,
+     "dim": 3
+    },
+    "random/mlp": {
+     "mean": 0.10253411306042885,
+     "std": 0.0013575427170744777,
+     "per_seed": [
+      0.10438596491228071,
+      0.102046783625731,
+      0.10116959064327485
+     ],
+     "chance": {
+      "n_samples": 3420,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.021052631578947368,
+      "balanced": false,
+      "counts_min": 48,
+      "counts_max": 72
+     },
+     "n_train": 7980,
+     "n_test": 3420,
+     "dim": 3
+    }
+   },
+   "random_minus_timeblock": 0.008111327701970976
+  },
+  "(e) EAR 스칼라": {
+   "rep": "(e) EAR 스칼라",
+   "dim": 1,
+   "cells": {
+    "time_block/linear": {
+     "mean": 0.03954632138913982,
+     "std": 0.004372783481038233,
+     "per_seed": [
+      0.044263775971093045,
+      0.03372478169226137,
+      0.04065040650406504
+     ],
+     "chance": {
+      "n_samples": 3321,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.02830472749171936,
+      "balanced": false,
+      "counts_min": 29,
+      "counts_max": 94
+     },
+     "n_train": 8079,
+     "n_test": 3321,
+     "dim": 1
+    },
+    "time_block/mlp": {
+     "mean": 0.05480277024992472,
+     "std": 0.0004917173025761666,
+     "per_seed": [
+      0.05420054200542006,
+      0.05540499849442939,
+      0.05480277024992472
+     ],
+     "chance": {
+      "n_samples": 3321,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.02830472749171936,
+      "balanced": false,
+      "counts_min": 29,
+      "counts_max": 94
+     },
+     "n_train": 8079,
+     "n_test": 3321,
+     "dim": 1
+    },
+    "random/linear": {
+     "mean": 0.03830409356725146,
+     "std": 0.002582386218224516,
+     "per_seed": [
+      0.0391812865497076,
+      0.0347953216374269,
+      0.04093567251461988
+     ],
+     "chance": {
+      "n_samples": 3420,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.021052631578947368,
+      "balanced": false,
+      "counts_min": 48,
+      "counts_max": 72
+     },
+     "n_train": 7980,
+     "n_test": 3420,
+     "dim": 1
+    },
+    "random/mlp": {
+     "mean": 0.05692007797270956,
+     "std": 0.002868214224086192,
+     "per_seed": [
+      0.05672514619883041,
+      0.060526315789473685,
+      0.05350877192982456
+     ],
+     "chance": {
+      "n_samples": 3420,
+      "n_classes": 57,
+      "uniform_chance": 0.017543859649122806,
+      "majority_baseline": 0.021052631578947368,
+      "balanced": false,
+      "counts_min": 48,
+      "counts_max": 72
+     },
+     "n_train": 7980,
+     "n_test": 3420,
+     "dim": 1
+    }
+   },
+   "random_minus_timeblock": -0.0012422278218883614
+  }
+ },
+ "aggregate": {
+  "N=1": {
+   "mean": 0.9139209401709402,
+   "std": 0.0007769085026794154,
+   "n_groups": 104000,
+   "chance": {
+    "n_samples": 104000,
+    "n_classes": 52,
+    "uniform_chance": 0.019230769230769232,
+    "majority_baseline": 0.019230769230769232,
+    "balanced": true,
+    "counts_min": 2000,
+    "counts_max": 2000
+   }
+  },
+  "N=10": {
+   "mean": 0.9960470085470087,
+   "std": 0.0011800599377336774,
+   "n_groups": 10400,
+   "chance": {
+    "n_samples": 10400,
+    "n_classes": 52,
+    "uniform_chance": 0.019230769230769232,
+    "majority_baseline": 0.019230769230769232,
+    "balanced": true,
+    "counts_min": 200,
+    "counts_max": 200
+   }
+  },
+  "N=100": {
+   "mean": 1.0,
+   "std": 0.0,
+   "n_groups": 1040,
+   "chance": {
+    "n_samples": 1040,
+    "n_classes": 52,
+    "uniform_chance": 0.019230769230769232,
+    "majority_baseline": 0.019230769230769232,
+    "balanced": true,
+    "counts_min": 20,
+    "counts_max": 20
+   }
+  }
+ },
+ "ours_summary": {
+  "time_block/linear": {
+   "mean": 0.4783164374853626,
+   "std": 0.0273284878364988,
+   "n_models": 15,
+   "min": 0.44454481581852856,
+   "max": 0.5211281742447055
+  },
+  "time_block/mlp": {
+   "mean": 0.6344876041353006,
+   "std": 0.028769034284105516,
+   "n_models": 15,
+   "min": 0.5840610257954432,
+   "max": 0.6888487403392552
+  },
+  "random/linear": {
+   "mean": 0.5812605588044184,
+   "std": 0.028363134507575244,
+   "n_models": 15,
+   "min": 0.539766081871345,
+   "max": 0.6244639376218323
+  },
+  "random/mlp": {
+   "mean": 0.7714814814814815,
+   "std": 0.025275679673667763,
+   "n_models": 15,
+   "min": 0.7265107212475633,
+   "max": 0.8038986354775828
+  }
+ },
+ "ours_seen_unseen": {
+  "seen": {
+   "mean": 0.630248687680209,
+   "std": 0.05883873336950677
+  },
+  "unseen": {
+   "mean": 0.6438534361854583,
+   "std": 0.06116600805906158
+  }
+ },
+ "aggregate_cohort": {
+  "chance": {
+   "n_samples": 104000,
+   "n_classes": 52,
+   "uniform_chance": 0.019230769230769232,
+   "majority_baseline": 0.019230769230769232,
+   "balanced": true,
+   "counts_min": 2000,
+   "counts_max": 2000
+  },
+  "dropped_subjects": [
+   16,
+   37,
+   42,
+   46,
+   48
+  ],
+  "n_per_subject": 2000
+ },
+ "aggregate_model": "fold3_seed1",
+ "minutes": 18.0
+}

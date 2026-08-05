@@ -1,0 +1,199 @@
+{
+ "env": {
+  "seed": 0,
+  "deterministic": true,
+  "sealed": true,
+  "python": "3.10.12",
+  "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.35",
+  "numpy": "2.2.6",
+  "pythonhashseed": "0",
+  "cublas_workspace_config": null,
+  "git_commit": "fa6f590382a14f0388f21d72bf64f419fec50633",
+  "git_dirty": true,
+  "torch": null
+ },
+ "folds": {
+  "criterion": "유효 이벤트 수 + 수집 배치(2020/2022) 이중 층화, 결정적",
+  "excluded_users": [
+   18
+  ],
+  "n_subjects": 57,
+  "events_per_fold": [
+   6140,
+   5470,
+   5383,
+   5398,
+   5367
+  ],
+  "subjects_per_fold": [
+   10,
+   11,
+   12,
+   12,
+   12
+  ],
+  "max_over_min": 1.1440283212222844,
+  "recorded_balance_matches": true,
+  "two_way_stratified": true,
+  "frozen_at": "/sessions/confident-beautiful-faraday/mnt/IEEE_sensors/src/v2/common/folds_5fold.json",
+  "deterministic": true,
+  "PASS_G1b": true,
+  "n_reassigned": 0,
+  "batch2022_share_per_fold": [
+   0.35472312703583064,
+   0.276782449725777,
+   0.2597064833735835,
+   0.2573175250092627,
+   0.2601080678218744
+  ],
+  "batch2022_share_overall": 0.28370199582102457,
+  "batch2022_share_max_dev_pp": 7.102113121480608,
+  "n_2020_per_fold": [
+   7,
+   7,
+   8,
+   8,
+   8
+  ],
+  "n_2022_per_fold": [
+   3,
+   4,
+   4,
+   4,
+   4
+  ],
+  "PASS_G1a": true,
+  "G1a_criterion": "배치 구성: fold별 2022 이벤트 비중이 전체 ±10%p 이내 AND fold별 2022 인원 >= 3 (PROTOCOL §4)",
+  "G1a_detail": {
+   "share_within_10pp": true,
+   "min_n_2022_ge_3": true,
+   "event_max_over_min_recorded_only": 1.1440283212222844
+  }
+ },
+ "splits": {
+  "fold_balance": {
+   "events_per_fold": [
+    2867,
+    2858,
+    2877,
+    2880,
+    2882
+   ],
+   "subjects_per_fold": [
+    11,
+    11,
+    12,
+    12,
+    12
+   ],
+   "max_over_min": 1.0083974807557732
+  },
+  "fold_balance_random_median": 1.8088559990795408,
+  "fold_deterministic": true,
+  "time_block_disjoint": true,
+  "time_block_train_frac": 0.7,
+  "random_disjoint": true,
+  "chance_unbalanced": {
+   "n_samples": 14364,
+   "n_classes": 58,
+   "uniform_chance": 0.017241379310344827,
+   "majority_baseline": 0.07344750765803397,
+   "balanced": false,
+   "counts_min": 10,
+   "counts_max": 1055
+  },
+  "chance_detects_imbalance": true,
+  "balanced_sample_chance": {
+   "n_samples": 580,
+   "n_classes": 58,
+   "uniform_chance": 0.017241379310344827,
+   "majority_baseline": 0.017241379310344827,
+   "balanced": true,
+   "counts_min": 10,
+   "counts_max": 10
+  },
+  "balanced_sample_ok": true
+ },
+ "grid_tail": {
+  "v2_exhaustive": {
+   "grid_size": 40001,
+   "min_positive_fa": 0.0001,
+   "n_grid_points_below_fa_1pct": 10792,
+   "distinct_fa_levels_below_1pct": 100,
+   "fa_resolution_coverage": 1.0
+  },
+  "quantile_classaware": {
+   "grid_size": 773,
+   "min_positive_fa": 0.0001,
+   "n_grid_points_below_fa_1pct": 183,
+   "distinct_fa_levels_below_1pct": 60,
+   "fa_resolution_coverage": 0.6
+  },
+  "quantile_pooled_logit": {
+   "grid_size": 259,
+   "min_positive_fa": 0.0001,
+   "n_grid_points_below_fa_1pct": 70,
+   "distinct_fa_levels_below_1pct": 23,
+   "fa_resolution_coverage": 0.23
+  },
+  "quantile_linear97": {
+   "grid_size": 99,
+   "min_positive_fa": 0.0001,
+   "n_grid_points_below_fa_1pct": 26,
+   "distinct_fa_levels_below_1pct": 10,
+   "fa_resolution_coverage": 0.1
+  },
+  "n_negatives": 10000,
+  "distinct_fa_levels_possible_below_1pct": 100,
+  "PASS_G1c": true
+ },
+ "grid_audit": {
+  "same_cfg_different_data_ok": true,
+  "different_cfg_raises": true,
+  "label_asymmetry_raises": true,
+  "discrete_grid_size": 9,
+  "PASS_G1d": true
+ },
+ "selection": {
+  "val_accuracy": 0.729,
+  "test_accuracy": 0.72025,
+  "optimism_val_minus_test": 0.008750000000000036,
+  "test_average_precision": 0.7782526382173864,
+  "sign_convention_matches": true,
+  "PASS_G1_selection": true
+ },
+ "probes": {
+  "aggregate_mean_shape": [
+   20,
+   8
+  ],
+  "aggregate_mean_groups_per_subject": 4,
+  "aggregate_hist_rowsum_is_one": true,
+  "between_subject_scatter_before": 4.462641743529918,
+  "between_subject_scatter_after": 1.708259844690474e-07,
+  "projection_removes_class_means": true
+ },
+ "determinism": {
+  "status": "SKIPPED",
+  "reason": "torch 없음 (데스크탑에서 재실행 필요)",
+  "PASS_G1g": null
+ },
+ "determinism_encoder": {
+  "status": "SKIPPED",
+  "reason": "torch 없음 (데스크탑에서 재실행 필요)",
+  "PASS_G1i": null
+ },
+ "gates": {
+  "G-1a fold 배치 구성 (§4)": true,
+  "G-1b fold 결정성": true,
+  "G-1c 격자 저-FA 도달": true,
+  "G-1d 격자 혼용 차단": true,
+  "G-1e chance 불균형 감지": true,
+  "G-1f 균형 표집 회복": true,
+  "G-1  부호 규약 일치": true,
+  "G-1h 투영 제거 동작": true,
+  "G-1g 학습 결정성 (합성 MLP)": null,
+  "G-1i 학습 결정성 (실제 인코더)": null
+ },
+ "verdict": "PARTIAL"
+}

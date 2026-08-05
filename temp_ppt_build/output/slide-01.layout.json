@@ -1,0 +1,712 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/rd4yao",
+    "id": "rd4yao",
+    "slide": 1,
+    "layoutId": "bff6003f-0014-461b-ab67-1a6a4aadb17d",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "5e07e8d2-9336-46ec-8f9d-01ba1e7c7d47",
+    "masterLayoutName": "Master",
+    "backgroundColor": "#FFFFFF",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1280,
+      "height": 720
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "+mn-lt"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "bff6003f-0014-461b-ab67-1a6a4aadb17d",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "5e07e8d2-9336-46ec-8f9d-01ba1e7c7d47",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "5e07e8d2-9336-46ec-8f9d-01ba1e7c7d47",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/18be54fa",
+      "id": "1",
+      "bbox": [
+        0,
+        0,
+        34,
+        720
+      ],
+      "geometry": "rect",
+      "fillColor": "#102B4E",
+      "lineColor": "#102B4E",
+      "lineWidth": 1
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/e5kvu9wj",
+      "id": "2",
+      "bbox": [
+        82,
+        104,
+        700,
+        24
+      ],
+      "geometry": "rect",
+      "text": "LAB MEETING  |  2026.08.05",
+      "textPreview": "LAB MEETING  |  2026.08.05",
+      "resolvedFontSize": 17,
+      "resolvedTextStyle": {
+        "fontSize": 17,
+        "typeface": "+mn-lt",
+        "color": "#2E5EAA",
+        "bold": true,
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "LAB MEETING  |  2026.08.05"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "LAB MEETING  |  2026.08.05",
+          "resolvedTextStyle": {
+            "fontSize": 17,
+            "color": "#2E5EAA",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "LAB MEETING  |  2026.08.05",
+              "fontSize": 17,
+              "color": "#2E5EAA",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/f6tw3ux4",
+      "id": "3",
+      "bbox": [
+        82,
+        158,
+        740,
+        154
+      ],
+      "geometry": "rect",
+      "text": "v2 눈 깜빡임 인코더:\n유용성은 확보했고,\n신원 누출은 남아 있다",
+      "textPreview": "v2 눈 깜빡임 인코더: | 유용성은 확보했고, | 신원 누출은 남아 있다",
+      "resolvedFontSize": 44,
+      "resolvedTextStyle": {
+        "fontSize": 44,
+        "typeface": "+mn-lt",
+        "color": "#102B4E",
+        "bold": true,
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 3,
+        "lines": [
+          {
+            "index": 1,
+            "text": "v2 눈 깜빡임 인코더:"
+          },
+          {
+            "index": 2,
+            "text": "유용성은 확보했고,"
+          },
+          {
+            "index": 3,
+            "text": "신원 누출은 남아 있다"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "v2 눈 깜빡임 인코더:",
+          "resolvedTextStyle": {
+            "fontSize": 44,
+            "color": "#102B4E",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "v2 눈 깜빡임 인코더:",
+              "fontSize": 44,
+              "color": "#102B4E",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "유용성은 확보했고,",
+          "resolvedTextStyle": {
+            "fontSize": 44,
+            "color": "#102B4E",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "유용성은 확보했고,",
+              "fontSize": 44,
+              "color": "#102B4E",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 3,
+          "text": "신원 누출은 남아 있다",
+          "resolvedTextStyle": {
+            "fontSize": 44,
+            "color": "#102B4E",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "신원 누출은 남아 있다",
+              "fontSize": 44,
+              "color": "#102B4E",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/s3idszet",
+      "id": "4",
+      "bbox": [
+        86,
+        326,
+        760,
+        62
+      ],
+      "geometry": "rect",
+      "text": "mEBAL2 57명에서 직접 지도학습한 16차원 벡터와\nEAR 베이스라인을 같은 조건에서 비교",
+      "textPreview": "mEBAL2 57명에서 직접 지도학습한 16차원 벡터와 | EAR 베이스라인을 같은 조건에서 비교",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "+mn-lt",
+        "color": "#56657A",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "mEBAL2 57명에서 직접 지도학습한 16차원 벡터와"
+          },
+          {
+            "index": 2,
+            "text": "EAR 베이스라인을 같은 조건에서 비교"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "mEBAL2 57명에서 직접 지도학습한 16차원 벡터와",
+          "resolvedTextStyle": {
+            "fontSize": 24,
+            "color": "#56657A",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "mEBAL2 57명에서 직접 지도학습한 16차원 벡터와",
+              "fontSize": 24,
+              "color": "#56657A",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "EAR 베이스라인을 같은 조건에서 비교",
+          "resolvedTextStyle": {
+            "fontSize": 24,
+            "color": "#56657A",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "EAR 베이스라인을 같은 조건에서 비교",
+              "fontSize": 24,
+              "color": "#56657A",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/t4re14fy",
+      "id": "5",
+      "bbox": [
+        86,
+        432,
+        270,
+        6
+      ],
+      "geometry": "rect",
+      "fillColor": "#2E5EAA",
+      "lineColor": "#2E5EAA",
+      "lineWidth": 1
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/610vqpwn",
+      "id": "6",
+      "bbox": [
+        86,
+        470,
+        620,
+        26
+      ],
+      "geometry": "rect",
+      "text": "핵심 질문  |  깜빡임은 잘 잡는가?  신원은 얼마나 남는가?",
+      "textPreview": "핵심 질문  |  깜빡임은 잘 잡는가?  신원은 얼마나 남는가?",
+      "resolvedFontSize": 20,
+      "resolvedTextStyle": {
+        "fontSize": 20,
+        "typeface": "+mn-lt",
+        "color": "#162235",
+        "bold": true,
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "핵심 질문  |  깜빡임은 잘 잡는가?  신원은 얼마나 남는가?"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "핵심 질문  |  깜빡임은 잘 잡는가?  신원은 얼마나 남는가?",
+          "resolvedTextStyle": {
+            "fontSize": 20,
+            "color": "#162235",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "핵심 질문  |  깜빡임은 잘 잡는가?  신원은 얼마나 남는가?",
+              "fontSize": 20,
+              "color": "#162235",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 7,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/r29wzux8",
+      "id": "7",
+      "bbox": [
+        892,
+        114,
+        272,
+        330
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#EAF1FB",
+      "lineColor": "#EAF1FB",
+      "lineWidth": 1
+    },
+    {
+      "order": 8,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/4fidofeh",
+      "id": "8",
+      "bbox": [
+        925,
+        160,
+        200,
+        30
+      ],
+      "geometry": "rect",
+      "text": "v2 기준선",
+      "textPreview": "v2 기준선",
+      "resolvedFontSize": 20,
+      "resolvedTextStyle": {
+        "fontSize": 20,
+        "typeface": "+mn-lt",
+        "color": "#2E5EAA",
+        "bold": true,
+        "alignment": "center",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "v2 기준선"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "v2 기준선",
+          "resolvedTextStyle": {
+            "fontSize": 20,
+            "color": "#2E5EAA",
+            "bold": true,
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "v2 기준선",
+              "fontSize": 20,
+              "color": "#2E5EAA",
+              "bold": true,
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 9,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/50rexkf2",
+      "id": "9",
+      "bbox": [
+        922,
+        220,
+        212,
+        72
+      ],
+      "geometry": "rect",
+      "text": "57명\n27,758 events",
+      "textPreview": "57명 | 27,758 events",
+      "resolvedFontSize": 31,
+      "resolvedTextStyle": {
+        "fontSize": 31,
+        "typeface": "+mn-lt",
+        "color": "#102B4E",
+        "bold": true,
+        "alignment": "center",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "57명"
+          },
+          {
+            "index": 2,
+            "text": "27,758 events"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "57명",
+          "resolvedTextStyle": {
+            "fontSize": 31,
+            "color": "#102B4E",
+            "bold": true,
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "57명",
+              "fontSize": 31,
+              "color": "#102B4E",
+              "bold": true,
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "27,758 events",
+          "resolvedTextStyle": {
+            "fontSize": 31,
+            "color": "#102B4E",
+            "bold": true,
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "27,758 events",
+              "fontSize": 31,
+              "color": "#102B4E",
+              "bold": true,
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 10,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/hgjahsza",
+      "id": "10",
+      "bbox": [
+        922,
+        326,
+        212,
+        42
+      ],
+      "geometry": "rect",
+      "text": "vpres CNN · D=16",
+      "textPreview": "vpres CNN · D=16",
+      "resolvedFontSize": 17,
+      "resolvedTextStyle": {
+        "fontSize": 17,
+        "typeface": "+mn-lt",
+        "color": "#56657A",
+        "bold": true,
+        "alignment": "center",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "vpres CNN · D=16"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "vpres CNN · D=16",
+          "resolvedTextStyle": {
+            "fontSize": 17,
+            "color": "#56657A",
+            "bold": true,
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "vpres CNN · D=16",
+              "fontSize": 17,
+              "color": "#56657A",
+              "bold": true,
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 11,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/gfa98nip",
+      "id": "11",
+      "bbox": [
+        82,
+        652,
+        660,
+        20
+      ],
+      "geometry": "rect",
+      "text": "IEEE Sensors Letters 방향 점검",
+      "textPreview": "IEEE Sensors Letters 방향 점검",
+      "resolvedFontSize": 14,
+      "resolvedTextStyle": {
+        "fontSize": 14,
+        "typeface": "+mn-lt",
+        "color": "#56657A",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "IEEE Sensors Letters 방향 점검"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "IEEE Sensors Letters 방향 점검",
+          "resolvedTextStyle": {
+            "fontSize": 14,
+            "color": "#56657A",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "IEEE Sensors Letters 방향 점검",
+              "fontSize": 14,
+              "color": "#56657A",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    }
+  ],
+  "composeRuns": []
+}

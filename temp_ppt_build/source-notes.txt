@@ -1,0 +1,10 @@
+Internal sources used for the 2026-08-05 lab meeting deck
+
+1. docs/v2/PROTOCOL.md — current v2 status, data decisions, utility/re-ID results, gates, remaining work.
+2. results/v2/train_encoder.json — 5-fold × 3-seed utility result.
+3. results/v2/phase5_reid.json — 57-way re-identification result and aggregation attack.
+4. results/v2/gate_minus1.json — Phase −1 gate PASS status.
+5. docs/PROJECT.md — v1→v2 research-direction transition.
+6. README.md — deployment route and explicit v1/v2 separation.
+7. docs/PI5_BENCHMARK.md — v2 Pi5 latency remains unmeasured.
+8. src/v2/model/encoder.py and src/v2/train_encoder.py — vpres D=16 encoder and temporal head.

@@ -1,0 +1,65 @@
+{
+ "revised": "2026-08-02",
+ "reason": "배포자 제공 크롭(_probe/glasses_check)은 눈에 밀착돼 안경테가 잘려 판단이 어렵다. 우리 크롭(MARGIN 2.2, 사용자당 세션 전체에 퍼진 3~6장)으로 재검토했다.",
+ "source_sheet": "docs/v2/figures/glasses_sheet_58.png",
+ "previous_file": "data/raw/mEBAL2/glasses_labels_58_v1_probecrop.csv",
+ "changes": [
+  {
+   "user": 1,
+   "from": 0,
+   "to": 1
+  },
+  {
+   "user": 11,
+   "from": 2,
+   "to": 1
+  },
+  {
+   "user": 17,
+   "from": 1,
+   "to": 0
+  },
+  {
+   "user": 18,
+   "from": 0,
+   "to": 1
+  },
+  {
+   "user": 22,
+   "from": 1,
+   "to": 0
+  },
+  {
+   "user": 25,
+   "from": 2,
+   "to": 1
+  },
+  {
+   "user": 30,
+   "from": 2,
+   "to": 1
+  },
+  {
+   "user": 43,
+   "from": 2,
+   "to": 0
+  },
+  {
+   "user": 55,
+   "from": 2,
+   "to": 0
+  }
+ ],
+ "counts_before": {
+  "wear": 15,
+  "none": 38,
+  "uncertain": 5
+ },
+ "counts_after": {
+  "wear": 18,
+  "none": 40,
+  "uncertain": 0
+ },
+ "rate_after": 0.3103448275862069,
+ "note": "공식 32.22% 는 180명 전체 DB 통계이며 우리 58명 subset 에 적용할 수 없다. 다만 재검토 후 값이 그와 근접한 것은 라벨 품질의 방증이 된다. 180 x 0.3222 = 58.0 이라는 수치 일치는 우연으로 보인다 — 우리 58명 중 안경 착용자는 18명뿐이므로 '배포본 = 안경 그룹' 가설은 성립하지 않는다."
+}

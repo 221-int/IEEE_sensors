@@ -107,9 +107,70 @@ def fold_balance(counts: dict[int, int], assign: dict[int, int],
             "max_over_min": float(max(load) / max(min(load), 1))}
 
 
+def stratified_folds_2way(counts: dict[int, int], batch: dict[int, str],
+                          k: int = N_FOLDS) -> dict[int, int]:
+    """이벤트 수 + 배치 이중 층화. 결정적(시드 없음). **v2 의 실제 fold 생성기.**
+
+    2026-08-03: `src/v2/phase3_apply_flags.py` 에서 여기로 옮겼다. 규칙 #4 는
+    "격자·시드·분할·프로브는 src/v2/common/ 하나만" 인데 분할 생성기만 실험
+    스크립트에 남아 있었다. 그 결과 게이트(G-1b)가 얼린 배정을 **재현해 볼 수
+    없었다** — 검사하려면 실험 스크립트를 임포트해야 했고, 그건 규칙이 두 곳에
+    사는 상태다. 로직은 바꾸지 않았다(복사·이동).
+
+    **배치 안에서** 이벤트 수 LPT 를 돌리되 배치별 인원 상한 ceil(n_b/k) 를 건다.
+
+    세 후보를 실측 비교해 고른 방식이다 (57명, 유효 이벤트 27,758 기준):
+
+        방식                      전체 max/min   2022 비중 범위   2022 인원
+        전역 LPT + 인원 상한          1.016        12~62%  <-- 나쁨   [4,4,3,4,4]
+        배치별 LPT                   1.131        26~35%             [1,3,5,5,5] <-- 나쁨
+        배치별 뱀 순서                1.359        24~39%             [3,4,4,4,4]
+        **배치별 LPT + 인원 상한**     1.144        26~36%             [3,4,4,4,4]
+
+    전체 이벤트 균형(1.016 -> 1.144)을 조금 포기하고 **fold 별 배치 구성**을 잡았다.
+    이유: 2022 배치는 EAR AUC 0.885 로 2020(0.933)보다 어렵다. fold 하나의 test 가
+    62% 2022 이면 그 fold 만 성능이 낮게 나오고, 그 차이가 fold 분산으로 잡혀
+    비열등 판정(delta=0.02)을 흐린다. 전체 이벤트 수 차이는 부트스트랩이 피험자
+    단위라 영향이 훨씬 작다.
+    또 fold 하나의 2022 인원이 1명이면 배치별 분리 보고가 무의미해진다.
+    """
+    from math import ceil
+    assign: dict[int, int] = {}
+    for b in sorted(set(batch.values())):
+        us = sorted([u for u in counts if batch[u] == b], key=lambda x: (-counts[x], x))
+        cap = ceil(len(us) / k)
+        load = [0] * k
+        n = [0] * k
+        for u in us:
+            cand = [j for j in range(k) if n[j] < cap] or list(range(k))
+            f = min(cand, key=lambda j: (load[j], n[j], j))
+            assign[u] = f
+            load[f] += counts[u]
+            n[f] += 1
+    return assign
+
+
 def freeze_folds(facts_path: str = FACTS_PATH, out_path: str = FOLDS_PATH,
-                 k: int = N_FOLDS) -> dict:
-    """실측 이벤트 수로 fold 를 만들어 **파일에 얼립니다.** 한 번만 실행합니다."""
+                 k: int = N_FOLDS, force: bool = False) -> dict:
+    """실측 이벤트 수로 fold 를 만들어 **파일에 얼립니다.** 한 번만 실행합니다.
+
+    🔴 2026-08-03: **이미 있는 파일을 덮어쓰지 않습니다.**
+
+    실제로 사고가 났습니다. `gate_minus1` 이 fold 균형을 "검사"하면서 이 함수를
+    불렀고, 그 결과 PROTOCOL §4 가 얼려 둔 **57명·배치 이중 층화** 배정이
+    이 함수의 구버전 기준(이벤트 수만 층화, 58명, U18 포함)으로 조용히 덮어써졌습니다.
+    학습 결과와 fold 가 어긋나면 그 뒤의 모든 숫자가 무의미해집니다.
+
+    현재 fold 의 생성 주체는 `phase3_apply_flags` 입니다. 이 함수는 **v1 경로**이며,
+    다시 얼리려면 `force=True` 를 명시해야 합니다. 검사만 하려면
+    `k` 를 주고 `dry_run` 대신 `load_folds()` 로 읽으십시오.
+    """
+    if os.path.exists(out_path) and not force:
+        with open(out_path, encoding="utf-8") as f:
+            existing = json.load(f)
+        return {**existing, "_frozen": True,
+                "_note": f"{out_path} 이미 존재 — 덮어쓰지 않았습니다. "
+                         "다시 얼리려면 freeze_folds(force=True)."}
     with open(facts_path, encoding="utf-8") as f:
         facts = json.load(f)
     counts = {int(u): int(v["blink1"]) for u, v in facts["per_user"].items()}

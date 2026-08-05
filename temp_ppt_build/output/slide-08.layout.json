@@ -1,0 +1,869 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/zbckrr",
+    "id": "zbckrr",
+    "slide": 8,
+    "layoutId": "bff6003f-0014-461b-ab67-1a6a4aadb17d",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "5e07e8d2-9336-46ec-8f9d-01ba1e7c7d47",
+    "masterLayoutName": "Master",
+    "backgroundColor": "#FFFFFF",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1280,
+      "height": 720
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "+mn-lt"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "bff6003f-0014-461b-ab67-1a6a4aadb17d",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "5e07e8d2-9336-46ec-8f9d-01ba1e7c7d47",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "5e07e8d2-9336-46ec-8f9d-01ba1e7c7d47",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/g725wzu1",
+      "id": "1",
+      "bbox": [
+        72,
+        44,
+        840,
+        24
+      ],
+      "geometry": "rect",
+      "text": "HONEST BOUNDARY",
+      "textPreview": "HONEST BOUNDARY",
+      "resolvedFontSize": 14,
+      "resolvedTextStyle": {
+        "fontSize": 14,
+        "typeface": "+mn-lt",
+        "color": "#2E5EAA",
+        "bold": true,
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "HONEST BOUNDARY"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "HONEST BOUNDARY",
+          "resolvedTextStyle": {
+            "fontSize": 14,
+            "color": "#2E5EAA",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "HONEST BOUNDARY",
+              "fontSize": 14,
+              "color": "#2E5EAA",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/f6t43etw",
+      "id": "2",
+      "bbox": [
+        72,
+        78,
+        1060,
+        52
+      ],
+      "geometry": "rect",
+      "text": "현재 기준선이 말하는 것과 말하지 못하는 것을 분리합니다",
+      "textPreview": "현재 기준선이 말하는 것과 말하지 못하는 것을 분리합니다",
+      "resolvedFontSize": 38,
+      "resolvedTextStyle": {
+        "fontSize": 38,
+        "typeface": "+mn-lt",
+        "color": "#102B4E",
+        "bold": true,
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "현재 기준선이 말하는 것과 말하지 못하는 것을 분리합니다"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "현재 기준선이 말하는 것과 말하지 못하는 것을 분리합니다",
+          "resolvedTextStyle": {
+            "fontSize": 38,
+            "color": "#102B4E",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "현재 기준선이 말하는 것과 말하지 못하는 것을 분리합니다",
+              "fontSize": 38,
+              "color": "#102B4E",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/u5knu9cb",
+      "id": "3",
+      "bbox": [
+        72,
+        144,
+        72,
+        4
+      ],
+      "geometry": "rect",
+      "fillColor": "#2E5EAA",
+      "lineColor": "#2E5EAA",
+      "lineWidth": 1
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/pcvm9oby",
+      "id": "4",
+      "bbox": [
+        1160,
+        48,
+        48,
+        22
+      ],
+      "geometry": "rect",
+      "text": "08",
+      "textPreview": "08",
+      "resolvedFontSize": 14,
+      "resolvedTextStyle": {
+        "fontSize": 14,
+        "typeface": "+mn-lt",
+        "color": "#2E5EAA",
+        "bold": true,
+        "alignment": "right",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "08"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "08",
+          "resolvedTextStyle": {
+            "fontSize": 14,
+            "color": "#2E5EAA",
+            "bold": true,
+            "alignment": "right"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "08",
+              "fontSize": 14,
+              "color": "#2E5EAA",
+              "bold": true,
+              "alignment": "right"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/4bm50jud",
+      "id": "5",
+      "bbox": [
+        72,
+        212,
+        520,
+        316
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#EAF1FB",
+      "lineColor": "#EAF1FB",
+      "lineWidth": 1
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/3ad47ets",
+      "id": "6",
+      "bbox": [
+        106,
+        250,
+        450,
+        28
+      ],
+      "geometry": "rect",
+      "text": "이번 라운드에서 말할 수 있는 것",
+      "textPreview": "이번 라운드에서 말할 수 있는 것",
+      "resolvedFontSize": 22,
+      "resolvedTextStyle": {
+        "fontSize": 22,
+        "typeface": "+mn-lt",
+        "color": "#2E5EAA",
+        "bold": true,
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "이번 라운드에서 말할 수 있는 것"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "이번 라운드에서 말할 수 있는 것",
+          "resolvedTextStyle": {
+            "fontSize": 22,
+            "color": "#2E5EAA",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "이번 라운드에서 말할 수 있는 것",
+              "fontSize": 22,
+              "color": "#2E5EAA",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 7,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/29kny9c7",
+      "id": "7",
+      "bbox": [
+        108,
+        306,
+        438,
+        150
+      ],
+      "geometry": "rect",
+      "text": "• EAR-head와 같은 판정 조건에서 utility 확보\n• 16차원 표현의 신원 누출을 정량화\n• 학습이 누출을 줄이지 못함을 기준선과 비교",
+      "textPreview": "• EAR-head와 같은 판정 조건에서 utility 확보 | • 16차원 표현의 신원 누출을 정량화 | • 학습이 누출을 줄이지 못함을 기준선과 비교",
+      "resolvedFontSize": 20,
+      "resolvedTextStyle": {
+        "fontSize": 20,
+        "typeface": "+mn-lt",
+        "color": "#162235",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 3,
+        "lines": [
+          {
+            "index": 1,
+            "text": "• EAR-head와 같은 판정 조건에서 utility 확보"
+          },
+          {
+            "index": 2,
+            "text": "• 16차원 표현의 신원 누출을 정량화"
+          },
+          {
+            "index": 3,
+            "text": "• 학습이 누출을 줄이지 못함을 기준선과 비교"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "• EAR-head와 같은 판정 조건에서 utility 확보",
+          "resolvedTextStyle": {
+            "fontSize": 20,
+            "color": "#162235",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "• EAR-head와 같은 판정 조건에서 utility 확보",
+              "fontSize": 20,
+              "color": "#162235",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "• 16차원 표현의 신원 누출을 정량화",
+          "resolvedTextStyle": {
+            "fontSize": 20,
+            "color": "#162235",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "• 16차원 표현의 신원 누출을 정량화",
+              "fontSize": 20,
+              "color": "#162235",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 3,
+          "text": "• 학습이 누출을 줄이지 못함을 기준선과 비교",
+          "resolvedTextStyle": {
+            "fontSize": 20,
+            "color": "#162235",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "• 학습이 누출을 줄이지 못함을 기준선과 비교",
+              "fontSize": 20,
+              "color": "#162235",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 8,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/d0v6dobu",
+      "id": "8",
+      "bbox": [
+        688,
+        212,
+        520,
+        316
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#F6F8FC",
+      "lineColor": "#F6F8FC",
+      "lineWidth": 1
+    },
+    {
+      "order": 9,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/czm543u9",
+      "id": "9",
+      "bbox": [
+        722,
+        250,
+        450,
+        28
+      ],
+      "geometry": "rect",
+      "text": "아직 말하면 안 되는 것",
+      "textPreview": "아직 말하면 안 되는 것",
+      "resolvedFontSize": 22,
+      "resolvedTextStyle": {
+        "fontSize": 22,
+        "typeface": "+mn-lt",
+        "color": "#B94B4B",
+        "bold": true,
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "아직 말하면 안 되는 것"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "아직 말하면 안 되는 것",
+          "resolvedTextStyle": {
+            "fontSize": 22,
+            "color": "#B94B4B",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "아직 말하면 안 되는 것",
+              "fontSize": 22,
+              "color": "#B94B4B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 10,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/mhsve5cv",
+      "id": "10",
+      "bbox": [
+        724,
+        306,
+        438,
+        150
+      ],
+      "geometry": "rect",
+      "text": "• 프라이버시가 확보되었다\n• 안경군에서 우월하다\n• v2가 Pi5 30 fps를 만족한다\n• 표현 학습의 기여가 완전히 분리되었다",
+      "textPreview": "• 프라이버시가 확보되었다 | • 안경군에서 우월하다 | • v2가 Pi5 30 fps를 만족한다 | • 표현 학습의 기여가 완전히 분리되었다",
+      "resolvedFontSize": 20,
+      "resolvedTextStyle": {
+        "fontSize": 20,
+        "typeface": "+mn-lt",
+        "color": "#162235",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 4,
+        "lines": [
+          {
+            "index": 1,
+            "text": "• 프라이버시가 확보되었다"
+          },
+          {
+            "index": 2,
+            "text": "• 안경군에서 우월하다"
+          },
+          {
+            "index": 3,
+            "text": "• v2가 Pi5 30 fps를 만족한다"
+          },
+          {
+            "index": 4,
+            "text": "• 표현 학습의 기여가 완전히 분리되었다"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "• 프라이버시가 확보되었다",
+          "resolvedTextStyle": {
+            "fontSize": 20,
+            "color": "#162235",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "• 프라이버시가 확보되었다",
+              "fontSize": 20,
+              "color": "#162235",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "• 안경군에서 우월하다",
+          "resolvedTextStyle": {
+            "fontSize": 20,
+            "color": "#162235",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "• 안경군에서 우월하다",
+              "fontSize": 20,
+              "color": "#162235",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 3,
+          "text": "• v2가 Pi5 30 fps를 만족한다",
+          "resolvedTextStyle": {
+            "fontSize": 20,
+            "color": "#162235",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "• v2가 Pi5 30 fps를 만족한다",
+              "fontSize": 20,
+              "color": "#162235",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 4,
+          "text": "• 표현 학습의 기여가 완전히 분리되었다",
+          "resolvedTextStyle": {
+            "fontSize": 20,
+            "color": "#162235",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "• 표현 학습의 기여가 완전히 분리되었다",
+              "fontSize": 20,
+              "color": "#162235",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 11,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/n21c7adg",
+      "id": "11",
+      "bbox": [
+        72,
+        578,
+        1136,
+        38
+      ],
+      "geometry": "rect",
+      "text": "따라서 다음 논문의 메시지는 “프라이버시 해결”이 아니라 “유용성·누출을 같은 조건에서 측정한 기준선”입니다.",
+      "textPreview": "따라서 다음 논문의 메시지는 “프라이버시 해결”이 아니라 “유용성·누출을 같은 조건에서 측정한 기준선”입니다.",
+      "resolvedFontSize": 22,
+      "resolvedTextStyle": {
+        "fontSize": 22,
+        "typeface": "+mn-lt",
+        "color": "#102B4E",
+        "bold": true,
+        "alignment": "center",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "따라서 다음 논문의 메시지는 “프라이버시 해결”이 아니라 “유용성·누출을 같은 조건에서 측정한 기준선”입니다."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "따라서 다음 논문의 메시지는 “프라이버시 해결”이 아니라 “유용성·누출을 같은 조건에서 측정한 기준선”입니다.",
+          "resolvedTextStyle": {
+            "fontSize": 22,
+            "color": "#102B4E",
+            "bold": true,
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "따라서 다음 논문의 메시지는 “프라이버시 해결”이 아니라 “유용성·누출을 같은 조건에서 측정한 기준선”입니다.",
+              "fontSize": 22,
+              "color": "#102B4E",
+              "bold": true,
+              "alignment": "center"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 12,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/83adgfu1",
+      "id": "12",
+      "bbox": [
+        72,
+        676,
+        1136,
+        1
+      ],
+      "geometry": "rect",
+      "fillColor": "#D7E0EE",
+      "lineColor": "#D7E0EE",
+      "lineWidth": 1
+    },
+    {
+      "order": 13,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/943e9kvm",
+      "id": "13",
+      "bbox": [
+        72,
+        685,
+        900,
+        18
+      ],
+      "geometry": "rect",
+      "text": "Source: docs/v2/PROTOCOL.md §0, §§9–13; results/v2/posthoc_subgroups.json; docs/PI5_BENCHMARK.md.",
+      "textPreview": "Source: docs/v2/PROTOCOL.md §0, §§9–13; results/v2/posthoc_subgroups.json; docs/PI5_BENCHMARK.md.",
+      "resolvedFontSize": 12,
+      "resolvedTextStyle": {
+        "fontSize": 12,
+        "typeface": "+mn-lt",
+        "color": "#56657A",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Source: docs/v2/PROTOCOL.md §0, §§9–13; results/v2/posthoc_subgroups.json; docs/PI5_BENCHMARK.md."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Source: docs/v2/PROTOCOL.md §0, §§9–13; results/v2/posthoc_subgroups.json; docs/PI5_BENCHMARK.md.",
+          "resolvedTextStyle": {
+            "fontSize": 12,
+            "color": "#56657A",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "Source: docs/v2/PROTOCOL.md §0, §§9–13; results/v2/posthoc_subgroups.json; docs/PI5_BENCHMARK.md.",
+              "fontSize": 12,
+              "color": "#56657A",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 14,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/a5cvipcr",
+      "id": "14",
+      "bbox": [
+        1164,
+        684,
+        44,
+        20
+      ],
+      "geometry": "rect",
+      "text": "08",
+      "textPreview": "08",
+      "resolvedFontSize": 13,
+      "resolvedTextStyle": {
+        "fontSize": 13,
+        "typeface": "+mn-lt",
+        "color": "#102B4E",
+        "bold": true,
+        "alignment": "right",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "08"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "08",
+          "resolvedTextStyle": {
+            "fontSize": 13,
+            "color": "#102B4E",
+            "bold": true,
+            "alignment": "right"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "08",
+              "fontSize": 13,
+              "color": "#102B4E",
+              "bold": true,
+              "alignment": "right"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    }
+  ],
+  "composeRuns": []
+}

@@ -1,0 +1,6718 @@
+{
+  "purpose": "Post-hoc U1 root-cause audit; no retraining, threshold selection, or primary-result change.",
+  "config": {
+    "data": "data/processed/v2",
+    "models": "models/v2",
+    "train_results": "results/v2/train_encoder.json",
+    "out": "results/v2/u1_audit.json",
+    "fig_dir": "docs/v2/figures",
+    "user": 1,
+    "tag": "m22",
+    "arch": "vpres",
+    "latent": 16,
+    "batch": 32,
+    "max_events_per_sheet": 10,
+    "no_figures": false
+  },
+  "input_norm": "frame_standardize",
+  "replay": {
+    "fold": 1,
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "device": "cuda",
+    "checkpoint_format": "saved frozen CNN encoder.pt + head.pt",
+    "frozen_validation_thresholds": [
+      1.0949525833129883,
+      0.9686896800994873,
+      -0.14826589822769165
+    ]
+  },
+  "event_set": {
+    "replayed": "e_valid events only: exactly the events used by the final training/evaluation protocol.",
+    "n_user_events_total": 112,
+    "n_replayed": 109,
+    "n_screened_out_before_replay": 3,
+    "screened_out_reasons_not_exclusive": {
+      "missing_policy": 0,
+      "off_seat_policy": 3,
+      "excluded_user_policy": 0
+    },
+    "note": "Because e_off_seat events were excluded before the final run, an e_off_seat rate of zero among replayed events is expected, not evidence that the raw session had no face-position issue."
+  },
+  "limitations": [
+    "The final run did not retain ear_head checkpoints or raw test-score sidecars. Therefore EAR-only / ours-only event categories are not reconstructed here.",
+    "e_off_seat is an existing seat-position flag, not an event-level multi-face flag. Any face_position entry below is user-level context only.",
+    "Contact sheets are deterministic visual review subsets, not random samples or new inferential tests."
+  ],
+  "face_position_user_context": {
+    "user": 1,
+    "seconds": 6.5,
+    "n_labelled_faces": 2118,
+    "mode_x": 923.9992370605469,
+    "tol": 250.0,
+    "off_seat_rate": 0.023607176581680833,
+    "off_seat_single_face": 0,
+    "off_seat_multi_face": 50,
+    "events_touched": 3,
+    "events_total": 112,
+    "events_touched_rate": 0.026785714285714284,
+    "x_percentiles": {
+      "1": 340.05016632080077,
+      "5": 881.5779510498047,
+      "50": 923.6394958496094,
+      "95": 985.4031494140625,
+      "99": 994.5985882568359
+    },
+    "multiface_seat_hist": [
+      0,
+      0,
+      0,
+      0,
+      50,
+      19,
+      0,
+      0,
+      0,
+      0,
+      0,
+      67,
+      2,
+      0,
+      0,
+      0
+    ],
+    "n_multiface_faces": 138,
+    "exam_day": "2022-10-05"
+  },
+  "summary": {
+    "all": {
+      "n_events": 109,
+      "blink": 55,
+      "unblink": 54,
+      "event_off_seat_rate": 0.0,
+      "mean_missing_frames": 0.0,
+      "event_with_missing_rate": 0.0,
+      "mean_frame_off_seat_count": 0.0,
+      "mean_cubic_frame_count": 0.0,
+      "mean_padded_frame_count": 0.0,
+      "mean_seed_disagree": 1.0,
+      "t_rel": {
+        "median": 0.3553694188594818,
+        "p10": 0.10656261295080185,
+        "p90": 0.815156090259552
+      },
+      "span_median_px": {
+        "median": 128.55413818359375,
+        "p10": 125.98277435302734,
+        "p90": 132.56432189941407
+      },
+      "brightness_median": {
+        "median": 39.545799255371094,
+        "p10": 36.969024658203125,
+        "p90": 41.23437652587891
+      },
+      "sharpness_median": {
+        "median": 128.34149169921875,
+        "p10": 97.40270385742187,
+        "p90": 159.28702697753906
+      }
+    },
+    "ours_correct": {
+      "n_events": 73,
+      "blink": 22,
+      "unblink": 51,
+      "event_off_seat_rate": 0.0,
+      "mean_missing_frames": 0.0,
+      "event_with_missing_rate": 0.0,
+      "mean_frame_off_seat_count": 0.0,
+      "mean_cubic_frame_count": 0.0,
+      "mean_padded_frame_count": 0.0,
+      "mean_seed_disagree": 0.3150684931506849,
+      "t_rel": {
+        "median": 0.35431480407714844,
+        "p10": 0.12280341982841492,
+        "p90": 0.8515005469322204
+      },
+      "span_median_px": {
+        "median": 128.6717987060547,
+        "p10": 125.59203796386718,
+        "p90": 133.3829376220703
+      },
+      "brightness_median": {
+        "median": 39.76386642456055,
+        "p10": 37.192596435546875,
+        "p90": 41.226251220703126
+      },
+      "sharpness_median": {
+        "median": 127.10380554199219,
+        "p10": 97.08817901611329,
+        "p90": 155.8247833251953
+      }
+    },
+    "ours_error": {
+      "n_events": 36,
+      "blink": 33,
+      "unblink": 3,
+      "event_off_seat_rate": 0.0,
+      "mean_missing_frames": 0.0,
+      "event_with_missing_rate": 0.0,
+      "mean_frame_off_seat_count": 0.0,
+      "mean_cubic_frame_count": 0.0,
+      "mean_padded_frame_count": 0.0,
+      "mean_seed_disagree": 2.388888888888889,
+      "t_rel": {
+        "median": 0.36263106763362885,
+        "p10": 0.10586657747626305,
+        "p90": 0.7225201725959778
+      },
+      "span_median_px": {
+        "median": 128.29114532470703,
+        "p10": 126.47851181030273,
+        "p90": 130.724365234375
+      },
+      "brightness_median": {
+        "median": 38.91132926940918,
+        "p10": 36.78286170959473,
+        "p90": 41.11225700378418
+      },
+      "sharpness_median": {
+        "median": 130.77587127685547,
+        "p10": 107.66337966918945,
+        "p90": 159.64303588867188
+      }
+    },
+    "by_label": {
+      "blink": {
+        "n_events": 55,
+        "blink": 55,
+        "unblink": 0,
+        "event_off_seat_rate": 0.0,
+        "mean_missing_frames": 0.0,
+        "event_with_missing_rate": 0.0,
+        "mean_frame_off_seat_count": 0.0,
+        "mean_cubic_frame_count": 0.0,
+        "mean_padded_frame_count": 0.0,
+        "mean_seed_disagree": 1.6727272727272726,
+        "t_rel": {
+          "median": 0.29239484667778015,
+          "p10": 0.07617210894823075,
+          "p90": 0.7868386149406433
+        },
+        "span_median_px": {
+          "median": 128.6116485595703,
+          "p10": 126.21517333984374,
+          "p90": 131.20473022460936
+        },
+        "brightness_median": {
+          "median": 39.545799255371094,
+          "p10": 37.31349639892578,
+          "p90": 41.38638610839844
+        },
+        "sharpness_median": {
+          "median": 125.75354766845703,
+          "p10": 83.6328628540039,
+          "p90": 158.54640197753906
+        }
+      },
+      "unblink": {
+        "n_events": 54,
+        "blink": 0,
+        "unblink": 54,
+        "event_off_seat_rate": 0.0,
+        "mean_missing_frames": 0.0,
+        "event_with_missing_rate": 0.0,
+        "mean_frame_off_seat_count": 0.0,
+        "mean_cubic_frame_count": 0.0,
+        "mean_padded_frame_count": 0.0,
+        "mean_seed_disagree": 0.3148148148148148,
+        "t_rel": {
+          "median": 0.4302157461643219,
+          "p10": 0.14387127608060837,
+          "p90": 0.8226437449455262
+        },
+        "span_median_px": {
+          "median": 128.47926330566406,
+          "p10": 125.59602279663086,
+          "p90": 133.29387359619142
+        },
+        "brightness_median": {
+          "median": 39.52182579040527,
+          "p10": 36.77521591186523,
+          "p90": 41.0187801361084
+        },
+        "sharpness_median": {
+          "median": 128.9280548095703,
+          "p10": 105.14325103759765,
+          "p90": 158.244580078125
+        }
+      }
+    },
+    "error_label_counts": {
+      "blink": 33,
+      "unblink": 3
+    }
+  },
+  "contact_sheet_selection": {
+    "error_order": "most seed-consistent errors, then e_off_seat, then source event index",
+    "correct_order": "e_off_seat first, then source event index",
+    "max_events_per_sheet": 10
+  },
+  "figures": {
+    "ours_error": "docs/v2/figures/u1_audit_ours_error.png",
+    "ours_correct_context": "docs/v2/figures/u1_audit_ours_correct_context.png"
+  },
+  "events": [
+    {
+      "event_index": 0,
+      "event_id_within_user": 0,
+      "start_frame": 1339,
+      "end_frame": 1357,
+      "label_blink": 1,
+      "t_rel": 0.0054236468859016895,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 131.01548767089844,
+        "p10": 123.30653533935546,
+        "p90": 134.07113647460938
+      },
+      "brightness": {
+        "median": 44.082130432128906,
+        "p10": 39.88849639892578,
+        "p90": 45.96392669677734
+      },
+      "contrast": {
+        "median": 32.31142807006836,
+        "p10": 28.340821075439454,
+        "p90": 36.039388275146486
+      },
+      "sharpness": {
+        "median": 77.5707015991211,
+        "p10": 65.86572875976563,
+        "p90": 85.32884063720702
+      },
+      "ear": {
+        "median": 0.22144433856010437,
+        "p10": 0.18821536004543304,
+        "p90": 0.29565732181072235
+      },
+      "seed_logits": [
+        4.920538902282715,
+        4.47576379776001,
+        1.8847428560256958
+      ],
+      "seed_predictions": [
+        1,
+        1,
+        1
+      ],
+      "mean_logit": 3.7603485186894736,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 1,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 1,
+      "event_id_within_user": 1,
+      "start_frame": 1534,
+      "end_frame": 1552,
+      "label_blink": 1,
+      "t_rel": 0.01129926461726427,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 124.72911834716797,
+        "p10": 123.66534118652343,
+        "p90": 126.00356903076172
+      },
+      "brightness": {
+        "median": 39.3603515625,
+        "p10": 38.76484298706055,
+        "p90": 39.70460968017578
+      },
+      "contrast": {
+        "median": 29.28465461730957,
+        "p10": 28.904763793945314,
+        "p90": 29.779623794555665
+      },
+      "sharpness": {
+        "median": 150.39210510253906,
+        "p10": 145.56454467773438,
+        "p90": 154.74334716796875
+      },
+      "ear": {
+        "median": 0.2652725279331207,
+        "p10": 0.249358132481575,
+        "p90": 0.2868887335062027
+      },
+      "seed_logits": [
+        3.66105318069458,
+        -0.3336418867111206,
+        -1.1602038145065308
+      ],
+      "seed_predictions": [
+        1,
+        0,
+        0
+      ],
+      "mean_logit": 0.7224024931589762,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 2,
+      "ours_correct": false,
+      "category": "ours_error"
+    },
+    {
+      "event_index": 2,
+      "event_id_within_user": 2,
+      "start_frame": 1719,
+      "end_frame": 1737,
+      "label_blink": 1,
+      "t_rel": 0.016873568296432495,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 125.0344467163086,
+        "p10": 124.01883087158203,
+        "p90": 125.7552001953125
+      },
+      "brightness": {
+        "median": 38.76337814331055,
+        "p10": 38.094842529296876,
+        "p90": 39.50230484008789
+      },
+      "contrast": {
+        "median": 28.789243698120117,
+        "p10": 28.535784912109374,
+        "p90": 29.5273380279541
+      },
+      "sharpness": {
+        "median": 142.62583923339844,
+        "p10": 138.0484832763672,
+        "p90": 152.31771240234374
+      },
+      "ear": {
+        "median": 0.2659437656402588,
+        "p10": 0.2515752613544464,
+        "p90": 0.27958308160305023
+      },
+      "seed_logits": [
+        4.017210960388184,
+        2.8211634159088135,
+        -0.49353909492492676
+      ],
+      "seed_predictions": [
+        1,
+        1,
+        0
+      ],
+      "mean_logit": 2.11494509379069,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 1,
+      "n_seed_disagree": 1,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 3,
+      "event_id_within_user": 3,
+      "start_frame": 2805,
+      "end_frame": 2823,
+      "label_blink": 1,
+      "t_rel": 0.049596238881349564,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 128.40798950195312,
+        "p10": 125.6267593383789,
+        "p90": 133.66445922851562
+      },
+      "brightness": {
+        "median": 44.5185546875,
+        "p10": 38.49554595947266,
+        "p90": 48.33351440429687
+      },
+      "contrast": {
+        "median": 31.760814666748047,
+        "p10": 28.343003463745116,
+        "p90": 32.88416595458985
+      },
+      "sharpness": {
+        "median": 79.47384643554688,
+        "p10": 72.27591552734376,
+        "p90": 95.58100280761718
+      },
+      "ear": {
+        "median": 0.2565556615591049,
+        "p10": 0.20303912460803986,
+        "p90": 0.2995538115501404
+      },
+      "seed_logits": [
+        6.965197563171387,
+        8.55045223236084,
+        6.085846424102783
+      ],
+      "seed_predictions": [
+        1,
+        1,
+        1
+      ],
+      "mean_logit": 7.200498739878337,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 1,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 4,
+      "event_id_within_user": 4,
+      "start_frame": 2814,
+      "end_frame": 2832,
+      "label_blink": 1,
+      "t_rel": 0.0498674213886261,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 131.30880737304688,
+        "p10": 128.55740356445312,
+        "p90": 133.87886657714844
+      },
+      "brightness": {
+        "median": 42.898048400878906,
+        "p10": 40.24191513061523,
+        "p90": 48.33351440429687
+      },
+      "contrast": {
+        "median": 29.075580596923828,
+        "p10": 28.041318130493163,
+        "p90": 32.88416595458985
+      },
+      "sharpness": {
+        "median": 89.8934097290039,
+        "p10": 72.27591552734376,
+        "p90": 98.85636749267579
+      },
+      "ear": {
+        "median": 0.2576029300689697,
+        "p10": 0.20303912460803986,
+        "p90": 0.3035035729408264
+      },
+      "seed_logits": [
+        5.477588653564453,
+        2.3975746631622314,
+        5.301388740539551
+      ],
+      "seed_predictions": [
+        1,
+        1,
+        1
+      ],
+      "mean_logit": 4.392184019088745,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 1,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 5,
+      "event_id_within_user": 5,
+      "start_frame": 3563,
+      "end_frame": 3581,
+      "label_blink": 1,
+      "t_rel": 0.07243581861257553,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 128.5340576171875,
+        "p10": 127.23943176269532,
+        "p90": 129.66570129394532
+      },
+      "brightness": {
+        "median": 40.551368713378906,
+        "p10": 40.02429733276367,
+        "p90": 41.019161224365234
+      },
+      "contrast": {
+        "median": 28.99788475036621,
+        "p10": 28.678575134277345,
+        "p90": 29.867330932617186
+      },
+      "sharpness": {
+        "median": 147.12530517578125,
+        "p10": 139.5864685058594,
+        "p90": 168.17706604003905
+      },
+      "ear": {
+        "median": 0.2567397356033325,
+        "p10": 0.24654069542884827,
+        "p90": 0.2752458453178406
+      },
+      "seed_logits": [
+        0.5736733078956604,
+        0.7565594911575317,
+        -1.1591647863388062
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": 0.057022670904795326,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 3,
+      "ours_correct": false,
+      "category": "ours_error"
+    },
+    {
+      "event_index": 6,
+      "event_id_within_user": 6,
+      "start_frame": 3873,
+      "end_frame": 3891,
+      "label_blink": 1,
+      "t_rel": 0.08177654445171356,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 128.22206115722656,
+        "p10": 127.5279037475586,
+        "p90": 130.03365783691407
+      },
+      "brightness": {
+        "median": 40.96904373168945,
+        "p10": 40.86607437133789,
+        "p90": 41.126854705810544
+      },
+      "contrast": {
+        "median": 29.796661376953125,
+        "p10": 29.649758911132814,
+        "p90": 30.048450088500978
+      },
+      "sharpness": {
+        "median": 164.04586791992188,
+        "p10": 157.7401580810547,
+        "p90": 174.78916015625
+      },
+      "ear": {
+        "median": 0.27351391315460205,
+        "p10": 0.2542835772037506,
+        "p90": 0.2867569625377655
+      },
+      "seed_logits": [
+        0.9662801623344421,
+        1.6562342643737793,
+        -0.2827909290790558
+      ],
+      "seed_predictions": [
+        0,
+        1,
+        0
+      ],
+      "mean_logit": 0.7799078325430552,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 2,
+      "ours_correct": false,
+      "category": "ours_error"
+    },
+    {
+      "event_index": 7,
+      "event_id_within_user": 7,
+      "start_frame": 4634,
+      "end_frame": 4652,
+      "label_blink": 1,
+      "t_rel": 0.10470651835203171,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 127.27403259277344,
+        "p10": 126.4855712890625,
+        "p90": 127.81583251953126
+      },
+      "brightness": {
+        "median": 39.71025466918945,
+        "p10": 39.16210784912109,
+        "p90": 40.43472671508789
+      },
+      "contrast": {
+        "median": 28.136669158935547,
+        "p10": 27.943949127197264,
+        "p90": 28.68651351928711
+      },
+      "sharpness": {
+        "median": 148.47305297851562,
+        "p10": 140.97486877441406,
+        "p90": 159.30065307617187
+      },
+      "ear": {
+        "median": 0.24957537651062012,
+        "p10": 0.2417210265994072,
+        "p90": 0.26448793709278107
+      },
+      "seed_logits": [
+        0.5283135771751404,
+        -2.0377190113067627,
+        -0.9470071792602539
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -0.8188042044639587,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 3,
+      "ours_correct": false,
+      "category": "ours_error"
+    },
+    {
+      "event_index": 8,
+      "event_id_within_user": 8,
+      "start_frame": 4711,
+      "end_frame": 4729,
+      "label_blink": 1,
+      "t_rel": 0.10702663660049438,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 128.60780334472656,
+        "p10": 127.02685089111328,
+        "p90": 130.03492431640626
+      },
+      "brightness": {
+        "median": 39.545799255371094,
+        "p10": 38.398633575439455,
+        "p90": 39.83380813598633
+      },
+      "contrast": {
+        "median": 28.199386596679688,
+        "p10": 27.466259765625,
+        "p90": 28.84566764831543
+      },
+      "sharpness": {
+        "median": 140.9241180419922,
+        "p10": 132.00525665283203,
+        "p90": 154.19464721679688
+      },
+      "ear": {
+        "median": 0.2603941857814789,
+        "p10": 0.2488718032836914,
+        "p90": 0.2794887572526932
+      },
+      "seed_logits": [
+        1.19477379322052,
+        -1.8829114437103271,
+        -1.6841732263565063
+      ],
+      "seed_predictions": [
+        1,
+        0,
+        0
+      ],
+      "mean_logit": -0.7907702922821045,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 2,
+      "ours_correct": false,
+      "category": "ours_error"
+    },
+    {
+      "event_index": 9,
+      "event_id_within_user": 9,
+      "start_frame": 5084,
+      "end_frame": 5102,
+      "label_blink": 1,
+      "t_rel": 0.11826563626527786,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 126.87391662597656,
+        "p10": 125.14017639160156,
+        "p90": 127.79731140136718
+      },
+      "brightness": {
+        "median": 37.12646484375,
+        "p10": 36.59943466186523,
+        "p90": 39.650760650634766
+      },
+      "contrast": {
+        "median": 25.95041275024414,
+        "p10": 25.6972297668457,
+        "p90": 27.881814575195314
+      },
+      "sharpness": {
+        "median": 124.7981185913086,
+        "p10": 113.37258911132812,
+        "p90": 141.52851257324218
+      },
+      "ear": {
+        "median": 0.2500506788492203,
+        "p10": 0.2259620800614357,
+        "p90": 0.258441761136055
+      },
+      "seed_logits": [
+        1.0775362253189087,
+        -3.583949089050293,
+        -1.13125741481781
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -1.2125567595163982,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 3,
+      "ours_correct": false,
+      "category": "ours_error"
+    },
+    {
+      "event_index": 10,
+      "event_id_within_user": 10,
+      "start_frame": 5250,
+      "end_frame": 5268,
+      "label_blink": 1,
+      "t_rel": 0.12326744943857193,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 126.40884399414062,
+        "p10": 125.63254852294922,
+        "p90": 129.9672821044922
+      },
+      "brightness": {
+        "median": 39.853126525878906,
+        "p10": 39.56462860107422,
+        "p90": 40.298868560791014
+      },
+      "contrast": {
+        "median": 28.48565101623535,
+        "p10": 28.174226760864258,
+        "p90": 28.918432235717773
+      },
+      "sharpness": {
+        "median": 163.24594116210938,
+        "p10": 152.60553894042968,
+        "p90": 166.3600311279297
+      },
+      "ear": {
+        "median": 0.2470516413450241,
+        "p10": 0.2339458093047142,
+        "p90": 0.2569740116596222
+      },
+      "seed_logits": [
+        1.9646098613739014,
+        -3.9352288246154785,
+        -2.735316276550293
+      ],
+      "seed_predictions": [
+        1,
+        0,
+        0
+      ],
+      "mean_logit": -1.5686450799306233,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 2,
+      "ours_correct": false,
+      "category": "ours_error"
+    },
+    {
+      "event_index": 11,
+      "event_id_within_user": 11,
+      "start_frame": 5363,
+      "end_frame": 5381,
+      "label_blink": 1,
+      "t_rel": 0.12667229771614075,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 128.13204956054688,
+        "p10": 126.69076232910156,
+        "p90": 130.2036346435547
+      },
+      "brightness": {
+        "median": 38.935646057128906,
+        "p10": 38.32144546508789,
+        "p90": 40.21751937866211
+      },
+      "contrast": {
+        "median": 27.914331436157227,
+        "p10": 27.458650588989258,
+        "p90": 29.41652717590332
+      },
+      "sharpness": {
+        "median": 149.50543212890625,
+        "p10": 138.10326232910157,
+        "p90": 158.05416564941407
+      },
+      "ear": {
+        "median": 0.24403005838394165,
+        "p10": 0.23656275868415833,
+        "p90": 0.2556951344013214
+      },
+      "seed_logits": [
+        -0.093553826212883,
+        -5.119156837463379,
+        -3.207829475402832
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -2.806846713026365,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 3,
+      "ours_correct": false,
+      "category": "ours_error"
+    },
+    {
+      "event_index": 12,
+      "event_id_within_user": 12,
+      "start_frame": 6504,
+      "end_frame": 6522,
+      "label_blink": 1,
+      "t_rel": 0.1610521823167801,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 126.60274505615234,
+        "p10": 125.81126251220704,
+        "p90": 127.49179077148438
+      },
+      "brightness": {
+        "median": 38.88701248168945,
+        "p10": 36.600215911865234,
+        "p90": 39.56597747802734
+      },
+      "contrast": {
+        "median": 27.07479476928711,
+        "p10": 26.280844116210936,
+        "p90": 28.69830322265625
+      },
+      "sharpness": {
+        "median": 111.14909362792969,
+        "p10": 103.91630706787109,
+        "p90": 126.77290344238281
+      },
+      "ear": {
+        "median": 0.24756744503974915,
+        "p10": 0.2335527390241623,
+        "p90": 0.2946784645318985
+      },
+      "seed_logits": [
+        -1.9025986194610596,
+        0.5211484432220459,
+        -0.7018181681632996
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -0.6944227814674377,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 3,
+      "ours_correct": false,
+      "category": "ours_error"
+    },
+    {
+      "event_index": 13,
+      "event_id_within_user": 13,
+      "start_frame": 7063,
+      "end_frame": 7081,
+      "label_blink": 1,
+      "t_rel": 0.17789562046527863,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 129.94248962402344,
+        "p10": 128.81202697753906,
+        "p90": 131.19910583496093
+      },
+      "brightness": {
+        "median": 39.0185546875,
+        "p10": 37.692830657958986,
+        "p90": 40.05710906982422
+      },
+      "contrast": {
+        "median": 28.721149444580078,
+        "p10": 28.135369110107423,
+        "p90": 29.58265838623047
+      },
+      "sharpness": {
+        "median": 120.3497543334961,
+        "p10": 115.54779815673828,
+        "p90": 152.22238159179688
+      },
+      "ear": {
+        "median": 0.2670072764158249,
+        "p10": 0.25718818604946136,
+        "p90": 0.27922405302524567
+      },
+      "seed_logits": [
+        1.504483938217163,
+        3.2181167602539062,
+        -1.648720383644104
+      ],
+      "seed_predictions": [
+        1,
+        1,
+        0
+      ],
+      "mean_logit": 1.0246267716089885,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 1,
+      "n_seed_disagree": 1,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 14,
+      "event_id_within_user": 14,
+      "start_frame": 7544,
+      "end_frame": 7562,
+      "label_blink": 1,
+      "t_rel": 0.19238881766796112,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 130.029296875,
+        "p10": 129.07179565429686,
+        "p90": 131.78378295898438
+      },
+      "brightness": {
+        "median": 41.329490661621094,
+        "p10": 41.2351577758789,
+        "p90": 41.651973724365234
+      },
+      "contrast": {
+        "median": 30.699541091918945,
+        "p10": 30.446108627319337,
+        "p90": 30.93441848754883
+      },
+      "sharpness": {
+        "median": 159.86351013183594,
+        "p10": 152.78872375488282,
+        "p90": 164.304052734375
+      },
+      "ear": {
+        "median": 0.2756582051515579,
+        "p10": 0.2549194395542145,
+        "p90": 0.2905738353729248
+      },
+      "seed_logits": [
+        3.941868305206299,
+        -0.3080677092075348,
+        -1.01980459690094
+      ],
+      "seed_predictions": [
+        1,
+        0,
+        0
+      ],
+      "mean_logit": 0.8713319996992747,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 2,
+      "ours_correct": false,
+      "category": "ours_error"
+    },
+    {
+      "event_index": 15,
+      "event_id_within_user": 15,
+      "start_frame": 7704,
+      "end_frame": 7722,
+      "label_blink": 1,
+      "t_rel": 0.19720983505249023,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 130.33494567871094,
+        "p10": 129.59984130859374,
+        "p90": 131.67333374023437
+      },
+      "brightness": {
+        "median": 41.21484375,
+        "p10": 41.08203277587891,
+        "p90": 41.470977020263675
+      },
+      "contrast": {
+        "median": 30.60980796813965,
+        "p10": 30.416012573242188,
+        "p90": 30.749294662475585
+      },
+      "sharpness": {
+        "median": 159.65147399902344,
+        "p10": 150.01484069824218,
+        "p90": 166.54190673828126
+      },
+      "ear": {
+        "median": 0.2659081220626831,
+        "p10": 0.2471919059753418,
+        "p90": 0.2782922089099884
+      },
+      "seed_logits": [
+        4.991234302520752,
+        3.9237914085388184,
+        -0.8112751245498657
+      ],
+      "seed_predictions": [
+        1,
+        1,
+        0
+      ],
+      "mean_logit": 2.701250195503235,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 1,
+      "n_seed_disagree": 1,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 16,
+      "event_id_within_user": 16,
+      "start_frame": 7971,
+      "end_frame": 7989,
+      "label_blink": 1,
+      "t_rel": 0.2052549123764038,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 129.7809600830078,
+        "p10": 128.7355194091797,
+        "p90": 131.4435028076172
+      },
+      "brightness": {
+        "median": 41.42431640625,
+        "p10": 41.29056625366211,
+        "p90": 41.66978454589844
+      },
+      "contrast": {
+        "median": 30.81285858154297,
+        "p10": 30.599755477905273,
+        "p90": 31.100844955444337
+      },
+      "sharpness": {
+        "median": 159.4225616455078,
+        "p10": 151.91500549316407,
+        "p90": 164.171142578125
+      },
+      "ear": {
+        "median": 0.2698653042316437,
+        "p10": 0.2502133399248123,
+        "p90": 0.281118243932724
+      },
+      "seed_logits": [
+        3.8374931812286377,
+        -0.5781421661376953,
+        -3.617344379425049
+      ],
+      "seed_predictions": [
+        1,
+        0,
+        0
+      ],
+      "mean_logit": -0.11933112144470215,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 2,
+      "ours_correct": false,
+      "category": "ours_error"
+    },
+    {
+      "event_index": 17,
+      "event_id_within_user": 17,
+      "start_frame": 8179,
+      "end_frame": 8197,
+      "label_blink": 1,
+      "t_rel": 0.21152223646640778,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 130.38140869140625,
+        "p10": 129.1031707763672,
+        "p90": 131.32706298828126
+      },
+      "brightness": {
+        "median": 41.255470275878906,
+        "p10": 41.11546783447265,
+        "p90": 41.474999237060544
+      },
+      "contrast": {
+        "median": 30.630403518676758,
+        "p10": 30.516987228393553,
+        "p90": 30.86584358215332
+      },
+      "sharpness": {
+        "median": 157.23216247558594,
+        "p10": 148.29097595214844,
+        "p90": 164.33912353515626
+      },
+      "ear": {
+        "median": 0.26786598563194275,
+        "p10": 0.2511929124593735,
+        "p90": 0.28079044818878174
+      },
+      "seed_logits": [
+        4.771169185638428,
+        -4.804512977600098,
+        -2.645449638366699
+      ],
+      "seed_predictions": [
+        1,
+        0,
+        0
+      ],
+      "mean_logit": -0.8929311434427897,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 2,
+      "ours_correct": false,
+      "category": "ours_error"
+    },
+    {
+      "event_index": 18,
+      "event_id_within_user": 18,
+      "start_frame": 8472,
+      "end_frame": 8490,
+      "label_blink": 1,
+      "t_rel": 0.2203507274389267,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 127.99964141845703,
+        "p10": 126.85207824707031,
+        "p90": 130.72347106933594
+      },
+      "brightness": {
+        "median": 40.40507888793945,
+        "p10": 40.26388702392578,
+        "p90": 40.71416015625
+      },
+      "contrast": {
+        "median": 29.842557907104492,
+        "p10": 29.7241455078125,
+        "p90": 30.098499298095703
+      },
+      "sharpness": {
+        "median": 150.6785125732422,
+        "p10": 139.19552001953124,
+        "p90": 158.35447692871094
+      },
+      "ear": {
+        "median": 0.27841952443122864,
+        "p10": 0.2624632269144058,
+        "p90": 0.29538556933403015
+      },
+      "seed_logits": [
+        1.9916446208953857,
+        -0.11019187420606613,
+        -2.2907912731170654
+      ],
+      "seed_predictions": [
+        1,
+        0,
+        0
+      ],
+      "mean_logit": -0.13644617547591528,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 2,
+      "ours_correct": false,
+      "category": "ours_error"
+    },
+    {
+      "event_index": 19,
+      "event_id_within_user": 19,
+      "start_frame": 8668,
+      "end_frame": 8686,
+      "label_blink": 1,
+      "t_rel": 0.22625647485256195,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 127.86161041259766,
+        "p10": 126.91393737792968,
+        "p90": 129.28806762695314
+      },
+      "brightness": {
+        "median": 40.306640625,
+        "p10": 39.955195617675784,
+        "p90": 40.492774200439456
+      },
+      "contrast": {
+        "median": 29.823434829711914,
+        "p10": 29.512022018432617,
+        "p90": 30.058620071411134
+      },
+      "sharpness": {
+        "median": 145.73548889160156,
+        "p10": 132.96351623535156,
+        "p90": 158.73759765625
+      },
+      "ear": {
+        "median": 0.2842859476804733,
+        "p10": 0.2594613879919052,
+        "p90": 0.30101655423641205
+      },
+      "seed_logits": [
+        4.340299606323242,
+        8.408587455749512,
+        2.6338019371032715
+      ],
+      "seed_predictions": [
+        1,
+        1,
+        1
+      ],
+      "mean_logit": 5.127562999725342,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 1,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 20,
+      "event_id_within_user": 20,
+      "start_frame": 8900,
+      "end_frame": 8918,
+      "label_blink": 1,
+      "t_rel": 0.23324695229530334,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 128.6717987060547,
+        "p10": 127.74412078857422,
+        "p90": 129.68221740722657
+      },
+      "brightness": {
+        "median": 40.30908203125,
+        "p10": 40.16230392456055,
+        "p90": 40.51177825927734
+      },
+      "contrast": {
+        "median": 29.79076385498047,
+        "p10": 29.49498176574707,
+        "p90": 29.936054611206053
+      },
+      "sharpness": {
+        "median": 149.64486694335938,
+        "p10": 142.53029174804686,
+        "p90": 164.38422241210938
+      },
+      "ear": {
+        "median": 0.28053009510040283,
+        "p10": 0.25005052238702774,
+        "p90": 0.2979847192764282
+      },
+      "seed_logits": [
+        3.707613468170166,
+        4.673610210418701,
+        -0.7090314626693726
+      ],
+      "seed_predictions": [
+        1,
+        1,
+        0
+      ],
+      "mean_logit": 2.557397405306498,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 1,
+      "n_seed_disagree": 1,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 21,
+      "event_id_within_user": 21,
+      "start_frame": 9108,
+      "end_frame": 9126,
+      "label_blink": 1,
+      "t_rel": 0.2395142763853073,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 128.6116485595703,
+        "p10": 127.67880706787109,
+        "p90": 129.54968872070313
+      },
+      "brightness": {
+        "median": 40.059471130371094,
+        "p10": 39.933223724365234,
+        "p90": 40.24837799072266
+      },
+      "contrast": {
+        "median": 29.716777801513672,
+        "p10": 29.436376953125,
+        "p90": 29.807402038574217
+      },
+      "sharpness": {
+        "median": 144.6713104248047,
+        "p10": 128.3176254272461,
+        "p90": 156.4886901855469
+      },
+      "ear": {
+        "median": 0.28393638134002686,
+        "p10": 0.25911037623882294,
+        "p90": 0.30268193781375885
+      },
+      "seed_logits": [
+        1.6263760328292847,
+        4.954090118408203,
+        -0.8835465908050537
+      ],
+      "seed_predictions": [
+        1,
+        1,
+        0
+      ],
+      "mean_logit": 1.8989731868108113,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 1,
+      "n_seed_disagree": 1,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 22,
+      "event_id_within_user": 22,
+      "start_frame": 9199,
+      "end_frame": 9217,
+      "label_blink": 1,
+      "t_rel": 0.24225623905658722,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 128.91514587402344,
+        "p10": 127.66304168701171,
+        "p90": 129.96539916992188
+      },
+      "brightness": {
+        "median": 39.92363357543945,
+        "p10": 39.81609344482422,
+        "p90": 40.03601608276367
+      },
+      "contrast": {
+        "median": 29.60480308532715,
+        "p10": 29.429011154174805,
+        "p90": 29.71885414123535
+      },
+      "sharpness": {
+        "median": 141.3299560546875,
+        "p10": 131.75490112304686,
+        "p90": 153.88929443359373
+      },
+      "ear": {
+        "median": 0.2850170433521271,
+        "p10": 0.25345200300216675,
+        "p90": 0.29801058769226074
+      },
+      "seed_logits": [
+        1.9474084377288818,
+        3.7910635471343994,
+        -2.9946255683898926
+      ],
+      "seed_predictions": [
+        1,
+        1,
+        0
+      ],
+      "mean_logit": 0.9146154721577963,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 1,
+      "n_seed_disagree": 1,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 23,
+      "event_id_within_user": 23,
+      "start_frame": 9336,
+      "end_frame": 9354,
+      "label_blink": 1,
+      "t_rel": 0.24638423323631287,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 126.0860595703125,
+        "p10": 125.07564239501953,
+        "p90": 127.7953887939453
+      },
+      "brightness": {
+        "median": 39.103614807128906,
+        "p10": 38.823419189453126,
+        "p90": 39.32224578857422
+      },
+      "contrast": {
+        "median": 28.931657791137695,
+        "p10": 28.688943481445314,
+        "p90": 29.260063552856444
+      },
+      "sharpness": {
+        "median": 139.8950958251953,
+        "p10": 129.43040161132814,
+        "p90": 148.11961059570314
+      },
+      "ear": {
+        "median": 0.26094597578048706,
+        "p10": 0.24727126955986023,
+        "p90": 0.2793970853090286
+      },
+      "seed_logits": [
+        0.3419916033744812,
+        1.5006942749023438,
+        -2.3102147579193115
+      ],
+      "seed_predictions": [
+        0,
+        1,
+        0
+      ],
+      "mean_logit": -0.15584295988082886,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 2,
+      "ours_correct": false,
+      "category": "ours_error"
+    },
+    {
+      "event_index": 24,
+      "event_id_within_user": 24,
+      "start_frame": 9391,
+      "end_frame": 9409,
+      "label_blink": 1,
+      "t_rel": 0.24804146587848663,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 126.01834106445312,
+        "p10": 125.1357666015625,
+        "p90": 126.94224395751954
+      },
+      "brightness": {
+        "median": 39.43330001831055,
+        "p10": 39.08783111572266,
+        "p90": 39.66765594482422
+      },
+      "contrast": {
+        "median": 28.79990005493164,
+        "p10": 28.58393325805664,
+        "p90": 29.21084671020508
+      },
+      "sharpness": {
+        "median": 131.9833526611328,
+        "p10": 122.57908325195312,
+        "p90": 139.79369201660157
+      },
+      "ear": {
+        "median": 0.2639846056699753,
+        "p10": 0.2510109096765518,
+        "p90": 0.29149164259433746
+      },
+      "seed_logits": [
+        -0.087058886885643,
+        3.435166120529175,
+        -2.748058319091797
+      ],
+      "seed_predictions": [
+        0,
+        1,
+        0
+      ],
+      "mean_logit": 0.2000163048505783,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 2,
+      "ours_correct": false,
+      "category": "ours_error"
+    },
+    {
+      "event_index": 25,
+      "event_id_within_user": 25,
+      "start_frame": 9889,
+      "end_frame": 9907,
+      "label_blink": 1,
+      "t_rel": 0.26304689049720764,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 125.50572204589844,
+        "p10": 124.91658020019531,
+        "p90": 126.13281555175782
+      },
+      "brightness": {
+        "median": 39.716209411621094,
+        "p10": 39.54998016357422,
+        "p90": 39.807716369628906
+      },
+      "contrast": {
+        "median": 29.15436363220215,
+        "p10": 28.88714256286621,
+        "p90": 29.237137222290038
+      },
+      "sharpness": {
+        "median": 126.27685546875,
+        "p10": 120.96497650146485,
+        "p90": 138.238330078125
+      },
+      "ear": {
+        "median": 0.29123347997665405,
+        "p10": 0.2583225518465042,
+        "p90": 0.3025789260864258
+      },
+      "seed_logits": [
+        1.684353232383728,
+        2.789821147918701,
+        -1.4790687561035156
+      ],
+      "seed_predictions": [
+        1,
+        1,
+        0
+      ],
+      "mean_logit": 0.9983685413996378,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 1,
+      "n_seed_disagree": 1,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 26,
+      "event_id_within_user": 26,
+      "start_frame": 10093,
+      "end_frame": 10111,
+      "label_blink": 1,
+      "t_rel": 0.2691936790943146,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 125.84050750732422,
+        "p10": 125.01165924072265,
+        "p90": 126.27263641357422
+      },
+      "brightness": {
+        "median": 39.623435974121094,
+        "p10": 39.546817779541016,
+        "p90": 39.772772216796874
+      },
+      "contrast": {
+        "median": 29.197708129882812,
+        "p10": 28.88480110168457,
+        "p90": 29.312704467773436
+      },
+      "sharpness": {
+        "median": 125.75354766845703,
+        "p10": 111.39851531982421,
+        "p90": 130.54647827148438
+      },
+      "ear": {
+        "median": 0.29327672719955444,
+        "p10": 0.2621222883462906,
+        "p90": 0.30630001425743103
+      },
+      "seed_logits": [
+        1.4685249328613281,
+        4.794073581695557,
+        -1.6418930292129517
+      ],
+      "seed_predictions": [
+        1,
+        1,
+        0
+      ],
+      "mean_logit": 1.540235161781311,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 1,
+      "n_seed_disagree": 1,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 27,
+      "event_id_within_user": 27,
+      "start_frame": 10863,
+      "end_frame": 10881,
+      "label_blink": 1,
+      "t_rel": 0.29239484667778015,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 129.27491760253906,
+        "p10": 128.1351104736328,
+        "p90": 130.22733154296876
+      },
+      "brightness": {
+        "median": 39.721290588378906,
+        "p10": 39.58650360107422,
+        "p90": 39.83355560302734
+      },
+      "contrast": {
+        "median": 29.536563873291016,
+        "p10": 29.37724189758301,
+        "p90": 29.704373168945313
+      },
+      "sharpness": {
+        "median": 124.97643280029297,
+        "p10": 119.83415222167969,
+        "p90": 135.6790740966797
+      },
+      "ear": {
+        "median": 0.2863937020301819,
+        "p10": 0.25280116498470306,
+        "p90": 0.30362068116664886
+      },
+      "seed_logits": [
+        2.543924331665039,
+        4.361835479736328,
+        -0.33982375264167786
+      ],
+      "seed_predictions": [
+        1,
+        1,
+        0
+      ],
+      "mean_logit": 2.1886453529198966,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 1,
+      "n_seed_disagree": 1,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 28,
+      "event_id_within_user": 28,
+      "start_frame": 11155,
+      "end_frame": 11173,
+      "label_blink": 1,
+      "t_rel": 0.3011932075023651,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 128.67893981933594,
+        "p10": 128.10381164550782,
+        "p90": 130.07398681640626
+      },
+      "brightness": {
+        "median": 39.71406173706055,
+        "p10": 39.603241729736325,
+        "p90": 39.82552642822266
+      },
+      "contrast": {
+        "median": 29.415348052978516,
+        "p10": 29.22223320007324,
+        "p90": 29.60867805480957
+      },
+      "sharpness": {
+        "median": 124.91250610351562,
+        "p10": 117.95606079101563,
+        "p90": 132.0329803466797
+      },
+      "ear": {
+        "median": 0.2848098874092102,
+        "p10": 0.25431618094444275,
+        "p90": 0.29987066984176636
+      },
+      "seed_logits": [
+        1.3827643394470215,
+        4.551357746124268,
+        -3.1579885482788086
+      ],
+      "seed_predictions": [
+        1,
+        1,
+        0
+      ],
+      "mean_logit": 0.9253778457641602,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 1,
+      "n_seed_disagree": 1,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 29,
+      "event_id_within_user": 29,
+      "start_frame": 11296,
+      "end_frame": 11314,
+      "label_blink": 1,
+      "t_rel": 0.3054417371749878,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 128.3602294921875,
+        "p10": 127.34966430664062,
+        "p90": 129.27181396484374
+      },
+      "brightness": {
+        "median": 39.65009689331055,
+        "p10": 39.515682983398435,
+        "p90": 39.79806671142578
+      },
+      "contrast": {
+        "median": 29.408220291137695,
+        "p10": 29.10476150512695,
+        "p90": 29.480770874023438
+      },
+      "sharpness": {
+        "median": 119.12483215332031,
+        "p10": 114.35155639648437,
+        "p90": 132.77224731445312
+      },
+      "ear": {
+        "median": 0.28767263889312744,
+        "p10": 0.2535226196050644,
+        "p90": 0.30538612604141235
+      },
+      "seed_logits": [
+        0.07165421545505524,
+        5.02534294128418,
+        -2.3608195781707764
+      ],
+      "seed_predictions": [
+        0,
+        1,
+        0
+      ],
+      "mean_logit": 0.9120591928561529,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 2,
+      "ours_correct": false,
+      "category": "ours_error"
+    },
+    {
+      "event_index": 30,
+      "event_id_within_user": 30,
+      "start_frame": 12037,
+      "end_frame": 12055,
+      "label_blink": 1,
+      "t_rel": 0.32776907086372375,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 134.0581512451172,
+        "p10": 131.85608520507813,
+        "p90": 136.1939910888672
+      },
+      "brightness": {
+        "median": 40.827049255371094,
+        "p10": 40.633243560791016,
+        "p90": 41.12750091552734
+      },
+      "contrast": {
+        "median": 30.060049057006836,
+        "p10": 29.836611175537108,
+        "p90": 30.25129814147949
+      },
+      "sharpness": {
+        "median": 135.79014587402344,
+        "p10": 130.85662231445312,
+        "p90": 147.2243408203125
+      },
+      "ear": {
+        "median": 0.2793392241001129,
+        "p10": 0.2540271580219269,
+        "p90": 0.2930067926645279
+      },
+      "seed_logits": [
+        4.4298505783081055,
+        3.645932197570801,
+        2.51345157623291
+      ],
+      "seed_predictions": [
+        1,
+        1,
+        1
+      ],
+      "mean_logit": 3.529744784037272,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 1,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 31,
+      "event_id_within_user": 31,
+      "start_frame": 12580,
+      "end_frame": 12598,
+      "label_blink": 1,
+      "t_rel": 0.34413039684295654,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 134.65879821777344,
+        "p10": 132.54639587402343,
+        "p90": 136.31008605957032
+      },
+      "brightness": {
+        "median": 40.56201171875,
+        "p10": 40.365684509277344,
+        "p90": 40.64951019287109
+      },
+      "contrast": {
+        "median": 29.74485206604004,
+        "p10": 29.44295883178711,
+        "p90": 29.925813293457033
+      },
+      "sharpness": {
+        "median": 138.7557373046875,
+        "p10": 132.4976806640625,
+        "p90": 143.93837890625
+      },
+      "ear": {
+        "median": 0.27331097424030304,
+        "p10": 0.2515453100204468,
+        "p90": 0.29052503407001495
+      },
+      "seed_logits": [
+        1.7364940643310547,
+        1.3580758571624756,
+        -2.815004825592041
+      ],
+      "seed_predictions": [
+        1,
+        1,
+        0
+      ],
+      "mean_logit": 0.09318836530049641,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 1,
+      "n_seed_disagree": 1,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 32,
+      "event_id_within_user": 32,
+      "start_frame": 12982,
+      "end_frame": 13000,
+      "label_blink": 1,
+      "t_rel": 0.35624322295188904,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 133.69448852539062,
+        "p10": 132.11929931640626,
+        "p90": 136.92660827636718
+      },
+      "brightness": {
+        "median": 38.45537185668945,
+        "p10": 37.46533203125,
+        "p90": 40.15349578857422
+      },
+      "contrast": {
+        "median": 28.384042739868164,
+        "p10": 27.329618835449217,
+        "p90": 29.744922256469728
+      },
+      "sharpness": {
+        "median": 124.65203094482422,
+        "p10": 120.05573272705078,
+        "p90": 131.55601196289064
+      },
+      "ear": {
+        "median": 0.24684618413448334,
+        "p10": 0.23766539990901947,
+        "p90": 0.25967852771282196
+      },
+      "seed_logits": [
+        2.032396078109741,
+        -2.7631022930145264,
+        -3.0766899585723877
+      ],
+      "seed_predictions": [
+        1,
+        0,
+        0
+      ],
+      "mean_logit": -1.2691320578257244,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 2,
+      "ours_correct": false,
+      "category": "ours_error"
+    },
+    {
+      "event_index": 33,
+      "event_id_within_user": 33,
+      "start_frame": 13406,
+      "end_frame": 13424,
+      "label_blink": 1,
+      "t_rel": 0.36901891231536865,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 130.40011596679688,
+        "p10": 126.58468627929688,
+        "p90": 133.8234100341797
+      },
+      "brightness": {
+        "median": 37.65449142456055,
+        "p10": 36.75410079956055,
+        "p90": 39.655662536621094
+      },
+      "contrast": {
+        "median": 27.532991409301758,
+        "p10": 26.64465675354004,
+        "p90": 28.965838623046874
+      },
+      "sharpness": {
+        "median": 124.88921356201172,
+        "p10": 116.55188293457032,
+        "p90": 130.80443115234374
+      },
+      "ear": {
+        "median": 0.2467363402247429,
+        "p10": 0.2325522005558014,
+        "p90": 0.2618744969367981
+      },
+      "seed_logits": [
+        -2.3061702251434326,
+        -3.298454999923706,
+        -2.0822627544403076
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -2.562295993169149,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 3,
+      "ours_correct": false,
+      "category": "ours_error"
+    },
+    {
+      "event_index": 34,
+      "event_id_within_user": 34,
+      "start_frame": 15282,
+      "end_frame": 15300,
+      "label_blink": 1,
+      "t_rel": 0.4255453646183014,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 131.04861450195312,
+        "p10": 129.67727966308593,
+        "p90": 132.31103515625
+      },
+      "brightness": {
+        "median": 39.259666442871094,
+        "p10": 37.35394439697266,
+        "p90": 40.14265518188476
+      },
+      "contrast": {
+        "median": 28.790973663330078,
+        "p10": 27.659103012084962,
+        "p90": 29.69490737915039
+      },
+      "sharpness": {
+        "median": 136.02963256835938,
+        "p10": 130.2619842529297,
+        "p90": 145.28477783203124
+      },
+      "ear": {
+        "median": 0.25069116055965424,
+        "p10": 0.24315615743398666,
+        "p90": 0.26631051301956177
+      },
+      "seed_logits": [
+        0.12641359865665436,
+        -4.334009170532227,
+        -3.131896495819092
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -2.4464973558982215,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 3,
+      "ours_correct": false,
+      "category": "ours_error"
+    },
+    {
+      "event_index": 35,
+      "event_id_within_user": 35,
+      "start_frame": 15609,
+      "end_frame": 15627,
+      "label_blink": 1,
+      "t_rel": 0.4353983402252197,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 128.04747009277344,
+        "p10": 126.02791595458984,
+        "p90": 131.11359252929688
+      },
+      "brightness": {
+        "median": 36.30078125,
+        "p10": 35.1134750366211,
+        "p90": 38.983750915527345
+      },
+      "contrast": {
+        "median": 26.240812301635742,
+        "p10": 25.658572387695312,
+        "p90": 28.78159828186035
+      },
+      "sharpness": {
+        "median": 113.49247741699219,
+        "p10": 98.92999267578125,
+        "p90": 127.34494018554688
+      },
+      "ear": {
+        "median": 0.2538938969373703,
+        "p10": 0.24156156182289124,
+        "p90": 0.2753864973783493
+      },
+      "seed_logits": [
+        2.8884057998657227,
+        -3.2865500450134277,
+        -1.5157662630081177
+      ],
+      "seed_predictions": [
+        1,
+        0,
+        0
+      ],
+      "mean_logit": -0.6379701693852743,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 2,
+      "ours_correct": false,
+      "category": "ours_error"
+    },
+    {
+      "event_index": 36,
+      "event_id_within_user": 36,
+      "start_frame": 15678,
+      "end_frame": 15696,
+      "label_blink": 1,
+      "t_rel": 0.4374774098396301,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 128.5015106201172,
+        "p10": 127.40932159423828,
+        "p90": 130.70153198242187
+      },
+      "brightness": {
+        "median": 36.225196838378906,
+        "p10": 34.67521514892578,
+        "p90": 39.079219818115234
+      },
+      "contrast": {
+        "median": 26.273380279541016,
+        "p10": 25.44553146362305,
+        "p90": 28.50492134094238
+      },
+      "sharpness": {
+        "median": 111.01549530029297,
+        "p10": 99.65952606201172,
+        "p90": 118.88765716552734
+      },
+      "ear": {
+        "median": 0.24765107035636902,
+        "p10": 0.23481468856334686,
+        "p90": 0.2611239105463028
+      },
+      "seed_logits": [
+        -0.3354308605194092,
+        -2.8501346111297607,
+        -2.1105196475982666
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -1.7653617064158122,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 3,
+      "ours_correct": false,
+      "category": "ours_error"
+    },
+    {
+      "event_index": 37,
+      "event_id_within_user": 37,
+      "start_frame": 15871,
+      "end_frame": 15889,
+      "label_blink": 1,
+      "t_rel": 0.4432927668094635,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 127.86846160888672,
+        "p10": 126.72255859375,
+        "p90": 128.8524627685547
+      },
+      "brightness": {
+        "median": 39.452247619628906,
+        "p10": 39.302205657958986,
+        "p90": 39.755350494384764
+      },
+      "contrast": {
+        "median": 29.079530715942383,
+        "p10": 28.924797821044923,
+        "p90": 29.431729888916017
+      },
+      "sharpness": {
+        "median": 97.5075454711914,
+        "p10": 89.10670623779296,
+        "p90": 121.04664306640625
+      },
+      "ear": {
+        "median": 0.2887226790189743,
+        "p10": 0.25185995548963547,
+        "p90": 0.30257923901081085
+      },
+      "seed_logits": [
+        3.6483871936798096,
+        8.526103019714355,
+        0.6011322736740112
+      ],
+      "seed_predictions": [
+        1,
+        1,
+        1
+      ],
+      "mean_logit": 4.258540829022725,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 1,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 38,
+      "event_id_within_user": 38,
+      "start_frame": 17391,
+      "end_frame": 17409,
+      "label_blink": 1,
+      "t_rel": 0.4890924394130707,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 127.84969329833984,
+        "p10": 126.81024322509765,
+        "p90": 129.20497436523436
+      },
+      "brightness": {
+        "median": 38.43144607543945,
+        "p10": 36.563768005371095,
+        "p90": 39.128282165527345
+      },
+      "contrast": {
+        "median": 28.394428253173828,
+        "p10": 27.402538299560547,
+        "p90": 29.02708854675293
+      },
+      "sharpness": {
+        "median": 129.76995849609375,
+        "p10": 123.77515869140625,
+        "p90": 139.97972717285157
+      },
+      "ear": {
+        "median": 0.25983263552188873,
+        "p10": 0.23680444061756134,
+        "p90": 0.2833954393863678
+      },
+      "seed_logits": [
+        -1.1401286125183105,
+        -3.478691339492798,
+        -3.3141520023345947
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -2.644323984781901,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 3,
+      "ours_correct": false,
+      "category": "ours_error"
+    },
+    {
+      "event_index": 39,
+      "event_id_within_user": 39,
+      "start_frame": 20071,
+      "end_frame": 20089,
+      "label_blink": 1,
+      "t_rel": 0.5698445439338684,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 126.54817962646484,
+        "p10": 125.08679656982422,
+        "p90": 128.9058410644531
+      },
+      "brightness": {
+        "median": 38.06415939331055,
+        "p10": 36.383203125,
+        "p90": 40.02333984375
+      },
+      "contrast": {
+        "median": 28.31685447692871,
+        "p10": 27.101134490966796,
+        "p90": 30.392321014404295
+      },
+      "sharpness": {
+        "median": 122.0757827758789,
+        "p10": 107.25357971191406,
+        "p90": 145.86333312988282
+      },
+      "ear": {
+        "median": 0.25274939835071564,
+        "p10": 0.24015945941209793,
+        "p90": 0.28126610815525055
+      },
+      "seed_logits": [
+        -1.150542974472046,
+        -6.2857160568237305,
+        -5.236937046051025
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -4.224398692448934,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 3,
+      "ours_correct": false,
+      "category": "ours_error"
+    },
+    {
+      "event_index": 40,
+      "event_id_within_user": 40,
+      "start_frame": 20962,
+      "end_frame": 20980,
+      "label_blink": 1,
+      "t_rel": 0.5966915488243103,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 127.42623138427734,
+        "p10": 126.62008666992188,
+        "p90": 128.95768127441406
+      },
+      "brightness": {
+        "median": 39.67753982543945,
+        "p10": 37.446834564208984,
+        "p90": 40.46804656982422
+      },
+      "contrast": {
+        "median": 29.502498626708984,
+        "p10": 28.249668502807616,
+        "p90": 30.727536392211913
+      },
+      "sharpness": {
+        "median": 134.022705078125,
+        "p10": 122.5572280883789,
+        "p90": 143.05859375
+      },
+      "ear": {
+        "median": 0.25779348611831665,
+        "p10": 0.24267571419477463,
+        "p90": 0.29048603773117065
+      },
+      "seed_logits": [
+        2.0519964694976807,
+        -3.211461067199707,
+        -5.265477657318115
+      ],
+      "seed_predictions": [
+        1,
+        0,
+        0
+      ],
+      "mean_logit": -2.1416474183400473,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 2,
+      "ours_correct": false,
+      "category": "ours_error"
+    },
+    {
+      "event_index": 41,
+      "event_id_within_user": 41,
+      "start_frame": 23049,
+      "end_frame": 23067,
+      "label_blink": 1,
+      "t_rel": 0.6595757603645325,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 128.98109436035156,
+        "p10": 126.24904937744141,
+        "p90": 131.75411682128907
+      },
+      "brightness": {
+        "median": 38.568260192871094,
+        "p10": 36.39109344482422,
+        "p90": 41.358690643310545
+      },
+      "contrast": {
+        "median": 27.03738784790039,
+        "p10": 26.141826629638672,
+        "p90": 29.923582458496092
+      },
+      "sharpness": {
+        "median": 119.60640716552734,
+        "p10": 110.70306701660157,
+        "p90": 132.34224853515624
+      },
+      "ear": {
+        "median": 0.25048694014549255,
+        "p10": 0.23996811360120773,
+        "p90": 0.26784081757068634
+      },
+      "seed_logits": [
+        2.040982961654663,
+        0.4136044979095459,
+        -1.9587452411651611
+      ],
+      "seed_predictions": [
+        1,
+        0,
+        0
+      ],
+      "mean_logit": 0.16528073946634927,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 2,
+      "ours_correct": false,
+      "category": "ours_error"
+    },
+    {
+      "event_index": 42,
+      "event_id_within_user": 42,
+      "start_frame": 23535,
+      "end_frame": 23553,
+      "label_blink": 1,
+      "t_rel": 0.6742196083068848,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 129.1705322265625,
+        "p10": 127.17978363037109,
+        "p90": 130.43479919433594
+      },
+      "brightness": {
+        "median": 36.988868713378906,
+        "p10": 35.874002838134764,
+        "p90": 40.34607467651367
+      },
+      "contrast": {
+        "median": 26.584150314331055,
+        "p10": 25.99576072692871,
+        "p90": 29.070888900756835
+      },
+      "sharpness": {
+        "median": 104.51519775390625,
+        "p10": 99.76793518066407,
+        "p90": 125.5936279296875
+      },
+      "ear": {
+        "median": 0.24571633338928223,
+        "p10": 0.2365674003958702,
+        "p90": 0.272211030125618
+      },
+      "seed_logits": [
+        1.7994370460510254,
+        -3.2795979976654053,
+        -1.831562876701355
+      ],
+      "seed_predictions": [
+        1,
+        0,
+        0
+      ],
+      "mean_logit": -1.1039079427719116,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 2,
+      "ours_correct": false,
+      "category": "ours_error"
+    },
+    {
+      "event_index": 43,
+      "event_id_within_user": 43,
+      "start_frame": 24090,
+      "end_frame": 24108,
+      "label_blink": 1,
+      "t_rel": 0.6909425258636475,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 128.6154022216797,
+        "p10": 127.63458709716797,
+        "p90": 131.55975341796875
+      },
+      "brightness": {
+        "median": 37.59404373168945,
+        "p10": 36.88136749267578,
+        "p90": 39.79294891357422
+      },
+      "contrast": {
+        "median": 27.39321517944336,
+        "p10": 26.81892318725586,
+        "p90": 29.003305435180664
+      },
+      "sharpness": {
+        "median": 115.75325775146484,
+        "p10": 98.80452270507813,
+        "p90": 135.48253784179687
+      },
+      "ear": {
+        "median": 0.2553858309984207,
+        "p10": 0.24352768808603287,
+        "p90": 0.28790004551410675
+      },
+      "seed_logits": [
+        -0.15206928551197052,
+        -2.818312644958496,
+        -2.7528443336486816
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -1.907742088039716,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 3,
+      "ours_correct": false,
+      "category": "ours_error"
+    },
+    {
+      "event_index": 44,
+      "event_id_within_user": 44,
+      "start_frame": 24192,
+      "end_frame": 24210,
+      "label_blink": 1,
+      "t_rel": 0.6940159201622009,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 128.9954376220703,
+        "p10": 126.20976409912109,
+        "p90": 132.67076110839844
+      },
+      "brightness": {
+        "median": 37.786720275878906,
+        "p10": 37.30595703125,
+        "p90": 40.19412078857422
+      },
+      "contrast": {
+        "median": 26.998355865478516,
+        "p10": 26.72359733581543,
+        "p90": 29.773082733154297
+      },
+      "sharpness": {
+        "median": 131.7817840576172,
+        "p10": 119.34019470214844,
+        "p90": 145.9790496826172
+      },
+      "ear": {
+        "median": 0.24037393927574158,
+        "p10": 0.22309129685163498,
+        "p90": 0.2551998198032379
+      },
+      "seed_logits": [
+        -0.3118194341659546,
+        -0.2717311978340149,
+        -2.427565097808838
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -1.0037052432696025,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 3,
+      "ours_correct": false,
+      "category": "ours_error"
+    },
+    {
+      "event_index": 45,
+      "event_id_within_user": 45,
+      "start_frame": 24845,
+      "end_frame": 24863,
+      "label_blink": 1,
+      "t_rel": 0.7136917114257812,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 128.91453552246094,
+        "p10": 127.58955993652344,
+        "p90": 131.10900268554687
+      },
+      "brightness": {
+        "median": 38.412109375,
+        "p10": 36.39808731079101,
+        "p90": 40.11599502563477
+      },
+      "contrast": {
+        "median": 27.698083877563477,
+        "p10": 26.436498641967773,
+        "p90": 29.488165283203124
+      },
+      "sharpness": {
+        "median": 111.2548828125,
+        "p10": 98.2,
+        "p90": 121.8672592163086
+      },
+      "ear": {
+        "median": 0.24423960596323013,
+        "p10": 0.23784258216619492,
+        "p90": 0.28718680143356323
+      },
+      "seed_logits": [
+        -0.6824339032173157,
+        -2.6581125259399414,
+        -2.7134664058685303
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -2.018004278341929,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 3,
+      "ours_correct": false,
+      "category": "ours_error"
+    },
+    {
+      "event_index": 46,
+      "event_id_within_user": 46,
+      "start_frame": 24984,
+      "end_frame": 25002,
+      "label_blink": 1,
+      "t_rel": 0.7178799510002136,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 130.15965270996094,
+        "p10": 127.41434631347656,
+        "p90": 132.80016479492187
+      },
+      "brightness": {
+        "median": 38.01933670043945,
+        "p10": 36.04630813598633,
+        "p90": 41.660020446777345
+      },
+      "contrast": {
+        "median": 27.06478500366211,
+        "p10": 26.335602951049804,
+        "p90": 30.76196174621582
+      },
+      "sharpness": {
+        "median": 110.81156158447266,
+        "p10": 88.20308837890624,
+        "p90": 126.27536315917968
+      },
+      "ear": {
+        "median": 0.24730680137872696,
+        "p10": 0.2309744656085968,
+        "p90": 0.28923898935317993
+      },
+      "seed_logits": [
+        1.9996581077575684,
+        -3.598604917526245,
+        -1.3687176704406738
+      ],
+      "seed_predictions": [
+        1,
+        0,
+        0
+      ],
+      "mean_logit": -0.9892214934031168,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 2,
+      "ours_correct": false,
+      "category": "ours_error"
+    },
+    {
+      "event_index": 47,
+      "event_id_within_user": 47,
+      "start_frame": 25292,
+      "end_frame": 25310,
+      "label_blink": 1,
+      "t_rel": 0.7271603941917419,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 127.54891967773438,
+        "p10": 126.1453125,
+        "p90": 130.81390991210938
+      },
+      "brightness": {
+        "median": 37.767677307128906,
+        "p10": 35.487657165527345,
+        "p90": 39.342637634277345
+      },
+      "contrast": {
+        "median": 27.041685104370117,
+        "p10": 26.171310806274413,
+        "p90": 28.85190315246582
+      },
+      "sharpness": {
+        "median": 84.48596954345703,
+        "p10": 78.0372817993164,
+        "p90": 107.25140380859375
+      },
+      "ear": {
+        "median": 0.24642429500818253,
+        "p10": 0.23063978552818298,
+        "p90": 0.28814226388931274
+      },
+      "seed_logits": [
+        2.3906257152557373,
+        -0.8124909996986389,
+        -1.0178080797195435
+      ],
+      "seed_predictions": [
+        1,
+        0,
+        0
+      ],
+      "mean_logit": 0.18677554527918497,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 2,
+      "ours_correct": false,
+      "category": "ours_error"
+    },
+    {
+      "event_index": 49,
+      "event_id_within_user": 49,
+      "start_frame": 26606,
+      "end_frame": 26624,
+      "label_blink": 1,
+      "t_rel": 0.7667530179023743,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 130.04519653320312,
+        "p10": 126.13973083496094,
+        "p90": 133.00036010742187
+      },
+      "brightness": {
+        "median": 73.62040710449219,
+        "p10": 72.31492462158204,
+        "p90": 75.67618865966797
+      },
+      "contrast": {
+        "median": 44.42205047607422,
+        "p10": 43.96159210205078,
+        "p90": 45.10445098876953
+      },
+      "sharpness": {
+        "median": 211.16607666015625,
+        "p10": 165.4169464111328,
+        "p90": 270.483154296875
+      },
+      "ear": {
+        "median": 0.28870460391044617,
+        "p10": 0.25780099630355835,
+        "p90": 0.3146275132894516
+      },
+      "seed_logits": [
+        4.267623424530029,
+        9.357544898986816,
+        2.446953296661377
+      ],
+      "seed_predictions": [
+        1,
+        1,
+        1
+      ],
+      "mean_logit": 5.357373873392741,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 1,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 50,
+      "event_id_within_user": 50,
+      "start_frame": 27717,
+      "end_frame": 27735,
+      "label_blink": 1,
+      "t_rel": 0.800229012966156,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 131.8083038330078,
+        "p10": 130.77710571289063,
+        "p90": 133.86217651367187
+      },
+      "brightness": {
+        "median": 37.853614807128906,
+        "p10": 36.354103088378906,
+        "p90": 38.3727523803711
+      },
+      "contrast": {
+        "median": 28.391376495361328,
+        "p10": 26.98689193725586,
+        "p90": 28.715230560302736
+      },
+      "sharpness": {
+        "median": 94.56868743896484,
+        "p10": 73.21486740112304,
+        "p90": 119.35685882568359
+      },
+      "ear": {
+        "median": 0.2763579487800598,
+        "p10": 0.2620004415512085,
+        "p90": 0.29364342987537384
+      },
+      "seed_logits": [
+        0.3374408483505249,
+        7.216770172119141,
+        -3.7712526321411133
+      ],
+      "seed_predictions": [
+        0,
+        1,
+        0
+      ],
+      "mean_logit": 1.2609861294428508,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 2,
+      "ours_correct": false,
+      "category": "ours_error"
+    },
+    {
+      "event_index": 51,
+      "event_id_within_user": 51,
+      "start_frame": 29108,
+      "end_frame": 29126,
+      "label_blink": 1,
+      "t_rel": 0.8421417474746704,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 127.7212905883789,
+        "p10": 124.33946685791015,
+        "p90": 133.36134033203126
+      },
+      "brightness": {
+        "median": 35.753318786621094,
+        "p10": 34.35574188232422,
+        "p90": 39.076463317871095
+      },
+      "contrast": {
+        "median": 25.335817337036133,
+        "p10": 24.393563079833985,
+        "p90": 29.156430435180663
+      },
+      "sharpness": {
+        "median": 80.42266082763672,
+        "p10": 65.83044738769532,
+        "p90": 87.76761322021484
+      },
+      "ear": {
+        "median": 0.23791493475437164,
+        "p10": 0.22385022789239883,
+        "p90": 0.3068898171186447
+      },
+      "seed_logits": [
+        0.8995535969734192,
+        -0.32262420654296875,
+        1.4737679958343506
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        1
+      ],
+      "mean_logit": 0.6835657954216003,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 2,
+      "ours_correct": false,
+      "category": "ours_error"
+    },
+    {
+      "event_index": 52,
+      "event_id_within_user": 52,
+      "start_frame": 29429,
+      "end_frame": 29447,
+      "label_blink": 1,
+      "t_rel": 0.8518139123916626,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 130.83291625976562,
+        "p10": 128.9448486328125,
+        "p90": 134.82500305175782
+      },
+      "brightness": {
+        "median": 36.43720626831055,
+        "p10": 34.28898544311524,
+        "p90": 38.862813568115236
+      },
+      "contrast": {
+        "median": 26.351869583129883,
+        "p10": 25.2375057220459,
+        "p90": 28.81029052734375
+      },
+      "sharpness": {
+        "median": 83.06412506103516,
+        "p10": 61.80211715698242,
+        "p90": 97.93102264404297
+      },
+      "ear": {
+        "median": 0.260980561375618,
+        "p10": 0.24701447784900665,
+        "p90": 0.3079945147037506
+      },
+      "seed_logits": [
+        0.5279015302658081,
+        4.490443229675293,
+        -0.0670522153377533
+      ],
+      "seed_predictions": [
+        0,
+        1,
+        1
+      ],
+      "mean_logit": 1.6504308482011159,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 1,
+      "n_seed_disagree": 1,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 53,
+      "event_id_within_user": 53,
+      "start_frame": 30864,
+      "end_frame": 30882,
+      "label_blink": 1,
+      "t_rel": 0.895052433013916,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 185.4060516357422,
+        "p10": 183.5186767578125,
+        "p90": 186.34227294921874
+      },
+      "brightness": {
+        "median": 40.47509765625,
+        "p10": 40.30970840454101,
+        "p90": 40.62798843383789
+      },
+      "contrast": {
+        "median": 29.37575340270996,
+        "p10": 29.024015426635742,
+        "p90": 29.579317474365233
+      },
+      "sharpness": {
+        "median": 71.29773712158203,
+        "p10": 65.06641387939453,
+        "p90": 75.5408203125
+      },
+      "ear": {
+        "median": 0.3113086521625519,
+        "p10": 0.2878205478191376,
+        "p90": 0.3318503648042679
+      },
+      "seed_logits": [
+        2.57785701751709,
+        6.474680423736572,
+        -1.8580224514007568
+      ],
+      "seed_predictions": [
+        1,
+        1,
+        0
+      ],
+      "mean_logit": 2.3981716632843018,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 1,
+      "n_seed_disagree": 1,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 54,
+      "event_id_within_user": 54,
+      "start_frame": 33187,
+      "end_frame": 33205,
+      "label_blink": 1,
+      "t_rel": 0.9650475978851318,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 126.54692077636719,
+        "p10": 119.3942855834961,
+        "p90": 134.2164733886719
+      },
+      "brightness": {
+        "median": 42.503318786621094,
+        "p10": 41.38355331420898,
+        "p90": 42.849786376953126
+      },
+      "contrast": {
+        "median": 29.54490852355957,
+        "p10": 29.02306137084961,
+        "p90": 30.413676834106447
+      },
+      "sharpness": {
+        "median": 67.58600616455078,
+        "p10": 49.11009140014649,
+        "p90": 100.64763946533202
+      },
+      "ear": {
+        "median": 0.2704998254776001,
+        "p10": 0.24069706350564957,
+        "p90": 0.29173141717910767
+      },
+      "seed_logits": [
+        1.1006181240081787,
+        11.18817138671875,
+        2.1274428367614746
+      ],
+      "seed_predictions": [
+        1,
+        1,
+        1
+      ],
+      "mean_logit": 4.805410782496135,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 1,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 55,
+      "event_id_within_user": 55,
+      "start_frame": 33762,
+      "end_frame": 33780,
+      "label_blink": 1,
+      "t_rel": 0.9823731184005737,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 128.72348022460938,
+        "p10": 127.64294891357422,
+        "p90": 129.41140441894532
+      },
+      "brightness": {
+        "median": 39.4677734375,
+        "p10": 39.346073150634766,
+        "p90": 39.655409240722655
+      },
+      "contrast": {
+        "median": 29.817235946655273,
+        "p10": 29.347599029541016,
+        "p90": 30.017444610595703
+      },
+      "sharpness": {
+        "median": 110.6324462890625,
+        "p10": 102.87980041503906,
+        "p90": 125.14284210205078
+      },
+      "ear": {
+        "median": 0.2878905236721039,
+        "p10": 0.2572896182537079,
+        "p90": 0.30565038323402405
+      },
+      "seed_logits": [
+        6.478253364562988,
+        6.038108825683594,
+        3.876234292984009
+      ],
+      "seed_predictions": [
+        1,
+        1,
+        1
+      ],
+      "mean_logit": 5.46419882774353,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 1,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 56,
+      "event_id_within_user": 56,
+      "start_frame": 1168,
+      "end_frame": 1186,
+      "label_blink": 0,
+      "t_rel": 0.00027118236175738275,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 130.27894592285156,
+        "p10": 129.47852783203126,
+        "p90": 131.00520935058594
+      },
+      "brightness": {
+        "median": 37.91943359375,
+        "p10": 37.82935562133789,
+        "p90": 38.006249237060544
+      },
+      "contrast": {
+        "median": 28.60637092590332,
+        "p10": 28.526904678344728,
+        "p90": 28.700283432006835
+      },
+      "sharpness": {
+        "median": 139.32347106933594,
+        "p10": 129.24166412353514,
+        "p90": 146.25427856445313
+      },
+      "ear": {
+        "median": 0.2784588932991028,
+        "p10": 0.27018022537231445,
+        "p90": 0.2899002730846405
+      },
+      "seed_logits": [
+        -2.739272356033325,
+        -5.56279182434082,
+        -5.500479221343994
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -4.600847800572713,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 57,
+      "event_id_within_user": 57,
+      "start_frame": 1307,
+      "end_frame": 1325,
+      "label_blink": 0,
+      "t_rel": 0.004459443036466837,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 128.2539520263672,
+        "p10": 127.26200408935547,
+        "p90": 129.11556396484374
+      },
+      "brightness": {
+        "median": 39.431251525878906,
+        "p10": 38.561328125,
+        "p90": 39.73742141723633
+      },
+      "contrast": {
+        "median": 29.309307098388672,
+        "p10": 28.474750137329103,
+        "p90": 29.523578643798828
+      },
+      "sharpness": {
+        "median": 155.89126586914062,
+        "p10": 102.4854949951172,
+        "p90": 166.38996276855468
+      },
+      "ear": {
+        "median": 0.29613344371318817,
+        "p10": 0.2874926030635834,
+        "p90": 0.30658239126205444
+      },
+      "seed_logits": [
+        -4.497421741485596,
+        -13.219252586364746,
+        -7.919833183288574
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -8.545502503712973,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 58,
+      "event_id_within_user": 58,
+      "start_frame": 4358,
+      "end_frame": 4376,
+      "label_blink": 0,
+      "t_rel": 0.0963902622461319,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 126.44786071777344,
+        "p10": 124.69453277587891,
+        "p90": 127.33237915039062
+      },
+      "brightness": {
+        "median": 38.23759841918945,
+        "p10": 37.37337951660156,
+        "p90": 38.558495330810544
+      },
+      "contrast": {
+        "median": 26.720136642456055,
+        "p10": 26.2869441986084,
+        "p90": 27.150197982788086
+      },
+      "sharpness": {
+        "median": 148.27146911621094,
+        "p10": 138.87757263183593,
+        "p90": 155.21080627441407
+      },
+      "ear": {
+        "median": 0.25885774195194244,
+        "p10": 0.2500729262828827,
+        "p90": 0.268931120634079
+      },
+      "seed_logits": [
+        1.7125256061553955,
+        -3.475010395050049,
+        -1.4812346696853638
+      ],
+      "seed_predictions": [
+        1,
+        0,
+        0
+      ],
+      "mean_logit": -1.0812398195266724,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 1,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 59,
+      "event_id_within_user": 59,
+      "start_frame": 5127,
+      "end_frame": 5145,
+      "label_blink": 0,
+      "t_rel": 0.11956128478050232,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 127.18205261230469,
+        "p10": 126.32308197021484,
+        "p90": 129.13076171875
+      },
+      "brightness": {
+        "median": 39.106346130371094,
+        "p10": 38.91373138427734,
+        "p90": 39.63867111206055
+      },
+      "contrast": {
+        "median": 27.98480224609375,
+        "p10": 27.71678047180176,
+        "p90": 28.56835823059082
+      },
+      "sharpness": {
+        "median": 153.9624481201172,
+        "p10": 140.76006469726562,
+        "p90": 161.60418395996095
+      },
+      "ear": {
+        "median": 0.2481464296579361,
+        "p10": 0.24178465455770493,
+        "p90": 0.2567380368709564
+      },
+      "seed_logits": [
+        2.5031535625457764,
+        -4.287051200866699,
+        -1.9304068088531494
+      ],
+      "seed_predictions": [
+        1,
+        0,
+        0
+      ],
+      "mean_logit": -1.2381014823913574,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 1,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 60,
+      "event_id_within_user": 60,
+      "start_frame": 5665,
+      "end_frame": 5683,
+      "label_blink": 0,
+      "t_rel": 0.1357719600200653,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 128.75405883789062,
+        "p10": 127.05865631103515,
+        "p90": 129.91640930175782
+      },
+      "brightness": {
+        "median": 41.021095275878906,
+        "p10": 39.828924560546874,
+        "p90": 41.25169906616211
+      },
+      "contrast": {
+        "median": 29.826967239379883,
+        "p10": 28.952073287963866,
+        "p90": 30.045354080200195
+      },
+      "sharpness": {
+        "median": 162.970458984375,
+        "p10": 137.11484985351564,
+        "p90": 173.87551879882812
+      },
+      "ear": {
+        "median": 0.26861321926116943,
+        "p10": 0.2509835958480835,
+        "p90": 0.2854950875043869
+      },
+      "seed_logits": [
+        0.9406018853187561,
+        -6.3393120765686035,
+        -1.896043062210083
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -2.431584417819977,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 61,
+      "event_id_within_user": 61,
+      "start_frame": 5893,
+      "end_frame": 5911,
+      "label_blink": 0,
+      "t_rel": 0.14264191687107086,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 128.2705535888672,
+        "p10": 125.98607025146484,
+        "p90": 129.0455749511719
+      },
+      "brightness": {
+        "median": 38.209373474121094,
+        "p10": 37.88468856811524,
+        "p90": 38.396775817871095
+      },
+      "contrast": {
+        "median": 27.662137985229492,
+        "p10": 27.343633270263673,
+        "p90": 27.871938705444336
+      },
+      "sharpness": {
+        "median": 140.98036193847656,
+        "p10": 133.82820739746094,
+        "p90": 148.95617370605467
+      },
+      "ear": {
+        "median": 0.2498619258403778,
+        "p10": 0.23597700148820877,
+        "p90": 0.25653234124183655
+      },
+      "seed_logits": [
+        1.1286656856536865,
+        -4.168726921081543,
+        -2.0749804973602295
+      ],
+      "seed_predictions": [
+        1,
+        0,
+        0
+      ],
+      "mean_logit": -1.705013910929362,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 1,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 62,
+      "event_id_within_user": 62,
+      "start_frame": 6029,
+      "end_frame": 6047,
+      "label_blink": 0,
+      "t_rel": 0.14673978090286255,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 126.55899047851562,
+        "p10": 125.79630737304687,
+        "p90": 127.37084045410157
+      },
+      "brightness": {
+        "median": 38.995506286621094,
+        "p10": 37.749121856689456,
+        "p90": 40.19328155517578
+      },
+      "contrast": {
+        "median": 27.56647491455078,
+        "p10": 27.08877944946289,
+        "p90": 28.81387062072754
+      },
+      "sharpness": {
+        "median": 146.6066436767578,
+        "p10": 134.02203063964845,
+        "p90": 164.4808837890625
+      },
+      "ear": {
+        "median": 0.2594645321369171,
+        "p10": 0.24158591777086258,
+        "p90": 0.2658788710832596
+      },
+      "seed_logits": [
+        2.1128854751586914,
+        -1.6813709735870361,
+        0.2520066499710083
+      ],
+      "seed_predictions": [
+        1,
+        0,
+        1
+      ],
+      "mean_logit": 0.22784038384755453,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 1,
+      "n_seed_disagree": 2,
+      "ours_correct": false,
+      "category": "ours_error"
+    },
+    {
+      "event_index": 63,
+      "event_id_within_user": 63,
+      "start_frame": 6276,
+      "end_frame": 6294,
+      "label_blink": 0,
+      "t_rel": 0.15418224036693573,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 129.07589721679688,
+        "p10": 126.64871826171876,
+        "p90": 130.7833038330078
+      },
+      "brightness": {
+        "median": 40.560935974121094,
+        "p10": 39.4107421875,
+        "p90": 40.85861358642578
+      },
+      "contrast": {
+        "median": 29.516389846801758,
+        "p10": 28.100043869018556,
+        "p90": 29.903836822509767
+      },
+      "sharpness": {
+        "median": 153.8437042236328,
+        "p10": 130.16378631591797,
+        "p90": 178.50077209472656
+      },
+      "ear": {
+        "median": 0.2569086104631424,
+        "p10": 0.2471376433968544,
+        "p90": 0.27437765896320343
+      },
+      "seed_logits": [
+        2.6516592502593994,
+        -4.26693868637085,
+        -1.8926178216934204
+      ],
+      "seed_predictions": [
+        1,
+        0,
+        0
+      ],
+      "mean_logit": -1.1692990859349568,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 1,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 64,
+      "event_id_within_user": 64,
+      "start_frame": 6734,
+      "end_frame": 6752,
+      "label_blink": 0,
+      "t_rel": 0.16798239946365356,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 129.23301696777344,
+        "p10": 127.84377899169922,
+        "p90": 130.28199768066406
+      },
+      "brightness": {
+        "median": 40.48876953125,
+        "p10": 40.24119110107422,
+        "p90": 40.67306671142578
+      },
+      "contrast": {
+        "median": 29.60577392578125,
+        "p10": 29.099198150634766,
+        "p90": 29.946453857421876
+      },
+      "sharpness": {
+        "median": 161.60670471191406,
+        "p10": 153.6620086669922,
+        "p90": 171.38883361816406
+      },
+      "ear": {
+        "median": 0.2687060385942459,
+        "p10": 0.2537425756454468,
+        "p90": 0.2789299935102463
+      },
+      "seed_logits": [
+        -0.21806694567203522,
+        -2.2766032218933105,
+        -3.1318697929382324
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -1.8755133201678593,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 65,
+      "event_id_within_user": 65,
+      "start_frame": 6810,
+      "end_frame": 6828,
+      "label_blink": 0,
+      "t_rel": 0.17027239501476288,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 127.39966583251953,
+        "p10": 125.30061340332031,
+        "p90": 129.03476257324218
+      },
+      "brightness": {
+        "median": 39.04150390625,
+        "p10": 38.32230453491211,
+        "p90": 39.96623001098633
+      },
+      "contrast": {
+        "median": 27.979467391967773,
+        "p10": 27.537090301513672,
+        "p90": 28.582772064208985
+      },
+      "sharpness": {
+        "median": 149.93408203125,
+        "p10": 140.83733520507812,
+        "p90": 158.9924530029297
+      },
+      "ear": {
+        "median": 0.24547096341848373,
+        "p10": 0.24061646312475204,
+        "p90": 0.2580728679895401
+      },
+      "seed_logits": [
+        3.1478090286254883,
+        -3.097762107849121,
+        -1.3110073804855347
+      ],
+      "seed_predictions": [
+        1,
+        0,
+        0
+      ],
+      "mean_logit": -0.42032015323638916,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 1,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 66,
+      "event_id_within_user": 66,
+      "start_frame": 7464,
+      "end_frame": 7482,
+      "label_blink": 0,
+      "t_rel": 0.18997830152511597,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 129.2090301513672,
+        "p10": 127.82453002929688,
+        "p90": 130.70933227539064
+      },
+      "brightness": {
+        "median": 40.54267501831055,
+        "p10": 39.492225646972656,
+        "p90": 40.97642517089844
+      },
+      "contrast": {
+        "median": 29.872961044311523,
+        "p10": 29.042059707641602,
+        "p90": 30.48803253173828
+      },
+      "sharpness": {
+        "median": 155.55885314941406,
+        "p10": 145.41920776367186,
+        "p90": 163.1431884765625
+      },
+      "ear": {
+        "median": 0.25868144631385803,
+        "p10": 0.2479644939303398,
+        "p90": 0.2690138816833496
+      },
+      "seed_logits": [
+        -0.0325922816991806,
+        -2.430124282836914,
+        -5.698538303375244
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -2.7204182893037796,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 67,
+      "event_id_within_user": 67,
+      "start_frame": 8279,
+      "end_frame": 8297,
+      "label_blink": 0,
+      "t_rel": 0.21453537046909332,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 128.37060546875,
+        "p10": 127.36370239257812,
+        "p90": 128.98353881835936
+      },
+      "brightness": {
+        "median": 40.418846130371094,
+        "p10": 40.30792922973633,
+        "p90": 40.48093795776367
+      },
+      "contrast": {
+        "median": 29.88068962097168,
+        "p10": 29.790451431274413,
+        "p90": 30.049296188354493
+      },
+      "sharpness": {
+        "median": 161.41427612304688,
+        "p10": 149.39786682128906,
+        "p90": 170.00619506835938
+      },
+      "ear": {
+        "median": 0.2845841646194458,
+        "p10": 0.27774912118911743,
+        "p90": 0.293053075671196
+      },
+      "seed_logits": [
+        -2.2874817848205566,
+        -4.657889366149902,
+        -5.252215385437012
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -4.06586217880249,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 68,
+      "event_id_within_user": 68,
+      "start_frame": 8948,
+      "end_frame": 8966,
+      "label_blink": 0,
+      "t_rel": 0.2346932590007782,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 128.59664916992188,
+        "p10": 127.98689422607421,
+        "p90": 129.5139373779297
+      },
+      "brightness": {
+        "median": 40.1875,
+        "p10": 40.08777389526367,
+        "p90": 40.24714736938476
+      },
+      "contrast": {
+        "median": 29.789649963378906,
+        "p10": 29.727021789550783,
+        "p90": 29.91188163757324
+      },
+      "sharpness": {
+        "median": 146.66033935546875,
+        "p10": 138.70054931640624,
+        "p90": 161.92052307128907
+      },
+      "ear": {
+        "median": 0.284012034535408,
+        "p10": 0.2770334482192993,
+        "p90": 0.2948032468557358
+      },
+      "seed_logits": [
+        -3.581591844558716,
+        -6.624362945556641,
+        -5.256895065307617
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -5.154283285140991,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 69,
+      "event_id_within_user": 69,
+      "start_frame": 9736,
+      "end_frame": 9754,
+      "label_blink": 0,
+      "t_rel": 0.25843679904937744,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 125.62391662597656,
+        "p10": 124.7877212524414,
+        "p90": 126.30166015625
+      },
+      "brightness": {
+        "median": 39.877540588378906,
+        "p10": 39.75662002563477,
+        "p90": 40.02320175170898
+      },
+      "contrast": {
+        "median": 29.27012062072754,
+        "p10": 29.20127296447754,
+        "p90": 29.380525970458983
+      },
+      "sharpness": {
+        "median": 128.34149169921875,
+        "p10": 119.53833770751953,
+        "p90": 142.60049133300782
+      },
+      "ear": {
+        "median": 0.28876982629299164,
+        "p10": 0.2832217812538147,
+        "p90": 0.2994609773159027
+      },
+      "seed_logits": [
+        -2.4158284664154053,
+        -0.9981533288955688,
+        -5.394853115081787
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -2.936278303464254,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 70,
+      "event_id_within_user": 70,
+      "start_frame": 9856,
+      "end_frame": 9874,
+      "label_blink": 0,
+      "t_rel": 0.2620525360107422,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 125.40916442871094,
+        "p10": 124.65777130126953,
+        "p90": 126.15175323486328
+      },
+      "brightness": {
+        "median": 39.82744216918945,
+        "p10": 39.70019607543945,
+        "p90": 39.9679672241211
+      },
+      "contrast": {
+        "median": 29.231094360351562,
+        "p10": 29.163838577270507,
+        "p90": 29.314846420288085
+      },
+      "sharpness": {
+        "median": 137.5901336669922,
+        "p10": 123.65563659667968,
+        "p90": 144.99529418945312
+      },
+      "ear": {
+        "median": 0.29051120579242706,
+        "p10": 0.28388237953186035,
+        "p90": 0.3016776591539383
+      },
+      "seed_logits": [
+        -2.2922520637512207,
+        -4.1339335441589355,
+        -5.207815647125244
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -3.8780004183451333,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 71,
+      "event_id_within_user": 71,
+      "start_frame": 10157,
+      "end_frame": 10175,
+      "label_blink": 0,
+      "t_rel": 0.2711220979690552,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 125.18875122070312,
+        "p10": 124.30727996826172,
+        "p90": 126.25519256591797
+      },
+      "brightness": {
+        "median": 39.884178161621094,
+        "p10": 39.74605484008789,
+        "p90": 39.971562194824216
+      },
+      "contrast": {
+        "median": 29.481645584106445,
+        "p10": 29.378925323486328,
+        "p90": 29.583072662353516
+      },
+      "sharpness": {
+        "median": 115.69410705566406,
+        "p10": 112.79941864013672,
+        "p90": 122.22039642333985
+      },
+      "ear": {
+        "median": 0.29771067202091217,
+        "p10": 0.2892295718193054,
+        "p90": 0.3094690293073654
+      },
+      "seed_logits": [
+        -5.622979640960693,
+        -3.833987236022949,
+        -5.653558254241943
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -5.036841710408528,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 72,
+      "event_id_within_user": 72,
+      "start_frame": 10508,
+      "end_frame": 10526,
+      "label_blink": 0,
+      "t_rel": 0.28169819712638855,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 125.5127944946289,
+        "p10": 124.9606689453125,
+        "p90": 126.3655776977539
+      },
+      "brightness": {
+        "median": 39.93525314331055,
+        "p10": 39.771873474121094,
+        "p90": 40.00773544311524
+      },
+      "contrast": {
+        "median": 29.383277893066406,
+        "p10": 29.30414390563965,
+        "p90": 29.50104522705078
+      },
+      "sharpness": {
+        "median": 122.02421569824219,
+        "p10": 115.70938873291016,
+        "p90": 131.14373779296875
+      },
+      "ear": {
+        "median": 0.2991422116756439,
+        "p10": 0.29145872592926025,
+        "p90": 0.3096575438976288
+      },
+      "seed_logits": [
+        -2.760401725769043,
+        -2.8509979248046875,
+        -5.721703052520752
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -3.777700901031494,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 73,
+      "event_id_within_user": 73,
+      "start_frame": 11237,
+      "end_frame": 11255,
+      "label_blink": 0,
+      "t_rel": 0.303663969039917,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 127.99449157714844,
+        "p10": 127.36714630126953,
+        "p90": 128.82607421875
+      },
+      "brightness": {
+        "median": 39.79423904418945,
+        "p10": 39.71486358642578,
+        "p90": 39.93339920043945
+      },
+      "contrast": {
+        "median": 29.54275131225586,
+        "p10": 29.46387939453125,
+        "p90": 29.66188735961914
+      },
+      "sharpness": {
+        "median": 119.22798156738281,
+        "p10": 111.31725158691407,
+        "p90": 130.58234558105468
+      },
+      "ear": {
+        "median": 0.2941053956747055,
+        "p10": 0.2859674394130707,
+        "p90": 0.309538334608078
+      },
+      "seed_logits": [
+        -3.1454687118530273,
+        -3.5929133892059326,
+        -4.92756462097168
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -3.8886489073435464,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 74,
+      "event_id_within_user": 74,
+      "start_frame": 11412,
+      "end_frame": 11430,
+      "label_blink": 0,
+      "t_rel": 0.3089369535446167,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 127.98756408691406,
+        "p10": 126.51784973144531,
+        "p90": 128.6136444091797
+      },
+      "brightness": {
+        "median": 39.86748123168945,
+        "p10": 39.743788146972655,
+        "p90": 40.03103485107422
+      },
+      "contrast": {
+        "median": 29.46192169189453,
+        "p10": 29.40877685546875,
+        "p90": 29.593155670166016
+      },
+      "sharpness": {
+        "median": 131.16769409179688,
+        "p10": 120.71371612548828,
+        "p90": 137.92119140625
+      },
+      "ear": {
+        "median": 0.2894259840250015,
+        "p10": 0.2797531187534332,
+        "p90": 0.3009370267391205
+      },
+      "seed_logits": [
+        -4.772862434387207,
+        -5.886379241943359,
+        -5.385562419891357
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -5.348268032073975,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 75,
+      "event_id_within_user": 75,
+      "start_frame": 11606,
+      "end_frame": 11624,
+      "label_blink": 0,
+      "t_rel": 0.31478244066238403,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 130.51699829101562,
+        "p10": 129.86297912597655,
+        "p90": 131.98025817871093
+      },
+      "brightness": {
+        "median": 41.01337814331055,
+        "p10": 40.93677597045898,
+        "p90": 41.12206954956055
+      },
+      "contrast": {
+        "median": 29.83749771118164,
+        "p10": 29.696840667724608,
+        "p90": 30.018387603759766
+      },
+      "sharpness": {
+        "median": 144.6738739013672,
+        "p10": 137.953515625,
+        "p90": 151.50213928222655
+      },
+      "ear": {
+        "median": 0.282523438334465,
+        "p10": 0.2716062217950821,
+        "p90": 0.29929856956005096
+      },
+      "seed_logits": [
+        -2.592989921569824,
+        -5.2124199867248535,
+        -5.144643783569336
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -4.316684563954671,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 76,
+      "event_id_within_user": 76,
+      "start_frame": 12129,
+      "end_frame": 12147,
+      "label_blink": 0,
+      "t_rel": 0.3305411636829376,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 134.57806396484375,
+        "p10": 133.63494873046875,
+        "p90": 136.4296112060547
+      },
+      "brightness": {
+        "median": 40.90546798706055,
+        "p10": 40.800682067871094,
+        "p90": 41.01136703491211
+      },
+      "contrast": {
+        "median": 30.284372329711914,
+        "p10": 30.03113212585449,
+        "p90": 30.497099304199217
+      },
+      "sharpness": {
+        "median": 142.39129638671875,
+        "p10": 139.7394226074219,
+        "p90": 147.8343048095703
+      },
+      "ear": {
+        "median": 0.2785724401473999,
+        "p10": 0.2677783668041229,
+        "p90": 0.2925369590520859
+      },
+      "seed_logits": [
+        -1.2767988443374634,
+        -6.70811128616333,
+        -4.517174243927002
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -4.167361458142598,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 77,
+      "event_id_within_user": 77,
+      "start_frame": 12918,
+      "end_frame": 12936,
+      "label_blink": 0,
+      "t_rel": 0.35431480407714844,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 130.45040893554688,
+        "p10": 128.2455093383789,
+        "p90": 131.6391815185547
+      },
+      "brightness": {
+        "median": 38.45869064331055,
+        "p10": 38.04669952392578,
+        "p90": 38.697715759277344
+      },
+      "contrast": {
+        "median": 27.763010025024414,
+        "p10": 27.296128845214845,
+        "p90": 28.413721084594727
+      },
+      "sharpness": {
+        "median": 121.38963317871094,
+        "p10": 108.67424163818359,
+        "p90": 134.732666015625
+      },
+      "ear": {
+        "median": 0.23665263503789902,
+        "p10": 0.22767849266529083,
+        "p90": 0.25384218990802765
+      },
+      "seed_logits": [
+        -0.7119797468185425,
+        -0.6190214157104492,
+        -2.990981101989746
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -1.4406607548395793,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 78,
+      "event_id_within_user": 78,
+      "start_frame": 12953,
+      "end_frame": 12971,
+      "label_blink": 0,
+      "t_rel": 0.3553694188594818,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 132.5377960205078,
+        "p10": 131.46122131347656,
+        "p90": 134.22327270507813
+      },
+      "brightness": {
+        "median": 37.45166015625,
+        "p10": 37.308145141601564,
+        "p90": 37.71654205322265
+      },
+      "contrast": {
+        "median": 27.142393112182617,
+        "p10": 27.00669708251953,
+        "p90": 27.429732513427734
+      },
+      "sharpness": {
+        "median": 128.3898162841797,
+        "p10": 126.12318420410156,
+        "p90": 136.24371337890625
+      },
+      "ear": {
+        "median": 0.23929432034492493,
+        "p10": 0.23173788189888,
+        "p90": 0.25447337329387665
+      },
+      "seed_logits": [
+        1.3308789730072021,
+        -4.410318851470947,
+        -2.389531373977661
+      ],
+      "seed_predictions": [
+        1,
+        0,
+        0
+      ],
+      "mean_logit": -1.8229904174804688,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 1,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 79,
+      "event_id_within_user": 79,
+      "start_frame": 13837,
+      "end_frame": 13855,
+      "label_blink": 0,
+      "t_rel": 0.3820055425167084,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 128.21148681640625,
+        "p10": 126.42872924804688,
+        "p90": 131.56544799804686
+      },
+      "brightness": {
+        "median": 36.57685470581055,
+        "p10": 36.258907318115234,
+        "p90": 38.604783630371095
+      },
+      "contrast": {
+        "median": 26.52578353881836,
+        "p10": 26.007404708862303,
+        "p90": 28.16739158630371
+      },
+      "sharpness": {
+        "median": 126.78398895263672,
+        "p10": 111.3817855834961,
+        "p90": 132.3194152832031
+      },
+      "ear": {
+        "median": 0.2543272376060486,
+        "p10": 0.2465219348669052,
+        "p90": 0.2612607926130295
+      },
+      "seed_logits": [
+        1.721840500831604,
+        0.9094982147216797,
+        0.15563467144966125
+      ],
+      "seed_predictions": [
+        1,
+        0,
+        1
+      ],
+      "mean_logit": 0.9289911290009817,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 1,
+      "n_seed_disagree": 2,
+      "ours_correct": false,
+      "category": "ours_error"
+    },
+    {
+      "event_index": 80,
+      "event_id_within_user": 80,
+      "start_frame": 14904,
+      "end_frame": 14922,
+      "label_blink": 0,
+      "t_rel": 0.4141557216644287,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 128.4595489501953,
+        "p10": 126.7432632446289,
+        "p90": 130.0977996826172
+      },
+      "brightness": {
+        "median": 35.299415588378906,
+        "p10": 34.94083938598633,
+        "p90": 35.50458984375
+      },
+      "contrast": {
+        "median": 25.908164978027344,
+        "p10": 25.676236724853517,
+        "p90": 26.14917755126953
+      },
+      "sharpness": {
+        "median": 111.92586517333984,
+        "p10": 105.81689910888672,
+        "p90": 118.31012878417968
+      },
+      "ear": {
+        "median": 0.2579973042011261,
+        "p10": 0.2458418905735016,
+        "p90": 0.26485323905944824
+      },
+      "seed_logits": [
+        0.39829331636428833,
+        -3.5811822414398193,
+        -0.53621906042099
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -1.2397026618321736,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 81,
+      "event_id_within_user": 81,
+      "start_frame": 14952,
+      "end_frame": 14970,
+      "label_blink": 0,
+      "t_rel": 0.41560202836990356,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 128.18577575683594,
+        "p10": 126.79586334228516,
+        "p90": 130.36163940429688
+      },
+      "brightness": {
+        "median": 35.312110900878906,
+        "p10": 35.04929656982422,
+        "p90": 35.58994064331055
+      },
+      "contrast": {
+        "median": 25.816810607910156,
+        "p10": 25.662053680419923,
+        "p90": 26.029121780395506
+      },
+      "sharpness": {
+        "median": 111.42493438720703,
+        "p10": 108.38717041015624,
+        "p90": 119.45528259277344
+      },
+      "ear": {
+        "median": 0.2589019536972046,
+        "p10": 0.24849309027194977,
+        "p90": 0.2652420103549957
+      },
+      "seed_logits": [
+        0.16866259276866913,
+        -3.4619903564453125,
+        -0.9622766375541687
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -1.4185348004102707,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 82,
+      "event_id_within_user": 82,
+      "start_frame": 15162,
+      "end_frame": 15180,
+      "label_blink": 0,
+      "t_rel": 0.42192962765693665,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 129.15530395507812,
+        "p10": 127.78331451416015,
+        "p90": 130.17235717773437
+      },
+      "brightness": {
+        "median": 38.900390625,
+        "p10": 37.46166152954102,
+        "p90": 39.219610595703124
+      },
+      "contrast": {
+        "median": 28.38661766052246,
+        "p10": 26.96728515625,
+        "p90": 28.76724510192871
+      },
+      "sharpness": {
+        "median": 134.78466796875,
+        "p10": 112.74196166992188,
+        "p90": 150.10930480957032
+      },
+      "ear": {
+        "median": 0.25063592195510864,
+        "p10": 0.24489568173885345,
+        "p90": 0.262899249792099
+      },
+      "seed_logits": [
+        -0.9525637626647949,
+        -1.286367416381836,
+        -3.0795629024505615
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -1.7728313604990642,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 83,
+      "event_id_within_user": 83,
+      "start_frame": 15712,
+      "end_frame": 15730,
+      "label_blink": 0,
+      "t_rel": 0.43850186467170715,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 126.94451141357422,
+        "p10": 126.1177734375,
+        "p90": 127.94103088378907
+      },
+      "brightness": {
+        "median": 39.393653869628906,
+        "p10": 39.24593658447266,
+        "p90": 39.56533279418945
+      },
+      "contrast": {
+        "median": 28.98122215270996,
+        "p10": 28.879042434692384,
+        "p90": 29.11288185119629
+      },
+      "sharpness": {
+        "median": 101.9605484008789,
+        "p10": 96.42790222167969,
+        "p90": 108.16513671874999
+      },
+      "ear": {
+        "median": 0.2965676933526993,
+        "p10": 0.29064910113811493,
+        "p90": 0.3074696362018585
+      },
+      "seed_logits": [
+        -4.109034538269043,
+        -5.788535118103027,
+        -5.211741924285889
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -5.036437193552653,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 84,
+      "event_id_within_user": 84,
+      "start_frame": 16370,
+      "end_frame": 16388,
+      "label_blink": 0,
+      "t_rel": 0.4583283066749573,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 133.56106567382812,
+        "p10": 132.97217712402343,
+        "p90": 134.97859802246094
+      },
+      "brightness": {
+        "median": 39.248634338378906,
+        "p10": 39.12787094116211,
+        "p90": 39.340447998046876
+      },
+      "contrast": {
+        "median": 28.779489517211914,
+        "p10": 28.71479911804199,
+        "p90": 28.88669357299805
+      },
+      "sharpness": {
+        "median": 110.49054718017578,
+        "p10": 107.24528503417969,
+        "p90": 120.83799438476562
+      },
+      "ear": {
+        "median": 0.2816723883152008,
+        "p10": 0.27092893421649933,
+        "p90": 0.29829050600528717
+      },
+      "seed_logits": [
+        -3.054877281188965,
+        -4.797433853149414,
+        -4.8758697509765625
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -4.242726961771647,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 85,
+      "event_id_within_user": 85,
+      "start_frame": 16686,
+      "end_frame": 16704,
+      "label_blink": 0,
+      "t_rel": 0.46784982085227966,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 129.43719482421875,
+        "p10": 128.63857727050782,
+        "p90": 130.71890258789062
+      },
+      "brightness": {
+        "median": 39.55253982543945,
+        "p10": 39.361368560791014,
+        "p90": 39.89984283447266
+      },
+      "contrast": {
+        "median": 29.026500701904297,
+        "p10": 28.869142913818358,
+        "p90": 29.15057258605957
+      },
+      "sharpness": {
+        "median": 115.56002044677734,
+        "p10": 111.58851928710938,
+        "p90": 119.11173553466797
+      },
+      "ear": {
+        "median": 0.266294926404953,
+        "p10": 0.2507763206958771,
+        "p90": 0.2833865135908127
+      },
+      "seed_logits": [
+        -4.281251907348633,
+        -5.227813243865967,
+        -8.06312370300293
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -5.857396284739177,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 86,
+      "event_id_within_user": 86,
+      "start_frame": 17603,
+      "end_frame": 17621,
+      "label_blink": 0,
+      "t_rel": 0.4954802989959717,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 127.8789291381836,
+        "p10": 126.82865905761719,
+        "p90": 129.00480041503906
+      },
+      "brightness": {
+        "median": 39.76386642456055,
+        "p10": 39.25591888427734,
+        "p90": 40.25787200927734
+      },
+      "contrast": {
+        "median": 29.482177734375,
+        "p10": 29.129300689697267,
+        "p90": 29.587548065185548
+      },
+      "sharpness": {
+        "median": 114.58802795410156,
+        "p10": 104.98723449707032,
+        "p90": 124.1493911743164
+      },
+      "ear": {
+        "median": 0.3099498301744461,
+        "p10": 0.2985110282897949,
+        "p90": 0.32158367335796356
+      },
+      "seed_logits": [
+        -6.515170097351074,
+        -8.286507606506348,
+        -9.179925918579102
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -7.993867874145508,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 87,
+      "event_id_within_user": 87,
+      "start_frame": 18616,
+      "end_frame": 18634,
+      "label_blink": 0,
+      "t_rel": 0.526003360748291,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 127.78218841552734,
+        "p10": 125.71249084472656,
+        "p90": 131.80990295410157
+      },
+      "brightness": {
+        "median": 38.67255783081055,
+        "p10": 38.485059356689455,
+        "p90": 39.382050323486325
+      },
+      "contrast": {
+        "median": 28.991077423095703,
+        "p10": 28.447650527954103,
+        "p90": 29.51319580078125
+      },
+      "sharpness": {
+        "median": 131.50814819335938,
+        "p10": 77.85419921875,
+        "p90": 145.6109375
+      },
+      "ear": {
+        "median": 0.2659434974193573,
+        "p10": 0.23703975975513458,
+        "p90": 0.30212773382663727
+      },
+      "seed_logits": [
+        -0.04662737250328064,
+        0.6798040270805359,
+        -1.7578613758087158
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -0.3748949070771535,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 88,
+      "event_id_within_user": 88,
+      "start_frame": 18642,
+      "end_frame": 18660,
+      "label_blink": 0,
+      "t_rel": 0.5267868041992188,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 121.33081817626953,
+        "p10": 120.61256256103516,
+        "p90": 121.96238555908204
+      },
+      "brightness": {
+        "median": 42.240135192871094,
+        "p10": 41.992636108398436,
+        "p90": 42.377342987060544
+      },
+      "contrast": {
+        "median": 29.21168327331543,
+        "p10": 28.998660278320312,
+        "p90": 29.355122756958007
+      },
+      "sharpness": {
+        "median": 110.33838653564453,
+        "p10": 100.5561279296875,
+        "p90": 116.19679260253906
+      },
+      "ear": {
+        "median": 0.31952816247940063,
+        "p10": 0.30830059945583344,
+        "p90": 0.3634503036737442
+      },
+      "seed_logits": [
+        -10.760977745056152,
+        -7.332551002502441,
+        -8.551026344299316
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -8.881518363952637,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 89,
+      "event_id_within_user": 89,
+      "start_frame": 19003,
+      "end_frame": 19021,
+      "label_blink": 0,
+      "t_rel": 0.5376642346382141,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 128.93772888183594,
+        "p10": 127.46590270996094,
+        "p90": 131.7367919921875
+      },
+      "brightness": {
+        "median": 38.758399963378906,
+        "p10": 37.215274810791016,
+        "p90": 41.92894515991211
+      },
+      "contrast": {
+        "median": 29.198442459106445,
+        "p10": 27.95325927734375,
+        "p90": 31.319822692871092
+      },
+      "sharpness": {
+        "median": 108.35839080810547,
+        "p10": 92.37349548339844,
+        "p90": 149.17019958496093
+      },
+      "ear": {
+        "median": 0.282255083322525,
+        "p10": 0.2686747908592224,
+        "p90": 0.30315908789634705
+      },
+      "seed_logits": [
+        -0.7929409146308899,
+        1.6582719087600708,
+        -4.145966529846191
+      ],
+      "seed_predictions": [
+        0,
+        1,
+        0
+      ],
+      "mean_logit": -1.093545178572337,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 1,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 90,
+      "event_id_within_user": 90,
+      "start_frame": 20378,
+      "end_frame": 20396,
+      "label_blink": 0,
+      "t_rel": 0.5790948271751404,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 129.39215087890625,
+        "p10": 128.07618713378906,
+        "p90": 129.990478515625
+      },
+      "brightness": {
+        "median": 41.12177658081055,
+        "p10": 40.97230453491211,
+        "p90": 41.25203247070313
+      },
+      "contrast": {
+        "median": 31.190547943115234,
+        "p10": 31.0149227142334,
+        "p90": 31.371478271484374
+      },
+      "sharpness": {
+        "median": 141.17868041992188,
+        "p10": 136.63291625976564,
+        "p90": 143.85573120117186
+      },
+      "ear": {
+        "median": 0.2901667356491089,
+        "p10": 0.28059181571006775,
+        "p90": 0.306218683719635
+      },
+      "seed_logits": [
+        -0.3572314977645874,
+        -6.664588928222656,
+        -4.774495601654053
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -3.9321053425470986,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 91,
+      "event_id_within_user": 91,
+      "start_frame": 21158,
+      "end_frame": 21176,
+      "label_blink": 0,
+      "t_rel": 0.6025972962379456,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 125.58406829833984,
+        "p10": 124.27682495117188,
+        "p90": 129.3530731201172
+      },
+      "brightness": {
+        "median": 36.549705505371094,
+        "p10": 35.63583984375,
+        "p90": 40.051405334472655
+      },
+      "contrast": {
+        "median": 27.167823791503906,
+        "p10": 26.858339691162108,
+        "p90": 30.45034523010254
+      },
+      "sharpness": {
+        "median": 123.77410125732422,
+        "p10": 111.23722381591797,
+        "p90": 135.57058715820312
+      },
+      "ear": {
+        "median": 0.2605847716331482,
+        "p10": 0.2516818642616272,
+        "p90": 0.2809683233499527
+      },
+      "seed_logits": [
+        0.8524331450462341,
+        -1.197835922241211,
+        -1.7297409772872925
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -0.6917145848274231,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 92,
+      "event_id_within_user": 92,
+      "start_frame": 22278,
+      "end_frame": 22296,
+      "label_blink": 0,
+      "t_rel": 0.6363444328308105,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 127.02135467529297,
+        "p10": 126.05097351074218,
+        "p90": 128.0319610595703
+      },
+      "brightness": {
+        "median": 41.229103088378906,
+        "p10": 40.96623153686524,
+        "p90": 41.4480484008789
+      },
+      "contrast": {
+        "median": 29.773941040039062,
+        "p10": 29.61789741516113,
+        "p90": 30.04929962158203
+      },
+      "sharpness": {
+        "median": 159.25314331054688,
+        "p10": 137.11500244140626,
+        "p90": 168.48158264160156
+      },
+      "ear": {
+        "median": 0.2707222104072571,
+        "p10": 0.2613520920276642,
+        "p90": 0.28270426392555237
+      },
+      "seed_logits": [
+        -1.98099946975708,
+        -6.783342361450195,
+        -5.596717357635498
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -4.787019729614258,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 93,
+      "event_id_within_user": 93,
+      "start_frame": 22393,
+      "end_frame": 22411,
+      "label_blink": 0,
+      "t_rel": 0.6398095488548279,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 128.43789672851562,
+        "p10": 126.58697357177735,
+        "p90": 129.51329956054687
+      },
+      "brightness": {
+        "median": 39.491111755371094,
+        "p10": 39.159785461425784,
+        "p90": 39.73824234008789
+      },
+      "contrast": {
+        "median": 28.40208625793457,
+        "p10": 27.860439682006835,
+        "p90": 28.719775772094728
+      },
+      "sharpness": {
+        "median": 149.82275390625,
+        "p10": 136.11083984375,
+        "p90": 164.42516479492187
+      },
+      "ear": {
+        "median": 0.2616634666919708,
+        "p10": 0.24316509813070297,
+        "p90": 0.27752062678337097
+      },
+      "seed_logits": [
+        -1.0197242498397827,
+        -4.683049201965332,
+        -1.9100854396820068
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -2.537619630495707,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 94,
+      "event_id_within_user": 94,
+      "start_frame": 22583,
+      "end_frame": 22601,
+      "label_blink": 0,
+      "t_rel": 0.6455345153808594,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 127.38928985595703,
+        "p10": 126.05507354736328,
+        "p90": 129.2073486328125
+      },
+      "brightness": {
+        "median": 39.10810470581055,
+        "p10": 38.696485900878905,
+        "p90": 39.45912246704101
+      },
+      "contrast": {
+        "median": 28.195730209350586,
+        "p10": 27.62743034362793,
+        "p90": 28.644947052001953
+      },
+      "sharpness": {
+        "median": 150.7200927734375,
+        "p10": 143.85120544433593,
+        "p90": 154.2486999511719
+      },
+      "ear": {
+        "median": 0.2552489638328552,
+        "p10": 0.24471724033355713,
+        "p90": 0.2633539289236069
+      },
+      "seed_logits": [
+        1.6176146268844604,
+        -4.521120071411133,
+        -1.9346295595169067
+      ],
+      "seed_predictions": [
+        1,
+        0,
+        0
+      ],
+      "mean_logit": -1.6127116680145264,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 1,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 95,
+      "event_id_within_user": 95,
+      "start_frame": 23130,
+      "end_frame": 23148,
+      "label_blink": 0,
+      "t_rel": 0.6620163917541504,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 129.9224853515625,
+        "p10": 128.54606018066406,
+        "p90": 131.2005859375
+      },
+      "brightness": {
+        "median": 40.35625076293945,
+        "p10": 40.18994293212891,
+        "p90": 40.54304656982422
+      },
+      "contrast": {
+        "median": 29.570341110229492,
+        "p10": 29.385599899291993,
+        "p90": 29.756774139404296
+      },
+      "sharpness": {
+        "median": 127.10380554199219,
+        "p10": 123.44463806152343,
+        "p90": 132.8553466796875
+      },
+      "ear": {
+        "median": 0.28387217223644257,
+        "p10": 0.2766270339488983,
+        "p90": 0.2942921966314316
+      },
+      "seed_logits": [
+        -2.647188663482666,
+        -4.12788200378418,
+        -5.368791103363037
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -4.047953923543294,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 96,
+      "event_id_within_user": 96,
+      "start_frame": 23719,
+      "end_frame": 23737,
+      "label_blink": 0,
+      "t_rel": 0.6797637939453125,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 128.4989776611328,
+        "p10": 127.54117584228516,
+        "p90": 129.834619140625
+      },
+      "brightness": {
+        "median": 35.496971130371094,
+        "p10": 35.20927810668945,
+        "p90": 35.73621139526367
+      },
+      "contrast": {
+        "median": 25.613117218017578,
+        "p10": 25.310248947143556,
+        "p90": 26.00929183959961
+      },
+      "sharpness": {
+        "median": 106.10462951660156,
+        "p10": 100.89313354492188,
+        "p90": 117.17111358642578
+      },
+      "ear": {
+        "median": 0.23875794559717178,
+        "p10": 0.22673176229000092,
+        "p90": 0.24711976945400238
+      },
+      "seed_logits": [
+        0.7224883437156677,
+        -0.7641252279281616,
+        -0.2049863338470459
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -0.08220773935317993,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 97,
+      "event_id_within_user": 97,
+      "start_frame": 24004,
+      "end_frame": 24022,
+      "label_blink": 0,
+      "t_rel": 0.6883512139320374,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 129.61509704589844,
+        "p10": 128.3560363769531,
+        "p90": 131.3405792236328
+      },
+      "brightness": {
+        "median": 36.8896484375,
+        "p10": 36.52382888793945,
+        "p90": 38.474805450439455
+      },
+      "contrast": {
+        "median": 27.13074493408203,
+        "p10": 26.756549072265624,
+        "p90": 28.440345764160156
+      },
+      "sharpness": {
+        "median": 129.46629333496094,
+        "p10": 120.51947631835938,
+        "p90": 135.96405639648438
+      },
+      "ear": {
+        "median": 0.26296451687812805,
+        "p10": 0.2564786970615387,
+        "p90": 0.27068890631198883
+      },
+      "seed_logits": [
+        0.6008577942848206,
+        2.6504406929016113,
+        -0.9343755841255188
+      ],
+      "seed_predictions": [
+        0,
+        1,
+        0
+      ],
+      "mean_logit": 0.7723076343536377,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 1,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 98,
+      "event_id_within_user": 98,
+      "start_frame": 24218,
+      "end_frame": 24236,
+      "label_blink": 0,
+      "t_rel": 0.6947993040084839,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 130.2635955810547,
+        "p10": 129.06408081054687,
+        "p90": 131.1327911376953
+      },
+      "brightness": {
+        "median": 40.310157775878906,
+        "p10": 40.09636688232422,
+        "p90": 40.736366271972656
+      },
+      "contrast": {
+        "median": 29.812101364135742,
+        "p10": 29.702585983276368,
+        "p90": 29.965606689453125
+      },
+      "sharpness": {
+        "median": 139.10682678222656,
+        "p10": 127.04730987548828,
+        "p90": 152.8509948730469
+      },
+      "ear": {
+        "median": 0.28293687105178833,
+        "p10": 0.2667228877544403,
+        "p90": 0.2956969141960144
+      },
+      "seed_logits": [
+        -2.5424232482910156,
+        -5.314195156097412,
+        -4.302457332611084
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -4.053025245666504,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 99,
+      "event_id_within_user": 99,
+      "start_frame": 25110,
+      "end_frame": 25128,
+      "label_blink": 0,
+      "t_rel": 0.7216765284538269,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 128.03424072265625,
+        "p10": 127.21001739501953,
+        "p90": 130.84630737304687
+      },
+      "brightness": {
+        "median": 36.726173400878906,
+        "p10": 36.494999694824216,
+        "p90": 37.46002044677734
+      },
+      "contrast": {
+        "median": 26.822858810424805,
+        "p10": 26.523178100585938,
+        "p90": 27.90366325378418
+      },
+      "sharpness": {
+        "median": 126.32292175292969,
+        "p10": 113.59753875732422,
+        "p90": 134.62684326171876
+      },
+      "ear": {
+        "median": 0.23608383536338806,
+        "p10": 0.23048055171966553,
+        "p90": 0.2495398297905922
+      },
+      "seed_logits": [
+        1.3049606084823608,
+        -3.389110803604126,
+        -2.5829482078552246
+      ],
+      "seed_predictions": [
+        1,
+        0,
+        0
+      ],
+      "mean_logit": -1.5556994676589966,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 1,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 100,
+      "event_id_within_user": 100,
+      "start_frame": 25390,
+      "end_frame": 25408,
+      "label_blink": 0,
+      "t_rel": 0.7301132678985596,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 128.55413818359375,
+        "p10": 126.80705108642579,
+        "p90": 129.60477600097656
+      },
+      "brightness": {
+        "median": 39.97998046875,
+        "p10": 39.71470565795899,
+        "p90": 40.62060470581055
+      },
+      "contrast": {
+        "median": 29.713228225708008,
+        "p10": 29.564437866210938,
+        "p90": 29.893230056762697
+      },
+      "sharpness": {
+        "median": 98.61226654052734,
+        "p10": 89.17276916503906,
+        "p90": 105.94307556152344
+      },
+      "ear": {
+        "median": 0.2833010256290436,
+        "p10": 0.2732522040605545,
+        "p90": 0.28942762315273285
+      },
+      "seed_logits": [
+        -3.835653781890869,
+        -7.845308303833008,
+        -6.341550350189209
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -6.007504145304362,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 103,
+      "event_id_within_user": 103,
+      "start_frame": 26757,
+      "end_frame": 26775,
+      "label_blink": 0,
+      "t_rel": 0.7713028788566589,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 134.58229064941406,
+        "p10": 131.07872924804687,
+        "p90": 136.82025756835938
+      },
+      "brightness": {
+        "median": 72.2525405883789,
+        "p10": 70.25097351074218,
+        "p90": 75.52659912109375
+      },
+      "contrast": {
+        "median": 43.927555084228516,
+        "p10": 42.77900085449219,
+        "p90": 45.80119247436524
+      },
+      "sharpness": {
+        "median": 253.23594665527344,
+        "p10": 125.68625030517578,
+        "p90": 291.9519348144531
+      },
+      "ear": {
+        "median": 0.2770695090293884,
+        "p10": 0.2602119594812393,
+        "p90": 0.2887679636478424
+      },
+      "seed_logits": [
+        3.824136734008789,
+        1.0762550830841064,
+        3.8716044425964355
+      ],
+      "seed_predictions": [
+        1,
+        1,
+        1
+      ],
+      "mean_logit": 2.923998753229777,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 1,
+      "n_seed_disagree": 3,
+      "ours_correct": false,
+      "category": "ours_error"
+    },
+    {
+      "event_index": 104,
+      "event_id_within_user": 104,
+      "start_frame": 27165,
+      "end_frame": 27183,
+      "label_blink": 0,
+      "t_rel": 0.7835964560508728,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 132.67042541503906,
+        "p10": 131.0806427001953,
+        "p90": 133.27093200683595
+      },
+      "brightness": {
+        "median": 59.33818435668945,
+        "p10": 59.17869262695312,
+        "p90": 59.56332092285156
+      },
+      "contrast": {
+        "median": 39.12180709838867,
+        "p10": 38.871945190429685,
+        "p90": 39.20616683959961
+      },
+      "sharpness": {
+        "median": 249.56680297851562,
+        "p10": 241.14199523925782,
+        "p90": 254.9113006591797
+      },
+      "ear": {
+        "median": 0.2749053090810776,
+        "p10": 0.265257865190506,
+        "p90": 0.2850080579519272
+      },
+      "seed_logits": [
+        -0.4241373538970947,
+        -5.874390602111816,
+        -3.5359511375427246
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -3.2781596978505454,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 105,
+      "event_id_within_user": 105,
+      "start_frame": 28113,
+      "end_frame": 28131,
+      "label_blink": 0,
+      "t_rel": 0.8121610283851624,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 140.9544677734375,
+        "p10": 139.71847534179688,
+        "p90": 141.6316925048828
+      },
+      "brightness": {
+        "median": 39.58671951293945,
+        "p10": 39.44703140258789,
+        "p90": 39.69062423706055
+      },
+      "contrast": {
+        "median": 29.550756454467773,
+        "p10": 29.446511459350585,
+        "p90": 29.64910430908203
+      },
+      "sharpness": {
+        "median": 123.60661315917969,
+        "p10": 119.63224792480469,
+        "p90": 126.5517791748047
+      },
+      "ear": {
+        "median": 0.2654048800468445,
+        "p10": 0.25105011463165283,
+        "p90": 0.2878217548131943
+      },
+      "seed_logits": [
+        -6.013530254364014,
+        -8.003785133361816,
+        -7.910045146942139
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -7.309120178222656,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 106,
+      "event_id_within_user": 106,
+      "start_frame": 28610,
+      "end_frame": 28628,
+      "label_blink": 0,
+      "t_rel": 0.8271363377571106,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 142.0225372314453,
+        "p10": 140.468017578125,
+        "p90": 142.66426696777344
+      },
+      "brightness": {
+        "median": 37.127830505371094,
+        "p10": 37.021542358398435,
+        "p90": 37.419786071777345
+      },
+      "contrast": {
+        "median": 27.98611068725586,
+        "p10": 27.90759696960449,
+        "p90": 28.102265548706054
+      },
+      "sharpness": {
+        "median": 96.98333740234375,
+        "p10": 91.67561645507813,
+        "p90": 107.23018951416016
+      },
+      "ear": {
+        "median": 0.31946972012519836,
+        "p10": 0.31283116340637207,
+        "p90": 0.3284435570240021
+      },
+      "seed_logits": [
+        -6.554815769195557,
+        -3.5002598762512207,
+        -5.8495659828186035
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -5.301547209421794,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 107,
+      "event_id_within_user": 107,
+      "start_frame": 29377,
+      "end_frame": 29395,
+      "label_blink": 0,
+      "t_rel": 0.8502470850944519,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 134.3223419189453,
+        "p10": 133.10960693359374,
+        "p90": 135.89560546875
+      },
+      "brightness": {
+        "median": 39.083106994628906,
+        "p10": 38.894239044189455,
+        "p90": 39.384394836425784
+      },
+      "contrast": {
+        "median": 29.250398635864258,
+        "p10": 29.147964096069337,
+        "p90": 29.459787368774414
+      },
+      "sharpness": {
+        "median": 104.09830474853516,
+        "p10": 98.26170654296875,
+        "p90": 108.41209869384765
+      },
+      "ear": {
+        "median": 0.3061329871416092,
+        "p10": 0.29814691841602325,
+        "p90": 0.3138119876384735
+      },
+      "seed_logits": [
+        -2.653074026107788,
+        -9.532160758972168,
+        -6.110785961151123
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -6.098673582077026,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 108,
+      "event_id_within_user": 108,
+      "start_frame": 33312,
+      "end_frame": 33330,
+      "label_blink": 0,
+      "t_rel": 0.9688140153884888,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 126.86259460449219,
+        "p10": 126.26738586425782,
+        "p90": 130.01498718261718
+      },
+      "brightness": {
+        "median": 40.0703125,
+        "p10": 39.85164108276367,
+        "p90": 40.548319244384764
+      },
+      "contrast": {
+        "median": 29.71942710876465,
+        "p10": 29.545416259765624,
+        "p90": 29.96943244934082
+      },
+      "sharpness": {
+        "median": 104.73123168945312,
+        "p10": 91.46882019042968,
+        "p90": 110.14704742431641
+      },
+      "ear": {
+        "median": 0.29853248596191406,
+        "p10": 0.2898438572883606,
+        "p90": 0.30618953704833984
+      },
+      "seed_logits": [
+        -5.568649768829346,
+        -5.302341938018799,
+        -7.402190685272217
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -6.091060797373454,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 109,
+      "event_id_within_user": 109,
+      "start_frame": 33372,
+      "end_frame": 33390,
+      "label_blink": 0,
+      "t_rel": 0.9706218838691711,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 130.69105529785156,
+        "p10": 129.8925323486328,
+        "p90": 132.33436584472656
+      },
+      "brightness": {
+        "median": 39.92724609375,
+        "p10": 39.782537841796874,
+        "p90": 40.18236389160156
+      },
+      "contrast": {
+        "median": 29.4353084564209,
+        "p10": 29.34304008483887,
+        "p90": 29.68139190673828
+      },
+      "sharpness": {
+        "median": 106.39905548095703,
+        "p10": 100.5016082763672,
+        "p90": 109.92950897216797
+      },
+      "ear": {
+        "median": 0.2999569773674011,
+        "p10": 0.29222244024276733,
+        "p90": 0.3052660971879959
+      },
+      "seed_logits": [
+        -6.59754753112793,
+        -13.741303443908691,
+        -6.698658466339111
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -9.012503147125244,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 110,
+      "event_id_within_user": 110,
+      "start_frame": 33811,
+      "end_frame": 33829,
+      "label_blink": 0,
+      "t_rel": 0.9838495850563049,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 128.9541778564453,
+        "p10": 128.41385192871093,
+        "p90": 129.88358154296876
+      },
+      "brightness": {
+        "median": 39.424903869628906,
+        "p10": 39.27310485839844,
+        "p90": 39.62164154052734
+      },
+      "contrast": {
+        "median": 29.667997360229492,
+        "p10": 29.54084014892578,
+        "p90": 29.77675666809082
+      },
+      "sharpness": {
+        "median": 119.03079223632812,
+        "p10": 106.51941833496093,
+        "p90": 125.94120025634766
+      },
+      "ear": {
+        "median": 0.2967390716075897,
+        "p10": 0.29352714121341705,
+        "p90": 0.3019564151763916
+      },
+      "seed_logits": [
+        -5.777829647064209,
+        -7.72043514251709,
+        -6.258121013641357
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -6.585461934407552,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    },
+    {
+      "event_index": 111,
+      "event_id_within_user": 111,
+      "start_frame": 34338,
+      "end_frame": 34356,
+      "label_blink": 0,
+      "t_rel": 0.999728798866272,
+      "n_missing": 0,
+      "event_off_seat": false,
+      "n_present_frames": 19,
+      "frame_off_seat_count": 0,
+      "frame_cubic_count": 0,
+      "frame_padded_count": 0,
+      "span_px": {
+        "median": 111.00279235839844,
+        "p10": 109.97420806884766,
+        "p90": 113.92528991699218
+      },
+      "brightness": {
+        "median": 37.60546875,
+        "p10": 37.09748077392578,
+        "p90": 38.06544952392578
+      },
+      "contrast": {
+        "median": 28.58231544494629,
+        "p10": 28.396269607543946,
+        "p90": 29.007506561279296
+      },
+      "sharpness": {
+        "median": 88.0573959350586,
+        "p10": 84.9544448852539,
+        "p90": 89.53881225585937
+      },
+      "ear": {
+        "median": 0.3001188039779663,
+        "p10": 0.29179903864860535,
+        "p90": 0.3223223090171814
+      },
+      "seed_logits": [
+        -1.991739273071289,
+        -4.503960132598877,
+        -5.392138481140137
+      ],
+      "seed_predictions": [
+        0,
+        0,
+        0
+      ],
+      "mean_logit": -3.9626126289367676,
+      "frozen_thresholds": [
+        1.0949525833129883,
+        0.9686896800994873,
+        -0.14826589822769165
+      ],
+      "ensemble_prediction": 0,
+      "n_seed_disagree": 0,
+      "ours_correct": true,
+      "category": "ours_correct"
+    }
+  ],
+  "env": {
+    "seed": null,
+    "deterministic": false,
+    "sealed": false,
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "numpy": "2.4.2",
+    "pythonhashseed": null,
+    "cublas_workspace_config": null,
+    "git_commit": "fa6f590382a14f0388f21d72bf64f419fec50633",
+    "git_dirty": true,
+    "torch": "2.11.0+cu128",
+    "cuda_available": true,
+    "cuda_version": "12.8",
+    "cudnn_deterministic": false,
+    "cudnn_benchmark": false,
+    "gpu": "NVIDIA GeForce RTX 5080"
+  }
+}

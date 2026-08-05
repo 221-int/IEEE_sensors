@@ -3,35 +3,77 @@
   "seed": 0,
   "deterministic": true,
   "sealed": true,
-  "python": "3.10.12",
-  "platform": "Linux-6.8.0-124-generic-x86_64-with-glibc2.35",
-  "numpy": "2.2.6",
+  "python": "3.12.10",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "numpy": "2.4.2",
   "pythonhashseed": "0",
-  "cublas_workspace_config": null,
-  "git_commit": "6881f694f0e5638faf73fe89bb0f4712fabcdbdc",
+  "cublas_workspace_config": ":4096:8",
+  "git_commit": "fa6f590382a14f0388f21d72bf64f419fec50633",
   "git_dirty": true,
-  "torch": null
+  "torch": "2.11.0+cu128",
+  "cuda_available": true,
+  "cuda_version": "12.8",
+  "cudnn_deterministic": true,
+  "cudnn_benchmark": false,
+  "gpu": "NVIDIA GeForce RTX 5080"
  },
  "folds": {
+  "criterion": "유효 이벤트 수 + 수집 배치(2020/2022) 이중 층화, 결정적",
+  "excluded_users": [
+   18
+  ],
+  "n_subjects": 57,
   "events_per_fold": [
-   2867,
-   2858,
-   2877,
-   2880,
-   2882
+   6140,
+   5470,
+   5383,
+   5398,
+   5367
   ],
   "subjects_per_fold": [
-   11,
+   10,
    11,
    12,
    12,
    12
   ],
-  "max_over_min": 1.0083974807557732,
+  "max_over_min": 1.1440283212222844,
+  "recorded_balance_matches": true,
+  "two_way_stratified": true,
+  "frozen_at": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\common\\folds_5fold.json",
   "deterministic": true,
-  "PASS_G1a": true,
   "PASS_G1b": true,
-  "frozen_to": "/sessions/eloquent-laughing-hawking/mnt/IEEE_sensors/src/v2/common/folds_5fold.json"
+  "n_reassigned": 0,
+  "batch2022_share_per_fold": [
+   0.35472312703583064,
+   0.276782449725777,
+   0.2597064833735835,
+   0.2573175250092627,
+   0.2601080678218744
+  ],
+  "batch2022_share_overall": 0.28370199582102457,
+  "batch2022_share_max_dev_pp": 7.102113121480608,
+  "n_2020_per_fold": [
+   7,
+   7,
+   8,
+   8,
+   8
+  ],
+  "n_2022_per_fold": [
+   3,
+   4,
+   4,
+   4,
+   4
+  ],
+  "PASS_G1a": true,
+  "G1a_criterion": "배치 구성: fold별 2022 이벤트 비중이 전체 ±10%p 이내 AND fold별 2022 인원 >= 3 (PROTOCOL §4)",
+  "G1a_detail": {
+   "share_within_10pp": true,
+   "min_n_2022_ge_3": true,
+   "event_max_over_min_recorded_only": 1.1440283212222844
+  }
  },
  "splits": {
   "fold_balance": {
@@ -137,12 +179,54 @@
   "projection_removes_class_means": true
  },
  "determinism": {
-  "status": "SKIPPED",
-  "reason": "torch 없음 (데스크탑에서 재실행 필요)",
-  "PASS_G1g": null
+  "status": "RUN",
+  "run_a": [
+   10.851980865001678,
+   10.244431495666504,
+   9.562647700309753
+  ],
+  "run_b": [
+   10.851980865001678,
+   10.244431495666504,
+   9.562647700309753
+  ],
+  "run_seed1": [
+   10.917359054088593,
+   10.089378416538239,
+   9.35855621099472
+  ],
+  "bit_identical_same_seed": true,
+  "differs_across_seeds": true,
+  "device": "cuda",
+  "PASS_G1g": true
+ },
+ "determinism_encoder": {
+  "status": "RUN",
+  "device": "cuda",
+  "n_events": 256,
+  "epochs": 2,
+  "batch": 32,
+  "arch": "vpres",
+  "latent": 16,
+  "run_a": [
+   0.8494848934933543,
+   0.011615373776294291
+  ],
+  "run_b": [
+   0.8494848934933543,
+   0.011615373776294291
+  ],
+  "run_seed1": [
+   2.844600785523653,
+   0.1090758319478482
+  ],
+  "loss_bit_identical_same_seed": true,
+  "weights_bit_identical_same_seed": true,
+  "weights_differ_across_seeds": true,
+  "PASS_G1i": true
  },
  "gates": {
-  "G-1a fold 균형 <=1.05": true,
+  "G-1a fold 배치 구성 (§4)": true,
   "G-1b fold 결정성": true,
   "G-1c 격자 저-FA 도달": true,
   "G-1d 격자 혼용 차단": true,
@@ -150,7 +234,8 @@
   "G-1f 균형 표집 회복": true,
   "G-1  부호 규약 일치": true,
   "G-1h 투영 제거 동작": true,
-  "G-1g 학습 결정성": null
+  "G-1g 학습 결정성 (합성 MLP)": true,
+  "G-1i 학습 결정성 (실제 인코더)": true
  },
- "verdict": "PARTIAL"
+ "verdict": "PASS"
 }

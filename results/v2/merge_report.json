@@ -1,0 +1,593 @@
+{
+ "env": {
+  "seed": 0,
+  "deterministic": true,
+  "sealed": true,
+  "python": "3.12.10",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "numpy": "2.4.2",
+  "pythonhashseed": "0",
+  "cublas_workspace_config": ":4096:8",
+  "git_commit": "fa6f590382a14f0388f21d72bf64f419fec50633",
+  "git_dirty": true,
+  "torch": "2.11.0+cu128",
+  "cuda_available": true,
+  "cuda_version": "12.8",
+  "cudnn_deterministic": true,
+  "cudnn_benchmark": false,
+  "gpu": "NVIDIA GeForce RTX 5080"
+ },
+ "margins": [
+  "m22",
+  "m18"
+ ],
+ "total_frames": 532109,
+ "tags": [
+  "m22",
+  "m18"
+ ],
+ "per_shard": [
+  {
+   "user": 1,
+   "frames_in": 2118,
+   "events_in": 112,
+   "base_row": 0,
+   "session_frames": 37641,
+   "events_excluded_missing": 0,
+   "events_used": 112
+  },
+  {
+   "user": 2,
+   "frames_in": 11396,
+   "events_in": 602,
+   "base_row": 2118,
+   "session_frames": 41323,
+   "events_excluded_missing": 0,
+   "events_used": 602
+  },
+  {
+   "user": 3,
+   "frames_in": 12196,
+   "events_in": 650,
+   "base_row": 13514,
+   "session_frames": 41152,
+   "events_excluded_missing": 0,
+   "events_used": 650
+  },
+  {
+   "user": 4,
+   "frames_in": 2559,
+   "events_in": 136,
+   "base_row": 25710,
+   "session_frames": 54378,
+   "events_excluded_missing": 2,
+   "events_used": 134
+  },
+  {
+   "user": 5,
+   "frames_in": 3498,
+   "events_in": 186,
+   "base_row": 28269,
+   "session_frames": 43196,
+   "events_excluded_missing": 0,
+   "events_used": 186
+  },
+  {
+   "user": 6,
+   "frames_in": 9692,
+   "events_in": 526,
+   "base_row": 31767,
+   "session_frames": 41928,
+   "events_excluded_missing": 11,
+   "events_used": 515
+  },
+  {
+   "user": 7,
+   "frames_in": 9531,
+   "events_in": 506,
+   "base_row": 41459,
+   "session_frames": 50669,
+   "events_excluded_missing": 0,
+   "events_used": 506
+  },
+  {
+   "user": 8,
+   "frames_in": 8947,
+   "events_in": 476,
+   "base_row": 50990,
+   "session_frames": 31806,
+   "events_excluded_missing": 0,
+   "events_used": 476
+  },
+  {
+   "user": 9,
+   "frames_in": 4403,
+   "events_in": 328,
+   "base_row": 59937,
+   "session_frames": 52055,
+   "events_excluded_missing": 106,
+   "events_used": 222
+  },
+  {
+   "user": 10,
+   "frames_in": 4960,
+   "events_in": 262,
+   "base_row": 64340,
+   "session_frames": 53835,
+   "events_excluded_missing": 1,
+   "events_used": 261
+  },
+  {
+   "user": 11,
+   "frames_in": 2704,
+   "events_in": 146,
+   "base_row": 69300,
+   "session_frames": 49508,
+   "events_excluded_missing": 3,
+   "events_used": 143
+  },
+  {
+   "user": 12,
+   "frames_in": 5062,
+   "events_in": 268,
+   "base_row": 72004,
+   "session_frames": 48113,
+   "events_excluded_missing": 0,
+   "events_used": 268
+  },
+  {
+   "user": 13,
+   "frames_in": 2434,
+   "events_in": 130,
+   "base_row": 77066,
+   "session_frames": 48646,
+   "events_excluded_missing": 1,
+   "events_used": 129
+  },
+  {
+   "user": 14,
+   "frames_in": 9523,
+   "events_in": 504,
+   "base_row": 79500,
+   "session_frames": 33488,
+   "events_excluded_missing": 0,
+   "events_used": 504
+  },
+  {
+   "user": 15,
+   "frames_in": 5335,
+   "events_in": 292,
+   "base_row": 89023,
+   "session_frames": 37407,
+   "events_excluded_missing": 8,
+   "events_used": 284
+  },
+  {
+   "user": 16,
+   "frames_in": 798,
+   "events_in": 42,
+   "base_row": 94358,
+   "session_frames": 28553,
+   "events_excluded_missing": 0,
+   "events_used": 42
+  },
+  {
+   "user": 17,
+   "frames_in": 4984,
+   "events_in": 264,
+   "base_row": 95156,
+   "session_frames": 47230,
+   "events_excluded_missing": 2,
+   "events_used": 262
+  },
+  {
+   "user": 18,
+   "frames_in": 6509,
+   "events_in": 346,
+   "base_row": 100140,
+   "session_frames": 43361,
+   "events_excluded_missing": 2,
+   "events_used": 344
+  },
+  {
+   "user": 19,
+   "frames_in": 2579,
+   "events_in": 136,
+   "base_row": 106649,
+   "session_frames": 52581,
+   "events_excluded_missing": 0,
+   "events_used": 136
+  },
+  {
+   "user": 20,
+   "frames_in": 6159,
+   "events_in": 326,
+   "base_row": 109228,
+   "session_frames": 50304,
+   "events_excluded_missing": 0,
+   "events_used": 326
+  },
+  {
+   "user": 21,
+   "frames_in": 5121,
+   "events_in": 272,
+   "base_row": 115387,
+   "session_frames": 42993,
+   "events_excluded_missing": 2,
+   "events_used": 270
+  },
+  {
+   "user": 22,
+   "frames_in": 11384,
+   "events_in": 632,
+   "base_row": 120508,
+   "session_frames": 40863,
+   "events_excluded_missing": 29,
+   "events_used": 603
+  },
+  {
+   "user": 23,
+   "frames_in": 3130,
+   "events_in": 166,
+   "base_row": 131892,
+   "session_frames": 32956,
+   "events_excluded_missing": 0,
+   "events_used": 166
+  },
+  {
+   "user": 24,
+   "frames_in": 5123,
+   "events_in": 274,
+   "base_row": 135022,
+   "session_frames": 37682,
+   "events_excluded_missing": 4,
+   "events_used": 270
+  },
+  {
+   "user": 25,
+   "frames_in": 15409,
+   "events_in": 826,
+   "base_row": 140145,
+   "session_frames": 38091,
+   "events_excluded_missing": 6,
+   "events_used": 820
+  },
+  {
+   "user": 26,
+   "frames_in": 4236,
+   "events_in": 224,
+   "base_row": 155554,
+   "session_frames": 40458,
+   "events_excluded_missing": 0,
+   "events_used": 224
+  },
+  {
+   "user": 27,
+   "frames_in": 2736,
+   "events_in": 148,
+   "base_row": 159790,
+   "session_frames": 41193,
+   "events_excluded_missing": 4,
+   "events_used": 144
+  },
+  {
+   "user": 28,
+   "frames_in": 10744,
+   "events_in": 584,
+   "base_row": 162526,
+   "session_frames": 36500,
+   "events_excluded_missing": 0,
+   "events_used": 584
+  },
+  {
+   "user": 29,
+   "frames_in": 14742,
+   "events_in": 792,
+   "base_row": 173270,
+   "session_frames": 55427,
+   "events_excluded_missing": 16,
+   "events_used": 776
+  },
+  {
+   "user": 30,
+   "frames_in": 23411,
+   "events_in": 1262,
+   "base_row": 188012,
+   "session_frames": 41461,
+   "events_excluded_missing": 0,
+   "events_used": 1262
+  },
+  {
+   "user": 31,
+   "frames_in": 18890,
+   "events_in": 1004,
+   "base_row": 211423,
+   "session_frames": 47521,
+   "events_excluded_missing": 1,
+   "events_used": 1003
+  },
+  {
+   "user": 32,
+   "frames_in": 13386,
+   "events_in": 722,
+   "base_row": 230313,
+   "session_frames": 37584,
+   "events_excluded_missing": 1,
+   "events_used": 721
+  },
+  {
+   "user": 33,
+   "frames_in": 6907,
+   "events_in": 374,
+   "base_row": 243699,
+   "session_frames": 40807,
+   "events_excluded_missing": 4,
+   "events_used": 370
+  },
+  {
+   "user": 34,
+   "frames_in": 15359,
+   "events_in": 818,
+   "base_row": 250606,
+   "session_frames": 50342,
+   "events_excluded_missing": 1,
+   "events_used": 817
+  },
+  {
+   "user": 35,
+   "frames_in": 25108,
+   "events_in": 1352,
+   "base_row": 265965,
+   "session_frames": 51795,
+   "events_excluded_missing": 15,
+   "events_used": 1337
+  },
+  {
+   "user": 36,
+   "frames_in": 3394,
+   "events_in": 180,
+   "base_row": 291073,
+   "session_frames": 37427,
+   "events_excluded_missing": 0,
+   "events_used": 180
+  },
+  {
+   "user": 37,
+   "frames_in": 1366,
+   "events_in": 76,
+   "base_row": 294467,
+   "session_frames": 37942,
+   "events_excluded_missing": 6,
+   "events_used": 70
+  },
+  {
+   "user": 38,
+   "frames_in": 3102,
+   "events_in": 164,
+   "base_row": 295833,
+   "session_frames": 23389,
+   "events_excluded_missing": 0,
+   "events_used": 164
+  },
+  {
+   "user": 39,
+   "frames_in": 29146,
+   "events_in": 1572,
+   "base_row": 298935,
+   "session_frames": 50448,
+   "events_excluded_missing": 12,
+   "events_used": 1560
+  },
+  {
+   "user": 40,
+   "frames_in": 7164,
+   "events_in": 378,
+   "base_row": 328081,
+   "session_frames": 35751,
+   "events_excluded_missing": 0,
+   "events_used": 378
+  },
+  {
+   "user": 41,
+   "frames_in": 16238,
+   "events_in": 870,
+   "base_row": 335245,
+   "session_frames": 50286,
+   "events_excluded_missing": 2,
+   "events_used": 868
+  },
+  {
+   "user": 42,
+   "frames_in": 1858,
+   "events_in": 98,
+   "base_row": 351483,
+   "session_frames": 24584,
+   "events_excluded_missing": 0,
+   "events_used": 98
+  },
+  {
+   "user": 43,
+   "frames_in": 4065,
+   "events_in": 218,
+   "base_row": 353341,
+   "session_frames": 53078,
+   "events_excluded_missing": 4,
+   "events_used": 214
+  },
+  {
+   "user": 44,
+   "frames_in": 4728,
+   "events_in": 306,
+   "base_row": 357406,
+   "session_frames": 21134,
+   "events_excluded_missing": 64,
+   "events_used": 242
+  },
+  {
+   "user": 45,
+   "frames_in": 5881,
+   "events_in": 324,
+   "base_row": 362134,
+   "session_frames": 49982,
+   "events_excluded_missing": 12,
+   "events_used": 312
+  },
+  {
+   "user": 46,
+   "frames_in": 378,
+   "events_in": 20,
+   "base_row": 368015,
+   "session_frames": 48012,
+   "events_excluded_missing": 0,
+   "events_used": 20
+  },
+  {
+   "user": 47,
+   "frames_in": 13090,
+   "events_in": 696,
+   "base_row": 368393,
+   "session_frames": 39143,
+   "events_excluded_missing": 0,
+   "events_used": 696
+  },
+  {
+   "user": 48,
+   "frames_in": 1102,
+   "events_in": 58,
+   "base_row": 381483,
+   "session_frames": 33079,
+   "events_excluded_missing": 0,
+   "events_used": 58
+  },
+  {
+   "user": 49,
+   "frames_in": 9256,
+   "events_in": 490,
+   "base_row": 382585,
+   "session_frames": 44777,
+   "events_excluded_missing": 0,
+   "events_used": 490
+  },
+  {
+   "user": 50,
+   "frames_in": 10587,
+   "events_in": 566,
+   "base_row": 391841,
+   "session_frames": 39806,
+   "events_excluded_missing": 0,
+   "events_used": 566
+  },
+  {
+   "user": 51,
+   "frames_in": 5685,
+   "events_in": 300,
+   "base_row": 402428,
+   "session_frames": 50127,
+   "events_excluded_missing": 0,
+   "events_used": 300
+  },
+  {
+   "user": 52,
+   "frames_in": 10004,
+   "events_in": 536,
+   "base_row": 408113,
+   "session_frames": 50510,
+   "events_excluded_missing": 2,
+   "events_used": 534
+  },
+  {
+   "user": 53,
+   "frames_in": 27713,
+   "events_in": 1496,
+   "base_row": 418117,
+   "session_frames": 53218,
+   "events_excluded_missing": 1,
+   "events_used": 1495
+  },
+  {
+   "user": 54,
+   "frames_in": 16141,
+   "events_in": 864,
+   "base_row": 445830,
+   "session_frames": 54399,
+   "events_excluded_missing": 7,
+   "events_used": 857
+  },
+  {
+   "user": 55,
+   "frames_in": 18199,
+   "events_in": 974,
+   "base_row": 461971,
+   "session_frames": 53949,
+   "events_excluded_missing": 6,
+   "events_used": 968
+  },
+  {
+   "user": 56,
+   "frames_in": 8383,
+   "events_in": 448,
+   "base_row": 480170,
+   "session_frames": 49969,
+   "events_excluded_missing": 5,
+   "events_used": 443
+  },
+  {
+   "user": 57,
+   "frames_in": 38023,
+   "events_in": 2110,
+   "base_row": 488553,
+   "session_frames": 54716,
+   "events_excluded_missing": 6,
+   "events_used": 2104
+  },
+  {
+   "user": 58,
+   "frames_in": 5533,
+   "events_in": 296,
+   "base_row": 526576,
+   "session_frames": 35061,
+   "events_excluded_missing": 3,
+   "events_used": 293
+  }
+ ],
+ "out_dir": "data/processed/v2",
+ "verify": {
+  "all_pass": true,
+  "checks": {
+   "V1 memmap shape/dtype/총 프레임 수": {
+    "pass": true,
+    "detail": "m22:(532109, 64, 160),uint8 m18:(532109, 64, 160),uint8 N=532109 (기대 532109)"
+   },
+   "V4 행 인덱스 범위 [0, N)": {
+    "pass": true,
+    "detail": "N=532109, 유효행 540,175"
+   },
+   "V2 이벤트 행 <-> 피험자 일치": {
+    "pass": true,
+    "detail": "불일치 0"
+   },
+   "V3 이벤트 행 <-> 프레임 번호 1:1": {
+    "pass": true,
+    "detail": "불일치 0"
+   },
+   "V5 (subject, frame) 중복 없음": {
+    "pass": true,
+    "detail": "중복 0"
+   },
+   "V6 배율 간 길이 동일": {
+    "pass": true,
+    "detail": "{'m22': 532109, 'm18': 532109}"
+   },
+   "V7 사용자별 blink==unblink & 이벤트 28,728": {
+    "pass": true,
+    "detail": "피험자 58, 이벤트 28,728, 균형 True"
+   },
+   "필드 보존 (interp_cubic / 결측 / fold)": {
+    "pass": true,
+    "detail": "누락 []"
+   }
+  },
+  "n_frames": 532109,
+  "n_events": 28728
+ }
+}

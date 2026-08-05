@@ -82,11 +82,15 @@ def run_probe(
     hidden: int = DEFAULT_HIDDEN,
     dropout: float = DEFAULT_DROPOUT,
     device: str | None = None,
+    return_scores: bool = False,
+    return_pred: bool = False,
 ) -> dict:
     """단일 프로브 1회 학습 -> test 정확도.
 
     masks: {"train": bool[n], "test": bool[n]}  (splits.time_block_masks 등)
     반환: {accuracy, chance, n_train, n_test, kind, seed, dim}
+          return_pred=True   이면 {pred, y_test, test_rows} 추가 (다중 클래스 가능)
+          return_scores=True 이면 이진 과제에 한해 {scores, class_order} 추가
     """
     torch = _torch()
     repro.seal(seed)
@@ -122,10 +126,11 @@ def run_probe(
 
     net.eval()
     with torch.no_grad():
-        pred = net(torch.from_numpy(Xs[te]).to(device)).argmax(1).cpu().numpy()
+        logit = net(torch.from_numpy(Xs[te]).to(device)).cpu()
+    pred = logit.argmax(1).numpy()
     acc = float((pred == yy[te]).mean())
 
-    return {
+    out = {
         "accuracy": acc,
         "kind": kind,
         "seed": int(seed),
@@ -135,6 +140,29 @@ def run_probe(
         # chance 는 **평가 집합 기준**으로 보고합니다. 여기가 우리가 맞히는 대상입니다.
         "chance": splits.chance_report(y[te]).as_dict(),
     }
+    # 2026-08-03 추가. 이진 과제에서는 정확도만으로 부족하다 — v2 의 주 지표가
+    # PR-AUC 이고(PROTOCOL §9-1) 그것은 임계값이 아니라 **점수**를 요구한다.
+    # 호출자가 `thresholds.average_precision` 을 쓸 수 있도록 양성 확률을 돌려준다.
+    # 프로브를 밖에서 다시 구현하지 않게 하려는 것이며, 기본값은 꺼져 있어
+    # 기존 호출부(phase0_probes)의 반환 구조는 바뀌지 않는다.
+    # 다중 클래스에서는 **피험자별로 나눠 봐야** 하는 질문이 있다. 예: 인코더가
+    # 학습에 본 피험자와 처음 보는 피험자의 누출량이 다른가(Phase 5). 정확도 하나만
+    # 돌려주면 밖에서 프로브를 다시 짜야 하므로 예측을 그대로 돌려준다.
+    if return_pred:
+        out["pred"] = classes[pred]
+        out["y_test"] = y[te]
+        out["test_rows"] = np.flatnonzero(te)
+    if return_scores:
+        if len(classes) != 2:
+            raise ValueError("return_scores 는 이진 과제에서만 의미가 있습니다 "
+                             f"(클래스 {len(classes)}개).")
+        out["scores"] = torch.softmax(logit, dim=1)[:, 1].numpy().astype(np.float64)
+        out["test_rows"] = np.flatnonzero(te)
+        # **재매핑된** 0/1 을 돌려준다. scores 는 "클래스 인덱스 1의 확률"이므로
+        # 원래 라벨 값(예: 3/7)을 그대로 주면 점수와 라벨의 의미가 어긋난다.
+        out["y_test"] = yy[te]
+        out["class_order"] = classes.tolist()
+    return out
 
 
 def run_representation(
@@ -145,11 +173,17 @@ def run_representation(
     t_rel: np.ndarray,
     seeds: tuple[int, ...] = (0, 1, 2),
     kinds: tuple[ProbeKind, ...] = ("linear", "mlp"),
+    fit_transform=None,
     **kw,
 ) -> dict:
     """표현 하나에 대해 (선형/MLP) x (시간블록/무작위) x 시드 를 전부 돌립니다.
 
     v2 재식별 보고의 최소 단위가 이 **4칸 x 3시드** 입니다. 한 칸만 인용하지 마십시오.
+
+    fit_transform(X, train_mask) -> X'
+        PCA 처럼 **train 에서만 적합해야 하는** 변환을 넣는 자리입니다. 전체에서
+        적합하면 test 통계가 새어 들어가 값이 부풀려집니다. 분할이 정해진 뒤에
+        호출되므로 여기 넣으면 새지 않습니다.
     """
     out: dict = {"rep": name, "dim": int(np.atleast_2d(X).shape[-1]), "cells": {}}
     split_defs = {
@@ -160,7 +194,9 @@ def run_representation(
         for kind in kinds:
             accs, runs = [], []
             for s in seeds:
-                r = run_probe(X, y, make(s), kind, seed=s, **kw)
+                m = make(s)
+                Xs = X if fit_transform is None else fit_transform(X, m["train"])
+                r = run_probe(Xs, y, m, kind, seed=s, **kw)
                 accs.append(r["accuracy"])
                 runs.append(r)
             out["cells"][f"{split_name}/{kind}"] = {
@@ -170,6 +206,7 @@ def run_representation(
                 "chance": runs[0]["chance"],
                 "n_train": runs[0]["n_train"],
                 "n_test": runs[0]["n_test"],
+                "dim": runs[0]["dim"],
             }
     tb = out["cells"]["time_block/linear"]["mean"]
     rd = out["cells"]["random/linear"]["mean"]

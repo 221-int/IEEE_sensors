@@ -177,19 +177,75 @@ def ear_both(mesh_xy: np.ndarray) -> dict[str, float]:
 
 
 def photometrics(gray: np.ndarray) -> dict[str, float]:
-    """크롭 1장의 광학 지표. Phase 1 의 (밝기, 선명도) 프로브 입력입니다."""
-    g = np.asarray(gray)
-    return {"brightness": float(g.mean()), "contrast": float(g.std()),
-            "sharpness": float(cv2.Laplacian(g, cv2.CV_64F).var())}
+    """크롭 1장의 광학 지표. (밝기, 선명도) 프로브 입력입니다.
 
-
-def to_input_tensor(gray: np.ndarray) -> np.ndarray:
-    """(H, W) uint8 -> (1, 1, H, W) float32 [0,1].
-
-    학습과 **정확히** 같아야 합니다. 지금은 /255 만 합니다 — 밝기 정규화 도입 여부는
-    Phase 1 결과로 정하는 미결 항목이며, 넣게 되면 이 함수 한 곳만 고칩니다.
+    uint8 경로는 기존 산출물과 **비트 단위로 같게** 유지합니다(cv2.CV_64F).
+    정규화된 float 입력도 받을 수 있어야 하는데, cv2 는 float32 원본에 CV_64F 를
+    허용하지 않으므로 그때만 float64 로 올려 같은 식을 씁니다.
     """
-    x = np.asarray(gray, np.float32) / 255.0
+    g = np.asarray(gray)
+    if g.dtype == np.uint8:
+        lap = cv2.Laplacian(g, cv2.CV_64F)
+    else:
+        lap = cv2.Laplacian(g.astype(np.float64), cv2.CV_64F)
+    return {"brightness": float(g.mean()), "contrast": float(g.std()),
+            "sharpness": float(lap.var())}
+
+
+# 입력 정규화 방식 — **학습과 배포가 이 상수 하나를 공유합니다.**
+#
+# "frame_standardize" 를 채택한 근거 (results/v2/photometrics_58.json, 58명 532,109프레임):
+#   - 사용자 평균 밝기가 35.5 ~ 89.0 으로 2.5배 차이나고 F비 6.36 (게이트 기준 5 초과)
+#   - **(밝기, 선명도) 두 숫자만으로 58-way 재식별 MLP 프로브가 0.2018** (chance 0.0172,
+#     11.7배). 즉 정규화 없이는 재식별 결과의 상당 부분이 신원이 아니라 조명이다
+#   - 프레임 자기 통계만 쓰므로 **인과적**이다 → Pi 에서 실시간 가능
+#     (녹화 전체 평균으로 나누는 방식은 미래를 보는 것이라 배포 불가)
+#
+# 한계도 같이 기록한다: 정규화는 밝기를 상수로 만들지만 초점·거리 차이에서 오는
+# 선명도 잔여값(sharpness/contrast^2)은 F 3.24 로 남는다. **개선이지 해결이 아니다.**
+INPUT_NORM = "frame_standardize"
+EPS_STD = 1e-3          # 완전 균일한 크롭에서 0 나눗셈 방지
+
+
+def to_input_tensor(gray: np.ndarray, norm: str | None = None) -> np.ndarray:
+    """(H, W) uint8 -> (1, 1, H, W) float32.
+
+    학습과 배포가 **정확히** 같아야 하므로 기본값은 모듈 상수 `INPUT_NORM` 을 씁니다.
+    인자로 덮어쓰는 것은 ablation 전용이며, 그 경우 결과 JSON 에 어떤 값을 썼는지
+    반드시 기록하십시오.
+
+      "none"               x / 255                       (구 방식)
+      "frame_standardize"  (x - mean) / std  프레임 자기 통계. 인과적. **채택**
+    """
+    x = np.asarray(gray, np.float32)
     if x.ndim != 2:
         raise ValueError(f"2-D 그레이 크롭이어야 합니다. got {x.shape}")
+    mode = norm or INPUT_NORM
+    if mode == "none":
+        x = x / 255.0
+    elif mode == "frame_standardize":
+        x = (x - x.mean()) / max(float(x.std()), EPS_STD * 255.0)
+    else:
+        raise ValueError(f"unknown norm {mode!r}")
     return x.reshape(1, 1, *x.shape)
+
+
+def batch_input(crops: np.ndarray, norm: str | None = None) -> np.ndarray:
+    """(N, H, W) uint8 -> (N, 1, H, W) float32. 학습 경로용 벡터화 버전.
+
+    `to_input_tensor` 와 **같은 수식**이어야 합니다. 두 곳에 흩어지면 train/serve 가
+    갈라지므로, 여기서도 mode 를 같은 상수에서 읽습니다.
+    """
+    x = np.asarray(crops, np.float32)
+    if x.ndim != 3:
+        raise ValueError(f"(N, H, W) 여야 합니다. got {x.shape}")
+    mode = norm or INPUT_NORM
+    if mode == "none":
+        x = x / 255.0
+    elif mode == "frame_standardize":
+        m = x.mean(axis=(1, 2), keepdims=True)
+        s = np.maximum(x.std(axis=(1, 2), keepdims=True), EPS_STD * 255.0)
+        x = (x - m) / s
+    else:
+        raise ValueError(f"unknown norm {mode!r}")
+    return x[:, None, :, :]
