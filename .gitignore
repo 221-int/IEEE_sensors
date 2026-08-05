@@ -27,3 +27,6 @@ models/disentangled/*.pt
 !.gitkeep
 
 models/sweep/
+
+# T3 확정 체크포인트 백업 (models/v2 는 bb1f62d 에 커밋돼 있다. 중복 blob 방지)
+models/v2_confirmed_*/
