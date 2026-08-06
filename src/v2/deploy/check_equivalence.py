@@ -160,8 +160,34 @@ def g_q4(onnx_json: str, n: int = 32, seed: int = 0) -> dict:
     s = ort.InferenceSession(meta["paths"]["encoder"], providers=["CPUExecutionProvider"])
     o = s.run(None, {"crop": x})[0]
     mx = float(np.abs(t - o).max())
-    return {"gate": "G-Q4 ONNX", "arch": arch, "d_latent": d, "n": int(n),
-            "max_abs_diff": mx, "tol": 1e-4, "pass": bool(mx < 1e-4)}
+    out = {"gate": "G-Q4 ONNX", "arch": arch, "d_latent": d, "n": int(n),
+           "ours_max_abs_diff": mx, "tol": 1e-4}
+
+    # 대조군 2 도 **같은 기준**으로 통과시킨다. 3자 비교가 성립하려면 세 경로가
+    # 모두 학습 전처리와 같은 입력을 먹어야 한다. (가중치는 무작위 — 지연 전용)
+    # torch↔ONNX 대조는 **export 시점에 실제 가중치로 이미 했다**
+    # (export_onnx.export_image_cnn). 여기서 다시 무작위 가중치를 맞출 수는 없으므로
+    # 중복하지 않고, 이 게이트가 실제로 답해야 할 세 가지만 본다:
+    #   ① export 단계 대조가 통과했는가
+    #   ② 그래프가 결정적인가 (같은 입력 두 번 -> 같은 출력)
+    #   ③ **학습 전처리로 만든 입력을 그대로 먹는가** — 3자 비교의 전제다
+    ic = meta.get("image_cnn", {})
+    for v, rec in ic.items():
+        s2 = ort.InferenceSession(rec["paths"]["backbone"],
+                                  providers=["CPUExecutionProvider"])
+        o1 = s2.run(None, {"crop": x})[0]          # x 는 batch_input() 산출물이다
+        o2 = s2.run(None, {"crop": x})[0]
+        out[f"{v}_export_verified"] = bool(rec["verification"]["pass"])
+        out[f"{v}_onnx_deterministic"] = float(np.abs(o1 - o2).max())
+        out[f"{v}_accepts_training_input"] = bool(
+            o1.shape == (x.shape[0], rec["out_dim"]))
+        out[f"{v}_weights"] = rec["weights"]
+
+    ic_ok = all(out.get(f"{v}_export_verified", False)
+                and out.get(f"{v}_onnx_deterministic", 1.0) == 0.0
+                and out.get(f"{v}_accepts_training_input", False) for v in ic)
+    out["pass"] = bool(mx < 1e-4 and (ic_ok if ic else True))
+    return out
 
 
 def main() -> int:

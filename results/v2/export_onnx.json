@@ -8,7 +8,7 @@
   "numpy": "2.4.2",
   "pythonhashseed": "0",
   "cublas_workspace_config": ":4096:8",
-  "git_commit": "a05db81cacdbb6d0b57a0165a6045a381d2b7dea",
+  "git_commit": "001d516fa3dc8e7a9d883dcb0d842ba18109f043",
   "git_dirty": true,
   "torch": "2.11.0+cu128",
   "cuda_available": true,
@@ -71,5 +71,74 @@
   "head_allzero_mask_finite": true,
   "tol": 0.0001,
   "pass": true
+ },
+ "image_cnn": {
+  "image_cnn_max": {
+   "variant": "image_cnn_max",
+   "out_dim": 1,
+   "paths": {
+    "backbone": "models/v2/onnx/image_cnn_max/backbone.onnx"
+   },
+   "weights": "random (latency only)",
+   "_weights_warning": "무작위 초기화다. 지연 측정 전용이며 이 그래프로 정확도를 재면 안 된다. 정확도는 results/v2/imgcnn_*_pilot.json 을 쓴다.",
+   "params": {
+    "backbone": 470561,
+    "head": 0,
+    "total": 470561
+   },
+   "mmac": {
+    "backbone_per_frame": 31.805632,
+    "head_per_frame_stride1": 0.0,
+    "decide_note": "masked max — 파라미터·MAC 사실상 0 (mEBAL 원문 §5.1)"
+   },
+   "file_sizes": {
+    "backbone": {
+     "bytes": 1884410,
+     "kb": 1840.2,
+     "external_data": false
+    }
+   },
+   "verification": {
+    "backbone_max_abs_diff": 2.2351741790771484e-08,
+    "pass": true
+   }
+  },
+  "image_cnn_head": {
+   "variant": "image_cnn_head",
+   "out_dim": 16,
+   "paths": {
+    "backbone": "models/v2/onnx/image_cnn_head/backbone.onnx",
+    "head": "models/v2/onnx/image_cnn_head/head.onnx"
+   },
+   "weights": "random (latency only)",
+   "_weights_warning": "무작위 초기화다. 지연 측정 전용이며 이 그래프로 정확도를 재면 안 된다. 정확도는 results/v2/imgcnn_*_pilot.json 을 쓴다.",
+   "params": {
+    "backbone": 471536,
+    "head": 4625,
+    "total": 476161
+   },
+   "mmac": {
+    "backbone_per_frame": 31.806592,
+    "head_per_frame_stride1": 0.045888,
+    "decide_note": "우리와 동일한 TCN 헤드"
+   },
+   "file_sizes": {
+    "backbone": {
+     "bytes": 1888310,
+     "kb": 1844.1,
+     "external_data": false
+    },
+    "head": {
+     "bytes": 23898,
+     "kb": 23.3,
+     "external_data": false
+    }
+   },
+   "verification": {
+    "backbone_max_abs_diff": 6.705522537231445e-08,
+    "head_max_abs_diff": 5.960464477539063e-08,
+    "pass": true
+   }
+  }
  }
 }

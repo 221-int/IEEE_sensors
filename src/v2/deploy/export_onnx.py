@@ -181,6 +181,86 @@ def verify(paths: dict, enc, head, d: int, tol: float) -> dict:
     return rep
 
 
+# ------------------------------------------------------------------ image_cnn (B3)
+def export_image_cnn(variant: str, d_latent: int, outdir: str, opset: int,
+                     tol: float) -> dict:
+    """대조군 2 를 지연 측정용으로 export 한다.
+
+    🔴 **가중치는 무작위 초기화다.** 탐색 런에 `--save-models` 를 붙이지 않았으므로
+    image_cnn 체크포인트가 없다. **지연은 구조·입력 크기·하드웨어로 결정되고
+    가중치 값과 무관**하므로 지연 측정에는 문제가 없다.
+    다만 이 그래프로 **정확도를 재면 안 된다.** 결과 JSON 에 못 박아 둔다.
+
+    두 변형은 백본이 같고 시간 처리만 다르다:
+      max   백본(out=1) 만. 판정은 프레임 점수의 masked max (파라미터 0, ONNX 불필요)
+      head  백본(out=D) + 우리와 동일한 head.onnx
+    """
+    import onnxruntime as ort
+
+    out_dim = 1 if variant == "image_cnn_max" else d_latent
+    sub = os.path.join(outdir, variant)
+    os.makedirs(sub, exist_ok=True)
+    net = E.build_image_cnn(out_dim).eval()
+
+    x = torch.randn(1, 1, C.OUT_H, C.OUT_W)
+    p_bb = os.path.join(sub, "backbone.onnx")
+    torch.onnx.export(net, (x,), p_bb, opset_version=opset,
+                      input_names=["crop"], output_names=["feat"],
+                      dynamic_axes={"crop": {0: "batch"}, "feat": {0: "batch"}},
+                      dynamo=False)
+    paths = {"backbone": p_bb}
+
+    head = None
+    if variant == "image_cnn_head":
+        head = E.build_head(d_latent, EVENT_LEN).eval()
+        z, m = torch.randn(1, EVENT_LEN, d_latent), torch.ones(1, EVENT_LEN)
+        p_h = os.path.join(sub, "head.onnx")
+        torch.onnx.export(HeadWrap(head).eval(), (z, m), p_h, opset_version=opset,
+                          input_names=["vectors", "mask"], output_names=["blink_prob"],
+                          dynamic_axes={"vectors": {0: "batch"}, "mask": {0: "batch"},
+                                        "blink_prob": {0: "batch"}},
+                          dynamo=False)
+        paths["head"] = p_h
+
+    # 수치 검증 — torch 와 어긋나면 "빠른 오답"을 재게 된다
+    rng = np.random.default_rng(0)
+    xb = rng.standard_normal((4, 1, C.OUT_H, C.OUT_W)).astype(np.float32)
+    with torch.no_grad():
+        t_out = net(torch.from_numpy(xb)).numpy()
+    s = ort.InferenceSession(p_bb, providers=["CPUExecutionProvider"])
+    d_bb = float(np.max(np.abs(t_out - s.run(None, {"crop": xb})[0])))
+    ver = {"backbone_max_abs_diff": d_bb}
+    if head is not None:
+        zb = rng.standard_normal((4, EVENT_LEN, d_latent)).astype(np.float32)
+        mb = np.ones((4, EVENT_LEN), np.float32)
+        with torch.no_grad():
+            t_h = torch.sigmoid(head(torch.from_numpy(zb),
+                                     torch.from_numpy(mb))).numpy()
+        sh = ort.InferenceSession(paths["head"], providers=["CPUExecutionProvider"])
+        ver["head_max_abs_diff"] = float(np.max(np.abs(
+            t_h - sh.run(None, {"vectors": zb, "mask": mb})[0])))
+    ver["pass"] = all(v < tol for k, v in ver.items() if k.endswith("diff"))
+
+    a = E.analyse_image_cnn(out_dim)
+    n_bb = sum(q.numel() for q in net.parameters())
+    n_h = sum(q.numel() for q in head.parameters()) if head is not None else 0
+    return {
+        "variant": variant, "out_dim": out_dim,
+        "paths": {k: v.replace("\\", "/") for k, v in paths.items()},
+        "weights": "random (latency only)",
+        "_weights_warning": "무작위 초기화다. 지연 측정 전용이며 "
+                            "이 그래프로 정확도를 재면 안 된다. 정확도는 "
+                            "results/v2/imgcnn_*_pilot.json 을 쓴다.",
+        "params": {"backbone": n_bb, "head": n_h, "total": n_bb + n_h},
+        "mmac": {"backbone_per_frame": a["total_mmac"],
+                 "head_per_frame_stride1": (E.temporal_head_mmac(d_latent, EVENT_LEN)
+                                            if head is not None else 0.0),
+                 "decide_note": ("masked max — 파라미터·MAC 사실상 0 (mEBAL 원문 §5.1)"
+                                 if head is None else "우리와 동일한 TCN 헤드")},
+        "file_sizes": sizes(paths), "verification": ver,
+    }
+
+
 def sizes(paths: dict) -> dict:
     """.onnx + 같은 이름의 .onnx.data 를 합산한다 (가중치가 분리될 수 있다)."""
     out = {}
@@ -205,6 +285,9 @@ def main() -> int:
     ap.add_argument("--event-graph", action="store_true",
                     help="19프레임 통짜 그래프도 낸다. **배포용이 아니다** — "
                          "프레임당 비용이 19배다. 비교용으로만")
+    ap.add_argument("--with-image-cnn", action="store_true", default=True,
+                    help="대조군 2(image_cnn) 도 함께 export 한다. Table II 의 3자 비교에 필요")
+    ap.add_argument("--no-image-cnn", dest="with_image_cnn", action="store_false")
     ap.add_argument("--out", default=OUT)
     args = ap.parse_args()
 
@@ -261,6 +344,18 @@ def main() -> int:
                "전체에 걸리므로, stride 1 에서 직전 계산을 재사용할 수 없다. 매 프레임 "
                "창 19개를 다시 돈다 — 0.0459 MMAC/frame 은 그 값이다.",
            "file_sizes": sz, "verification": ver}
+
+    if args.with_image_cnn:
+        out["image_cnn"] = {v: export_image_cnn(v, d, args.outdir, args.opset, args.tol)
+                            for v in ("image_cnn_max", "image_cnn_head")}
+        print(f"\n[대조군 2] image_cnn  (가중치 무작위 — **지연 전용**)")
+        for v, r in out["image_cnn"].items():
+            print(f"  {v:<16} params {r['params']['total']:>8,}  "
+                  f"backbone {r['mmac']['backbone_per_frame']:.2f} + "
+                  f"head {r['mmac']['head_per_frame_stride1']:.4f} MMAC/frame  "
+                  f"검증 {'PASS' if r['verification']['pass'] else 'FAIL'}")
+        if not all(r["verification"]["pass"] for r in out["image_cnn"].values()):
+            ver["pass"] = False
     os.makedirs(os.path.dirname(args.out) or ".", exist_ok=True)
     tmp = args.out + ".tmp"
     with open(tmp, "w", encoding="utf-8") as f:

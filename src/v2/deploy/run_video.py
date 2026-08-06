@@ -180,7 +180,10 @@ def main() -> int:
     repro.ensure_hashseed()
     repro.seal(0)
     ap = argparse.ArgumentParser()
-    ap.add_argument("--mode", default="ours", choices=["ours", "ear"])
+    ap.add_argument("--mode", default="ours",
+                    choices=["ours", "ear", "image_cnn_max", "image_cnn_head"],
+                    help="image_cnn 은 두 변형을 **따로** 잰다. 백본이 같고 시간 처리만 "
+                         "다르므로, 둘의 차이가 곧 head 의 지연 기여다")
     ap.add_argument("--source", default="0", help="카메라 인덱스 또는 영상 경로")
     ap.add_argument("--width", type=int, default=640)
     ap.add_argument("--height", type=int, default=480)
@@ -222,11 +225,22 @@ def main() -> int:
 
     fe = EyeFrontend(refine_landmarks=args.refine_landmarks)
     enc_sess = head_sess = None
+    random_weights = False
     if args.mode == "ours":
         enc_sess = make_session(os.path.join(args.onnx_dir, "encoder.onnx"),
                                 args.intra_threads, args.no_spin)
         head_sess = make_session(os.path.join(args.onnx_dir, "head.onnx"),
                                  args.intra_threads, args.no_spin)
+    elif args.mode.startswith("image_cnn"):
+        sub = os.path.join(args.onnx_dir, args.mode)
+        enc_sess = make_session(os.path.join(sub, "backbone.onnx"),
+                                args.intra_threads, args.no_spin)
+        if args.mode == "image_cnn_head":
+            head_sess = make_session(os.path.join(sub, "head.onnx"),
+                                     args.intra_threads, args.no_spin)
+        # 🔴 image_cnn 체크포인트가 없어 무작위 초기화로 export 했다.
+        # 지연은 구조·입력·하드웨어로 결정되므로 유효하지만 **정확도는 무의미하다.**
+        random_weights = True
 
     t_read, t_detect, t_crop, t_encode, t_head, t_e2e = ([] for _ in range(6))
     ring: deque = deque(maxlen=EVENT_LEN)
@@ -259,7 +273,7 @@ def main() -> int:
             t_e2e.append((t2 - f0) * 1e3)
             continue
 
-        if args.mode == "ours":
+        if args.mode in ("ours", "image_cnn_max", "image_cnn_head"):
             g, _ = fe.crop_from_mesh(frame, mesh)
             x = C.to_input_tensor(g) if g is not None else None
             t3 = time.perf_counter()
@@ -279,10 +293,16 @@ def main() -> int:
                 zz = np.stack([v if v is not None else np.zeros(d, np.float32)
                                for v in ring])[None].astype(np.float32)
                 mk = np.array([[0.0 if v is None else 1.0 for v in ring]], np.float32)
-                p = head_sess.run(None, {"vectors": zz, "mask": mk})[0]
+                if head_sess is not None:
+                    p = float(head_sess.run(
+                        None, {"vectors": zz, "mask": mk})[0].reshape(-1)[0])
+                else:
+                    # image_cnn_max — mEBAL 원문 §5.1 의 masked max. 학습 파라미터가 없다.
+                    s = np.where(mk[0] > 0, zz[0, :, 0], -np.inf)
+                    p = float(s.max()) if np.isfinite(s).any() else 0.0
                 t5 = time.perf_counter()
                 t_head.append((t5 - t4) * 1e3)
-                probs.append(float(p.reshape(-1)[0]))
+                probs.append(p)
                 n_decisions += 1
             t_e2e.append((t5 - f0) * 1e3)
         else:
@@ -316,6 +336,9 @@ def main() -> int:
         warn.append(f"측정 길이 {args.duration}s < 300s. 지속 성능이 아니다")
     if read_temp() is None:
         warn.append("vcgencmd 가 없다 — Pi 가 아니다. 이 숫자는 논문에 쓰지 않는다")
+    if random_weights:
+        warn.append("image_cnn 가중치가 **무작위 초기화**다. 지연은 유효하지만 "
+                    "이 런의 판정 출력(probs)은 의미가 없다")
 
     out = {
         "env": repro.env_fingerprint(),
@@ -327,6 +350,7 @@ def main() -> int:
                      "ort_spinning": "disabled" if args.no_spin else "default(ENABLED)",
                      "has_vcgencmd": bool(shutil.which("vcgencmd"))},
         "head_stride": args.head_stride,
+        "weights": "random (latency only)" if random_weights else "trained",
         "head_mmac_per_frame": 0.045888 if args.head_stride == 1 else None,
         "_head_cost_note": "stride 1 이므로 head 는 매 프레임 0.0459 MMAC 이다. "
                            "인코더 12.44 와 합쳐 12.49 MMAC/frame (head 0.37%).",
