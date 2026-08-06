@@ -188,7 +188,18 @@ def train_one(bundle: Bundle, mode: str, tr, va, seed: int, args, dev):
 
     repro.seal(seed)
     if mode == "cnn":
-        front = E.build(args.arch, args.latent).to(dev)
+        # --front 는 **프론트엔드 종류**, --arch 는 **인코더 구조**다. 다른 축이다.
+        #   ours            크롭 -> vpres/sym16/vdrop/vfull -> D차원   (--arch 가 여기 붙는다)
+        #   image_cnn_head  크롭 -> mEBAL CNN -> D차원 -> 우리와 동일한 시간 헤드
+        #   image_cnn_max   크롭 -> mEBAL CNN -> 점수 1개 -> max pooling (원문 §5.1)
+        if args.front == "ours":
+            front = E.build(args.arch, args.latent).to(dev)
+        elif args.front == "image_cnn_head":
+            front = E.build_image_cnn(args.latent).to(dev)
+        elif args.front == "image_cnn_max":
+            front = E.build_image_cnn(1).to(dev)
+        else:
+            raise ValueError(f"unknown --front {args.front!r}")
         def fetch(ids):
             x, mk, y = bundle.batch(ids)
             b, t = x.shape[:2]
@@ -201,7 +212,13 @@ def train_one(bundle: Bundle, mode: str, tr, va, seed: int, args, dev):
             b, t, k = v.shape
             return torch.from_numpy(v.reshape(b * t, k)), mk, bundle.y[ids], b, t
 
-    head = E.build_head(args.latent, EVENT_LEN).to(dev)
+    # image_cnn_max 만 학습 파라미터 없는 max pooling 을 쓴다(mEBAL 원문 §5.1).
+    # 대조군 1(earhead)은 어떤 --front 에서도 우리와 같은 시간 헤드를 쓴다 — 그래야
+    # "무엇을 프레임마다 뽑는가"만 달라진다.
+    if mode == "cnn" and args.front == "image_cnn_max":
+        head = E.build_max_head().to(dev)
+    else:
+        head = E.build_head(args.latent, EVENT_LEN).to(dev)
     opt = torch.optim.Adam(list(front.parameters()) + list(head.parameters()), lr=args.lr)
     lossf = nn.BCEWithLogitsLoss()
     g = np.random.default_rng(seed)
@@ -374,7 +391,12 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--data", default=DATA)
     ap.add_argument("--tag", default="m22")
-    ap.add_argument("--arch", default="vpres")
+    ap.add_argument("--arch", default="vpres",
+                    help="인코더 **구조** (vpres/sym16/vdrop/vfull). --front ours 일 때만 쓰인다")
+    ap.add_argument("--front", default="ours",
+                    choices=["ours", "image_cnn_head", "image_cnn_max"],
+                    help="프론트엔드 **종류**. --arch 와 다른 축이다. "
+                         "image_cnn_* 는 mEBAL 원문 구조(RELATED_WORK §A2-1)")
     ap.add_argument("--latent", type=int, default=16)
     ap.add_argument("--folds", nargs="*", type=int, default=[0, 1, 2, 3, 4])
     ap.add_argument("--seeds", nargs="*", type=int, default=[0, 1, 2])
@@ -395,7 +417,9 @@ def main() -> int:
     b = Bundle(args.data, args.tag)
     print(f"이벤트 {len(b.y):,} (결측정책으로 제외 {b.n_dropped:,})  "
           f"{splits.chance_report(b.y)}")
-    print(f"구조 {args.arch}  D={args.latent}  정규화 {C.INPUT_NORM}  "
+    desc = (f"구조 {args.arch}" if args.front == "ours"
+            else f"프론트 {args.front} (mEBAL 원문 구조)")
+    print(f"{desc}  D={args.latent}  정규화 {C.INPUT_NORM}  "
           f"max_epochs {args.max_epochs} patience {args.patience}  batch {args.batch}")
 
     runs = []
