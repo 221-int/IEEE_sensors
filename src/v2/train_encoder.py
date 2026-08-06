@@ -53,6 +53,27 @@ DELTA = 0.02                      # PROTOCOL §9-1, 2026-08-01 확정. 여기서
 # 점수는 JSON 이 아니라 **npz 사이드카**에 넣는다. JSON 에 넣으면 런당 수천 개
 # float 가 텍스트로 들어가 파일이 비대해지고 사람이 읽을 수 없게 된다.
 
+# ------------------------------------------------------------------ 실행 지문 고정
+# 🔴 2026-08-06. `env_fingerprint()` 를 JSON 쓰는 시점에 부르면 **실행 코드를 지목하지
+# 못한다.** abl_vdrop 이 실제로 그렇게 틀렸다: 10:35 에 시작해 12:43 에 JSON 을 썼는데
+# 그 사이 커밋이 5개 쌓여, 기록된 커밋이 실행 코드보다 6개 앞섰다
+# (`results/v2/_provenance/abl_vdrop_commit_correction.md`).
+# write_partial 은 런마다 호출되므로 부분 JSON 은 지문이 매번 흔들리기까지 했다.
+#
+# "런 도는 동안 파일을 안 건드린다"는 **규율**이지 **보장**이 아니다. 구조로 막는다:
+# 프로세스 시작 시점에 한 번 찍고, 이후 모든 기록이 같은 값을 재사용한다.
+_ENV_SNAPSHOT: dict | None = None
+
+
+def freeze_env() -> dict:
+    """실행 시작 시점의 환경 지문을 1회 고정하고 이후 계속 그 값을 돌려준다."""
+    global _ENV_SNAPSHOT
+    if _ENV_SNAPSHOT is None:
+        _ENV_SNAPSHOT = repro.env_fingerprint()
+        _ENV_SNAPSHOT["_fingerprint_taken"] = "process_start"
+    return _ENV_SNAPSHOT
+
+
 def scores_dir(args) -> str:
     """`--out` 마다 다른 디렉터리를 쓴다. 실험 변형끼리 사이드카가 섞이면 안 된다."""
     return os.path.splitext(args.out)[0] + "_scores"
@@ -102,7 +123,7 @@ def write_partial(args, runs: list[dict]) -> None:
     """
     path = os.path.splitext(args.out)[0] + ".partial.json"
     payload = {"_note": "미완료 런의 중간 기록. 인용 금지. 판정(verdict) 없음.",
-               "env": repro.env_fingerprint(), "config": vars(args),
+               "env": freeze_env(), "config": vars(args),
                "input_norm": C.INPUT_NORM, "n_done": len(runs),
                "runs": lean_runs(runs)}
     _atomic_write(path, lambda f: f.write(
@@ -397,6 +418,7 @@ def verdict(runs: list[dict], n_boot: int, seed: int = 0) -> dict:
 def main() -> int:
     repro.ensure_hashseed()
     repro.seal(0)
+    freeze_env()          # 🔴 여기서 찍는다. 늦게 부르면 그 사이 커밋이 지문을 오염시킨다
     ap = argparse.ArgumentParser()
     ap.add_argument("--data", default=DATA)
     ap.add_argument("--tag", default="m22")
@@ -451,7 +473,7 @@ def main() -> int:
                   f"  (ep {r['best_epoch']}/{r['best_epoch_earhead']}, {r['seconds']:.0f}s){warn}")
 
     vd = verdict(runs, args.n_boot)
-    out = {"env": repro.env_fingerprint(), "config": vars(args),
+    out = {"env": freeze_env(), "config": vars(args),
            "input_norm": C.INPUT_NORM, "runs": lean_runs(runs), "verdict": vd,
            "scores_dir": scores_dir(args).replace("\\", "/"),
            "minutes": round((time.perf_counter() - t0) / 60, 1)}
