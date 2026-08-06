@@ -83,9 +83,39 @@ def load_variant(result_json: str) -> dict:
 
 
 def arch_facts(cfg: dict) -> dict:
-    """구조의 정적 비용. `encoder.analyse()` 가 유일한 출처다(문서 표를 베끼지 않는다)."""
+    """구조의 정적 비용. `encoder.analyse()` 가 유일한 출처다(문서 표를 베끼지 않는다).
+
+    🔴 `--front` 를 반드시 함께 본다. front 가 image_cnn 인데 `arch` 만 읽으면
+    **vpres 의 비용(12.41 MMAC / 79,424)을 image_cnn(31.81 / 471,536) 자리에 찍는다.**
+    실제로 그렇게 잘못 찍힌 적이 있다(2026-08-06). config 에 front 가 없는 옛 런은
+    `ours` 로 본다 — --front 도입 이전 런이기 때문이다.
+    """
     from src.v2.model import encoder as E
-    arch, d = cfg.get("arch", "vpres"), int(cfg.get("latent", 16))
+    front = cfg.get("front", "ours")
+    d = int(cfg.get("latent", 16))
+
+    if front != "ours":
+        out_dim = 1 if front == "image_cnn_max" else d
+        a = E.analyse_image_cnn(out_dim)
+        c, hh, ww = a["feat"]
+        out = {"arch": front, "d_latent": out_dim,
+               "feat": [c, hh, ww], "vstride": None,
+               "aperture_at_bottleneck_px": float("nan"),
+               "conv_mmac": a["conv_mmac"], "fc_mmac": 0.0,
+               "total_mmac": a["total_mmac"], "flat_dim": a["flat_dim"]}
+        try:
+            m = E.build_image_cnn(out_dim)
+            out["encoder_params"] = int(sum(p.numel() for p in m.parameters()))
+            # max 변형의 시간 처리는 파라미터가 없다(mEBAL 원문 §5.1 max pooling)
+            out["head_params"] = (0 if front == "image_cnn_max"
+                                  else int(sum(p.numel()
+                                               for p in E.build_head(d).parameters())))
+            out["total_params"] = out["encoder_params"] + out["head_params"]
+        except ImportError:
+            out["encoder_params"] = out["head_params"] = out["total_params"] = None
+        return out
+
+    arch = cfg.get("arch", "vpres")
     r = E.analyse(arch, d)
     out = {"arch": arch, "d_latent": d,
            "feat": list(r["feat"]), "vstride": r["vstride"],
