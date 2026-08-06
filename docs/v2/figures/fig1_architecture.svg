@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 400" width="1180" height="400" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="ar" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#333"/>
+    </marker>
+    <style>
+      .bx   { fill:#fff; stroke:#333; stroke-width:1.6; }
+      .px   { fill:#f2f4f7; stroke:#333; stroke-width:1.6; }
+      .vec  { fill:#e8f0fe; stroke:#1a56b0; stroke-width:1.8; }
+      .ttl  { font-size:14px; font-weight:bold; fill:#111; }
+      .sub  { font-size:11px; fill:#444; }
+      .cost { font-size:10.5px; fill:#1a56b0; }
+      .note { font-size:11.5px; fill:#333; }
+      .lbl  { font-size:12px; font-weight:bold; fill:#b3261e; }
+      .ln   { stroke:#333; stroke-width:1.6; fill:none; marker-end:url(#ar); }
+    </style>
+  </defs>
+
+  <!-- ── raw-pixel region shading ── -->
+  <rect x="24" y="58" width="576" height="150" rx="8" fill="#fafafa" stroke="#bbb"
+        stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="34" y="76" class="sub" font-style="italic">raw pixels</text>
+
+  <!-- ── stage 1: camera ── -->
+  <rect class="px" x="40" y="96" width="112" height="72" rx="6"/>
+  <text x="96" y="124" class="ttl" text-anchor="middle">Camera</text>
+  <text x="96" y="141" class="sub" text-anchor="middle">640 × 480</text>
+  <text x="96" y="156" class="sub" text-anchor="middle">30 fps</text>
+  <line class="ln" x1="152" y1="132" x2="188" y2="132"/>
+
+  <!-- ── stage 2: face mesh ── -->
+  <rect class="px" x="190" y="96" width="126" height="72" rx="6"/>
+  <text x="253" y="120" class="ttl" text-anchor="middle">FaceMesh</text>
+  <text x="253" y="137" class="sub" text-anchor="middle">468 landmarks</text>
+  <text x="253" y="152" class="sub" text-anchor="middle">eye corners</text>
+  <line class="ln" x1="316" y1="132" x2="352" y2="132"/>
+
+  <!-- ── stage 3: crop ── -->
+  <rect class="px" x="354" y="96" width="126" height="72" rx="6"/>
+  <text x="417" y="118" class="ttl" text-anchor="middle">Aligned crop</text>
+  <text x="417" y="135" class="sub" text-anchor="middle">64 × 160 gray</text>
+  <text x="417" y="150" class="sub" text-anchor="middle">margin 2.2</text>
+  <line class="ln" x1="480" y1="132" x2="516" y2="132"/>
+
+  <!-- ── stage 4: encoder ── -->
+  <rect class="bx" x="518" y="90" width="132" height="84" rx="6"/>
+  <text x="584" y="114" class="ttl" text-anchor="middle">Encoder</text>
+  <text x="584" y="131" class="sub" text-anchor="middle">4 conv, asymmetric</text>
+  <text x="584" y="146" class="sub" text-anchor="middle">stride (V:2, H:32)</text>
+  <text x="584" y="163" class="cost" text-anchor="middle">79,424 p · 12.44 MMAC</text>
+
+  <!-- ── pixel boundary ── -->
+  <line x1="676" y1="46" x2="676" y2="252" stroke="#b3261e" stroke-width="2"
+        stroke-dasharray="7 4"/>
+  <text x="684" y="60" class="lbl">raw pixels stop here</text>
+  <text x="684" y="76" class="sub">the decision stage never sees the image</text>
+
+  <line class="ln" x1="650" y1="132" x2="712" y2="132"/>
+
+  <!-- ── stage 5: embedding ── -->
+  <rect class="vec" x="714" y="102" width="92" height="60" rx="6"/>
+  <text x="760" y="126" class="ttl" text-anchor="middle" fill="#1a56b0">z ∈ ℝ¹⁶</text>
+  <text x="760" y="145" class="sub" text-anchor="middle">per frame</text>
+  <line class="ln" x1="806" y1="132" x2="842" y2="132"/>
+
+  <!-- ── stage 6: ring buffer ── -->
+  <rect class="vec" x="844" y="96" width="118" height="72" rx="6"/>
+  <text x="903" y="118" class="ttl" text-anchor="middle" fill="#1a56b0">Ring buffer</text>
+  <text x="903" y="135" class="sub" text-anchor="middle">19 × 16 + mask</text>
+  <text x="903" y="151" class="sub" text-anchor="middle">stride 1</text>
+  <line class="ln" x1="962" y1="132" x2="998" y2="132"/>
+
+  <!-- ── stage 7: temporal head ── -->
+  <rect class="vec" x="1000" y="90" width="146" height="84" rx="6"/>
+  <text x="1073" y="112" class="ttl" text-anchor="middle" fill="#1a56b0">Temporal head</text>
+  <text x="1073" y="129" class="sub" text-anchor="middle">TCN d=1,2,4 → MLP</text>
+  <text x="1073" y="145" class="sub" text-anchor="middle">blink / no-blink</text>
+  <text x="1073" y="163" class="cost" text-anchor="middle">4,625 p · 0.0459 MMAC</text>
+
+  <!-- ── encode-once callout ── -->
+  <path d="M760 168 C 760 216, 584 216, 584 180" fill="none" stroke="#1a56b0"
+        stroke-width="1.4" stroke-dasharray="4 3" marker-end="url(#ar)"/>
+  <text x="672" y="234" class="note" text-anchor="middle" fill="#1a56b0">
+    encoded once per frame, reused for 19 windows
+  </text>
+
+  <!-- ── footer: totals ── -->
+  <line x1="24" y1="272" x2="1156" y2="272" stroke="#ddd" stroke-width="1"/>
+  <text x="24" y="296" class="note">
+    <tspan font-weight="bold">Total</tspan>
+    <tspan dx="6">84,049 parameters · 335 KB (ONNX fp32) · 12.49 MMAC per frame</tspan>
+  </text>
+  <text x="24" y="318" class="sub">
+    Decision path carries a 16-dimensional vector, not the 10,240-pixel crop — a 640× reduction
+    at the boundary. The temporal head costs 0.37% of per-frame compute.
+  </text>
+  <text x="24" y="340" class="sub">
+    Encoding once per frame and buffering the vectors keeps the sequence model off the pixel
+    path; re-encoding all 19 frames per decision would cost 19× the encoder.
+  </text>
+  <text x="24" y="366" class="sub" font-style="italic" fill="#666">
+    Latency is measured on the device; read and detection are shared by every method compared
+    and are reported separately from the method-specific stages.
+  </text>
+</svg>
