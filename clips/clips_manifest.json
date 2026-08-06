@@ -1,0 +1,32 @@
+{
+ "480p": {
+  "path": "clips/eyeblink8_c9_480p_x2.avi",
+  "width": 640,
+  "height": 480,
+  "fps": 30.0,
+  "frames_meta": 10366,
+  "frames_actual": 10268,
+  "seconds_actual": 342.3,
+  "bytes": 18149320,
+  "enough_for_300s": true,
+  "_caveat": "concat 이음새에서 98프레임 손실 (5,183x2=10,366 기대 -> 10,268 실측). 342초라 5분 측정에는 무관하다."
+ },
+ "720p": {
+  "path": "clips/mebal2_u1_720p_320s.mp4",
+  "width": 1280,
+  "height": 720,
+  "fps": 30.0,
+  "frames_meta": 9600,
+  "frames_actual": 9600,
+  "seconds_actual": 320.0,
+  "bytes": 1083790711,
+  "enough_for_300s": true,
+  "_caveat": "1,084 MB. Pi 로 옮길 때 용량 주의."
+ },
+ "_note": "Pi 5 실측용. 재인코딩하지 않았다(-c copy) — 화질이 바뀌면 검출 성능이 달라진다. run_video.py 는 영상을 반복 재생하지 않으므로(if not ok: break) 5분 측정에는 300초 이상이 필요하다.",
+ "_source": {
+  "480p": "data/_legacy_public/eyeblink8/eyeblink8/9/27122013_152435_cam.avi x2 (concat demuxer)",
+  "720p": "data/raw/mEBAL2/User 1/RealSense/Color_Webcam/color.mp4 앞 320초"
+ },
+ "_ffmpeg": "imageio-ffmpeg 번들 ffmpeg-win64-v4.2.2"
+}
