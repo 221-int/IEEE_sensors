@@ -1,0 +1,70 @@
+{
+ "env": {
+  "seed": 0,
+  "deterministic": true,
+  "sealed": true,
+  "python": "3.12.10",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "numpy": "2.4.2",
+  "pythonhashseed": "0",
+  "cublas_workspace_config": ":4096:8",
+  "git_commit": "5503380bc1ab849643cd93abf9486a1a15991548",
+  "git_dirty": true,
+  "torch": "2.11.0+cu128",
+  "cuda_available": true,
+  "cuda_version": "12.8",
+  "cudnn_deterministic": true,
+  "cudnn_benchmark": false,
+  "gpu": "NVIDIA GeForce RTX 5080"
+ },
+ "ckpt": "models/v2/fold0_seed0",
+ "arch": "vpres",
+ "d_latent": 16,
+ "opset": 17,
+ "event_len": 19,
+ "input_norm": "frame_standardize",
+ "eps_std": 0.001,
+ "crop_hw": [
+  64,
+  160
+ ],
+ "margin": 2.2,
+ "_input_contract": "ONNX 입력은 이미 (x-mean)/std 로 정규화된 크롭이다. Pi 하네스가 같은 정규화를 적용해야 한다.",
+ "_not_deployed": "event.onnx 는 배포용이 아니다. 프레임당 비용이 19배다.",
+ "paths": {
+  "encoder": "models/v2/onnx/encoder.onnx",
+  "head": "models/v2/onnx/head.onnx"
+ },
+ "params": {
+  "encoder": 79424,
+  "head": 4625,
+  "total": 84049
+ },
+ "mmac": {
+  "encoder_per_frame": 12.443648,
+  "encoder_conv": 12.41088,
+  "encoder_fc": 0.032768,
+  "head_per_event": 0.045888,
+  "head_per_frame_equiv": 0.002415157894736842
+ },
+ "file_sizes": {
+  "encoder": {
+   "bytes": 318827,
+   "kb": 311.4,
+   "external_data": false
+  },
+  "head": {
+   "bytes": 23898,
+   "kb": 23.3,
+   "external_data": false
+  }
+ },
+ "verification": {
+  "encoder_max_abs_diff": 7.152557373046875e-07,
+  "head_max_abs_diff": 5.960464477539063e-08,
+  "head_allzero_mask_max_abs_diff": 0.0,
+  "head_allzero_mask_finite": true,
+  "tol": 0.0001,
+  "pass": true
+ }
+}

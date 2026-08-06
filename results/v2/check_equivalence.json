@@ -1,0 +1,61 @@
+{
+ "env": {
+  "seed": 0,
+  "deterministic": true,
+  "sealed": true,
+  "python": "3.12.10",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "numpy": "2.4.2",
+  "pythonhashseed": "0",
+  "cublas_workspace_config": ":4096:8",
+  "git_commit": "5503380bc1ab849643cd93abf9486a1a15991548",
+  "git_dirty": true,
+  "torch": "2.11.0+cu128",
+  "cuda_available": true,
+  "cuda_version": "12.8",
+  "cudnn_deterministic": true,
+  "cudnn_benchmark": false,
+  "gpu": "NVIDIA GeForce RTX 5080"
+ },
+ "gates": [
+  {
+   "gate": "G-Q1 정규화",
+   "n": 2048,
+   "max_abs_diff": 0.0,
+   "n_bit_identical": 2048,
+   "uniform_crop_diff": 0.0,
+   "input_norm": "frame_standardize",
+   "pass": true
+  },
+  {
+   "gate": "G-Q2 위임",
+   "n_cases": 64,
+   "n_none_agree": 0,
+   "max_abs_diff": 0.0,
+   "pass": true
+  },
+  {
+   "gate": "G-Q3 종단(원본 프레임 -> 저장된 학습 크롭)",
+   "user": 1,
+   "n_checked": 8,
+   "crop_max_abs_diff": 0,
+   "tensor_max_abs_diff": 0.0,
+   "n_bit_identical": 8,
+   "pass": true
+  },
+  {
+   "gate": "G-Q4 ONNX",
+   "arch": "vpres",
+   "d_latent": 16,
+   "n": 32,
+   "max_abs_diff": 1.430511474609375e-06,
+   "tol": 0.0001,
+   "pass": true
+  }
+ ],
+ "all_required_pass": true,
+ "pi_measurement_authorized": true,
+ "_rule": "G-Q3 를 통과하지 않으면 Pi 를 재지 않는다. 배포 경로가 어긋나면 지연은 정상으로 나오고 판정만 망가진다.",
+ "_landmark_source_caveat": "학습은 mEBAL2 제공 메시, Pi 는 MediaPipe 다. 기하 코드가 같아도 필드 크롭은 비트 동일할 수 없다. 이 게이트는 코드 경로만 검증한다.",
+ "mediapipe_available": true
+}
