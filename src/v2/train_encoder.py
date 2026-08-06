@@ -300,9 +300,16 @@ def run_fold(bundle: Bundle, fold: int, seed: int, args) -> dict:
         cv, ct = TH.canonical(sv, True), TH.canonical(st, True)
         pick = TH.select_threshold(cv, bundle.y[va], TH.crit_accuracy(), name=name)
         ev = TH.evaluate_at(ct, bundle.y[te], pick["thr"])
-        res[name] = {"accuracy": ev["accuracy"], "precision": ev["precision"],
+        # 🔴 T3-6: recall 은 evaluate_at 이 이미 계산해 놓고 있었는데 버려지고 있었다.
+        # F1 은 그 둘에서 유도된다. 논문 Table I 에 필요하다(EXPERIMENT_PLAN §5-1).
+        # 혼동행렬 원소도 남긴다 — 사후에 어떤 지표든 다시 만들 수 있어야 재실행을 면한다.
+        p, r = ev["precision"], ev["recall"]
+        f1 = (2 * p * r / (p + r)) if (p + r) > 0 else 0.0
+        res[name] = {"accuracy": ev["accuracy"], "precision": p, "recall": r, "f1": f1,
+                     "fa": ev["fa"],
                      "pr_auc": TH.average_precision(ct, bundle.y[te]),
-                     "roc_auc": TH.roc_auc(ct, bundle.y[te]), "thr": pick["thr"]}
+                     "roc_auc": TH.roc_auc(ct, bundle.y[te]), "thr": pick["thr"],
+                     "tp": ev["tp"], "fp": ev["fp"], "fn": ev["fn"], "tn": ev["tn"]}
         scores[name] = ct
     TH.AUDIT.require_uniform()
 
@@ -313,7 +320,9 @@ def run_fold(bundle: Bundle, fold: int, seed: int, args) -> dict:
     strong = max(("ear_head", "ear_rule"), key=lambda k: res[k]["pr_auc"])
 
     if args.save_models:
-        d = os.path.join(MODELS, f"fold{fold}_seed{seed}")
+        # MODELS 하드코딩이 이 프로젝트에서 두 번 증거를 지웠다. --models-dir 로 열어 둔다.
+        d = os.path.join(getattr(args, "models_dir", None) or MODELS,
+                         f"fold{fold}_seed{seed}")
         os.makedirs(d, exist_ok=True)
         torch.save(best["front"], os.path.join(d, "encoder.pt"))
         torch.save(best["head"], os.path.join(d, "head.pt"))
@@ -410,6 +419,9 @@ def main() -> int:
     ap.add_argument("--ear-feats", default="all4", choices=["mean", "all4"],
                     help="대조군 1 이 쓰는 EAR 특징. all4 = left,right,mean,min (베이스라인에 관대한 쪽)")
     ap.add_argument("--save-models", action="store_true")
+    ap.add_argument("--models-dir", default=MODELS,
+                    help="체크포인트 저장 위치. 기본이 하드코딩된 models/v2 라 확정 런을 "
+                         "덮어쓴 사고가 있었다. 탐색 런은 --save-models 를 아예 주지 마라")
     ap.add_argument("--log", action="store_true", default=True)
     ap.add_argument("--out", default=OUT)
     args = ap.parse_args()
