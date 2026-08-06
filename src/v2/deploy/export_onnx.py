@@ -224,8 +224,11 @@ def main() -> int:
     print(f"\n[T5-1 파라미터]  encoder {n_enc:,} + head {n_head:,} = {n_enc+n_head:,}")
     print(f"[T5-2 MMAC]      encoder {a['total_mmac']:.2f}/frame  "
           f"(conv {a['conv_mmac']:.2f} + fc {a['fc_mmac']:.3f})")
-    print(f"                 head {head_mmac_event:.4f}/event "
-          f"= {head_mmac_event/EVENT_LEN:.4f}/frame 환산")
+    print(f"                 head {head_mmac_event:.4f}/호출")
+    print(f"                 **stride 1 (하네스 기본): head {head_mmac_event:.4f}/frame** "
+          f"-> 합계 {a['total_mmac'] + head_mmac_event:.2f}/frame "
+          f"(head 비중 {100*head_mmac_event/(a['total_mmac']+head_mmac_event):.2f}%)")
+    print(f"                 (참고) stride 19 면 {head_mmac_event/EVENT_LEN:.4f}/frame")
     print(f"[T5-4 파일 크기] " + "  ".join(f"{k} {v['kb']}KB" for k, v in sz.items()))
     print(f"\n[수치 검증] encoder {ver['encoder_max_abs_diff']:.2e}  "
           f"head {ver['head_max_abs_diff']:.2e}  "
@@ -241,10 +244,22 @@ def main() -> int:
            "_not_deployed": "event.onnx 는 배포용이 아니다. 프레임당 비용이 19배다.",
            "paths": {k: v.replace('\\', '/') for k, v in paths.items()},
            "params": {"encoder": n_enc, "head": n_head, "total": n_enc + n_head},
+           "head_stride": 1,
            "mmac": {"encoder_per_frame": a["total_mmac"],
                     "encoder_conv": a["conv_mmac"], "encoder_fc": a["fc_mmac"],
-                    "head_per_event": head_mmac_event,
-                    "head_per_frame_equiv": head_mmac_event / EVENT_LEN},
+                    "head_per_invocation": head_mmac_event,
+                    # 🔴 하네스는 head 를 **매 프레임**(stride 1) 돌린다. 창이 찰 때마다
+                    # 한 번(stride 19)이 아니다. 연속 검출에서 창 경계에서만 판정하면
+                    # 깜빡임을 최대 18프레임 늦게 잡는다. 그래서 보고 기준은 stride 1 이다.
+                    "head_per_frame_stride1": head_mmac_event,
+                    "head_per_frame_stride19": head_mmac_event / EVENT_LEN,
+                    "total_per_frame_stride1": a["total_mmac"] + head_mmac_event,
+                    "head_share_of_total_stride1":
+                        head_mmac_event / (a["total_mmac"] + head_mmac_event)},
+           "_head_not_incrementally_cacheable":
+               "TCN 이 padding=dilation 인 **대칭** Conv1d 이고 pooling·BatchNorm 이 창 "
+               "전체에 걸리므로, stride 1 에서 직전 계산을 재사용할 수 없다. 매 프레임 "
+               "창 19개를 다시 돈다 — 0.0459 MMAC/frame 은 그 값이다.",
            "file_sizes": sz, "verification": ver}
     os.makedirs(os.path.dirname(args.out) or ".", exist_ok=True)
     tmp = args.out + ".tmp"

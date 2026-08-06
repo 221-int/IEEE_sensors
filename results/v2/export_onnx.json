@@ -8,7 +8,7 @@
   "numpy": "2.4.2",
   "pythonhashseed": "0",
   "cublas_workspace_config": ":4096:8",
-  "git_commit": "5503380bc1ab849643cd93abf9486a1a15991548",
+  "git_commit": "a05db81cacdbb6d0b57a0165a6045a381d2b7dea",
   "git_dirty": true,
   "torch": "2.11.0+cu128",
   "cuda_available": true,
@@ -40,13 +40,18 @@
   "head": 4625,
   "total": 84049
  },
+ "head_stride": 1,
  "mmac": {
   "encoder_per_frame": 12.443648,
   "encoder_conv": 12.41088,
   "encoder_fc": 0.032768,
-  "head_per_event": 0.045888,
-  "head_per_frame_equiv": 0.002415157894736842
+  "head_per_invocation": 0.045888,
+  "head_per_frame_stride1": 0.045888,
+  "head_per_frame_stride19": 0.002415157894736842,
+  "total_per_frame_stride1": 12.489536,
+  "head_share_of_total_stride1": 0.003674115675714454
  },
+ "_head_not_incrementally_cacheable": "TCN 이 padding=dilation 인 **대칭** Conv1d 이고 pooling·BatchNorm 이 창 전체에 걸리므로, stride 1 에서 직전 계산을 재사용할 수 없다. 매 프레임 창 19개를 다시 돈다 — 0.0459 MMAC/frame 은 그 값이다.",
  "file_sizes": {
   "encoder": {
    "bytes": 318827,
