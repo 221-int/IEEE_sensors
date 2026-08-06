@@ -38,6 +38,260 @@
 | OptFlowBlinkFormer (PRCV 2025) | 광류 + RGB 융합 Transformer, in-the-wild | [검색요약] |
 | Optimized deep learning architectures for high precision eye blink detection on consumer grade hardware (Discover AI, 2026) | 소비자급 하드웨어 대상 최적화 | [검색요약] |
 
+---
+
+## A2. 🔵 2026-08-05 조사 — 새 방향(깜빡임 검출 + 에지)에 필요한 축
+
+> 조사 목적: **image_cnn 베이스라인을 우리가 임의로 설계하면 허수아비가 된다.**
+> 문헌의 대표 구조를 근거와 함께 채택해야 방어된다 (`docs/T3_WORKORDER.md` §4).
+> 확인 상태: 전부 **[검색요약]** 이다. **논문 인용 전 원문 확인 필수.**
+
+### A2-1. ★ mEBAL/mEBAL2 저자들의 자체 CNN — **image_cnn 확정** ✅ [원문 확인]
+
+**Daza, Morales, Fierrez, Tolosana. mEBAL. ICMI '20 Companion.** — **원문 §4 직접 확인 (2026-08-05)**
+
+> *"Inspired in the popular VGG16 architecture, we propose an eye blink detector based on a
+> CNN trained from scratch. The proposed network comprises an input layer of 50 × 50 size,
+> followed by 3 convolutional layers with ReLU activation (32/32/64 filters of size 3 × 3),
+> with 3 max pooling layers between them, a dense layer of 64 units with ReLU activations,
+> and a final output layer with one unit (sigmoid activation). Also, we use dropout (0.5)...
+> The batch size is set up to 50. Adam optimizer is considered with default parameters
+> (0.001 learning rate). The network is trained as a binary classifier (eyes open or closed),
+> using the mEBAL subset of RGB cropped eyes."*
+
+| 항목 | 값 |
+|---|---|
+| 입력 | **50 × 50**, RGB, **한쪽 눈** 크롭 |
+| 구조 | Conv(32,3×3)+ReLU → MaxPool → Conv(32,3×3)+ReLU → MaxPool → Conv(64,3×3)+ReLU → MaxPool → **Dense(64)+ReLU** → Dense(1)+sigmoid |
+| 정규화 | Dropout 0.5 |
+| 학습 | Adam lr=1e-3, batch 50, **프레임 단위** 이진 분류(open/closed) |
+| 영감 | VGG16 |
+
+### 🔴 A2-1b. 시퀀스 판정 방식 — **원문에서 새로 확인. 베이스라인 설계에 직접 영향**
+
+mEBAL 원문 §5.1:
+
+> *"All 13 frames are processed with the CNN proposed in Section 4, which generates for each
+> input image an eye blink strength score. Among the 13 scores obtained for a sample
+> (one per frame), **the maximum is selected to represent the sample score.**"*
+
+**즉 mEBAL 의 시퀀스 판정은 학습된 시간 모델이 아니라 프레임 점수의 max pooling 이다.**
+
+→ `image_cnn` 베이스라인을 **원 논문에 충실하게** 구현할 수 있다:
+
+```
+프레임마다 mEBAL CNN → 점수 1개
+19프레임 점수의 max → 이벤트 점수
+```
+
+**학습된 시간 헤드가 필요 없다.** 이것이 박사님이 03:11 에서 말한
+*"얘네는 이미지 자체를 가지고 바로 하니까 한울 씨가 최소 한 단계 정도 더 처리 과정이 길다"* 의
+정확한 실체다 — 그들은 프레임 → 점수로 끝나고, 우리는 프레임 → 벡터 → 시간헤드 → 점수다.
+
+> 🔵 **권고: 두 변형을 낸다** (`ear_rule` / `ear_head` 와 정확히 같은 구조의 대비다)
+>
+> | 변형 | 시간 처리 | 무엇을 답하나 |
+> |---|---|---|
+> | `image_cnn_max` | **max pooling** (원 논문 그대로) | 문헌 방법과의 정직한 비교 |
+> | `image_cnn_head` | **우리와 동일한 시간 헤드** | 프론트엔드만 갈아끼운 통제 비교 |
+
+### A2-1c. mEBAL 데이터셋 사실 (원문 확인) — 우리 설정과의 대비
+
+| 항목 | mEBAL | 우리 (mEBAL2 배포본) |
+|---|---|---|
+| 피험자 | **38명** | 57명 |
+| 샘플 | 3,000 blink + 3,000 no-blink | 13,820 + 13,938 |
+| **샘플당 프레임** | **21 (약 600 ms)** — 이벤트 전후 10프레임씩 | **19** |
+| 해상도 | 1280×720, 30 Hz | 1280×720 |
+| **안경 착용** | **11 / 38 = 28.9%** | **17 / 57 = 29.8%** ← 거의 같다 |
+| 깜빡임 길이 | **3~13 프레임** (100~400 ms) | 동일 전제 |
+
+> 💡 **"깜빡임은 3~13 프레임"** 은 원문 인용 가능한 수치다.
+> `T3_WORKORDER.md` §5-quinquies 의 **검출 지연** 논의에 직접 쓴다.
+
+> ⚠️ **라벨 잡음의 출처가 원문에 적혀 있다**: *"in some no-blink cases the eyes seem to be
+> closed due to the gaze orientation."* → 우리 §3-ter-2 의 **환원 불가 오차 0.59%** 와
+> 연결해 Discussion 에 쓸 수 있다.
+
+### A2-1d. 기존 데이터셋 표 (mEBAL 원문 Table 1) — 해상도 관행의 근거
+
+| 데이터셋 | 연도 | Blinks | Users | 해상도 |
+|---|---|---:|---:|---|
+| Talking Face | — | 61 | 1 | 720×576 |
+| Pan et al. | 2007 | 255 | 20 | **320×240** |
+| Drutarovsky & Fogelton | 2014 | 353 | 4 | **640×480** |
+| Silesian Deception | 2015 | 300 | 5 | **640×480** |
+| **HUST-LEBW** | 2019 | 381 | 172 | **1280×720** |
+| mEBAL | 2020 | 3,000 | 38 | 1280×720 |
+
+> 🔵 **`EXPERIMENT_PLAN.md` §6-3 의 "640×480 주 / 1280×720 보조" 결정이 원문 표로 뒷받침된다.**
+
+### A2-1e. mEBAL2 확장 (arXiv 2309.07880) — [검색요약, 원문 미확인]
+
+- 같은 구조를 mEBAL2 로 재학습 + **ConvLSTM** 시퀀스 단위 추가 → 최대 **99%**
+- NIR 을 학습에 넣으면 추론 시 RGB 만 있어도 개선
+- HUST-LEBW 로 일반화 검증
+
+> 🔴 **image_cnn 은 이제 원문 근거로 확정됐다.** *"데이터셋 저자들이 제안한 구조"* 이므로
+> "약한 베이스라인을 골랐다"는 반론이 원천 봉쇄된다.
+
+### A2-2. ★★ Nousias, Delibasis & Labiris (J. Imaging 11(27), 2025) — **신규성 주장에 직접 타격**
+
+*"Blink Detection Using 3D Convolutional Neural Architectures and Analysis of Accumulated
+Frame Predictions"* — [검색요약, 본문 일부 확인]
+
+**이 논문은 잠재 공간(latent space)에 분류기를 붙여 깜빡임을 검출한다.** 우리와 구조적으로 가깝다.
+
+| 항목 | 값 |
+|---|---|
+| 눈 검출 | YOLOX |
+| 입력 | **48 × 48 × 12** (한쪽 눈, 12프레임 = 300 ms 3D 입력) |
+| 비교 구조 | 3D CNN / **3D ResNet** / **3D autoencoder + latent 분류기** |
+| 3D AE 인코더 | Conv3D 4블록 (16→32→32→32, 5×5×5), stride [2,2,2]/[2,2,2]/[1,1,1]/[2,2,1] |
+| **잠재 차원** | **2048 units** |
+| 손실 | **cross-entropy + 재구성 MSE 가중 결합** (분류에 더 큰 가중치) |
+| 기타 | 인코더↔디코더 **skip connection** |
+| 데이터 | 15명 (train 10 / test 5), 162,400 프레임, 눈당 1,172 blinks |
+| F1 | 3D CNN 89.72 / **3D AE 89.63** / **3D ResNet 93.25 (최고)** |
+| 프레임 정확도 | 93.97 / 93.74 / 94.24 |
+| **3D AE 파라미터** | **35,375,507 (35.4M)** |
+| 에지 배포 | **없음** |
+
+#### 🔴 이 발견이 강제하는 서술 변경
+
+**"encoder 로 벡터화해 깜빡임을 검출한 연구는 거의 없다"는 더 이상 쓸 수 없다.**
+(`docs/PROJECT_DIRECTION.md` §3-1 D9, 전사문 06:11 의 가정이 부분적으로 틀렸다.)
+
+**그러나 우리 기여가 사라지는 것은 아니다. 차별점이 오히려 선명해진다:**
+
+| | Nousias 2025 | 우리 |
+|---|---|---|
+| 표현 차원 | **2048** | **16** (128배 작다) |
+| 파라미터 | **35.4 M** | **~84 K** (약 **420배** 작다) |
+| 학습 목적 | 재구성 + 분류 결합 | **분류 단독** |
+| 시간 처리 | 3D conv, 12프레임 **블록 단위** | **프레임당 인코딩 1회 + 링버퍼** (인과적 스트리밍) |
+| 입력 | 48×48 **한쪽 눈** | 64×160 **양눈** |
+| 에지 실측 | 없음 | **Raspberry Pi 5** |
+| 저자들의 결론 | latent 방식이 **3D ResNet 보다 나빴다** | — |
+
+**즉 그들에게 잠재 공간은 "압축"도 "에지"도 아닌 단순한 구조 변형이었고, 성능도 지지 않았다.**
+우리 주장은 *"encoder 를 쓴다"* 가 아니라 —
+
+> **"16차원까지 압축한 임베딩만으로 판정하고, 그것이 에지 디바이스에서 실시간으로 돈다"**
+
+로 좁혀야 한다. 이게 새 연구 방향(`PROJECT_DIRECTION.md`)과도 정확히 일치한다.
+
+---
+
+#### ✅ 2026-08-06 **원문 확인 완료** — [검색요약] → **[원문]**
+
+출처: [J. Imaging 11(1):27](https://doi.org/10.3390/jimaging11010027) ·
+본문 [PMC11765999](https://pmc.ncbi.nlm.nih.gov/articles/PMC11765999/) (MDPI 직접 접근은 403)
+
+**위 표의 수치는 전부 확인됐다**: 잠재 2048 units, 3D AE **35,375,507** params,
+입력 **48×48×12**, AE 81.21% acc / 89.63% F1 vs 3D ResNet 87.36% / 93.25%
+(원문 Table 2·3). 35,375,507 / 84,049 = **420.9배** — "420배"도 맞다.
+
+> 🔴 **그런데 "420배 작다"를 논문에 그대로 쓰면 위험하다.**
+>
+> 원문 Table 3 의 파라미터 수는 세 가지다:
+>
+> | 구조 | 파라미터 | 정확도 | F1 |
+> |---|---:|---:|---:|
+> | 3D CNN | 20,590,034 | — | — |
+> | **3D ResNet** (그들의 **최고** 모델) | **174,500** | **87.36%** | **93.25%** |
+> | 3D autoencoder + latent | 35,375,507 | 81.21% | 89.63% |
+>
+> **그들의 최고 모델은 174,500 params 로 우리(84,049)의 2.1배밖에 안 된다.**
+> 35.4 M 은 그들이 **버린** 변형이다. 420배를 내세우면 *"가장 무거운 실패작과 비교했다"* 는
+> 반론을 그대로 맞는다 — 심사자가 Table 3 을 열면 바로 보인다.
+> → **파라미터 비교를 신규성의 축으로 삼지 않는다.** 쓸 거면 174,500 과 나란히 적는다.
+
+> 🔵 **대신 원문 Table 3 에 훨씬 강한 것이 있다 — 셋 다 실시간이 아니다.**
+> **60초 영상(한쪽 눈) 처리 시간**: 3D ResNet **135 s**, 3D CNN 195 s, 3D AE **225 s**.
+> 최고 모델조차 실시간의 **2.25배 느리다**. 원문도 *"3D ResNet was the fastest model,
+> as well as the best performing one"* 이라고만 적고 에지 언급이 없다.
+> → 우리 기여축은 **파라미터 수가 아니라 "실시간 에지 동작"** 이다. 이건 반박이 어렵다.
+>
+> ⚠️ **미확인**: 그 135 s/225 s 가 **어느 하드웨어**인지 이번 추출에서 확보하지 못했다
+> (§여는 질문 2번과 같은 항목). 우리 Pi 5 수치와 나란히 놓으려면 반드시 확인해야 한다.
+> 하드웨어가 다르면 "그들은 느리고 우리는 빠르다"로 쓸 수 없다.
+
+**정정된 대비표 (논문에 쓸 형태)**
+
+| | Nousias 2025 최고(3D ResNet) | Nousias 2025 latent(3D AE) | 우리 |
+|---|---:|---:|---:|
+| 표현 차원 | (직접 분류) | 2048 | **16** |
+| 파라미터 | 174,500 | 35,375,507 | **84,049** |
+| 정확도 / F1 | 87.36% / 93.25% | 81.21% / 89.63% | (T3-6 후 기입) |
+| 60 s 영상 처리 | 135 s | 225 s | (Pi 5 실측 예정) |
+| 에지 실측 | 없음 | 없음 | **Raspberry Pi 5** |
+
+### A2-3. 입력 눈 크롭 해상도 — 문헌 관행
+
+| 연구 | 크롭 |
+|---|---|
+| mEBAL / mEBAL2 | **50 × 50**, 한쪽 눈 |
+| Nousias 2025 | **48 × 48**, 한쪽 눈 (×12프레임) |
+| **우리** | **64 × 160**, 양눈 (한쪽당 약 64×80 상당) |
+
+**우리가 문헌보다 해상도가 높고 양눈을 쓴다.** 논문에 명시할 사실이다.
+
+> ⚠️ **단, 절제 실험 해석에 주의가 필요하다.** 우리 눈꺼풀 간격 **8.73 px** 는
+> 크롭을 **눈 사이 거리의 2.2배**로 넓게 잡은 결과다. 48×48 로 **한쪽 눈만 타이트하게**
+> 자르면 같은 눈꺼풀이 훨씬 많은 픽셀을 차지한다.
+> → *"세로 해상도를 지켜야 한다"* 는 우리 논거는 **넓은 양눈 크롭을 쓴다는 선택과 묶여 있다.**
+> T3-8(vpres vs vdrop) 결과를 해석할 때 이 결합을 밝혀야 한다.
+
+### A2-4. 에지 / 소비자급 하드웨어
+
+| 연구 | 내용 |
+|---|---|
+| **Optimized deep learning architectures for high precision eye blink detection on consumer grade hardware** (Discover AI, 2026) | ResNet / VGG-19 / **경량 맞춤 CNN** 비교. 4개 안구 상태(open/closed/left/right), 5MP 웹캠. ResNet 과 맞춤 CNN 모두 평균 정확도 **99.81%**. 50명 3,206 프레임, 층화 10-fold |
+| Raspberry Pi 5 졸음 검출 데이터셋 (2025) | **640×480 @ 30 fps**, H.264 |
+| PiCamera 기반 EAR 구현들 | 640×480, 최대 32 fps |
+| Efficient Eye-Blinking Detection on Smartphones (하이브리드 딥러닝) | 스마트폰 대상 | 
+
+> ⚠️ **"99.81%" 를 우리 PR-AUC 와 나란히 놓지 마라.** 3,206 프레임 / 4-클래스 /
+> 층화 10-fold(피험자 분리 아님) 로 우리 프로토콜과 전혀 다르다.
+
+### A2-5. 깜빡임 검출의 일반적 실패 조건 — 전사문 10:29 의 직접 지시
+
+리뷰(*A review of deep learning in blink detection*, PeerJ CS 2594 / PMC11784707)와
+최신 연구가 공통으로 드는 조건 — [검색요약]
+
+| # | 조건 | 문헌 서술 |
+|---|---|---|
+| F1 | **조도 변화** | 실외 자연광은 매우 동적. 너무 밝거나 어두우면 **눈 특징의 변별력이 떨어진다** |
+| F2 | **가림(occlusion)** | **안경·머리카락**에 의한 가림 + **조명에 의한 가림** |
+| F3 | **고개 자세 / 극단적 눈 각도** | 고전적 특징 기반 알고리즘이 특히 취약 |
+| F4 | **머리 움직임에 따른 slippage** | 추적 이탈 |
+| F5 | **학습 데이터 불균형** | — |
+| F6 | **복잡한 환경 간섭** | — |
+| F7 | **실시간 처리 / 디바이스 제약** | 우리 논문의 두 번째 기여축과 직결 |
+
+**해결 시도 (최근)**
+
+- **OptFlowBlinkFormer** (PRCV 2025) — 광류 + RGB 융합 Transformer, in-the-wild
+- **BlinkLinMulT** (J. Imaging 9(10):196, 2023) — 선형 복잡도 cross-modal attention.
+  **조명 변화와 넓은 범위의 고개 자세**를 명시적으로 다룬다
+
+> 🔵 **`EXPERIMENT_PLAN.md` §4 의 조건 목록이 문헌과 일치한다** — 조도·안경·고개 각도·
+> 눈 위치 변화는 전부 F1~F4 에 대응한다. **우리가 임의로 만든 목록이 아니라는 근거가 생겼다.**
+> 다만 F4(slippage)는 우리 조건 목록에 없다 → `face_position.json` 의 off_seat_rate 층화가
+> 여기에 해당하므로 그렇게 연결해 서술한다.
+
+### A2-6. 아직 확인 못 한 것
+
+| # | 항목 | 왜 필요한가 |
+|---|---|---|
+| 1 | mEBAL/mEBAL2 CNN 의 **공개 구현·가중치** 유무 | 재현 대신 그대로 쓸 수 있는지 |
+| 2 | Nousias 2025 의 **추론 시간 0.15 s 가 어느 하드웨어인지** | 에지 비교 가능 여부 |
+| 3 | HUST-LEBW 벤치마크의 표준 프로토콜 | 크로스 데이터셋 검증을 넣을지 |
+| 4 | 위 모든 [검색요약] 의 **원문** | 논문 인용 전 필수 |
+
+---
+
 ### 🔴 우리 숫자를 이것과 나란히 놓으면 안 되는 이유
 
 | | mEBAL2 공식 | 우리 |
