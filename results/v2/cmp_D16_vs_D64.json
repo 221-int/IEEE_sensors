@@ -1,0 +1,227 @@
+{
+ "env": {
+  "seed": 0,
+  "deterministic": true,
+  "sealed": true,
+  "python": "3.12.10",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "numpy": "2.4.2",
+  "pythonhashseed": "0",
+  "cublas_workspace_config": ":4096:8",
+  "git_commit": "34bf53066621066d75e8a7cf34f2108faebcf339",
+  "git_dirty": true,
+  "torch": "2.11.0+cu128",
+  "cuda_available": true,
+  "cuda_version": "12.8",
+  "cudnn_deterministic": true,
+  "cudnn_benchmark": false,
+  "gpu": "NVIDIA GeForce RTX 5080"
+ },
+ "a": {
+  "path": "results/v2/abl_vpres_ref.json",
+  "name": "vpres/D16",
+  "facts": {
+   "arch": "vpres",
+   "d_latent": 16,
+   "feat": [
+    64,
+    32,
+    5
+   ],
+   "vstride": 2,
+   "aperture_at_bottleneck_px": 4.367272727272727,
+   "conv_mmac": 12.41088,
+   "fc_mmac": 0.032768,
+   "total_mmac": 12.443648,
+   "encoder_params": 79424,
+   "head_params": 4625,
+   "total_params": 84049
+  },
+  "config": {
+   "data": "data/processed/v2",
+   "tag": "m22",
+   "arch": "vpres",
+   "latent": 16,
+   "folds": [
+    0,
+    1
+   ],
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "max_epochs": 80,
+   "patience": 10,
+   "batch": 32,
+   "lr": 0.001,
+   "n_boot": 2000,
+   "ear_feats": "all4",
+   "save_models": false,
+   "log": true,
+   "out": "results/v2/abl_vpres_ref.json"
+  }
+ },
+ "b": {
+  "path": "results/v2/dim_D64.json",
+  "name": "vpres/D64",
+  "facts": {
+   "arch": "vpres",
+   "d_latent": 64,
+   "feat": [
+    64,
+    32,
+    5
+   ],
+   "vstride": 2,
+   "aperture_at_bottleneck_px": 4.367272727272727,
+   "conv_mmac": 12.41088,
+   "fc_mmac": 0.131072,
+   "total_mmac": 12.541952,
+   "encoder_params": 177776,
+   "head_params": 45761,
+   "total_params": 223537
+  },
+  "config": {
+   "data": "data/processed/v2",
+   "tag": "m22",
+   "arch": "vpres",
+   "latent": 64,
+   "folds": [
+    0,
+    1
+   ],
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "max_epochs": 80,
+   "patience": 10,
+   "batch": 32,
+   "lr": 0.001,
+   "n_boot": 2000,
+   "ear_feats": "all4",
+   "save_models": false,
+   "log": true,
+   "out": "results/v2/dim_D64.json"
+  }
+ },
+ "exploratory": true,
+ "_caveat": "탐색 런(fold 0·1)이다. 확정 값으로 인용하지 말 것.",
+ "delta_reference": 0.02,
+ "result": {
+  "n_runs": 6,
+  "runs_compared": [
+   [
+    0,
+    0
+   ],
+   [
+    0,
+    1
+   ],
+   [
+    0,
+    2
+   ],
+   [
+    1,
+    0
+   ],
+   [
+    1,
+    1
+   ],
+   [
+    1,
+    2
+   ]
+  ],
+  "n_events_pooled": 34830,
+  "n_subjects": 21,
+  "pooled": {
+   "a_pr_auc": 0.9802159050265655,
+   "b_pr_auc": 0.9787039306911389,
+   "paired_bootstrap": {
+    "point": 0.0015119743354266024,
+    "ci_lo": -0.002928831608355745,
+    "ci_hi": 0.0051662836484701125,
+    "std": 0.0021106327199457847,
+    "n_boot": 2000,
+    "n_subjects": 21,
+    "alpha": 0.05
+   },
+   "verdict_vs_delta": "non_inferior"
+  },
+  "per_run": {
+   "a_mean": 0.9850301211930717,
+   "a_std": 0.0021641781686761027,
+   "b_mean": 0.9843434189947647,
+   "b_std": 0.0021655266421952736,
+   "diff_mean": 0.000686702198306984,
+   "diff_std": 0.002778450897804677,
+   "fold_bootstrap": {
+    "point": 0.000686702198306984,
+    "ci_lo": -0.0014076015846128387,
+    "ci_hi": 0.0026581597426201253,
+    "std": 0.002778450897804677,
+    "n_folds": 6,
+    "per_fold": [
+     0.002081455031641033,
+     0.004060494653340352,
+     -0.0018768540944411605,
+     5.260146578467406e-05,
+     -0.003019648161553423,
+     0.0028221642950704284
+    ]
+   },
+   "runs": [
+    {
+     "fold": 0,
+     "seed": 0,
+     "a": 0.9866734163843154,
+     "b": 0.9845919613526743,
+     "diff": 0.002081455031641033
+    },
+    {
+     "fold": 0,
+     "seed": 1,
+     "a": 0.986963477098861,
+     "b": 0.9829029824455207,
+     "diff": 0.004060494653340352
+    },
+    {
+     "fold": 0,
+     "seed": 2,
+     "a": 0.983206774634652,
+     "b": 0.9850836287290932,
+     "diff": -0.0018768540944411605
+    },
+    {
+     "fold": 1,
+     "seed": 0,
+     "a": 0.9817117535449328,
+     "b": 0.9816591520791481,
+     "diff": 5.260146578467406e-05
+    },
+    {
+     "fold": 1,
+     "seed": 1,
+     "a": 0.9849702799692678,
+     "b": 0.9879899281308212,
+     "diff": -0.003019648161553423
+    },
+    {
+     "fold": 1,
+     "seed": 2,
+     "a": 0.9866550255264015,
+     "b": 0.9838328612313311,
+     "diff": 0.0028221642950704284
+    }
+   ]
+  },
+  "max_within_fold_seed_std": 0.0032167515213736473,
+  "undermeasured": true
+ }
+}
