@@ -1,0 +1,233 @@
+{
+ "env": {
+  "seed": 0,
+  "deterministic": true,
+  "sealed": true,
+  "python": "3.12.10",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "numpy": "2.4.2",
+  "pythonhashseed": "0",
+  "cublas_workspace_config": ":4096:8",
+  "git_commit": "4ea1794ef2c40e36349612168f5ad6c910104512",
+  "git_dirty": true,
+  "torch": "2.11.0+cu128",
+  "cuda_available": true,
+  "cuda_version": "12.8",
+  "cudnn_deterministic": true,
+  "cudnn_benchmark": false,
+  "gpu": "NVIDIA GeForce RTX 5080"
+ },
+ "a": {
+  "path": "results/v2/imgcnn_head_pilot.json",
+  "name": "image_cnn_head/D16",
+  "facts": {
+   "arch": "image_cnn_head",
+   "d_latent": 16,
+   "feat": [
+    64,
+    6,
+    18
+   ],
+   "vstride": null,
+   "aperture_at_bottleneck_px": NaN,
+   "conv_mmac": 31.806592,
+   "fc_mmac": 0.0,
+   "total_mmac": 31.806592,
+   "flat_dim": 6912,
+   "encoder_params": 471536,
+   "head_params": 4625,
+   "total_params": 476161
+  },
+  "config": {
+   "data": "data/processed/v2",
+   "tag": "m22",
+   "arch": "vpres",
+   "front": "image_cnn_head",
+   "latent": 16,
+   "folds": [
+    0,
+    1
+   ],
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "max_epochs": 80,
+   "patience": 10,
+   "batch": 32,
+   "lr": 0.001,
+   "n_boot": 2000,
+   "ear_feats": "all4",
+   "save_models": false,
+   "models_dir": "models/v2",
+   "log": true,
+   "out": "results/v2/imgcnn_head_pilot.json"
+  }
+ },
+ "b": {
+  "path": "results/v2/imgcnn_max_pilot.json",
+  "name": "image_cnn_max/D1",
+  "facts": {
+   "arch": "image_cnn_max",
+   "d_latent": 1,
+   "feat": [
+    64,
+    6,
+    18
+   ],
+   "vstride": null,
+   "aperture_at_bottleneck_px": NaN,
+   "conv_mmac": 31.805632,
+   "fc_mmac": 0.0,
+   "total_mmac": 31.805632,
+   "flat_dim": 6912,
+   "encoder_params": 470561,
+   "head_params": 0,
+   "total_params": 470561
+  },
+  "config": {
+   "data": "data/processed/v2",
+   "tag": "m22",
+   "arch": "vpres",
+   "front": "image_cnn_max",
+   "latent": 16,
+   "folds": [
+    0,
+    1
+   ],
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "max_epochs": 80,
+   "patience": 10,
+   "batch": 32,
+   "lr": 0.001,
+   "n_boot": 2000,
+   "ear_feats": "all4",
+   "save_models": false,
+   "models_dir": "models/v2",
+   "log": true,
+   "out": "results/v2/imgcnn_max_pilot.json"
+  }
+ },
+ "exploratory": true,
+ "_caveat": "탐색 런(fold 0·1)이다. 확정 값으로 인용하지 말 것.",
+ "delta_reference": 0.02,
+ "result": {
+  "n_runs": 6,
+  "runs_compared": [
+   [
+    0,
+    0
+   ],
+   [
+    0,
+    1
+   ],
+   [
+    0,
+    2
+   ],
+   [
+    1,
+    0
+   ],
+   [
+    1,
+    1
+   ],
+   [
+    1,
+    2
+   ]
+  ],
+  "n_events_pooled": 34830,
+  "n_subjects": 21,
+  "pooled": {
+   "a_pr_auc": 0.9849917397491759,
+   "b_pr_auc": 0.9066921761655788,
+   "paired_bootstrap": {
+    "point": 0.07829956358359702,
+    "ci_lo": 0.05458830150048498,
+    "ci_hi": 0.09943601717851992,
+    "std": 0.011597268751008057,
+    "n_boot": 2000,
+    "n_subjects": 21,
+    "alpha": 0.05
+   },
+   "verdict_vs_delta": "superior"
+  },
+  "per_run": {
+   "a_mean": 0.986634160417907,
+   "a_std": 0.0020901386211215197,
+   "b_mean": 0.9065622058019271,
+   "b_std": 0.018242307004181297,
+   "diff_mean": 0.08007195461597982,
+   "diff_std": 0.018284505811680292,
+   "fold_bootstrap": {
+    "point": 0.08007195461597982,
+    "ci_lo": 0.06749821580202736,
+    "ci_hi": 0.09404371867082796,
+    "std": 0.018284505811680292,
+    "n_folds": 6,
+    "per_fold": [
+     0.0706667584919517,
+     0.06750959235989429,
+     0.05852862196115649,
+     0.08373294391306285,
+     0.1087667328929649,
+     0.09122707807684871
+    ]
+   },
+   "runs": [
+    {
+     "fold": 0,
+     "seed": 0,
+     "a": 0.9867320518313545,
+     "b": 0.9160652933394028,
+     "diff": 0.0706667584919517
+    },
+    {
+     "fold": 0,
+     "seed": 1,
+     "a": 0.9895977268741214,
+     "b": 0.9220881345142271,
+     "diff": 0.06750959235989429
+    },
+    {
+     "fold": 0,
+     "seed": 2,
+     "a": 0.9834278131331107,
+     "b": 0.9248991911719542,
+     "diff": 0.05852862196115649
+    },
+    {
+     "fold": 1,
+     "seed": 0,
+     "a": 0.9880200332202792,
+     "b": 0.9042870893072164,
+     "diff": 0.08373294391306285
+    },
+    {
+     "fold": 1,
+     "seed": 1,
+     "a": 0.9862133712399416,
+     "b": 0.8774466383469767,
+     "diff": 0.1087667328929649
+    },
+    {
+     "fold": 1,
+     "seed": 2,
+     "a": 0.9858139662086344,
+     "b": 0.8945868881317857,
+     "diff": 0.09122707807684871
+    }
+   ]
+  },
+  "max_within_fold_seed_std": 0.013591001148299703,
+  "undermeasured": false
+ }
+}
