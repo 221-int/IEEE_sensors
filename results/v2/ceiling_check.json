@@ -1,0 +1,219 @@
+{
+ "conditions": [
+  "abl_sym16",
+  "abl_vpres_ref",
+  "abl_vfull",
+  "dim_D8",
+  "dim_D32",
+  "dim_D64"
+ ],
+ "folds": [
+  0,
+  1
+ ],
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "n_events": 11610,
+ "mean_errors_per_run": 688.2777777777778,
+ "mean_error_rate_per_run": 0.05928318499377931,
+ "n_events_wrong_in_at_least_one_run": 2772,
+ "n_events_all_runs_wrong": 68,
+ "share_of_typical_run_error_always_wrong": 0.09879732020340624,
+ "jaccard_between_conditions": 0.3117776198806954,
+ "jaccard_between_seeds": 0.32115574500839933,
+ "jaccard_ratio": 0.9707988249518668,
+ "ensemble": {
+  "per_fold": [
+   {
+    "fold": 0,
+    "ensemble_ap": 0.9897120961256154,
+    "best_single_ap": 0.9895420711873477
+   },
+   {
+    "fold": 1,
+    "ensemble_ap": 0.991072124390757,
+    "best_single_ap": 0.9899768789749406
+   }
+  ],
+  "mean_gain_over_best_single": 0.0006326351770420402,
+  "_note": "best_single 은 이미 시드 3개를 순위평균한 값이다. 따라서 이 이득은 **조건을 더 합쳐서 얻는 것**만 잰다"
+ },
+ "error_concentration": {
+  "top3_share": 0.7023165711518282,
+  "top5_share": 0.8076519493098717,
+  "top3_event_share": 0.39465977605512487,
+  "_note": "런당 오차 기준. 각 런이 val 에서 얼린 임계값을 쓴다",
+  "per_subject": [
+   {
+    "subject": 57,
+    "errors_per_run": 273.8333333333333,
+    "n": 2101,
+    "rate": 0.13033476122481358,
+    "share_of_error": 0.3978529340544031
+   },
+   {
+    "subject": 53,
+    "errors_per_run": 155.1111111111111,
+    "n": 1493,
+    "rate": 0.10389223785071071,
+    "share_of_error": 0.22536120752280248
+   },
+   {
+    "subject": 31,
+    "errors_per_run": 54.44444444444444,
+    "n": 988,
+    "rate": 0.05510571300044984,
+    "share_of_error": 0.07910242957462266
+   },
+   {
+    "subject": 39,
+    "errors_per_run": 41.16666666666667,
+    "n": 1556,
+    "rate": 0.02645672664952871,
+    "share_of_error": 0.059811122770199385
+   },
+   {
+    "subject": 1,
+    "errors_per_run": 31.333333333333332,
+    "n": 109,
+    "rate": 0.2874617737003058,
+    "share_of_error": 0.045524255387844055
+   },
+   {
+    "subject": 29,
+    "errors_per_run": 25.555555555555557,
+    "n": 774,
+    "rate": 0.03301751363766868,
+    "share_of_error": 0.03712971184114941
+   },
+   {
+    "subject": 9,
+    "errors_per_run": 19.88888888888889,
+    "n": 218,
+    "rate": 0.09123343527013252,
+    "share_of_error": 0.02889660182419889
+   },
+   {
+    "subject": 34,
+    "errors_per_run": 17.11111111111111,
+    "n": 817,
+    "rate": 0.020943832449340404,
+    "share_of_error": 0.02486076358059569
+   },
+   {
+    "subject": 51,
+    "errors_per_run": 10.61111111111111,
+    "n": 276,
+    "rate": 0.038446054750402574,
+    "share_of_error": 0.01541690209056421
+   },
+   {
+    "subject": 33,
+    "errors_per_run": 10.555555555555555,
+    "n": 360,
+    "rate": 0.029320987654320986,
+    "share_of_error": 0.015336185325692147
+   },
+   {
+    "subject": 24,
+    "errors_per_run": 10.055555555555555,
+    "n": 270,
+    "rate": 0.037242798353909465,
+    "share_of_error": 0.014609734441843571
+   },
+   {
+    "subject": 11,
+    "errors_per_run": 9.88888888888889,
+    "n": 141,
+    "rate": 0.07013396375098503,
+    "share_of_error": 0.01436758414722738
+   },
+   {
+    "subject": 50,
+    "errors_per_run": 7.555555555555555,
+    "n": 566,
+    "rate": 0.013349038084020416,
+    "share_of_error": 0.010977480022600695
+   },
+   {
+    "subject": 15,
+    "errors_per_run": 6.555555555555555,
+    "n": 280,
+    "rate": 0.023412698412698413,
+    "share_of_error": 0.009524578254903543
+   },
+   {
+    "subject": 28,
+    "errors_per_run": 6.166666666666666,
+    "n": 584,
+    "rate": 0.010559360730593607,
+    "share_of_error": 0.008959560900799095
+   },
+   {
+    "subject": 42,
+    "errors_per_run": 2.7222222222222223,
+    "n": 98,
+    "rate": 0.02777777777777778,
+    "share_of_error": 0.003955121478731133
+   },
+   {
+    "subject": 8,
+    "errors_per_run": 1.8888888888888888,
+    "n": 476,
+    "rate": 0.003968253968253968,
+    "share_of_error": 0.002744370005650174
+   },
+   {
+    "subject": 17,
+    "errors_per_run": 1.722222222222222,
+    "n": 262,
+    "rate": 0.006573367260390161,
+    "share_of_error": 0.0025022197110339817
+   },
+   {
+    "subject": 38,
+    "errors_per_run": 1.277777777777778,
+    "n": 164,
+    "rate": 0.0077913279132791335,
+    "share_of_error": 0.0018564855920574707
+   },
+   {
+    "subject": 46,
+    "errors_per_run": 0.6666666666666667,
+    "n": 20,
+    "rate": 0.03333333333333334,
+    "share_of_error": 0.0009686011784647673
+   },
+   {
+    "subject": 48,
+    "errors_per_run": 0.16666666666666666,
+    "n": 57,
+    "rate": 0.0029239766081871343,
+    "share_of_error": 0.0002421502946161918
+   }
+  ]
+ },
+ "verdict": "architecture_irrelevant",
+ "_caveat": "탐색 런(fold 0·1, 21명) 기반이다. 확정 값으로 인용하지 말 것.",
+ "env": {
+  "seed": 0,
+  "deterministic": true,
+  "sealed": true,
+  "python": "3.12.10",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "numpy": "2.4.2",
+  "pythonhashseed": "0",
+  "cublas_workspace_config": ":4096:8",
+  "git_commit": "9bc811e3b345c66d11d3df45d2543caaa4fdfd3a",
+  "git_dirty": true,
+  "torch": "2.11.0+cu128",
+  "cuda_available": true,
+  "cuda_version": "12.8",
+  "cudnn_deterministic": true,
+  "cudnn_benchmark": false,
+  "gpu": "NVIDIA GeForce RTX 5080"
+ }
+}
