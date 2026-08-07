@@ -2,15 +2,13 @@
 
     python -m src.v2.posthoc_subgroups
 
-⚠️ **이 스크립트가 내는 숫자는 풀링 PR-AUC 가 아니다.**
-`train_encoder.json` 에는 런별 `by_subject`(피험자별 PR-AUC)만 남아 있고 원시 test
-점수는 없다(2026-08-03 에 사이드카 저장을 추가했지만 이번 런은 그 전 코드로 돌았다).
-따라서 여기서 계산하는 것은 **피험자별 PR-AUC 의 평균**이며, 이벤트를 섞어 계산한
-풀링 값과 다른 숫자다. PROTOCOL §9-1 에 같은 종류의 격차가 기록돼 있다
-(EAR: 사용자별 중앙 0.930 vs 섞으면 0.909. 배포 조건의 값은 후자).
+🔵 **2026-08-06 부터 풀링을 낸다.** 점수 사이드카가 남는 런(`train_encoder_final`
+이후)이면 **이벤트를 섞은 풀링 PR-AUC + ear_head 상대 δ=0.02 판정**을 계산한다
+(`pooled_groups`). PROTOCOL 부록 #13 대로 **풀링이 주 숫자**이고 피험자 평균(`groups`)은
+병기용이다 — 피험자 평균은 작은 피험자를 과대 가중한다.
 
-→ **서브그룹에 δ=0.02 비열등 판정을 붙이지 않는다.** 여기의 CI 는 피험자 재표집으로
-   얻은 평균의 불확실도이지 프로토콜 판정이 아니다.
+⚠️ 사이드카가 없는 옛 런에서는 풀링이 불가능하므로 피험자 평균만 나오고,
+그때는 **δ 판정을 붙이지 않는다**(그 CI 는 평균의 불확실도이지 프로토콜 판정이 아니다).
 
 부트스트랩·판정 함수는 `src/v2/common/stats.py` 만 쓴다(실험 스크립트가 직접 구현 금지).
 """
@@ -26,12 +24,14 @@ from collections import defaultdict
 import numpy as np
 
 from src.v2.common import repro, stats
+from src.v2.common import thresholds as TH
 
 RESULT = "results/v2/train_encoder.json"
 CONTAM = "results/v2/train_encoder_contaminated.json"
 INDEX = "data/processed/v2/index.npz"
 GLASSES = "data/raw/mEBAL2/glasses_labels_58.csv"
 OUT = "results/v2/posthoc_subgroups.json"
+DELTA = 0.02      # PROTOCOL §9-1. train_encoder.DELTA 와 같은 값이어야 한다
 
 
 # ------------------------------------------------------------------ 적재
@@ -202,6 +202,71 @@ def gain_source(vals: dict, members: list[int], n_boot: int) -> dict:
     }
 
 
+# ------------------------------------------------------------------ 풀링 (T3-6)
+# 🔵 2026-08-06. 이전까지 이 스크립트는 **피험자별 PR-AUC 의 평균**만 냈다. 원시 test
+# 점수가 없어서였다. `train_encoder_final` 런부터 **점수 사이드카가 남으므로** 이제
+# 이벤트를 섞은 **풀링 PR-AUC** 와 **ear_head 상대 δ 판정**을 낼 수 있다.
+# PROTOCOL 부록 #13: 풀링(또는 이벤트 가중)을 주 숫자로, 피험자 평균을 병기한다.
+def load_sidecars(result_path: str) -> dict | None:
+    """`--result` 에서 파생된 점수 사이드카를 전부 이어붙인다. 없으면 None."""
+    sd = os.path.splitext(result_path)[0] + "_scores"
+    if not os.path.isdir(sd):
+        return None
+    d = json.load(open(result_path, encoding="utf-8"))
+    ours, eh, er, y, sub, run = [], [], [], [], [], []
+    for i, r in enumerate(d["runs"]):
+        p = os.path.join(sd, f"fold{r['fold']}_seed{r['seed']}.npz")
+        if not os.path.exists(p):
+            return None
+        z = np.load(p, allow_pickle=True)
+        ours.append(z["ours"]); eh.append(z["ear_head"]); er.append(z["ear_rule"])
+        y.append(z["y"]); sub.append(z["subject"])
+        run.append(np.full(len(z["y"]), i))
+    return {"ours": np.concatenate(ours), "ear_head": np.concatenate(eh),
+            "ear_rule": np.concatenate(er), "y": np.concatenate(y),
+            "subject": np.concatenate(sub), "run": np.concatenate(run),
+            "n_runs": len(d["runs"])}
+
+
+def pooled_group(S: dict, members: list[int], n_boot: int, delta: float,
+                 n_seeds: int, baseline: str = "ear_head", seed: int = 0) -> dict:
+    """서브그룹 하나의 **풀링** PR-AUC 와 짝지은 피험자 부트스트랩 δ 판정.
+
+    ⚠️ 런 15개를 섞어 AP 를 한 번 계산한다(`train_encoder.verdict()` 와 같은 추정량).
+    PROTOCOL §0 이 실측해 둔 대로 이 방식은 fold별 계산 후 평균보다 0.002~0.003 낮게
+    나오지만, **두 방법에 같은 방향으로 작용**하고 우리는 차이를 부트스트랩하므로
+    판정에는 대부분 상쇄된다.
+    """
+    if not members:
+        return {"n_subjects": 0}
+    m = np.isin(S["subject"], list(members))
+    yo, so, sb = S["y"][m], S["ours"][m], S["subject"][m]
+    bl = S[baseline][m]
+    co, cb = TH.canonical(so, True), TH.canonical(bl, True)
+
+    def diff(rows):
+        return (TH.average_precision(co[rows], yo[rows])
+                - TH.average_precision(cb[rows], yo[rows]))
+
+    boot = stats.subject_bootstrap(diff, sb, n_boot=n_boot, seed=seed)
+    return {
+        "n_subjects": int(len(np.unique(sb))),
+        "n_rows_pooled": int(m.sum()),
+        # 피험자는 정확히 한 fold 에만 있으므로 각 이벤트는 **시드마다 1회**
+        # 등장한다. 런 수(15)로 나누면 5배 과소계산된다.
+        "n_events": int(m.sum() // n_seeds),
+        "n_seeds": int(n_seeds),
+        "ours_pooled_pr_auc": TH.average_precision(co, yo),
+        f"{baseline}_pooled_pr_auc": TH.average_precision(cb, yo),
+        "baseline": baseline,
+        "gain_pooled": boot["point"],
+        "gain_ci": [boot["ci_lo"], boot["ci_hi"]],
+        "delta": delta,
+        "verdict": stats.non_inferiority(boot["ci_lo"], boot["ci_hi"], delta),
+        "_estimator": "런 15개를 concat 해 AP 1회. PROTOCOL §0 참조",
+    }
+
+
 def contamination_delta(clean: dict, path: str = CONTAM) -> dict:
     """오염 전(U18 포함·좌석 필터 없음·구 fold) fold0 과 정리 후 fold0 의 차이.
 
@@ -246,7 +311,11 @@ def main() -> int:
     repro.seal(0)
     ap = argparse.ArgumentParser()
     ap.add_argument("--result", default=RESULT)
-    ap.add_argument("--n-boot", type=int, default=10000)
+    ap.add_argument("--n-boot", type=int, default=10000,
+                    help="피험자 평균 부트스트랩. 57개 값만 다루므로 넉넉해도 된다")
+    ap.add_argument("--n-boot-pooled", type=int, default=2000,
+                    help="풀링 부트스트랩. 재표집마다 41만 행에 AP 를 다시 계산하므로 "
+                         "비용이 전혀 다르다. train_encoder.verdict 와 같은 2000 이 기본")
     ap.add_argument("--out", default=OUT)
     args = ap.parse_args()
 
@@ -296,6 +365,33 @@ def main() -> int:
     print(f"  ear_head 하위 사분위(<{s['ear_head_q1']:.4f}) 제외 → {ex['n_subjects']}명, "
           f"이득 {ex['gain_mean']:+.4f} CI [{ex['gain_ci'][0]:+.4f}, {ex['gain_ci'][1]:+.4f}]")
 
+    # ---- 풀링 (사이드카가 있을 때만) ----
+    S = load_sidecars(args.result)
+    pooled = {}
+    if S is not None:
+        # 🔴 풀링 부트스트랩은 재표집마다 41만 행에 AP 를 다시 계산한다(argsort 포함).
+        # 피험자 평균 쪽(n_boot=10000)은 57개 값만 다루므로 같은 예산을 쓰면 안 된다.
+        # 10000 x 5그룹으로 돌렸다가 10시간이 넘어 중단했다. 프로토콜의 주 판정
+        # (`train_encoder.verdict`, n_boot=2000)과 **같은 예산**으로 맞춘다.
+        n_seeds = len(set(r["seed"] for r in raw["runs"]))
+        pooled = {g: pooled_group(S, m, args.n_boot_pooled, DELTA, n_seeds)
+                  for g, m in groups.items()}
+        print(f"\n🔵 풀링 PR-AUC + ear_head 상대 δ 판정 (δ={DELTA}, 주 숫자)")
+        print(f"{'그룹':<12}{'인원':>5}{'이벤트':>9}{'ours':>9}{'ear_head':>10}"
+              f"{'이득':>9}{'95% CI':>22}{'판정':>14}")
+        for g, s in pooled.items():
+            if not s.get("n_subjects"):
+                continue
+            lo, hi = s["gain_ci"]
+            print(f"{g:<12}{s['n_subjects']:>5}{s['n_events']:>9,}"
+                  f"{s['ours_pooled_pr_auc']:>9.4f}{s['ear_head_pooled_pr_auc']:>10.4f}"
+                  f"{s['gain_pooled']:>+9.4f}{f'[{lo:+.4f}, {hi:+.4f}]':>22}"
+                  f"{s['verdict']:>14}")
+        print("  (피험자 평균은 위 표. PROTOCOL 부록 #13 — 풀링이 주, 평균은 병기)")
+    else:
+        print("\n⚠️ 점수 사이드카가 없어 풀링을 계산하지 못했다. "
+              "이 런은 사이드카 저장 이전 코드로 돌았다.")
+
     contam = contamination_delta(raw)
     if contam["available"]:
         print(f"\n오염 전후 (fold0, 인용 금지)")
@@ -306,8 +402,14 @@ def main() -> int:
               f"{contam['diff']['clean']:+.4f}  ({contam['diff']['shift']:+.4f})")
 
     out = {
-        "_caveat": "피험자별 PR-AUC 의 평균이며 풀링 값이 아니다. δ 판정에 쓰지 말 것. "
-                   "원시 test 점수가 저장되지 않은 런이라 풀링 계산이 불가능하다.",
+        "_caveat": ("`groups` 는 **피험자별 PR-AUC 의 평균**이다(병기용). "
+                    "주 숫자는 `pooled_groups` 의 풀링 PR-AUC 이며 거기에만 δ 판정이 붙는다. "
+                    "PROTOCOL 부록 #13."
+                    if pooled else
+                    "피험자별 PR-AUC 의 평균이며 풀링 값이 아니다. δ 판정에 쓰지 말 것. "
+                    "이 런은 점수 사이드카가 없어 풀링 계산이 불가능하다."),
+        "pooled_groups": pooled,
+        "pooled_available": bool(pooled),
         "env": repro.env_fingerprint(),
         "source_result": args.result,
         "primary_verdict": raw["verdict"],
