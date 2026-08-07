@@ -207,25 +207,60 @@ def gain_source(vals: dict, members: list[int], n_boot: int) -> dict:
 # 점수가 없어서였다. `train_encoder_final` 런부터 **점수 사이드카가 남으므로** 이제
 # 이벤트를 섞은 **풀링 PR-AUC** 와 **ear_head 상대 δ 판정**을 낼 수 있다.
 # PROTOCOL 부록 #13: 풀링(또는 이벤트 가중)을 주 숫자로, 피험자 평균을 병기한다.
-def load_sidecars(result_path: str) -> dict | None:
-    """`--result` 에서 파생된 점수 사이드카를 전부 이어붙인다. 없으면 None."""
+def _sidecar_map(result_path: str) -> dict | None:
+    """(fold, seed) -> 사이드카 배열. 순서 의존을 없애려고 키로 잡는다."""
     sd = os.path.splitext(result_path)[0] + "_scores"
     if not os.path.isdir(sd):
         return None
     d = json.load(open(result_path, encoding="utf-8"))
-    ours, eh, er, y, sub, run = [], [], [], [], [], []
-    for i, r in enumerate(d["runs"]):
+    out = {}
+    for r in d["runs"]:
         p = os.path.join(sd, f"fold{r['fold']}_seed{r['seed']}.npz")
         if not os.path.exists(p):
             return None
-        z = np.load(p, allow_pickle=True)
+        out[(int(r["fold"]), int(r["seed"]))] = np.load(p, allow_pickle=True)
+    return out
+
+
+def load_sidecars(result_path: str, baseline_result: str | None = None) -> dict | None:
+    """점수 사이드카를 이어붙인다. 없으면 None.
+
+    `baseline_result` 를 주면 **다른 런의 `ours` 점수를 베이스라인으로** 쓴다
+    (예: image_cnn_head 상대 서브그룹 판정). 같은 (fold, seed) 끼리 붙이고,
+    `y`·`subject` 가 원소 단위로 같은지 **검사한 뒤** 짝짓는다 — 분할이 다르면
+    비교 자체가 무효다.
+    """
+    A = _sidecar_map(result_path)
+    if A is None:
+        return None
+    B = _sidecar_map(baseline_result) if baseline_result else None
+    if baseline_result and B is None:
+        raise SystemExit(f"베이스라인 사이드카가 없습니다: {baseline_result}")
+
+    keys = sorted(A)
+    if B is not None:
+        missing = sorted(set(keys) - set(B))
+        if missing:
+            raise SystemExit(f"베이스라인에 없는 (fold, seed): {missing}")
+
+    ours, eh, er, y, sub, ext = [], [], [], [], [], []
+    for k in keys:
+        z = A[k]
         ours.append(z["ours"]); eh.append(z["ear_head"]); er.append(z["ear_rule"])
         y.append(z["y"]); sub.append(z["subject"])
-        run.append(np.full(len(z["y"]), i))
-    return {"ours": np.concatenate(ours), "ear_head": np.concatenate(eh),
-            "ear_rule": np.concatenate(er), "y": np.concatenate(y),
-            "subject": np.concatenate(sub), "run": np.concatenate(run),
-            "n_runs": len(d["runs"])}
+        if B is not None:
+            zb = B[k]
+            if not (np.array_equal(zb["y"], z["y"])
+                    and np.array_equal(zb["subject"], z["subject"])):
+                raise SystemExit(f"{k}: 베이스라인과 분할이 다릅니다. 비교 불가.")
+            ext.append(zb["ours"])
+    out = {"ours": np.concatenate(ours), "ear_head": np.concatenate(eh),
+           "ear_rule": np.concatenate(er), "y": np.concatenate(y),
+           "subject": np.concatenate(sub), "n_runs": len(keys)}
+    if B is not None:
+        out["external"] = np.concatenate(ext)
+        out["_external_from"] = baseline_result
+    return out
 
 
 def pooled_group(S: dict, members: list[int], n_boot: int, delta: float,
@@ -311,6 +346,10 @@ def main() -> int:
     repro.seal(0)
     ap = argparse.ArgumentParser()
     ap.add_argument("--result", default=RESULT)
+    ap.add_argument("--baseline-result", default=None,
+                    help="다른 런의 ours 점수를 베이스라인으로 쓴다 "
+                         "(예: results/v2/train_image_cnn_head_final.json). "
+                         "주면 서브그룹 판정이 그 상대로 바뀐다")
     ap.add_argument("--n-boot", type=int, default=10000,
                     help="피험자 평균 부트스트랩. 57개 값만 다루므로 넉넉해도 된다")
     ap.add_argument("--n-boot-pooled", type=int, default=2000,
@@ -366,7 +405,8 @@ def main() -> int:
           f"이득 {ex['gain_mean']:+.4f} CI [{ex['gain_ci'][0]:+.4f}, {ex['gain_ci'][1]:+.4f}]")
 
     # ---- 풀링 (사이드카가 있을 때만) ----
-    S = load_sidecars(args.result)
+    S = load_sidecars(args.result, args.baseline_result)
+    bl_key = "external" if args.baseline_result else "ear_head"
     pooled = {}
     if S is not None:
         # 🔴 풀링 부트스트랩은 재표집마다 41만 행에 AP 를 다시 계산한다(argsort 포함).
@@ -374,7 +414,8 @@ def main() -> int:
         # 10000 x 5그룹으로 돌렸다가 10시간이 넘어 중단했다. 프로토콜의 주 판정
         # (`train_encoder.verdict`, n_boot=2000)과 **같은 예산**으로 맞춘다.
         n_seeds = len(set(r["seed"] for r in raw["runs"]))
-        pooled = {g: pooled_group(S, m, args.n_boot_pooled, DELTA, n_seeds)
+        pooled = {g: pooled_group(S, m, args.n_boot_pooled, DELTA, n_seeds,
+                                  baseline=bl_key)
                   for g, m in groups.items()}
         print(f"\n🔵 풀링 PR-AUC + ear_head 상대 δ 판정 (δ={DELTA}, 주 숫자)")
         print(f"{'그룹':<12}{'인원':>5}{'이벤트':>9}{'ours':>9}{'ear_head':>10}"
@@ -384,7 +425,7 @@ def main() -> int:
                 continue
             lo, hi = s["gain_ci"]
             print(f"{g:<12}{s['n_subjects']:>5}{s['n_events']:>9,}"
-                  f"{s['ours_pooled_pr_auc']:>9.4f}{s['ear_head_pooled_pr_auc']:>10.4f}"
+                  f"{s['ours_pooled_pr_auc']:>9.4f}{s[f'{bl_key}_pooled_pr_auc']:>10.4f}"
                   f"{s['gain_pooled']:>+9.4f}{f'[{lo:+.4f}, {hi:+.4f}]':>22}"
                   f"{s['verdict']:>14}")
         print("  (피험자 평균은 위 표. PROTOCOL 부록 #13 — 풀링이 주, 평균은 병기)")

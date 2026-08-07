@@ -97,7 +97,7 @@
   "numpy": "2.4.2",
   "pythonhashseed": "0",
   "cublas_workspace_config": ":4096:8",
-  "git_commit": "74f9f3257b3f58beff9f4aae8ffb9c963beb9ea6",
+  "git_commit": "cb4f0e488899bee4bd2abfce92800129044ea5a1",
   "git_dirty": true,
   "torch": "2.11.0+cu128",
   "cuda_available": true,
