@@ -79,6 +79,30 @@ def scores_dir(args) -> str:
     return os.path.splitext(args.out)[0] + "_scores"
 
 
+def models_dir(args) -> str:
+    """체크포인트도 **`--out` 에서 파생**한다. 사이드카와 같은 규칙이다.
+
+    🔴 2026-08-07. 이전에는 `MODELS = "models/v2"` 상수였다. 그래서 `--out` 을 아무리
+    다르게 줘도 `--save-models` 를 붙이는 순간 **모든 런이 같은 자리에 쓴다.**
+    이 프로젝트에서 확정 체크포인트를 덮어쓴 사고가 이미 있었고, 워크오더가 매번
+    "탐색 런에 --save-models 를 붙이지 마라"로 사람 규율에 의존해 막고 있었다.
+    파생으로 바꾸면 **서로 다른 --out 은 구조적으로 충돌할 수 없다.**
+
+        results/v2/train_encoder_final.json -> models/v2/train_encoder_final/
+        results/v2/train_image_cnn_max_final.json -> models/v2/train_image_cnn_max_final/
+
+    `--models-dir` 을 명시하면 그것이 우선한다.
+    """
+    if getattr(args, "models_dir", None):
+        return args.models_dir
+    stem = os.path.splitext(args.out)[0]              # results/v2/train_encoder_final
+    parts = stem.replace("\\", "/").split("/")
+    if parts and parts[0] == "results":               # results/... -> models/...
+        parts[0] = "models"
+        return "/".join(parts)
+    return os.path.join(MODELS, os.path.basename(stem))
+
+
 def _atomic_write(path: str, write_fn) -> None:
     """tmp 에 쓰고 os.replace. 쓰는 도중 죽어도 기존 파일이 반쯤 망가지지 않는다."""
     os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
@@ -341,9 +365,7 @@ def run_fold(bundle: Bundle, fold: int, seed: int, args) -> dict:
     strong = max(("ear_head", "ear_rule"), key=lambda k: res[k]["pr_auc"])
 
     if args.save_models:
-        # MODELS 하드코딩이 이 프로젝트에서 두 번 증거를 지웠다. --models-dir 로 열어 둔다.
-        d = os.path.join(getattr(args, "models_dir", None) or MODELS,
-                         f"fold{fold}_seed{seed}")
+        d = os.path.join(models_dir(args), f"fold{fold}_seed{seed}")
         os.makedirs(d, exist_ok=True)
         torch.save(best["front"], os.path.join(d, "encoder.pt"))
         torch.save(best["head"], os.path.join(d, "head.pt"))
@@ -441,9 +463,9 @@ def main() -> int:
     ap.add_argument("--ear-feats", default="all4", choices=["mean", "all4"],
                     help="대조군 1 이 쓰는 EAR 특징. all4 = left,right,mean,min (베이스라인에 관대한 쪽)")
     ap.add_argument("--save-models", action="store_true")
-    ap.add_argument("--models-dir", default=MODELS,
-                    help="체크포인트 저장 위치. 기본이 하드코딩된 models/v2 라 확정 런을 "
-                         "덮어쓴 사고가 있었다. 탐색 런은 --save-models 를 아예 주지 마라")
+    ap.add_argument("--models-dir", default=None,
+                    help="체크포인트 저장 위치. 기본은 --out 에서 파생된다"
+                         "(results/v2/X.json -> models/v2/X/). 명시하면 그것이 우선")
     ap.add_argument("--log", action="store_true", default=True)
     ap.add_argument("--out", default=OUT)
     args = ap.parse_args()
@@ -476,6 +498,8 @@ def main() -> int:
     out = {"env": freeze_env(), "config": vars(args),
            "input_norm": C.INPUT_NORM, "runs": lean_runs(runs), "verdict": vd,
            "scores_dir": scores_dir(args).replace("\\", "/"),
+           "models_dir": (models_dir(args).replace("\\", "/")
+                          if args.save_models else None),
            "minutes": round((time.perf_counter() - t0) / 60, 1)}
 
     def ms(key):

@@ -35,7 +35,9 @@ from src.v2.train_encoder import Bundle, EVENT_LEN
 
 
 DATA = "data/processed/v2"
-MODELS = "models/v2"
+MODELS = "models/v2/train_encoder_final"   # 2026-08-07: 체크포인트 경로가
+# --out 에서 파생되도록 바뀌었다(train_encoder.models_dir). 확정 런의 --out 이
+# results/v2/train_encoder_final.json 이므로 여기다.
 TRAIN_RESULTS = "results/v2/train_encoder.json"
 OUT = "results/v2/u1_audit.json"
 FIG_DIR = "docs/v2/figures"

@@ -47,7 +47,9 @@ from src.v2.common import repro, splits
 from src.v2.common import thresholds as TH
 
 DATA = "data/processed/v2"
-MODELS = "models/v2"
+MODELS = "models/v2/train_encoder_final"   # 2026-08-07: 체크포인트 경로가
+# --out 에서 파생되도록 바뀌었다(train_encoder.models_dir). 확정 런의 --out 이
+# results/v2/train_encoder_final.json 이므로 여기다.
 RESULT = "results/v2/train_encoder.json"
 POSTHOC = "results/v2/posthoc_subgroups.json"
 GLASSES = "data/raw/mEBAL2/glasses_labels_58.csv"

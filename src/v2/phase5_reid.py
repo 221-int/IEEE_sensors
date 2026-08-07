@@ -54,7 +54,9 @@ from src.v2.common import probes, repro, splits
 from src.v2.dataset import crop as C
 
 DATA = "data/processed/v2"
-MODELS = "models/v2"
+MODELS = "models/v2/train_encoder_final"   # 2026-08-07: 체크포인트 경로가
+# --out 에서 파생되도록 바뀌었다(train_encoder.models_dir). 확정 런의 --out 이
+# results/v2/train_encoder_final.json 이므로 여기다.
 OUT = "results/v2/phase5_reid.json"
 
 # Phase 0 값 — **비교 불가**. 모집단이 다르다(58명 / 좌석 필터 이전 / 전체 프레임).
