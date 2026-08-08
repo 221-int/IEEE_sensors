@@ -407,6 +407,8 @@ def main() -> int:
     # ---- 풀링 (사이드카가 있을 때만) ----
     S = load_sidecars(args.result, args.baseline_result)
     bl_key = "external" if args.baseline_result else "ear_head"
+    bl_label = (os.path.basename(args.baseline_result).replace(".json", "")
+                if args.baseline_result else "ear_head")
     pooled = {}
     if S is not None:
         # 🔴 풀링 부트스트랩은 재표집마다 41만 행에 AP 를 다시 계산한다(argsort 포함).
@@ -417,8 +419,8 @@ def main() -> int:
         pooled = {g: pooled_group(S, m, args.n_boot_pooled, DELTA, n_seeds,
                                   baseline=bl_key)
                   for g, m in groups.items()}
-        print(f"\n🔵 풀링 PR-AUC + ear_head 상대 δ 판정 (δ={DELTA}, 주 숫자)")
-        print(f"{'그룹':<12}{'인원':>5}{'이벤트':>9}{'ours':>9}{'ear_head':>10}"
+        print(f"\n🔵 풀링 PR-AUC + {bl_label} 상대 δ 판정 (δ={DELTA}, 주 숫자)")
+        print(f"{'그룹':<12}{'인원':>5}{'이벤트':>9}{'ours':>9}{bl_label[:9]:>10}"
               f"{'이득':>9}{'95% CI':>22}{'판정':>14}")
         for g, s in pooled.items():
             if not s.get("n_subjects"):

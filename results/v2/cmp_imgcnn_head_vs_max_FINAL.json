@@ -1,0 +1,347 @@
+{
+ "env": {
+  "seed": 0,
+  "deterministic": true,
+  "sealed": true,
+  "python": "3.12.10",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "numpy": "2.4.2",
+  "pythonhashseed": "0",
+  "cublas_workspace_config": ":4096:8",
+  "git_commit": "79a1312407e65190548143106d8c2ad2c068d0c7",
+  "git_dirty": true,
+  "torch": "2.11.0+cu128",
+  "cuda_available": true,
+  "cuda_version": "12.8",
+  "cudnn_deterministic": true,
+  "cudnn_benchmark": false,
+  "gpu": "NVIDIA GeForce RTX 5080"
+ },
+ "a": {
+  "path": "results/v2/train_image_cnn_head_final.json",
+  "name": "image_cnn_head/D16",
+  "facts": {
+   "arch": "image_cnn_head",
+   "d_latent": 16,
+   "feat": [
+    64,
+    6,
+    18
+   ],
+   "vstride": null,
+   "aperture_at_bottleneck_px": NaN,
+   "conv_mmac": 31.806592,
+   "fc_mmac": 0.0,
+   "total_mmac": 31.806592,
+   "flat_dim": 6912,
+   "encoder_params": 471536,
+   "head_params": 4625,
+   "total_params": 476161
+  },
+  "config": {
+   "data": "data/processed/v2",
+   "tag": "m22",
+   "arch": "vpres",
+   "front": "image_cnn_head",
+   "latent": 16,
+   "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "max_epochs": 80,
+   "patience": 10,
+   "batch": 32,
+   "lr": 0.001,
+   "n_boot": 2000,
+   "ear_feats": "all4",
+   "save_models": true,
+   "models_dir": null,
+   "log": true,
+   "out": "results/v2/train_image_cnn_head_final.json"
+  }
+ },
+ "b": {
+  "path": "results/v2/train_image_cnn_max_final.json",
+  "name": "image_cnn_max/D1",
+  "facts": {
+   "arch": "image_cnn_max",
+   "d_latent": 1,
+   "feat": [
+    64,
+    6,
+    18
+   ],
+   "vstride": null,
+   "aperture_at_bottleneck_px": NaN,
+   "conv_mmac": 31.805632,
+   "fc_mmac": 0.0,
+   "total_mmac": 31.805632,
+   "flat_dim": 6912,
+   "encoder_params": 470561,
+   "head_params": 0,
+   "total_params": 470561
+  },
+  "config": {
+   "data": "data/processed/v2",
+   "tag": "m22",
+   "arch": "vpres",
+   "front": "image_cnn_max",
+   "latent": 16,
+   "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "seeds": [
+    0,
+    1,
+    2
+   ],
+   "max_epochs": 80,
+   "patience": 10,
+   "batch": 32,
+   "lr": 0.001,
+   "n_boot": 2000,
+   "ear_feats": "all4",
+   "save_models": true,
+   "models_dir": null,
+   "log": true,
+   "out": "results/v2/train_image_cnn_max_final.json"
+  }
+ },
+ "exploratory": false,
+ "_caveat": null,
+ "delta_reference": 0.02,
+ "result": {
+  "n_runs": 15,
+  "runs_compared": [
+   [
+    0,
+    0
+   ],
+   [
+    0,
+    1
+   ],
+   [
+    0,
+    2
+   ],
+   [
+    1,
+    0
+   ],
+   [
+    1,
+    1
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    2,
+    0
+   ],
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    0
+   ],
+   [
+    4,
+    1
+   ],
+   [
+    4,
+    2
+   ]
+  ],
+  "n_events_pooled": 83274,
+  "n_subjects": 57,
+  "pooled": {
+   "a_pr_auc": 0.990079208234898,
+   "b_pr_auc": 0.9094996895025067,
+   "paired_bootstrap": {
+    "point": 0.08057951873239133,
+    "ci_lo": 0.05915418882521311,
+    "ci_hi": 0.10280998412514618,
+    "std": 0.011055067131164055,
+    "n_boot": 2000,
+    "n_subjects": 57,
+    "alpha": 0.05
+   },
+   "verdict_vs_delta": "superior"
+  },
+  "per_run": {
+   "a_mean": 0.9905569097814573,
+   "a_std": 0.0037201864147780967,
+   "b_mean": 0.9114414283677957,
+   "b_std": 0.029139323314563505,
+   "diff_mean": 0.07911548141366165,
+   "diff_std": 0.028920179283279532,
+   "fold_bootstrap": {
+    "point": 0.07911548141366165,
+    "ci_lo": 0.06648237638172004,
+    "ci_hi": 0.09473684624491269,
+    "std": 0.028920179283279532,
+    "n_folds": 15,
+    "per_fold": [
+     0.0706667584919517,
+     0.06750959235989429,
+     0.05852862196115649,
+     0.08373294391306285,
+     0.1087667328929649,
+     0.09122707807684871,
+     0.052644678561923675,
+     0.05260258228399195,
+     0.04592834955165237,
+     0.16169440592158613,
+     0.07329091751609973,
+     0.09910182358378639,
+     0.08435846585924522,
+     0.0710564547965945,
+     0.06562281543416582
+    ]
+   },
+   "runs": [
+    {
+     "fold": 0,
+     "seed": 0,
+     "a": 0.9867320518313545,
+     "b": 0.9160652933394028,
+     "diff": 0.0706667584919517
+    },
+    {
+     "fold": 0,
+     "seed": 1,
+     "a": 0.9895977268741214,
+     "b": 0.9220881345142271,
+     "diff": 0.06750959235989429
+    },
+    {
+     "fold": 0,
+     "seed": 2,
+     "a": 0.9834278131331107,
+     "b": 0.9248991911719542,
+     "diff": 0.05852862196115649
+    },
+    {
+     "fold": 1,
+     "seed": 0,
+     "a": 0.9880200332202792,
+     "b": 0.9042870893072164,
+     "diff": 0.08373294391306285
+    },
+    {
+     "fold": 1,
+     "seed": 1,
+     "a": 0.9862133712399416,
+     "b": 0.8774466383469767,
+     "diff": 0.1087667328929649
+    },
+    {
+     "fold": 1,
+     "seed": 2,
+     "a": 0.9858139662086344,
+     "b": 0.8945868881317857,
+     "diff": 0.09122707807684871
+    },
+    {
+     "fold": 2,
+     "seed": 0,
+     "a": 0.9930272012339803,
+     "b": 0.9403825226720566,
+     "diff": 0.052644678561923675
+    },
+    {
+     "fold": 2,
+     "seed": 1,
+     "a": 0.9952327375878294,
+     "b": 0.9426301553038374,
+     "diff": 0.05260258228399195
+    },
+    {
+     "fold": 2,
+     "seed": 2,
+     "a": 0.9920922596704345,
+     "b": 0.9461639101187821,
+     "diff": 0.04592834955165237
+    },
+    {
+     "fold": 3,
+     "seed": 0,
+     "a": 0.9932808439613772,
+     "b": 0.831586438039791,
+     "diff": 0.16169440592158613
+    },
+    {
+     "fold": 3,
+     "seed": 1,
+     "a": 0.9943699476415551,
+     "b": 0.9210790301254553,
+     "diff": 0.07329091751609973
+    },
+    {
+     "fold": 3,
+     "seed": 2,
+     "a": 0.9942475244622568,
+     "b": 0.8951457008784705,
+     "diff": 0.09910182358378639
+    },
+    {
+     "fold": 4,
+     "seed": 0,
+     "a": 0.9929434643279058,
+     "b": 0.9085849984686606,
+     "diff": 0.08435846585924522
+    },
+    {
+     "fold": 4,
+     "seed": 1,
+     "a": 0.9900225564584846,
+     "b": 0.9189661016618901,
+     "diff": 0.0710564547965945
+    },
+    {
+     "fold": 4,
+     "seed": 2,
+     "a": 0.9933321488705954,
+     "b": 0.9277093334364296,
+     "diff": 0.06562281543416582
+    }
+   ]
+  },
+  "max_within_fold_seed_std": 0.046045704643393824,
+  "undermeasured": false
+ }
+}
