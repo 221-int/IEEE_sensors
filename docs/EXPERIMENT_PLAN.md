@@ -308,13 +308,13 @@ IEEE Sensors Letters 4페이지 제약을 고려해 **표 2개 + 그림 3개** �
 | # | 조건 | 상태 |
 |---|---|---|
 | E1 | ear_rule · ear_head · ours 가 동일 분할·지표로 5fold×3seed 측정됨 | ✅ |
-| E2 | **image_cnn (B3) 이 같은 조건으로 측정됨** | ❌ |
+| E2 | **image_cnn (B3) 이 같은 조건으로 측정됨** | ✅ **2026-08-07.** max/+head 두 변형 5fold×3seed. config diff 로 ours 와 동일 조건 확인 (`train_image_cnn_{max,head}_final.json`) |
 | E3 | random_proj · mean_vector (B5·B6) 로 표현/학습 기여가 분리됨 | ❌ |
-| E4 | 전체 + 안경 + 배치 서브그룹이 **이벤트 가중 풀링**으로, **ear_head 상대**로 판정됨 | ❌ (ear_head 가중치 미저장 → 재실행 필요) |
+| E4 | 전체 + 안경 + 배치 서브그룹이 **이벤트 가중 풀링**으로, **ear_head 상대**로 판정됨 | ✅ **2026-08-07.** 다섯 그룹 전부 superior (안경 +0.0118 [+0.0061,+0.0165]). image_cnn_head 상대도 추가 — 전부 non_inferior (`posthoc_subgroups_final.json`, `posthoc_vs_imgcnn_head.json`) |
 | E5 | 합성 열화 최소 1축(저조도)에서 세 방법 비교됨 | ❌ |
-| E6 | v2 encoder 의 파라미터 수 · 모델 크기 · MMAC 이 보고됨 | ❌ |
-| E7 | Pi 5 에서 v2 encoder 로 G-E1 통과 | ❌ |
-| E8 | Pi 5 3자 비교 (G-E2) 완료 | ❌ |
+| E6 | v2 encoder 의 파라미터 수 · 모델 크기 · MMAC 이 보고됨 | ✅ **2026-08-06.** 84,049 params / 335 KB / 12.49 MMAC per frame (`export_onnx.json`) |
+| E7 | Pi 5 에서 v2 encoder 로 G-E1 통과 | ✅ **2026-08-08.** e2e p99 11.85 ms = 예산의 36%, 스로틀 없음. ⚠️ **출처 JSON 이 아직 저장소에 없다** |
+| E8 | Pi 5 3자 비교 (G-E2) 완료 | ✅ **2026-08-08.** 4모드(EAR/ours/image_cnn max·head) × 300 s, 같은 하네스·클립·옵션. detect 8.32~8.46 ms 로 동일 → 공정 비교 실측 확인. ⚠️ **출처 JSON 미확보** |
 | E9 | 실패 사례가 세 방법에 대해 수집·시각화됨 | ❌ |
 | E10 | 데이터로 평가 불가능한 조건이 표에 `추가 데이터 수집 필요` 로 명시됨 | ✅ (이 문서 §2-1, §4-3) |
 

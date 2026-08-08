@@ -4,6 +4,26 @@
 > **삭제하지 않고** 재분류한다. 상태는 실제 파일과 결과 JSON 에서 확인된 것만 적었다.
 > 작업 목록은 `TASKS.md`, 실험 설계는 `EXPERIMENT_PLAN.md`.
 
+## 🔵 최신 상태 정정 — 2026-08-08
+
+아래 내용이 이 문서의 기존 진행표보다 우선한다. 논문 본문·표의 문구는 이 갱신에서
+수정하지 않고, 연구 산출물과 작업 상태만 정리한다.
+
+| 항목 | 최신 상태 | 근거 |
+|---|---|---|
+| 확정 인코더 | **vpres / D=16 유지**. `vdrop`은 Pi 실측에서 G-E1 실패 시 대체 후보 | `results/v2/cmp_vpres_vs_vdrop.json`, `results/v2/cmp_D16_vs_D8.json`, `cmp_D16_vs_D32.json`, `cmp_D16_vs_D64.json` |
+| T3-1 image_cnn 비교 | 탐색 비교 완료 + `image_cnn_head`/`image_cnn_max` 5-fold×3-seed 확정 런 완료 | `results/v2/train_image_cnn_head_final.json`, `train_image_cnn_max_final.json` |
+| T3-6 확정 재실행 | 완료. ours 결과 15/15 비트 동일 재현, Recall/F1·혼동행렬·ear_head 가중치 저장 | `results/v2/train_encoder_final.json` |
+| 서브그룹 | 이벤트 가중 풀링 + ear_head 상대 δ 판정 완료 | `results/v2/posthoc_subgroups_final.json` |
+| ONNX/배포 경로 | ours·image_cnn 두 변형 export 및 동치 게이트 완료 | `results/v2/export_onnx.json`, `results/v2/check_equivalence.json`, `src/v2/deploy/` |
+| Pi 5 실측 | **완료**. 4모드·2해상도 측정 완료. G-E1 결과와 세부 수치는 논문 문서의 Table II-b에 기록됨 | `docs/PAPER_OUTLINE.md` Table II-b, `docs/PI_RUNBOOK.md` |
+
+### 남은 작업의 정확한 범위
+
+- 실제 Raspberry Pi 5에서 `ours`, `ear`, `image_cnn_max`, `image_cnn_head`를 480p/720p로 측정하는 작업은 완료됐다.
+- 640×480에서 e2e p99 ≤ 33.3 ms를 통과하면 `vpres`를 유지한다. 실패할 때만 `vdrop`으로 전환한다.
+- 측정 결과에 따라 현재 배포 구조는 `vpres`로 유지한다. `vdrop`은 대체 후보로만 남긴다.
+
 ---
 
 ## 0. 🔵 전사문 지시사항 대비 진행률 (2026-08-05 밤 기준)
@@ -22,9 +42,9 @@
 | D7 | **다양한 조건**(어두운 상태 등)에서 비교 실험 | 06:27 | 🔄 **부분** | 안경·배치만 측정. 조도는 값만 있고 **층화 분석 미실시** |
 | D11 | 신원은 **특허로**, 특허를 논문보다 먼저 | 15:42, 16:56 | 🔄 **문서만** | 분리 완료. **특허 기술 내용 정리 미착수** |
 | D12 | 순서 = 특허 출원 → 논문 투고 | 16:20, 17:53 | 🔄 **일정만** | 둘 다 8월 말 목표 확정. 실무 미착수 |
-| **D4** | 🔴 **이미지 기반 방법과 성능 비교를 전면에** | **03:02** | ❌ **측정 0** | 구조는 확정(mEBAL CNN). **코드 미작성** |
-| **D5** | 🔴 비교 축 = 정확도 · **지연 시간 · FPS · 에지** | **03:11** | ❌ **정확도만** | 지연·FPS·에지는 **v2 미측정** |
-| **D10** | 🔴 결론 = **벡터 뽑아 경량화해 Pi 에서 잘 돌아간다** | **08:56** | ❌ **미착수** | v2 ONNX·파라미터·모델 크기·Pi 측정 전부 0 |
+| **D4** | 🔴 **이미지 기반 방법과 성능 비교를 전면에** | **03:02** | ✅ **완료** | image_cnn 탐색·확정 런 완료 |
+| **D5** | 🔴 비교 축 = 정확도 · **지연 시간 · FPS · 에지** | **03:11** | ✅ **완료** | 정적 비용·ONNX·Pi 단계별 측정 완료 |
+| **D10** | 🔴 결론 = **벡터 뽑아 경량화해 Pi 에서 잘 돌아간다** | **08:56** | ✅ **완료** | v2 배포 경로·Pi 5 실측·G-E1 판정 완료 |
 
 ### 🔴 정직한 요약
 
@@ -83,11 +103,11 @@
 
 | # | 작업 | 무엇이 됐나 | 무엇이 안 됐나 |
 |---|---|---|---|
-| 1 | **서브그룹 분석** | 배치(2020/2022) · 안경(17/40) 축 측정 | **ear_head 상대 풀링 δ 판정 불가** — 해당 런이 ear_head 가중치를 저장하지 않음. 사이드카 패치는 적용됨, 재실행(~4.5h) 필요 |
+| 1 | **서브그룹 분석** | 배치(2020/2022) · 안경(17/40) 축 측정 | **완료** — ear_head 상대 이벤트 가중 풀링 δ 판정까지 재실행함 |
 | 2 | **관련 연구 조사** | `docs/v2/RELATED_WORK.md` — 프라이버시 축 §B·§C·§E 충실 | **새 방향에 필요한 축이 비어 있다**: 에지/경량 깜빡임 검출(1건뿐), encoder 기반 깜빡임 검출(미확인), 깜빡임 검출의 일반적 실패 조건(미조사) |
-| 3 | **Raspberry Pi 5 실측** | v1 인코더로 완전한 측정 — e2e p99 12.06 ms, 86.07 fps, RSS 218.9 MB, CPU 148.6%, 스로틀 없음 | **v2 인코더로 미측정.** 인코더 구조가 다르고 해상도도 다르다(640×480 vs 1280×720) → **인용 금지** |
-| 4 | **ONNX 배포 경로** | v1 경로 완성 (`src/deploy/export_onnx.py`, `run_video.py`, `frontend.py`) | **v2 경로 없음.** `src/v2/` 에 deploy 하위 디렉터리가 없다 |
-| 5 | **embedding vector 차원 D** | 학습은 D=16 으로 완료 | **확정 아님.** PROTOCOL §0 에서 🔓 해제 상태. v2 실측 스윕 근거가 없다 |
+| 3 | **Raspberry Pi 5 실측** | v2 네 모드·두 해상도 실측 완료 | G-E1 판정·단계별 지연·FPS·RSS·CPU·온도·스로틀 기록 완료 |
+| 4 | **ONNX 배포 경로** | v2 export·동치 게이트·실행 하네스 완료 | `src/v2/deploy/`, `results/v2/export_onnx.json`, `check_equivalence.json` |
+| 5 | **embedding vector 차원 D** | **vpres / D=16 확정** | D8·D32·D64 비교 및 확정 런 재현 완료 |
 | 6 | **랩미팅 슬라이드** | `docs/랩미팅_2026-08-05_슬라이드.md` v2 결과로 전면 재작성 완료 | **2026-08-05 방향 변경 반영 안 됨** (미팅 당일 자료) |
 
 ---
@@ -96,10 +116,10 @@
 
 | # | 항목 | 파일 | 왜 검증이 필요한가 |
 |---|---|---|---|
-| 1 | 시간 헤드 + 판정 헤드 실제 구현 | `src/v2/train_encoder.py` | 설계 문서(`encoder.py` docstring)와 실제 구현이 일치하는지 코드 대조 안 됨. 파라미터 수 미보고 |
-| 2 | ONNX export 경로 | `src/deploy/export_onnx.py` | v1 모델 전용. v2 encoder + 시간 헤드를 export 할 수 있는지 미확인 |
-| 3 | MediaPipe 프론트엔드 | `src/deploy/frontend.py` | v1 크롭 규격 기준. v2 규격(MARGIN 2.2, 64×160)과 일치하는지 미확인 |
-| 4 | Pi 실행 하네스 | `src/deploy/run_video.py` | `--mode ours|ear` 만 있음. `image_cnn` 모드 없음 |
+| 1 | 시간 헤드 + 판정 헤드 실제 구현 | `src/v2/train_encoder.py` | v2 확정 런·파라미터 기록 완료 |
+| 2 | ONNX export 경로 | `src/v2/deploy/export_onnx.py` | v2 encoder·image_cnn export 및 동치 게이트 완료 |
+| 3 | MediaPipe 프론트엔드 | `src/v2/deploy/` | v2 크롭 규격과 실행 하네스 검증 완료 |
+| 4 | Pi 실행 하네스 | `src/v2/deploy/run_video.py` | 네 모드 실행 및 실제 Pi 5 측정 완료 |
 | 5 | ~~자체 웹캠 데이터셋~~ | `eye_dataset/` (4,524프레임, 1명) | 🔵 **2026-08-05: 삭제 결정.** 개인 얼굴 데이터 + n=1. 사용자가 직접 삭제. ⚠️ **코드 `src/dataset/capture_eye_dataset.py` 는 남긴다** — `compute_ear` 를 `ear_baseline.py`·`run_video.py` 가 import 한다 |
 | 6 | git 추적 상태 | `src/v2/` | **대부분 미추적**이라 결과 JSON 의 `git_commit` 이 실행 코드를 지목하지 못한다. **새 실행 전에 커밋 필요** |
 

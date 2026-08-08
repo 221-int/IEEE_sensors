@@ -126,19 +126,194 @@ mEBAL 원문 §5.1:
 
 > 🔵 **`EXPERIMENT_PLAN.md` §6-3 의 "640×480 주 / 1280×720 보조" 결정이 원문 표로 뒷받침된다.**
 
-### A2-1e. mEBAL2 확장 (arXiv 2309.07880) — [검색요약, 원문 미확인]
+### A2-1e. ✅✅ mEBAL2 (Daza et al., PRL 182, 2024 / arXiv 2309.07880) — **원문 확인 2026-08-06**
 
-- 같은 구조를 mEBAL2 로 재학습 + **ConvLSTM** 시퀀스 단위 추가 → 최대 **99%**
-- NIR 을 학습에 넣으면 추론 시 RGB 만 있어도 개선
-- HUST-LEBW 로 일반화 검증
+#### 데이터셋 — 우리 배포본과의 관계가 확정됐다
+
+| 항목 | 원문 값 | 우리 |
+|---|---|---|
+| 피험자 | **180명** (60명 설계 과제 + 120명 실제 MOOC) | 배포본 58명 → **57명 사용** |
+| 이벤트 | **21,100** (blink 10,500 / no-blink 10,500) | **27,758** (13,820 / 13,938) |
+| **이벤트당 프레임** | 🔵 **19 프레임** | **19** ← **완전히 일치** |
+| 총 프레임 | 2,405,400 (3 카메라 × 19 × 21,100 × 2 눈) | — |
+| 해상도·fps | 1280×720, 30 Hz | 동일 |
+| 세션 길이 | 15~40분 | — |
+| 깜빡임 지속 | **198~263 ms**, **3~13 프레임** | 동일 전제 |
+
+> 🔵 **`PROTOCOL.md` §3-bis 가 옳았음이 원문으로 확인됐다.**
+> *"공식 문서의 21,100 시퀀스는 논문 벤치마크용 부분집합 수치"* — 실제로 **우리 57명만으로
+> 27,758 이벤트**가 나온다. 180명 전체의 벤치마크 부분집합(21,100)보다 많다.
+> → 논문에 *"a 58-subject subset"* 이라고 쓰되 **이벤트 수가 공식 벤치마크와 다른 이유**를 각주로 단다.
+
+#### 🔴 라벨 불확실성이 원문에 명시돼 있다 — 우리 "환원 불가 오차"와 직결
+
+> *"Without human intervention, the number of eyeblinks detected was 21,484. After the human
+> intervention, the eyeblinks were reduced to **12,032**, where **1,482 were labeled as possible
+> eyeblinks** and the remaining eyeblinks were considered ground truth."*
+
+**1,482 / 12,032 = 12.3% 가 "possible eyeblink"(불확실) 라벨이다.**
+우리 로더(`src/v2/dataset/mebal2.py`)가 이미 이 플래그를 읽고 있다
+(*"flag 는 Blink 열(1 = blink, 0 = possible blink)"*).
+
+#### ✅ 우리 처리 확인 완료 (2026-08-06) — **possible-blink 는 이미 제외돼 있다**
+
+원본 CSV 를 전수 집계했다 (`data/raw/mEBAL2/_probe/EyeBlinks_User *.csv`, 58명):
+
+| 항목 | 값 |
+|---|---:|
+| 전체 blink 행 | **15,687** |
+| `Blink=1` (확정) | **14,364** |
+| **`Blink=0` (possible blink)** | **1,323 (8.4%)** |
+| 우리 인덱스의 `e_blink_flag` | **전부 1** — possible 0건 |
+
+**제외는 의도적이고 문서화돼 있다** (`src/v2/dataset/mebal2.py` `events(include_possible=False)`):
+
+> *"`Blink=0`("possible blink")은 기본 제외합니다. 배포자가 `Blink=1` 만으로 Unblink 와
+> 1:1 균형을 맞췄고 그게 58/58 전원에서 성립하기 때문입니다. 포함 조건은 민감도 분석용입니다."*
+
+**이 근거를 실측으로 검증했다 — `Blink=1` 개수 = `Unblink` 개수가 58/58 명 전원에서 성립한다.**
+(예: U1 56=56, U2 301=301, U4 68=68 — 특히 U4 는 possible 이 91건으로 확정 68건보다 많다)
+
+#### 🔵 이것이 논문에 주는 것
+
+1. **§3-ter-2 의 환원 불가 오차 0.59% 는 possible-blink 라벨 잡음으로 설명되지 않는다.**
+   그것들은 애초에 학습·평가에서 빠져 있다. → Discussion 에서 이 가능성을 **배제할 수 있다**
+2. **남은 라벨 잡음의 유력한 출처는 mEBAL 원문이 지적한 것**:
+   *"in some no-blink cases the eyes seem to be closed due to the gaze orientation"*
+   → unblink 쪽의 시선 방향 문제이지 blink 쪽의 불확실성이 아니다
+3. **논문에 반드시 명시한다**: *"Following the distributor's own 1:1 balancing, the 1,323
+   events flagged as 'possible blinks' (8.4% of blink rows) were excluded."*
+   → 이걸 안 밝히면 **이벤트 수가 공식 통계와 다른 이유**를 설명할 수 없다
+
+> ⚠️ **미실시 민감도 분석 (S-possible)**: `include_possible=True` 로 재실행하면
+> possible-blink 를 포함했을 때 성능이 얼마나 떨어지는지 잴 수 있다. 코드는 이미 있다.
+> **8월 말 일정상 우선순위 낮음** — Limitations 에 "미측정"으로 적는다.
+
+#### 벤치마크 프로토콜 — 🔴 **우리와 완전히 다르다. 숫자를 나란히 놓을 수 없다**
+
+| | mEBAL2 공식 | 우리 |
+|---|---|---|
+| 분할 | **leave-one-out CV** (1명 test / 나머지 train, 180회 반복 평균) | **피험자 분리 5-fold × 3 seed** |
+| 임계값 | **EER 지점 고정** | 분위수 격자, val 에서 선택 |
+| 주 지표 | **Accuracy** | **PR-AUC** |
+| 학습 | batch 32, Adam 1e-3, BCE | 동일 계열 |
+
+#### 아키텍처 (원문 §4.2)
+
+| 모델 | 구조 |
+|---|---|
+| **OE-ConvNet** (= mEBAL CNN) | 3 conv(32/32/64, 3×3) + 3 maxpool → dense 64 ReLU → dropout 0.5. **눈당 50×50** |
+| **OE-ConvLSTM** | **10프레임 시퀀스**. ConvLSTM 3층 (recurrent=hard sigmoid, 32필터 3×3 tanh, BN+maxpool, 3층은 32→64) → dense 64 → sigmoid, dropout 0.5 |
+| LI-RI-RGB-ConvNet | 6입력(2눈 × 3카메라) late fusion → concat → dense 64 → sigmoid |
+
+**ROI 파이프라인** (§4.1): RetinaFace → 68 SBR 랜드마크 → **Dlib 정렬(두 눈을 수평선에 평행하게)**
+→ 품질 게이팅(pROI 임계) → 눈 크롭 → **50×50 리사이즈**
+
+> 🔵 **그들도 두 눈을 수평으로 회전 정렬한다.** 우리 크롭 설계(회전 정렬)가 데이터셋 저자와
+> 같은 선택이다. Method 에서 근거로 쓸 수 있다.
+
+#### 결과
+
+**Table 2 — 프레임 단위 OE-ConvNet**
+
+| 눈 | 학습 | 평가 | Acc |
+|---|---|---|---|
+| 양눈 | RGB | RGB | 0.9615 |
+| 양눈 | NIR_B | NIR_B | 0.9394 |
+| 양눈 | **FS (RGB+NIR)** | RGB | **0.9656** |
+| **왼쪽** | RGB | RGB | **0.9730** |
+| 오른쪽 | RGB | RGB | 0.9669 |
+
+**Table 3 — 프레임 단위 비교** | **Table 4 — 비디오 시퀀스 단위**
+
+| 방법 | Acc | | 방법 | Acc |
+|---|---|---|---|---|
+| Blink Detection [22] | 0.5837 | | Blink Detection+ [22] | 0.6758 |
+| **Soukupova Threshold + InsightFace** | **0.6153** | | **Soukupova SVM + InsightFace** | **0.8145** |
+| OE-ConvNet (FS) | 0.9656 | | **OE-ConvLSTM** | **0.9909** ← "99%" |
+| LI-RI-RGB-ConvNet | **0.9760** | | | |
+
+#### 🔵 우리에게 유리한 사실 — **EAR 베이스라인을 우리가 더 강하게 잡았다**
+
+데이터셋 저자들이 잰 EAR 은 **0.6153(프레임) / 0.8145(비디오, SVM)** 이다.
+우리 `ear_rule` 은 PR-AUC **0.8931**, `ear_head` 는 **0.9724** 다.
+
+지표·프로토콜이 달라 직접 비교는 불가하지만, **우리가 EAR 에 훨씬 관대한 조건을 줬다는
+정성적 근거**가 된다. → *"we compare against a stronger EAR baseline than the one reported
+by the dataset authors"* 로 쓸 수 있다. **베이스라인 약화 반론이 한 겹 더 막힌다.**
+
+#### 🔴 저자들 본인의 겸양 — 인용해두면 유용하다
+
+> *"Note that we are **not claiming superior performance** of our models in comparison with
+> cutting-edge detectors based on advanced data-driven learning architectures such as [15, 25]."*
+
+→ **OE-ConvNet 은 SOTA 가 아니라 "데이터셋 저자가 제공한 대표 베이스라인"** 이다.
+우리가 image_cnn 으로 쓰는 근거가 정확히 이것이며, 논문에도 그렇게 서술한다.
+**"우리가 SOTA 를 이겼다"고 쓰면 안 된다.**
 
 > 🔴 **image_cnn 은 이제 원문 근거로 확정됐다.** *"데이터셋 저자들이 제안한 구조"* 이므로
 > "약한 베이스라인을 골랐다"는 반론이 원천 봉쇄된다.
 
-### A2-2. ★★ Nousias, Delibasis & Labiris (J. Imaging 11(27), 2025) — **신규성 주장에 직접 타격**
+### A2-2. ★★ Nousias, Delibasis & Labiris (J. Imaging 11(27), 2025) — ✅ **[원문 확인 2026-08-06]**
 
 *"Blink Detection Using 3D Convolutional Neural Architectures and Analysis of Accumulated
-Frame Predictions"* — [검색요약, 본문 일부 확인]
+Frame Predictions"*
+
+#### 🔴 A2-2a. 추론 시간 — **우리 에지 기여의 가장 강한 대비** (원문 Table 3, §3)
+
+| 모델 | 12프레임 1회 (한쪽 눈) | 60초 영상 (한쪽 눈) | **60초 영상 양눈 합계** | 파라미터 |
+|---|---:|---:|---:|---:|
+| **3D autoencoder** | 0.15 s | 225 s | **570 s** | **35,375,507** |
+
+**측정 환경 (원문 §3 그대로)**: MATLAB R2024a, Windows 10,
+**i5-9600KF @ 3.70 GHz, 16 GB RAM, NVIDIA GeForce RTX 3060 (12 GB)**
+추가로 *"the application of YOLOX for eye cropping, which precedes each of the three models,
+requires **0.08 [s] per frame**."*
+
+**→ 60초 영상을 처리하는 데 570초. 데스크탑 GPU 에서도 실시간의 약 1/9.5 이다.**
+
+| | Nousias 2025 (3D AE) | **우리** |
+|---|---|---|
+| 하드웨어 | **RTX 3060 (데스크탑 GPU)** | 데스크탑 **CPU** (Pi 5 측정 예정) |
+| 눈 검출 | YOLOX **80 ms/frame** | MediaPipe **4.12 ms/frame** |
+| 60초 영상 처리 | **570 s** (실시간의 0.11배) | **약 12.6 s** (6.98 ms × 1,800 프레임, 실시간의 4.8배) |
+| 파라미터 | 35,375,507 | **84,049** (421배 작다) |
+| 표현 차원 | 2048 | **16** |
+| 양눈 처리 | **한쪽씩 2회** | **한 크롭에 양눈** (2배 이득) |
+
+> ⚠️ **"45배 빠르다"고 직접 쓰지 마라.** 프레임워크(MATLAB vs ONNX Runtime)·하드웨어·
+> 과제 정의·프레임 수(12 vs 19)가 전부 다르다.
+> ✅ **쓸 수 있는 문장**: *"The closest prior work that classifies blinks from a learned
+> latent representation reports 570 s to process a 60 s video (both eyes) on a desktop GPU,
+> i.e., far from real time."* — **보고된 값을 사실로 인용**하는 형태.
+
+#### A2-2b. 구조 (원문 §2.4.2)
+
+| 항목 | 값 |
+|---|---|
+| 눈 검출 | YOLOX |
+| 입력 | **48 × 48 × 12** (한쪽 눈, 12프레임 = 300 ms) |
+| 3D AE 인코더 | Conv3D 4블록. Conv_1 stride[2,2,2] 16필터(5×5×5) → 24×24×6×16 / Conv_2 stride[2,2,2] 32필터 → 12×12×3×32 / Conv_3 stride[1,1,1] → 유지 / Conv_4 stride[2,2,1] → 6×6×3×32 |
+| **잠재 차원** | flatten → FC **2048 units** |
+| 디코더 | 3D transposed conv 3블록 + Clipped-ReLU(ceiling 255), **인코더↔디코더 skip connection** |
+| 손실 | **cross-entropy + 재구성 MSE 가중 결합** (분류에 더 큰 가중치. 동일 가중치면 AE 과적합·분류기 과소적합) |
+| **추론 방식** | 🔵 **dense overlap, step = 1** (완전 겹침 슬라이딩) + prediction accumulator |
+
+> 🔵 **`step = 1` 이 원문에서 확인됐다** — `T3_WORKORDER.md` §5-quinquies 의
+> **"head 를 프레임마다 돌린다"** 권고가 선행 연구와 일치한다. 서술 근거로 쓸 수 있다.
+
+#### A2-2c. 데이터·성능
+
+| 항목 | 값 |
+|---|---|
+| 데이터 | 15명 (train 10 / test 5), 162,400 프레임, 눈당 1,172 blinks. **안과 전문의가 시작·종료 프레임 라벨링** |
+| F1 | 3D CNN 89.72 / **3D AE 89.63** / **3D ResNet 93.25 (최고)** |
+| 프레임 정확도 | 93.97 / 93.74 / 94.24 |
+| 결론 | **3D ResNet 이 가장 좋고 가장 빠르다** — 잠재 공간 방식이 이겼다고 주장하지 않는다 |
+
+---
+
+*(아래는 2026-08-05 [검색요약] 단계 기록. 위 원문 확인으로 대체됨)*
 
 **이 논문은 잠재 공간(latent space)에 분류기를 붙여 깜빡임을 검출한다.** 우리와 구조적으로 가깝다.
 

@@ -1,3 +1,7 @@
+> 🔵 **2026-08-08 — 현재 상태는 [`docs/STATUS_2026-08-08.md`](../STATUS_2026-08-08.md) 가 기준이다.**
+> Phase 3(성능 축)은 전부 종결됐다. 이 문서의 이전 서술 중 그와 어긋나는 부분은 낡은 것이다.
+> 새 세션은 [`docs/NEXT_SESSION_PROMPT.md`](../NEXT_SESSION_PROMPT.md) 를 쓴다.
+
 # 다음 세션 인계 — 새 채팅에 붙여넣을 프롬프트
 
 > 🔵 **2026-08-05 범위 정정.** 아래 [최종 목표] 블록은 **2026-08-04 판이며 폐기되었다.**
@@ -5,6 +9,26 @@
 > 신원 억제·복원 장벽은 특허·후속 연구로 분리했다.
 > 현재값: **[`docs/PROJECT_DIRECTION.md`](../PROJECT_DIRECTION.md)** ·
 > [`docs/TASKS.md`](../TASKS.md) · [`docs/CHANGELOG.md`](../CHANGELOG.md)
+
+## 🔵 최신 인계 상태 — 2026-08-08
+
+아래가 이 문서의 기존 `[끝난 것]`·`[아직 안 된 것]` 목록보다 우선한다.
+
+- **확정 구조:** `vpres / D=16` 유지.
+- **vdrop:** vpres와 성능 차이가 없고 더 싼 대조군으로 기록한다. 실제 Pi 측정에서
+  G-E1(e2e p99 ≤ 33.3 ms)을 실패할 때만 배포 후보로 전환한다.
+- **T3-1:** image_cnn 탐색 비교와 `image_cnn_head`·`image_cnn_max` 확정 런 완료.
+- **T3-6:** ours 확정 런 재현, ear_head 가중치, Recall/F1, 혼동행렬, 이벤트 가중
+  서브그룹 판정 완료.
+- **배포 준비:** `src/v2/deploy/`의 네 모드(`ours`, `ear`, `image_cnn_max`,
+  `image_cnn_head`)와 ONNX 동치 게이트 완료.
+- **Pi 5 측정(T5-8):** 완료. `ours`, `ear`, `image_cnn_max`, `image_cnn_head`의 480p/720p
+  실측과 G-E1 판정을 끝냈으며, 상세 수치는 논문 문서의 Table II-b에 기록되어 있다.
+- **현재 상태:** Pi 측정 결과에 따라 `vpres`를 유지한다. `vdrop`은 G-E1 실패 시의 대체 후보다.
+
+근거: `results/v2/train_encoder_final.json`, `results/v2/train_image_cnn_head_final.json`,
+`results/v2/train_image_cnn_max_final.json`, `results/v2/posthoc_subgroups_final.json`,
+`results/v2/export_onnx.json`, `results/v2/check_equivalence.json`.
 >
 > 아래 프롬프트를 쓰려면 **[최종 목표]와 [먼저 읽을 것] 블록을 아래 정정판으로 교체**한다.
 > 나머지([끝난 것] · [아직 안 된 것] · [사고가 났던 것] · [출력 규칙])는 그대로 유효하다.

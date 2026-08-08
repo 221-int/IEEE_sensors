@@ -1,5 +1,9 @@
 # TASKS — 작업 분해 체크리스트
 
+> 🔵 **2026-08-08 — Phase 3 전부 종결.** 확정 숫자는
+> [`STATUS_2026-08-08.md`](STATUS_2026-08-08.md) 를 보라. 이 문서의 체크박스와
+> 어긋나면 그쪽이 맞다.
+
 > **작성 2026-08-05.** 새 연구 방향(`PROJECT_DIRECTION.md`) 기준으로 재작성.
 >
 > **체크박스 규칙**
@@ -139,7 +143,8 @@
 > `MODELS = "models/v2"` 가 하드코딩이라 확정 체크포인트를 덮어쓴다.
 > `--out` 은 런마다 다르게 준다 (점수 사이드카는 `--out` 에서 파생되므로 안전해진다).
 
-- [ ] **T3-1. 원본 이미지 기반 분류 모델(image_cnn, 대조군 2) 준비** — **P0 🔴 최우선**
+- [x] **T3-1. 원본 이미지 기반 분류 모델(image_cnn, 대조군 2) 준비** — **P0 🔴 최우선**
+  - ✅ **2026-08-08 완료:** 탐색 비교 후 `image_cnn_head`·`image_cnn_max`를 5-fold×3-seed로 확정 실행함. 상세 수치는 결과 JSON을 기준으로 하며, 논문 서술은 별도 문서에서 관리한다.
   - 목적: "표현의 기여"를 분리한다. 이게 없으면 논문의 주 비교(전사문 03:02)가 성립하지 않는다
   - 입력 데이터: `data/processed/v2/shards/*.npz` (기존 크롭 그대로)
   - 코드: `src/v2/train_image_cnn.py` **신규 작성** — `train_encoder.py` 의 학습 루프를
@@ -161,7 +166,8 @@
 - [ ] **T3-4. 랜덤 초기화 encoder 대조군(B7)을 깜빡임 축에서 측정** — P1
   - 재식별 축에서는 이미 0.6261 로 측정됐으나 **깜빡임 성능은 미측정**
   - 목적: 목적함수(깜빡임 지도학습)가 실제로 표현을 만들었는지 확인
-- [ ] **T3-5. embedding vector 차원 D 확정** — P0
+- [x] **T3-5. embedding vector 차원 D 확정** — P0
+  - ✅ **2026-08-08 완료:** `D=16` 확정. D8·D32·D64와의 탐색 비교에서 사전 등록한 δ 기준의 구분이 없었고, vpres/D16 확정 런이 기존 결과를 재현했다.
   - 목적: PROTOCOL §0 에서 🔓 해제된 D 를 새 기준(성능 + edge 비용)으로 다시 잠근다
   - 🔴 **D=16 의 원래 근거가 무효화됐다.** v1 스윕(8명·한쪽눈)은 인용 금지이고,
     "작은 D 가 신원을 덜 흘린다"는 기대는 **실측으로 기각**됐다
@@ -184,7 +190,8 @@
   - 💡 **서사 고려**: 성능이 같다면 **작은 D 가 논문에 유리하다** — "16차원 벡터만으로
     된다"가 더 인상적이고 모델 크기·메모리에도 유리하다. 성능이 뚜렷이 오르면 키운다.
     **결과를 보고 정하되, 이 선호를 미리 적어둔다**
-- [ ] **T3-6. ear_head 가중치 저장 + Recall·F1 추가 재실행** — P1
+- [x] **T3-6. ear_head 가중치 저장 + Recall·F1 추가 재실행** — P1
+  - ✅ **2026-08-08 완료:** 확정 런 15/15 재현, ear_head 가중치·Recall·F1·혼동행렬 저장, 이벤트 가중 서브그룹 δ 판정 완료. `results/v2/train_encoder_final.json`, `results/v2/posthoc_subgroups_final.json`.
   - 목적 ①: 서브그룹 **풀링 + δ 판정(ear_head 상대)** 이 현재 불가능하다
   - 목적 ②: 🔴 **현재 저장 지표가 `accuracy · precision · pr_auc · roc_auc · thr` 뿐이다.
     Recall 과 F1 이 계산되지 않는다.** 논문 Table I 에 필요하다
@@ -194,7 +201,8 @@
 - [ ] **T3-7. 기존 경량 깜빡임 검출 모델(B8) 비교 여부 결정** — P2
   - 선행: Phase 6 의 관련 연구 조사. 재현 비용이 크면 표에서 인용만 하고 실측은 생략
 
-- [ ] **T3-8. 🔴 비대칭 stride 절제 실험 (sym16 대조군)** — **P0 신설 (2026-08-05)**
+- [x] **T3-8. 🔴 비대칭 stride 절제 실험 (sym16 대조군)** — **P0 신설 (2026-08-05)**
+  - ✅ **2026-08-08 완료:** vpres−vdrop = +0.0010, 95% CI [−0.0032, +0.0069]. vpres를 유지하되, Pi G-E1 실패 시에만 vdrop으로 전환한다.
   - **왜 신설했나**: `encoder.py` 는 *"비대칭 stride 가 이 설계의 핵심이다"* 라고 적고 있고,
     이것이 논문 Method 에서 **가장 독자적인 설계 주장**이다. 그런데 근거가
     **계산 논거뿐이다** — "세로 stride 16 이면 눈꺼풀 8.73 px 이 0.55 px 가 되어 사라진다".
@@ -291,28 +299,36 @@
 > **목적** — 논문의 두 번째 기여축. "벡터 뽑아서 경량화해 라즈베리파이에서 잘 돌아간다" (전사문 08:56).
 > **선행 작업** — T3-5 (D 확정). **우선순위** — P0.
 
-- [ ] **T5-1. 모델 파라미터 수 측정** — P0
+> 🔵 **2026-08-08 상태 정정:** 파라미터·MMAC·ONNX export·동치 게이트와 v2 실행 하네스는
+> 준비됐고 실제 Pi 5 측정(T5-8)도 완료됐다. G-E1과 최종 런타임 수치는 논문 문서
+> Table II-b에 기록되어 있다. 논문 본문·표는 이 상태 갱신에서 수정하지 않는다.
+
+- [x] **T5-1. 모델 파라미터 수 측정** — P0
+  - ✅ 완료: ours·image_cnn 두 변형의 파라미터 수가 export 결과에 기록됨.
   - encoder / 시간 헤드 / 판정 헤드 각각 + 합계. 세 방법(ours·ear_head·image_cnn) 전부
   - 코드: `src/v2/model/encoder.py` 에 `param_count()` 추가 또는 측정 스크립트
-- [ ] **T5-2. MMAC (프레임당 연산량) 측정** — P0
+- [x] **T5-2. MMAC (프레임당 연산량) 측정** — P0
+  - ✅ 완료: ours·image_cnn 두 변형의 프레임당 MMAC이 export 결과에 기록됨.
   - `analyse()` 가 이미 계산한다. **보고만 안 되고 있다** → 결과 JSON 으로 남긴다
-- [ ] **T5-3. v2 ONNX export 경로 작성** — P0
+- [x] **T5-3. v2 ONNX export 경로 작성** — P0
   - 코드: `src/v2/deploy/export_onnx.py` **신규** (v1 `src/deploy/export_onnx.py` 참고,
     **코드는 v2 규칙으로 새로 쓴다**)
   - 산출물: `models/v2/onnx/encoder.onnx`, `pipeline.onnx`
   - 주의: 가중치가 `.onnx.data` 로 분리되면 **폴더째** 옮겨야 한다
-- [ ] **T5-4. 모델 파일 크기 측정** — P0 (`.onnx` + `.onnx.data` 합산)
+- [x] **T5-4. 모델 파일 크기 측정** — P0 (`.onnx` + `.onnx.data` 합산)
+  - ✅ 완료: `results/v2/export_onnx.json` 기준으로 기록됨.
 - [ ] **T5-5. PC 환경 추론 시간 측정** — P1
   - 코드: `src/v2/deploy/bench_latency.py` **신규**. ONNX 그래프 단독 지연
 - [ ] **T5-6. Raspberry Pi 5 환경 구성** — P0
   - conda(Miniforge) Python **3.11**, `requirements-pi.txt`, onnxruntime ≥ 1.18.0
   - CPU governor `performance` 고정 (재부팅 시 초기화됨)
   - 절차: `docs/Pi_실행_가이드.md`
-- [ ] **T5-7. `run_video.py` 를 v2 파이프라인으로 이식** — P0
-  - 코드: `src/v2/deploy/run_video.py` **신규**. `--mode ours|ear|image_cnn`
+- [x] **T5-7. `run_video.py` 를 v2 파이프라인으로 이식** — P0
+  - 코드: `src/v2/deploy/run_video.py`. `--mode ours|ear|image_cnn_max|image_cnn_head`
   - 단계별 타이머(read / detect / crop / infer) 유지
   - ⚠️ `--intra-threads 2 --no-spin` 은 **선택이 아니다.** 빼면 비교가 무효
-- [ ] **T5-8. Pi 5 실측 — 3자 비교** — P0
+- [x] **T5-8. Pi 5 실측 — 4모드 비교** — P0
+  - ✅ **2026-08-08 완료:** `ours`, `ear`, `image_cnn_max`, `image_cnn_head`를 640×480·1280×720에서 측정하고 G-E1을 판정했다. 세부 수치는 논문 문서 Table II-b에 기록되어 있다.
   - 각 모드 5분 지속. 측정 항목: e2e p50/p95/**p99**, sustained FPS, RSS peak,
     CPU %, 온도, throttled 플래그
   - 🔵 **해상도 (2026-08-05 확정, §9-2)**: **주 = 640×480 @ 30 fps** (선행 연구 표준,
