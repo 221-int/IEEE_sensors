@@ -593,3 +593,50 @@ mEBAL2 로는 동역학 특징을 온전히 재현하기 어렵다는 제약도 
 - 깜빡임/졸음 검출 표현의 **재식별을 함께 보고한** 연구 — 현재까지 발견 못 함.
   **없다면 그게 우리 기여의 근거**이지만, "없다"는 주장은 체계적 검색 없이 하면 안 된다
 - Raspberry Pi 급 엣지에서 깜빡임 검출 **지연 실측**을 보고한 2025~2026 연구
+
+---
+
+## A3. 🔵 2026-08-08 조사 — T6-1 에지/경량 깜빡임 검출
+
+> 목적: Related Work 2문단("경량/온디바이스 깜빡임 검출")을 쓸 근거 확보.
+> **확인 상태 전부 [검색요약]. 논문 인용 전 원문 확인 필수.**
+
+### A3-1. 확보한 것
+
+| 연구 | 내용 | 확인 |
+|---|---|---|
+| **Embedded System for Eye Blink Detection Using Machine Learning** (IEEE, 2021) | 임베디드 깜빡임 검출에 **MobileNet** (TensorFlow/Keras). 우리 §9-2 해상도 근거로 이미 인용 중 | [검색요약] |
+| **Embedded Real Time Blink Detection System for Driver Fatigue Monitoring** (SEKE 2015) | 운전자 피로 모니터링용 임베디드 실시간 깜빡임 검출 | [검색요약] |
+| Real-time face & eye tracking and blink detection using **event cameras** | 이벤트 카메라 기반. **센서가 다르므로 우리와 직접 비교 불가** | [검색요약] |
+| Non-contact eye blink detection with **capacitive sensing** (arXiv 2211.05541) | 비카메라 방식. 배경으로만 | [검색요약] |
+| Raspberry Pi 5 졸음 검출 데이터셋 (PMC12630088) | **640×480 @ 30 fps** — 우리 주 측정 해상도의 근거 | [검색요약] |
+| 드라이버 졸음 검출 (MobileNet-V2 / ResNet-50V2 전이학습) | 정확도 96% / 97%. **깜빡임이 아니라 졸음 상태 분류** | [검색요약] |
+
+### A3-2. 🔴 조사 결과 자체가 결과다 — **동일 조건 비교 대상이 없다**
+
+검색어(edge / embedded / Raspberry Pi / real-time + blink detection, 2024~2025 포함)로
+찾은 것 중 **우리와 나란히 놓을 수 있는 연구가 없다.** 이유는 셋이다.
+
+1. **평가 축이 다르다.** 대부분 *졸음(drowsiness) 상태 분류*이지 *깜빡임 이벤트 검출*이
+   아니다. 라벨 단위와 지표가 달라 PR-AUC 를 나란히 놓을 수 없다.
+2. **에지 지표를 안 낸다.** 정확도만 보고하고 지연·파라미터·MMAC·스로틀을 보고하지
+   않는다. 반대로 에지 벤치마크 문헌(YOLO/RT-DETR on Pi 5)은 **깜빡임 과제가 아니다.**
+3. **센서가 다르다.** 이벤트 카메라·정전용량 센싱은 RGB 웹캠과 입력이 다르다.
+
+> 🔵 **논문 서술 (이대로 쓴다)**
+> *"보고된 임베디드 깜빡임 검출 연구는 대부분 정확도만 보고하고 지연·연산량·지속
+> 처리량을 함께 내지 않으며, 에지 벤치마크 문헌은 깜빡임 과제를 다루지 않는다.
+> 우리는 동일 하네스에서 네 방법의 단계별 지연을 함께 보고한다."*
+>
+> ⚠️ **"최초"라고 쓰지 마라.** 위 서술은 *검색 범위에서 못 찾았다*는 뜻이지
+> 존재하지 않는다는 증명이 아니다.
+
+### A3-3. 검색 기록 (재현용)
+
+- `lightweight eye blink detection edge device embedded real-time CNN Raspberry Pi 2024 2025 FPS latency`
+- `"blink detection" embedded system microcontroller "real-time" evaluation MobileNet lightweight model 2024 2025 driver drowsiness on-device inference milliseconds`
+- 앞선 조사(§A2): mEBAL/mEBAL2 저자 CNN [원문], Nousias 2025 [원문]
+
+**남은 것**: 위 [검색요약] 중 최소 2건을 원문 확인해야 Related Work 2문단을 쓸 수 있다.
+특히 IEEE 9509908 (Embedded System for Eye Blink Detection) 은 이미 §9-2 에서 인용 중이라
+**원문 확인이 밀려 있다.**

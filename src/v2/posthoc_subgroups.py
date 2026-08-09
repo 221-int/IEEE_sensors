@@ -80,7 +80,39 @@ def load_strata(subjects: list[int]) -> dict:
             raise SystemExit(f"피험자 {u} 의 배치 라벨이 하나가 아닙니다: {b}")
         out[u] = {"batch2020": int(b[0]), "glasses": g[u],
                   "n_events": int(k.sum()), "prevalence": float(ey[k].mean())}
+
+    # T4-1 광학 조건 — 피험자별 평균 밝기·대비·선명도.
+    # 프레임별 실측값이 index.npz 에 이미 있다(phase2_photometrics 산출).
+    # ⚠️ 이것은 **정규화 전** 원본 크롭의 값이다. 학습 입력은 frame_standardize 를
+    #    거치므로, 여기서 층화하는 것은 "촬영 조건"이지 "모델이 본 값"이 아니다.
+    fs = idx["f_subject"]
+    for key, name in (("f_brightness_m22", "brightness"),
+                      ("f_contrast_m22", "contrast"),
+                      ("f_sharpness_m22", "sharpness")):
+        if key not in idx:
+            continue
+        v = idx[key]
+        for u in subjects:
+            out[u][name] = float(np.mean(v[fs == u]))
     return out
+
+
+def optical_tertiles(strata: dict, subjects: list[int]) -> dict:
+    """광학 3특징 각각을 피험자 **3분위**로 나눈다 (T4-1).
+
+    3분위는 피험자 수가 57명이라 그룹당 19명이 된다. 이벤트 수로 나누지 않는 이유:
+    층화 축은 "촬영 조건"이고 그 단위가 피험자이기 때문이다.
+    """
+    g = {}
+    for name in ("brightness", "contrast", "sharpness"):
+        if name not in strata[subjects[0]]:
+            continue
+        vals = np.array([strata[u][name] for u in subjects])
+        lo, hi = np.percentile(vals, [100 / 3, 200 / 3])
+        g[f"{name}_low"] = [u for u in subjects if strata[u][name] <= lo]
+        g[f"{name}_mid"] = [u for u in subjects if lo < strata[u][name] <= hi]
+        g[f"{name}_high"] = [u for u in subjects if strata[u][name] > hi]
+    return g
 
 
 # ------------------------------------------------------------------ 집계
@@ -350,6 +382,9 @@ def main() -> int:
                     help="다른 런의 ours 점수를 베이스라인으로 쓴다 "
                          "(예: results/v2/train_image_cnn_head_final.json). "
                          "주면 서브그룹 판정이 그 상대로 바뀐다")
+    ap.add_argument("--optical", action="store_true", default=True,
+                    help="광학 3분위(밝기·대비·선명도) 층화 추가 — T4-1")
+    ap.add_argument("--no-optical", dest="optical", action="store_false")
     ap.add_argument("--n-boot", type=int, default=10000,
                     help="피험자 평균 부트스트랩. 57개 값만 다루므로 넉넉해도 된다")
     ap.add_argument("--n-boot-pooled", type=int, default=2000,
@@ -375,6 +410,8 @@ def main() -> int:
         "glasses": [u for u in subs if strata[u]["glasses"] == 1],
         "no_glasses": [u for u in subs if strata[u]["glasses"] == 0],
     }
+    if args.optical:
+        groups.update(optical_tertiles(strata, subs))
     res = {g: group_stats(vals, m, args.n_boot) for g, m in groups.items()}
 
     print(f"\n{'그룹':<12}{'인원':>5}{'이벤트':>9}{'ours':>9}{'ear_head':>10}"
