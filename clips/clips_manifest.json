@@ -28,5 +28,12 @@
   "480p": "data/_legacy_public/eyeblink8/eyeblink8/9/27122013_152435_cam.avi x2 (concat demuxer)",
   "720p": "data/raw/mEBAL2/User 1/RealSense/Color_Webcam/color.mp4 앞 320초"
  },
- "_ffmpeg": "imageio-ffmpeg 번들 ffmpeg-win64-v4.2.2"
+ "_ffmpeg": "imageio-ffmpeg 번들 ffmpeg-win64-v4.2.2",
+ "480p_used_for_pi": {
+  "file": "eyeblink8_c9_480p_x8.avi",
+  "note": "Pi 실측에 **실제로 쓴** 클립. eyeblink8 #9 x8 concat = 41,464 프레임 ≈ 1,382 s. run_video 가 반복 재생을 안 하므로 300초 측정에 이 길이가 필요했다. x2 판(342 s)으로는 부족했다.",
+  "expected_frames": 41464,
+  "verified_from": "results/v2/pi_*_480p.json 의 config.source",
+  "present_locally": false
+ }
 }

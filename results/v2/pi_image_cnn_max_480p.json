@@ -1,0 +1,120 @@
+{
+ "env": {
+  "seed": 0,
+  "deterministic": true,
+  "sealed": true,
+  "python": "3.11.15",
+  "platform": "Linux-6.18.34+rpt-rpi-2712-aarch64-with-glibc2.41",
+  "numpy": "1.26.4",
+  "pythonhashseed": "0",
+  "cublas_workspace_config": null,
+  "git_commit": null,
+  "git_dirty": false,
+  "torch": null
+ },
+ "config": {
+  "mode": "image_cnn_max",
+  "source": "clips/eyeblink8_c9_480p_x8.avi",
+  "width": 640,
+  "height": 480,
+  "fps": 30,
+  "duration": 300.0,
+  "onnx_dir": "models/v2/onnx",
+  "intra_threads": 2,
+  "no_spin": true,
+  "head_stride": 1,
+  "refine_landmarks": false,
+  "out": "results/v2/pi_image_cnn_max_480p.json"
+ },
+ "platform": {
+  "machine": "aarch64",
+  "platform": "Linux-6.18.34+rpt-rpi-2712-aarch64-with-glibc2.41",
+  "cpu_governor": "performance",
+  "ort_intra_threads": 2,
+  "ort_spinning": "disabled",
+  "has_vcgencmd": true
+ },
+ "head_stride": 1,
+ "weights": "random (latency only)",
+ "head_mmac_per_frame": 0.045888,
+ "_head_cost_note": "stride 1 이므로 head 는 매 프레임 0.0459 MMAC 이다. 인코더 12.44 와 합쳐 12.49 MMAC/frame (head 0.37%).",
+ "frames": 24398,
+ "seconds": 300.00264596499983,
+ "sustained_fps": 81.32594938128119,
+ "n_no_detect": 50,
+ "detect_miss_rate": 0.002049348307238298,
+ "n_decisions": 24330,
+ "stages_ms": {
+  "read": {
+   "n": 24398,
+   "p50": 0.9967010000764276,
+   "p95": 1.0488519001683017,
+   "p99": 1.0868285801188904,
+   "max": 5.596047999915754,
+   "mean": 0.9974730050003234
+  },
+  "detect": {
+   "n": 24398,
+   "p50": 8.380636999845592,
+   "p95": 8.609248399966418,
+   "p99": 8.874542249923252,
+   "max": 53.49661899981584,
+   "mean": 8.41199882895968
+  },
+  "crop": {
+   "n": 24348,
+   "p50": 0.6667620000371244,
+   "p95": 0.700477200007299,
+   "p99": 0.7290870998804165,
+   "max": 1.0830709998117527,
+   "mean": 0.669310611919589
+  },
+  "encode": {
+   "n": 24348,
+   "p50": 2.0396780000737635,
+   "p95": 2.078352249895943,
+   "p99": 2.1396075602478954,
+   "max": 2.6476799998818024,
+   "mean": 2.043782552242717
+  },
+  "head": {
+   "n": 24330,
+   "p50": 0.17375449988321634,
+   "p95": 0.19427640008871083,
+   "p99": 0.21800126998641642,
+   "max": 0.3387970000403584,
+   "mean": 0.17646657977920158
+  },
+  "e2e": {
+   "n": 24398,
+   "p50": 12.262344999726338,
+   "p95": 12.50636929976281,
+   "p99": 12.869235389985077,
+   "max": 57.324066999626666,
+   "mean": 12.292979672596442
+  }
+ },
+ "thermal": {
+  "temp_start": 50.5,
+  "temp_end": 54.9,
+  "temp_p95": 59.3,
+  "throttled_start": "0x0",
+  "throttled_end": "0x0",
+  "throttled_flags": [],
+  "throttled_clean": true
+ },
+ "cpu_percent_mean": 146.25521885521886,
+ "rss_peak_mb": 206.127104,
+ "gate_G_E1": {
+  "budget_ms": 33.3,
+  "e2e_p99": 12.869235389985077,
+  "pass": true
+ },
+ "warnings": [
+  "image_cnn 가중치가 **무작위 초기화**다. 지연은 유효하지만 이 런의 판정 출력(probs)은 의미가 없다"
+ ],
+ "equivalence_gate": {
+  "path": "results/v2/check_equivalence.json",
+  "authorized": true
+ }
+}

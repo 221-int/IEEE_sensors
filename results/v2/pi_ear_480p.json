@@ -1,0 +1,113 @@
+{
+ "env": {
+  "seed": 0,
+  "deterministic": true,
+  "sealed": true,
+  "python": "3.11.15",
+  "platform": "Linux-6.18.34+rpt-rpi-2712-aarch64-with-glibc2.41",
+  "numpy": "1.26.4",
+  "pythonhashseed": "0",
+  "cublas_workspace_config": null,
+  "git_commit": null,
+  "git_dirty": false,
+  "torch": null
+ },
+ "config": {
+  "mode": "ear",
+  "source": "clips/eyeblink8_c9_480p_x8.avi",
+  "width": 640,
+  "height": 480,
+  "fps": 30,
+  "duration": 300.0,
+  "onnx_dir": "models/v2/onnx",
+  "intra_threads": 2,
+  "no_spin": true,
+  "head_stride": 1,
+  "refine_landmarks": false,
+  "out": "results/v2/pi_ear_480p.json"
+ },
+ "platform": {
+  "machine": "aarch64",
+  "platform": "Linux-6.18.34+rpt-rpi-2712-aarch64-with-glibc2.41",
+  "cpu_governor": "performance",
+  "ort_intra_threads": 2,
+  "ort_spinning": "disabled",
+  "has_vcgencmd": true
+ },
+ "head_stride": 1,
+ "weights": "trained",
+ "head_mmac_per_frame": 0.045888,
+ "_head_cost_note": "stride 1 이므로 head 는 매 프레임 0.0459 MMAC 이다. 인코더 12.44 와 합쳐 12.49 MMAC/frame (head 0.37%).",
+ "frames": 31268,
+ "seconds": 300.0013341009999,
+ "sustained_fps": 104.22620317239378,
+ "n_no_detect": 70,
+ "detect_miss_rate": 0.0022387105027504156,
+ "n_decisions": 31180,
+ "stages_ms": {
+  "read": {
+   "n": 31268,
+   "p50": 1.015622000068106,
+   "p95": 1.0850320499912414,
+   "p99": 1.119867540087398,
+   "max": 5.570314000124199,
+   "mean": 1.0191584326139653
+  },
+  "detect": {
+   "n": 31268,
+   "p50": 8.32082299996273,
+   "p95": 8.540747199992893,
+   "p99": 8.846309419991483,
+   "max": 54.10576000008405,
+   "mean": 8.352312166050005
+  },
+  "crop": {
+   "n": 31198,
+   "p50": 0.08309399981953902,
+   "p95": 0.08676100014781696,
+   "p99": 0.10281810997184944,
+   "max": 0.16053999979703804,
+   "mean": 0.08384775677896404
+  },
+  "encode": {
+   "n": 0
+  },
+  "head": {
+   "n": 31198,
+   "p50": 0.1366170000665079,
+   "p95": 0.14568799997505266,
+   "p99": 0.16229960006739927,
+   "max": 0.308653999809394,
+   "mean": 0.13823762449405103
+  },
+  "e2e": {
+   "n": 31268,
+   "p50": 9.5632544999944,
+   "p95": 9.789073900049061,
+   "p99": 10.099378990237255,
+   "max": 55.38359899992429,
+   "mean": 9.593058795061422
+  }
+ },
+ "thermal": {
+  "temp_start": 51.6,
+  "temp_end": 57.6,
+  "temp_p95": 59.3,
+  "throttled_start": "0x0",
+  "throttled_end": "0x0",
+  "throttled_flags": [],
+  "throttled_clean": true
+ },
+ "cpu_percent_mean": 139.5276094276094,
+ "rss_peak_mb": 184.221696,
+ "gate_G_E1": {
+  "budget_ms": 33.3,
+  "e2e_p99": 10.099378990237255,
+  "pass": true
+ },
+ "warnings": [],
+ "equivalence_gate": {
+  "path": "results/v2/check_equivalence.json",
+  "authorized": true
+ }
+}
