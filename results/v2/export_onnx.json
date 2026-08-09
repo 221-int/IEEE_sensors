@@ -8,7 +8,7 @@
   "numpy": "2.4.2",
   "pythonhashseed": "0",
   "cublas_workspace_config": ":4096:8",
-  "git_commit": "001d516fa3dc8e7a9d883dcb0d842ba18109f043",
+  "git_commit": "bb8df19c27b314c52366407e41133bdc23d0ec22",
   "git_dirty": true,
   "torch": "2.11.0+cu128",
   "cuda_available": true,
@@ -17,7 +17,7 @@
   "cudnn_benchmark": false,
   "gpu": "NVIDIA GeForce RTX 5080"
  },
- "ckpt": "models/v2/fold0_seed0",
+ "ckpt": "models/v2/train_encoder_final/fold0_seed0",
  "arch": "vpres",
  "d_latent": 16,
  "opset": 17,
@@ -72,6 +72,46 @@
   "tol": 0.0001,
   "pass": true
  },
+ "ear_head": {
+  "k_in": 4,
+  "d_latent": 16,
+  "paths": {
+   "lift": "models/v2/onnx/ear_head/lift.onnx",
+   "head": "models/v2/onnx/ear_head/head.onnx"
+  },
+  "weights": "random (cost accounting only)",
+  "_weights_note": "params/MMAC 은 가중치와 무관하다. 정확도는 train_encoder_final.json 의 ear_head 항목을 쓴다.",
+  "params": {
+   "lift": 384,
+   "head": 4625,
+   "total": 5009
+  },
+  "mmac": {
+   "lift_per_frame": 0.00032,
+   "head_per_frame_stride1": 0.045888,
+   "total_per_frame_stride1": 0.046208
+  },
+  "_ear_extraction_cost": "🔴 위 비용에 **EAR 추출 자체는 빠져 있다.** EAR 은 얼굴 랜드마크 6점에서 계산되므로 랜드마크가 이미 있어야 한다. 학습에서는 mEBAL2 가 제공한 랜드마크를 썼으므로 추가 비용이 0 이지만, 배포에서는 MediaPipe 검출이 선행돼야 하고 Pi 실측에서 EAR 모드도 detect 8.32 ms 를 똑같이 치른다(results/v2/pi_ear_480p.json). Table I 의 MMAC 열은 **랜드마크를 입력으로 받은 뒤의 비용**만 센다 — 네 방법이 모두 같은 검출기를 공유하므로 공통 항을 빼고 비교하는 것이다. 이 정의를 표 각주에 명시할 것.",
+  "file_sizes": {
+   "lift": {
+    "bytes": 2482,
+    "kb": 2.4,
+    "external_data": false
+   },
+   "head": {
+    "bytes": 23898,
+    "kb": 23.3,
+    "external_data": false
+   }
+  },
+  "verification": {
+   "lift_max_abs_diff": 0.0,
+   "head_max_abs_diff": 5.960464477539063e-08,
+   "pass": true
+  },
+  "ear_feats": "all4",
+  "_k_in_source": "results/v2/train_encoder_final.json config.ear_feats"
+ },
  "image_cnn": {
   "image_cnn_max": {
    "variant": "image_cnn_max",
@@ -99,7 +139,7 @@
     }
    },
    "verification": {
-    "backbone_max_abs_diff": 2.2351741790771484e-08,
+    "backbone_max_abs_diff": 7.450580596923828e-08,
     "pass": true
    }
   },
@@ -135,7 +175,7 @@
     }
    },
    "verification": {
-    "backbone_max_abs_diff": 6.705522537231445e-08,
+    "backbone_max_abs_diff": 7.450580596923828e-08,
     "head_max_abs_diff": 5.960464477539063e-08,
     "pass": true
    }

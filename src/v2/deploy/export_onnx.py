@@ -46,7 +46,8 @@ from src.v2.common import repro
 from src.v2.dataset import crop as C
 from src.v2.model import encoder as E
 
-CKPT = "models/v2/fold0_seed0"
+CKPT = "models/v2/train_encoder_final/fold0_seed0"   # 2026-08-07: 체크포인트
+# 경로가 --out 에서 파생되도록 바뀌었다(train_encoder.models_dir)
 OUTDIR = "models/v2/onnx"
 OUT = "results/v2/export_onnx.json"
 EVENT_LEN = 19
@@ -261,6 +262,81 @@ def export_image_cnn(variant: str, d_latent: int, outdir: str, opset: int,
     }
 
 
+# ------------------------------------------------------------------ ear_head (B2)
+def export_ear_head(k_in: int, d_latent: int, outdir: str, opset: int,
+                    tol: float) -> dict:
+    """대조군 1(EAR 스칼라 -> 동일 시간 헤드)의 정적 비용 + ONNX.
+
+    🔴 **가중치는 무작위 초기화다.** 확정 런이 `earhead_front.pt`/`earhead_head.pt` 를
+    저장하지만(T3-6), 여기서 내는 것은 **Table I 의 params/MMAC 열**이 목적이고 그 값은
+    가중치와 무관하다. 정확도는 `train_encoder_final.json` 을 쓴다.
+
+    ⚠️ **이 비용에 EAR 추출 자체는 포함돼 있지 않다.** 아래 `_ear_extraction_cost` 참조.
+    """
+    import onnxruntime as ort
+
+    sub = os.path.join(outdir, "ear_head")
+    os.makedirs(sub, exist_ok=True)
+    lift = E.build_ear_frontend(k_in, d_latent).eval()
+    head = E.build_head(d_latent, EVENT_LEN).eval()
+
+    x = torch.randn(2, k_in)                      # BatchNorm1d 라 N>=2 로 추적한다
+    p_l = os.path.join(sub, "lift.onnx")
+    torch.onnx.export(lift, (x,), p_l, opset_version=opset,
+                      input_names=["ear"], output_names=["vector"],
+                      dynamic_axes={"ear": {0: "batch"}, "vector": {0: "batch"}},
+                      dynamo=False)
+    z, m = torch.randn(1, EVENT_LEN, d_latent), torch.ones(1, EVENT_LEN)
+    p_h = os.path.join(sub, "head.onnx")
+    torch.onnx.export(HeadWrap(head).eval(), (z, m), p_h, opset_version=opset,
+                      input_names=["vectors", "mask"], output_names=["blink_prob"],
+                      dynamic_axes={"vectors": {0: "batch"}, "mask": {0: "batch"},
+                                    "blink_prob": {0: "batch"}},
+                      dynamo=False)
+    paths = {"lift": p_l, "head": p_h}
+
+    rng = np.random.default_rng(0)
+    xb = rng.standard_normal((4, k_in)).astype(np.float32)
+    with torch.no_grad():
+        t_l = lift(torch.from_numpy(xb)).numpy()
+    s = ort.InferenceSession(p_l, providers=["CPUExecutionProvider"])
+    ver = {"lift_max_abs_diff": float(np.max(np.abs(t_l - s.run(None, {"ear": xb})[0])))}
+    zb = rng.standard_normal((4, EVENT_LEN, d_latent)).astype(np.float32)
+    mb = np.ones((4, EVENT_LEN), np.float32)
+    with torch.no_grad():
+        t_h = torch.sigmoid(head(torch.from_numpy(zb), torch.from_numpy(mb))).numpy()
+    sh = ort.InferenceSession(p_h, providers=["CPUExecutionProvider"])
+    ver["head_max_abs_diff"] = float(np.max(np.abs(
+        t_h - sh.run(None, {"vectors": zb, "mask": mb})[0])))
+    ver["pass"] = all(v < tol for k, v in ver.items() if k.endswith("diff"))
+
+    n_l = sum(q.numel() for q in lift.parameters())
+    n_h = sum(q.numel() for q in head.parameters())
+    # lift 의 MAC: Linear(k,d) + Linear(d,d). BN·ReLU 는 MAC 으로 세지 않는다.
+    lift_mac = (k_in * d_latent + d_latent * d_latent) / 1e6
+    head_mac = E.temporal_head_mmac(d_latent, EVENT_LEN)
+    return {
+        "k_in": k_in, "d_latent": d_latent,
+        "paths": {k: v.replace("\\", "/") for k, v in paths.items()},
+        "weights": "random (cost accounting only)",
+        "_weights_note": "params/MMAC 은 가중치와 무관하다. 정확도는 "
+                         "train_encoder_final.json 의 ear_head 항목을 쓴다.",
+        "params": {"lift": n_l, "head": n_h, "total": n_l + n_h},
+        "mmac": {"lift_per_frame": lift_mac,
+                 "head_per_frame_stride1": head_mac,
+                 "total_per_frame_stride1": lift_mac + head_mac},
+        "_ear_extraction_cost": (
+            "🔴 위 비용에 **EAR 추출 자체는 빠져 있다.** EAR 은 얼굴 랜드마크 6점에서 "
+            "계산되므로 랜드마크가 이미 있어야 한다. 학습에서는 mEBAL2 가 제공한 "
+            "랜드마크를 썼으므로 추가 비용이 0 이지만, 배포에서는 MediaPipe 검출이 "
+            "선행돼야 하고 Pi 실측에서 EAR 모드도 detect 8.32 ms 를 똑같이 치른다"
+            "(results/v2/pi_ear_480p.json). Table I 의 MMAC 열은 **랜드마크를 입력으로 "
+            "받은 뒤의 비용**만 센다 — 네 방법이 모두 같은 검출기를 공유하므로 "
+            "공통 항을 빼고 비교하는 것이다. 이 정의를 표 각주에 명시할 것."),
+        "file_sizes": sizes(paths), "verification": ver,
+    }
+
+
 def sizes(paths: dict) -> dict:
     """.onnx + 같은 이름의 .onnx.data 를 합산한다 (가중치가 분리될 수 있다)."""
     out = {}
@@ -288,6 +364,8 @@ def main() -> int:
     ap.add_argument("--with-image-cnn", action="store_true", default=True,
                     help="대조군 2(image_cnn) 도 함께 export 한다. Table II 의 3자 비교에 필요")
     ap.add_argument("--no-image-cnn", dest="with_image_cnn", action="store_false")
+    ap.add_argument("--train-result", default="results/v2/train_encoder_final.json",
+                    help="ear_feats -> k_in 유도에 쓴다. 하드코딩하지 않는다")
     ap.add_argument("--out", default=OUT)
     args = ap.parse_args()
 
@@ -344,6 +422,27 @@ def main() -> int:
                "전체에 걸리므로, stride 1 에서 직전 계산을 재사용할 수 없다. 매 프레임 "
                "창 19개를 다시 돈다 — 0.0459 MMAC/frame 은 그 값이다.",
            "file_sizes": sz, "verification": ver}
+
+    # 대조군 1 — k_in 은 하드코딩하지 않고 확정 런의 config.ear_feats 에서 유도한다
+    tr = args.train_result
+    if os.path.exists(tr):
+        feats = json.load(open(tr, encoding="utf-8"))["config"]["ear_feats"]
+        k_in = {"all4": 4, "mean": 1}[feats]
+        out["ear_head"] = export_ear_head(k_in, d, args.outdir, args.opset, args.tol)
+        out["ear_head"]["ear_feats"] = feats
+        out["ear_head"]["_k_in_source"] = f"{tr} config.ear_feats"
+        r = out["ear_head"]
+        print(f"\n[대조군 1] ear_head  (ear_feats={feats} -> k_in={k_in})")
+        print(f"  params  lift {r['params']['lift']:,} + head {r['params']['head']:,} "
+              f"= {r['params']['total']:,}")
+        print(f"  MMAC    lift {r['mmac']['lift_per_frame']:.6f} + "
+              f"head {r['mmac']['head_per_frame_stride1']:.6f} "
+              f"= {r['mmac']['total_per_frame_stride1']:.4f}/frame")
+        print(f"  검증    {'PASS' if r['verification']['pass'] else 'FAIL'}")
+        if not r["verification"]["pass"]:
+            ver["pass"] = False
+    else:
+        print(f"\n⚠️ {tr} 가 없어 ear_head 비용을 내지 못했다")
 
     if args.with_image_cnn:
         out["image_cnn"] = {v: export_image_cnn(v, d, args.outdir, args.opset, args.tol)

@@ -358,14 +358,29 @@ MediaPipe 로 같은 메시를 뽑는다. 즉 e2e 의 **88% 가 공통 항**이�
 
 **Table II-a. 정적 비용** (Pi 불필요, 이미 측정됨 — `results/v2/export_onnx.json`)
 
-| Method | Params | Model size | MMAC/frame |
-|---|---:|---:|---:|
-| EAR (rule) | 0 | — | ~0 |
-| EAR-head | (T3-6 재실행 후) | | |
-| Image-CNN (mEBAL) | 471,536 | | 31.81 |
-| **Ours (vpres, D=16)** | **84,049** | **335 KB** | **12.49** |
+| Method | frontend params | head params | **총 params** | Model size | frontend MMAC | head MMAC | **총 MMAC/frame** |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| EAR (rule) | 0 | 0 | **0** | — | ~0 | 0 | **~0** |
+| EAR-head | 384 | 4,625 | **5,009** | 25.7 KB | 0.00032 | 0.0459 | **0.0462** |
+| Image-CNN (max) | 470,561 | 0 | **470,561** | 1,840.2 KB | 31.806 | 0 | **31.81** |
+| Image-CNN (+head) | 471,536 | 4,625 | **476,161** | 1,867.4 KB | 31.807 | 0.0459 | **31.85** |
+| **Ours (vpres, D=16)** | 79,424 | 4,625 | **84,049** | **335 KB** | 12.443 | 0.0459 | **12.49** |
+
+🔵 **2026-08-09 — 행을 두 변형으로 쪼개고 frontend/head/총계를 분리했다.**
+이전 표의 "Image-CNN (mEBAL) | 471,536" 은 틀린 값은 아니지만 **모호했다** —
+471,536 은 `image_cnn_head` 의 **backbone-only** 이고, `max` 의 backbone 은 470,561,
+head 포함 총계는 476,161 이다. Table I 과 숫자가 어긋나 보였다.
+두 백본의 차이 **975** = `Dense(64→16)` 1,040 − `Dense(64→1)` 65 (출력 차원 차이).
+
+🔴 **MMAC 열의 정의 — "랜드마크를 입력으로 받은 뒤"의 비용이다.**
+EAR 은 얼굴 랜드마크 6점에서 계산되므로 랜드마크가 먼저 있어야 한다. 학습에서는
+mEBAL2 제공 랜드마크를 썼으므로 추가 비용이 0 이지만, **배포에서는 EAR 모드도 MediaPipe
+검출을 똑같이 치른다**(Pi 실측 detect 8.32 ms, `pi_ear_480p.json`). 네 방법이 같은
+검출기를 공유하므로 **공통 항을 빼고 비교**하는 것이며, EAR-rule 의 "~0" 은 *"랜드마크에서
+나눗셈 몇 번"* 이라는 뜻이지 *"공짜"* 가 아니다. **이 정의를 표 각주에 반드시 넣는다.**
 
 - Ours 내역: encoder 79,424 + head 4,625 / encoder.onnx 311.4 KB + head.onnx 23.3 KB
+- EAR-head 내역: EarLift `Linear(4,16)`+BN+ReLU+`Linear(16,16)` = 384 (80+32+272) + head 4,625
 - MMAC 내역: encoder 12.44 + head **0.0459** (stride 1, 매 프레임 판정). head 비중 0.37%
 - ⚠️ **head 를 stride 19 로 세지 않는다.** 창 경계에서만 판정하면 깜빡임을 최대
   18프레임(600 ms @30 fps) 늦게 잡는다. 연속 검출의 정직한 값은 stride 1 이다.
