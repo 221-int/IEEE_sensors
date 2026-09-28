@@ -1,0 +1,276 @@
+{
+  "schema_version": 1,
+  "variant": "vdrop",
+  "weights": "trained",
+  "fold": 1,
+  "seed": 1,
+  "study": "nonpi_2026-09-21_maskfix",
+  "missing_training_input": "zero_before_encoder_valid_gather_only",
+  "selection": "All 5 folds x 3 seeds exported; default engineering bundle fixed to fold0/seed0, not best score.",
+  "checkpoint": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\work\\nonpi_2026-09-21_maskfix\\attempts\\vdrop\\fold1_seed1\\attempt001\\models\\fold1_seed1",
+  "source_record": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\work\\nonpi_2026-09-21_maskfix\\records\\vdrop\\fold1_seed1.json",
+  "source_record_sha256": "028dd292188bbf80a821cbbdc8ad15bce1d905d2b669a339c5006da8079135c5",
+  "checkpoint_sha256": {
+    "encoder.pt": "4accee1263841d156d49bf8f8384607d66ba1d6b562b8e68ae67ceb9caa83520",
+    "head.pt": "111005cb6262d893c6620917482008e3a9485833603d360bd0f3672eb926d4c0"
+  },
+  "graph_sha256": {
+    "encoder.onnx": "a3237752b21cae656c79b0b570c5b0369e18a014ee9cddb3d68890c49968b4ed",
+    "head.onnx": "e9164720906147cb3a558b153fda405f717d2889ed68906347164841e2c3d944"
+  },
+  "graph_files": {
+    "encoder": "encoder.onnx",
+    "head": "head.onnx"
+  },
+  "graph_details": {
+    "encoder.onnx": {
+      "ir_version": 8,
+      "opsets": {
+        "": 17
+      },
+      "inputs": [
+        "crop"
+      ],
+      "outputs": [
+        "vector"
+      ]
+    },
+    "head.onnx": {
+      "ir_version": 8,
+      "opsets": {
+        "": 17
+      },
+      "inputs": [
+        "vectors",
+        "mask"
+      ],
+      "outputs": [
+        "blink_prob"
+      ]
+    }
+  },
+  "input": {
+    "shape": [
+      "batch",
+      1,
+      64,
+      160
+    ],
+    "dtype": "float32",
+    "norm": "frame_standardize",
+    "margin": 2.2,
+    "geometry": "explicit_float32_crop_bounds",
+    "color": "grayscale from BGR crop"
+  },
+  "encoder_output": {
+    "shape": [
+      "batch",
+      16
+    ],
+    "dtype": "float32"
+  },
+  "head_inputs": {
+    "vectors": [
+      "batch",
+      19,
+      16
+    ],
+    "mask": [
+      "batch",
+      19
+    ]
+  },
+  "head_output": "probability (sigmoid in graph)",
+  "threshold_logit": 2.0796403884887695,
+  "threshold_probability": 0.8889085265612622,
+  "threshold_selection": "Original source validation accuracy; unchanged, no refitting on test or external data.",
+  "min_valid_frames": 14,
+  "event_len": 19,
+  "policy": {
+    "policy": "min14_current_valid_v1",
+    "event_len": 19,
+    "min_valid_frames": 14,
+    "require_current_valid": true,
+    "missing_time_positions": "retained",
+    "event_rule": "contiguous threshold positives; abstention breaks interval",
+    "center_offset_frames": 9,
+    "threshold_probability": 0.8889085265612622,
+    "threshold_source": "model contract: source validation"
+  },
+  "requires_current_valid": true,
+  "nominal_source_fps": 30,
+  "window_center_offset_frames": 9,
+  "precision": "FP32; not quantized",
+  "export_runtime": {
+    "python": "3.12.14",
+    "torch": "2.11.0+cu128",
+    "onnx": "1.22.0",
+    "onnxruntime": "1.30.0",
+    "numpy": "1.26.4",
+    "provider": "CPUExecutionProvider"
+  },
+  "source_sha256": {
+    "src/v2/model/encoder.py": "f4e8a5dd1969fdedf9626ec112af38fc894d8d175fab8074118974e58446dc3d",
+    "src/v2/dataset/crop.py": "d7a82feaa1cd636683434c11bbf1b2fe83e61d186e6ca3601e31906a7f6eb73d",
+    "src/v2/deploy/inference_policy.py": "2b7c4ff56a50596198e147687d1a5fc673ffb436d58ac530f648b05e3d6f3756"
+  },
+  "verification": {
+    "n_source_events": 56,
+    "n_crop_positions": 1064,
+    "selection": {
+      "balanced": [
+        3143,
+        23310,
+        23627,
+        23707,
+        9221,
+        12378,
+        14281,
+        21922,
+        3019,
+        3139,
+        11972,
+        3122,
+        14250,
+        9327,
+        9361,
+        21963,
+        21804,
+        22984,
+        39,
+        3266,
+        2948,
+        13783,
+        18956,
+        13705,
+        7433,
+        13696,
+        22900,
+        13754,
+        21736,
+        22593,
+        7326,
+        11427
+      ],
+      "threshold_near": [
+        30,
+        23107,
+        11680,
+        13613,
+        11735,
+        9348,
+        13661,
+        22949,
+        22931,
+        3008,
+        11908,
+        23823,
+        13747,
+        22841,
+        23077,
+        21931
+      ],
+      "missing": [
+        2718,
+        2774,
+        2926,
+        3211,
+        3220,
+        3228,
+        3241,
+        3244
+      ]
+    },
+    "event_indices": [
+      30,
+      39,
+      2718,
+      2774,
+      2926,
+      2948,
+      3008,
+      3019,
+      3122,
+      3139,
+      3143,
+      3211,
+      3220,
+      3228,
+      3241,
+      3244,
+      3266,
+      7326,
+      7433,
+      9221,
+      9327,
+      9348,
+      9361,
+      11427,
+      11680,
+      11735,
+      11908,
+      11972,
+      12378,
+      13613,
+      13661,
+      13696,
+      13705,
+      13747,
+      13754,
+      13783,
+      14250,
+      14281,
+      18956,
+      21736,
+      21804,
+      21922,
+      21931,
+      21963,
+      22593,
+      22841,
+      22900,
+      22931,
+      22949,
+      22984,
+      23077,
+      23107,
+      23310,
+      23627,
+      23707,
+      23823
+    ],
+    "encoder_max_abs_error": 3.337860107421875e-06,
+    "probability_max_abs_error": 1.996755599975586e-06,
+    "threshold_prediction_flips": 0,
+    "zero_missing_vector_max_probability_error": 0.0,
+    "mask_stress_max_probability_error": 1.1920928955078125e-07,
+    "mask_stress_valid_counts": [
+      19,
+      18,
+      14,
+      13,
+      1,
+      0,
+      18
+    ],
+    "mask_stress_online_eligible": [
+      true,
+      true,
+      true,
+      false,
+      false,
+      false,
+      false
+    ],
+    "dynamic_batch_one_pass": true,
+    "graph_checker_pass": true,
+    "saved_gpu_vs_cpu_max_logit_error": 0.010148286819458008,
+    "saved_gpu_vs_cpu_prediction_flips": 0
+  },
+  "limits": [
+    "CPU export equivalence only; no Raspberry Pi latency/power measurement.",
+    "The Pi pinned ONNX Runtime version must be checked on device; current desktop runtime differs.",
+    "No all-data retraining or final clinical/consumer operating-point validation.",
+    "Graph outputs on ineligible windows are diagnostic only; deployment must abstain."
+  ]
+}

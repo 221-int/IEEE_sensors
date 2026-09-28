@@ -1,0 +1,2534 @@
+{
+  "scope": "descriptive video-9 pilot, no population inference",
+  "n_source_runs_per_method": 15,
+  "n_external_videos": 1,
+  "annotation_unit": "bilateral blink ID, not per-eye completeness",
+  "event_positive": 41,
+  "event_negative": 210,
+  "excluded_event_ids": [],
+  "continuous_gt": 41,
+  "total_resampled_blinks": 41,
+  "annotated_center_minutes": 2.801111111111111,
+  "runs": [
+    {
+      "variant": "ours",
+      "fold": 0,
+      "seed": 0,
+      "threshold": -0.6398786306381226,
+      "event_window": {
+        "tp": 38,
+        "fp": 0,
+        "fn": 3,
+        "precision": 1.0,
+        "recall": 0.926829268292683,
+        "f1": 0.9620253164556962,
+        "ap_scorable": 0.9964430894308942,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 2,
+          "fn": 0,
+          "precision": 0.9534883720930233,
+          "recall": 1.0,
+          "f1": 0.9761904761904762,
+          "false_detections_per_minute": 0.7140023800079334,
+          "alert_delay_seconds_median": 0.30000000000001137,
+          "alert_delay_seconds_p90": 0.3333333333333428
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 2,
+          "fn": 0,
+          "precision": 0.9534883720930233,
+          "recall": 1.0,
+          "f1": 0.9761904761904762,
+          "false_detections_per_minute": 0.7140023800079334,
+          "alert_delay_seconds_median": 0.30000000000001137,
+          "alert_delay_seconds_p90": 0.3333333333333428
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.0010789814415192059
+    },
+    {
+      "variant": "ours",
+      "fold": 0,
+      "seed": 1,
+      "threshold": 1.4468131065368652,
+      "event_window": {
+        "tp": 38,
+        "fp": 0,
+        "fn": 3,
+        "precision": 1.0,
+        "recall": 0.926829268292683,
+        "f1": 0.9620253164556962,
+        "ap_scorable": 1.0,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 4,
+          "fn": 0,
+          "precision": 0.9111111111111111,
+          "recall": 1.0,
+          "f1": 0.9534883720930233,
+          "false_detections_per_minute": 1.4280047600158667,
+          "alert_delay_seconds_median": 0.29999999999999716,
+          "alert_delay_seconds_p90": 0.30000000000001137
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 4,
+          "fn": 0,
+          "precision": 0.9111111111111111,
+          "recall": 1.0,
+          "f1": 0.9534883720930233,
+          "false_detections_per_minute": 1.4280047600158667,
+          "alert_delay_seconds_median": 0.29999999999999716,
+          "alert_delay_seconds_p90": 0.30000000000001137
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.006689684937419077
+    },
+    {
+      "variant": "ours",
+      "fold": 0,
+      "seed": 2,
+      "threshold": -0.9375701546669006,
+      "event_window": {
+        "tp": 37,
+        "fp": 0,
+        "fn": 4,
+        "precision": 1.0,
+        "recall": 0.9024390243902439,
+        "f1": 0.9487179487179487,
+        "ap_scorable": 1.0,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 7,
+          "fn": 0,
+          "precision": 0.8541666666666666,
+          "recall": 1.0,
+          "f1": 0.9213483146067416,
+          "false_detections_per_minute": 2.499008330027767,
+          "alert_delay_seconds_median": 0.3333333333333286,
+          "alert_delay_seconds_p90": 0.36666666666666003
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 7,
+          "fn": 0,
+          "precision": 0.8541666666666666,
+          "recall": 1.0,
+          "f1": 0.9213483146067416,
+          "false_detections_per_minute": 2.499008330027767,
+          "alert_delay_seconds_median": 0.3333333333333286,
+          "alert_delay_seconds_p90": 0.36666666666666003
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.0015105740181268882
+    },
+    {
+      "variant": "ours",
+      "fold": 1,
+      "seed": 0,
+      "threshold": 1.0949525833129883,
+      "event_window": {
+        "tp": 39,
+        "fp": 0,
+        "fn": 2,
+        "precision": 1.0,
+        "recall": 0.9512195121951219,
+        "f1": 0.975,
+        "ap_scorable": 1.0,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 10,
+          "fn": 0,
+          "precision": 0.803921568627451,
+          "recall": 1.0,
+          "f1": 0.8913043478260869,
+          "false_detections_per_minute": 3.570011900039667,
+          "alert_delay_seconds_median": 0.3333333333333286,
+          "alert_delay_seconds_p90": 0.3333333333333428
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 10,
+          "fn": 0,
+          "precision": 0.803921568627451,
+          "recall": 1.0,
+          "f1": 0.8913043478260869,
+          "false_detections_per_minute": 3.570011900039667,
+          "alert_delay_seconds_median": 0.3333333333333286,
+          "alert_delay_seconds_p90": 0.3333333333333428
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.0008631851532153647
+    },
+    {
+      "variant": "ours",
+      "fold": 1,
+      "seed": 1,
+      "threshold": 0.9686896800994873,
+      "event_window": {
+        "tp": 28,
+        "fp": 0,
+        "fn": 13,
+        "precision": 1.0,
+        "recall": 0.6829268292682927,
+        "f1": 0.8115942028985508,
+        "ap_scorable": 1.0,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 40,
+          "fp": 2,
+          "fn": 1,
+          "precision": 0.9523809523809523,
+          "recall": 0.975609756097561,
+          "f1": 0.963855421686747,
+          "false_detections_per_minute": 0.7140023800079334,
+          "alert_delay_seconds_median": 0.3333333333333357,
+          "alert_delay_seconds_p90": 0.3999999999999986
+        },
+        "0.1": {
+          "tp": 40,
+          "fp": 2,
+          "fn": 1,
+          "precision": 0.9523809523809523,
+          "recall": 0.975609756097561,
+          "f1": 0.963855421686747,
+          "false_detections_per_minute": 0.7140023800079334,
+          "alert_delay_seconds_median": 0.3333333333333357,
+          "alert_delay_seconds_p90": 0.3999999999999986
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.0
+    },
+    {
+      "variant": "ours",
+      "fold": 1,
+      "seed": 2,
+      "threshold": -0.14826589822769165,
+      "event_window": {
+        "tp": 39,
+        "fp": 0,
+        "fn": 2,
+        "precision": 1.0,
+        "recall": 0.9512195121951219,
+        "f1": 0.975,
+        "ap_scorable": 1.0,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 9,
+          "fn": 0,
+          "precision": 0.82,
+          "recall": 1.0,
+          "f1": 0.9010989010989011,
+          "false_detections_per_minute": 3.2130107100357,
+          "alert_delay_seconds_median": 0.3333333333333286,
+          "alert_delay_seconds_p90": 0.3333333333333428
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 9,
+          "fn": 0,
+          "precision": 0.82,
+          "recall": 1.0,
+          "f1": 0.9010989010989011,
+          "false_detections_per_minute": 3.2130107100357,
+          "alert_delay_seconds_median": 0.3333333333333286,
+          "alert_delay_seconds_p90": 0.3333333333333428
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.001294777729823047
+    },
+    {
+      "variant": "ours",
+      "fold": 2,
+      "seed": 0,
+      "threshold": -0.5650386810302734,
+      "event_window": {
+        "tp": 38,
+        "fp": 0,
+        "fn": 3,
+        "precision": 1.0,
+        "recall": 0.926829268292683,
+        "f1": 0.9620253164556962,
+        "ap_scorable": 1.0,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 13,
+          "fn": 0,
+          "precision": 0.7592592592592593,
+          "recall": 1.0,
+          "f1": 0.8631578947368421,
+          "false_detections_per_minute": 4.641015470051567,
+          "alert_delay_seconds_median": 0.29999999999999716,
+          "alert_delay_seconds_p90": 0.33333333333333215
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 13,
+          "fn": 0,
+          "precision": 0.7592592592592593,
+          "recall": 1.0,
+          "f1": 0.8631578947368421,
+          "false_detections_per_minute": 4.641015470051567,
+          "alert_delay_seconds_median": 0.29999999999999716,
+          "alert_delay_seconds_p90": 0.33333333333333215
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.0062580923608113945
+    },
+    {
+      "variant": "ours",
+      "fold": 2,
+      "seed": 1,
+      "threshold": -1.1442917585372925,
+      "event_window": {
+        "tp": 39,
+        "fp": 0,
+        "fn": 2,
+        "precision": 1.0,
+        "recall": 0.9512195121951219,
+        "f1": 0.975,
+        "ap_scorable": 1.0,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 6,
+          "fn": 0,
+          "precision": 0.8723404255319149,
+          "recall": 1.0,
+          "f1": 0.9318181818181818,
+          "false_detections_per_minute": 2.1420071400238,
+          "alert_delay_seconds_median": 0.29999999999999716,
+          "alert_delay_seconds_p90": 0.3333333333333286
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 6,
+          "fn": 0,
+          "precision": 0.8723404255319149,
+          "recall": 1.0,
+          "f1": 0.9318181818181818,
+          "false_detections_per_minute": 2.1420071400238,
+          "alert_delay_seconds_median": 0.29999999999999716,
+          "alert_delay_seconds_p90": 0.3333333333333286
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.004100129477772983
+    },
+    {
+      "variant": "ours",
+      "fold": 2,
+      "seed": 2,
+      "threshold": -1.6678413152694702,
+      "event_window": {
+        "tp": 38,
+        "fp": 0,
+        "fn": 3,
+        "precision": 1.0,
+        "recall": 0.926829268292683,
+        "f1": 0.9620253164556962,
+        "ap_scorable": 1.0,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 31,
+          "fn": 0,
+          "precision": 0.5694444444444444,
+          "recall": 1.0,
+          "f1": 0.7256637168141593,
+          "false_detections_per_minute": 11.067036890122967,
+          "alert_delay_seconds_median": 0.2666666666666657,
+          "alert_delay_seconds_p90": 0.3000000000000007
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 31,
+          "fn": 0,
+          "precision": 0.5694444444444444,
+          "recall": 1.0,
+          "f1": 0.7256637168141593,
+          "false_detections_per_minute": 11.067036890122967,
+          "alert_delay_seconds_median": 0.2666666666666657,
+          "alert_delay_seconds_p90": 0.3000000000000007
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.02330599913681485
+    },
+    {
+      "variant": "ours",
+      "fold": 3,
+      "seed": 0,
+      "threshold": -1.8695013523101807,
+      "event_window": {
+        "tp": 37,
+        "fp": 0,
+        "fn": 4,
+        "precision": 1.0,
+        "recall": 0.9024390243902439,
+        "f1": 0.9487179487179487,
+        "ap_scorable": 0.9891812600871834,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 10,
+          "fn": 0,
+          "precision": 0.803921568627451,
+          "recall": 1.0,
+          "f1": 0.8913043478260869,
+          "false_detections_per_minute": 3.570011900039667,
+          "alert_delay_seconds_median": 0.29999999999999716,
+          "alert_delay_seconds_p90": 0.3333333333333357
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 10,
+          "fn": 0,
+          "precision": 0.803921568627451,
+          "recall": 1.0,
+          "f1": 0.8913043478260869,
+          "false_detections_per_minute": 3.570011900039667,
+          "alert_delay_seconds_median": 0.29999999999999716,
+          "alert_delay_seconds_p90": 0.3333333333333357
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.0069054812257229176
+    },
+    {
+      "variant": "ours",
+      "fold": 3,
+      "seed": 1,
+      "threshold": -2.00468111038208,
+      "event_window": {
+        "tp": 39,
+        "fp": 0,
+        "fn": 2,
+        "precision": 1.0,
+        "recall": 0.9512195121951219,
+        "f1": 0.975,
+        "ap_scorable": 1.0,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 14,
+          "fn": 0,
+          "precision": 0.7454545454545455,
+          "recall": 1.0,
+          "f1": 0.8541666666666666,
+          "false_detections_per_minute": 4.998016660055534,
+          "alert_delay_seconds_median": 0.29999999999999716,
+          "alert_delay_seconds_p90": 0.3000000000000007
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 14,
+          "fn": 0,
+          "precision": 0.7454545454545455,
+          "recall": 1.0,
+          "f1": 0.8541666666666666,
+          "false_detections_per_minute": 4.998016660055534,
+          "alert_delay_seconds_median": 0.29999999999999716,
+          "alert_delay_seconds_p90": 0.3000000000000007
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.011221406991799741
+    },
+    {
+      "variant": "ours",
+      "fold": 3,
+      "seed": 2,
+      "threshold": 0.22271166741847992,
+      "event_window": {
+        "tp": 39,
+        "fp": 0,
+        "fn": 2,
+        "precision": 1.0,
+        "recall": 0.9512195121951219,
+        "f1": 0.975,
+        "ap_scorable": 1.0,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 14,
+          "fn": 0,
+          "precision": 0.7454545454545455,
+          "recall": 1.0,
+          "f1": 0.8541666666666666,
+          "false_detections_per_minute": 4.998016660055534,
+          "alert_delay_seconds_median": 0.3000000000000007,
+          "alert_delay_seconds_p90": 0.33333333333333304
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 14,
+          "fn": 0,
+          "precision": 0.7454545454545455,
+          "recall": 1.0,
+          "f1": 0.8541666666666666,
+          "false_detections_per_minute": 4.998016660055534,
+          "alert_delay_seconds_median": 0.3000000000000007,
+          "alert_delay_seconds_p90": 0.33333333333333304
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.006689684937419077
+    },
+    {
+      "variant": "ours",
+      "fold": 4,
+      "seed": 0,
+      "threshold": -0.35857686400413513,
+      "event_window": {
+        "tp": 39,
+        "fp": 0,
+        "fn": 2,
+        "precision": 1.0,
+        "recall": 0.9512195121951219,
+        "f1": 0.975,
+        "ap_scorable": 1.0,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 8,
+          "fn": 0,
+          "precision": 0.8367346938775511,
+          "recall": 1.0,
+          "f1": 0.9111111111111111,
+          "false_detections_per_minute": 2.8560095200317335,
+          "alert_delay_seconds_median": 0.29999999999999716,
+          "alert_delay_seconds_p90": 0.3333333333333286
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 8,
+          "fn": 0,
+          "precision": 0.8367346938775511,
+          "recall": 1.0,
+          "f1": 0.9111111111111111,
+          "false_detections_per_minute": 2.8560095200317335,
+          "alert_delay_seconds_median": 0.29999999999999716,
+          "alert_delay_seconds_p90": 0.3333333333333286
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.0075528700906344415
+    },
+    {
+      "variant": "ours",
+      "fold": 4,
+      "seed": 1,
+      "threshold": -0.8993297815322876,
+      "event_window": {
+        "tp": 41,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "ap_scorable": 1.0,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 17,
+          "fn": 0,
+          "precision": 0.7068965517241379,
+          "recall": 1.0,
+          "f1": 0.8282828282828283,
+          "false_detections_per_minute": 6.069020230067434,
+          "alert_delay_seconds_median": 0.29999999999999716,
+          "alert_delay_seconds_p90": 0.30000000000001137
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 17,
+          "fn": 0,
+          "precision": 0.7068965517241379,
+          "recall": 1.0,
+          "f1": 0.8282828282828283,
+          "false_detections_per_minute": 6.069020230067434,
+          "alert_delay_seconds_median": 0.29999999999999716,
+          "alert_delay_seconds_p90": 0.30000000000001137
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.011868795856711264
+    },
+    {
+      "variant": "ours",
+      "fold": 4,
+      "seed": 2,
+      "threshold": 0.8608610033988953,
+      "event_window": {
+        "tp": 38,
+        "fp": 0,
+        "fn": 3,
+        "precision": 1.0,
+        "recall": 0.926829268292683,
+        "f1": 0.9620253164556962,
+        "ap_scorable": 0.9994192799070848,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 13,
+          "fn": 0,
+          "precision": 0.7592592592592593,
+          "recall": 1.0,
+          "f1": 0.8631578947368421,
+          "false_detections_per_minute": 4.641015470051567,
+          "alert_delay_seconds_median": 0.29999999999999716,
+          "alert_delay_seconds_p90": 0.3333333333333357
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 13,
+          "fn": 0,
+          "precision": 0.7592592592592593,
+          "recall": 1.0,
+          "f1": 0.8631578947368421,
+          "false_detections_per_minute": 4.641015470051567,
+          "alert_delay_seconds_median": 0.29999999999999716,
+          "alert_delay_seconds_p90": 0.3333333333333357
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.005179110919292188
+    },
+    {
+      "variant": "image_head",
+      "fold": 0,
+      "seed": 0,
+      "threshold": -2.432532787322998,
+      "event_window": {
+        "tp": 41,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "ap_scorable": 1.0,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 40,
+          "fp": 14,
+          "fn": 1,
+          "precision": 0.7407407407407407,
+          "recall": 0.975609756097561,
+          "f1": 0.8421052631578947,
+          "false_detections_per_minute": 4.998016660055534,
+          "alert_delay_seconds_median": 0.29999999999998295,
+          "alert_delay_seconds_p90": 0.30000000000001137
+        },
+        "0.1": {
+          "tp": 40,
+          "fp": 14,
+          "fn": 1,
+          "precision": 0.7407407407407407,
+          "recall": 0.975609756097561,
+          "f1": 0.8421052631578947,
+          "false_detections_per_minute": 4.998016660055534,
+          "alert_delay_seconds_median": 0.29999999999998295,
+          "alert_delay_seconds_p90": 0.30000000000001137
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.04359085023737592
+    },
+    {
+      "variant": "image_head",
+      "fold": 0,
+      "seed": 1,
+      "threshold": -0.3333775997161865,
+      "event_window": {
+        "tp": 39,
+        "fp": 1,
+        "fn": 2,
+        "precision": 0.975,
+        "recall": 0.9512195121951219,
+        "f1": 0.9629629629629629,
+        "ap_scorable": 0.9956472416089176,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 40,
+          "fp": 15,
+          "fn": 1,
+          "precision": 0.7272727272727273,
+          "recall": 0.975609756097561,
+          "f1": 0.8333333333333334,
+          "false_detections_per_minute": 5.3550178500595,
+          "alert_delay_seconds_median": 0.29999999999999716,
+          "alert_delay_seconds_p90": 0.3333333333333333
+        },
+        "0.1": {
+          "tp": 40,
+          "fp": 15,
+          "fn": 1,
+          "precision": 0.7272727272727273,
+          "recall": 0.975609756097561,
+          "f1": 0.8333333333333334,
+          "false_detections_per_minute": 5.3550178500595,
+          "alert_delay_seconds_median": 0.29999999999999716,
+          "alert_delay_seconds_p90": 0.3333333333333333
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.017047906776003454
+    },
+    {
+      "variant": "image_head",
+      "fold": 0,
+      "seed": 2,
+      "threshold": -0.26916468143463135,
+      "event_window": {
+        "tp": 40,
+        "fp": 0,
+        "fn": 1,
+        "precision": 1.0,
+        "recall": 0.975609756097561,
+        "f1": 0.9876543209876543,
+        "ap_scorable": 1.0,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 6,
+          "fn": 0,
+          "precision": 0.8723404255319149,
+          "recall": 1.0,
+          "f1": 0.9318181818181818,
+          "false_detections_per_minute": 2.1420071400238,
+          "alert_delay_seconds_median": 0.3000000000000007,
+          "alert_delay_seconds_p90": 0.3333333333333357
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 6,
+          "fn": 0,
+          "precision": 0.8723404255319149,
+          "recall": 1.0,
+          "f1": 0.9318181818181818,
+          "false_detections_per_minute": 2.1420071400238,
+          "alert_delay_seconds_median": 0.3000000000000007,
+          "alert_delay_seconds_p90": 0.3333333333333357
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.0043159257660768235
+    },
+    {
+      "variant": "image_head",
+      "fold": 1,
+      "seed": 0,
+      "threshold": -0.5537744760513306,
+      "event_window": {
+        "tp": 41,
+        "fp": 1,
+        "fn": 0,
+        "precision": 0.9761904761904762,
+        "recall": 1.0,
+        "f1": 0.9879518072289156,
+        "ap_scorable": 0.9919083981529769,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 7,
+          "fn": 0,
+          "precision": 0.8541666666666666,
+          "recall": 1.0,
+          "f1": 0.9213483146067416,
+          "false_detections_per_minute": 2.499008330027767,
+          "alert_delay_seconds_median": 0.29999999999999716,
+          "alert_delay_seconds_p90": 0.33333333333333304
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 7,
+          "fn": 0,
+          "precision": 0.8541666666666666,
+          "recall": 1.0,
+          "f1": 0.9213483146067416,
+          "false_detections_per_minute": 2.499008330027767,
+          "alert_delay_seconds_median": 0.29999999999999716,
+          "alert_delay_seconds_p90": 0.33333333333333304
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.0073370738023306
+    },
+    {
+      "variant": "image_head",
+      "fold": 1,
+      "seed": 1,
+      "threshold": 1.5935684442520142,
+      "event_window": {
+        "tp": 39,
+        "fp": 0,
+        "fn": 2,
+        "precision": 1.0,
+        "recall": 0.9512195121951219,
+        "f1": 0.975,
+        "ap_scorable": 0.9994192799070848,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 6,
+          "fn": 0,
+          "precision": 0.8723404255319149,
+          "recall": 1.0,
+          "f1": 0.9318181818181818,
+          "false_detections_per_minute": 2.1420071400238,
+          "alert_delay_seconds_median": 0.29999999999999716,
+          "alert_delay_seconds_p90": 0.3333333333333428
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 6,
+          "fn": 0,
+          "precision": 0.8723404255319149,
+          "recall": 1.0,
+          "f1": 0.9318181818181818,
+          "false_detections_per_minute": 2.1420071400238,
+          "alert_delay_seconds_median": 0.29999999999999716,
+          "alert_delay_seconds_p90": 0.3333333333333428
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.011868795856711264
+    },
+    {
+      "variant": "image_head",
+      "fold": 1,
+      "seed": 2,
+      "threshold": -0.3887038826942444,
+      "event_window": {
+        "tp": 41,
+        "fp": 1,
+        "fn": 0,
+        "precision": 0.9761904761904762,
+        "recall": 1.0,
+        "f1": 0.9879518072289156,
+        "ap_scorable": 0.9982146398119033,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 40,
+          "fp": 7,
+          "fn": 1,
+          "precision": 0.851063829787234,
+          "recall": 0.975609756097561,
+          "f1": 0.9090909090909091,
+          "false_detections_per_minute": 2.499008330027767,
+          "alert_delay_seconds_median": 0.29999999999999805,
+          "alert_delay_seconds_p90": 0.3333333333333428
+        },
+        "0.1": {
+          "tp": 40,
+          "fp": 7,
+          "fn": 1,
+          "precision": 0.851063829787234,
+          "recall": 0.975609756097561,
+          "f1": 0.9090909090909091,
+          "false_detections_per_minute": 2.499008330027767,
+          "alert_delay_seconds_median": 0.29999999999999805,
+          "alert_delay_seconds_p90": 0.3333333333333428
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.0073370738023306
+    },
+    {
+      "variant": "image_head",
+      "fold": 2,
+      "seed": 0,
+      "threshold": 0.061549924314022064,
+      "event_window": {
+        "tp": 39,
+        "fp": 0,
+        "fn": 2,
+        "precision": 1.0,
+        "recall": 0.9512195121951219,
+        "f1": 0.975,
+        "ap_scorable": 1.0,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 24,
+          "fn": 0,
+          "precision": 0.6307692307692307,
+          "recall": 1.0,
+          "f1": 0.7735849056603774,
+          "false_detections_per_minute": 8.5680285600952,
+          "alert_delay_seconds_median": 0.2666666666666657,
+          "alert_delay_seconds_p90": 0.3333333333333286
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 24,
+          "fn": 0,
+          "precision": 0.6307692307692307,
+          "recall": 1.0,
+          "f1": 0.7735849056603774,
+          "false_detections_per_minute": 8.5680285600952,
+          "alert_delay_seconds_median": 0.2666666666666657,
+          "alert_delay_seconds_p90": 0.3333333333333286
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.03323262839879154
+    },
+    {
+      "variant": "image_head",
+      "fold": 2,
+      "seed": 1,
+      "threshold": -1.2515292167663574,
+      "event_window": {
+        "tp": 41,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "ap_scorable": 1.0,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 18,
+          "fn": 0,
+          "precision": 0.6949152542372882,
+          "recall": 1.0,
+          "f1": 0.82,
+          "false_detections_per_minute": 6.4260214200714,
+          "alert_delay_seconds_median": 0.2666666666666657,
+          "alert_delay_seconds_p90": 0.30000000000001137
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 18,
+          "fn": 0,
+          "precision": 0.6949152542372882,
+          "recall": 1.0,
+          "f1": 0.82,
+          "false_detections_per_minute": 6.4260214200714,
+          "alert_delay_seconds_median": 0.2666666666666657,
+          "alert_delay_seconds_p90": 0.30000000000001137
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.06171773845489858
+    },
+    {
+      "variant": "image_head",
+      "fold": 2,
+      "seed": 2,
+      "threshold": 0.06702634692192078,
+      "event_window": {
+        "tp": 41,
+        "fp": 4,
+        "fn": 0,
+        "precision": 0.9111111111111111,
+        "recall": 1.0,
+        "f1": 0.9534883720930233,
+        "ap_scorable": 1.0,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 40,
+          "fp": 37,
+          "fn": 1,
+          "precision": 0.5194805194805194,
+          "recall": 0.975609756097561,
+          "f1": 0.6779661016949152,
+          "false_detections_per_minute": 13.209044030146767,
+          "alert_delay_seconds_median": 0.2666666666666657,
+          "alert_delay_seconds_p90": 0.3000000000000007
+        },
+        "0.1": {
+          "tp": 40,
+          "fp": 37,
+          "fn": 1,
+          "precision": 0.5194805194805194,
+          "recall": 0.975609756097561,
+          "f1": 0.6779661016949152,
+          "false_detections_per_minute": 13.209044030146767,
+          "alert_delay_seconds_median": 0.2666666666666657,
+          "alert_delay_seconds_p90": 0.3000000000000007
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.06776003452740613
+    },
+    {
+      "variant": "image_head",
+      "fold": 3,
+      "seed": 0,
+      "threshold": 0.1515025496482849,
+      "event_window": {
+        "tp": 39,
+        "fp": 0,
+        "fn": 2,
+        "precision": 1.0,
+        "recall": 0.9512195121951219,
+        "f1": 0.975,
+        "ap_scorable": 1.0,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 3,
+          "fn": 0,
+          "precision": 0.9318181818181818,
+          "recall": 1.0,
+          "f1": 0.9647058823529412,
+          "false_detections_per_minute": 1.0710035700119,
+          "alert_delay_seconds_median": 0.29999999999998295,
+          "alert_delay_seconds_p90": 0.33333333333333215
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 3,
+          "fn": 0,
+          "precision": 0.9318181818181818,
+          "recall": 1.0,
+          "f1": 0.9647058823529412,
+          "false_detections_per_minute": 1.0710035700119,
+          "alert_delay_seconds_median": 0.29999999999998295,
+          "alert_delay_seconds_p90": 0.33333333333333215
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.016184721622788088
+    },
+    {
+      "variant": "image_head",
+      "fold": 3,
+      "seed": 1,
+      "threshold": 0.05899250507354736,
+      "event_window": {
+        "tp": 41,
+        "fp": 7,
+        "fn": 0,
+        "precision": 0.8541666666666666,
+        "recall": 1.0,
+        "f1": 0.9213483146067416,
+        "ap_scorable": 0.9947663084486404,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 51,
+          "fn": 0,
+          "precision": 0.44565217391304346,
+          "recall": 1.0,
+          "f1": 0.6165413533834586,
+          "false_detections_per_minute": 18.2070606902023,
+          "alert_delay_seconds_median": 0.29999999999999716,
+          "alert_delay_seconds_p90": 0.3333333333333286
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 51,
+          "fn": 0,
+          "precision": 0.44565217391304346,
+          "recall": 1.0,
+          "f1": 0.6165413533834586,
+          "false_detections_per_minute": 18.2070606902023,
+          "alert_delay_seconds_median": 0.29999999999999716,
+          "alert_delay_seconds_p90": 0.3333333333333286
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.06948640483383686
+    },
+    {
+      "variant": "image_head",
+      "fold": 3,
+      "seed": 2,
+      "threshold": -1.501290202140808,
+      "event_window": {
+        "tp": 41,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "ap_scorable": 1.0,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 40,
+          "fp": 11,
+          "fn": 1,
+          "precision": 0.7843137254901961,
+          "recall": 0.975609756097561,
+          "f1": 0.8695652173913043,
+          "false_detections_per_minute": 3.9270130900436335,
+          "alert_delay_seconds_median": 0.06666666666666643,
+          "alert_delay_seconds_p90": 0.30000000000000177
+        },
+        "0.1": {
+          "tp": 40,
+          "fp": 11,
+          "fn": 1,
+          "precision": 0.7843137254901961,
+          "recall": 0.975609756097561,
+          "f1": 0.8695652173913043,
+          "false_detections_per_minute": 3.9270130900436335,
+          "alert_delay_seconds_median": 0.06666666666666643,
+          "alert_delay_seconds_p90": 0.30000000000000177
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.07293914544669831
+    },
+    {
+      "variant": "image_head",
+      "fold": 4,
+      "seed": 0,
+      "threshold": 0.7153050899505615,
+      "event_window": {
+        "tp": 38,
+        "fp": 0,
+        "fn": 3,
+        "precision": 1.0,
+        "recall": 0.926829268292683,
+        "f1": 0.9620253164556962,
+        "ap_scorable": 1.0,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 1,
+          "fn": 0,
+          "precision": 0.9761904761904762,
+          "recall": 1.0,
+          "f1": 0.9879518072289156,
+          "false_detections_per_minute": 0.3570011900039667,
+          "alert_delay_seconds_median": 0.29999999999999893,
+          "alert_delay_seconds_p90": 0.3333333333333357
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 1,
+          "fn": 0,
+          "precision": 0.9761904761904762,
+          "recall": 1.0,
+          "f1": 0.9879518072289156,
+          "false_detections_per_minute": 0.3570011900039667,
+          "alert_delay_seconds_median": 0.29999999999999893,
+          "alert_delay_seconds_p90": 0.3333333333333357
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.0015105740181268882
+    },
+    {
+      "variant": "image_head",
+      "fold": 4,
+      "seed": 1,
+      "threshold": 0.277773380279541,
+      "event_window": {
+        "tp": 38,
+        "fp": 0,
+        "fn": 3,
+        "precision": 1.0,
+        "recall": 0.926829268292683,
+        "f1": 0.9620253164556962,
+        "ap_scorable": 1.0,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 4,
+          "fn": 0,
+          "precision": 0.9111111111111111,
+          "recall": 1.0,
+          "f1": 0.9534883720930233,
+          "false_detections_per_minute": 1.4280047600158667,
+          "alert_delay_seconds_median": 0.29999999999998295,
+          "alert_delay_seconds_p90": 0.30000000000001137
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 4,
+          "fn": 0,
+          "precision": 0.9111111111111111,
+          "recall": 1.0,
+          "f1": 0.9534883720930233,
+          "false_detections_per_minute": 1.4280047600158667,
+          "alert_delay_seconds_median": 0.29999999999998295,
+          "alert_delay_seconds_p90": 0.30000000000001137
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.01078981441519206
+    },
+    {
+      "variant": "image_head",
+      "fold": 4,
+      "seed": 2,
+      "threshold": -0.8424558639526367,
+      "event_window": {
+        "tp": 41,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "ap_scorable": 1.0,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 3,
+          "fn": 0,
+          "precision": 0.9318181818181818,
+          "recall": 1.0,
+          "f1": 0.9647058823529412,
+          "false_detections_per_minute": 1.0710035700119,
+          "alert_delay_seconds_median": 0.29999999999999716,
+          "alert_delay_seconds_p90": 0.3333333333333428
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 3,
+          "fn": 0,
+          "precision": 0.9318181818181818,
+          "recall": 1.0,
+          "f1": 0.9647058823529412,
+          "false_detections_per_minute": 1.0710035700119,
+          "alert_delay_seconds_median": 0.29999999999999716,
+          "alert_delay_seconds_p90": 0.3333333333333428
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.006689684937419077
+    },
+    {
+      "variant": "ear_head",
+      "fold": 0,
+      "seed": 0,
+      "threshold": -1.3178682327270508,
+      "event_window": {
+        "tp": 41,
+        "fp": 7,
+        "fn": 0,
+        "precision": 0.8541666666666666,
+        "recall": 1.0,
+        "f1": 0.9213483146067416,
+        "ap_scorable": 0.9769703569789872,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 44,
+          "fn": 0,
+          "precision": 0.4823529411764706,
+          "recall": 1.0,
+          "f1": 0.6507936507936508,
+          "false_detections_per_minute": 15.708052360174534,
+          "alert_delay_seconds_median": 0.30000000000001137,
+          "alert_delay_seconds_p90": 0.3333333333333428
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 44,
+          "fn": 0,
+          "precision": 0.4823529411764706,
+          "recall": 1.0,
+          "f1": 0.6507936507936508,
+          "false_detections_per_minute": 15.708052360174534,
+          "alert_delay_seconds_median": 0.30000000000001137,
+          "alert_delay_seconds_p90": 0.3333333333333428
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.03258523953388002
+    },
+    {
+      "variant": "ear_head",
+      "fold": 0,
+      "seed": 1,
+      "threshold": -0.5238814949989319,
+      "event_window": {
+        "tp": 41,
+        "fp": 6,
+        "fn": 0,
+        "precision": 0.8723404255319149,
+        "recall": 1.0,
+        "f1": 0.9318181818181818,
+        "ap_scorable": 0.9870098475110285,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 33,
+          "fn": 0,
+          "precision": 0.5540540540540541,
+          "recall": 1.0,
+          "f1": 0.7130434782608696,
+          "false_detections_per_minute": 11.7810392701309,
+          "alert_delay_seconds_median": 0.2666666666666657,
+          "alert_delay_seconds_p90": 0.3333333333333286
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 33,
+          "fn": 0,
+          "precision": 0.5540540540540541,
+          "recall": 1.0,
+          "f1": 0.7130434782608696,
+          "false_detections_per_minute": 11.7810392701309,
+          "alert_delay_seconds_median": 0.2666666666666657,
+          "alert_delay_seconds_p90": 0.3333333333333286
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.03085886922744929
+    },
+    {
+      "variant": "ear_head",
+      "fold": 0,
+      "seed": 2,
+      "threshold": -1.2079620361328125,
+      "event_window": {
+        "tp": 41,
+        "fp": 4,
+        "fn": 0,
+        "precision": 0.9111111111111111,
+        "recall": 1.0,
+        "f1": 0.9534883720930233,
+        "ap_scorable": 0.9966273382246017,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 30,
+          "fn": 0,
+          "precision": 0.5774647887323944,
+          "recall": 1.0,
+          "f1": 0.7321428571428571,
+          "false_detections_per_minute": 10.710035700119,
+          "alert_delay_seconds_median": 0.16666666666668561,
+          "alert_delay_seconds_p90": 0.29999999999999716
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 30,
+          "fn": 0,
+          "precision": 0.5774647887323944,
+          "recall": 1.0,
+          "f1": 0.7321428571428571,
+          "false_detections_per_minute": 10.710035700119,
+          "alert_delay_seconds_median": 0.16666666666668561,
+          "alert_delay_seconds_p90": 0.29999999999999716
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.041001294777729826
+    },
+    {
+      "variant": "ear_head",
+      "fold": 1,
+      "seed": 0,
+      "threshold": -0.39138978719711304,
+      "event_window": {
+        "tp": 30,
+        "fp": 5,
+        "fn": 11,
+        "precision": 0.8571428571428571,
+        "recall": 0.7317073170731707,
+        "f1": 0.7894736842105263,
+        "ap_scorable": 0.936100919556706,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 37,
+          "fn": 0,
+          "precision": 0.5256410256410257,
+          "recall": 1.0,
+          "f1": 0.6890756302521008,
+          "false_detections_per_minute": 13.209044030146767,
+          "alert_delay_seconds_median": 0.30000000000001137,
+          "alert_delay_seconds_p90": 0.3333333333333428
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 37,
+          "fn": 0,
+          "precision": 0.5256410256410257,
+          "recall": 1.0,
+          "f1": 0.6890756302521008,
+          "false_detections_per_minute": 13.209044030146767,
+          "alert_delay_seconds_median": 0.30000000000001137,
+          "alert_delay_seconds_p90": 0.3333333333333428
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.019637462235649546
+    },
+    {
+      "variant": "ear_head",
+      "fold": 1,
+      "seed": 1,
+      "threshold": 0.21023863554000854,
+      "event_window": {
+        "tp": 25,
+        "fp": 4,
+        "fn": 16,
+        "precision": 0.8620689655172413,
+        "recall": 0.6097560975609756,
+        "f1": 0.7142857142857143,
+        "ap_scorable": 0.9234471670054473,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 27,
+          "fn": 0,
+          "precision": 0.6029411764705882,
+          "recall": 1.0,
+          "f1": 0.7522935779816514,
+          "false_detections_per_minute": 9.6390321301071,
+          "alert_delay_seconds_median": 0.33333333333333215,
+          "alert_delay_seconds_p90": 0.3333333333333428
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 27,
+          "fn": 0,
+          "precision": 0.6029411764705882,
+          "recall": 1.0,
+          "f1": 0.7522935779816514,
+          "false_detections_per_minute": 9.6390321301071,
+          "alert_delay_seconds_median": 0.33333333333333215,
+          "alert_delay_seconds_p90": 0.3333333333333428
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.011437203280103583
+    },
+    {
+      "variant": "ear_head",
+      "fold": 1,
+      "seed": 2,
+      "threshold": 0.7712475657463074,
+      "event_window": {
+        "tp": 32,
+        "fp": 3,
+        "fn": 9,
+        "precision": 0.9142857142857143,
+        "recall": 0.7804878048780488,
+        "f1": 0.8421052631578947,
+        "ap_scorable": 0.9531112480292275,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 32,
+          "fn": 0,
+          "precision": 0.5616438356164384,
+          "recall": 1.0,
+          "f1": 0.7192982456140351,
+          "false_detections_per_minute": 11.424038080126934,
+          "alert_delay_seconds_median": 0.29999999999999716,
+          "alert_delay_seconds_p90": 0.3333333333333357
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 32,
+          "fn": 0,
+          "precision": 0.5616438356164384,
+          "recall": 1.0,
+          "f1": 0.7192982456140351,
+          "false_detections_per_minute": 11.424038080126934,
+          "alert_delay_seconds_median": 0.29999999999999716,
+          "alert_delay_seconds_p90": 0.3333333333333357
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.014458351316357358
+    },
+    {
+      "variant": "ear_head",
+      "fold": 2,
+      "seed": 0,
+      "threshold": 0.8001064658164978,
+      "event_window": {
+        "tp": 38,
+        "fp": 5,
+        "fn": 3,
+        "precision": 0.8837209302325582,
+        "recall": 0.926829268292683,
+        "f1": 0.9047619047619048,
+        "ap_scorable": 0.9746532632938303,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 30,
+          "fn": 0,
+          "precision": 0.5774647887323944,
+          "recall": 1.0,
+          "f1": 0.7321428571428571,
+          "false_detections_per_minute": 10.710035700119,
+          "alert_delay_seconds_median": 0.29999999999999716,
+          "alert_delay_seconds_p90": 0.30000000000001137
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 30,
+          "fn": 0,
+          "precision": 0.5774647887323944,
+          "recall": 1.0,
+          "f1": 0.7321428571428571,
+          "false_detections_per_minute": 10.710035700119,
+          "alert_delay_seconds_median": 0.29999999999999716,
+          "alert_delay_seconds_p90": 0.30000000000001137
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.02416918429003021
+    },
+    {
+      "variant": "ear_head",
+      "fold": 2,
+      "seed": 1,
+      "threshold": -0.9385892152786255,
+      "event_window": {
+        "tp": 39,
+        "fp": 7,
+        "fn": 2,
+        "precision": 0.8478260869565217,
+        "recall": 0.9512195121951219,
+        "f1": 0.896551724137931,
+        "ap_scorable": 0.9317455766961285,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 44,
+          "fn": 0,
+          "precision": 0.4823529411764706,
+          "recall": 1.0,
+          "f1": 0.6507936507936508,
+          "false_detections_per_minute": 15.708052360174534,
+          "alert_delay_seconds_median": 0.29999999999999716,
+          "alert_delay_seconds_p90": 0.33333333333333215
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 44,
+          "fn": 0,
+          "precision": 0.4823529411764706,
+          "recall": 1.0,
+          "f1": 0.6507936507936508,
+          "false_detections_per_minute": 15.708052360174534,
+          "alert_delay_seconds_median": 0.29999999999999716,
+          "alert_delay_seconds_p90": 0.33333333333333215
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.02913249892101856
+    },
+    {
+      "variant": "ear_head",
+      "fold": 2,
+      "seed": 2,
+      "threshold": -0.1414903700351715,
+      "event_window": {
+        "tp": 38,
+        "fp": 8,
+        "fn": 3,
+        "precision": 0.8260869565217391,
+        "recall": 0.926829268292683,
+        "f1": 0.8735632183908046,
+        "ap_scorable": 0.9825759585783348,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 39,
+          "fn": 0,
+          "precision": 0.5125,
+          "recall": 1.0,
+          "f1": 0.6776859504132231,
+          "false_detections_per_minute": 13.9230464101547,
+          "alert_delay_seconds_median": 0.30000000000001137,
+          "alert_delay_seconds_p90": 0.3333333333333357
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 39,
+          "fn": 0,
+          "precision": 0.5125,
+          "recall": 1.0,
+          "f1": 0.6776859504132231,
+          "false_detections_per_minute": 13.9230464101547,
+          "alert_delay_seconds_median": 0.30000000000001137,
+          "alert_delay_seconds_p90": 0.3333333333333357
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.03085886922744929
+    },
+    {
+      "variant": "ear_head",
+      "fold": 3,
+      "seed": 0,
+      "threshold": -0.5738831162452698,
+      "event_window": {
+        "tp": 38,
+        "fp": 5,
+        "fn": 3,
+        "precision": 0.8837209302325582,
+        "recall": 0.926829268292683,
+        "f1": 0.9047619047619048,
+        "ap_scorable": 0.9695970261006739,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 45,
+          "fn": 0,
+          "precision": 0.47674418604651164,
+          "recall": 1.0,
+          "f1": 0.6456692913385826,
+          "false_detections_per_minute": 16.0650535501785,
+          "alert_delay_seconds_median": 0.29999999999999716,
+          "alert_delay_seconds_p90": 0.33333333333333304
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 45,
+          "fn": 0,
+          "precision": 0.47674418604651164,
+          "recall": 1.0,
+          "f1": 0.6456692913385826,
+          "false_detections_per_minute": 16.0650535501785,
+          "alert_delay_seconds_median": 0.29999999999999716,
+          "alert_delay_seconds_p90": 0.33333333333333304
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.02611135088476478
+    },
+    {
+      "variant": "ear_head",
+      "fold": 3,
+      "seed": 1,
+      "threshold": -0.46297138929367065,
+      "event_window": {
+        "tp": 40,
+        "fp": 5,
+        "fn": 1,
+        "precision": 0.8888888888888888,
+        "recall": 0.975609756097561,
+        "f1": 0.9302325581395349,
+        "ap_scorable": 0.9734930708232237,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 33,
+          "fn": 0,
+          "precision": 0.5540540540540541,
+          "recall": 1.0,
+          "f1": 0.7130434782608696,
+          "false_detections_per_minute": 11.7810392701309,
+          "alert_delay_seconds_median": 0.29999999999999716,
+          "alert_delay_seconds_p90": 0.33333333333333215
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 33,
+          "fn": 0,
+          "precision": 0.5540540540540541,
+          "recall": 1.0,
+          "f1": 0.7130434782608696,
+          "false_detections_per_minute": 11.7810392701309,
+          "alert_delay_seconds_median": 0.29999999999999716,
+          "alert_delay_seconds_p90": 0.33333333333333215
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.02416918429003021
+    },
+    {
+      "variant": "ear_head",
+      "fold": 3,
+      "seed": 2,
+      "threshold": -1.543249487876892,
+      "event_window": {
+        "tp": 41,
+        "fp": 6,
+        "fn": 0,
+        "precision": 0.8723404255319149,
+        "recall": 1.0,
+        "f1": 0.9318181818181818,
+        "ap_scorable": 0.9778468811441758,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 49,
+          "fn": 0,
+          "precision": 0.45555555555555555,
+          "recall": 1.0,
+          "f1": 0.6259541984732825,
+          "false_detections_per_minute": 17.493058310194368,
+          "alert_delay_seconds_median": 0.2666666666666657,
+          "alert_delay_seconds_p90": 0.33333333333333215
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 49,
+          "fn": 0,
+          "precision": 0.45555555555555555,
+          "recall": 1.0,
+          "f1": 0.6259541984732825,
+          "false_detections_per_minute": 17.493058310194368,
+          "alert_delay_seconds_median": 0.2666666666666657,
+          "alert_delay_seconds_p90": 0.33333333333333215
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.04078549848942598
+    },
+    {
+      "variant": "ear_head",
+      "fold": 4,
+      "seed": 0,
+      "threshold": -0.14633187651634216,
+      "event_window": {
+        "tp": 35,
+        "fp": 6,
+        "fn": 6,
+        "precision": 0.8536585365853658,
+        "recall": 0.8536585365853658,
+        "f1": 0.8536585365853658,
+        "ap_scorable": 0.9380290557618651,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 53,
+          "fn": 0,
+          "precision": 0.43617021276595747,
+          "recall": 1.0,
+          "f1": 0.6074074074074074,
+          "false_detections_per_minute": 18.921063070210234,
+          "alert_delay_seconds_median": 0.30000000000001137,
+          "alert_delay_seconds_p90": 0.3333333333333357
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 53,
+          "fn": 0,
+          "precision": 0.43617021276595747,
+          "recall": 1.0,
+          "f1": 0.6074074074074074,
+          "false_detections_per_minute": 18.921063070210234,
+          "alert_delay_seconds_median": 0.30000000000001137,
+          "alert_delay_seconds_p90": 0.3333333333333357
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.034311609840310744
+    },
+    {
+      "variant": "ear_head",
+      "fold": 4,
+      "seed": 1,
+      "threshold": -1.1723244190216064,
+      "event_window": {
+        "tp": 38,
+        "fp": 6,
+        "fn": 3,
+        "precision": 0.8636363636363636,
+        "recall": 0.926829268292683,
+        "f1": 0.8941176470588236,
+        "ap_scorable": 0.9676697755979162,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 32,
+          "fn": 0,
+          "precision": 0.5616438356164384,
+          "recall": 1.0,
+          "f1": 0.7192982456140351,
+          "false_detections_per_minute": 11.424038080126934,
+          "alert_delay_seconds_median": 0.29999999999999716,
+          "alert_delay_seconds_p90": 0.33333333333333215
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 32,
+          "fn": 0,
+          "precision": 0.5616438356164384,
+          "recall": 1.0,
+          "f1": 0.7192982456140351,
+          "false_detections_per_minute": 11.424038080126934,
+          "alert_delay_seconds_median": 0.29999999999999716,
+          "alert_delay_seconds_p90": 0.33333333333333215
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.02589555459646094
+    },
+    {
+      "variant": "ear_head",
+      "fold": 4,
+      "seed": 2,
+      "threshold": -0.2789430618286133,
+      "event_window": {
+        "tp": 40,
+        "fp": 5,
+        "fn": 1,
+        "precision": 0.8888888888888888,
+        "recall": 0.975609756097561,
+        "f1": 0.9302325581395349,
+        "ap_scorable": 0.9910013710153501,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 30,
+          "fn": 0,
+          "precision": 0.5774647887323944,
+          "recall": 1.0,
+          "f1": 0.7321428571428571,
+          "false_detections_per_minute": 10.710035700119,
+          "alert_delay_seconds_median": 0.26666666666667993,
+          "alert_delay_seconds_p90": 0.30000000000001137
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 30,
+          "fn": 0,
+          "precision": 0.5774647887323944,
+          "recall": 1.0,
+          "f1": 0.7321428571428571,
+          "false_detections_per_minute": 10.710035700119,
+          "alert_delay_seconds_median": 0.26666666666667993,
+          "alert_delay_seconds_p90": 0.30000000000001137
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.02438498057833405
+    },
+    {
+      "variant": "ear_rule",
+      "fold": 0,
+      "seed": 0,
+      "threshold": 0.0882842952832987,
+      "event_window": {
+        "tp": 41,
+        "fp": 7,
+        "fn": 0,
+        "precision": 0.8541666666666666,
+        "recall": 1.0,
+        "f1": 0.9213483146067416,
+        "ap_scorable": 0.9983370288248337,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 11,
+          "fn": 0,
+          "precision": 0.7884615384615384,
+          "recall": 1.0,
+          "f1": 0.8817204301075269,
+          "false_detections_per_minute": 3.9270130900436335,
+          "alert_delay_seconds_median": 0.0,
+          "alert_delay_seconds_p90": 0.03333333333335986
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 11,
+          "fn": 0,
+          "precision": 0.7884615384615384,
+          "recall": 1.0,
+          "f1": 0.8817204301075269,
+          "false_detections_per_minute": 3.9270130900436335,
+          "alert_delay_seconds_median": 0.0,
+          "alert_delay_seconds_p90": 0.03333333333335986
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.14566249460509278
+    },
+    {
+      "variant": "ear_rule",
+      "fold": 0,
+      "seed": 1,
+      "threshold": 0.0882842952832987,
+      "event_window": {
+        "tp": 41,
+        "fp": 7,
+        "fn": 0,
+        "precision": 0.8541666666666666,
+        "recall": 1.0,
+        "f1": 0.9213483146067416,
+        "ap_scorable": 0.9983370288248337,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 11,
+          "fn": 0,
+          "precision": 0.7884615384615384,
+          "recall": 1.0,
+          "f1": 0.8817204301075269,
+          "false_detections_per_minute": 3.9270130900436335,
+          "alert_delay_seconds_median": 0.0,
+          "alert_delay_seconds_p90": 0.03333333333335986
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 11,
+          "fn": 0,
+          "precision": 0.7884615384615384,
+          "recall": 1.0,
+          "f1": 0.8817204301075269,
+          "false_detections_per_minute": 3.9270130900436335,
+          "alert_delay_seconds_median": 0.0,
+          "alert_delay_seconds_p90": 0.03333333333335986
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.14566249460509278
+    },
+    {
+      "variant": "ear_rule",
+      "fold": 0,
+      "seed": 2,
+      "threshold": 0.0882842952832987,
+      "event_window": {
+        "tp": 41,
+        "fp": 7,
+        "fn": 0,
+        "precision": 0.8541666666666666,
+        "recall": 1.0,
+        "f1": 0.9213483146067416,
+        "ap_scorable": 0.9983370288248337,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 11,
+          "fn": 0,
+          "precision": 0.7884615384615384,
+          "recall": 1.0,
+          "f1": 0.8817204301075269,
+          "false_detections_per_minute": 3.9270130900436335,
+          "alert_delay_seconds_median": 0.0,
+          "alert_delay_seconds_p90": 0.03333333333335986
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 11,
+          "fn": 0,
+          "precision": 0.7884615384615384,
+          "recall": 1.0,
+          "f1": 0.8817204301075269,
+          "false_detections_per_minute": 3.9270130900436335,
+          "alert_delay_seconds_median": 0.0,
+          "alert_delay_seconds_p90": 0.03333333333335986
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.14566249460509278
+    },
+    {
+      "variant": "ear_rule",
+      "fold": 1,
+      "seed": 0,
+      "threshold": 0.09399440577224953,
+      "event_window": {
+        "tp": 41,
+        "fp": 5,
+        "fn": 0,
+        "precision": 0.8913043478260869,
+        "recall": 1.0,
+        "f1": 0.9425287356321839,
+        "ap_scorable": 0.9983370288248337,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 12,
+          "fn": 0,
+          "precision": 0.7735849056603774,
+          "recall": 1.0,
+          "f1": 0.8723404255319149,
+          "false_detections_per_minute": 4.2840142800476,
+          "alert_delay_seconds_median": 0.03333333333333144,
+          "alert_delay_seconds_p90": 0.03333333333335986
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 12,
+          "fn": 0,
+          "precision": 0.7735849056603774,
+          "recall": 1.0,
+          "f1": 0.8723404255319149,
+          "false_detections_per_minute": 4.2840142800476,
+          "alert_delay_seconds_median": 0.03333333333333144,
+          "alert_delay_seconds_p90": 0.03333333333335986
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.14156236512731982
+    },
+    {
+      "variant": "ear_rule",
+      "fold": 1,
+      "seed": 1,
+      "threshold": 0.09399440577224953,
+      "event_window": {
+        "tp": 41,
+        "fp": 5,
+        "fn": 0,
+        "precision": 0.8913043478260869,
+        "recall": 1.0,
+        "f1": 0.9425287356321839,
+        "ap_scorable": 0.9983370288248337,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 12,
+          "fn": 0,
+          "precision": 0.7735849056603774,
+          "recall": 1.0,
+          "f1": 0.8723404255319149,
+          "false_detections_per_minute": 4.2840142800476,
+          "alert_delay_seconds_median": 0.03333333333333144,
+          "alert_delay_seconds_p90": 0.03333333333335986
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 12,
+          "fn": 0,
+          "precision": 0.7735849056603774,
+          "recall": 1.0,
+          "f1": 0.8723404255319149,
+          "false_detections_per_minute": 4.2840142800476,
+          "alert_delay_seconds_median": 0.03333333333333144,
+          "alert_delay_seconds_p90": 0.03333333333335986
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.14156236512731982
+    },
+    {
+      "variant": "ear_rule",
+      "fold": 1,
+      "seed": 2,
+      "threshold": 0.09399440577224953,
+      "event_window": {
+        "tp": 41,
+        "fp": 5,
+        "fn": 0,
+        "precision": 0.8913043478260869,
+        "recall": 1.0,
+        "f1": 0.9425287356321839,
+        "ap_scorable": 0.9983370288248337,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 12,
+          "fn": 0,
+          "precision": 0.7735849056603774,
+          "recall": 1.0,
+          "f1": 0.8723404255319149,
+          "false_detections_per_minute": 4.2840142800476,
+          "alert_delay_seconds_median": 0.03333333333333144,
+          "alert_delay_seconds_p90": 0.03333333333335986
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 12,
+          "fn": 0,
+          "precision": 0.7735849056603774,
+          "recall": 1.0,
+          "f1": 0.8723404255319149,
+          "false_detections_per_minute": 4.2840142800476,
+          "alert_delay_seconds_median": 0.03333333333333144,
+          "alert_delay_seconds_p90": 0.03333333333335986
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.14156236512731982
+    },
+    {
+      "variant": "ear_rule",
+      "fold": 2,
+      "seed": 0,
+      "threshold": 0.08611642812726447,
+      "event_window": {
+        "tp": 41,
+        "fp": 7,
+        "fn": 0,
+        "precision": 0.8541666666666666,
+        "recall": 1.0,
+        "f1": 0.9213483146067416,
+        "ap_scorable": 0.9983370288248337,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 10,
+          "fn": 0,
+          "precision": 0.803921568627451,
+          "recall": 1.0,
+          "f1": 0.8913043478260869,
+          "false_detections_per_minute": 3.570011900039667,
+          "alert_delay_seconds_median": 0.0,
+          "alert_delay_seconds_p90": 0.03333333333335986
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 10,
+          "fn": 0,
+          "precision": 0.803921568627451,
+          "recall": 1.0,
+          "f1": 0.8913043478260869,
+          "false_detections_per_minute": 3.570011900039667,
+          "alert_delay_seconds_median": 0.0,
+          "alert_delay_seconds_p90": 0.03333333333335986
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.14738886491152353
+    },
+    {
+      "variant": "ear_rule",
+      "fold": 2,
+      "seed": 1,
+      "threshold": 0.08611642812726447,
+      "event_window": {
+        "tp": 41,
+        "fp": 7,
+        "fn": 0,
+        "precision": 0.8541666666666666,
+        "recall": 1.0,
+        "f1": 0.9213483146067416,
+        "ap_scorable": 0.9983370288248337,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 10,
+          "fn": 0,
+          "precision": 0.803921568627451,
+          "recall": 1.0,
+          "f1": 0.8913043478260869,
+          "false_detections_per_minute": 3.570011900039667,
+          "alert_delay_seconds_median": 0.0,
+          "alert_delay_seconds_p90": 0.03333333333335986
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 10,
+          "fn": 0,
+          "precision": 0.803921568627451,
+          "recall": 1.0,
+          "f1": 0.8913043478260869,
+          "false_detections_per_minute": 3.570011900039667,
+          "alert_delay_seconds_median": 0.0,
+          "alert_delay_seconds_p90": 0.03333333333335986
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.14738886491152353
+    },
+    {
+      "variant": "ear_rule",
+      "fold": 2,
+      "seed": 2,
+      "threshold": 0.08611642812726447,
+      "event_window": {
+        "tp": 41,
+        "fp": 7,
+        "fn": 0,
+        "precision": 0.8541666666666666,
+        "recall": 1.0,
+        "f1": 0.9213483146067416,
+        "ap_scorable": 0.9983370288248337,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 10,
+          "fn": 0,
+          "precision": 0.803921568627451,
+          "recall": 1.0,
+          "f1": 0.8913043478260869,
+          "false_detections_per_minute": 3.570011900039667,
+          "alert_delay_seconds_median": 0.0,
+          "alert_delay_seconds_p90": 0.03333333333335986
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 10,
+          "fn": 0,
+          "precision": 0.803921568627451,
+          "recall": 1.0,
+          "f1": 0.8913043478260869,
+          "false_detections_per_minute": 3.570011900039667,
+          "alert_delay_seconds_median": 0.0,
+          "alert_delay_seconds_p90": 0.03333333333335986
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.14738886491152353
+    },
+    {
+      "variant": "ear_rule",
+      "fold": 3,
+      "seed": 0,
+      "threshold": 0.07646041818784506,
+      "event_window": {
+        "tp": 41,
+        "fp": 10,
+        "fn": 0,
+        "precision": 0.803921568627451,
+        "recall": 1.0,
+        "f1": 0.8913043478260869,
+        "ap_scorable": 0.9983370288248337,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 16,
+          "fn": 0,
+          "precision": 0.7192982456140351,
+          "recall": 1.0,
+          "f1": 0.8367346938775511,
+          "false_detections_per_minute": 5.712019040063467,
+          "alert_delay_seconds_median": 0.0,
+          "alert_delay_seconds_p90": 0.03333333333333499
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 16,
+          "fn": 0,
+          "precision": 0.7192982456140351,
+          "recall": 1.0,
+          "f1": 0.8367346938775511,
+          "false_detections_per_minute": 5.712019040063467,
+          "alert_delay_seconds_median": 0.0,
+          "alert_delay_seconds_p90": 0.03333333333333499
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.15709969788519637
+    },
+    {
+      "variant": "ear_rule",
+      "fold": 3,
+      "seed": 1,
+      "threshold": 0.07646041818784506,
+      "event_window": {
+        "tp": 41,
+        "fp": 10,
+        "fn": 0,
+        "precision": 0.803921568627451,
+        "recall": 1.0,
+        "f1": 0.8913043478260869,
+        "ap_scorable": 0.9983370288248337,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 16,
+          "fn": 0,
+          "precision": 0.7192982456140351,
+          "recall": 1.0,
+          "f1": 0.8367346938775511,
+          "false_detections_per_minute": 5.712019040063467,
+          "alert_delay_seconds_median": 0.0,
+          "alert_delay_seconds_p90": 0.03333333333333499
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 16,
+          "fn": 0,
+          "precision": 0.7192982456140351,
+          "recall": 1.0,
+          "f1": 0.8367346938775511,
+          "false_detections_per_minute": 5.712019040063467,
+          "alert_delay_seconds_median": 0.0,
+          "alert_delay_seconds_p90": 0.03333333333333499
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.15709969788519637
+    },
+    {
+      "variant": "ear_rule",
+      "fold": 3,
+      "seed": 2,
+      "threshold": 0.07646041818784506,
+      "event_window": {
+        "tp": 41,
+        "fp": 10,
+        "fn": 0,
+        "precision": 0.803921568627451,
+        "recall": 1.0,
+        "f1": 0.8913043478260869,
+        "ap_scorable": 0.9983370288248337,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 16,
+          "fn": 0,
+          "precision": 0.7192982456140351,
+          "recall": 1.0,
+          "f1": 0.8367346938775511,
+          "false_detections_per_minute": 5.712019040063467,
+          "alert_delay_seconds_median": 0.0,
+          "alert_delay_seconds_p90": 0.03333333333333499
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 16,
+          "fn": 0,
+          "precision": 0.7192982456140351,
+          "recall": 1.0,
+          "f1": 0.8367346938775511,
+          "false_detections_per_minute": 5.712019040063467,
+          "alert_delay_seconds_median": 0.0,
+          "alert_delay_seconds_p90": 0.03333333333333499
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.15709969788519637
+    },
+    {
+      "variant": "ear_rule",
+      "fold": 4,
+      "seed": 0,
+      "threshold": 0.09781794255075148,
+      "event_window": {
+        "tp": 41,
+        "fp": 3,
+        "fn": 0,
+        "precision": 0.9318181818181818,
+        "recall": 1.0,
+        "f1": 0.9647058823529412,
+        "ap_scorable": 0.9983370288248337,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 10,
+          "fn": 0,
+          "precision": 0.803921568627451,
+          "recall": 1.0,
+          "f1": 0.8913043478260869,
+          "false_detections_per_minute": 3.570011900039667,
+          "alert_delay_seconds_median": 0.03333333333333144,
+          "alert_delay_seconds_p90": 0.03333333333335986
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 10,
+          "fn": 0,
+          "precision": 0.803921568627451,
+          "recall": 1.0,
+          "f1": 0.8913043478260869,
+          "false_detections_per_minute": 3.570011900039667,
+          "alert_delay_seconds_median": 0.03333333333333144,
+          "alert_delay_seconds_p90": 0.03333333333335986
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.13810962451445835
+    },
+    {
+      "variant": "ear_rule",
+      "fold": 4,
+      "seed": 1,
+      "threshold": 0.09781794255075148,
+      "event_window": {
+        "tp": 41,
+        "fp": 3,
+        "fn": 0,
+        "precision": 0.9318181818181818,
+        "recall": 1.0,
+        "f1": 0.9647058823529412,
+        "ap_scorable": 0.9983370288248337,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 10,
+          "fn": 0,
+          "precision": 0.803921568627451,
+          "recall": 1.0,
+          "f1": 0.8913043478260869,
+          "false_detections_per_minute": 3.570011900039667,
+          "alert_delay_seconds_median": 0.03333333333333144,
+          "alert_delay_seconds_p90": 0.03333333333335986
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 10,
+          "fn": 0,
+          "precision": 0.803921568627451,
+          "recall": 1.0,
+          "f1": 0.8913043478260869,
+          "false_detections_per_minute": 3.570011900039667,
+          "alert_delay_seconds_median": 0.03333333333333144,
+          "alert_delay_seconds_p90": 0.03333333333335986
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.13810962451445835
+    },
+    {
+      "variant": "ear_rule",
+      "fold": 4,
+      "seed": 2,
+      "threshold": 0.09781794255075148,
+      "event_window": {
+        "tp": 41,
+        "fp": 3,
+        "fn": 0,
+        "precision": 0.9318181818181818,
+        "recall": 1.0,
+        "f1": 0.9647058823529412,
+        "ap_scorable": 0.9983370288248337,
+        "coverage": 1.0
+      },
+      "continuous": {
+        "0": {
+          "tp": 41,
+          "fp": 10,
+          "fn": 0,
+          "precision": 0.803921568627451,
+          "recall": 1.0,
+          "f1": 0.8913043478260869,
+          "false_detections_per_minute": 3.570011900039667,
+          "alert_delay_seconds_median": 0.03333333333333144,
+          "alert_delay_seconds_p90": 0.03333333333335986
+        },
+        "0.1": {
+          "tp": 41,
+          "fp": 10,
+          "fn": 0,
+          "precision": 0.803921568627451,
+          "recall": 1.0,
+          "f1": 0.8913043478260869,
+          "false_detections_per_minute": 3.570011900039667,
+          "alert_delay_seconds_median": 0.03333333333333144,
+          "alert_delay_seconds_p90": 0.03333333333335986
+        }
+      },
+      "decision_coverage": 1.0,
+      "negative_frame_positive_rate": 0.13810962451445835
+    }
+  ]
+}

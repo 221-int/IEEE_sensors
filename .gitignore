@@ -1,6 +1,4 @@
-__pycache__/
 *.pyc
-.idea/
 
 # --- 원본 데이터셋 · 영상 (용량) ---
 data/
@@ -34,3 +32,48 @@ models/v2_confirmed_*/
 # Pi 측정용 클립 (재생성 가능, 1.1 GB)
 clips/*.mp4
 clips/*.avi
+
+# Local environments, caches and machine-specific settings
+.venv/
+.venv-*/
+venv/
+node_modules/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+.idea/
+.DS_Store
+Thumbs.db
+.env
+.env.*
+!.env.example
+!.env.sample
+*.pem
+*.key
+.claude/settings.local.json
+.codex-*/
+.codex_*/
+/tmp/
+
+# Generated TeX intermediate files (keep source and final documents)
+*.aux
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# Raw recordings, generated arrays and duplicate transfer archives
+*.mp4
+*.mov
+*.mkv
+*.npz
+*.npy
+*.zip
+*.7z
+/.__wtest
+# Keep work/ protocols, scripts, metrics and manuscript files in Git.
+# Keep deployment models; omit duplicate packaged ONNX binaries.
+/work/**/packages/**/*.onnx
+/work/**/bundle/**/*.onnx

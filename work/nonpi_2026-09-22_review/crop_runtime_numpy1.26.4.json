@@ -1,0 +1,34 @@
+{
+  "numpy": "1.26.4",
+  "opencv": "4.11.0",
+  "cases": [
+    {
+      "subject": 19,
+      "frame": 33969,
+      "old": {
+        "equal": false,
+        "width": 243.0,
+        "height": 98.0
+      },
+      "explicit_float32": {
+        "equal": true,
+        "width": 244.0,
+        "height": 98.0
+      }
+    },
+    {
+      "subject": 55,
+      "frame": 49892,
+      "old": {
+        "equal": false,
+        "width": 359.0,
+        "height": 144.0
+      },
+      "explicit_float32": {
+        "equal": true,
+        "width": 359.0,
+        "height": 143.0
+      }
+    }
+  ]
+}

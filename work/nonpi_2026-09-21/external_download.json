@@ -1,0 +1,9 @@
+{
+  "url": "https://www.blinkingmatters.com/files/upload/research/eyeblink8.zip",
+  "destination": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\data\\external\\eyeblink8_official.zip",
+  "status": 401,
+  "content_type": "text/html; charset=utf-8",
+  "final_url": "https://www.blinkingmatters.com/files/upload/research/eyeblink8.zip",
+  "state": "failed",
+  "error": "HTTPError('401 Client Error: Unauthorized for url: https://www.blinkingmatters.com/files/upload/research/eyeblink8.zip')"
+}

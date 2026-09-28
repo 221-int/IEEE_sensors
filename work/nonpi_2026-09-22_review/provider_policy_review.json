@@ -1,0 +1,261 @@
+{
+  "stratified_sample": {
+    "vpres": {
+      "seeds": [
+        {
+          "seed": 0,
+          "n": 160,
+          "eligible": 156,
+          "source_recall": 1.0,
+          "fresh_recall": 0.9,
+          "fresh_fp": 5
+        },
+        {
+          "seed": 1,
+          "n": 160,
+          "eligible": 156,
+          "source_recall": 0.9875,
+          "fresh_recall": 0.8875,
+          "fresh_fp": 2
+        },
+        {
+          "seed": 2,
+          "n": 160,
+          "eligible": 156,
+          "source_recall": 0.975,
+          "fresh_recall": 0.8875,
+          "fresh_fp": 3
+        }
+      ],
+      "mean_source_recall": 0.9874999999999999,
+      "mean_fresh_recall": 0.8916666666666666
+    },
+    "image_head": {
+      "seeds": [
+        {
+          "seed": 0,
+          "n": 160,
+          "eligible": 156,
+          "source_recall": 0.9875,
+          "fresh_recall": 0.9125,
+          "fresh_fp": 1
+        },
+        {
+          "seed": 1,
+          "n": 160,
+          "eligible": 156,
+          "source_recall": 0.95,
+          "fresh_recall": 0.8875,
+          "fresh_fp": 2
+        },
+        {
+          "seed": 2,
+          "n": 160,
+          "eligible": 156,
+          "source_recall": 0.9875,
+          "fresh_recall": 0.9125,
+          "fresh_fp": 1
+        }
+      ],
+      "mean_source_recall": 0.975,
+      "mean_fresh_recall": 0.9041666666666667
+    },
+    "vdrop": {
+      "seeds": [
+        {
+          "seed": 0,
+          "n": 160,
+          "eligible": 156,
+          "source_recall": 1.0,
+          "fresh_recall": 0.9,
+          "fresh_fp": 4
+        },
+        {
+          "seed": 1,
+          "n": 160,
+          "eligible": 156,
+          "source_recall": 0.9875,
+          "fresh_recall": 0.9,
+          "fresh_fp": 4
+        },
+        {
+          "seed": 2,
+          "n": 160,
+          "eligible": 156,
+          "source_recall": 0.9875,
+          "fresh_recall": 0.9125,
+          "fresh_fp": 4
+        }
+      ],
+      "mean_source_recall": 0.9916666666666667,
+      "mean_fresh_recall": 0.9041666666666667
+    },
+    "gap": {
+      "seeds": [
+        {
+          "seed": 0,
+          "n": 160,
+          "eligible": 156,
+          "source_recall": 0.975,
+          "fresh_recall": 0.875,
+          "fresh_fp": 5
+        },
+        {
+          "seed": 1,
+          "n": 160,
+          "eligible": 156,
+          "source_recall": 0.95,
+          "fresh_recall": 0.875,
+          "fresh_fp": 4
+        },
+        {
+          "seed": 2,
+          "n": 160,
+          "eligible": 156,
+          "source_recall": 0.95,
+          "fresh_recall": 0.8875,
+          "fresh_fp": 4
+        }
+      ],
+      "mean_source_recall": 0.9583333333333334,
+      "mean_fresh_recall": 0.8791666666666668
+    }
+  },
+  "diagnostic_cases": {
+    "vpres": {
+      "seeds": [
+        {
+          "seed": 0,
+          "n": 17,
+          "eligible": 17,
+          "source_recall": 0.6,
+          "fresh_recall": 0.6,
+          "fresh_fp": 3
+        },
+        {
+          "seed": 1,
+          "n": 17,
+          "eligible": 17,
+          "source_recall": 0.4,
+          "fresh_recall": 0.4,
+          "fresh_fp": 2
+        },
+        {
+          "seed": 2,
+          "n": 17,
+          "eligible": 17,
+          "source_recall": 0.9,
+          "fresh_recall": 0.9,
+          "fresh_fp": 2
+        }
+      ],
+      "mean_source_recall": 0.6333333333333333,
+      "mean_fresh_recall": 0.6333333333333333
+    },
+    "image_head": {
+      "seeds": [
+        {
+          "seed": 0,
+          "n": 17,
+          "eligible": 17,
+          "source_recall": 0.9,
+          "fresh_recall": 1.0,
+          "fresh_fp": 2
+        },
+        {
+          "seed": 1,
+          "n": 17,
+          "eligible": 17,
+          "source_recall": 0.9,
+          "fresh_recall": 0.8,
+          "fresh_fp": 3
+        },
+        {
+          "seed": 2,
+          "n": 17,
+          "eligible": 17,
+          "source_recall": 0.9,
+          "fresh_recall": 1.0,
+          "fresh_fp": 3
+        }
+      ],
+      "mean_source_recall": 0.9,
+      "mean_fresh_recall": 0.9333333333333332
+    },
+    "vdrop": {
+      "seeds": [
+        {
+          "seed": 0,
+          "n": 17,
+          "eligible": 17,
+          "source_recall": 0.5,
+          "fresh_recall": 0.5,
+          "fresh_fp": 3
+        },
+        {
+          "seed": 1,
+          "n": 17,
+          "eligible": 17,
+          "source_recall": 0.5,
+          "fresh_recall": 0.4,
+          "fresh_fp": 2
+        },
+        {
+          "seed": 2,
+          "n": 17,
+          "eligible": 17,
+          "source_recall": 0.4,
+          "fresh_recall": 0.4,
+          "fresh_fp": 1
+        }
+      ],
+      "mean_source_recall": 0.4666666666666666,
+      "mean_fresh_recall": 0.43333333333333335
+    },
+    "gap": {
+      "seeds": [
+        {
+          "seed": 0,
+          "n": 17,
+          "eligible": 17,
+          "source_recall": 0.7,
+          "fresh_recall": 0.8,
+          "fresh_fp": 2
+        },
+        {
+          "seed": 1,
+          "n": 17,
+          "eligible": 17,
+          "source_recall": 0.9,
+          "fresh_recall": 0.9,
+          "fresh_fp": 1
+        },
+        {
+          "seed": 2,
+          "n": 17,
+          "eligible": 17,
+          "source_recall": 0.8,
+          "fresh_recall": 0.9,
+          "fresh_fp": 3
+        }
+      ],
+      "mean_source_recall": 0.8000000000000002,
+      "mean_fresh_recall": 0.8666666666666667
+    }
+  },
+  "policy": {
+    "policy": "min14_current_valid_v1",
+    "event_len": 19,
+    "min_valid_frames": 14,
+    "require_current_valid": true,
+    "missing_time_positions": "retained",
+    "event_rule": "contiguous threshold positives; abstention breaks interval",
+    "center_offset_frames": 9,
+    "threshold_probability": null,
+    "threshold_source": "unavailable; scores only"
+  },
+  "limitations": [
+    "Frozen crops precede the explicit float32 coordinate fix; this replays eligibility, not a new raw-video extraction.",
+    "Abstained positive events count as misses. Fixed small samples, descriptive only."
+  ]
+}

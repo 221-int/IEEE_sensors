@@ -1,0 +1,7 @@
+{
+  "recorded_training_git_commit": "74f9f3257b3f58beff9f4aae8ffb9c963beb9ea6",
+  "recorded_git_dirty": true,
+  "placeholder_code_in_recorded_commit": true,
+  "committed_trainer_sha256": "07de23fe1bb6d7b28836457a48a2d1697ed4030d882e4b071767cc4d40b10b85",
+  "limitation": "Recorded git was dirty; committed source supports history but is not an exact snapshot of the executed source."
+}

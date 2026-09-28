@@ -1,0 +1,75 @@
+{
+ "session_dir": "work\\pi_prep_2026-09-28\\pc_dryrun\\PC_DRYRUN_primary",
+ "protocol": "work\\pi_prep_2026-09-28\\protocol\\pi5_paced30_v1.json",
+ "protocol_sha256": "d571ede77999aa318c901fdc40d30641c9a14b779bbaf4ef5dffb80879c58522",
+ "n_runs_reportable": 0,
+ "n_runs_excluded": 3,
+ "excluded": [
+  {
+   "run_id": "P_b01_ear_rule",
+   "mode": "ear_rule",
+   "reasons": [
+    "not a Raspberry Pi run (no aarch64/vcgencmd): desktop dry run only",
+    "CPU governor not 'performance' at platform_start: {}",
+    "CPU governor not 'performance' at platform_end: {}",
+    "ORT must use intra_threads=2 and no spinning",
+    "PMIC read/parse errors: 207",
+    "no PMIC samples in idle_pre",
+    "no PMIC samples in active",
+    "no PMIC samples in idle_post",
+    "config warmup_s=3.0 differs from protocol 10.0",
+    "config settle_s=1.0 differs from protocol 5.0",
+    "config idle_pre_s=3.0 differs from protocol 60.0",
+    "config active_s=20.0 differs from protocol 300.0",
+    "config idle_post_s=2.0 differs from protocol 30.0",
+    "config no_spin=False differs from protocol True"
+   ]
+  },
+  {
+   "run_id": "P_b01_image_cnn_head",
+   "mode": "image_cnn_head",
+   "reasons": [
+    "not a Raspberry Pi run (no aarch64/vcgencmd): desktop dry run only",
+    "CPU governor not 'performance' at platform_start: {}",
+    "CPU governor not 'performance' at platform_end: {}",
+    "ORT must use intra_threads=2 and no spinning",
+    "PMIC read/parse errors: 207",
+    "no PMIC samples in idle_pre",
+    "no PMIC samples in active",
+    "no PMIC samples in idle_post",
+    "config warmup_s=3.0 differs from protocol 10.0",
+    "config settle_s=1.0 differs from protocol 5.0",
+    "config idle_pre_s=3.0 differs from protocol 60.0",
+    "config active_s=20.0 differs from protocol 300.0",
+    "config idle_post_s=2.0 differs from protocol 30.0",
+    "config no_spin=False differs from protocol True"
+   ]
+  },
+  {
+   "run_id": "P_b01_ours_vpres",
+   "mode": "ours_vpres",
+   "reasons": [
+    "not a Raspberry Pi run (no aarch64/vcgencmd): desktop dry run only",
+    "CPU governor not 'performance' at platform_start: {}",
+    "CPU governor not 'performance' at platform_end: {}",
+    "ORT must use intra_threads=2 and no spinning",
+    "PMIC read/parse errors: 207",
+    "no PMIC samples in idle_pre",
+    "no PMIC samples in active",
+    "no PMIC samples in idle_post",
+    "config warmup_s=3.0 differs from protocol 10.0",
+    "config settle_s=1.0 differs from protocol 5.0",
+    "config idle_pre_s=3.0 differs from protocol 60.0",
+    "config active_s=20.0 differs from protocol 300.0",
+    "config idle_post_s=2.0 differs from protocol 30.0",
+    "config no_spin=False differs from protocol True"
+   ]
+  }
+ ],
+ "per_mode": {},
+ "paired_within_block": {},
+ "input_consistency": {
+  "face_rate_range_all_runs": null
+ },
+ "_scope": "Descriptive over repeated runs on one device and one clip; power is the PMIC rail sum, not board input power; freerun and paced results are never pooled."
+}

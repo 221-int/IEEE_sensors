@@ -1,0 +1,102 @@
+{
+ "env": {
+  "seed": 0,
+  "deterministic": true,
+  "sealed": true,
+  "python": "3.12.10",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "numpy": "2.4.2",
+  "pythonhashseed": "0",
+  "cublas_workspace_config": ":4096:8",
+  "git_commit": "9ae8728a8100945261af0606fe29a43310c79f00",
+  "git_dirty": true,
+  "torch": "2.11.0+cu128",
+  "cuda_available": true,
+  "cuda_version": "12.8",
+  "cudnn_deterministic": true,
+  "cudnn_benchmark": false,
+  "gpu": "NVIDIA GeForce RTX 5080"
+ },
+ "bilstm": {
+  "mode": "image_cnn_bilstm",
+  "head_type": "bilstm",
+  "d_latent": 16,
+  "bidirectional_within_window_only": true,
+  "paths": {
+   "backbone": "models/v2/onnx/image_cnn_bilstm/backbone.onnx",
+   "head": "models/v2/onnx/image_cnn_bilstm/head.onnx"
+  },
+  "weights": "random (latency/power only)",
+  "_weights_warning": "무작위 초기화다. 지연/전력은 유효하지만 이 그래프의 판정 출력(probs)은 의미가 없다. 정확도는 results/v2/train_image_cnn_{head_type}*.json 을 쓴다.",
+  "params": {
+   "backbone": 471536,
+   "head": 8577,
+   "total": 480113
+  },
+  "mmac": {
+   "backbone_per_frame": 31.806592,
+   "head_per_frame_stride1": 0.081984,
+   "total_per_frame_stride1": 31.888575999999997
+  },
+  "file_sizes": {
+   "backbone": {
+    "bytes": 1888310,
+    "kb": 1844.1,
+    "external_data": false
+   },
+   "head": {
+    "bytes": 40549,
+    "kb": 39.6,
+    "external_data": false
+   }
+  },
+  "verification": {
+   "backbone_max_abs_diff": 5.21540641784668e-08,
+   "head_max_abs_diff": 5.960464477539063e-08,
+   "head_allzero_mask_max_abs_diff": 2.9802322387695312e-08,
+   "head_allzero_mask_finite": true,
+   "pass": true
+  }
+ },
+ "lstm": {
+  "mode": "image_cnn_lstm",
+  "head_type": "lstm",
+  "d_latent": 16,
+  "bidirectional_within_window_only": false,
+  "paths": {
+   "backbone": "models/v2/onnx/image_cnn_lstm/backbone.onnx",
+   "head": "models/v2/onnx/image_cnn_lstm/head.onnx"
+  },
+  "weights": "random (latency/power only)",
+  "_weights_warning": "무작위 초기화다. 지연/전력은 유효하지만 이 그래프의 판정 출력(probs)은 의미가 없다. 정확도는 results/v2/train_image_cnn_{head_type}*.json 을 쓴다.",
+  "params": {
+   "backbone": 471536,
+   "head": 4353,
+   "total": 475889
+  },
+  "mmac": {
+   "backbone_per_frame": 31.806592,
+   "head_per_frame_stride1": 0.041024,
+   "total_per_frame_stride1": 31.847616
+  },
+  "file_sizes": {
+   "backbone": {
+    "bytes": 1888310,
+    "kb": 1844.1,
+    "external_data": false
+   },
+   "head": {
+    "bytes": 23463,
+    "kb": 22.9,
+    "external_data": false
+   }
+  },
+  "verification": {
+   "backbone_max_abs_diff": 9.685754776000977e-08,
+   "head_max_abs_diff": 0.0,
+   "head_allzero_mask_max_abs_diff": 0.0,
+   "head_allzero_mask_finite": true,
+   "pass": true
+  }
+ }
+}

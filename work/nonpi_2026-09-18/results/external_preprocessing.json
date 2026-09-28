@@ -1,0 +1,21 @@
+{
+  "scope": "one-video pilot, EyeBlink8 video 9; previously used unlabelled for timing",
+  "video": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\data\\_legacy_public\\eyeblink8\\eyeblink8\\9\\27122013_152435_cam.avi",
+  "sha256": "d895e84ad08b3a647bad25b6c696448e2e8305a5cd37968d7075b2cee2e38e0a",
+  "annotation_sha256": "7e2ef67c660407de01b432c4d72eee2e55976bde46d6b1e963456c059238d01c",
+  "declared_frames": 5183,
+  "decoded_frames": 5134,
+  "native_fps": 30.0,
+  "unmatched_trailing_timestamps": 49,
+  "timestamp_duration": 171.069090937,
+  "target_frames": 5133,
+  "duplicate_samples": 174,
+  "unused_native_frames": 175,
+  "crop_coverage": 0.9974678613167122,
+  "annotation_range": [
+    74,
+    5133
+  ],
+  "annotated_frames": 5060,
+  "original_blink_ids": 41
+}

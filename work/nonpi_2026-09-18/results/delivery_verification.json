@@ -1,0 +1,36 @@
+{
+  "original_files_checked": 608,
+  "original_files_changed": [],
+  "archive_unreadable_files": [
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\archive\\HANDOFF.md"
+  ],
+  "gap_cost": {
+    "encoder_params": 33264,
+    "head_params": 4625,
+    "encoder_mmac": 31.36832,
+    "head_mmac": 0.045888
+  },
+  "scripts_sha256": {
+    "work\\nonpi_2026-09-18\\external_eval.py": "d59d3069e8a2c46d9f1b7fe0a908ad01849de77191708ee6441f1364d56a97a9",
+    "work\\nonpi_2026-09-18\\finalize_gap.py": "c7eea13c40c3a7ce3a71b306d8750768b37632a1fa9a89702267fd5c87c1e40a",
+    "work\\nonpi_2026-09-18\\posthoc_external_errors.py": "7c5d083b2c90df0cb9fb42bd3faa0f102fea43dbc610fc0748473379f59e29b8",
+    "work\\nonpi_2026-09-18\\reanalyse.py": "8f487a5197380ab91c42b269778dae8be02f6fed98808f00db0245dafb93fc43",
+    "work\\nonpi_2026-09-18\\revise_manuscript.py": "6d99a8eb176388e81fecdd47bf0a509e6a7a058ba82fcae03fbfeaa371d71b07",
+    "work\\nonpi_2026-09-18\\snapshot.py": "8f32511516eadb74bceab6b40fb664a11c38a136e8c4fb0c99fbe38bab788338",
+    "work\\nonpi_2026-09-18\\test_external_eval.py": "9bf95c0849bc18a776a38632dd5a5cbc06f4210a46b7a8ffac9a19fc1044df52",
+    "work\\nonpi_2026-09-18\\train_gap.py": "2d4092d4ae20606e2f17d776ec0d54bc014aa22b83b3f954e554b05e87cc5a41",
+    "work\\nonpi_2026-09-18\\validate_and_summarize.py": "3468bfa71f801178438a6fc71561995d1f1b37032c11ea2d813d6591dd2ecde6",
+    "work\\nonpi_2026-09-18\\verify_delivery.py": "c3c5fdbd8bd77b62e6a57f1d9dbad911b2a5db2c4db00bf56df40a1d7368b12c"
+  },
+  "environment": {
+    "python": "3.12.14",
+    "numpy": "1.26.4",
+    "torch": "2.11.0+cu128",
+    "cuda": "12.8",
+    "gpu": "NVIDIA GeForce RTX 5080"
+  },
+  "notes": [
+    "Compare completed training in gap_completion_status.json; no partial accuracy promoted.",
+    "PDF review draft clears unassigned publication metadata and labels the first-page footer as Review draft."
+  ]
+}

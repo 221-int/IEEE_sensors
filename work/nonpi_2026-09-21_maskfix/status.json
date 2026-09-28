@@ -1,0 +1,18 @@
+{
+  "state": "complete",
+  "updated": "2026-09-22T11:50:06.315236+09:00",
+  "controller_pid": 18420,
+  "completed": {
+    "vpres": 15,
+    "image_head": 15,
+    "vdrop": 15,
+    "gap": 15
+  },
+  "manuscripts_unchanged": {
+    "C:\\Users\\sch\\Downloads\\MCE_blink_detection.tex": true,
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\work\\nonpi_2026-09-18\\manuscript\\MCE_blink_detection.tex": true,
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\work\\nonpi_2026-09-18\\manuscript\\MCE_blink_detection.pdf": true,
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\output\\pdf\\MCE_blink_detection_nonpi_review.pdf": true
+  },
+  "results": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\work\\nonpi_2026-09-21_maskfix\\RESULTS.md"
+}

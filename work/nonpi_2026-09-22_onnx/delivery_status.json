@@ -1,0 +1,15 @@
+{
+  "state": "complete",
+  "updated": "2026-09-22T17:56:03.334285+09:00",
+  "scope": "step 3 corrected ONNX contracts and verified portable packages",
+  "models": 60,
+  "graphs": 120,
+  "package_model_counts": [
+    4,
+    60
+  ],
+  "archive_manifest_hashes_verified": true,
+  "original_files_unchanged": true,
+  "report": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\work\\nonpi_2026-09-22_onnx\\DELIVERY.md",
+  "pi_device_validation": "not yet run"
+}

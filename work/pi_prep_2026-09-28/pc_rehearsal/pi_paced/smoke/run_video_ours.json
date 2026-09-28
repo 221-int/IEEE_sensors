@@ -1,0 +1,139 @@
+{
+ "env": {
+  "seed": 0,
+  "deterministic": true,
+  "sealed": true,
+  "python": "3.12.14",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "numpy": "1.26.4",
+  "pythonhashseed": "0",
+  "cublas_workspace_config": ":4096:8",
+  "git_commit": null,
+  "git_dirty": false,
+  "torch": "2.11.0+cu128",
+  "cuda_available": true,
+  "cuda_version": "12.8",
+  "cudnn_deterministic": true,
+  "cudnn_benchmark": false,
+  "gpu": "NVIDIA GeForce RTX 5080"
+ },
+ "config": {
+  "mode": "ours",
+  "source": "clips/eyeblink8_v9_cam.avi",
+  "width": 640,
+  "height": 480,
+  "fps": 30,
+  "duration": 10.0,
+  "onnx_dir": "bundle/onnx/fold0_seed0",
+  "model_contract": null,
+  "intra_threads": 2,
+  "no_spin": true,
+  "head_stride": 1,
+  "refine_landmarks": false,
+  "out": "results/pi_paced/smoke/run_video_ours.json"
+ },
+ "platform": {
+  "machine": "AMD64",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "cpu_governor": null,
+  "ort_intra_threads": 2,
+  "ort_spinning": "disabled",
+  "has_vcgencmd": false
+ },
+ "head_stride": 1,
+ "weights": "trained (graph hash verified)",
+ "inference_policy": {
+  "policy": "min14_current_valid_v1",
+  "event_len": 19,
+  "min_valid_frames": 14,
+  "require_current_valid": true,
+  "missing_time_positions": "retained",
+  "event_rule": "contiguous threshold positives; abstention breaks interval",
+  "center_offset_frames": 9,
+  "threshold_probability": 0.2357231992222182,
+  "threshold_source": "model contract: source validation"
+ },
+ "n_positive_decisions": 170,
+ "head_mmac_per_frame": 0.045888,
+ "_head_cost_note": "stride 1 이므로 head 는 매 프레임 0.0459 MMAC 이다. 인코더 12.44 와 합쳐 12.49 MMAC/frame (head 0.37%).",
+ "frames": 2825,
+ "seconds": 10.003351800027303,
+ "sustained_fps": 282.4053433762361,
+ "n_no_detect": 13,
+ "detect_miss_rate": 0.004601769911504424,
+ "n_decisions": 2781,
+ "stages_ms": {
+  "read": {
+   "n": 2825,
+   "p50": 0.2544999588280916,
+   "p95": 0.32753995619714255,
+   "p99": 0.4483399493619784,
+   "max": 7.168899988755584,
+   "mean": 0.25901656667907946
+  },
+  "detect": {
+   "n": 2825,
+   "p50": 2.586000016890466,
+   "p95": 3.221880062483251,
+   "p99": 3.687092019245028,
+   "max": 18.204699968919158,
+   "mean": 2.6648947250394697
+  },
+  "crop": {
+   "n": 2812,
+   "p50": 0.23120001424103975,
+   "p95": 0.29833500739186997,
+   "p99": 0.4038889450021088,
+   "max": 1.1905999854207039,
+   "mean": 0.23425586725642128
+  },
+  "encode": {
+   "n": 2812,
+   "p50": 0.23819995112717152,
+   "p95": 0.32384502119384706,
+   "p99": 0.5416700628120436,
+   "max": 0.6974000716581941,
+   "mean": 0.24355128125133918
+  },
+  "head": {
+   "n": 2781,
+   "p50": 0.13990001752972603,
+   "p95": 0.18480001017451286,
+   "p99": 0.2511200262233608,
+   "max": 0.521700014360249,
+   "mean": 0.14151898699155208
+  },
+  "e2e": {
+   "n": 2825,
+   "p50": 3.4577999031171203,
+   "p95": 4.146359930746257,
+   "p99": 4.669755962677299,
+   "max": 26.330600026994944,
+   "mean": 3.5388344791264528
+  }
+ },
+ "thermal": {
+  "temp_start": null,
+  "temp_end": null,
+  "temp_p95": null,
+  "throttled_start": null,
+  "throttled_end": null,
+  "throttled_flags": [],
+  "throttled_clean": true
+ },
+ "cpu_percent_mean": null,
+ "rss_peak_mb": null,
+ "gate_G_E1": {
+  "budget_ms": 33.3,
+  "e2e_p99": 4.669755962677299,
+  "pass": true
+ },
+ "warnings": [
+  "측정 길이 10.0s < 300s. 지속 성능이 아니다",
+  "vcgencmd 가 없다 — Pi 가 아니다. 이 숫자는 논문에 쓰지 않는다"
+ ],
+ "equivalence_gate": {
+  "path": "results/v2/check_equivalence.json",
+  "authorized": true
+ }
+}

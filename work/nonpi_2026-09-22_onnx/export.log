@@ -1,0 +1,76 @@
+C:\Users\sch\PycharmProjects\IEEE_sensors\work\nonpi_2026-09-22_onnx\export_corrected.py:67: DeprecationWarning: You are using the legacy TorchScript-based ONNX export. Starting in PyTorch 2.9, the new torch.export-based ONNX exporter has become the default. Learn more about the new export logic: https://docs.pytorch.org/docs/stable/onnx_export.html. For exporting control flow: https://pytorch.org/tutorials/beginner/onnx/export_control_flow_model_to_onnx_tutorial.html
+  torch.onnx.export(front,torch.from_numpy(flat[:2]),str(folder/front_name),opset_version=17,dynamo=False,
+C:\Users\sch\PycharmProjects\IEEE_sensors\work\nonpi_2026-09-22_onnx\export_corrected.py:69: DeprecationWarning: You are using the legacy TorchScript-based ONNX export. Starting in PyTorch 2.9, the new torch.export-based ONNX exporter has become the default. Learn more about the new export logic: https://docs.pytorch.org/docs/stable/onnx_export.html. For exporting control flow: https://pytorch.org/tutorials/beginner/onnx/export_control_flow_model_to_onnx_tutorial.html
+  torch.onnx.export(wrapped,(torch.zeros(2,19,16),torch.ones(2,19)),str(folder/'head.onnx'),opset_version=17,dynamo=False,
+1/60 vpres fold0 seed0 error=1.04e-06
+2/60 image_head fold0 seed0 error=1.01e-06
+3/60 vdrop fold0 seed0 error=2.26e-06
+4/60 gap fold0 seed0 error=1.58e-06
+5/60 vpres fold0 seed1 error=1.59e-06
+6/60 image_head fold0 seed1 error=1.37e-06
+7/60 vdrop fold0 seed1 error=2.59e-06
+8/60 gap fold0 seed1 error=1.79e-06
+9/60 vpres fold0 seed2 error=5.96e-07
+10/60 image_head fold0 seed2 error=1.58e-06
+11/60 vdrop fold0 seed2 error=1.64e-06
+12/60 gap fold0 seed2 error=1.67e-06
+13/60 vpres fold1 seed0 error=2.25e-06
+14/60 image_head fold1 seed0 error=9.83e-07
+15/60 vdrop fold1 seed0 error=2.83e-06
+16/60 gap fold1 seed0 error=1.18e-06
+17/60 vpres fold1 seed1 error=1.61e-06
+18/60 image_head fold1 seed1 error=2.68e-07
+19/60 vdrop fold1 seed1 error=2e-06
+20/60 gap fold1 seed1 error=1.55e-06
+21/60 vpres fold1 seed2 error=2.92e-06
+22/60 image_head fold1 seed2 error=9.54e-07
+23/60 vdrop fold1 seed2 error=3.04e-06
+24/60 gap fold1 seed2 error=2.03e-06
+25/60 vpres fold2 seed0 error=1.28e-06
+26/60 image_head fold2 seed0 error=1.01e-06
+27/60 vdrop fold2 seed0 error=3.34e-06
+28/60 gap fold2 seed0 error=5.66e-07
+29/60 vpres fold2 seed1 error=9.69e-07
+30/60 image_head fold2 seed1 error=7.75e-07
+31/60 vdrop fold2 seed1 error=5.69e-06
+32/60 gap fold2 seed1 error=7.45e-07
+33/60 vpres fold2 seed2 error=1.91e-06
+34/60 image_head fold2 seed2 error=7.15e-07
+35/60 vdrop fold2 seed2 error=1.52e-06
+36/60 gap fold2 seed2 error=1.1e-06
+37/60 vpres fold3 seed0 error=1.04e-06
+38/60 image_head fold3 seed0 error=8.34e-07
+39/60 vdrop fold3 seed0 error=2.15e-06
+40/60 gap fold3 seed0 error=1.01e-06
+41/60 vpres fold3 seed1 error=2.91e-06
+42/60 image_head fold3 seed1 error=6.56e-07
+43/60 vdrop fold3 seed1 error=1.07e-06
+44/60 gap fold3 seed1 error=7.15e-07
+45/60 vpres fold3 seed2 error=1.12e-06
+46/60 image_head fold3 seed2 error=1.25e-06
+47/60 vdrop fold3 seed2 error=2.03e-06
+48/60 gap fold3 seed2 error=1.19e-06
+49/60 vpres fold4 seed0 error=1.13e-06
+50/60 image_head fold4 seed0 error=8.94e-07
+51/60 vdrop fold4 seed0 error=2.08e-06
+52/60 gap fold4 seed0 error=1.76e-06
+53/60 vpres fold4 seed1 error=2.65e-06
+54/60 image_head fold4 seed1 error=9.39e-07
+55/60 vdrop fold4 seed1 error=1.79e-06
+56/60 gap fold4 seed1 error=7.15e-07
+57/60 vpres fold4 seed2 error=8.34e-07
+58/60 image_head fold4 seed2 error=5.96e-07
+59/60 vdrop fold4 seed2 error=1.43e-06
+60/60 gap fold4 seed2 error=1.79e-06
+{
+  "created": "2026-09-22T17:48:32.619408+09:00",
+  "n_models": 60,
+  "n_graphs": 120,
+  "max_encoder_error": 3.814697265625e-06,
+  "max_probability_error": 5.692243576049805e-06,
+  "total_threshold_prediction_flips": 0,
+  "total_saved_gpu_vs_cpu_prediction_flips": 4,
+  "n_event_model_checks": 3346,
+  "default_bundle": "onnx/fold0_seed0",
+  "limits": "Desktop CPU numerical verification only; Pi device validation and benchmark are separate."
+}

@@ -1,0 +1,599 @@
+{
+ "schema": "paced_run_v1",
+ "run_id": "F_b02_image_cnn_head",
+ "session_id": "PC_DRYRUN_freerun",
+ "block": 2,
+ "order_index": 3,
+ "started": "2026-09-28T11:07:24.811848+09:00",
+ "finished": "2026-09-28T11:07:34.040859+09:00",
+ "mode": "image_cnn_head",
+ "config": {
+  "fps": 30.0,
+  "pacing": "freerun",
+  "budget_ms": 33.333333333333336,
+  "warmup_s": 3.0,
+  "settle_s": 1.0,
+  "idle_pre_s": 3.0,
+  "active_s": 20.0,
+  "idle_post_s": 2.0,
+  "power_hz": 7.5,
+  "thermal_hz": 1.0,
+  "intra_threads": 2,
+  "no_spin": true,
+  "refine_landmarks": false,
+  "head_stride": 1
+ },
+ "protocol": {
+  "path": "work\\pi_prep_2026-09-28\\protocol\\pi5_paced30_v1.json",
+  "sha256": "d571ede77999aa318c901fdc40d30641c9a14b779bbaf4ef5dffb80879c58522",
+  "id": "pi5_paced30_v1",
+  "set": "freerun"
+ },
+ "model": {
+  "variant": "image_head",
+  "fold": 0,
+  "seed": 0,
+  "study": "nonpi_2026-09-21_maskfix",
+  "graph_sha256": {
+   "backbone.onnx": "e995d45928eed37c2b27da099a941a1b245c842e3316db3e5afbd92ab20f9fad",
+   "head.onnx": "ad4d607daaa3d7f0655829bbb9f3fbfd3149beb3934a0eead467a81afd1a615f"
+  },
+  "threshold_probability": 0.5753302118007645
+ },
+ "weights": "trained (graph hash verified)",
+ "inference_policy": {
+  "policy": "min14_current_valid_v1",
+  "event_len": 19,
+  "min_valid_frames": 14,
+  "require_current_valid": true,
+  "missing_time_positions": "retained",
+  "event_rule": "contiguous threshold positives; abstention breaks interval",
+  "center_offset_frames": 9,
+  "threshold_probability": 0.5753302118007645,
+  "threshold_source": "model contract: source validation"
+ },
+ "gates": {
+  "bundle": {
+   "bundle_root": "work\\nonpi_2026-09-22_onnx\\packages\\pi_default",
+   "verification_file": "work\\nonpi_2026-09-22_onnx\\packages\\pi_default\\local_verification.json",
+   "errors": [],
+   "manifest_sha256": "e3e3506f36eff9d917933a299f0c6faf7eaac5ad127d9d86e551deabf1c58b7c",
+   "verified_machine": "AMD64",
+   "verified_ort": "1.30.0",
+   "verified_platform": "Windows-11-10.0.26200-SP0",
+   "verified_created": "2026-09-22T17:53:57.593680+09:00",
+   "contract": "onnx/fold0_seed0/image_cnn_head/contract.json",
+   "passed": true
+  },
+  "equivalence": {
+   "path": "results\\v2\\check_equivalence.json",
+   "authorized": true,
+   "sha256": "a66a32b51e537bbc0d0a9b4278ebf25ad4236343ef8881a1ec67422ff3df0dac"
+  }
+ },
+ "clip": {
+  "path": "data/_legacy_public/eyeblink8/eyeblink8/9/27122013_152435_cam.avi",
+  "sha256": "d895e84ad08b3a647bad25b6c696448e2e8305a5cd37968d7075b2cee2e38e0a",
+  "expected_sha256": "d895e84ad08b3a647bad25b6c696448e2e8305a5cd37968d7075b2cee2e38e0a",
+  "expected_frames_per_pass": 5134,
+  "fps_meta": 30.0,
+  "frame_count_meta": 5183.0,
+  "width": 640,
+  "height": 480
+ },
+ "loop_lengths": [],
+ "loop_mismatches": [],
+ "env": {
+  "seed": null,
+  "deterministic": false,
+  "sealed": false,
+  "python": "3.12.14",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "numpy": "1.26.4",
+  "pythonhashseed": null,
+  "cublas_workspace_config": null,
+  "git_commit": "9ae8728a8100945261af0606fe29a43310c79f00",
+  "git_dirty": true,
+  "torch": "2.11.0+cu128",
+  "cuda_available": true,
+  "cuda_version": "12.8",
+  "cudnn_deterministic": false,
+  "cudnn_benchmark": false,
+  "gpu": "NVIDIA GeForce RTX 5080",
+  "onnxruntime": "1.30.0",
+  "opencv": "4.11.0",
+  "machine": "AMD64",
+  "python_executable": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\.venv-nonpi\\Scripts\\python.exe"
+ },
+ "model_load_s": 0.0303582000778988,
+ "phases": {
+  "warmup": {
+   "t0": 943758.9171938,
+   "t1": 943759.2648481,
+   "wall0": "2026-09-28T02:07:25.416492+00:00",
+   "wall1": "2026-09-28T02:07:25.765014+00:00",
+   "duration_s": 0.3476543000433594,
+   "process_cpu_s": 0.515625,
+   "children_cpu_s": 0.0
+  },
+  "settle": {
+   "t0": 943759.2727933,
+   "t1": 943760.2728921,
+   "wall0": "2026-09-28T02:07:25.772015+00:00",
+   "wall1": "2026-09-28T02:07:26.773038+00:00",
+   "duration_s": 1.00009880005382,
+   "process_cpu_s": 0.140625,
+   "children_cpu_s": 0.0
+  },
+  "idle_pre": {
+   "t0": 943760.2729783,
+   "t1": 943763.2734801,
+   "wall0": "2026-09-28T02:07:26.773038+00:00",
+   "wall1": "2026-09-28T02:07:29.773627+00:00",
+   "duration_s": 3.000501799979247,
+   "process_cpu_s": 0.046875,
+   "children_cpu_s": 0.0
+  },
+  "active": {
+   "t0": 943763.2736131,
+   "t1": 943765.5145079,
+   "wall0": "2026-09-28T02:07:29.773627+00:00",
+   "wall1": "2026-09-28T02:07:32.013737+00:00",
+   "duration_s": 2.2408947999356315,
+   "process_cpu_s": 2.90625,
+   "children_cpu_s": 0.0
+  },
+  "idle_post": {
+   "t0": 943765.5145885,
+   "t1": 943767.5151005,
+   "wall0": "2026-09-28T02:07:32.014739+00:00",
+   "wall1": "2026-09-28T02:07:34.015224+00:00",
+   "duration_s": 2.0005119999404997,
+   "process_cpu_s": 0.03125,
+   "children_cpu_s": 0.0
+  }
+ },
+ "phase_log": [
+  {
+   "phase": "warmup",
+   "event": "start",
+   "t_perf": 943758.9171938,
+   "t_wall": 1790561245.4164925,
+   "wall_iso": "2026-09-28T02:07:25.416492+00:00",
+   "cpu_user_s": 0.546875,
+   "cpu_sys_s": 0.265625,
+   "children_user_s": 0.0,
+   "children_sys_s": 0.0
+  },
+  {
+   "phase": "warmup",
+   "event": "end",
+   "t_perf": 943759.2648481,
+   "t_wall": 1790561245.7650142,
+   "wall_iso": "2026-09-28T02:07:25.765014+00:00",
+   "cpu_user_s": 0.84375,
+   "cpu_sys_s": 0.484375,
+   "children_user_s": 0.0,
+   "children_sys_s": 0.0
+  },
+  {
+   "phase": "settle",
+   "event": "start",
+   "t_perf": 943759.2727933,
+   "t_wall": 1790561245.772015,
+   "wall_iso": "2026-09-28T02:07:25.772015+00:00",
+   "cpu_user_s": 0.859375,
+   "cpu_sys_s": 0.484375,
+   "children_user_s": 0.0,
+   "children_sys_s": 0.0
+  },
+  {
+   "phase": "settle",
+   "event": "end",
+   "t_perf": 943760.2728921,
+   "t_wall": 1790561246.773038,
+   "wall_iso": "2026-09-28T02:07:26.773038+00:00",
+   "cpu_user_s": 0.953125,
+   "cpu_sys_s": 0.53125,
+   "children_user_s": 0.0,
+   "children_sys_s": 0.0
+  },
+  {
+   "phase": "idle_pre",
+   "event": "start",
+   "t_perf": 943760.2729783,
+   "t_wall": 1790561246.773038,
+   "wall_iso": "2026-09-28T02:07:26.773038+00:00",
+   "cpu_user_s": 0.953125,
+   "cpu_sys_s": 0.53125,
+   "children_user_s": 0.0,
+   "children_sys_s": 0.0
+  },
+  {
+   "phase": "idle_pre",
+   "event": "end",
+   "t_perf": 943763.2734801,
+   "t_wall": 1790561249.7736268,
+   "wall_iso": "2026-09-28T02:07:29.773627+00:00",
+   "cpu_user_s": 0.953125,
+   "cpu_sys_s": 0.578125,
+   "children_user_s": 0.0,
+   "children_sys_s": 0.0
+  },
+  {
+   "phase": "active",
+   "event": "start",
+   "t_perf": 943763.2736131,
+   "t_wall": 1790561249.7736268,
+   "wall_iso": "2026-09-28T02:07:29.773627+00:00",
+   "cpu_user_s": 0.953125,
+   "cpu_sys_s": 0.578125,
+   "children_user_s": 0.0,
+   "children_sys_s": 0.0
+  },
+  {
+   "phase": "active",
+   "event": "end",
+   "t_perf": 943765.5145079,
+   "t_wall": 1790561252.0137374,
+   "wall_iso": "2026-09-28T02:07:32.013737+00:00",
+   "cpu_user_s": 3.1875,
+   "cpu_sys_s": 1.25,
+   "children_user_s": 0.0,
+   "children_sys_s": 0.0
+  },
+  {
+   "phase": "idle_post",
+   "event": "start",
+   "t_perf": 943765.5145885,
+   "t_wall": 1790561252.014739,
+   "wall_iso": "2026-09-28T02:07:32.014739+00:00",
+   "cpu_user_s": 3.1875,
+   "cpu_sys_s": 1.25,
+   "children_user_s": 0.0,
+   "children_sys_s": 0.0
+  },
+  {
+   "phase": "idle_post",
+   "event": "end",
+   "t_perf": 943767.5151005,
+   "t_wall": 1790561254.015224,
+   "wall_iso": "2026-09-28T02:07:34.015224+00:00",
+   "cpu_user_s": 3.1875,
+   "cpu_sys_s": 1.28125,
+   "children_user_s": 0.0,
+   "children_sys_s": 0.0
+  }
+ ],
+ "warmup_pacing": {
+  "policy": "freerun",
+  "fps_nominal": 30.0,
+  "period_ms": 33.333333333333336,
+  "n_timeline_frames": 90,
+  "n_processed": 90,
+  "n_dropped": 0,
+  "n_not_reached": 0,
+  "duration_s": 0.34739219991024584,
+  "nominal_duration_s": null,
+  "processed_per_s": 259.0731744214548,
+  "processing_ms": {
+   "n": 90,
+   "mean": 3.854047778683404,
+   "p50": 3.6727000260725617,
+   "p95": 4.828149965032934,
+   "p99": 6.771836054977022,
+   "max": 18.820299999788404
+  },
+  "wait_ms_total": 0.05219981539994478,
+  "busy_fraction": 0.9984803923954658,
+  "n_overrun_processing_gt_period": 0,
+  "deadline": "not defined for freerun",
+  "budget_ms": null
+ },
+ "pacing": {
+  "policy": "freerun",
+  "fps_nominal": 30.0,
+  "period_ms": 33.333333333333336,
+  "n_timeline_frames": 600,
+  "n_processed": 600,
+  "n_dropped": 0,
+  "n_not_reached": 0,
+  "duration_s": 2.2407393999164924,
+  "nominal_duration_s": null,
+  "processed_per_s": 267.7687552699617,
+  "processing_ms": {
+   "n": 600,
+   "mean": 3.7294878339162096,
+   "p50": 3.639850008767098,
+   "p95": 4.334574943641201,
+   "p99": 5.375496065244078,
+   "max": 10.606100084260106
+  },
+  "wait_ms_total": 0.34730089828372,
+  "busy_fraction": 0.998640315082209,
+  "n_overrun_processing_gt_period": 0,
+  "deadline": "not defined for freerun",
+  "budget_ms": null
+ },
+ "stages_ms": {
+  "read": {
+   "n": 600,
+   "mean": 0.28446416603401303,
+   "p50": 0.26599998818710446,
+   "p95": 0.3444199508521706,
+   "p99": 0.44942404492758203,
+   "max": 6.704600062221289
+  },
+  "skip": {
+   "n": 600,
+   "mean": 0.00018183277764668068,
+   "p50": 0.000200001522898674,
+   "p95": 0.000200001522898674,
+   "p99": 0.000300002284348011,
+   "max": 0.000600004568696022
+  },
+  "detect": {
+   "n": 600,
+   "mean": 2.613502168096602,
+   "p50": 2.526500029489398,
+   "p95": 3.25430998345837,
+   "p99": 4.0387130179442465,
+   "max": 4.668000037781894
+  },
+  "crop": {
+   "n": 587,
+   "mean": 0.23152913047029325,
+   "p50": 0.22659997921437025,
+   "p95": 0.2945399144664407,
+   "p99": 0.5220059677958483,
+   "max": 0.9496000129729509
+  },
+  "encode": {
+   "n": 587,
+   "mean": 0.4621325383990927,
+   "p50": 0.4408999811857939,
+   "p95": 0.6438300479203458,
+   "p99": 0.9033599938265979,
+   "max": 1.3064000522717834
+  },
+  "head": {
+   "n": 556,
+   "mean": 0.15265827604046883,
+   "p50": 0.14834996545687318,
+   "p95": 0.19304995657876134,
+   "p99": 0.36332997260615246,
+   "max": 0.7286999607458711
+  }
+ },
+ "outcomes": {
+  "face": 587,
+  "crop_ok": 587,
+  "decision": 556,
+  "onset": 9,
+  "n_processed": 600,
+  "face_rate": 0.9783333333333334,
+  "n_seams": 0,
+  "seam_timeline_indices": []
+ },
+ "power": {
+  "quantity": "pmic_rail_sum_w (12 current rails V*I; not verified as board input power)",
+  "windows": {
+   "warmup": {
+    "n": 0,
+    "duration_s": 0.3476543000433594
+   },
+   "idle_pre": {
+    "n": 0,
+    "duration_s": 3.000501799979247
+   },
+   "active": {
+    "n": 0,
+    "duration_s": 2.2408947999356315
+   },
+   "idle_post": {
+    "n": 0,
+    "duration_s": 2.0005119999404997
+   }
+  },
+  "idle_pre_w": null,
+  "active_w": null,
+  "idle_post_w": null,
+  "parse_errors": 62,
+  "missing_rails": [],
+  "n_raw_samples": 62,
+  "first_raw_sample": null
+ },
+ "thermal": {
+  "warmup": {
+   "n": 0,
+   "temp_c": null,
+   "arm_hz": null,
+   "fan_rpm": null,
+   "throttle_now_flags": [],
+   "rss_mb_max": null
+  },
+  "idle_pre": {
+   "n": 3,
+   "temp_c": null,
+   "arm_hz": null,
+   "fan_rpm": null,
+   "throttle_now_flags": [],
+   "rss_mb_max": null
+  },
+  "active": {
+   "n": 2,
+   "temp_c": null,
+   "arm_hz": null,
+   "fan_rpm": null,
+   "throttle_now_flags": [],
+   "rss_mb_max": null
+  },
+  "idle_post": {
+   "n": 2,
+   "temp_c": null,
+   "arm_hz": null,
+   "fan_rpm": null,
+   "throttle_now_flags": [],
+   "rss_mb_max": null
+  }
+ },
+ "thermal_samples": [
+  {
+   "t": 943758.9168861,
+   "temp_c": null,
+   "throttled": null,
+   "arm_hz": null,
+   "fan": {
+    "rpm": null,
+    "pwm": null
+   },
+   "rss_mb": null
+  },
+  {
+   "t": 943759.9349749,
+   "temp_c": null,
+   "throttled": null,
+   "arm_hz": null,
+   "fan": {
+    "rpm": null,
+    "pwm": null
+   },
+   "rss_mb": null
+  },
+  {
+   "t": 943760.9497065,
+   "temp_c": null,
+   "throttled": null,
+   "arm_hz": null,
+   "fan": {
+    "rpm": null,
+    "pwm": null
+   },
+   "rss_mb": null
+  },
+  {
+   "t": 943761.9632274,
+   "temp_c": null,
+   "throttled": null,
+   "arm_hz": null,
+   "fan": {
+    "rpm": null,
+    "pwm": null
+   },
+   "rss_mb": null
+  },
+  {
+   "t": 943762.9763742,
+   "temp_c": null,
+   "throttled": null,
+   "arm_hz": null,
+   "fan": {
+    "rpm": null,
+    "pwm": null
+   },
+   "rss_mb": null
+  },
+  {
+   "t": 943763.9939769,
+   "temp_c": null,
+   "throttled": null,
+   "arm_hz": null,
+   "fan": {
+    "rpm": null,
+    "pwm": null
+   },
+   "rss_mb": null
+  },
+  {
+   "t": 943765.0079844,
+   "temp_c": null,
+   "throttled": null,
+   "arm_hz": null,
+   "fan": {
+    "rpm": null,
+    "pwm": null
+   },
+   "rss_mb": null
+  },
+  {
+   "t": 943766.0180196,
+   "temp_c": null,
+   "throttled": null,
+   "arm_hz": null,
+   "fan": {
+    "rpm": null,
+    "pwm": null
+   },
+   "rss_mb": null
+  },
+  {
+   "t": 943767.0293326,
+   "temp_c": null,
+   "throttled": null,
+   "arm_hz": null,
+   "fan": {
+    "rpm": null,
+    "pwm": null
+   },
+   "rss_mb": null
+  }
+ ],
+ "platform_start": {
+  "temp_c": null,
+  "throttled": {
+   "raw": null,
+   "now": [],
+   "sticky": []
+  },
+  "arm_hz": null,
+  "governors": {},
+  "fan": {
+   "rpm": null,
+   "pwm": null
+  },
+  "model": null,
+  "cmdline_has_vcgencmd": false
+ },
+ "platform_end": {
+  "temp_c": null,
+  "throttled": {
+   "raw": null,
+   "now": [],
+   "sticky": []
+  },
+  "arm_hz": null,
+  "governors": {},
+  "fan": {
+   "rpm": null,
+   "pwm": null
+  },
+  "model": null,
+  "cmdline_has_vcgencmd": false
+ },
+ "files": {
+  "frames": "frames.npz",
+  "pmic_raw": "pmic_raw.jsonl.gz"
+ },
+ "_notes": [
+  "Latency = paced 30 Hz replay of a fixed clip; not free-run throughput.",
+  "Power = PMIC rail sum; not validated as whole-board input power."
+ ],
+ "qc": {
+  "hard_fail": [
+   "not a Raspberry Pi run (no aarch64/vcgencmd): desktop dry run only",
+   "CPU governor not 'performance' at platform_start: {}",
+   "CPU governor not 'performance' at platform_end: {}",
+   "PMIC read/parse errors: 62",
+   "no PMIC samples in idle_pre",
+   "no PMIC samples in active",
+   "no PMIC samples in idle_post"
+  ],
+  "warnings": [
+   "freerun diagnostic: no 30 fps deadline; do not report as real-time"
+  ],
+  "reportable": false,
+  "workload_identical": true,
+  "realtime_pass": false,
+  "response_p99_within_budget": false
+ }
+}

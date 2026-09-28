@@ -1,0 +1,266 @@
+2026-09-28T11:06:46.409694+09:00 session PC_DRYRUN_freerun set=freerun exploratory=True protocol=work\pi_prep_2026-09-28\protocol\pi5_paced30_v1.json
+2026-09-28T11:06:50.341389+09:00 PREFLIGHT: not a Raspberry Pi (aarch64 + vcgencmd)
+2026-09-28T11:06:50.341389+09:00 PREFLIGHT: governor not performance: {}
+2026-09-28T11:06:50.342384+09:00 PREFLIGHT: throttled=None [] (reboot / fix power & cooling)
+2026-09-28T11:06:50.343386+09:00 reference idle 2s for session temperature
+2026-09-28T11:06:52.348869+09:00 reference temp None
+2026-09-28T11:06:52.348869+09:00 run F_b01_ours_vpres (block 1, #0): C:\Users\sch\PycharmProjects\IEEE_sensors\.venv-nonpi\Scripts\python.exe -m src.v2.deploy.run_paced --mode ours_vpres --bundle-root work\nonpi_2026-09-22_onnx\packages\pi_default --bundle-verification work\nonpi_2026-09-22_onnx\packages\pi_default\local_verification.json --equivalence-gate results\v2\check_equivalence.json --source data/_legacy_public/eyeblink8/eyeblink8/9/27122013_152435_cam.avi --expected-clip-sha256 d895e84ad08b3a647bad25b6c696448e2e8305a5cd37968d7075b2cee2e38e0a --expected-clip-frames 5134 --protocol work\pi_prep_2026-09-28\protocol\pi5_paced30_v1.json --protocol-set freerun --out-dir work\pi_prep_2026-09-28\pc_dryrun\PC_DRYRUN_freerun --run-id F_b01_ours_vpres --session-id PC_DRYRUN_freerun --block 1 --order-index 0 --fps 30.0 --pacing freerun --budget-ms 33.333333333333336 --warmup-s 3.0 --settle-s 1.0 --idle-pre-s 3.0 --active-s 20.0 --idle-post-s 2.0 --power-hz 7.5 --thermal-hz 1.0 --intra-threads 2 --no-spin
+INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+W0000 00:00:1790561213.122350    5780 inference_feedback_manager.cc:114] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1790561213.128310   13216 inference_feedback_manager.cc:114] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+[phase] warmup    start wall=2026-09-28T02:06:53.133995+00:00
+W0000 00:00:1790561213.152653   27036 landmark_projection_calculator.cc:186] Using NORM_RECT without IMAGE_DIMENSIONS is only supported for the square ROI. Provide IMAGE_DIMENSIONS or use PROJECTION_MATRIX.
+[phase] warmup    end   wall=2026-09-28T02:06:53.456242+00:00
+[phase] settle    start wall=2026-09-28T02:06:53.463760+00:00
+[phase] settle    end   wall=2026-09-28T02:06:54.464301+00:00
+[phase] idle_pre  start wall=2026-09-28T02:06:54.464301+00:00
+[phase] idle_pre  end   wall=2026-09-28T02:06:57.464561+00:00
+[phase] active    start wall=2026-09-28T02:06:57.464561+00:00
+[phase] active    end   wall=2026-09-28T02:06:59.514827+00:00
+[phase] idle_post start wall=2026-09-28T02:06:59.514827+00:00
+[phase] idle_post end   wall=2026-09-28T02:07:01.515244+00:00
+ours_vpres F_b01_ours_vpres: processed 600/600, dropped 0, miss None, response p99 None, reportable=False
+  ! not a Raspberry Pi run (no aarch64/vcgencmd): desktop dry run only
+  ! CPU governor not 'performance' at platform_start: {}
+  ! CPU governor not 'performance' at platform_end: {}
+  ! PMIC read/parse errors: 60
+  ! no PMIC samples in idle_pre
+  ! no PMIC samples in active
+  ! no PMIC samples in idle_post
+  ! freerun diagnostic: no 30 fps deadline; do not report as real-time
+  -> work\pi_prep_2026-09-28\pc_dryrun\PC_DRYRUN_freerun\F_b01_ours_vpres\run.json
+2026-09-28T11:07:03.198260+09:00 run F_b01_ours_vpres exit 0
+2026-09-28T11:07:03.198260+09:00 cooldown: minimum 0s
+2026-09-28T11:07:03.200260+09:00 cooldown done: {'waited_s': 0.015999999945051968, 'target_c': None, 'temp_at_start_c': None, 'target_met': True}
+2026-09-28T11:07:03.200260+09:00 run F_b01_image_cnn_head (block 1, #1): C:\Users\sch\PycharmProjects\IEEE_sensors\.venv-nonpi\Scripts\python.exe -m src.v2.deploy.run_paced --mode image_cnn_head --bundle-root work\nonpi_2026-09-22_onnx\packages\pi_default --bundle-verification work\nonpi_2026-09-22_onnx\packages\pi_default\local_verification.json --equivalence-gate results\v2\check_equivalence.json --source data/_legacy_public/eyeblink8/eyeblink8/9/27122013_152435_cam.avi --expected-clip-sha256 d895e84ad08b3a647bad25b6c696448e2e8305a5cd37968d7075b2cee2e38e0a --expected-clip-frames 5134 --protocol work\pi_prep_2026-09-28\protocol\pi5_paced30_v1.json --protocol-set freerun --out-dir work\pi_prep_2026-09-28\pc_dryrun\PC_DRYRUN_freerun --run-id F_b01_image_cnn_head --session-id PC_DRYRUN_freerun --block 1 --order-index 1 --fps 30.0 --pacing freerun --budget-ms 33.333333333333336 --warmup-s 3.0 --settle-s 1.0 --idle-pre-s 3.0 --active-s 20.0 --idle-post-s 2.0 --power-hz 7.5 --thermal-hz 1.0 --intra-threads 2 --no-spin
+INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+W0000 00:00:1790561223.958687   32804 inference_feedback_manager.cc:114] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1790561223.964098   32804 inference_feedback_manager.cc:114] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+[phase] warmup    start wall=2026-09-28T02:07:03.971236+00:00
+W0000 00:00:1790561223.989682   32804 landmark_projection_calculator.cc:186] Using NORM_RECT without IMAGE_DIMENSIONS is only supported for the square ROI. Provide IMAGE_DIMENSIONS or use PROJECTION_MATRIX.
+[phase] warmup    end   wall=2026-09-28T02:07:04.317697+00:00
+[phase] settle    start wall=2026-09-28T02:07:04.325695+00:00
+[phase] settle    end   wall=2026-09-28T02:07:05.326487+00:00
+[phase] idle_pre  start wall=2026-09-28T02:07:05.326487+00:00
+[phase] idle_pre  end   wall=2026-09-28T02:07:08.327227+00:00
+[phase] active    start wall=2026-09-28T02:07:08.327227+00:00
+[phase] active    end   wall=2026-09-28T02:07:10.534616+00:00
+[phase] idle_post start wall=2026-09-28T02:07:10.534616+00:00
+[phase] idle_post end   wall=2026-09-28T02:07:12.535304+00:00
+image_cnn_head F_b01_image_cnn_head: processed 600/600, dropped 0, miss None, response p99 None, reportable=False
+  ! not a Raspberry Pi run (no aarch64/vcgencmd): desktop dry run only
+  ! CPU governor not 'performance' at platform_start: {}
+  ! CPU governor not 'performance' at platform_end: {}
+  ! PMIC read/parse errors: 62
+  ! no PMIC samples in idle_pre
+  ! no PMIC samples in active
+  ! no PMIC samples in idle_post
+  ! freerun diagnostic: no 30 fps deadline; do not report as real-time
+  -> work\pi_prep_2026-09-28\pc_dryrun\PC_DRYRUN_freerun\F_b01_image_cnn_head\run.json
+2026-09-28T11:07:14.227578+09:00 run F_b01_image_cnn_head exit 0
+2026-09-28T11:07:14.227578+09:00 cooldown: minimum 0s
+2026-09-28T11:07:14.229588+09:00 cooldown done: {'waited_s': 0.0, 'target_c': None, 'temp_at_start_c': None, 'target_met': True}
+2026-09-28T11:07:14.229588+09:00 run F_b01_ear_rule (block 1, #2): C:\Users\sch\PycharmProjects\IEEE_sensors\.venv-nonpi\Scripts\python.exe -m src.v2.deploy.run_paced --mode ear_rule --bundle-root work\nonpi_2026-09-22_onnx\packages\pi_default --bundle-verification work\nonpi_2026-09-22_onnx\packages\pi_default\local_verification.json --equivalence-gate results\v2\check_equivalence.json --source data/_legacy_public/eyeblink8/eyeblink8/9/27122013_152435_cam.avi --expected-clip-sha256 d895e84ad08b3a647bad25b6c696448e2e8305a5cd37968d7075b2cee2e38e0a --expected-clip-frames 5134 --protocol work\pi_prep_2026-09-28\protocol\pi5_paced30_v1.json --protocol-set freerun --out-dir work\pi_prep_2026-09-28\pc_dryrun\PC_DRYRUN_freerun --run-id F_b01_ear_rule --session-id PC_DRYRUN_freerun --block 1 --order-index 2 --fps 30.0 --pacing freerun --budget-ms 33.333333333333336 --warmup-s 3.0 --settle-s 1.0 --idle-pre-s 3.0 --active-s 20.0 --idle-post-s 2.0 --power-hz 7.5 --thermal-hz 1.0 --intra-threads 2 --no-spin
+INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+W0000 00:00:1790561234.958191   31080 inference_feedback_manager.cc:114] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1790561234.963645   31080 inference_feedback_manager.cc:114] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+[phase] warmup    start wall=2026-09-28T02:07:14.970616+00:00
+W0000 00:00:1790561234.988572    9720 landmark_projection_calculator.cc:186] Using NORM_RECT without IMAGE_DIMENSIONS is only supported for the square ROI. Provide IMAGE_DIMENSIONS or use PROJECTION_MATRIX.
+[phase] warmup    end   wall=2026-09-28T02:07:15.249608+00:00
+[phase] settle    start wall=2026-09-28T02:07:15.258244+00:00
+[phase] settle    end   wall=2026-09-28T02:07:16.259082+00:00
+[phase] idle_pre  start wall=2026-09-28T02:07:16.259082+00:00
+[phase] idle_pre  end   wall=2026-09-28T02:07:19.259260+00:00
+[phase] active    start wall=2026-09-28T02:07:19.259260+00:00
+[phase] active    end   wall=2026-09-28T02:07:20.963073+00:00
+[phase] idle_post start wall=2026-09-28T02:07:20.963073+00:00
+[phase] idle_post end   wall=2026-09-28T02:07:22.964219+00:00
+ear_rule F_b01_ear_rule: processed 600/600, dropped 0, miss None, response p99 None, reportable=False
+  ! not a Raspberry Pi run (no aarch64/vcgencmd): desktop dry run only
+  ! CPU governor not 'performance' at platform_start: {}
+  ! CPU governor not 'performance' at platform_end: {}
+  ! PMIC read/parse errors: 57
+  ! no PMIC samples in idle_pre
+  ! no PMIC samples in active
+  ! no PMIC samples in idle_post
+  ! freerun diagnostic: no 30 fps deadline; do not report as real-time
+  -> work\pi_prep_2026-09-28\pc_dryrun\PC_DRYRUN_freerun\F_b01_ear_rule\run.json
+2026-09-28T11:07:24.647480+09:00 run F_b01_ear_rule exit 0
+2026-09-28T11:07:24.647480+09:00 cooldown: minimum 0s
+2026-09-28T11:07:24.650486+09:00 cooldown done: {'waited_s': 0.0, 'target_c': None, 'temp_at_start_c': None, 'target_met': True}
+2026-09-28T11:07:24.650486+09:00 run F_b02_image_cnn_head (block 2, #3): C:\Users\sch\PycharmProjects\IEEE_sensors\.venv-nonpi\Scripts\python.exe -m src.v2.deploy.run_paced --mode image_cnn_head --bundle-root work\nonpi_2026-09-22_onnx\packages\pi_default --bundle-verification work\nonpi_2026-09-22_onnx\packages\pi_default\local_verification.json --equivalence-gate results\v2\check_equivalence.json --source data/_legacy_public/eyeblink8/eyeblink8/9/27122013_152435_cam.avi --expected-clip-sha256 d895e84ad08b3a647bad25b6c696448e2e8305a5cd37968d7075b2cee2e38e0a --expected-clip-frames 5134 --protocol work\pi_prep_2026-09-28\protocol\pi5_paced30_v1.json --protocol-set freerun --out-dir work\pi_prep_2026-09-28\pc_dryrun\PC_DRYRUN_freerun --run-id F_b02_image_cnn_head --session-id PC_DRYRUN_freerun --block 2 --order-index 3 --fps 30.0 --pacing freerun --budget-ms 33.333333333333336 --warmup-s 3.0 --settle-s 1.0 --idle-pre-s 3.0 --active-s 20.0 --idle-post-s 2.0 --power-hz 7.5 --thermal-hz 1.0 --intra-threads 2 --no-spin
+INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+W0000 00:00:1790561245.404408    4436 inference_feedback_manager.cc:114] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1790561245.409790    4436 inference_feedback_manager.cc:114] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+[phase] warmup    start wall=2026-09-28T02:07:25.416492+00:00
+W0000 00:00:1790561245.434083   21304 landmark_projection_calculator.cc:186] Using NORM_RECT without IMAGE_DIMENSIONS is only supported for the square ROI. Provide IMAGE_DIMENSIONS or use PROJECTION_MATRIX.
+[phase] warmup    end   wall=2026-09-28T02:07:25.765014+00:00
+[phase] settle    start wall=2026-09-28T02:07:25.772015+00:00
+[phase] settle    end   wall=2026-09-28T02:07:26.773038+00:00
+[phase] idle_pre  start wall=2026-09-28T02:07:26.773038+00:00
+[phase] idle_pre  end   wall=2026-09-28T02:07:29.773627+00:00
+[phase] active    start wall=2026-09-28T02:07:29.773627+00:00
+[phase] active    end   wall=2026-09-28T02:07:32.013737+00:00
+[phase] idle_post start wall=2026-09-28T02:07:32.014739+00:00
+[phase] idle_post end   wall=2026-09-28T02:07:34.015224+00:00
+image_cnn_head F_b02_image_cnn_head: processed 600/600, dropped 0, miss None, response p99 None, reportable=False
+  ! not a Raspberry Pi run (no aarch64/vcgencmd): desktop dry run only
+  ! CPU governor not 'performance' at platform_start: {}
+  ! CPU governor not 'performance' at platform_end: {}
+  ! PMIC read/parse errors: 62
+  ! no PMIC samples in idle_pre
+  ! no PMIC samples in active
+  ! no PMIC samples in idle_post
+  ! freerun diagnostic: no 30 fps deadline; do not report as real-time
+  -> work\pi_prep_2026-09-28\pc_dryrun\PC_DRYRUN_freerun\F_b02_image_cnn_head\run.json
+2026-09-28T11:07:35.684300+09:00 run F_b02_image_cnn_head exit 0
+2026-09-28T11:07:35.684300+09:00 cooldown: minimum 0s
+2026-09-28T11:07:35.687307+09:00 cooldown done: {'waited_s': 0.0, 'target_c': None, 'temp_at_start_c': None, 'target_met': True}
+2026-09-28T11:07:35.687307+09:00 run F_b02_ours_vpres (block 2, #4): C:\Users\sch\PycharmProjects\IEEE_sensors\.venv-nonpi\Scripts\python.exe -m src.v2.deploy.run_paced --mode ours_vpres --bundle-root work\nonpi_2026-09-22_onnx\packages\pi_default --bundle-verification work\nonpi_2026-09-22_onnx\packages\pi_default\local_verification.json --equivalence-gate results\v2\check_equivalence.json --source data/_legacy_public/eyeblink8/eyeblink8/9/27122013_152435_cam.avi --expected-clip-sha256 d895e84ad08b3a647bad25b6c696448e2e8305a5cd37968d7075b2cee2e38e0a --expected-clip-frames 5134 --protocol work\pi_prep_2026-09-28\protocol\pi5_paced30_v1.json --protocol-set freerun --out-dir work\pi_prep_2026-09-28\pc_dryrun\PC_DRYRUN_freerun --run-id F_b02_ours_vpres --session-id PC_DRYRUN_freerun --block 2 --order-index 4 --fps 30.0 --pacing freerun --budget-ms 33.333333333333336 --warmup-s 3.0 --settle-s 1.0 --idle-pre-s 3.0 --active-s 20.0 --idle-post-s 2.0 --power-hz 7.5 --thermal-hz 1.0 --intra-threads 2 --no-spin
+INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+W0000 00:00:1790561256.436448   33632 inference_feedback_manager.cc:114] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1790561256.441961   29892 inference_feedback_manager.cc:114] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+[phase] warmup    start wall=2026-09-28T02:07:36.449069+00:00
+W0000 00:00:1790561256.467156   12468 landmark_projection_calculator.cc:186] Using NORM_RECT without IMAGE_DIMENSIONS is only supported for the square ROI. Provide IMAGE_DIMENSIONS or use PROJECTION_MATRIX.
+[phase] warmup    end   wall=2026-09-28T02:07:36.766457+00:00
+[phase] settle    start wall=2026-09-28T02:07:36.774461+00:00
+[phase] settle    end   wall=2026-09-28T02:07:37.775022+00:00
+[phase] idle_pre  start wall=2026-09-28T02:07:37.775022+00:00
+[phase] idle_pre  end   wall=2026-09-28T02:07:40.775420+00:00
+[phase] active    start wall=2026-09-28T02:07:40.775420+00:00
+[phase] active    end   wall=2026-09-28T02:07:42.819142+00:00
+[phase] idle_post start wall=2026-09-28T02:07:42.819142+00:00
+[phase] idle_post end   wall=2026-09-28T02:07:44.819744+00:00
+ours_vpres F_b02_ours_vpres: processed 600/600, dropped 0, miss None, response p99 None, reportable=False
+  ! not a Raspberry Pi run (no aarch64/vcgencmd): desktop dry run only
+  ! CPU governor not 'performance' at platform_start: {}
+  ! CPU governor not 'performance' at platform_end: {}
+  ! PMIC read/parse errors: 60
+  ! no PMIC samples in idle_pre
+  ! no PMIC samples in active
+  ! no PMIC samples in idle_post
+  ! freerun diagnostic: no 30 fps deadline; do not report as real-time
+  -> work\pi_prep_2026-09-28\pc_dryrun\PC_DRYRUN_freerun\F_b02_ours_vpres\run.json
+2026-09-28T11:07:46.479383+09:00 run F_b02_ours_vpres exit 0
+2026-09-28T11:07:46.479383+09:00 cooldown: minimum 0s
+2026-09-28T11:07:46.482382+09:00 cooldown done: {'waited_s': 0.01600000006146729, 'target_c': None, 'temp_at_start_c': None, 'target_met': True}
+2026-09-28T11:07:46.482382+09:00 run F_b02_ear_rule (block 2, #5): C:\Users\sch\PycharmProjects\IEEE_sensors\.venv-nonpi\Scripts\python.exe -m src.v2.deploy.run_paced --mode ear_rule --bundle-root work\nonpi_2026-09-22_onnx\packages\pi_default --bundle-verification work\nonpi_2026-09-22_onnx\packages\pi_default\local_verification.json --equivalence-gate results\v2\check_equivalence.json --source data/_legacy_public/eyeblink8/eyeblink8/9/27122013_152435_cam.avi --expected-clip-sha256 d895e84ad08b3a647bad25b6c696448e2e8305a5cd37968d7075b2cee2e38e0a --expected-clip-frames 5134 --protocol work\pi_prep_2026-09-28\protocol\pi5_paced30_v1.json --protocol-set freerun --out-dir work\pi_prep_2026-09-28\pc_dryrun\PC_DRYRUN_freerun --run-id F_b02_ear_rule --session-id PC_DRYRUN_freerun --block 2 --order-index 5 --fps 30.0 --pacing freerun --budget-ms 33.333333333333336 --warmup-s 3.0 --settle-s 1.0 --idle-pre-s 3.0 --active-s 20.0 --idle-post-s 2.0 --power-hz 7.5 --thermal-hz 1.0 --intra-threads 2 --no-spin
+INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+W0000 00:00:1790561267.214305   29392 inference_feedback_manager.cc:114] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1790561267.219741   29392 inference_feedback_manager.cc:114] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+[phase] warmup    start wall=2026-09-28T02:07:47.226322+00:00
+W0000 00:00:1790561267.244085   31840 landmark_projection_calculator.cc:186] Using NORM_RECT without IMAGE_DIMENSIONS is only supported for the square ROI. Provide IMAGE_DIMENSIONS or use PROJECTION_MATRIX.
+[phase] warmup    end   wall=2026-09-28T02:07:47.508632+00:00
+[phase] settle    start wall=2026-09-28T02:07:47.517633+00:00
+[phase] settle    end   wall=2026-09-28T02:07:48.518201+00:00
+[phase] idle_pre  start wall=2026-09-28T02:07:48.518201+00:00
+[phase] idle_pre  end   wall=2026-09-28T02:07:51.518502+00:00
+[phase] active    start wall=2026-09-28T02:07:51.518502+00:00
+[phase] active    end   wall=2026-09-28T02:07:53.240179+00:00
+[phase] idle_post start wall=2026-09-28T02:07:53.241185+00:00
+[phase] idle_post end   wall=2026-09-28T02:07:55.241261+00:00
+ear_rule F_b02_ear_rule: processed 600/600, dropped 0, miss None, response p99 None, reportable=False
+  ! not a Raspberry Pi run (no aarch64/vcgencmd): desktop dry run only
+  ! CPU governor not 'performance' at platform_start: {}
+  ! CPU governor not 'performance' at platform_end: {}
+  ! PMIC read/parse errors: 58
+  ! no PMIC samples in idle_pre
+  ! no PMIC samples in active
+  ! no PMIC samples in idle_post
+  ! freerun diagnostic: no 30 fps deadline; do not report as real-time
+  -> work\pi_prep_2026-09-28\pc_dryrun\PC_DRYRUN_freerun\F_b02_ear_rule\run.json
+2026-09-28T11:07:56.908185+09:00 run F_b02_ear_rule exit 0
+2026-09-28T11:07:56.908185+09:00 cooldown: minimum 0s
+2026-09-28T11:07:56.911333+09:00 cooldown done: {'waited_s': 0.0, 'target_c': None, 'temp_at_start_c': None, 'target_met': True}
+2026-09-28T11:07:56.911333+09:00 run F_b03_image_cnn_head (block 3, #6): C:\Users\sch\PycharmProjects\IEEE_sensors\.venv-nonpi\Scripts\python.exe -m src.v2.deploy.run_paced --mode image_cnn_head --bundle-root work\nonpi_2026-09-22_onnx\packages\pi_default --bundle-verification work\nonpi_2026-09-22_onnx\packages\pi_default\local_verification.json --equivalence-gate results\v2\check_equivalence.json --source data/_legacy_public/eyeblink8/eyeblink8/9/27122013_152435_cam.avi --expected-clip-sha256 d895e84ad08b3a647bad25b6c696448e2e8305a5cd37968d7075b2cee2e38e0a --expected-clip-frames 5134 --protocol work\pi_prep_2026-09-28\protocol\pi5_paced30_v1.json --protocol-set freerun --out-dir work\pi_prep_2026-09-28\pc_dryrun\PC_DRYRUN_freerun --run-id F_b03_image_cnn_head --session-id PC_DRYRUN_freerun --block 3 --order-index 6 --fps 30.0 --pacing freerun --budget-ms 33.333333333333336 --warmup-s 3.0 --settle-s 1.0 --idle-pre-s 3.0 --active-s 20.0 --idle-post-s 2.0 --power-hz 7.5 --thermal-hz 1.0 --intra-threads 2 --no-spin
+INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+W0000 00:00:1790561277.669714   23728 inference_feedback_manager.cc:114] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1790561277.675224   23728 inference_feedback_manager.cc:114] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+[phase] warmup    start wall=2026-09-28T02:07:57.682416+00:00
+W0000 00:00:1790561277.699403   16888 landmark_projection_calculator.cc:186] Using NORM_RECT without IMAGE_DIMENSIONS is only supported for the square ROI. Provide IMAGE_DIMENSIONS or use PROJECTION_MATRIX.
+[phase] warmup    end   wall=2026-09-28T02:07:58.023668+00:00
+[phase] settle    start wall=2026-09-28T02:07:58.031666+00:00
+[phase] settle    end   wall=2026-09-28T02:07:59.032012+00:00
+[phase] idle_pre  start wall=2026-09-28T02:07:59.032012+00:00
+[phase] idle_pre  end   wall=2026-09-28T02:08:02.032637+00:00
+[phase] active    start wall=2026-09-28T02:08:02.032637+00:00
+[phase] active    end   wall=2026-09-28T02:08:04.295201+00:00
+[phase] idle_post start wall=2026-09-28T02:08:04.295201+00:00
+[phase] idle_post end   wall=2026-09-28T02:08:06.296204+00:00
+image_cnn_head F_b03_image_cnn_head: processed 600/600, dropped 0, miss None, response p99 None, reportable=False
+  ! not a Raspberry Pi run (no aarch64/vcgencmd): desktop dry run only
+  ! CPU governor not 'performance' at platform_start: {}
+  ! CPU governor not 'performance' at platform_end: {}
+  ! PMIC read/parse errors: 62
+  ! no PMIC samples in idle_pre
+  ! no PMIC samples in active
+  ! no PMIC samples in idle_post
+  ! freerun diagnostic: no 30 fps deadline; do not report as real-time
+  -> work\pi_prep_2026-09-28\pc_dryrun\PC_DRYRUN_freerun\F_b03_image_cnn_head\run.json
+2026-09-28T11:08:07.942731+09:00 run F_b03_image_cnn_head exit 0
+2026-09-28T11:08:07.942731+09:00 cooldown: minimum 0s
+2026-09-28T11:08:07.945736+09:00 cooldown done: {'waited_s': 0.0, 'target_c': None, 'temp_at_start_c': None, 'target_met': True}
+2026-09-28T11:08:07.945736+09:00 run F_b03_ear_rule (block 3, #7): C:\Users\sch\PycharmProjects\IEEE_sensors\.venv-nonpi\Scripts\python.exe -m src.v2.deploy.run_paced --mode ear_rule --bundle-root work\nonpi_2026-09-22_onnx\packages\pi_default --bundle-verification work\nonpi_2026-09-22_onnx\packages\pi_default\local_verification.json --equivalence-gate results\v2\check_equivalence.json --source data/_legacy_public/eyeblink8/eyeblink8/9/27122013_152435_cam.avi --expected-clip-sha256 d895e84ad08b3a647bad25b6c696448e2e8305a5cd37968d7075b2cee2e38e0a --expected-clip-frames 5134 --protocol work\pi_prep_2026-09-28\protocol\pi5_paced30_v1.json --protocol-set freerun --out-dir work\pi_prep_2026-09-28\pc_dryrun\PC_DRYRUN_freerun --run-id F_b03_ear_rule --session-id PC_DRYRUN_freerun --block 3 --order-index 7 --fps 30.0 --pacing freerun --budget-ms 33.333333333333336 --warmup-s 3.0 --settle-s 1.0 --idle-pre-s 3.0 --active-s 20.0 --idle-post-s 2.0 --power-hz 7.5 --thermal-hz 1.0 --intra-threads 2 --no-spin
+INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+W0000 00:00:1790561288.678812   23464 inference_feedback_manager.cc:114] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1790561288.684120   23464 inference_feedback_manager.cc:114] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+[phase] warmup    start wall=2026-09-28T02:08:08.690990+00:00
+W0000 00:00:1790561288.708506   18372 landmark_projection_calculator.cc:186] Using NORM_RECT without IMAGE_DIMENSIONS is only supported for the square ROI. Provide IMAGE_DIMENSIONS or use PROJECTION_MATRIX.
+[phase] warmup    end   wall=2026-09-28T02:08:08.974071+00:00
+[phase] settle    start wall=2026-09-28T02:08:08.981577+00:00
+[phase] settle    end   wall=2026-09-28T02:08:09.983117+00:00
+[phase] idle_pre  start wall=2026-09-28T02:08:09.983117+00:00
+[phase] idle_pre  end   wall=2026-09-28T02:08:12.983506+00:00
+[phase] active    start wall=2026-09-28T02:08:12.983506+00:00
+[phase] active    end   wall=2026-09-28T02:08:14.713045+00:00
+[phase] idle_post start wall=2026-09-28T02:08:14.713045+00:00
+[phase] idle_post end   wall=2026-09-28T02:08:16.713329+00:00
+ear_rule F_b03_ear_rule: processed 600/600, dropped 0, miss None, response p99 None, reportable=False
+  ! not a Raspberry Pi run (no aarch64/vcgencmd): desktop dry run only
+  ! CPU governor not 'performance' at platform_start: {}
+  ! CPU governor not 'performance' at platform_end: {}
+  ! PMIC read/parse errors: 58
+  ! no PMIC samples in idle_pre
+  ! no PMIC samples in active
+  ! no PMIC samples in idle_post
+  ! freerun diagnostic: no 30 fps deadline; do not report as real-time
+  -> work\pi_prep_2026-09-28\pc_dryrun\PC_DRYRUN_freerun\F_b03_ear_rule\run.json
+2026-09-28T11:08:18.376502+09:00 run F_b03_ear_rule exit 0
+2026-09-28T11:08:18.376502+09:00 cooldown: minimum 0s
+2026-09-28T11:08:18.379501+09:00 cooldown done: {'waited_s': 0.0, 'target_c': None, 'temp_at_start_c': None, 'target_met': True}
+2026-09-28T11:08:18.379501+09:00 run F_b03_ours_vpres (block 3, #8): C:\Users\sch\PycharmProjects\IEEE_sensors\.venv-nonpi\Scripts\python.exe -m src.v2.deploy.run_paced --mode ours_vpres --bundle-root work\nonpi_2026-09-22_onnx\packages\pi_default --bundle-verification work\nonpi_2026-09-22_onnx\packages\pi_default\local_verification.json --equivalence-gate results\v2\check_equivalence.json --source data/_legacy_public/eyeblink8/eyeblink8/9/27122013_152435_cam.avi --expected-clip-sha256 d895e84ad08b3a647bad25b6c696448e2e8305a5cd37968d7075b2cee2e38e0a --expected-clip-frames 5134 --protocol work\pi_prep_2026-09-28\protocol\pi5_paced30_v1.json --protocol-set freerun --out-dir work\pi_prep_2026-09-28\pc_dryrun\PC_DRYRUN_freerun --run-id F_b03_ours_vpres --session-id PC_DRYRUN_freerun --block 3 --order-index 8 --fps 30.0 --pacing freerun --budget-ms 33.333333333333336 --warmup-s 3.0 --settle-s 1.0 --idle-pre-s 3.0 --active-s 20.0 --idle-post-s 2.0 --power-hz 7.5 --thermal-hz 1.0 --intra-threads 2 --no-spin
+INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+W0000 00:00:1790561299.134808   12848 inference_feedback_manager.cc:114] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1790561299.141132   12848 inference_feedback_manager.cc:114] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+[phase] warmup    start wall=2026-09-28T02:08:19.150039+00:00
+W0000 00:00:1790561299.168900   12848 landmark_projection_calculator.cc:186] Using NORM_RECT without IMAGE_DIMENSIONS is only supported for the square ROI. Provide IMAGE_DIMENSIONS or use PROJECTION_MATRIX.
+[phase] warmup    end   wall=2026-09-28T02:08:19.482299+00:00
+[phase] settle    start wall=2026-09-28T02:08:19.490304+00:00
+[phase] settle    end   wall=2026-09-28T02:08:20.491224+00:00
+[phase] idle_pre  start wall=2026-09-28T02:08:20.491224+00:00
+[phase] idle_pre  end   wall=2026-09-28T02:08:23.491817+00:00
+[phase] active    start wall=2026-09-28T02:08:23.491817+00:00
+[phase] active    end   wall=2026-09-28T02:08:25.598968+00:00
+[phase] idle_post start wall=2026-09-28T02:08:25.598968+00:00
+[phase] idle_post end   wall=2026-09-28T02:08:27.599754+00:00
+ours_vpres F_b03_ours_vpres: processed 600/600, dropped 0, miss None, response p99 None, reportable=False
+  ! not a Raspberry Pi run (no aarch64/vcgencmd): desktop dry run only
+  ! CPU governor not 'performance' at platform_start: {}
+  ! CPU governor not 'performance' at platform_end: {}
+  ! PMIC read/parse errors: 61
+  ! no PMIC samples in idle_pre
+  ! no PMIC samples in active
+  ! no PMIC samples in idle_post
+  ! freerun diagnostic: no 30 fps deadline; do not report as real-time
+  -> work\pi_prep_2026-09-28\pc_dryrun\PC_DRYRUN_freerun\F_b03_ours_vpres\run.json
+2026-09-28T11:08:29.278644+09:00 run F_b03_ours_vpres exit 0
+2026-09-28T11:08:29.282643+09:00 summary: reportable 0, excluded 9

@@ -1,0 +1,49 @@
+{
+  "primary_pooled_bootstrap": {
+    "point": -0.004021206535503419,
+    "ci_lo": -0.006303731776072835,
+    "ci_hi": -0.0019934383437354435,
+    "std": 0.0010828955653620805,
+    "n_boot": 2000,
+    "n_subjects": 57,
+    "alpha": 0.05
+  },
+  "pooled_ours": 0.9860580016993945,
+  "pooled_image_head": 0.9900792082348979,
+  "run_mean_delta": -0.0019164998679096045,
+  "run_delta_sd": 0.0023796224815786984,
+  "subject_macro_seed_averaged_delta": {
+    "point": -0.0061896006142436516,
+    "ci_lo": -0.011437808544031132,
+    "ci_hi": -0.002273940888888375,
+    "std": 0.0023952851318757643,
+    "n_boot": 2000,
+    "n_subjects": 57,
+    "alpha": 0.05
+  },
+  "n_subjects": 57,
+  "n_unique_events": 27758,
+  "n_pooled_predictions": 83274,
+  "sensitivity": [
+    {
+      "delta": 0.02,
+      "verdict": "non_inferior",
+      "status": "primary"
+    },
+    {
+      "delta": 0.01,
+      "verdict": "non_inferior",
+      "status": "post-hoc"
+    },
+    {
+      "delta": 0.005,
+      "verdict": "inconclusive",
+      "status": "post-hoc"
+    }
+  ],
+  "limitations": [
+    "Conditional on the saved training runs; no retraining uncertainty.",
+    "Seed SD is descriptive and cannot override a subject bootstrap CI excluding zero.",
+    "Subject-macro AP averages within-subject per-seed AP; it is not pooled AP."
+  ]
+}

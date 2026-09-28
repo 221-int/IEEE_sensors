@@ -1,0 +1,31 @@
+usage: run_video.py [-h]
+                    [--mode {ours,ear,image_cnn_max,image_cnn_head,image_cnn_bilstm,image_cnn_lstm}]
+                    [--source SOURCE] [--width WIDTH] [--height HEIGHT]
+                    [--fps FPS] [--duration DURATION] [--onnx-dir ONNX_DIR]
+                    [--model-contract MODEL_CONTRACT]
+                    [--intra-threads INTRA_THREADS] [--no-spin]
+                    [--head-stride HEAD_STRIDE] [--refine-landmarks]
+                    [--out OUT]
+
+options:
+  -h, --help            show this help message and exit
+  --mode {ours,ear,image_cnn_max,image_cnn_head,image_cnn_bilstm,image_cnn_lstm}
+                        image_cnn 은 변형을 **따로** 잰다. 백본이 같고 시간 처리만 다르므로, 서로의 차이가
+                        곧 head 의 지연 기여다. bilstm/lstm 은 표1 추가작업
+                        헤드(export_onnx_rnn.py)
+  --source SOURCE       카메라 인덱스 또는 영상 경로
+  --width WIDTH
+  --height HEIGHT
+  --fps FPS
+  --duration DURATION   초. 실측은 5분
+  --onnx-dir ONNX_DIR
+  --model-contract MODEL_CONTRACT
+                        Graph-hash-bound validation threshold JSON; auto-
+                        detect contract.json if omitted
+  --intra-threads INTRA_THREADS
+                        🔴 실측은 2. 안 주면 결과에 경고가 박힌다
+  --no-spin             🔴 실측은 필수. 빼면 27% 느려져 비교가 무효다
+  --head-stride HEAD_STRIDE
+                        head 를 몇 프레임마다 돌리나. **기본 1** (매 프레임)
+  --refine-landmarks    iris 서브모델(468->478). 크롭에 안 쓰는데 CPU 를 먹는다
+  --out OUT

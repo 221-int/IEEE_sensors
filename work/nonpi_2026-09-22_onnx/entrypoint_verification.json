@@ -1,0 +1,25 @@
+{
+  "scope": "Real ONNX sessions and frozen held-out crop; mocked camera/frontend, no timing measurements.",
+  "runs": [
+    {
+      "mode": "ours",
+      "variant": "vpres",
+      "event": 4888,
+      "trained_graph_contract_loaded": true,
+      "n_decisions": 1,
+      "expected_positive": 1,
+      "actual_positive": 1,
+      "passed": true
+    },
+    {
+      "mode": "image_cnn_head",
+      "variant": "image_head",
+      "event": 4888,
+      "trained_graph_contract_loaded": true,
+      "n_decisions": 1,
+      "expected_positive": 1,
+      "actual_positive": 1,
+      "passed": true
+    }
+  ]
+}

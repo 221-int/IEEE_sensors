@@ -1,0 +1,25 @@
+{
+  "fixtures": "legacy models; not corrected experiment results",
+  "checks": [
+    {
+      "variant": "vpres",
+      "finite": true,
+      "masked_pixels_invariant": true
+    },
+    {
+      "variant": "image_head",
+      "finite": true,
+      "masked_pixels_invariant": true
+    },
+    {
+      "variant": "vdrop",
+      "finite": true,
+      "masked_pixels_invariant": true
+    },
+    {
+      "variant": "gap",
+      "finite": true,
+      "masked_pixels_invariant": true
+    }
+  ]
+}

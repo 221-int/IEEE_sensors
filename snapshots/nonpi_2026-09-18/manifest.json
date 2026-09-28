@@ -1,0 +1,3654 @@
+[
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\.gitkeep",
+    "archive_path": "docs\\.gitkeep",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\CHANGELOG.md",
+    "archive_path": "docs\\CHANGELOG.md",
+    "bytes": 11447,
+    "sha256": "fb006058ed2d620225b166b6050c44cbebb3b2d84b2d3bd0b51b2bfd68399d44"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\CLEANUP.md",
+    "archive_path": "docs\\CLEANUP.md",
+    "bytes": 21047,
+    "sha256": "1a0b54323828e9ffb13f2ba955275d143a8e22d041b3c33b0886d60feec46617"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\demo_layout_preview.png",
+    "archive_path": "docs\\demo_layout_preview.png",
+    "bytes": 158111,
+    "sha256": "99df3e5ad9288304f6103ea2f112e693b9537e91817a895d6feedb574f5d7675"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\DEMO_RUNBOOK.md",
+    "archive_path": "docs\\DEMO_RUNBOOK.md",
+    "bytes": 10029,
+    "sha256": "d67d8c66ed82fde051462304824fce9ce582f2599375d2f3c2daa676253bb183"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\EXPERIMENT_PLAN.md",
+    "archive_path": "docs\\EXPERIMENT_PLAN.md",
+    "bytes": 22822,
+    "sha256": "456ab081551a1fd498c3b88251dcfee83514ad7cf8f94d65222d6ebbe9ead276"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\EYE_WELLNESS_UI.md",
+    "archive_path": "docs\\EYE_WELLNESS_UI.md",
+    "bytes": 4095,
+    "sha256": "8e40cad1619d234da2a0f7a0997803ff5248b88353601a6a9d9ba6dc7e7b9bf0"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\mEBAL2_실측_2026-07-31.md",
+    "archive_path": "docs\\mEBAL2_실측_2026-07-31.md",
+    "bytes": 26564,
+    "sha256": "8588bfe74fe5dced812715960582f207f5b252ce28ed4d8cdd01a001642f413b"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\NEXT_SESSION_PROMPT.md",
+    "archive_path": "docs\\NEXT_SESSION_PROMPT.md",
+    "bytes": 4235,
+    "sha256": "d2774a471eb24f2e56d9d30b96d7439a2ec2d15f59cf6f50741fc3b1d5be96b1"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\PAPER_OUTLINE.md",
+    "archive_path": "docs\\PAPER_OUTLINE.md",
+    "bytes": 31684,
+    "sha256": "792d9512903b20a3772e89a443f8354b6f3b042a9d541eef0735cc8b95bc6b3f"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\PAPER_WRITING_PROMPT.md",
+    "archive_path": "docs\\PAPER_WRITING_PROMPT.md",
+    "bytes": 5014,
+    "sha256": "348c9df188ac8ba8ba220d30b9a323f0fde29342ed15b2bbb00f3197c0fee82a"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\PATENT_AND_FUTURE_WORK.md",
+    "archive_path": "docs\\PATENT_AND_FUTURE_WORK.md",
+    "bytes": 21292,
+    "sha256": "21a3b1c908dc2a7241149d9d6645c79543e5aa27773bf7a0b4c084214249fdaf"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\PATENT_IDEATION_PROMPT.md",
+    "archive_path": "docs\\PATENT_IDEATION_PROMPT.md",
+    "bytes": 10769,
+    "sha256": "a42472b6b8cb2c13a01994215ff4e5bf2f6331faaf12962132e4d0a4c9fdb10f"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\PI_RUNBOOK.md",
+    "archive_path": "docs\\PI_RUNBOOK.md",
+    "bytes": 10327,
+    "sha256": "aa40f6c75a5704e0186f4a0e34a2749bd1c29a45fb5a7a6b26b03b385124400a"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\PROJECT_DIRECTION.md",
+    "archive_path": "docs\\PROJECT_DIRECTION.md",
+    "bytes": 15039,
+    "sha256": "1da993fb6c437f5ffa2dd08a7740803154140fc8559a74f7b90eaabd49b8cb69"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\STATUS_2026-08-08.md",
+    "archive_path": "docs\\STATUS_2026-08-08.md",
+    "bytes": 8102,
+    "sha256": "8d74fb3738bdfb4a49957222c47376692d9568f4d0fbc8492e1ce3cfc1e79251"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\T3_WORKORDER.md",
+    "archive_path": "docs\\T3_WORKORDER.md",
+    "bytes": 56298,
+    "sha256": "de4932d068c7a430d008bd129b8b7c17723f9d0e30e7a30da132825bae6ee073"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\TASKS.md",
+    "archive_path": "docs\\TASKS.md",
+    "bytes": 37391,
+    "sha256": "bac649fc38fa55b97891a0331a50c33192004acf6e8cc48d42119a2f77751efe"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\공부자료.pdf",
+    "archive_path": "docs\\공부자료.pdf",
+    "bytes": 606037,
+    "sha256": "5fe80e50720f08337b69ddafdb6916a0752386e6c1a3109a0f19a66bab0417d5"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\archive\\HANDOFF.md",
+    "error": "PermissionError; not archived"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\archive\\OVERVIEW.md",
+    "archive_path": "docs\\archive\\OVERVIEW.md",
+    "bytes": 6604,
+    "sha256": "71ef0c6ff44699a738ba8326a31cf38745d54e25cf0fccfac180e03d2fc2fec2"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\archive\\PI5_BENCHMARK.md",
+    "archive_path": "docs\\archive\\PI5_BENCHMARK.md",
+    "bytes": 11426,
+    "sha256": "7629e84c0a97999592c27ca487db83788149fe4a8af044dbe2c24f81face8d99"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\archive\\Pi_실행_가이드.md",
+    "archive_path": "docs\\archive\\Pi_실행_가이드.md",
+    "bytes": 8907,
+    "sha256": "ba809c4d8f31f524988ddddaee21740671198aebd7e9be2b93973dad2ef5c786"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\archive\\PROGRESS.md",
+    "archive_path": "docs\\archive\\PROGRESS.md",
+    "bytes": 18782,
+    "sha256": "7fa2bbdb7bca092b765c47e66fff2b76839150a063ec526c97776f3c699da75f"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\archive\\PROJECT.md",
+    "archive_path": "docs\\archive\\PROJECT.md",
+    "bytes": 61131,
+    "sha256": "8fab660161f50d3b5af9aebf30b27fb5265dcf100836e6addf19a6d025782d6a"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\archive\\PROJECT_DETAILED.md",
+    "archive_path": "docs\\archive\\PROJECT_DETAILED.md",
+    "bytes": 20804,
+    "sha256": "8ab1566d1770c3768cdee4d0c9ed18f3128f39fcc8eabcc0352ed360e6638fdc"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\archive\\RESEARCH_PLAN.md",
+    "archive_path": "docs\\archive\\RESEARCH_PLAN.md",
+    "bytes": 15415,
+    "sha256": "b7c4808bb5a20ce0955e708a6610a1443ae019fac30b03810f8bad85ab097374"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\archive\\RESULTS.md",
+    "archive_path": "docs\\archive\\RESULTS.md",
+    "bytes": 15707,
+    "sha256": "960f0b2d3016450bddccc245d81399831d692a1ed17b44cec7e4898b384edda6"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\archive\\STATUS_AND_CONCERNS.md",
+    "archive_path": "docs\\archive\\STATUS_AND_CONCERNS.md",
+    "bytes": 8237,
+    "sha256": "aab23b39c841d8ed3a70605d502723daace4fba97289a86d0b10e70e2dd52b35"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\archive\\STATUS_AND_DIRECTION_1.md",
+    "archive_path": "docs\\archive\\STATUS_AND_DIRECTION_1.md",
+    "bytes": 27590,
+    "sha256": "42662af9bfcfd892f52c31e9ab6edff1da5d1b94acc21869226e82a9fe8baaa9"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\archive\\맥북_세팅_브리핑.md",
+    "archive_path": "docs\\archive\\맥북_세팅_브리핑.md",
+    "bytes": 3610,
+    "sha256": "dcab8baf8e1188286f0d8c786aab851d329627e7b7c4f0696c92e15486e6d69c"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\archive\\새세션_시작_프롬프트.md",
+    "archive_path": "docs\\archive\\새세션_시작_프롬프트.md",
+    "bytes": 10795,
+    "sha256": "c47c3033c67ff0b07f44493eef2f210bb7e5c57237e91341a13334cf1d4e6e8c"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\archive\\정정_2026-07-30.md",
+    "archive_path": "docs\\archive\\정정_2026-07-30.md",
+    "bytes": 7658,
+    "sha256": "02bfe74dc26e3ccf554e03b71f12f0dbf86c01528392d863ea589a9fbe296216"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\archive\\진행정리_2026-07-21.md",
+    "archive_path": "docs\\archive\\진행정리_2026-07-21.md",
+    "bytes": 6450,
+    "sha256": "4d41eac4255cc2ea5e57fad4c845427744d7fb828764d147c3410cd823ed7e30"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\archive\\파이프라인_공부노트_2026-07-31.md",
+    "archive_path": "docs\\archive\\파이프라인_공부노트_2026-07-31.md",
+    "bytes": 41669,
+    "sha256": "7dc4a95f1bf1addb897bda1c6b3e36ce103cf019350f82899b8f4abb5936f6ae"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\figures\\both_eyes_sample.png",
+    "archive_path": "docs\\figures\\both_eyes_sample.png",
+    "bytes": 140573,
+    "sha256": "cd5bbca2287d0334f48b90e535818d894784e2d2c90b04e8e69a9348be2efda0"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\figures\\eyeblink8_sample_montage.png",
+    "archive_path": "docs\\figures\\eyeblink8_sample_montage.png",
+    "bytes": 268757,
+    "sha256": "82f021561ba5d5277bbd8f855cf347f8210b599dc551ef164699f2c255a8a8b3"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\figures\\pareto_disentangle.png",
+    "archive_path": "docs\\figures\\pareto_disentangle.png",
+    "bytes": 55851,
+    "sha256": "36eae32b4365b9c6bce249f213b15a317eaf69f674151798665ae3dd4da89616"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\figures\\recon_attack_eb01-eb02.png",
+    "archive_path": "docs\\figures\\recon_attack_eb01-eb02.png",
+    "bytes": 650441,
+    "sha256": "ba96a2f2bfc8d0afed0b3de1cf5e05e88c03419376c8b481e5c6412c5cdc425f"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\figures\\recon_attack_eb03-eb04.png",
+    "archive_path": "docs\\figures\\recon_attack_eb03-eb04.png",
+    "bytes": 652192,
+    "sha256": "25d71a782bc24123555b0934251ab73be581545d2d9e416bcc8d8fd73294b63d"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\figures\\recon_attack_eb08-eb09.png",
+    "archive_path": "docs\\figures\\recon_attack_eb08-eb09.png",
+    "bytes": 711061,
+    "sha256": "cb503a5a44c362807e37c34d5320495437470b8fd91d35c5a5f6c8c76d531906"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\figures\\recon_attack_eb10-eb11.png",
+    "archive_path": "docs\\figures\\recon_attack_eb10-eb11.png",
+    "bytes": 766305,
+    "sha256": "2e6a969c47472158484656448436ddb0afe6f1c9513d92fc4997c59f62ca900d"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\figures\\vector_vs_ear.png",
+    "archive_path": "docs\\figures\\vector_vs_ear.png",
+    "bytes": 70010,
+    "sha256": "3f49c337c16571af97bfeb93851eaa424766f317f87556d2b5588f3411bc1410"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\patent\\patent_candidate_SEPARATE_saturation.md",
+    "archive_path": "docs\\patent\\patent_candidate_SEPARATE_saturation.md",
+    "bytes": 6597,
+    "sha256": "825ae85bbd5e0303effd0bcc2436c8b02aaa99b0a90c17a39f6d17cdc2760dbb"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\patent\\patent_concept_A_v1.md",
+    "archive_path": "docs\\patent\\patent_concept_A_v1.md",
+    "bytes": 18211,
+    "sha256": "a6fe91dd9e10f35f8f223eea15d41813aa2b34d33d62f31fcfa15202f8722d5e"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\patent\\patent_concept_A_v2.md",
+    "archive_path": "docs\\patent\\patent_concept_A_v2.md",
+    "bytes": 19418,
+    "sha256": "8a18fa4e8fa100861422dcee573b484670ff8c9cdce50b9b4944339737d9e824"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\patent\\patent_ideas_v1.md",
+    "archive_path": "docs\\patent\\patent_ideas_v1.md",
+    "bytes": 24079,
+    "sha256": "3ccc73748618a85f298a38e1657fe01daa2f39fb1c0868c6beffb9ba22bd9e76"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\v2\\HANDOFF.md",
+    "archive_path": "docs\\v2\\HANDOFF.md",
+    "bytes": 10317,
+    "sha256": "cb5029e3bc402c9524850044b14adf94e3fbba033e0a7d6386b0438c22708c7c"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\v2\\PROMPT_v2.md",
+    "archive_path": "docs\\v2\\PROMPT_v2.md",
+    "bytes": 33900,
+    "sha256": "1893f8f15d8d3247f24ebe470861028fdcc6f906dff9daea2b42a1fa8ddc73d6"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\v2\\PROTOCOL.md",
+    "archive_path": "docs\\v2\\PROTOCOL.md",
+    "bytes": 71484,
+    "sha256": "6e9d406ec814d87fcd72076770a8939a9e7039ddbda02b0a1cad75312b4faa81"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\v2\\REFERENCES.md",
+    "archive_path": "docs\\v2\\REFERENCES.md",
+    "bytes": 13535,
+    "sha256": "573c9043e075f0f46c09b59464d02c05f8da6413f95df4cfa5b096a1c29d3c15"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\v2\\RELATED_WORK.md",
+    "archive_path": "docs\\v2\\RELATED_WORK.md",
+    "bytes": 39285,
+    "sha256": "8c9bd2fe83225d15e104d811b332f7910c44dd6612f784687df9a56dab9df7f1"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\v2\\figures\\fig1_architecture.svg",
+    "archive_path": "docs\\v2\\figures\\fig1_architecture.svg",
+    "bytes": 5595,
+    "sha256": "116b19e5cf8d56a96e28010a91a8fe0dc52662c2a917a711448f452dd9a2897d"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\v2\\figures\\fig2_subgroups.pdf",
+    "archive_path": "docs\\v2\\figures\\fig2_subgroups.pdf",
+    "bytes": 17164,
+    "sha256": "9c0a5f2a8949f251ea0ad794006be19b28ada41a5c2cf2026e7f6de663fa4075"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\v2\\figures\\fig2_subgroups.png",
+    "archive_path": "docs\\v2\\figures\\fig2_subgroups.png",
+    "bytes": 46304,
+    "sha256": "0f0f6b54db1483a02d0c169b934a2ae70b64c8c7c2f4846cd3bb7a882a197346"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\v2\\figures\\glasses_sheet_58.png",
+    "archive_path": "docs\\v2\\figures\\glasses_sheet_58.png",
+    "bytes": 1653405,
+    "sha256": "e1ba3acdcea7dfc407003b5763730e8e6fff5e0a4e277824d17c66ac8bbf63b4"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\v2\\figures\\pilot_user01_blink_1534.png",
+    "archive_path": "docs\\v2\\figures\\pilot_user01_blink_1534.png",
+    "bytes": 94628,
+    "sha256": "def22debe0a568a88ccc9535f59d4e374d3962805ce4a379ea4a70f0c4cff7c2"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\v2\\figures\\pilot_user01_crops.png",
+    "archive_path": "docs\\v2\\figures\\pilot_user01_crops.png",
+    "bytes": 98694,
+    "sha256": "a62bf3426540076e9411b60a036baf96509210a4994678968b8a1bb407016ab0"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\v2\\figures\\u1_audit_ours_correct_context.png",
+    "archive_path": "docs\\v2\\figures\\u1_audit_ours_correct_context.png",
+    "bytes": 1241018,
+    "sha256": "4b706c6bbbc708240dd79717357a1d2fbe7a17e5a86c75c80da482a3238ffa20"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\v2\\figures\\u1_audit_ours_error.png",
+    "archive_path": "docs\\v2\\figures\\u1_audit_ours_error.png",
+    "bytes": 1223183,
+    "sha256": "fbf18ed57fa089f940aa703e7c399cf09af2af730a2244dd6e1d80e462a401d0"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\v2\\figures\\u1_strips.png",
+    "archive_path": "docs\\v2\\figures\\u1_strips.png",
+    "bytes": 688943,
+    "sha256": "f08a0ee64e690bc9705e9298bb5b565bd4898a4f571f3941db6fc1e560267e6e"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\__init__.py",
+    "archive_path": "src\\__init__.py",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\classifier\\.gitkeep",
+    "archive_path": "src\\classifier\\.gitkeep",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\classifier\\train_classifier.py",
+    "archive_path": "src\\classifier\\train_classifier.py",
+    "bytes": 8886,
+    "sha256": "6be69dd5398af82be3a97a3a46ec24b0c8dd4039b917cd7c681408cb5ab14473"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\classifier\\__init__.py",
+    "archive_path": "src\\classifier\\__init__.py",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\dataset\\.gitkeep",
+    "archive_path": "src\\dataset\\.gitkeep",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\dataset\\build_eyeblink8_npz.py",
+    "archive_path": "src\\dataset\\build_eyeblink8_npz.py",
+    "bytes": 4246,
+    "sha256": "40f8fbe124edfbcf54844ca116b9b58772ea8011034be51874836c8673bff40d"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\dataset\\capture_eye_dataset.py",
+    "archive_path": "src\\dataset\\capture_eye_dataset.py",
+    "bytes": 7858,
+    "sha256": "001146563959156a5f926658e0214eff9c5b89dfeada53d190830c7bf6671b40"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\dataset\\eye_preprocess.py",
+    "archive_path": "src\\dataset\\eye_preprocess.py",
+    "bytes": 12880,
+    "sha256": "9938e225454571becf71c8c29c6404e19f1e99359140b879390b53f1b7b9d886"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\dataset\\mebal2_loader.py",
+    "archive_path": "src\\dataset\\mebal2_loader.py",
+    "bytes": 16112,
+    "sha256": "113207edd1d364ee24625fdc77e54c8440edd9cf55e177501e77bbbdbf02e4e8"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\dataset\\prepare_eyeblink8.py",
+    "archive_path": "src\\dataset\\prepare_eyeblink8.py",
+    "bytes": 6507,
+    "sha256": "1b788eaeb1e148a563eebcd07da508671a3fd5be8c5947b4ee46b394dddc461c"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\dataset\\__init__.py",
+    "archive_path": "src\\dataset\\__init__.py",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\deploy\\.gitkeep",
+    "archive_path": "src\\deploy\\.gitkeep",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\deploy\\bench_latency.py",
+    "archive_path": "src\\deploy\\bench_latency.py",
+    "bytes": 2283,
+    "sha256": "8679f25c54c2780e5ebb002aa48e2cb5ccf274eda20303269e318bd49868483a"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\deploy\\export_onnx.py",
+    "archive_path": "src\\deploy\\export_onnx.py",
+    "bytes": 2871,
+    "sha256": "a2b0bd01893672deccd6a8a9e1024048e9bc6ad98100eb38284aa14f5d07675d"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\deploy\\frontend.py",
+    "archive_path": "src\\deploy\\frontend.py",
+    "bytes": 6944,
+    "sha256": "b7265fb086c49c2d7b0a06af161542fed7f2a354ecfe66661799ed596671e78d"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\deploy\\run_video.py",
+    "archive_path": "src\\deploy\\run_video.py",
+    "bytes": 18857,
+    "sha256": "f4234487f9e48c802bed8bd41777018e5c993ca90ec73bdd96c2f631aaff05c0"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\deploy\\__init__.py",
+    "archive_path": "src\\deploy\\__init__.py",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\encoder\\.gitkeep",
+    "archive_path": "src\\encoder\\.gitkeep",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\encoder\\train_autoencoder.py",
+    "archive_path": "src\\encoder\\train_autoencoder.py",
+    "bytes": 6794,
+    "sha256": "8f0d4753d30171fa2e72fb3f14319a59cf8c7d8e4b14da5b27193603094ee87a"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\encoder\\train_disentangled.py",
+    "archive_path": "src\\encoder\\train_disentangled.py",
+    "bytes": 9443,
+    "sha256": "ff34247c03fcf337479538b4009f980b3603b05e3b0a87b586cf1b8d20ce75f0"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\encoder\\__init__.py",
+    "archive_path": "src\\encoder\\__init__.py",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\eval\\ear_baseline.py",
+    "archive_path": "src\\eval\\ear_baseline.py",
+    "bytes": 11390,
+    "sha256": "82ef83a75cce28682771766f0f2b831941d850b36722e464eaec3918253fe74d"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\eval\\eval_events.py",
+    "archive_path": "src\\eval\\eval_events.py",
+    "bytes": 3763,
+    "sha256": "78cd172b8d7dd93f8777e6f000a2ca7e667b378ccee77df147bb99f5a7326bcd"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\eval\\privacy_metrics.py",
+    "archive_path": "src\\eval\\privacy_metrics.py",
+    "bytes": 4817,
+    "sha256": "564f35ee1fbf06296fa5ed38a581a5b3d4334ed2b6a620d4a3c7c5d5d2335e6f"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\eval\\__init__.py",
+    "archive_path": "src\\eval\\__init__.py",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\experiments\\dim_sweep.py",
+    "archive_path": "src\\experiments\\dim_sweep.py",
+    "bytes": 15296,
+    "sha256": "1b97bb2dca77742f6b159dbded94455f6d47a770feb524ee8997ecbb6202c6ce"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\experiments\\identity_probe.py",
+    "archive_path": "src\\experiments\\identity_probe.py",
+    "bytes": 13976,
+    "sha256": "2c130779866dc3cab9a4b881c6720214c5e8c7482c72ec5dece6ab6c1e953e77"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\experiments\\recon_attack.py",
+    "archive_path": "src\\experiments\\recon_attack.py",
+    "bytes": 11163,
+    "sha256": "270234af3c520e4c08588fb6ada8876954b559406e456e6988cf1ff4626989b9"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\experiments\\split_eval.py",
+    "archive_path": "src\\experiments\\split_eval.py",
+    "bytes": 21680,
+    "sha256": "215056d0c6e01fa9be94ff1ef1d64fe08b3653bc9a8962c7b635c65bb8008c85"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\experiments\\__init__.py",
+    "archive_path": "src\\experiments\\__init__.py",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\tools\\.gitkeep",
+    "archive_path": "src\\tools\\.gitkeep",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\tools\\check_mebal2.py",
+    "archive_path": "src\\tools\\check_mebal2.py",
+    "bytes": 7688,
+    "sha256": "ece9350535afd5a108c5cdaac7a2314ac587fb994be8a16f8722c2c780c65365"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\tools\\find_cam.py",
+    "archive_path": "src\\tools\\find_cam.py",
+    "bytes": 1207,
+    "sha256": "f945fde726d8ce44ede718dfd8485dd5b57c8b7359ce58a9efb1d76c4aef7dc9"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\tools\\mac_camera_server.py",
+    "archive_path": "src\\tools\\mac_camera_server.py",
+    "bytes": 11639,
+    "sha256": "9e82e3e7fea9310b483517d49dd0d163026c2fdb67e51568ed6685d6dd5ce18c"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\tools\\robust.py",
+    "archive_path": "src\\tools\\robust.py",
+    "bytes": 4645,
+    "sha256": "754f3aeb392b7813280b84b08e124e0880d4ea95c5de320f7652cef3a945157d"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\tools\\__init__.py",
+    "archive_path": "src\\tools\\__init__.py",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\.gitkeep",
+    "archive_path": "src\\v2\\.gitkeep",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\ceiling_check.py",
+    "archive_path": "src\\v2\\ceiling_check.py",
+    "bytes": 12365,
+    "sha256": "905c26db43c89f45e5b6807f9952606caecd9444d2825f9084873066adf71b6b"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\compare_variants.py",
+    "archive_path": "src\\v2\\compare_variants.py",
+    "bytes": 13976,
+    "sha256": "88e50b3dba4d89a96c5c74a00a1cd1f558ff4e0ffe282ce6e34342cee99760cd"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\control8_trel.py",
+    "archive_path": "src\\v2\\control8_trel.py",
+    "bytes": 14401,
+    "sha256": "12efbc3c72ee0a37d43918652e2c506b1167212865e0def7c7317c7cbec8ab47"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\diagnose_subject.py",
+    "archive_path": "src\\v2\\diagnose_subject.py",
+    "bytes": 24020,
+    "sha256": "0aa1429b2e84c784a99f9de6149030087c1a83877fd3787180f02dcbf1ab1b81"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\ear_baseline_folds.py",
+    "archive_path": "src\\v2\\ear_baseline_folds.py",
+    "bytes": 7751,
+    "sha256": "a1e26ccb401d422edea02f13c3c0f02a25c6af885a664fb8fd75a330c4db3bf0"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\gate_minus1.py",
+    "archive_path": "src\\v2\\gate_minus1.py",
+    "bytes": 26205,
+    "sha256": "a3e5232b2924371b641981c8a48b098735d7f970e2ddd986a79182fa7633c3f1"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\make_fig2_subgroups.py",
+    "archive_path": "src\\v2\\make_fig2_subgroups.py",
+    "bytes": 4976,
+    "sha256": "3471bbe239fe8430f218e25f733dedb2101e349a45df4939d8205728894164a9"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\make_glasses_sheet.py",
+    "archive_path": "src\\v2\\make_glasses_sheet.py",
+    "bytes": 3083,
+    "sha256": "703a7f08975943f1b401346c273efddf1a609d18a911560bc301e382237f0d79"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\phase0_probes.py",
+    "archive_path": "src\\v2\\phase0_probes.py",
+    "bytes": 9129,
+    "sha256": "744a0517cbbec0bc5773d38607f5d0517a5323675148d31c3e2f5357d511cf4a"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\phase1_csv58.py",
+    "archive_path": "src\\v2\\phase1_csv58.py",
+    "bytes": 10728,
+    "sha256": "69ac33ca8407dedfa705b8df00096ba61ada510fd8f9ccb06450b978aba8acae"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\phase1_pilot.py",
+    "archive_path": "src\\v2\\phase1_pilot.py",
+    "bytes": 12221,
+    "sha256": "abb33d303381bf4eabc932064d9c66306976b5ef0e9cc820108ec6745a5d58bb"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\phase2_check_crop.py",
+    "archive_path": "src\\v2\\phase2_check_crop.py",
+    "bytes": 7636,
+    "sha256": "a9c7de4d99b49444e68f7e4395ce9a01351cb3cbc9d626af040c28c8c606a54b"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\phase2_extract.py",
+    "archive_path": "src\\v2\\phase2_extract.py",
+    "bytes": 14369,
+    "sha256": "7baf205cab8d7eb17c717fd66f4697a45b0b964feb832935157970f1d9ddcb28"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\phase2_face_position.py",
+    "archive_path": "src\\v2\\phase2_face_position.py",
+    "bytes": 8243,
+    "sha256": "6d05174afb8657f3cf053eb81310972c13df87a27fb029b16350ffdc08a09128"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\phase2_photometrics.py",
+    "archive_path": "src\\v2\\phase2_photometrics.py",
+    "bytes": 6098,
+    "sha256": "8ac0bb8b6c54379b1a252c496b352f231c953031bcc1f25a6515b23e5990b48e"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\phase3_apply_flags.py",
+    "archive_path": "src\\v2\\phase3_apply_flags.py",
+    "bytes": 10151,
+    "sha256": "18bd062fb2625a036c7af92a75dc106d7b7633096dd4e2899e5dae07c7ff8d5f"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\phase3_merge.py",
+    "archive_path": "src\\v2\\phase3_merge.py",
+    "bytes": 12754,
+    "sha256": "758ec4c0004f41de1d0b14fdb448e295cff18ded02c92b69909f799be24226c7"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\phase5_reid.py",
+    "archive_path": "src\\v2\\phase5_reid.py",
+    "bytes": 14546,
+    "sha256": "1fd9de5c334ce23ed1a38692af09a3ee81112c77d5242474fbd2e220e714161f"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\posthoc_subgroups.py",
+    "archive_path": "src\\v2\\posthoc_subgroups.py",
+    "bytes": 25252,
+    "sha256": "b9e23ffade49e2fca0cdde176e41d2a1ecd51ea5de3e69cb70e856ee32509248"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\train_encoder.py",
+    "archive_path": "src\\v2\\train_encoder.py",
+    "bytes": 27609,
+    "sha256": "f142d382a82b8b7d14518d541aa89d8a8dede56893349de9b1498779416e912c"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\u1_audit.py",
+    "archive_path": "src\\v2\\u1_audit.py",
+    "bytes": 17911,
+    "sha256": "22a9ad3386c0760bf6db569386e809061a066b932fffd80c05572e56ce00fbda"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\__init__.py",
+    "archive_path": "src\\v2\\__init__.py",
+    "bytes": 269,
+    "sha256": "eb85d5e4843205a5a68dae00883525ac2ade7b15cee2c2f2af62ac08faa7fdda"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\common\\folds_5fold.json",
+    "archive_path": "src\\v2\\common\\folds_5fold.json",
+    "bytes": 2841,
+    "sha256": "bb6f72e7b535ddcbd1b9c551cec0e549c4a6e807cd1b89386e02111bafbae25c"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\common\\folds_5fold_v1.json",
+    "archive_path": "src\\v2\\common\\folds_5fold_v1.json",
+    "bytes": 1828,
+    "sha256": "11cdadab7a82a2a02ae7e3b58c7dbaa8ea00eb9bb5468d1b655429b4126e927b"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\common\\probes.py",
+    "archive_path": "src\\v2\\common\\probes.py",
+    "bytes": 13336,
+    "sha256": "2acca528dbe6baa77898a113ad6116485cdc8b5d2a6503f06b5aecb73b7ed970"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\common\\repro.py",
+    "archive_path": "src\\v2\\common\\repro.py",
+    "bytes": 6968,
+    "sha256": "24bd52efeef2acf0d01f29ebb66e709c978be75977e9c21ae0587370803934e4"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\common\\splits.py",
+    "archive_path": "src\\v2\\common\\splits.py",
+    "bytes": 16007,
+    "sha256": "230d632e7c8669addf1e0bf54fc62e0d7b3a0339ef7729ab2da31d56e60fbf9b"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\common\\stats.py",
+    "archive_path": "src\\v2\\common\\stats.py",
+    "bytes": 5309,
+    "sha256": "b3d21f46af11e1fe6ade8a85887a74f95e93cdc347ee9b5f0811ce4114679976"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\common\\thresholds.py",
+    "archive_path": "src\\v2\\common\\thresholds.py",
+    "bytes": 15501,
+    "sha256": "d8c53bba66f3b6b4263ab500e14a766653c89b8fba7a62848a6a13dd3ffe62b8"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\common\\__init__.py",
+    "archive_path": "src\\v2\\common\\__init__.py",
+    "bytes": 557,
+    "sha256": "b04397ae01bf0abf4fde036a5d89788736167cb4be50d827c473ad9094b603f2"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\dataset\\crop.py",
+    "archive_path": "src\\v2\\dataset\\crop.py",
+    "bytes": 11685,
+    "sha256": "5ef3a73f9653e7eb8512e56e96e6b892afc3b2e4ffb6298a603448e050193f64"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\dataset\\mebal2.py",
+    "archive_path": "src\\v2\\dataset\\mebal2.py",
+    "bytes": 16069,
+    "sha256": "b3cfe46c125f5a9979ea63bc40a4f69584e551154233dfc6f83e3b2be142887d"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\dataset\\__init__.py",
+    "archive_path": "src\\v2\\dataset\\__init__.py",
+    "bytes": 228,
+    "sha256": "800ba352e2c2ff00c87f886896350f4b7e32c06d5c7e66fafd240e3c3cadbfbb"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\deploy\\check_equivalence.py",
+    "archive_path": "src\\v2\\deploy\\check_equivalence.py",
+    "bytes": 11784,
+    "sha256": "1ceb2b49ef7b3b847f6eb7c8a540cf389c7f48dea61af7d7434afca0a9d27d94"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\deploy\\export_onnx.py",
+    "archive_path": "src\\v2\\deploy\\export_onnx.py",
+    "bytes": 24373,
+    "sha256": "e4e0ce009700b1e68653c669800446c9a9c2f71b02b4a07ea3d09956f418a3fd"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\deploy\\export_onnx_rnn.py",
+    "archive_path": "src\\v2\\deploy\\export_onnx_rnn.py",
+    "bytes": 6631,
+    "sha256": "2d60876442d7288c9fe91e6200339b7b27cc3a9a5d7ddc968029f69596edf5b1"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\deploy\\frontend.py",
+    "archive_path": "src\\v2\\deploy\\frontend.py",
+    "bytes": 5788,
+    "sha256": "d78041a5f35884ab4fd2f4a4eb09c0b462e0dfa18646865728d234114674e59c"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\deploy\\pi_demo.py",
+    "archive_path": "src\\v2\\deploy\\pi_demo.py",
+    "bytes": 49209,
+    "sha256": "3ccde7535a1bc04053389f1c8f16b5b19e248ccd2c6adbcdac876ee41c94b24e"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\deploy\\pmic_power.py",
+    "archive_path": "src\\v2\\deploy\\pmic_power.py",
+    "bytes": 7676,
+    "sha256": "f7c89aec7c5122e708d89588bdeb4648005d268819824506b056b699fe1cc3b6"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\deploy\\power_bench_runner.py",
+    "archive_path": "src\\v2\\deploy\\power_bench_runner.py",
+    "bytes": 6944,
+    "sha256": "086d68aeaf4ec2a8ad50dd445f96f352deb0d569efd4097a480c4838f0162c9d"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\deploy\\run_video.py",
+    "archive_path": "src\\v2\\deploy\\run_video.py",
+    "bytes": 18069,
+    "sha256": "5d76ce8c04ff84ef218a9af1e830f585b9e96b755ef0e5382dbadb2bc79df4c1"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\deploy\\run_video_power.py",
+    "archive_path": "src\\v2\\deploy\\run_video_power.py",
+    "bytes": 22622,
+    "sha256": "a1338d02050d7e38a5af1f1bba662a2460c40b63243ac216199a5d4200f756d9"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\deploy\\test_pi_demo_ui.py",
+    "archive_path": "src\\v2\\deploy\\test_pi_demo_ui.py",
+    "bytes": 6945,
+    "sha256": "d47a90cdb5e39ad2c2767e317d95da6c1bab4f57d4c445848d074b7c42f476d1"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\deploy\\test_pmic_power.py",
+    "archive_path": "src\\v2\\deploy\\test_pmic_power.py",
+    "bytes": 6556,
+    "sha256": "d1f006a3f6f19cb7a225a6bf822dea3546238e33da07ce37dfd8284a733c27f0"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\deploy\\__init__.py",
+    "archive_path": "src\\v2\\deploy\\__init__.py",
+    "bytes": 105,
+    "sha256": "02e95fa08c461283107582bc0653d7ef5d27cddef34b613e25ccfe7fb0b465f5"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\model\\encoder.py",
+    "archive_path": "src\\v2\\model\\encoder.py",
+    "bytes": 19209,
+    "sha256": "f4e8a5dd1969fdedf9626ec112af38fc894d8d175fab8074118974e58446dc3d"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\model\\rnn_head.py",
+    "archive_path": "src\\v2\\model\\rnn_head.py",
+    "bytes": 4979,
+    "sha256": "606d08aef12f565c117463841fd76d0dd514c598a5d2eb30cc9cce46161ec588"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\model\\__init__.py",
+    "archive_path": "src\\v2\\model\\__init__.py",
+    "bytes": 47,
+    "sha256": "e9c9ae1b14f5822f43780f36b47177e28b989256fb203cef4ce7eafa7863cf43"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\.gitkeep",
+    "archive_path": "results\\v2\\.gitkeep",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\abl_sym16.json",
+    "archive_path": "results\\v2\\abl_sym16.json",
+    "bytes": 54286,
+    "sha256": "7cef16e1a0c8a5bc0a2938cf405061c12d0e40a66b49c511076cd714025f2965"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\abl_vdrop.json",
+    "archive_path": "results\\v2\\abl_vdrop.json",
+    "bytes": 55456,
+    "sha256": "5e01a82378997b7ff599a94585c9d5ad02660e1bb43c072288ada4625297e83e"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\abl_vfull.json",
+    "archive_path": "results\\v2\\abl_vfull.json",
+    "bytes": 58078,
+    "sha256": "e40d20e33e25640b58e5b64e70849ba4eb180ff087018b9a8097ced2b79770c5"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\abl_vpres_ref.json",
+    "archive_path": "results\\v2\\abl_vpres_ref.json",
+    "bytes": 54563,
+    "sha256": "c798dea6c563e54af3f45589ff09fa1f0ea5ade131117d3fdb418a01a8d1458d"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\apply_flags_report.json",
+    "archive_path": "results\\v2\\apply_flags_report.json",
+    "bytes": 2552,
+    "sha256": "64c7a78ba4a188809876f52e3ee6019b5e20cd69b733bdbb17ac89a3fdaf1f30"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\ceiling_check.json",
+    "archive_path": "results\\v2\\ceiling_check.json",
+    "bytes": 5484,
+    "sha256": "c362fd2220f490ab78e42b5493997aad2c799b51c7a889c6674354d88684e919"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\check_equivalence.json",
+    "archive_path": "results\\v2\\check_equivalence.json",
+    "bytes": 2076,
+    "sha256": "a66a32b51e537bbc0d0a9b4278ebf25ad4236343ef8881a1ec67422ff3df0dac"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\cmp_D16_vs_D32.json",
+    "archive_path": "results\\v2\\cmp_D16_vs_D32.json",
+    "bytes": 4511,
+    "sha256": "93706bb676fcb4d01156aabf09ca1d84671498a6d4489e333b78df7d5877ffcc"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\cmp_D16_vs_D64.json",
+    "archive_path": "results\\v2\\cmp_D16_vs_D64.json",
+    "bytes": 4522,
+    "sha256": "9f727e4562ecdec70b3ae8d5b154a48d2842119fd85ba3b3794c694b8d2d3301"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\cmp_D16_vs_D8.json",
+    "archive_path": "results\\v2\\cmp_D16_vs_D8.json",
+    "bytes": 4516,
+    "sha256": "96a875ec7d450014fe7172e86495577c52b34bc4b3247df6a19889ea6d7b10bc"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\cmp_imgcnn_head_vs_max.json",
+    "archive_path": "results\\v2\\cmp_imgcnn_head_vs_max.json",
+    "bytes": 4671,
+    "sha256": "c047676036153dbd0da9ea1a587c0e6d993e29509ee2245ff866d30587a744ca"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\cmp_imgcnn_head_vs_max_FINAL.json",
+    "archive_path": "results\\v2\\cmp_imgcnn_head_vs_max_FINAL.json",
+    "bytes": 6476,
+    "sha256": "9fe88d650637a4a68b8af6712a042d45afc5aacbf565f4435ffbe044d888f404"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\cmp_ours_vs_imgcnn_head.json",
+    "archive_path": "results\\v2\\cmp_ours_vs_imgcnn_head.json",
+    "bytes": 4642,
+    "sha256": "b029906c4dc9ac47fb68efc4dc3f360ed5594c554bf437472caaa1033df0f558"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\cmp_ours_vs_imgcnn_head_FINAL.json",
+    "archive_path": "results\\v2\\cmp_ours_vs_imgcnn_head_FINAL.json",
+    "bytes": 6546,
+    "sha256": "928d536ed908235b0160ce3e0c4e70d8963e41ecf98ae2a8cd7237743689c6af"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\cmp_ours_vs_imgcnn_max.json",
+    "archive_path": "results\\v2\\cmp_ours_vs_imgcnn_max.json",
+    "bytes": 4573,
+    "sha256": "cb68d285740d8068878c95ce970b56985f0b70240125851c03945dea2510cf2b"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\cmp_ours_vs_imgcnn_max_FINAL.json",
+    "archive_path": "results\\v2\\cmp_ours_vs_imgcnn_max_FINAL.json",
+    "bytes": 6425,
+    "sha256": "8b40b14afd215660b98acbf043bada533f7e4bc8af5254e4ff1f50c41804ad58"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\cmp_vpres_vs_sym16.json",
+    "archive_path": "results\\v2\\cmp_vpres_vs_sym16.json",
+    "bytes": 4511,
+    "sha256": "d78ead66c4a6c061e3bc5ea1d28541e69511199d57aaa06d2efe09e418d785c3"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\cmp_vpres_vs_vdrop.json",
+    "archive_path": "results\\v2\\cmp_vpres_vs_vdrop.json",
+    "bytes": 4521,
+    "sha256": "280995297af7b2522010ce0dc249d0f90507aa0140bf29851b00f050fc5d87de"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\cmp_vpres_vs_vfull.json",
+    "archive_path": "results\\v2\\cmp_vpres_vs_vfull.json",
+    "bytes": 4522,
+    "sha256": "3c9cd626f333633f51ba6f87603faf76281699f279cab640e225bb36aefdc225"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\control8_trel.json",
+    "archive_path": "results\\v2\\control8_trel.json",
+    "bytes": 53305,
+    "sha256": "47a6b8aa672a706b38a8475a7ea9884b62f831f039823756aa0bf9f20bcc383f"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\crop_margin_check.json",
+    "archive_path": "results\\v2\\crop_margin_check.json",
+    "bytes": 9359,
+    "sha256": "fec61bf0419b03a5625e44f91f9b1bc050c06e8974d3fe4bb0f7d2f61a1e2c94"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\diagnose_subject.json",
+    "archive_path": "results\\v2\\diagnose_subject.json",
+    "bytes": 39939,
+    "sha256": "6473e9ba18b3f92248e07669928b406be51de7d7d38978520e440d9c492f2922"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\dim_D32.json",
+    "archive_path": "results\\v2\\dim_D32.json",
+    "bytes": 46820,
+    "sha256": "fc97b9742ea931ae768e7a3aec87ab4c40917fb87c1d5a990389cdba6a057861"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\dim_D64.json",
+    "archive_path": "results\\v2\\dim_D64.json",
+    "bytes": 44172,
+    "sha256": "0ec4d700726a209f6714b1c72ca0b14589a9526b1071685df26aaf02a25002e6"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\dim_D8.json",
+    "archive_path": "results\\v2\\dim_D8.json",
+    "bytes": 53647,
+    "sha256": "c0e452eaa57ad39a0cbb13d6bb24915dc175911075935b3d864332f9542a4bd7"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\ear_baseline_folds.json",
+    "archive_path": "results\\v2\\ear_baseline_folds.json",
+    "bytes": 6933,
+    "sha256": "c2b71b402a0352a0c5904d07c334406dfad86f28d290de585118734a64f4efff"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\export_onnx.json",
+    "archive_path": "results\\v2\\export_onnx.json",
+    "bytes": 5808,
+    "sha256": "6d3f6934c43c9dbaf87d551178370798eca3bb422fee324505fbea8f45f2eb6d"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\export_onnx_rnn.json",
+    "archive_path": "results\\v2\\export_onnx_rnn.json",
+    "bytes": 2872,
+    "sha256": "9fd6a0d811c134387bf35905d129028ada0bdf04d51e7cbcdab2f4864fdb796c"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\face_position.json",
+    "archive_path": "results\\v2\\face_position.json",
+    "bytes": 38347,
+    "sha256": "d6f21531446a785faa24bd00473a5c3be994bedf435005a1603b1545ad8a55ef"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\facts_mebal2_events.json",
+    "archive_path": "results\\v2\\facts_mebal2_events.json",
+    "bytes": 22275,
+    "sha256": "54313b6d878a2d664a3c45cadda24fc8fd5b971c253d6344d1430f4a8b726241"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\gate_minus1.json",
+    "archive_path": "results\\v2\\gate_minus1.json",
+    "bytes": 5779,
+    "sha256": "ca103ea2cfd43772e473077d242e65545b0578c9ee0647177b292cbaa8a541b9"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\gate_minus1.no_torch.json",
+    "archive_path": "results\\v2\\gate_minus1.no_torch.json",
+    "bytes": 4778,
+    "sha256": "5ffea66f5a9e5a2251fa0d36cf89491c1a214cd4bb8d2cc5a77e9d7749a7369d"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\glasses_label_revision.json",
+    "archive_path": "results\\v2\\glasses_label_revision.json",
+    "bytes": 1385,
+    "sha256": "8ca18e1e0d7023425a77b0b8a5d2f960509b8afab7aaec01ea36a47cd0b5389d"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\imgcnn_head_pilot.json",
+    "archive_path": "results\\v2\\imgcnn_head_pilot.json",
+    "bytes": 59915,
+    "sha256": "5cced41dd6161f6f3186cc9966d321b8efdfb0e24af15445a6ec2d8b56a061db"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\imgcnn_max_pilot.json",
+    "archive_path": "results\\v2\\imgcnn_max_pilot.json",
+    "bytes": 58495,
+    "sha256": "5e897a3647413252b18bbaabfb2fa00c5dde8eeb43f94e368dd12ce61b99900e"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\merge_report.json",
+    "archive_path": "results\\v2\\merge_report.json",
+    "bytes": 12261,
+    "sha256": "6fbcb77edf12ea2d297b2a0522343d6c157a78abea769ea5f5fd155a4978c140"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\phase0_probes.json",
+    "archive_path": "results\\v2\\phase0_probes.json",
+    "bytes": 28917,
+    "sha256": "e37d47e282d3c07802b7c382c4d9340545f44d3ac8d9bb3bab9b503106e33c79"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\phase1_csv58.json",
+    "archive_path": "results\\v2\\phase1_csv58.json",
+    "bytes": 11939209,
+    "sha256": "c440957cd9643b031071f093fb679a8af8abeb047a63d43ca0102b4f1995749d"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\phase1_pilot_user01.json",
+    "archive_path": "results\\v2\\phase1_pilot_user01.json",
+    "bytes": 3125,
+    "sha256": "fe93290cf5df348a155f39a3fdd963b1cb0444c7fb7d8e91e3707673168ee796"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\phase5_reid.json",
+    "archive_path": "results\\v2\\phase5_reid.json",
+    "bytes": 49825,
+    "sha256": "dff089c92262f58f108404ff89c45febda556abed53a2034d3875da54c980ba8"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\photometrics_58.json",
+    "archive_path": "results\\v2\\photometrics_58.json",
+    "bytes": 3736,
+    "sha256": "defe38883b894c19ea959ece2b13366f7030c0ff0a1714846ac05ef300b27a2f"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\pi_ear_480p.json",
+    "archive_path": "results\\v2\\pi_ear_480p.json",
+    "bytes": 2631,
+    "sha256": "a5ae12ca9281cda5936293d73154e05b51ed212e3c5768b2cccada7bea617a12"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\pi_image_cnn_head_480p.json",
+    "archive_path": "results\\v2\\pi_image_cnn_head_480p.json",
+    "bytes": 2949,
+    "sha256": "654c6e4a4f1c9f20cf96b1990cec8c0dd2d67aa971e56b310a2e6366790bd712"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\pi_image_cnn_max_480p.json",
+    "archive_path": "results\\v2\\pi_image_cnn_max_480p.json",
+    "bytes": 2955,
+    "sha256": "f786c912db8ae01c5e3e681056bec716fdae5d20bd4f81a8f0a5d2ed086dea27"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\pi_ours_480p.json",
+    "archive_path": "results\\v2\\pi_ours_480p.json",
+    "bytes": 2779,
+    "sha256": "10e027adcba45f2e07f45fb5023d0097f3194ac18ed39ff78e85e8d024167b84"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\posthoc_subgroups.json",
+    "archive_path": "results\\v2\\posthoc_subgroups.json",
+    "bytes": 41629,
+    "sha256": "f9f137f12cf0355b75585e874a97d71472520bab610bfb07f77305e2b5bd8b54"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\posthoc_subgroups_final.json",
+    "archive_path": "results\\v2\\posthoc_subgroups_final.json",
+    "bytes": 67949,
+    "sha256": "86df75155aab98cde498559f6a03569be4ffb72a942daf33f3f6b55883379e2d"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\posthoc_vs_imgcnn_head.json",
+    "archive_path": "results\\v2\\posthoc_vs_imgcnn_head.json",
+    "bytes": 45881,
+    "sha256": "cfb76106d25ed52458b120205656a7fd633db1715159bc2a8ee1315467f371ff"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\power_ear_480p_run1.json",
+    "archive_path": "results\\v2\\power_ear_480p_run1.json",
+    "bytes": 5039,
+    "sha256": "194bcde8f94053dededb16e813f699bdd722894544f6606daf79d720e850a562"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\power_ear_480p_run2.json",
+    "archive_path": "results\\v2\\power_ear_480p_run2.json",
+    "bytes": 5048,
+    "sha256": "be8472d8b92d4f22b8b967e6700d4ff32d1220c57e927cbf0ca5eb24204f62a2"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\power_ear_480p_run3.json",
+    "archive_path": "results\\v2\\power_ear_480p_run3.json",
+    "bytes": 5063,
+    "sha256": "b6dfa41c404d13245a83e8b6434cf3e1b3b2db4e9b7cc11597da017294879291"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\power_ear_480p_summary.json",
+    "archive_path": "results\\v2\\power_ear_480p_summary.json",
+    "bytes": 750,
+    "sha256": "3cce495d5d6bd2e6222098896aa26b4ef9f19300948e922802fd901fcaee09ff"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\power_image_cnn_bilstm_480p_run1.json",
+    "archive_path": "results\\v2\\power_image_cnn_bilstm_480p_run1.json",
+    "bytes": 5385,
+    "sha256": "c16eb09849b25c06a1d8cd37ceaa9b1dbb911ff574d65410f1b6874a726fd973"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\power_image_cnn_bilstm_480p_run2.json",
+    "archive_path": "results\\v2\\power_image_cnn_bilstm_480p_run2.json",
+    "bytes": 5392,
+    "sha256": "80e57e9e97a94c5a43c7eac80a6eee6956254f84125754637c17aecd8d60aa77"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\power_image_cnn_bilstm_480p_run3.json",
+    "archive_path": "results\\v2\\power_image_cnn_bilstm_480p_run3.json",
+    "bytes": 5382,
+    "sha256": "cfabd2a660a8e35bddcd4d78509ef4bbd21304db3d11ffb20da3f3809f527801"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\power_image_cnn_bilstm_480p_summary.json",
+    "archive_path": "results\\v2\\power_image_cnn_bilstm_480p_summary.json",
+    "bytes": 804,
+    "sha256": "86b0c112e8b0e32547f829c58691e13b571a7fc24cbda47e86b13c1385453930"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\power_image_cnn_head_480p_run1.json",
+    "archive_path": "results\\v2\\power_image_cnn_head_480p_run1.json",
+    "bytes": 5376,
+    "sha256": "d23340f710e1b1a6446ee4f464c5557c3a3646d613d1151419563b4bc0629d0d"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\power_image_cnn_head_480p_run2.json",
+    "archive_path": "results\\v2\\power_image_cnn_head_480p_run2.json",
+    "bytes": 5383,
+    "sha256": "b90bb6485221200a6bb7e363ece12754e2c5abb4553b3b4afc87dde376403d41"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\power_image_cnn_head_480p_run3.json",
+    "archive_path": "results\\v2\\power_image_cnn_head_480p_run3.json",
+    "bytes": 5379,
+    "sha256": "dbdda1a5debe34d74a3f0eea4a0ef7b20d8ba07480351a6216e78eb0d624e8e2"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\power_image_cnn_head_480p_summary.json",
+    "archive_path": "results\\v2\\power_image_cnn_head_480p_summary.json",
+    "bytes": 797,
+    "sha256": "949d45934063120e507566f5607a88dd6296b364d1d10a4fbc7b469ea027f743"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\power_image_cnn_lstm_480p_run1.json",
+    "archive_path": "results\\v2\\power_image_cnn_lstm_480p_run1.json",
+    "bytes": 5383,
+    "sha256": "8af634e448b3853ef22939d0f7ad52a45e0a6b4292b05c597e582c62a6e74ccf"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\power_image_cnn_lstm_480p_run2.json",
+    "archive_path": "results\\v2\\power_image_cnn_lstm_480p_run2.json",
+    "bytes": 5386,
+    "sha256": "77fd53bd96b99473bf17fecc1d7757c43dd3b5f4e9761b975e56e830c8a60b9c"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\power_image_cnn_lstm_480p_run3.json",
+    "archive_path": "results\\v2\\power_image_cnn_lstm_480p_run3.json",
+    "bytes": 5377,
+    "sha256": "d1cc86adf316a5d41555ab2544e97218b2591017eecce9dd324ebf62dc040a7a"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\power_image_cnn_lstm_480p_summary.json",
+    "archive_path": "results\\v2\\power_image_cnn_lstm_480p_summary.json",
+    "bytes": 797,
+    "sha256": "bb840192e3f7084ab9129563fce18d976e4c29338401161c8ff5b747e102444d"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\power_image_cnn_max_480p_run1.json",
+    "archive_path": "results\\v2\\power_image_cnn_max_480p_run1.json",
+    "bytes": 5378,
+    "sha256": "1df78eb932ea5e36eeaeece228f0fca9a7b07a5ecda67ef965dd4f0266672cf1"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\power_image_cnn_max_480p_run2.json",
+    "archive_path": "results\\v2\\power_image_cnn_max_480p_run2.json",
+    "bytes": 5374,
+    "sha256": "453e193ac0fc12102cc674b6cd72c44b4ed1a15a52e0cb03b04d8815a5876463"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\power_image_cnn_max_480p_run3.json",
+    "archive_path": "results\\v2\\power_image_cnn_max_480p_run3.json",
+    "bytes": 5377,
+    "sha256": "e2b371828396f4724609a1422eb5bc29b59e4681c503d7b870bbe968ee173f18"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\power_image_cnn_max_480p_summary.json",
+    "archive_path": "results\\v2\\power_image_cnn_max_480p_summary.json",
+    "bytes": 798,
+    "sha256": "003a397676100121a3cc464a65b754eb85b4c33921fd967fd6850113efc06f8e"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\power_ours_480p_run1.json",
+    "archive_path": "results\\v2\\power_ours_480p_run1.json",
+    "bytes": 5201,
+    "sha256": "9bb76c94a6733518f43efbbb3e42b76e7b1c3841dc47bbe912306d41a108b451"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\power_ours_480p_run2.json",
+    "archive_path": "results\\v2\\power_ours_480p_run2.json",
+    "bytes": 5205,
+    "sha256": "c966a2f19a64b9370be4677ad42be4089bece0e4f9e7123005c42f13a0a965e9"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\power_ours_480p_run3.json",
+    "archive_path": "results\\v2\\power_ours_480p_run3.json",
+    "bytes": 5208,
+    "sha256": "5f65a44b5b39dfa868270634a473ac4428facc8baac1aeb9384f9f10b36a1b96"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\power_ours_480p_summary.json",
+    "archive_path": "results\\v2\\power_ours_480p_summary.json",
+    "bytes": 758,
+    "sha256": "fe376c64bddc9f5e15a39d48989ce0aad94f3441e7d5d27fe09e93cc5f3c14d3"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\restored_ours_scores.npz",
+    "archive_path": "results\\v2\\restored_ours_scores.npz",
+    "bytes": 1506975,
+    "sha256": "3fcc558b82b773fca638d853aa749b27c6370e70bf109b7be625e5a8f89bb3a9"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_encoder.json",
+    "archive_path": "results\\v2\\train_encoder.json",
+    "bytes": 127983,
+    "sha256": "fd5e3fd98e690f4e139e458932f1f0e0c8812a213ea5fd18a6eb6c1ca5660421"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_encoder_contaminated.json",
+    "archive_path": "results\\v2\\train_encoder_contaminated.json",
+    "bytes": 6936,
+    "sha256": "3d6bce1dc3868c6f2ade4f4bc4e58059260ba5646f09ea8fe50078185b3b38d5"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_encoder_final.json",
+    "archive_path": "results\\v2\\train_encoder_final.json",
+    "bytes": 130814,
+    "sha256": "1a0128822d9fa37e64ea9f58b1f484a6c06512de59e0227ed8efa771a70e9e5d"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_image_cnn_head_final.json",
+    "archive_path": "results\\v2\\train_image_cnn_head_final.json",
+    "bytes": 139449,
+    "sha256": "2599ee489d99e76b28ab8a2afe433e87fd2f4de3435e31c6c36fcd99eba350a4"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_image_cnn_max_final.json",
+    "archive_path": "results\\v2\\train_image_cnn_max_final.json",
+    "bytes": 134606,
+    "sha256": "01c4328405bc9a339e3173cba10f0b170917634c54f410d53224155f2b7b46f8"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\u1_audit.json",
+    "archive_path": "results\\v2\\u1_audit.json",
+    "bytes": 178620,
+    "sha256": "d7ae3e7521b450fd3d2dc07d98d54bc64d6527e2ef309b88f979679f1d0a06de"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\abl_sym16_scores\\fold0_seed0.npz",
+    "archive_path": "results\\v2\\abl_sym16_scores\\fold0_seed0.npz",
+    "bytes": 100349,
+    "sha256": "4c1188591c0327d3eff53150c82dfe023b6f5b5af8ccbe3753269f6f716e4d68"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\abl_sym16_scores\\fold0_seed1.npz",
+    "archive_path": "results\\v2\\abl_sym16_scores\\fold0_seed1.npz",
+    "bytes": 100555,
+    "sha256": "3f63bd8cbfe824493db0d041709405db78f2f7664633c905367b350da7ab5ad5"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\abl_sym16_scores\\fold0_seed2.npz",
+    "archive_path": "results\\v2\\abl_sym16_scores\\fold0_seed2.npz",
+    "bytes": 100388,
+    "sha256": "f90902f501ce6540ca74db3c0014240ca552f3543335129f8ec5a6547df0630e"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\abl_sym16_scores\\fold1_seed0.npz",
+    "archive_path": "results\\v2\\abl_sym16_scores\\fold1_seed0.npz",
+    "bytes": 89881,
+    "sha256": "4b5db52a31aae60e5b62210ec7967a3c6bfa886d7b0bbb41978f5cd2554190e4"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\abl_sym16_scores\\fold1_seed1.npz",
+    "archive_path": "results\\v2\\abl_sym16_scores\\fold1_seed1.npz",
+    "bytes": 90088,
+    "sha256": "819141f248ad7700c07f24cd739a5acd76347d4cde36b9f5292f19d1e06553bf"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\abl_sym16_scores\\fold1_seed2.npz",
+    "archive_path": "results\\v2\\abl_sym16_scores\\fold1_seed2.npz",
+    "bytes": 89959,
+    "sha256": "e65b62ae9d75d7d9fdea4b6ecba170b8e9ed9cb2f5631b03cb4bd04286a01e32"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\abl_vdrop_scores\\fold0_seed0.npz",
+    "archive_path": "results\\v2\\abl_vdrop_scores\\fold0_seed0.npz",
+    "bytes": 100496,
+    "sha256": "f71e8c7ace1c7ed15633797f053735a77b9dc07e7e3d89800fbb3bf83934b1a8"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\abl_vdrop_scores\\fold0_seed1.npz",
+    "archive_path": "results\\v2\\abl_vdrop_scores\\fold0_seed1.npz",
+    "bytes": 100740,
+    "sha256": "47b2c1aad7ddb1b81ecf93fce75f808206e3074c9649afca880d6cd617be7a60"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\abl_vdrop_scores\\fold0_seed2.npz",
+    "archive_path": "results\\v2\\abl_vdrop_scores\\fold0_seed2.npz",
+    "bytes": 100339,
+    "sha256": "e5f61da9fa55a0f43d6da58f2b52e82f036f3a52e7f13e45641dc891a7bfe882"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\abl_vdrop_scores\\fold1_seed0.npz",
+    "archive_path": "results\\v2\\abl_vdrop_scores\\fold1_seed0.npz",
+    "bytes": 89895,
+    "sha256": "152ad4fe316a39494349a6d2197c42cc6577b63bf8644098adaf2fbde68303f4"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\abl_vdrop_scores\\fold1_seed1.npz",
+    "archive_path": "results\\v2\\abl_vdrop_scores\\fold1_seed1.npz",
+    "bytes": 90101,
+    "sha256": "aa0c83457cd89a2595c06084f43084add3d955ec8b3b3a16add75777c39131ab"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\abl_vdrop_scores\\fold1_seed2.npz",
+    "archive_path": "results\\v2\\abl_vdrop_scores\\fold1_seed2.npz",
+    "bytes": 90190,
+    "sha256": "31900aa37589023d4fc3dd0c6a03a1320ca520e87611210f7cda1f87f3d27de0"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\abl_vfull_scores\\fold0_seed0.npz",
+    "archive_path": "results\\v2\\abl_vfull_scores\\fold0_seed0.npz",
+    "bytes": 100687,
+    "sha256": "b9220c748501663e9cc7aef408d556ba12d02cd2356c26c705b2bd35c0bea3b4"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\abl_vfull_scores\\fold0_seed1.npz",
+    "archive_path": "results\\v2\\abl_vfull_scores\\fold0_seed1.npz",
+    "bytes": 100697,
+    "sha256": "58738faf9916c00d79abbfec5d326b1d92d8ada292de7596eb400fd528a6a6a9"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\abl_vfull_scores\\fold0_seed2.npz",
+    "archive_path": "results\\v2\\abl_vfull_scores\\fold0_seed2.npz",
+    "bytes": 100501,
+    "sha256": "9f31b7343a1306502880113ae547cd3fe2d71ecc3441951f1e4d026a7cc42792"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\abl_vfull_scores\\fold1_seed0.npz",
+    "archive_path": "results\\v2\\abl_vfull_scores\\fold1_seed0.npz",
+    "bytes": 90288,
+    "sha256": "d5ed3ef3ef52d52357e7b999019a58defccacb0518e20b6e8b56a0090f368049"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\abl_vfull_scores\\fold1_seed1.npz",
+    "archive_path": "results\\v2\\abl_vfull_scores\\fold1_seed1.npz",
+    "bytes": 90369,
+    "sha256": "f765a68872e79f826b7d8e53db25999d89e167252b6d5f46380e93e07dfb356f"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\abl_vfull_scores\\fold1_seed2.npz",
+    "archive_path": "results\\v2\\abl_vfull_scores\\fold1_seed2.npz",
+    "bytes": 90287,
+    "sha256": "92f29c6d6a557fcb2c952ec0f7a5af51360288976355e77a12721e07ae862931"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\abl_vpres_ref_scores\\fold0_seed0.npz",
+    "archive_path": "results\\v2\\abl_vpres_ref_scores\\fold0_seed0.npz",
+    "bytes": 100498,
+    "sha256": "f6ff76a6ee362805fdd25634b74b46ffb1d057605f74d9b4c974ff8eda87a6f0"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\abl_vpres_ref_scores\\fold0_seed1.npz",
+    "archive_path": "results\\v2\\abl_vpres_ref_scores\\fold0_seed1.npz",
+    "bytes": 100924,
+    "sha256": "7aa4bfe505c4bd536a8879e5a674b57e8cedbb45182f4b2bf689c656cfe40e9c"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\abl_vpres_ref_scores\\fold0_seed2.npz",
+    "archive_path": "results\\v2\\abl_vpres_ref_scores\\fold0_seed2.npz",
+    "bytes": 100564,
+    "sha256": "6a0863cfe79bfe70a6816ccff88a7473156d45da3e9c61269e10abca84b56244"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\abl_vpres_ref_scores\\fold1_seed0.npz",
+    "archive_path": "results\\v2\\abl_vpres_ref_scores\\fold1_seed0.npz",
+    "bytes": 90203,
+    "sha256": "034164891af1f3a6f30c7b380d667bbed939483a66d3e0ff20e6891687fe546f"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\abl_vpres_ref_scores\\fold1_seed1.npz",
+    "archive_path": "results\\v2\\abl_vpres_ref_scores\\fold1_seed1.npz",
+    "bytes": 90433,
+    "sha256": "1639e12a4a2f4c8e9896696cfc543e6464087fba84cecd6aef9b083a7a6d2930"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\abl_vpres_ref_scores\\fold1_seed2.npz",
+    "archive_path": "results\\v2\\abl_vpres_ref_scores\\fold1_seed2.npz",
+    "bytes": 90181,
+    "sha256": "a212063fd327f6c8095247e4874cd82524245a07ca923e5902ffd5d53e5c1885"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260914_151535.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260914_151535.png",
+    "bytes": 125660,
+    "sha256": "55a505c23baf3eef845ba6a5a5be12f92b1c3c0fa5d79bb393c16d8bb24e163c"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260914_151539.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260914_151539.png",
+    "bytes": 125620,
+    "sha256": "d54971dc5c7a1581065af008987ef4fc2a8c0a6d549cafa44815093692a80806"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260914_154704.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260914_154704.png",
+    "bytes": 386111,
+    "sha256": "739032528d7a4b5e57f6d1b6e8b362882340d099f6d4da0f622b367cc4456bae"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260914_155108.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260914_155108.png",
+    "bytes": 384255,
+    "sha256": "9e34d3eee642093fc2708c6ff4c27d7194ec114b06297ec2c595244596f46c5e"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260914_155109.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260914_155109.png",
+    "bytes": 384254,
+    "sha256": "d3672e0a96dc17d268e5434e198430d8da6ed77025bf18795afcffb4a80ee519"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260914_155110.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260914_155110.png",
+    "bytes": 384172,
+    "sha256": "a81af0188ef6d5c37f1392950a3fb450bff30eb084c99cdc12c1f454cebf9b96"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260914_155111.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260914_155111.png",
+    "bytes": 383308,
+    "sha256": "48c13133ec1800bef2670bdbea4ee4d2b901fe8df59e5fe3fa98c56cbf468d15"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260914_155112.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260914_155112.png",
+    "bytes": 382314,
+    "sha256": "f24657a2c6f3eb370c776fdb93d3fd0bee3aefed279e8fb922d7799cd8aaa035"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260914_155113.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260914_155113.png",
+    "bytes": 375493,
+    "sha256": "0990225bf905addf566506cf37da9a0ae31acfd6c3811f24b5c9c6e9fbaf6970"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260914_155114.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260914_155114.png",
+    "bytes": 381257,
+    "sha256": "959034fd22c369e728f8f91597ffc763e9c6dba84015c617b9b022a1a7fd8214"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260914_155115.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260914_155115.png",
+    "bytes": 380097,
+    "sha256": "48e0b5fc4d6fb7606540b4bc06e2679ff1b3da36b923766ffab376bd77f982b1"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260914_155142.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260914_155142.png",
+    "bytes": 398171,
+    "sha256": "7d96c9def397472c9fd6b026e6619a0332af3541a0cd08bb0d133722c83e452a"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260914_155143.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260914_155143.png",
+    "bytes": 399248,
+    "sha256": "e9750822a4c4c254fbeabc92a5450172e186915067d0605c03e142f73ad3a6a3"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260914_155144.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260914_155144.png",
+    "bytes": 400054,
+    "sha256": "821f8e0a822562b19901fb14e24732d6efe046c835a43c5535af2b0e4f476c0f"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260914_155145.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260914_155145.png",
+    "bytes": 396858,
+    "sha256": "ecde182007dbb102a3fff744b326202e0a1f6e18896dc11a76053dcc883b29e5"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260914_155147.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260914_155147.png",
+    "bytes": 386505,
+    "sha256": "a27e6723b77a75d0aef394d7b2199acbc63cbbf382519aab61ea2a6c50291407"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260914_155148.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260914_155148.png",
+    "bytes": 392632,
+    "sha256": "de994989a839debb865fd0468f37515aa82e6db8466d8e694f87047ae3eca975"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260914_155149.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260914_155149.png",
+    "bytes": 390051,
+    "sha256": "33c94359dcab53bb24da84cc9b49bfeb30bcc3df5621895284579a23f4019351"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260914_155150.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260914_155150.png",
+    "bytes": 388125,
+    "sha256": "72dcf12d195c863288dd93cf6d8654f58301c460e49b4764adc7d318ea5c92e5"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260914_155151.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260914_155151.png",
+    "bytes": 391420,
+    "sha256": "7ddaee0e1396c0d9dcfffec9d05386d80086ef4492b90864b99b1cb1d4ce7942"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260914_155154.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260914_155154.png",
+    "bytes": 385580,
+    "sha256": "42647791fcf28cb8b3d13351ca9a52db15ed06d2c666830ced00daad772b4788"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260914_155156.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260914_155156.png",
+    "bytes": 384413,
+    "sha256": "abf7ddfbb8618e61a60ecefa562b13e4ca5e3f888892df09ab1b3f282324a12f"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260914_155158.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260914_155158.png",
+    "bytes": 383926,
+    "sha256": "bb03484c5529e989418897e5967d2d4c35f529a36a82e55c06560fe457984d79"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260914_155204.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260914_155204.png",
+    "bytes": 382854,
+    "sha256": "0dbae8b31cf42f2ab2bcdda86db4d0243c1c9dcbd0ab516273a08131e9da1832"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260914_155206.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260914_155206.png",
+    "bytes": 382982,
+    "sha256": "a48bfa4333ce1e8a8815a9312eeb1af6e679a5c997a642744cfe3f93d0982969"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260914_155208.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260914_155208.png",
+    "bytes": 384407,
+    "sha256": "843b55a86147cb45ca3685f624bdcbad51f8b3582c6189981c8afcf16be4e1c4"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260914_155210.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260914_155210.png",
+    "bytes": 384316,
+    "sha256": "8e481d48fc5f493cdba8a5b5b85f90b87c7b14ed470511e57865ab01a25991c9"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260914_155235.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260914_155235.png",
+    "bytes": 396301,
+    "sha256": "c2bc8f5e2accbff62c7d06037cd689209795bea0f48becee9d2b6a333d0437ef"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260914_155236.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260914_155236.png",
+    "bytes": 394263,
+    "sha256": "807bb5b516aff3258bcc63f301e965a1e28d2856d601984a1242837200800543"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260914_155237.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260914_155237.png",
+    "bytes": 392147,
+    "sha256": "c038b76c8619cd51757cfa9b8c0ff3e80cc68afe0188efd5a0a60c1bed2dbe87"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260914_155238.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260914_155238.png",
+    "bytes": 391277,
+    "sha256": "46a4a0e3c8c17f9dc99bce040345b5df721dde6e85b3a9b4d23b33eb3ba0c48a"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260914_155239.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260914_155239.png",
+    "bytes": 388188,
+    "sha256": "d6abd19bc435b942c26015a7d1b75939c4910ddc21d5e737acc8b8375cc208f4"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260914_155240.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260914_155240.png",
+    "bytes": 383451,
+    "sha256": "69ee203a3e026bec82c5d0532865fb2b7d5116c614bad617a1a02f14a607d277"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260914_155241.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260914_155241.png",
+    "bytes": 380585,
+    "sha256": "888aa8fe8976a880dff6cd3f2ab2631eb58e3c597bad8d7d3905a2af2c86f12b"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260914_155242.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260914_155242.png",
+    "bytes": 383987,
+    "sha256": "be4b02bb02e75e9dbac138dc99ea3a7dd0f86ff44f6c7fc918414ca0f7f09607"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260915_174903.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260915_174903.png",
+    "bytes": 181525,
+    "sha256": "0048ecf83c21f2d5ff0411b97f06ca41017441c6672dc423597483655797993d"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260915_174904.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260915_174904.png",
+    "bytes": 182288,
+    "sha256": "90e98316ebbcc7cf8000bd0683b9d239b3eded95f77a6c8e22dd2b1cbb9802f1"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260915_174905.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260915_174905.png",
+    "bytes": 179867,
+    "sha256": "704fdcf879937b9077d39ede26108a89d2394647957a04693cadc9b4b9b9c3a9"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260915_174906.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260915_174906.png",
+    "bytes": 180156,
+    "sha256": "9653743243041d1dbd8dde1e7ac1ebc5ba6b4e36af690f9f5f185668a271da14"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260915_174917.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260915_174917.png",
+    "bytes": 182681,
+    "sha256": "5b8faa03e9acc4520834501fdeae02943974afaae89eb4dd1fd5c6c815b518b9"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260915_174918.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260915_174918.png",
+    "bytes": 185011,
+    "sha256": "0c60d02adc05336b96d72c6474e18b25c325c58c762ec6abb758d4615bab0a60"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260915_174919.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260915_174919.png",
+    "bytes": 184052,
+    "sha256": "dc84da25a61c6a37237908bb66d97df6ffbee1a7fab99fd61759389f6035347a"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260915_174921.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260915_174921.png",
+    "bytes": 177748,
+    "sha256": "cd1092043496fc60111f051434b109e62153d3b85e1f45ddd06db0bd32758294"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260915_174922.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260915_174922.png",
+    "bytes": 180194,
+    "sha256": "4d35486c4f1d9dac520751de10a8abbac8e46de6046c53bc1b99b1223581da02"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260915_174923.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260915_174923.png",
+    "bytes": 179720,
+    "sha256": "dcbb341158320db9d14ba63747e873558864715dfe5227ad6044826bc36d13e9"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260915_174924.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260915_174924.png",
+    "bytes": 180005,
+    "sha256": "de2d7087ccd8933e27031895a1c5e7088347469530b387a1de86bdb2f77b02bb"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260915_174925.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260915_174925.png",
+    "bytes": 179568,
+    "sha256": "f5d8e0128ba142be93881d857cbe9747fc72397b81d8cb6531a8cc4fc7607c96"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260915_174927.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260915_174927.png",
+    "bytes": 177911,
+    "sha256": "2edc1e75a42aa292f7b8559b2003ec7b4d8963fa0783cb9a7f6d84de3cb44278"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260915_174936.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260915_174936.png",
+    "bytes": 187224,
+    "sha256": "3caba65a084712ffc9600f859a4eb2ccf99f23c9e96e68a94b2b2952a322747b"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260915_174937.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260915_174937.png",
+    "bytes": 188258,
+    "sha256": "edd44f71a0acf32aa241cc44b27d61fbcdba8283a7ccbde13d3358b04fcf7813"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260915_174938.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260915_174938.png",
+    "bytes": 189826,
+    "sha256": "0c6649a9b8d58260c5dd605b58586854cb87b8b959c04c23212b79e47b246412"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260915_174939.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260915_174939.png",
+    "bytes": 189393,
+    "sha256": "3efb023c7a54763fa276c97dece268b357b01a3d3a00be74fd2725cbb42a12f7"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260915_174941.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260915_174941.png",
+    "bytes": 189171,
+    "sha256": "7998d2fcbb4ccda21aae440ec7965e67a1aaed809134e5e6b10a4cac8054b240"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260915_174942.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260915_174942.png",
+    "bytes": 186955,
+    "sha256": "43b2532994217b0b9e1ede005561986440baa301dbdd6e41892ee25223eff728"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260915_174943.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260915_174943.png",
+    "bytes": 187250,
+    "sha256": "7ec0859284e9f4798773b5f37f4c2b207c044da807276a45f224b98e3d6b8927"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260915_174945.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260915_174945.png",
+    "bytes": 185775,
+    "sha256": "a4f62bd21d44d083d22d84142f1b6a31a7ad7eaf9b862749d8fed742e7c17015"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260915_174948.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260915_174948.png",
+    "bytes": 183209,
+    "sha256": "2182c473ec7c975381c52d1e9596c3bdb93556369edcc7855badfd43a387c191"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260915_174949.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260915_174949.png",
+    "bytes": 182074,
+    "sha256": "3a9542154fc8d31a4223978ff05db0a5be1211f8e0221617423e2c66918cead0"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260915_175538.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260915_175538.png",
+    "bytes": 178401,
+    "sha256": "80542f60c96fa2915da824667c2ed6721c92edd73accabff767e86fd5ac6cdc3"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260915_175540.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260915_175540.png",
+    "bytes": 177533,
+    "sha256": "868e618ea1913a1aa2de61766bb95f47510eb01be25a116b4febe3758107453f"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260915_175543.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260915_175543.png",
+    "bytes": 175949,
+    "sha256": "83bc81c7a971d887e54b769b6cb8bea8ab9beacf9430da79b19c460bbdf45975"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260915_175545.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260915_175545.png",
+    "bytes": 174148,
+    "sha256": "de225738eb2ff2ef75b1f4085e955740eb5ae97bb6be0ba3de06b2dee0e281ad"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260915_175548.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260915_175548.png",
+    "bytes": 175616,
+    "sha256": "89480fc8b5700e6fe91cae08e6a2c5aae8d63fd1c6dc6178f777458ad2498ec2"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260915_175550.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260915_175550.png",
+    "bytes": 174136,
+    "sha256": "854d5f3dd9bc78b9f9f952298b9791c509b6803bd24f04ca900241c4cbc2cad1"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260915_175553.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260915_175553.png",
+    "bytes": 175457,
+    "sha256": "6605a6ce12ec9b107245e7c9c4bed62e47667ef0a8ab4e96f53e7a46d38ff25c"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260915_175615.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260915_175615.png",
+    "bytes": 176601,
+    "sha256": "4256f0ab6d2d4f2eca13e0af9dd44248dcd8dd003e4d9682649019c042af3e30"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260915_175616.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260915_175616.png",
+    "bytes": 178118,
+    "sha256": "dd13e596a0ec236ee0cfb59d46eb3454b4b8079c062bdca3b01186106cf360b9"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260915_175617.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260915_175617.png",
+    "bytes": 176525,
+    "sha256": "39581a9f12f75322decb4e522ea11dfef5da578a4b12aaa9e595f1912af6f57a"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260915_175618.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260915_175618.png",
+    "bytes": 177893,
+    "sha256": "460c35890e19929243338a9b49110af6c1c2ad2fea7b637d6b358577cc9f4e4a"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260915_175619.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260915_175619.png",
+    "bytes": 175128,
+    "sha256": "79271ee85eca421911824afa20958f865e3142452d628164983d121304d37696"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260915_175620.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260915_175620.png",
+    "bytes": 177058,
+    "sha256": "90608464cdec9a86951ba0cb2e55a9848d87ed45835ffe5754f8ca51f2503722"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260915_175622.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260915_175622.png",
+    "bytes": 178931,
+    "sha256": "af43bb554f26bea1dd2bfe3c3914ce0eb2de0553927a589e22b139c3becd2f3e"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260915_175623.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260915_175623.png",
+    "bytes": 177217,
+    "sha256": "057cdca10be85a9d05af2417851dd028593bfa98f882601c1b902634bf70784d"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260915_175624.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260915_175624.png",
+    "bytes": 182032,
+    "sha256": "acd74ed821eb004871d47b8bea16486c76a51bbbb2a7fa7fa60f7d74778bd09a"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260915_175629.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260915_175629.png",
+    "bytes": 177942,
+    "sha256": "28da901bdb96f1bb82db1047adbf1b23b190f622e12921d710cc33ba089b536e"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260915_175632.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260915_175632.png",
+    "bytes": 176433,
+    "sha256": "bd36b25d84c66fccdbad1e315c291940851727b8c28ea50c36fcd5bfc7d48847"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260915_175637.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260915_175637.png",
+    "bytes": 174995,
+    "sha256": "e786f59411b92bc459e3bcb0931b15e08e38007c6be6618f7b9fefd6c90b3992"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260915_175638.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260915_175638.png",
+    "bytes": 175157,
+    "sha256": "15c9b8c621dbf761f08b1e666eaab68e83d6b58aa27e63b36d7ce9c77c13d24f"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260915_175639.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260915_175639.png",
+    "bytes": 174779,
+    "sha256": "e1b9a080ae9f26cd5a81dea457650ac3d2e7725644a734c2ba0f023f611a638a"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260915_175640.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260915_175640.png",
+    "bytes": 174484,
+    "sha256": "57cd79e318c50b179109c358d66e1bd977390e81a4a5a90d25c92be1321b51a1"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\demo_shots\\demo_20260915_175641.png",
+    "archive_path": "results\\v2\\demo_shots\\demo_20260915_175641.png",
+    "bytes": 174344,
+    "sha256": "4bb27ed2182366013daf6985d9a6fe9ef27a4d1f5ac94624d56495ca706fb05e"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\dim_D32_scores\\fold0_seed0.npz",
+    "archive_path": "results\\v2\\dim_D32_scores\\fold0_seed0.npz",
+    "bytes": 100553,
+    "sha256": "c44d3947986393d9584276c49b205639f24334826a1471b74e1814200dff4b8d"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\dim_D32_scores\\fold0_seed1.npz",
+    "archive_path": "results\\v2\\dim_D32_scores\\fold0_seed1.npz",
+    "bytes": 100975,
+    "sha256": "e25362e2e074ed40b9525d7792539ed4ba615ae0d1c849501d7833dbc0096164"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\dim_D32_scores\\fold0_seed2.npz",
+    "archive_path": "results\\v2\\dim_D32_scores\\fold0_seed2.npz",
+    "bytes": 100614,
+    "sha256": "702c451e867ece23e51d38e8cff024ddd92df41f86c3aabe8f3efd21a6429353"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\dim_D32_scores\\fold1_seed0.npz",
+    "archive_path": "results\\v2\\dim_D32_scores\\fold1_seed0.npz",
+    "bytes": 90231,
+    "sha256": "edb0202d9a197ec881065e45a9f5493d1e500bb162a04f2a9f7c0685f9b0c613"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\dim_D32_scores\\fold1_seed1.npz",
+    "archive_path": "results\\v2\\dim_D32_scores\\fold1_seed1.npz",
+    "bytes": 90246,
+    "sha256": "7b03dfdefaf1179e04f0ef94e7139cc62df87c1a16de1b9676905bb0505f0ea1"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\dim_D32_scores\\fold1_seed2.npz",
+    "archive_path": "results\\v2\\dim_D32_scores\\fold1_seed2.npz",
+    "bytes": 90247,
+    "sha256": "4140b9ba6afb5fd6de04eb73bcaf5846e6c96822bab78e82f6a8bd12edfd5dc3"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\dim_D64_scores\\fold0_seed0.npz",
+    "archive_path": "results\\v2\\dim_D64_scores\\fold0_seed0.npz",
+    "bytes": 100343,
+    "sha256": "b51afd9eea9ac3ebdacf89a0ef9f76845028f6a09b05997999c6ef90e63616e1"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\dim_D64_scores\\fold0_seed1.npz",
+    "archive_path": "results\\v2\\dim_D64_scores\\fold0_seed1.npz",
+    "bytes": 100922,
+    "sha256": "60e9e69a65c52c047834c4816a6fff9e183552185f483304abd216a1182897d7"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\dim_D64_scores\\fold0_seed2.npz",
+    "archive_path": "results\\v2\\dim_D64_scores\\fold0_seed2.npz",
+    "bytes": 100740,
+    "sha256": "f826f7e8883d27ed6c69b0c3537c091199223563889569e81c10b4f3aacf6a64"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\dim_D64_scores\\fold1_seed0.npz",
+    "archive_path": "results\\v2\\dim_D64_scores\\fold1_seed0.npz",
+    "bytes": 90081,
+    "sha256": "2747bfda963a6686df12d3831d73d8181f65aa2e2aee1df6aefd8d5104f0551b"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\dim_D64_scores\\fold1_seed1.npz",
+    "archive_path": "results\\v2\\dim_D64_scores\\fold1_seed1.npz",
+    "bytes": 90229,
+    "sha256": "950d49bdca6a2cbd23961ef4ed810a940f3b94f2abe947fe8e3baa135fe2d8b4"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\dim_D64_scores\\fold1_seed2.npz",
+    "archive_path": "results\\v2\\dim_D64_scores\\fold1_seed2.npz",
+    "bytes": 89999,
+    "sha256": "e509cb0b353b1af4c3283d185e4bec668544817dd168c2c704a122fb752b779f"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\dim_D8_scores\\fold0_seed0.npz",
+    "archive_path": "results\\v2\\dim_D8_scores\\fold0_seed0.npz",
+    "bytes": 100567,
+    "sha256": "4b2bfcb424688c225e4c5da0884f88823d3874f2ec4dbb47972b6749cefa29ae"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\dim_D8_scores\\fold0_seed1.npz",
+    "archive_path": "results\\v2\\dim_D8_scores\\fold0_seed1.npz",
+    "bytes": 100705,
+    "sha256": "d1c1af3134a04ae2cb79a31b6a093a590a89b84e8283a69716c0c3d5b111a946"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\dim_D8_scores\\fold0_seed2.npz",
+    "archive_path": "results\\v2\\dim_D8_scores\\fold0_seed2.npz",
+    "bytes": 100504,
+    "sha256": "44cf957764ac5985dd9107021ddd0770b760bb804151a2855d0ba4d48ef53b9a"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\dim_D8_scores\\fold1_seed0.npz",
+    "archive_path": "results\\v2\\dim_D8_scores\\fold1_seed0.npz",
+    "bytes": 90156,
+    "sha256": "1783899a0d992992899ef25b197edd55c432efab0082aacdfc2e9533440564cf"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\dim_D8_scores\\fold1_seed1.npz",
+    "archive_path": "results\\v2\\dim_D8_scores\\fold1_seed1.npz",
+    "bytes": 90375,
+    "sha256": "4a5c3f08378a41d9bbc5acb6d3083e5e904d17bd7654be1fb853bbaf7dfc12a8"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\dim_D8_scores\\fold1_seed2.npz",
+    "archive_path": "results\\v2\\dim_D8_scores\\fold1_seed2.npz",
+    "bytes": 90333,
+    "sha256": "20c273af952e55a3a35569011475d8077fd9f8fb863584f098510f62efd243dd"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\imgcnn_head_pilot_scores\\fold0_seed0.npz",
+    "archive_path": "results\\v2\\imgcnn_head_pilot_scores\\fold0_seed0.npz",
+    "bytes": 100339,
+    "sha256": "8ec6e53128593085eecf7d9a9e494852cd4ae6c713681df5a81a52666ddc3300"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\imgcnn_head_pilot_scores\\fold0_seed1.npz",
+    "archive_path": "results\\v2\\imgcnn_head_pilot_scores\\fold0_seed1.npz",
+    "bytes": 100224,
+    "sha256": "d189b1db1ee5abbdce5443735c0b7576e70bfe388032bf556287c359e3ddca31"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\imgcnn_head_pilot_scores\\fold0_seed2.npz",
+    "archive_path": "results\\v2\\imgcnn_head_pilot_scores\\fold0_seed2.npz",
+    "bytes": 100022,
+    "sha256": "04905c755f3098a59543663333b715c64fab75b091769590d656d26c7f28c8d8"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\imgcnn_head_pilot_scores\\fold1_seed0.npz",
+    "archive_path": "results\\v2\\imgcnn_head_pilot_scores\\fold1_seed0.npz",
+    "bytes": 89770,
+    "sha256": "494540c3036f42546dea04ad70f3175212fa27e6a3e0f9e7fb3fd430009c9fb6"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\imgcnn_head_pilot_scores\\fold1_seed1.npz",
+    "archive_path": "results\\v2\\imgcnn_head_pilot_scores\\fold1_seed1.npz",
+    "bytes": 89932,
+    "sha256": "0ddb6b5d2ef73a42e457b9dcc6b327a559d48eb8a4ca7fd38b814b9c4a547f1c"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\imgcnn_head_pilot_scores\\fold1_seed2.npz",
+    "archive_path": "results\\v2\\imgcnn_head_pilot_scores\\fold1_seed2.npz",
+    "bytes": 89795,
+    "sha256": "140b13964cca09f1c61bf3ce6bfd11ac843c65234608830664d3acd74edd6f80"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\imgcnn_max_pilot_scores\\fold0_seed0.npz",
+    "archive_path": "results\\v2\\imgcnn_max_pilot_scores\\fold0_seed0.npz",
+    "bytes": 101119,
+    "sha256": "c720da2272306a0fa685b334a43aee7134ec42113f2a1603b95c43957ed20496"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\imgcnn_max_pilot_scores\\fold0_seed1.npz",
+    "archive_path": "results\\v2\\imgcnn_max_pilot_scores\\fold0_seed1.npz",
+    "bytes": 101387,
+    "sha256": "3aece019645176034efda8b0371289e515df81bea062db9e64fc5bc4ab1d411f"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\imgcnn_max_pilot_scores\\fold0_seed2.npz",
+    "archive_path": "results\\v2\\imgcnn_max_pilot_scores\\fold0_seed2.npz",
+    "bytes": 101213,
+    "sha256": "6b02b8b9c1ed48842353768b8d8214a30cf2ff28ad0bec84f404eebb8c1aec13"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\imgcnn_max_pilot_scores\\fold1_seed0.npz",
+    "archive_path": "results\\v2\\imgcnn_max_pilot_scores\\fold1_seed0.npz",
+    "bytes": 90828,
+    "sha256": "4a69915082d5d7da3660d4d796b992347064d41ce29454902bb33169d820ca84"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\imgcnn_max_pilot_scores\\fold1_seed1.npz",
+    "archive_path": "results\\v2\\imgcnn_max_pilot_scores\\fold1_seed1.npz",
+    "bytes": 90956,
+    "sha256": "acd4dda415a0f45b50fdce25cd8c307a19abea9ef2c90665ad8f6fa1b2f4426f"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\imgcnn_max_pilot_scores\\fold1_seed2.npz",
+    "archive_path": "results\\v2\\imgcnn_max_pilot_scores\\fold1_seed2.npz",
+    "bytes": 90927,
+    "sha256": "7503a7e9dbf16e1f2bc2184a3a501e1bacad6da95ccf9167fc6b5511ae2943a7"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_encoder_final_scores\\fold0_seed0.npz",
+    "archive_path": "results\\v2\\train_encoder_final_scores\\fold0_seed0.npz",
+    "bytes": 100498,
+    "sha256": "f6ff76a6ee362805fdd25634b74b46ffb1d057605f74d9b4c974ff8eda87a6f0"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_encoder_final_scores\\fold0_seed1.npz",
+    "archive_path": "results\\v2\\train_encoder_final_scores\\fold0_seed1.npz",
+    "bytes": 100924,
+    "sha256": "7aa4bfe505c4bd536a8879e5a674b57e8cedbb45182f4b2bf689c656cfe40e9c"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_encoder_final_scores\\fold0_seed2.npz",
+    "archive_path": "results\\v2\\train_encoder_final_scores\\fold0_seed2.npz",
+    "bytes": 100564,
+    "sha256": "6a0863cfe79bfe70a6816ccff88a7473156d45da3e9c61269e10abca84b56244"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_encoder_final_scores\\fold1_seed0.npz",
+    "archive_path": "results\\v2\\train_encoder_final_scores\\fold1_seed0.npz",
+    "bytes": 90203,
+    "sha256": "034164891af1f3a6f30c7b380d667bbed939483a66d3e0ff20e6891687fe546f"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_encoder_final_scores\\fold1_seed1.npz",
+    "archive_path": "results\\v2\\train_encoder_final_scores\\fold1_seed1.npz",
+    "bytes": 90433,
+    "sha256": "1639e12a4a2f4c8e9896696cfc543e6464087fba84cecd6aef9b083a7a6d2930"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_encoder_final_scores\\fold1_seed2.npz",
+    "archive_path": "results\\v2\\train_encoder_final_scores\\fold1_seed2.npz",
+    "bytes": 90181,
+    "sha256": "a212063fd327f6c8095247e4874cd82524245a07ca923e5902ffd5d53e5c1885"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_encoder_final_scores\\fold2_seed0.npz",
+    "archive_path": "results\\v2\\train_encoder_final_scores\\fold2_seed0.npz",
+    "bytes": 87976,
+    "sha256": "64baa2b589a68846a9ad71fa26e3c46288296f22b87b73cc78ce32cfd426ee71"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_encoder_final_scores\\fold2_seed1.npz",
+    "archive_path": "results\\v2\\train_encoder_final_scores\\fold2_seed1.npz",
+    "bytes": 88209,
+    "sha256": "878838013516088ef58c5e6082d65f5bb03ed5534b1800fea715a209d742fef8"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_encoder_final_scores\\fold2_seed2.npz",
+    "archive_path": "results\\v2\\train_encoder_final_scores\\fold2_seed2.npz",
+    "bytes": 87786,
+    "sha256": "87a0b3f694cf5845111fd11bef15116ac58166b4be0b0f0de5d9caf7de4e200b"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_encoder_final_scores\\fold3_seed0.npz",
+    "archive_path": "results\\v2\\train_encoder_final_scores\\fold3_seed0.npz",
+    "bytes": 88357,
+    "sha256": "af8a8a95c9ea95aaf9f15fa126c28685df4fe58b9ead514df7d65637fcfc96b5"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_encoder_final_scores\\fold3_seed1.npz",
+    "archive_path": "results\\v2\\train_encoder_final_scores\\fold3_seed1.npz",
+    "bytes": 88253,
+    "sha256": "7fa919b22adaba67f3ea0b0f1ff12bf9aeb878547299554956c4e95363d57168"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_encoder_final_scores\\fold3_seed2.npz",
+    "archive_path": "results\\v2\\train_encoder_final_scores\\fold3_seed2.npz",
+    "bytes": 88523,
+    "sha256": "e9391512bd8033f41bcb72d538f3e1c99eb76940fa17d2440ad2a7e43bf44354"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_encoder_final_scores\\fold4_seed0.npz",
+    "archive_path": "results\\v2\\train_encoder_final_scores\\fold4_seed0.npz",
+    "bytes": 87954,
+    "sha256": "cc5ff4e8e6852e63295fbeb548afa3505f3a37b3f1d112e7add26ccda463bbad"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_encoder_final_scores\\fold4_seed1.npz",
+    "archive_path": "results\\v2\\train_encoder_final_scores\\fold4_seed1.npz",
+    "bytes": 87973,
+    "sha256": "96b81b2eab93998099f238362ac1930dc4d3d976c5a0f6c397af184b8849609e"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_encoder_final_scores\\fold4_seed2.npz",
+    "archive_path": "results\\v2\\train_encoder_final_scores\\fold4_seed2.npz",
+    "bytes": 87746,
+    "sha256": "2b1fca94db754c7e59fb749c184001294a866bba3f51d5d5ccc37f6672124731"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_image_cnn_head_final_scores\\fold0_seed0.npz",
+    "archive_path": "results\\v2\\train_image_cnn_head_final_scores\\fold0_seed0.npz",
+    "bytes": 100339,
+    "sha256": "8ec6e53128593085eecf7d9a9e494852cd4ae6c713681df5a81a52666ddc3300"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_image_cnn_head_final_scores\\fold0_seed1.npz",
+    "archive_path": "results\\v2\\train_image_cnn_head_final_scores\\fold0_seed1.npz",
+    "bytes": 100224,
+    "sha256": "d189b1db1ee5abbdce5443735c0b7576e70bfe388032bf556287c359e3ddca31"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_image_cnn_head_final_scores\\fold0_seed2.npz",
+    "archive_path": "results\\v2\\train_image_cnn_head_final_scores\\fold0_seed2.npz",
+    "bytes": 100022,
+    "sha256": "04905c755f3098a59543663333b715c64fab75b091769590d656d26c7f28c8d8"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_image_cnn_head_final_scores\\fold1_seed0.npz",
+    "archive_path": "results\\v2\\train_image_cnn_head_final_scores\\fold1_seed0.npz",
+    "bytes": 89770,
+    "sha256": "494540c3036f42546dea04ad70f3175212fa27e6a3e0f9e7fb3fd430009c9fb6"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_image_cnn_head_final_scores\\fold1_seed1.npz",
+    "archive_path": "results\\v2\\train_image_cnn_head_final_scores\\fold1_seed1.npz",
+    "bytes": 89932,
+    "sha256": "0ddb6b5d2ef73a42e457b9dcc6b327a559d48eb8a4ca7fd38b814b9c4a547f1c"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_image_cnn_head_final_scores\\fold1_seed2.npz",
+    "archive_path": "results\\v2\\train_image_cnn_head_final_scores\\fold1_seed2.npz",
+    "bytes": 89795,
+    "sha256": "140b13964cca09f1c61bf3ce6bfd11ac843c65234608830664d3acd74edd6f80"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_image_cnn_head_final_scores\\fold2_seed0.npz",
+    "archive_path": "results\\v2\\train_image_cnn_head_final_scores\\fold2_seed0.npz",
+    "bytes": 87816,
+    "sha256": "e187226a3dafa8614dbd36694459fbbb7ed7f13fa3c9457b15a06685acd94c22"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_image_cnn_head_final_scores\\fold2_seed1.npz",
+    "archive_path": "results\\v2\\train_image_cnn_head_final_scores\\fold2_seed1.npz",
+    "bytes": 87675,
+    "sha256": "71bee43bb040a15241b969ab9c1aca3977b3e01cb6464c7a9ea3aeb48f40f5bb"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_image_cnn_head_final_scores\\fold2_seed2.npz",
+    "archive_path": "results\\v2\\train_image_cnn_head_final_scores\\fold2_seed2.npz",
+    "bytes": 87759,
+    "sha256": "b3c86d6edccabb168a2b9b6a28d4f59addde8d17241b11edabf8ecc98bef7da3"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_image_cnn_head_final_scores\\fold3_seed0.npz",
+    "archive_path": "results\\v2\\train_image_cnn_head_final_scores\\fold3_seed0.npz",
+    "bytes": 81753,
+    "sha256": "06382d8b81b8e5dd5913899a29a9e550ce710012b403f56e1d9cb96a1b2afc65"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_image_cnn_head_final_scores\\fold3_seed1.npz",
+    "archive_path": "results\\v2\\train_image_cnn_head_final_scores\\fold3_seed1.npz",
+    "bytes": 88271,
+    "sha256": "4913001da0b9029bd0669a2147f4ebde926a62e41c31d9d97b304fc38e489c9e"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_image_cnn_head_final_scores\\fold3_seed2.npz",
+    "archive_path": "results\\v2\\train_image_cnn_head_final_scores\\fold3_seed2.npz",
+    "bytes": 88251,
+    "sha256": "e5720872fb58b566e3580ba4b2fb6fbe3a3381b493e41946508f09a3a945b74a"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_image_cnn_head_final_scores\\fold4_seed0.npz",
+    "archive_path": "results\\v2\\train_image_cnn_head_final_scores\\fold4_seed0.npz",
+    "bytes": 87645,
+    "sha256": "9844f09dadb9aaee6bdbb2cfbac5bf4791f09d6c44949b2b660576e39220c608"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_image_cnn_head_final_scores\\fold4_seed1.npz",
+    "archive_path": "results\\v2\\train_image_cnn_head_final_scores\\fold4_seed1.npz",
+    "bytes": 85607,
+    "sha256": "1d1958c27f84acc3641651f3952eaaded0e02be1e26bbeee0c89856eac3e1434"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_image_cnn_head_final_scores\\fold4_seed2.npz",
+    "archive_path": "results\\v2\\train_image_cnn_head_final_scores\\fold4_seed2.npz",
+    "bytes": 87041,
+    "sha256": "cc7aa1ece799436910a85bb55ee7d096964578d2b7d39e4a56525bb1bf35c8c1"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_image_cnn_max_final_scores\\fold0_seed0.npz",
+    "archive_path": "results\\v2\\train_image_cnn_max_final_scores\\fold0_seed0.npz",
+    "bytes": 101119,
+    "sha256": "c720da2272306a0fa685b334a43aee7134ec42113f2a1603b95c43957ed20496"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_image_cnn_max_final_scores\\fold0_seed1.npz",
+    "archive_path": "results\\v2\\train_image_cnn_max_final_scores\\fold0_seed1.npz",
+    "bytes": 101387,
+    "sha256": "3aece019645176034efda8b0371289e515df81bea062db9e64fc5bc4ab1d411f"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_image_cnn_max_final_scores\\fold0_seed2.npz",
+    "archive_path": "results\\v2\\train_image_cnn_max_final_scores\\fold0_seed2.npz",
+    "bytes": 101213,
+    "sha256": "6b02b8b9c1ed48842353768b8d8214a30cf2ff28ad0bec84f404eebb8c1aec13"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_image_cnn_max_final_scores\\fold1_seed0.npz",
+    "archive_path": "results\\v2\\train_image_cnn_max_final_scores\\fold1_seed0.npz",
+    "bytes": 90828,
+    "sha256": "4a69915082d5d7da3660d4d796b992347064d41ce29454902bb33169d820ca84"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_image_cnn_max_final_scores\\fold1_seed1.npz",
+    "archive_path": "results\\v2\\train_image_cnn_max_final_scores\\fold1_seed1.npz",
+    "bytes": 90956,
+    "sha256": "acd4dda415a0f45b50fdce25cd8c307a19abea9ef2c90665ad8f6fa1b2f4426f"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_image_cnn_max_final_scores\\fold1_seed2.npz",
+    "archive_path": "results\\v2\\train_image_cnn_max_final_scores\\fold1_seed2.npz",
+    "bytes": 90927,
+    "sha256": "7503a7e9dbf16e1f2bc2184a3a501e1bacad6da95ccf9167fc6b5511ae2943a7"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_image_cnn_max_final_scores\\fold2_seed0.npz",
+    "archive_path": "results\\v2\\train_image_cnn_max_final_scores\\fold2_seed0.npz",
+    "bytes": 88687,
+    "sha256": "91305211010df3b9e351dce2526510e09500da0e5e586496588c004788cddea2"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_image_cnn_max_final_scores\\fold2_seed1.npz",
+    "archive_path": "results\\v2\\train_image_cnn_max_final_scores\\fold2_seed1.npz",
+    "bytes": 88771,
+    "sha256": "80e96d42d0ed4bb92c276c9e748182f3c8609692773641198ace739c5f361052"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_image_cnn_max_final_scores\\fold2_seed2.npz",
+    "archive_path": "results\\v2\\train_image_cnn_max_final_scores\\fold2_seed2.npz",
+    "bytes": 88590,
+    "sha256": "e021b76dd3beaf960918670d3e897df7d451ef9d14e246e174d079eed3b5ec62"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_image_cnn_max_final_scores\\fold3_seed0.npz",
+    "archive_path": "results\\v2\\train_image_cnn_max_final_scores\\fold3_seed0.npz",
+    "bytes": 89296,
+    "sha256": "6d4aba099e2695f00a354e33445bcd4dbd739fe7efc65383a1725397493ce0ee"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_image_cnn_max_final_scores\\fold3_seed1.npz",
+    "archive_path": "results\\v2\\train_image_cnn_max_final_scores\\fold3_seed1.npz",
+    "bytes": 89136,
+    "sha256": "9c7c6dba2856a562086a4c7c0453d34e15a0bdc43394080305b52f54b016acc7"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_image_cnn_max_final_scores\\fold3_seed2.npz",
+    "archive_path": "results\\v2\\train_image_cnn_max_final_scores\\fold3_seed2.npz",
+    "bytes": 89597,
+    "sha256": "e96325445a42a9f8b04a0185876a7246db133d5dcc035976d0d801168498cc44"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_image_cnn_max_final_scores\\fold4_seed0.npz",
+    "archive_path": "results\\v2\\train_image_cnn_max_final_scores\\fold4_seed0.npz",
+    "bytes": 88552,
+    "sha256": "faa1e5a357df285e6db02c6ca90fa458134adbb9834ad7f29f6b9bfd630acd50"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_image_cnn_max_final_scores\\fold4_seed1.npz",
+    "archive_path": "results\\v2\\train_image_cnn_max_final_scores\\fold4_seed1.npz",
+    "bytes": 88734,
+    "sha256": "dcfb2a491e8c34f9d03eb5bfa4eec55045ead0a7eb9a830197a2a5ab5ecfaa58"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\train_image_cnn_max_final_scores\\fold4_seed2.npz",
+    "archive_path": "results\\v2\\train_image_cnn_max_final_scores\\fold4_seed2.npz",
+    "bytes": 88510,
+    "sha256": "ef1b307f4177eee27ce15f0edb86435c3f2c49fabc4bd28aa3efc0bf69c5404d"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\_provenance\\abl_vdrop_commit_correction.md",
+    "archive_path": "results\\v2\\_provenance\\abl_vdrop_commit_correction.md",
+    "bytes": 2791,
+    "sha256": "6e0543d3ebbd7294b008c10df2b0598e1cd4e92e49d6605ecfe78f0691273db7"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\_provenance\\README.md",
+    "archive_path": "results\\v2\\_provenance\\README.md",
+    "bytes": 1038,
+    "sha256": "46e8963ee893f65af44063849379aa9e196a2cc5ae832e14330bb6fa57518409"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\results\\v2\\_provenance\\train_encoder.RUNNING.cpython-312.pyc",
+    "archive_path": "results\\v2\\_provenance\\train_encoder.RUNNING.cpython-312.pyc",
+    "bytes": 29801,
+    "sha256": "a32fdf39d75adb66e51aaa62007778c2fd16e15fa8770a4023b72bcdf23b5c4e"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\onnx\\encoder.onnx",
+    "archive_path": "models\\v2\\onnx\\encoder.onnx",
+    "bytes": 318827,
+    "sha256": "385fd45c97941f0af2edbb3739d8e8827602470fc45b94436b8328b5e1c58d94"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\onnx\\head.onnx",
+    "archive_path": "models\\v2\\onnx\\head.onnx",
+    "bytes": 23898,
+    "sha256": "195502a45a7d66dcf73508317a1569b7f31d3e1e4a12e20d9027f9738a9162af"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\onnx\\ear_head\\head.onnx",
+    "archive_path": "models\\v2\\onnx\\ear_head\\head.onnx",
+    "bytes": 23898,
+    "sha256": "555441cb00bdc82f1c5d7ff0ce5ec2ca7f2c08383a81937bcf1d2b42fb017989"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\onnx\\ear_head\\lift.onnx",
+    "archive_path": "models\\v2\\onnx\\ear_head\\lift.onnx",
+    "bytes": 2482,
+    "sha256": "e6d3273327450425fd60ab7e6d8d30200dc1125ba7e04ceae1232b3b13492661"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\onnx\\image_cnn_bilstm\\backbone.onnx",
+    "archive_path": "models\\v2\\onnx\\image_cnn_bilstm\\backbone.onnx",
+    "bytes": 1888310,
+    "sha256": "cd41fce7b24bc4d1a5648d0120c7855192a1c2fd073e755d8ebd4697d32a1cd1"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\onnx\\image_cnn_bilstm\\head.onnx",
+    "archive_path": "models\\v2\\onnx\\image_cnn_bilstm\\head.onnx",
+    "bytes": 40549,
+    "sha256": "9c655f48b7767281b4c2fab201c3f44195942f2aef5d88beed6c7a665c1cac96"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\onnx\\image_cnn_head\\backbone.onnx",
+    "archive_path": "models\\v2\\onnx\\image_cnn_head\\backbone.onnx",
+    "bytes": 1888310,
+    "sha256": "30c4350d48a2b4a74a28997bddad80bb9e9caba4da11a0cdc4155a88c0870cbc"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\onnx\\image_cnn_head\\head.onnx",
+    "archive_path": "models\\v2\\onnx\\image_cnn_head\\head.onnx",
+    "bytes": 23898,
+    "sha256": "09f54e317e09c5f0b6c0d3743ab1ccd0207b5c579991708d3876ea7c2ba33a53"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\onnx\\image_cnn_lstm\\backbone.onnx",
+    "archive_path": "models\\v2\\onnx\\image_cnn_lstm\\backbone.onnx",
+    "bytes": 1888310,
+    "sha256": "270c8fb5d0414c7b999f06b00892167ad3038f34e225c51016dfec99c97cf84f"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\onnx\\image_cnn_lstm\\head.onnx",
+    "archive_path": "models\\v2\\onnx\\image_cnn_lstm\\head.onnx",
+    "bytes": 23463,
+    "sha256": "c5ed47e7e599be60bb8270801a160cd1f4f7dd3821d681eb3e1bea4b47471e1f"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\onnx\\image_cnn_max\\backbone.onnx",
+    "archive_path": "models\\v2\\onnx\\image_cnn_max\\backbone.onnx",
+    "bytes": 1884410,
+    "sha256": "d84cdc43eb6b3bed6ea1705123b96d80196a77a4325e9c839997e1f02b3fbf85"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold0_seed0\\earhead_front.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold0_seed0\\earhead_front.pt",
+    "bytes": 5475,
+    "sha256": "5d61a94fdf7e191009e67fb4abeb489170512d83d948d8f95b7fbf9b34bf77b1"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold0_seed0\\earhead_head.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold0_seed0\\earhead_head.pt",
+    "bytes": 26931,
+    "sha256": "7da5cdb4f5bbdffa78ad896ae107baa5bc1dc718a684be0d1d357c9a8c0adbc6"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold0_seed0\\encoder.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold0_seed0\\encoder.pt",
+    "bytes": 326613,
+    "sha256": "83fffaf1052ed5d69b42d94b62906a84dc8c81e054dbdb1d8466f39ce21b88fd"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold0_seed0\\head.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold0_seed0\\head.pt",
+    "bytes": 25339,
+    "sha256": "cc6e40e12b11ffd453d318bbdd8fdb24b03d5d13748792b359280fc21812c64f"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold0_seed1\\earhead_front.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold0_seed1\\earhead_front.pt",
+    "bytes": 5475,
+    "sha256": "dac4376327560d120038ce8d40bdc702548b8619efc2d7f1dcd1f681b69b93b3"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold0_seed1\\earhead_head.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold0_seed1\\earhead_head.pt",
+    "bytes": 26931,
+    "sha256": "d5bde8c1bb305fb49723d0330b629e2c072b0774cbca5d2c0e487a3775ad2643"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold0_seed1\\encoder.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold0_seed1\\encoder.pt",
+    "bytes": 326613,
+    "sha256": "7c8d0ef36362d3d7f6ee4f9fc599d76d61f6488957c4413ea8783c538fe49c8b"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold0_seed1\\head.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold0_seed1\\head.pt",
+    "bytes": 25339,
+    "sha256": "75b1ce7867af82e2bc827ec0991bcbfb877dbb82aabfde4fbe16a775c52143fd"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold0_seed2\\earhead_front.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold0_seed2\\earhead_front.pt",
+    "bytes": 5475,
+    "sha256": "43213a43bf1e49e7f6175c3a366194c0308869950bf3475f088fff3b00b4c41d"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold0_seed2\\earhead_head.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold0_seed2\\earhead_head.pt",
+    "bytes": 26931,
+    "sha256": "8d388f19ee47f75cb0d77040c0e89214964a11fabd886dd39cba80ad394deed6"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold0_seed2\\encoder.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold0_seed2\\encoder.pt",
+    "bytes": 326613,
+    "sha256": "5b36877028ea0f427a6102c79bce02816aee2df02e70a4581318f04397c26485"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold0_seed2\\head.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold0_seed2\\head.pt",
+    "bytes": 25339,
+    "sha256": "cac509635f7b5f621c82d10d3423604a8936bcaf2a3dcda29386e2e833016351"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold1_seed0\\earhead_front.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold1_seed0\\earhead_front.pt",
+    "bytes": 5475,
+    "sha256": "aa8e8975e99c41d6b8fc567da7366b0d45a38b90e0f382aebf3a25a84c341653"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold1_seed0\\earhead_head.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold1_seed0\\earhead_head.pt",
+    "bytes": 26931,
+    "sha256": "78eaa82b31f12655132cd945f5feed9c9998a8577d9903c54929481ca60c57e0"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold1_seed0\\encoder.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold1_seed0\\encoder.pt",
+    "bytes": 326613,
+    "sha256": "9996792a4fbde5c7a654af9d4434a63f3f9d5523cce64b3126b91df47e37a1f1"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold1_seed0\\head.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold1_seed0\\head.pt",
+    "bytes": 25339,
+    "sha256": "67696ee3a907f1f08101e09f363c663a43f3f0ce32770ec03720407075dc1775"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold1_seed1\\earhead_front.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold1_seed1\\earhead_front.pt",
+    "bytes": 5475,
+    "sha256": "4052485f67a484644bdf271a0d16ba06b9fb10d717e88e3b6f261ee6914af6c4"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold1_seed1\\earhead_head.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold1_seed1\\earhead_head.pt",
+    "bytes": 26931,
+    "sha256": "aac61f1f613d2289d3d7437cee82d6dbc7e9b4ecd018ed9a4c1df6bcd313e1fe"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold1_seed1\\encoder.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold1_seed1\\encoder.pt",
+    "bytes": 326613,
+    "sha256": "cb59964419fdd1637f5aa385efc60986af1877ff63749a1e00f8e769fd24f529"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold1_seed1\\head.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold1_seed1\\head.pt",
+    "bytes": 25339,
+    "sha256": "a45bb45a7bea8e21e34ca5161e2fa239e9615ec7922123a7ba69799e97fc9b4b"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold1_seed2\\earhead_front.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold1_seed2\\earhead_front.pt",
+    "bytes": 5475,
+    "sha256": "5c6efaa38707e95e856a56552f8cc161bd1c11ab37b5d2a3384605d7e8899388"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold1_seed2\\earhead_head.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold1_seed2\\earhead_head.pt",
+    "bytes": 26931,
+    "sha256": "441604662eef5014cbf728558f8cef2993d6e85888854dad53fcb492dcecbab7"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold1_seed2\\encoder.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold1_seed2\\encoder.pt",
+    "bytes": 326613,
+    "sha256": "d6d77fc73c3d6717e1247c1d403855f4c8e085d3b6551cae0b7b8ae20bfe9165"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold1_seed2\\head.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold1_seed2\\head.pt",
+    "bytes": 25339,
+    "sha256": "d601ddda409474abd8f02b1d1bd44fdffd78deb4af7ada58d46c14f314673d99"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold2_seed0\\earhead_front.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold2_seed0\\earhead_front.pt",
+    "bytes": 5475,
+    "sha256": "6f73e04553195f4b34912509835dd1334fae9d249b83545b4074cbd413ebd2c9"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold2_seed0\\earhead_head.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold2_seed0\\earhead_head.pt",
+    "bytes": 26931,
+    "sha256": "8e237f1a65574e337c4ac69c2a162ef51028516ad74b2ca8984c4a222e7bcc1a"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold2_seed0\\encoder.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold2_seed0\\encoder.pt",
+    "bytes": 326613,
+    "sha256": "8bcc9a31755a4506fa9500ca9fda4251daea0b2f91d9e57000526680b7a8a4c9"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold2_seed0\\head.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold2_seed0\\head.pt",
+    "bytes": 25339,
+    "sha256": "7b0540d398ad6f425ab5793fca0f63f609562a90e3d0ff44f75101f5f8beb1d2"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold2_seed1\\earhead_front.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold2_seed1\\earhead_front.pt",
+    "bytes": 5475,
+    "sha256": "b294384bc183de53eb39cb4acfceef03a57bb358bcc226516889ab973103fcc7"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold2_seed1\\earhead_head.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold2_seed1\\earhead_head.pt",
+    "bytes": 26931,
+    "sha256": "3638dffa9cb83c24ab4ee3840eaaabfdab79db25175281de15de677504e0e5b2"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold2_seed1\\encoder.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold2_seed1\\encoder.pt",
+    "bytes": 326613,
+    "sha256": "f2d91d3d4ec69a7c4d9369a531fc8119fc88db57bc178e56db6949a0b23b164c"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold2_seed1\\head.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold2_seed1\\head.pt",
+    "bytes": 25339,
+    "sha256": "50c4e8538a20ac82f1f23edf6f09024512a22d2531fa44466c1fae40b5efa523"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold2_seed2\\earhead_front.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold2_seed2\\earhead_front.pt",
+    "bytes": 5475,
+    "sha256": "2902816abba23233f3219c3b38a30bc8b158a35d4262ed31de4b9ef98e74dc23"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold2_seed2\\earhead_head.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold2_seed2\\earhead_head.pt",
+    "bytes": 26931,
+    "sha256": "e1bc5873daca6eb0f6ed9409a66b7a309c51b9530b214b788a5bed04459da722"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold2_seed2\\encoder.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold2_seed2\\encoder.pt",
+    "bytes": 326613,
+    "sha256": "02f16a28008ce28b53fc2ac2c15914408221976fddc13c04dc79d6c68c77adc8"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold2_seed2\\head.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold2_seed2\\head.pt",
+    "bytes": 25339,
+    "sha256": "9c74cd5b83db1f43b9b4fb4980f3d63de3469fa287c247ce77f32b3c4a69c8f5"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold3_seed0\\earhead_front.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold3_seed0\\earhead_front.pt",
+    "bytes": 5475,
+    "sha256": "c293c862f56d2f90e5c4e2120c1d11a3f588dbf673ff3ff2ed8e7760857d7151"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold3_seed0\\earhead_head.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold3_seed0\\earhead_head.pt",
+    "bytes": 26931,
+    "sha256": "8a0b7e90f76c8a5b04b5e31c0dafd793c281fbb0fe24959df87bb4e6ad434223"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold3_seed0\\encoder.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold3_seed0\\encoder.pt",
+    "bytes": 326613,
+    "sha256": "4aafe53adcb5a91520c28117d98fd4fb3227499a29c120f8d80df43e9384080c"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold3_seed0\\head.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold3_seed0\\head.pt",
+    "bytes": 25339,
+    "sha256": "6455ae16c042851ba3632febb21d5370b9533449eb19c174a3024f2409ca98ed"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold3_seed1\\earhead_front.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold3_seed1\\earhead_front.pt",
+    "bytes": 5475,
+    "sha256": "e0488e0ab21539d694101d89aa6218cba57dbd2f544a0100c2f9fbc702d1f6ba"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold3_seed1\\earhead_head.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold3_seed1\\earhead_head.pt",
+    "bytes": 26931,
+    "sha256": "75d9f284eef65b29f24cfe36eaf09e502af928dc436f9563b0c48aaa9a3bbf46"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold3_seed1\\encoder.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold3_seed1\\encoder.pt",
+    "bytes": 326613,
+    "sha256": "b9bb5bc707092f4317261c9047abec2fa326ee3b199da7bfae373a6cf73aa2c4"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold3_seed1\\head.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold3_seed1\\head.pt",
+    "bytes": 25339,
+    "sha256": "39dde70d5a8090c44da8afcc8304c7886894710e29578d94f543db29cc7408cf"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold3_seed2\\earhead_front.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold3_seed2\\earhead_front.pt",
+    "bytes": 5475,
+    "sha256": "b34b12763de36146e8c9b33e2de25bab10249285932b05a2af96eb41d5ecbb37"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold3_seed2\\earhead_head.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold3_seed2\\earhead_head.pt",
+    "bytes": 26931,
+    "sha256": "d7dd351c057ba6bf66d8349152c8a31e2f49fa0cd4197063e50271f5c5fe2583"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold3_seed2\\encoder.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold3_seed2\\encoder.pt",
+    "bytes": 326613,
+    "sha256": "fd5eddc8e134e5fd1bb4ea2c275196c05ee0861304541787b38fbd219bf8722a"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold3_seed2\\head.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold3_seed2\\head.pt",
+    "bytes": 25339,
+    "sha256": "ca0bb6f3689eb10a9ae0ca415210ee034b74cf198517f5fd18ec66f59503b7d6"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold4_seed0\\earhead_front.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold4_seed0\\earhead_front.pt",
+    "bytes": 5475,
+    "sha256": "f8645b2af20309b0a24e7fc665841e0fd306f8a01d1fdb2e1be12f140c990a1e"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold4_seed0\\earhead_head.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold4_seed0\\earhead_head.pt",
+    "bytes": 26931,
+    "sha256": "9f7b5ba0ac66da2f0bb2b0c434d78f0a665308e7bfdcd164105fdd96b7e6bced"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold4_seed0\\encoder.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold4_seed0\\encoder.pt",
+    "bytes": 326613,
+    "sha256": "5fd96e249cec878686394c14210999be8226cdfe9f880dbf3b4a6d16aa8b9db7"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold4_seed0\\head.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold4_seed0\\head.pt",
+    "bytes": 25339,
+    "sha256": "81026bd7cab4c2e520468a147cc9b3109c18a8e3573953c9363db2b52d84a4fc"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold4_seed1\\earhead_front.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold4_seed1\\earhead_front.pt",
+    "bytes": 5475,
+    "sha256": "4847619ebc71fbdc792fda615af887837bd5170e370759e55c66ca818e01fce2"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold4_seed1\\earhead_head.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold4_seed1\\earhead_head.pt",
+    "bytes": 26931,
+    "sha256": "270d382c89e7de00b359730d0e4b239bd82c0f4cc0d012d2fe4bba7c2bd895ae"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold4_seed1\\encoder.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold4_seed1\\encoder.pt",
+    "bytes": 326613,
+    "sha256": "ead96a24e2aaa93823a6879358ef3045cb420fdfc63c2a4d0b59a305cbd0f56c"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold4_seed1\\head.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold4_seed1\\head.pt",
+    "bytes": 25339,
+    "sha256": "33dbc1cfa56b9a5b3390a5a44cd2d9aa96f4d015ddafeba3217160fdcc22bdcc"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold4_seed2\\earhead_front.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold4_seed2\\earhead_front.pt",
+    "bytes": 5475,
+    "sha256": "a90082ec0d0c3ef0dea9e41184af01773cff546c89022594afaeecf032422161"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold4_seed2\\earhead_head.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold4_seed2\\earhead_head.pt",
+    "bytes": 26931,
+    "sha256": "65c651e33b5c879610eef4aff1ff9538c64ccd4ddff232cfae07ea0e9081aa73"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold4_seed2\\encoder.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold4_seed2\\encoder.pt",
+    "bytes": 326613,
+    "sha256": "3982849dd44664ee780b99ad8fdb607e8f884b8be4d29b0e81306864e7aad70d"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold4_seed2\\head.pt",
+    "archive_path": "models\\v2\\train_encoder_final\\fold4_seed2\\head.pt",
+    "bytes": 25339,
+    "sha256": "38594b2e2c91cad6b4a9fe96d86a2fb3801bede508e80dec0ed692e8594b84e7"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold0_seed0\\earhead_front.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold0_seed0\\earhead_front.pt",
+    "bytes": 5475,
+    "sha256": "5d61a94fdf7e191009e67fb4abeb489170512d83d948d8f95b7fbf9b34bf77b1"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold0_seed0\\earhead_head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold0_seed0\\earhead_head.pt",
+    "bytes": 26931,
+    "sha256": "7da5cdb4f5bbdffa78ad896ae107baa5bc1dc718a684be0d1d357c9a8c0adbc6"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold0_seed0\\encoder.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold0_seed0\\encoder.pt",
+    "bytes": 1889541,
+    "sha256": "666a8c09b8c8484a6c9c8a102c6794639b43d4eb06fe9328c1164c750d5d5eab"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold0_seed0\\head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold0_seed0\\head.pt",
+    "bytes": 25339,
+    "sha256": "faab65a7028006429bbf9f5464860e0cfce33e89481ed22430e60749110f3bc9"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold0_seed1\\earhead_front.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold0_seed1\\earhead_front.pt",
+    "bytes": 5475,
+    "sha256": "dac4376327560d120038ce8d40bdc702548b8619efc2d7f1dcd1f681b69b93b3"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold0_seed1\\earhead_head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold0_seed1\\earhead_head.pt",
+    "bytes": 26931,
+    "sha256": "d5bde8c1bb305fb49723d0330b629e2c072b0774cbca5d2c0e487a3775ad2643"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold0_seed1\\encoder.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold0_seed1\\encoder.pt",
+    "bytes": 1889541,
+    "sha256": "cd21b547650c8704c368718b05cb6013c4d0482e4ef51bdb41e70cb738a764e9"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold0_seed1\\head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold0_seed1\\head.pt",
+    "bytes": 25339,
+    "sha256": "35594d3f200e295b589190e8a00cb9a1134d8004b5d48c342657ab22b1405bd7"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold0_seed2\\earhead_front.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold0_seed2\\earhead_front.pt",
+    "bytes": 5475,
+    "sha256": "43213a43bf1e49e7f6175c3a366194c0308869950bf3475f088fff3b00b4c41d"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold0_seed2\\earhead_head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold0_seed2\\earhead_head.pt",
+    "bytes": 26931,
+    "sha256": "8d388f19ee47f75cb0d77040c0e89214964a11fabd886dd39cba80ad394deed6"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold0_seed2\\encoder.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold0_seed2\\encoder.pt",
+    "bytes": 1889541,
+    "sha256": "e067669670cb11bee67feba7919f071f8ad01526138c6fa71fbfcd303fa8ef4f"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold0_seed2\\head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold0_seed2\\head.pt",
+    "bytes": 25339,
+    "sha256": "21479e1c50b1aab5c7d77cb3f0158eef73784f8486b66c3e2e44dd47d6467d19"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold1_seed0\\earhead_front.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold1_seed0\\earhead_front.pt",
+    "bytes": 5475,
+    "sha256": "aa8e8975e99c41d6b8fc567da7366b0d45a38b90e0f382aebf3a25a84c341653"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold1_seed0\\earhead_head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold1_seed0\\earhead_head.pt",
+    "bytes": 26931,
+    "sha256": "78eaa82b31f12655132cd945f5feed9c9998a8577d9903c54929481ca60c57e0"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold1_seed0\\encoder.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold1_seed0\\encoder.pt",
+    "bytes": 1889541,
+    "sha256": "489c71e0def84cfdd7ec90c2ddca2bc9bcb9add951ef8c67fc515848741df869"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold1_seed0\\head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold1_seed0\\head.pt",
+    "bytes": 25339,
+    "sha256": "cfc1f6d8b061633ce781f6312140a73839cb640bbd2ac9fb27f09e790cd5e0de"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold1_seed1\\earhead_front.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold1_seed1\\earhead_front.pt",
+    "bytes": 5475,
+    "sha256": "4052485f67a484644bdf271a0d16ba06b9fb10d717e88e3b6f261ee6914af6c4"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold1_seed1\\earhead_head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold1_seed1\\earhead_head.pt",
+    "bytes": 26931,
+    "sha256": "aac61f1f613d2289d3d7437cee82d6dbc7e9b4ecd018ed9a4c1df6bcd313e1fe"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold1_seed1\\encoder.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold1_seed1\\encoder.pt",
+    "bytes": 1889541,
+    "sha256": "58cd270b99750f938101f80b5bd0278a53e902ec7789643416dffe5e1f8249ef"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold1_seed1\\head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold1_seed1\\head.pt",
+    "bytes": 25339,
+    "sha256": "ea0390e68ea71c1075fccd0156155dd12bb95a56503a759a8e4b253cc6bcd8fe"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold1_seed2\\earhead_front.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold1_seed2\\earhead_front.pt",
+    "bytes": 5475,
+    "sha256": "5c6efaa38707e95e856a56552f8cc161bd1c11ab37b5d2a3384605d7e8899388"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold1_seed2\\earhead_head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold1_seed2\\earhead_head.pt",
+    "bytes": 26931,
+    "sha256": "441604662eef5014cbf728558f8cef2993d6e85888854dad53fcb492dcecbab7"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold1_seed2\\encoder.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold1_seed2\\encoder.pt",
+    "bytes": 1889541,
+    "sha256": "34b76e7433733cd939341c5a83e2b5670005989db96b24322ef92ca5172f177c"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold1_seed2\\head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold1_seed2\\head.pt",
+    "bytes": 25339,
+    "sha256": "2be8187c022a8e2379970f8115e5fc46b5ea6d4a65caf17d7ea7f534d9b60fd7"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold2_seed0\\earhead_front.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold2_seed0\\earhead_front.pt",
+    "bytes": 5475,
+    "sha256": "6f73e04553195f4b34912509835dd1334fae9d249b83545b4074cbd413ebd2c9"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold2_seed0\\earhead_head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold2_seed0\\earhead_head.pt",
+    "bytes": 26931,
+    "sha256": "8e237f1a65574e337c4ac69c2a162ef51028516ad74b2ca8984c4a222e7bcc1a"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold2_seed0\\encoder.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold2_seed0\\encoder.pt",
+    "bytes": 1889541,
+    "sha256": "ee65c0c67907a6cae478392a2f81a03255012cab7617e13eaae3eed1d1d04e6d"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold2_seed0\\head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold2_seed0\\head.pt",
+    "bytes": 25339,
+    "sha256": "b9bf94636eb79ce1bc0ce36db968210f7c9d002e3f793bc50bd88af95cca79d3"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold2_seed1\\earhead_front.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold2_seed1\\earhead_front.pt",
+    "bytes": 5475,
+    "sha256": "b294384bc183de53eb39cb4acfceef03a57bb358bcc226516889ab973103fcc7"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold2_seed1\\earhead_head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold2_seed1\\earhead_head.pt",
+    "bytes": 26931,
+    "sha256": "3638dffa9cb83c24ab4ee3840eaaabfdab79db25175281de15de677504e0e5b2"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold2_seed1\\encoder.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold2_seed1\\encoder.pt",
+    "bytes": 1889541,
+    "sha256": "1cdaaca5a55295bea7450bfaf7c96bde23d446a79336cf14f4caf1ad1d9c8a3c"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold2_seed1\\head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold2_seed1\\head.pt",
+    "bytes": 25339,
+    "sha256": "1c88c257602b1cd5e73fc55a5cab6fdaead6db5f2912d253676f969a12fca06e"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold2_seed2\\earhead_front.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold2_seed2\\earhead_front.pt",
+    "bytes": 5475,
+    "sha256": "2902816abba23233f3219c3b38a30bc8b158a35d4262ed31de4b9ef98e74dc23"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold2_seed2\\earhead_head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold2_seed2\\earhead_head.pt",
+    "bytes": 26931,
+    "sha256": "e1bc5873daca6eb0f6ed9409a66b7a309c51b9530b214b788a5bed04459da722"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold2_seed2\\encoder.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold2_seed2\\encoder.pt",
+    "bytes": 1889541,
+    "sha256": "4733bd34b25edfd1f85fb237542c1904fd87b1213a2ec770141465961ab91d9d"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold2_seed2\\head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold2_seed2\\head.pt",
+    "bytes": 25339,
+    "sha256": "bad2b405329a0ded360f5974fda13a160eff6248686d73c9e199ff7c50e6f625"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold3_seed0\\earhead_front.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold3_seed0\\earhead_front.pt",
+    "bytes": 5475,
+    "sha256": "c293c862f56d2f90e5c4e2120c1d11a3f588dbf673ff3ff2ed8e7760857d7151"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold3_seed0\\earhead_head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold3_seed0\\earhead_head.pt",
+    "bytes": 26931,
+    "sha256": "8a0b7e90f76c8a5b04b5e31c0dafd793c281fbb0fe24959df87bb4e6ad434223"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold3_seed0\\encoder.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold3_seed0\\encoder.pt",
+    "bytes": 1889541,
+    "sha256": "6fa0aec7726bee35c92e9c3cbe16fc8f9c63418bdf7875144b927c1b908e89e1"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold3_seed0\\head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold3_seed0\\head.pt",
+    "bytes": 25339,
+    "sha256": "f7948945ff5fe950257dff97469edb183069112cf6e08f85267b55b61edfb943"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold3_seed1\\earhead_front.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold3_seed1\\earhead_front.pt",
+    "bytes": 5475,
+    "sha256": "e0488e0ab21539d694101d89aa6218cba57dbd2f544a0100c2f9fbc702d1f6ba"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold3_seed1\\earhead_head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold3_seed1\\earhead_head.pt",
+    "bytes": 26931,
+    "sha256": "75d9f284eef65b29f24cfe36eaf09e502af928dc436f9563b0c48aaa9a3bbf46"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold3_seed1\\encoder.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold3_seed1\\encoder.pt",
+    "bytes": 1889541,
+    "sha256": "544bdba273572532d8ad446729ccacae86db1a552786b7219f38b152b5e41801"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold3_seed1\\head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold3_seed1\\head.pt",
+    "bytes": 25339,
+    "sha256": "ba2e5c6d765d071c274ba52d4e7852c670d9272206e97bc81b04aa8fbf157518"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold3_seed2\\earhead_front.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold3_seed2\\earhead_front.pt",
+    "bytes": 5475,
+    "sha256": "b34b12763de36146e8c9b33e2de25bab10249285932b05a2af96eb41d5ecbb37"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold3_seed2\\earhead_head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold3_seed2\\earhead_head.pt",
+    "bytes": 26931,
+    "sha256": "d7dd351c057ba6bf66d8349152c8a31e2f49fa0cd4197063e50271f5c5fe2583"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold3_seed2\\encoder.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold3_seed2\\encoder.pt",
+    "bytes": 1889541,
+    "sha256": "2f6bacbb4898df0e347419606d8e6ce9834500138ab68e1b520f8e84ed20535e"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold3_seed2\\head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold3_seed2\\head.pt",
+    "bytes": 25339,
+    "sha256": "83ecd9a98a1975001133f916a70e1105618d115e3e9ad4dc5006ed709438181c"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold4_seed0\\earhead_front.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold4_seed0\\earhead_front.pt",
+    "bytes": 5475,
+    "sha256": "f8645b2af20309b0a24e7fc665841e0fd306f8a01d1fdb2e1be12f140c990a1e"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold4_seed0\\earhead_head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold4_seed0\\earhead_head.pt",
+    "bytes": 26931,
+    "sha256": "9f7b5ba0ac66da2f0bb2b0c434d78f0a665308e7bfdcd164105fdd96b7e6bced"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold4_seed0\\encoder.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold4_seed0\\encoder.pt",
+    "bytes": 1889541,
+    "sha256": "7c3bbf8486ce9a15e73e357df1e99deb78ebf20922861a834de01cbd32c882be"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold4_seed0\\head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold4_seed0\\head.pt",
+    "bytes": 25339,
+    "sha256": "6ec9737e657759804df8321b52a0371f10b070da6e8dfae120e38c23f9a7bce3"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold4_seed1\\earhead_front.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold4_seed1\\earhead_front.pt",
+    "bytes": 5475,
+    "sha256": "4847619ebc71fbdc792fda615af887837bd5170e370759e55c66ca818e01fce2"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold4_seed1\\earhead_head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold4_seed1\\earhead_head.pt",
+    "bytes": 26931,
+    "sha256": "270d382c89e7de00b359730d0e4b239bd82c0f4cc0d012d2fe4bba7c2bd895ae"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold4_seed1\\encoder.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold4_seed1\\encoder.pt",
+    "bytes": 1889541,
+    "sha256": "9f3b27541454b2900587661a9a66a934322823a3f888dae5e81fcd9d7db6f49c"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold4_seed1\\head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold4_seed1\\head.pt",
+    "bytes": 25339,
+    "sha256": "a52be64c1e8c43ab2261d54ea3e8e15fce9a3ece790864554197e19259693061"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold4_seed2\\earhead_front.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold4_seed2\\earhead_front.pt",
+    "bytes": 5475,
+    "sha256": "a90082ec0d0c3ef0dea9e41184af01773cff546c89022594afaeecf032422161"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold4_seed2\\earhead_head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold4_seed2\\earhead_head.pt",
+    "bytes": 26931,
+    "sha256": "65c651e33b5c879610eef4aff1ff9538c64ccd4ddff232cfae07ea0e9081aa73"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold4_seed2\\encoder.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold4_seed2\\encoder.pt",
+    "bytes": 1889541,
+    "sha256": "fdaa2a6d161e6e799de6ba06db58e8a1988d9d712f419ac9b2f787962b371008"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold4_seed2\\head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_head_final\\fold4_seed2\\head.pt",
+    "bytes": 25339,
+    "sha256": "55fa6fe41fcbfc9d3665534b549e2ab53cd9a70df1b1df3c3df1568202e93d81"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold0_seed0\\earhead_front.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold0_seed0\\earhead_front.pt",
+    "bytes": 5475,
+    "sha256": "5d61a94fdf7e191009e67fb4abeb489170512d83d948d8f95b7fbf9b34bf77b1"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold0_seed0\\earhead_head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold0_seed0\\earhead_head.pt",
+    "bytes": 26931,
+    "sha256": "7da5cdb4f5bbdffa78ad896ae107baa5bc1dc718a684be0d1d357c9a8c0adbc6"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold0_seed0\\encoder.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold0_seed0\\encoder.pt",
+    "bytes": 1885637,
+    "sha256": "bb21d0162259485c9138640e490a930d7e3f1ab153a4b0651e06efdfe91a2d03"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold0_seed0\\head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold0_seed0\\head.pt",
+    "bytes": 1243,
+    "sha256": "44b57439a7a2d74d5d7e28b8cdcd7f864c959aa87aab8763ecddcc2bd759f609"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold0_seed1\\earhead_front.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold0_seed1\\earhead_front.pt",
+    "bytes": 5475,
+    "sha256": "dac4376327560d120038ce8d40bdc702548b8619efc2d7f1dcd1f681b69b93b3"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold0_seed1\\earhead_head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold0_seed1\\earhead_head.pt",
+    "bytes": 26931,
+    "sha256": "d5bde8c1bb305fb49723d0330b629e2c072b0774cbca5d2c0e487a3775ad2643"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold0_seed1\\encoder.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold0_seed1\\encoder.pt",
+    "bytes": 1885637,
+    "sha256": "9089fedaeb1585e94924d053e16c3526de291ae07113930faca320ed9a52c701"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold0_seed1\\head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold0_seed1\\head.pt",
+    "bytes": 1243,
+    "sha256": "44b57439a7a2d74d5d7e28b8cdcd7f864c959aa87aab8763ecddcc2bd759f609"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold0_seed2\\earhead_front.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold0_seed2\\earhead_front.pt",
+    "bytes": 5475,
+    "sha256": "43213a43bf1e49e7f6175c3a366194c0308869950bf3475f088fff3b00b4c41d"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold0_seed2\\earhead_head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold0_seed2\\earhead_head.pt",
+    "bytes": 26931,
+    "sha256": "8d388f19ee47f75cb0d77040c0e89214964a11fabd886dd39cba80ad394deed6"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold0_seed2\\encoder.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold0_seed2\\encoder.pt",
+    "bytes": 1885637,
+    "sha256": "473e16d65c76d69bc25ae9707b6183c0db8bb2158059ead5fa655407cef9a393"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold0_seed2\\head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold0_seed2\\head.pt",
+    "bytes": 1243,
+    "sha256": "44b57439a7a2d74d5d7e28b8cdcd7f864c959aa87aab8763ecddcc2bd759f609"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold1_seed0\\earhead_front.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold1_seed0\\earhead_front.pt",
+    "bytes": 5475,
+    "sha256": "aa8e8975e99c41d6b8fc567da7366b0d45a38b90e0f382aebf3a25a84c341653"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold1_seed0\\earhead_head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold1_seed0\\earhead_head.pt",
+    "bytes": 26931,
+    "sha256": "78eaa82b31f12655132cd945f5feed9c9998a8577d9903c54929481ca60c57e0"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold1_seed0\\encoder.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold1_seed0\\encoder.pt",
+    "bytes": 1885637,
+    "sha256": "a21377ef0b65fb48c167244d1f7babb178b8b8c7305008d3b23bde6d3ac54563"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold1_seed0\\head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold1_seed0\\head.pt",
+    "bytes": 1243,
+    "sha256": "44b57439a7a2d74d5d7e28b8cdcd7f864c959aa87aab8763ecddcc2bd759f609"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold1_seed1\\earhead_front.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold1_seed1\\earhead_front.pt",
+    "bytes": 5475,
+    "sha256": "4052485f67a484644bdf271a0d16ba06b9fb10d717e88e3b6f261ee6914af6c4"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold1_seed1\\earhead_head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold1_seed1\\earhead_head.pt",
+    "bytes": 26931,
+    "sha256": "aac61f1f613d2289d3d7437cee82d6dbc7e9b4ecd018ed9a4c1df6bcd313e1fe"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold1_seed1\\encoder.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold1_seed1\\encoder.pt",
+    "bytes": 1885637,
+    "sha256": "481bc74b582874541cba212a3792a65d3fa3bae7c260bb09f5df73ae7d72cc1d"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold1_seed1\\head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold1_seed1\\head.pt",
+    "bytes": 1243,
+    "sha256": "44b57439a7a2d74d5d7e28b8cdcd7f864c959aa87aab8763ecddcc2bd759f609"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold1_seed2\\earhead_front.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold1_seed2\\earhead_front.pt",
+    "bytes": 5475,
+    "sha256": "5c6efaa38707e95e856a56552f8cc161bd1c11ab37b5d2a3384605d7e8899388"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold1_seed2\\earhead_head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold1_seed2\\earhead_head.pt",
+    "bytes": 26931,
+    "sha256": "441604662eef5014cbf728558f8cef2993d6e85888854dad53fcb492dcecbab7"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold1_seed2\\encoder.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold1_seed2\\encoder.pt",
+    "bytes": 1885637,
+    "sha256": "9a4491845e9128123653cb998897a4b276d82c9686cf9ca6cd88b0a3afa2ff60"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold1_seed2\\head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold1_seed2\\head.pt",
+    "bytes": 1243,
+    "sha256": "44b57439a7a2d74d5d7e28b8cdcd7f864c959aa87aab8763ecddcc2bd759f609"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold2_seed0\\earhead_front.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold2_seed0\\earhead_front.pt",
+    "bytes": 5475,
+    "sha256": "6f73e04553195f4b34912509835dd1334fae9d249b83545b4074cbd413ebd2c9"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold2_seed0\\earhead_head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold2_seed0\\earhead_head.pt",
+    "bytes": 26931,
+    "sha256": "8e237f1a65574e337c4ac69c2a162ef51028516ad74b2ca8984c4a222e7bcc1a"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold2_seed0\\encoder.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold2_seed0\\encoder.pt",
+    "bytes": 1885637,
+    "sha256": "9a675eea0b4f1c3dde53078b74b02a0fb9159fcfcac4f1c813c838865d6fd282"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold2_seed0\\head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold2_seed0\\head.pt",
+    "bytes": 1243,
+    "sha256": "44b57439a7a2d74d5d7e28b8cdcd7f864c959aa87aab8763ecddcc2bd759f609"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold2_seed1\\earhead_front.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold2_seed1\\earhead_front.pt",
+    "bytes": 5475,
+    "sha256": "b294384bc183de53eb39cb4acfceef03a57bb358bcc226516889ab973103fcc7"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold2_seed1\\earhead_head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold2_seed1\\earhead_head.pt",
+    "bytes": 26931,
+    "sha256": "3638dffa9cb83c24ab4ee3840eaaabfdab79db25175281de15de677504e0e5b2"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold2_seed1\\encoder.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold2_seed1\\encoder.pt",
+    "bytes": 1885637,
+    "sha256": "d1ba5b1cc43088276ff769b84bcf93f51b0222f20877a4f3cc0c663e285b2e1e"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold2_seed1\\head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold2_seed1\\head.pt",
+    "bytes": 1243,
+    "sha256": "44b57439a7a2d74d5d7e28b8cdcd7f864c959aa87aab8763ecddcc2bd759f609"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold2_seed2\\earhead_front.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold2_seed2\\earhead_front.pt",
+    "bytes": 5475,
+    "sha256": "2902816abba23233f3219c3b38a30bc8b158a35d4262ed31de4b9ef98e74dc23"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold2_seed2\\earhead_head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold2_seed2\\earhead_head.pt",
+    "bytes": 26931,
+    "sha256": "e1bc5873daca6eb0f6ed9409a66b7a309c51b9530b214b788a5bed04459da722"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold2_seed2\\encoder.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold2_seed2\\encoder.pt",
+    "bytes": 1885637,
+    "sha256": "109bc1e373582a83da639ec1ded5fabb364551de82edae5cc263e8e098c74197"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold2_seed2\\head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold2_seed2\\head.pt",
+    "bytes": 1243,
+    "sha256": "44b57439a7a2d74d5d7e28b8cdcd7f864c959aa87aab8763ecddcc2bd759f609"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold3_seed0\\earhead_front.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold3_seed0\\earhead_front.pt",
+    "bytes": 5475,
+    "sha256": "c293c862f56d2f90e5c4e2120c1d11a3f588dbf673ff3ff2ed8e7760857d7151"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold3_seed0\\earhead_head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold3_seed0\\earhead_head.pt",
+    "bytes": 26931,
+    "sha256": "8a0b7e90f76c8a5b04b5e31c0dafd793c281fbb0fe24959df87bb4e6ad434223"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold3_seed0\\encoder.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold3_seed0\\encoder.pt",
+    "bytes": 1885637,
+    "sha256": "f520edc01dde6bceb0f689f890e5eed4f56bf90452057f40908b208b71e67141"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold3_seed0\\head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold3_seed0\\head.pt",
+    "bytes": 1243,
+    "sha256": "44b57439a7a2d74d5d7e28b8cdcd7f864c959aa87aab8763ecddcc2bd759f609"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold3_seed1\\earhead_front.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold3_seed1\\earhead_front.pt",
+    "bytes": 5475,
+    "sha256": "e0488e0ab21539d694101d89aa6218cba57dbd2f544a0100c2f9fbc702d1f6ba"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold3_seed1\\earhead_head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold3_seed1\\earhead_head.pt",
+    "bytes": 26931,
+    "sha256": "75d9f284eef65b29f24cfe36eaf09e502af928dc436f9563b0c48aaa9a3bbf46"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold3_seed1\\encoder.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold3_seed1\\encoder.pt",
+    "bytes": 1885637,
+    "sha256": "fd829d415f32a5c240836bcfc3f95b0b6459de61e791d4103923db8583529d8c"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold3_seed1\\head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold3_seed1\\head.pt",
+    "bytes": 1243,
+    "sha256": "44b57439a7a2d74d5d7e28b8cdcd7f864c959aa87aab8763ecddcc2bd759f609"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold3_seed2\\earhead_front.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold3_seed2\\earhead_front.pt",
+    "bytes": 5475,
+    "sha256": "b34b12763de36146e8c9b33e2de25bab10249285932b05a2af96eb41d5ecbb37"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold3_seed2\\earhead_head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold3_seed2\\earhead_head.pt",
+    "bytes": 26931,
+    "sha256": "d7dd351c057ba6bf66d8349152c8a31e2f49fa0cd4197063e50271f5c5fe2583"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold3_seed2\\encoder.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold3_seed2\\encoder.pt",
+    "bytes": 1885637,
+    "sha256": "6e317b112e79aea3085dc01047445f8094d5b8e9c903c5179cfd6b7160e2da8e"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold3_seed2\\head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold3_seed2\\head.pt",
+    "bytes": 1243,
+    "sha256": "44b57439a7a2d74d5d7e28b8cdcd7f864c959aa87aab8763ecddcc2bd759f609"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold4_seed0\\earhead_front.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold4_seed0\\earhead_front.pt",
+    "bytes": 5475,
+    "sha256": "f8645b2af20309b0a24e7fc665841e0fd306f8a01d1fdb2e1be12f140c990a1e"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold4_seed0\\earhead_head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold4_seed0\\earhead_head.pt",
+    "bytes": 26931,
+    "sha256": "9f7b5ba0ac66da2f0bb2b0c434d78f0a665308e7bfdcd164105fdd96b7e6bced"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold4_seed0\\encoder.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold4_seed0\\encoder.pt",
+    "bytes": 1885637,
+    "sha256": "f5b4b61eb7333d4c971d2c59f7a257ab1958e4c0e4945f2735248e5dd1c7e505"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold4_seed0\\head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold4_seed0\\head.pt",
+    "bytes": 1243,
+    "sha256": "44b57439a7a2d74d5d7e28b8cdcd7f864c959aa87aab8763ecddcc2bd759f609"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold4_seed1\\earhead_front.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold4_seed1\\earhead_front.pt",
+    "bytes": 5475,
+    "sha256": "4847619ebc71fbdc792fda615af887837bd5170e370759e55c66ca818e01fce2"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold4_seed1\\earhead_head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold4_seed1\\earhead_head.pt",
+    "bytes": 26931,
+    "sha256": "270d382c89e7de00b359730d0e4b239bd82c0f4cc0d012d2fe4bba7c2bd895ae"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold4_seed1\\encoder.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold4_seed1\\encoder.pt",
+    "bytes": 1885637,
+    "sha256": "0690fd7114bc588b2f6716d91c5149e396cf38533b986e370be7b7d901cf975a"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold4_seed1\\head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold4_seed1\\head.pt",
+    "bytes": 1243,
+    "sha256": "44b57439a7a2d74d5d7e28b8cdcd7f864c959aa87aab8763ecddcc2bd759f609"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold4_seed2\\earhead_front.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold4_seed2\\earhead_front.pt",
+    "bytes": 5475,
+    "sha256": "a90082ec0d0c3ef0dea9e41184af01773cff546c89022594afaeecf032422161"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold4_seed2\\earhead_head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold4_seed2\\earhead_head.pt",
+    "bytes": 26931,
+    "sha256": "65c651e33b5c879610eef4aff1ff9538c64ccd4ddff232cfae07ea0e9081aa73"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold4_seed2\\encoder.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold4_seed2\\encoder.pt",
+    "bytes": 1885637,
+    "sha256": "b79c10954550d407cb0129835aa3c05e8a475b0e2c10658916c58ce8d8ae1b2f"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_max_final\\fold4_seed2\\head.pt",
+    "archive_path": "models\\v2\\train_image_cnn_max_final\\fold4_seed2\\head.pt",
+    "bytes": 1243,
+    "sha256": "44b57439a7a2d74d5d7e28b8cdcd7f864c959aa87aab8763ecddcc2bd759f609"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\paper\\.gitkeep",
+    "archive_path": "paper\\.gitkeep",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\paper\\IEEE_Sensors_letters_overleaf.tex",
+    "archive_path": "paper\\IEEE_Sensors_letters_overleaf.tex",
+    "bytes": 27696,
+    "sha256": "7eb08feda978f33054610ee048c3981e8bedeaf211faff30380b6efbf5be915d"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\paper\\IEEE_Sensors_letters_v2.tex",
+    "archive_path": "paper\\IEEE_Sensors_letters_v2.tex",
+    "bytes": 33921,
+    "sha256": "90acf3e51e82ff6fed0c2811cf9b319e29f75570b678e2eba3fdbdf7ce23f679"
+  },
+  {
+    "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\paper\\paper_assets\\fig2_subgroups.pdf",
+    "archive_path": "paper\\paper_assets\\fig2_subgroups.pdf",
+    "bytes": 17164,
+    "sha256": "9c0a5f2a8949f251ea0ad794006be19b28ada41a5c2cf2026e7f6de663fa4075"
+  },
+  {
+    "path": "C:\\Users\\sch\\Downloads\\MCE_blink_detection.tex",
+    "archive_path": "Downloads/MCE_blink_detection.tex",
+    "bytes": 31659,
+    "sha256": "b72f81ec0747bc6693f21ab2afcc7a7d85908827cef8f67a8df89618cca0e868"
+  },
+  {
+    "path": "C:\\Users\\sch\\Downloads\\IEEEmce.cls",
+    "archive_path": "Downloads/IEEEmce.cls",
+    "bytes": 211289,
+    "sha256": "c1c33c77f9c33cdf011cda1b49a6542cc5e0db1417063b45d7e90a8189c96197"
+  },
+  {
+    "path": "C:\\Users\\sch\\Downloads\\upmath.sty",
+    "archive_path": "Downloads/upmath.sty",
+    "bytes": 5601,
+    "sha256": "fd017a81d1781d7c977f3c71d634972ad37266984e39a550292cc74057620553"
+  },
+  {
+    "path": "C:\\Users\\sch\\Downloads\\표1_추가작업_결과.zip",
+    "archive_path": "Downloads/표1_추가작업_결과.zip",
+    "bytes": 20107,
+    "sha256": "8dc28a57baca342f98a2af8eb31afbb8caec4c4a729294f6d2172c52a04a988e"
+  },
+  {
+    "path": "C:\\Users\\sch\\Downloads\\전력측정_전달본.zip",
+    "archive_path": "Downloads/전력측정_전달본.zip",
+    "bytes": 22874,
+    "sha256": "fd3e727067e6c8a53bfe9367271460e2efb8155539cf2ed726c4348bf2be4878"
+  }
+]

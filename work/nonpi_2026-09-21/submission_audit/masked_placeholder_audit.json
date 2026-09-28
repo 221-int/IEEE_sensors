@@ -1,0 +1,70 @@
+{
+  "scope": "Mechanism test changing only masked input pixels; initial weights and RNG held equal.",
+  "folds": [
+    {
+      "fold": 0,
+      "placeholder_subject": 1,
+      "placeholder_subject_role": "val",
+      "training_events_with_missing": 128,
+      "placeholder_frames": 283
+    },
+    {
+      "fold": 1,
+      "placeholder_subject": 1,
+      "placeholder_subject_role": "test",
+      "training_events_with_missing": 132,
+      "placeholder_frames": 294
+    },
+    {
+      "fold": 2,
+      "placeholder_subject": 1,
+      "placeholder_subject_role": "train",
+      "training_events_with_missing": 126,
+      "placeholder_frames": 285
+    },
+    {
+      "fold": 3,
+      "placeholder_subject": 1,
+      "placeholder_subject_role": "train",
+      "training_events_with_missing": 125,
+      "placeholder_frames": 287
+    },
+    {
+      "fold": 4,
+      "placeholder_subject": 1,
+      "placeholder_subject_role": "train",
+      "training_events_with_missing": 134,
+      "placeholder_frames": 297
+    }
+  ],
+  "batch_events": [
+    1789,
+    1790,
+    2087,
+    2088,
+    3368,
+    3819,
+    3831,
+    3925
+  ],
+  "models": [
+    {
+      "model": "vpres",
+      "valid_embedding_max_difference": 0.1296786069869995,
+      "logit_max_difference": 0.1204073429107666,
+      "gradient_max_difference": 0.2657286822795868
+    },
+    {
+      "model": "image_head",
+      "valid_embedding_max_difference": 0.0,
+      "logit_max_difference": 0.0,
+      "gradient_max_difference": 0.0
+    },
+    {
+      "model": "vdrop",
+      "valid_embedding_max_difference": 0.12559553980827332,
+      "logit_max_difference": 0.11129623651504517,
+      "gradient_max_difference": 0.36575597524642944
+    }
+  ]
+}

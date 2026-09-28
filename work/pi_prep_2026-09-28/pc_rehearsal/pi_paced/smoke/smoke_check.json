@@ -1,0 +1,54 @@
+{
+ "session_dir": "results\\pi_paced\\SMOKE",
+ "protocol": null,
+ "protocol_sha256": null,
+ "n_runs_reportable": 0,
+ "n_runs_excluded": 3,
+ "excluded": [
+  {
+   "run_id": "P_b01_ear_rule",
+   "mode": "ear_rule",
+   "reasons": [
+    "not a Raspberry Pi run (no aarch64/vcgencmd): desktop dry run only",
+    "CPU governor not 'performance' at platform_start: {}",
+    "CPU governor not 'performance' at platform_end: {}",
+    "PMIC read/parse errors: 442",
+    "no PMIC samples in idle_pre",
+    "no PMIC samples in active",
+    "no PMIC samples in idle_post"
+   ]
+  },
+  {
+   "run_id": "P_b01_image_cnn_head",
+   "mode": "image_cnn_head",
+   "reasons": [
+    "not a Raspberry Pi run (no aarch64/vcgencmd): desktop dry run only",
+    "CPU governor not 'performance' at platform_start: {}",
+    "CPU governor not 'performance' at platform_end: {}",
+    "PMIC read/parse errors: 441",
+    "no PMIC samples in idle_pre",
+    "no PMIC samples in active",
+    "no PMIC samples in idle_post"
+   ]
+  },
+  {
+   "run_id": "P_b01_ours_vpres",
+   "mode": "ours_vpres",
+   "reasons": [
+    "not a Raspberry Pi run (no aarch64/vcgencmd): desktop dry run only",
+    "CPU governor not 'performance' at platform_start: {}",
+    "CPU governor not 'performance' at platform_end: {}",
+    "PMIC read/parse errors: 442",
+    "no PMIC samples in idle_pre",
+    "no PMIC samples in active",
+    "no PMIC samples in idle_post"
+   ]
+  }
+ ],
+ "per_mode": {},
+ "paired_within_block": {},
+ "input_consistency": {
+  "face_rate_range_all_runs": null
+ },
+ "_scope": "Descriptive over repeated runs on one device and one clip; power is the PMIC rail sum, not board input power; freerun and paced results are never pooled."
+}

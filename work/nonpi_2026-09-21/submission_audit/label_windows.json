@@ -1,0 +1,455 @@
+{
+  "n_before": 28728,
+  "n_retained": 27758,
+  "n_excluded": 970,
+  "exclusion_counts_nonexclusive": {
+    "e_off_seat": 392,
+    "e_excluded_user": 346,
+    "missing_policy": 349
+  },
+  "n_negative_windows_with_positive_window_overlap_before": 1135,
+  "n_negative_windows_with_positive_window_overlap_retained": 1116,
+  "overlap_frame_histogram": {
+    "1": 314,
+    "2": 365,
+    "3": 402,
+    "4": 20,
+    "5": 11,
+    "6": 4
+  },
+  "conditions": {
+    "all": {
+      "n_events": 27758,
+      "n_positive": 13820,
+      "runmean_ours_ap": 0.9886404099135476,
+      "runmean_image_ap": 0.9905569097814573,
+      "runmean_delta": -0.0019164998679096045
+    },
+    "exclude_negative_window_overlap": {
+      "n_events": 26642,
+      "n_positive": 13820,
+      "runmean_ours_ap": 0.9895564313426862,
+      "runmean_image_ap": 0.9911124429956427,
+      "runmean_delta": -0.0015560116529564905
+    },
+    "complete_19_frames": {
+      "n_events": 27543,
+      "n_positive": 13677,
+      "runmean_ours_ap": 0.9889438029954533,
+      "runmean_image_ap": 0.9906881060472232,
+      "runmean_delta": -0.001744303051770076
+    }
+  },
+  "runs": [
+    {
+      "fold": 0,
+      "seed": 0,
+      "condition": "all",
+      "n": 6140,
+      "ours_ap": 0.9866734163843154,
+      "image_ap": 0.9867320518313545,
+      "delta": -5.863544703910151e-05
+    },
+    {
+      "fold": 0,
+      "seed": 0,
+      "condition": "exclude_negative_window_overlap",
+      "n": 5783,
+      "ours_ap": 0.9874647539628191,
+      "image_ap": 0.9877927975523998,
+      "delta": -0.00032804358958071766
+    },
+    {
+      "fold": 0,
+      "seed": 0,
+      "condition": "complete_19_frames",
+      "n": 6098,
+      "ours_ap": 0.9869877947128209,
+      "image_ap": 0.9869396710331544,
+      "delta": 4.8123679666556285e-05
+    },
+    {
+      "fold": 0,
+      "seed": 1,
+      "condition": "all",
+      "n": 6140,
+      "ours_ap": 0.986963477098861,
+      "image_ap": 0.9895977268741214,
+      "delta": -0.002634249775260389
+    },
+    {
+      "fold": 0,
+      "seed": 1,
+      "condition": "exclude_negative_window_overlap",
+      "n": 5783,
+      "ours_ap": 0.9879848719603572,
+      "image_ap": 0.9904131222813565,
+      "delta": -0.002428250320999248
+    },
+    {
+      "fold": 0,
+      "seed": 1,
+      "condition": "complete_19_frames",
+      "n": 6098,
+      "ours_ap": 0.9876106829933439,
+      "image_ap": 0.9897804564714515,
+      "delta": -0.0021697734781076505
+    },
+    {
+      "fold": 0,
+      "seed": 2,
+      "condition": "all",
+      "n": 6140,
+      "ours_ap": 0.983206774634652,
+      "image_ap": 0.9834278131331107,
+      "delta": -0.00022103849845866996
+    },
+    {
+      "fold": 0,
+      "seed": 2,
+      "condition": "exclude_negative_window_overlap",
+      "n": 5783,
+      "ours_ap": 0.98439479874173,
+      "image_ap": 0.9848129890092041,
+      "delta": -0.0004181902674741389
+    },
+    {
+      "fold": 0,
+      "seed": 2,
+      "condition": "complete_19_frames",
+      "n": 6098,
+      "ours_ap": 0.9833854182273934,
+      "image_ap": 0.9835489248688732,
+      "delta": -0.00016350664147979366
+    },
+    {
+      "fold": 1,
+      "seed": 0,
+      "condition": "all",
+      "n": 5470,
+      "ours_ap": 0.9817117535449328,
+      "image_ap": 0.9880200332202792,
+      "delta": -0.006308279675346418
+    },
+    {
+      "fold": 1,
+      "seed": 0,
+      "condition": "exclude_negative_window_overlap",
+      "n": 5239,
+      "ours_ap": 0.9839571731129106,
+      "image_ap": 0.9888708989708942,
+      "delta": -0.004913725857983553
+    },
+    {
+      "fold": 1,
+      "seed": 0,
+      "condition": "complete_19_frames",
+      "n": 5425,
+      "ours_ap": 0.9823247153378123,
+      "image_ap": 0.9883945665585908,
+      "delta": -0.006069851220778522
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "condition": "all",
+      "n": 5470,
+      "ours_ap": 0.9849702799692678,
+      "image_ap": 0.9862133712399416,
+      "delta": -0.0012430912706737907
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "condition": "exclude_negative_window_overlap",
+      "n": 5239,
+      "ours_ap": 0.986262830713487,
+      "image_ap": 0.9868004453751154,
+      "delta": -0.0005376146616283828
+    },
+    {
+      "fold": 1,
+      "seed": 1,
+      "condition": "complete_19_frames",
+      "n": 5425,
+      "ours_ap": 0.9852092155456432,
+      "image_ap": 0.9863531371712518,
+      "delta": -0.0011439216256086127
+    },
+    {
+      "fold": 1,
+      "seed": 2,
+      "condition": "all",
+      "n": 5470,
+      "ours_ap": 0.9866550255264015,
+      "image_ap": 0.9858139662086344,
+      "delta": 0.0008410593177671233
+    },
+    {
+      "fold": 1,
+      "seed": 2,
+      "condition": "exclude_negative_window_overlap",
+      "n": 5239,
+      "ours_ap": 0.9879541437656381,
+      "image_ap": 0.9864108508348283,
+      "delta": 0.001543292930809792
+    },
+    {
+      "fold": 1,
+      "seed": 2,
+      "condition": "complete_19_frames",
+      "n": 5425,
+      "ours_ap": 0.9870016012632549,
+      "image_ap": 0.9858780650861064,
+      "delta": 0.0011235361771484431
+    },
+    {
+      "fold": 2,
+      "seed": 0,
+      "condition": "all",
+      "n": 5383,
+      "ours_ap": 0.9928656839710701,
+      "image_ap": 0.9930272012339803,
+      "delta": -0.00016151726291013802
+    },
+    {
+      "fold": 2,
+      "seed": 0,
+      "condition": "exclude_negative_window_overlap",
+      "n": 5167,
+      "ours_ap": 0.9930630635199016,
+      "image_ap": 0.9931387829865016,
+      "delta": -7.57194666000105e-05
+    },
+    {
+      "fold": 2,
+      "seed": 0,
+      "condition": "complete_19_frames",
+      "n": 5345,
+      "ours_ap": 0.9930341921627855,
+      "image_ap": 0.9931268918359005,
+      "delta": -9.269967311498206e-05
+    },
+    {
+      "fold": 2,
+      "seed": 1,
+      "condition": "all",
+      "n": 5383,
+      "ours_ap": 0.99139663080293,
+      "image_ap": 0.9952327375878294,
+      "delta": -0.003836106784899429
+    },
+    {
+      "fold": 2,
+      "seed": 1,
+      "condition": "exclude_negative_window_overlap",
+      "n": 5167,
+      "ours_ap": 0.9916622231855835,
+      "image_ap": 0.9953638981245605,
+      "delta": -0.0037016749389769954
+    },
+    {
+      "fold": 2,
+      "seed": 1,
+      "condition": "complete_19_frames",
+      "n": 5345,
+      "ours_ap": 0.991855025715879,
+      "image_ap": 0.9954108038650623,
+      "delta": -0.0035557781491832863
+    },
+    {
+      "fold": 2,
+      "seed": 2,
+      "condition": "all",
+      "n": 5383,
+      "ours_ap": 0.9926282679435855,
+      "image_ap": 0.9920922596704345,
+      "delta": 0.000536008273151034
+    },
+    {
+      "fold": 2,
+      "seed": 2,
+      "condition": "exclude_negative_window_overlap",
+      "n": 5167,
+      "ours_ap": 0.9929970709915057,
+      "image_ap": 0.9922799367296755,
+      "delta": 0.0007171342618301768
+    },
+    {
+      "fold": 2,
+      "seed": 2,
+      "condition": "complete_19_frames",
+      "n": 5345,
+      "ours_ap": 0.9929752795025776,
+      "image_ap": 0.9921757143617911,
+      "delta": 0.0007995651407864957
+    },
+    {
+      "fold": 3,
+      "seed": 0,
+      "condition": "all",
+      "n": 5398,
+      "ours_ap": 0.9916913633213675,
+      "image_ap": 0.9932808439613772,
+      "delta": -0.0015894806400096329
+    },
+    {
+      "fold": 3,
+      "seed": 0,
+      "condition": "exclude_negative_window_overlap",
+      "n": 5214,
+      "ours_ap": 0.9919507512616706,
+      "image_ap": 0.9934729063327623,
+      "delta": -0.0015221550710916576
+    },
+    {
+      "fold": 3,
+      "seed": 0,
+      "condition": "complete_19_frames",
+      "n": 5347,
+      "ours_ap": 0.9920465497732559,
+      "image_ap": 0.9934435775543855,
+      "delta": -0.0013970277811296006
+    },
+    {
+      "fold": 3,
+      "seed": 1,
+      "condition": "all",
+      "n": 5398,
+      "ours_ap": 0.9933740438827097,
+      "image_ap": 0.9943699476415551,
+      "delta": -0.0009959037588453956
+    },
+    {
+      "fold": 3,
+      "seed": 1,
+      "condition": "exclude_negative_window_overlap",
+      "n": 5214,
+      "ours_ap": 0.993494514400862,
+      "image_ap": 0.9944947965809681,
+      "delta": -0.0010002821801060602
+    },
+    {
+      "fold": 3,
+      "seed": 1,
+      "condition": "complete_19_frames",
+      "n": 5347,
+      "ours_ap": 0.9936848025525343,
+      "image_ap": 0.9944667129400899,
+      "delta": -0.0007819103875555955
+    },
+    {
+      "fold": 3,
+      "seed": 2,
+      "condition": "all",
+      "n": 5398,
+      "ours_ap": 0.9927407168168672,
+      "image_ap": 0.9942475244622568,
+      "delta": -0.001506807645389685
+    },
+    {
+      "fold": 3,
+      "seed": 2,
+      "condition": "exclude_negative_window_overlap",
+      "n": 5214,
+      "ours_ap": 0.9928547001532461,
+      "image_ap": 0.9943789647140493,
+      "delta": -0.0015242645608032346
+    },
+    {
+      "fold": 3,
+      "seed": 2,
+      "condition": "complete_19_frames",
+      "n": 5347,
+      "ours_ap": 0.9931058686165479,
+      "image_ap": 0.9943451736387109,
+      "delta": -0.001239305022162962
+    },
+    {
+      "fold": 4,
+      "seed": 0,
+      "condition": "all",
+      "n": 5367,
+      "ours_ap": 0.9904686078808207,
+      "image_ap": 0.9929434643279058,
+      "delta": -0.0024748564470851164
+    },
+    {
+      "fold": 4,
+      "seed": 0,
+      "condition": "exclude_negative_window_overlap",
+      "n": 5239,
+      "ours_ap": 0.9913710399350382,
+      "image_ap": 0.9937080741737826,
+      "delta": -0.0023370342387444287
+    },
+    {
+      "fold": 4,
+      "seed": 0,
+      "condition": "complete_19_frames",
+      "n": 5328,
+      "ours_ap": 0.9905492478394449,
+      "image_ap": 0.9929903178666197,
+      "delta": -0.002441070027174863
+    },
+    {
+      "fold": 4,
+      "seed": 1,
+      "condition": "all",
+      "n": 5367,
+      "ours_ap": 0.9883936282430047,
+      "image_ap": 0.9900225564584846,
+      "delta": -0.0016289282154798856
+    },
+    {
+      "fold": 4,
+      "seed": 1,
+      "condition": "exclude_negative_window_overlap",
+      "n": 5239,
+      "ours_ap": 0.9903215535156543,
+      "image_ap": 0.9909696930232277,
+      "delta": -0.0006481395075733642
+    },
+    {
+      "fold": 4,
+      "seed": 1,
+      "condition": "complete_19_frames",
+      "n": 5328,
+      "ours_ap": 0.988448154604246,
+      "image_ap": 0.9900696687919288,
+      "delta": -0.0016215141876828598
+    },
+    {
+      "fold": 4,
+      "seed": 2,
+      "condition": "all",
+      "n": 5367,
+      "ours_ap": 0.9858664786824308,
+      "image_ap": 0.9933321488705954,
+      "delta": -0.007465670188164575
+    },
+    {
+      "fold": 4,
+      "seed": 2,
+      "condition": "exclude_negative_window_overlap",
+      "n": 5239,
+      "ours_ap": 0.9876129809198902,
+      "image_ap": 0.9937784882453158,
+      "delta": -0.006165507325425534
+    },
+    {
+      "fold": 4,
+      "seed": 2,
+      "condition": "complete_19_frames",
+      "n": 5328,
+      "ours_ap": 0.9859384960842582,
+      "image_ap": 0.9933979086644321,
+      "delta": -0.0074594125801739075
+    }
+  ],
+  "limitations": [
+    "Positive labels describe whole 19-frame event windows, not per-frame eyelid closure. Window overlap is ambiguity, not proof of mislabeling.",
+    "Post-hoc subsets change prevalence and sample composition; these are descriptive sensitivities with no new confidence intervals or model selection.",
+    "No labels or primary events were edited. Visual concerns require independent annotation and raw temporal context."
+  ]
+}

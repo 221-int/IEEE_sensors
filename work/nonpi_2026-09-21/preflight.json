@@ -1,0 +1,30 @@
+{
+  "fold_alignment": [
+    {
+      "fold": 0,
+      "n_test": 6140
+    },
+    {
+      "fold": 1,
+      "n_test": 5470
+    },
+    {
+      "fold": 2,
+      "n_test": 5383
+    },
+    {
+      "fold": 3,
+      "n_test": 5398
+    },
+    {
+      "fold": 4,
+      "n_test": 5367
+    }
+  ],
+  "source_changed_since_sept18": [],
+  "vdrop_cost": {
+    "encoder_params": 50752,
+    "head_params": 4625,
+    "total_mmac": 3.490624
+  }
+}

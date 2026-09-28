@@ -1,0 +1,14 @@
+{
+  "state": "complete",
+  "updated": "2026-09-22T17:42:05.040933+09:00",
+  "scope": [
+    "1 corrected result review",
+    "2 crop and deployment policy alignment"
+  ],
+  "report": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\work\\nonpi_2026-09-22_review\\REVIEW.md",
+  "tests": 14,
+  "recrop_frames_identical": 3037,
+  "models_retrained": false,
+  "manuscript_edited": false,
+  "next": "Corrected-checkpoint ONNX export and model contracts remain step 3."
+}

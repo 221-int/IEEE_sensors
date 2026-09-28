@@ -1,0 +1,25 @@
+python 3.12.14
+{
+ "machine": "AMD64",
+ "versions": {
+  "python": "3.12.14",
+  "executable": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\.venv-nonpi\\Scripts\\python.exe",
+  "numpy": "1.26.4",
+  "onnxruntime": "1.30.0",
+  "cv2": "4.11.0",
+  "mediapipe": "0.10.18",
+  "psutil": "unavailable: ModuleNotFoundError"
+ },
+ "problems": [
+  "not a Pi (aarch64 + vcgencmd)",
+  "governor: {}",
+  "throttled=None",
+  "pmic sample 0: no output",
+  "pmic sample 1: no output",
+  "pmic sample 2: no output"
+ ],
+ "version_differences_from_requirements_pi": {
+  "onnxruntime": "1.30.0"
+ }
+}
+-> results\pi_paced\env_check.json

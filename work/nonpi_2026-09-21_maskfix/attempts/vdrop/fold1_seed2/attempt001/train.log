@@ -1,0 +1,34 @@
+이벤트 27,758 (결측정책으로 제외 970)  n=27758 classes=2 (불균형 13820~13938) uniform=0.5000 majority=0.5021
+구조 vdrop  D=16  정규화 frame_standardize  max_epochs 80 patience 10  batch 32
+
+  fold 1 seed 2
+      [cnn] ep   1  loss 0.2173  val AP 0.9854  *
+      [cnn] ep   5  loss 0.0469  val AP 0.9937
+      [cnn] ep  10  loss 0.0283  val AP 0.9930
+      [cnn] ep  15  loss 0.0158  val AP 0.9933
+      [cnn] val AP 가 10 에폭 정체 -> ep 19 에서 중단 (최고 ep 9)
+      [earhead] ep   1  loss 0.3707  val AP 0.9670  *
+      [earhead] ep   5  loss 0.2073  val AP 0.9795
+      [earhead] ep  10  loss 0.1919  val AP 0.9819
+      [earhead] ep  15  loss 0.1815  val AP 0.9809
+      [earhead] ep  20  loss 0.1749  val AP 0.9852  *
+      [earhead] ep  25  loss 0.1689  val AP 0.9827
+      [earhead] ep  30  loss 0.1655  val AP 0.9852  *
+      [earhead] ep  35  loss 0.1632  val AP 0.9839
+      [earhead] ep  40  loss 0.1589  val AP 0.9851
+      [earhead] ep  45  loss 0.1585  val AP 0.9836
+      [earhead] ep  50  loss 0.1550  val AP 0.9846
+      [earhead] ep  55  loss 0.1551  val AP 0.9857
+      [earhead] ep  60  loss 0.1481  val AP 0.9857
+      [earhead] val AP 가 10 에폭 정체 -> ep 63 에서 중단 (최고 ep 53)
+    ours PR-AUC 0.9816 | ear_head 0.9665 | ear_rule 0.8899 | 비교상대 ear_head 차이 +0.0152  (ep 9/53, 1559s)
+
+================================================================
+  ours      PR-AUC 0.9816  (n=1)
+  ear_head  PR-AUC 0.9665  (n=1)
+  ear_rule  PR-AUC 0.8899  (n=1)
+  차이(ours-EAR) +0.0152  95% CI [+0.0024, +0.0278]
+  delta = 0.02  ->  판정: **superior**
+  val 낙관(AP) 평균 +0.0125
+  -> C:\Users\sch\PycharmProjects\IEEE_sensors\work\nonpi_2026-09-21_maskfix\attempts\vdrop\fold1_seed2\attempt001\result.json
+  -> C:\Users\sch\PycharmProjects\IEEE_sensors\work\nonpi_2026-09-21_maskfix\attempts\vdrop\fold1_seed2\attempt001\result_scores/  (런별 test 점수. 서브그룹 분석은 여기서 한다)

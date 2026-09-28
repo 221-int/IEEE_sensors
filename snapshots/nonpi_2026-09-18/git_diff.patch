@@ -1,0 +1,895 @@
+diff --git a/docs/PAPER_OUTLINE.md b/docs/PAPER_OUTLINE.md
+index c3fc91c..2a6a6bd 100644
+--- a/docs/PAPER_OUTLINE.md
++++ b/docs/PAPER_OUTLINE.md
+@@ -1,6 +1,6 @@
+ # PAPER_OUTLINE — IEEE Sensors Letters 초안 구성
+ 
+-> **작성 2026-08-05.** 범위는 `PROJECT_DIRECTION.md` §4 를 따른다.
++> **작성 2026-08-05 · 최종 갱신 2026-08-11.** 범위는 `PROJECT_DIRECTION.md` §4 를 따른다.
+ > **분량 제약 — 약 4페이지.** 미팅에서 나온 현실적 추정 (전사문 09:07):
+ > Introduction + Related Work 로 **1페이지 이상**, Method 는 **Overall Architecture 그림 필수**,
+ > Experiments 는 표 + 그래프 몇 개. **여유가 거의 없다.**
+@@ -81,8 +81,8 @@ Camera frame
+   → Eye region detection & tracking (MediaPipe landmarks, coordinates discarded)
+   → Both-eye crop, rotation-aligned, grayscale 64×160 (margin 2.2 × inter-eye distance)
+   → Encoder (asymmetric CNN, "vpres")
+-  → Embedding vector  z ∈ R^D
+-  → 19-frame causal ring buffer
++  → Embedding vector  z ∈ R^16
++  → 19-frame ring buffer + validity mask
+   → Temporal head (1D TCN, dilation 1/2/4) + classification head (MLP)
+   → blink / unblink
+ ```
+@@ -95,18 +95,20 @@ Fig. 1 에서 **판정 헤드로 들어가는 화살표가 embedding vector 뿐*
+ - 두 눈 중심의 중점을 기준, 두 눈을 잇는 선을 수평으로 회전 정렬.
+ - 크롭 폭 = 눈 사이 거리 × 2.2 → 고정 64×160 리사이즈.
+   **카메라 거리가 변해도 크롭 스케일이 정규화된다.**
+-- 입력 정규화는 프레임 단위 표준화 `(x − μ) / σ`.
+-  근거: 광학 교란(밝기·대비·선명도)의 재식별 프로브 정확도가 0.329 → 0.080 으로 떨어진다.
+-  → 논문에서는 **"지름길(shortcut) 제거"** 로 서술한다. 프라이버시 기전으로 쓰지 않는다.
++- 입력 정규화는 현재 프레임 안에서만 하는 표준화
++  `(x − μ) / max(σ, 0.255)`다. `0.255 = 10⁻³ × 255` 하한은 거의 균일한 크롭에서
++  0으로 나누는 것을 막는다. **광학값의 전역 차이를 그대로 쓰는 지름길을 줄인다**고만 쓴다.
+ 
+ **C. Encoder Design**
+ 
+-- 눈꺼풀 상하 간격은 크롭 세로 64 px 중 **8.7 px** (실측: 눈꺼풀간격/눈사이거리 = 0.1201).
+-- 이 관찰에서 **세로 총 stride 를 2 로 제한**하고(8.73/2 = 4.37 px) 가로만 32배 줄이는
+-  비대칭 설계를 유도했다. 깜빡임은 세로 운동이고 가로 160 px 은 두 눈을 나란히 담기
+-  위한 것이지 해상도가 필요해서가 아니다.
++- 실측 눈꺼풀간격/눈사이거리 = 0.1201. 크롭 원본 높이는 `0.88 × 눈사이거리`이므로,
++  64 px 크롭에서 눈꺼풀 간격은 **8.73 px**다. 이는 `0.1201 × 160 / 2.2`로 계산하며,
++  `0.1201 × 64`가 아니다.
++- encoder 는 Conv-BN-ReLU 4블록(채널 16/32/48/64, 커널 3×5/3×3/3×3/3×3,
++  stride (세로,가로) = (1,4)/(2,2)/(1,2)/(1,2))이다. 총 stride 는 세로 2, 가로 32,
++  가로 평균 pooling 뒤 선형층으로 D=16을 만든다. **79,424 params, 12.44 MMAC/frame.**
+ 
+-> 🔴 **2026-08-06 절제 실험 — 이 논거는 성능으로 지지되지 않는다. 설계 주장으로 쓰지 말 것.**
++> 🔴 **2026-08-06 탐색 절제 — 성능으로 설계 주장을 지지하지 않는다.**
+ >
+ > 교락 없는 대조군 `vdrop`(vpres 와 커널·채널·가로 stride 가 전부 같고 **세로 stride 만** 16)로 검정했다.
+ >
+@@ -117,24 +119,26 @@ Fig. 1 에서 **판정 헤드로 들어가는 화살표가 embedding vector 뿐*
+ > | **vpres** (채택) | 2 | 4.37 px | 12.41 | 0.9850 ± 0.0022 |
+ > | vfull | 1 | 8.73 px | 24.21 | 0.9825 ± 0.0024 |
+ >
+-> **vpres − vdrop = +0.0010 [−0.0032, +0.0069]** (`results/v2/cmp_vpres_vs_vdrop.json`).
++> **vpres − vdrop = +0.0010 [−0.0032, +0.0069]** (`results/v2/cmp_vpres_vs_vdrop.json`,
++> fold 0·1 × 3 seed = 6런, 21명 탐색).
+ > "세로를 1/16 로 줄이면 신호가 사라진다"는 **파국적 열화를 예측했지만 일어나지 않았다.**
+ > 세로 해상도와 성능은 단조도 아니다.
+ >
+-> → 논문에는 **절제 결과 자체**를 싣는다: *"세로 해상도를 1/16 로 줄여도 성능이
+-> 유지됐다"*. 이것은 오히려 **더 싼 인코더가 가능함**을 보이는 결과다.
+-> **vpres 를 유지하는 이유는 성능이 아니라** 다운스트림 산출물이 전부 그 위에 있고,
+-> encode 가 Pi e2e 의 일부에 불과해 3.6배 연산 이득이 e2e 로는 거의 안 나타나기 때문이다.
+-> Table II-b 에 **vdrop 행을 함께 실어** "더 싼 모델이 동등한데 왜 이걸 배포했나"에
+-> 표로 먼저 답한다.
++> → 이 절제는 다섯 fold를 모두 덮지 않으므로 **서술적 탐색 결과**로만 쓴다.
++> "세로 해상도가 중요하지 않다" 또는 "더 싼 인코더가 동등하다"고 결론 내리지 않는다.
++> `vpres` 는 나머지 확정 산출물과의 일관성을 위해 유지한다.
+ 
+-**D. Causal Temporal Modeling**
++**D. Temporal Modeling on Embeddings**
+ 
+ - 프레임마다 19장을 다시 인코딩하면 비용이 19배 → edge 예산 초과.
+ - → **프레임당 인코딩 1회 + 벡터 19개 링버퍼 + 시간 헤드.**
+-  시간 헤드는 이벤트당 0.2 MMAC 수준으로 사실상 무시 가능.
++  시간 헤드는 dilation 1/2/4의 residual 1-D Conv-BN-ReLU 3층과 MLP(32→64→1,
++  dropout 0.3)이며, stride 1 판정 비용은 **0.0459 MMAC/frame (전체의 0.37%)**이다.
+ - 얼굴 해소 실패 프레임은 크롭이 없다 → 0 으로 채우면 "변화 없음"과 "모름"이 구분되지 않는다.
+-  **마스크를 함께 넣고 pooling 에서 제외**한다.
++  **마스크를 각 convolution 앞에 적용하고, 두 pooling에서 제외**한다. 6프레임 이상
++  미해소인 이벤트는 데이터셋에서 제외한다.
++- 대칭 padding이라 창 안의 뒤쪽 프레임을 쓸 수 있어 **causal 이 아니다.** 다만 판정 시점에
++  현재 19프레임 버퍼 밖의 프레임은 기다리지 않으므로 추가 버퍼링 지연은 없다.
+ 
+ **E. Deployment**
+ 
+@@ -153,17 +157,26 @@ Fig. 1 에서 **판정 헤드로 들어가는 화살표가 embedding vector 뿐*
+ - 배포본 구조: mEBAL1 38명(2020) + mEBAL2 신규 20명(2022).
+ - **U18 제외 → 57명.** 사유: 다중 인원 동시 녹화 환경에서 주 피험자 미검출 시 옆자리
+   인물이 크롭된 비율이 이벤트의 31%. **각주로 명시한다.**
+-- 유효 이벤트 **27,758** (blink 13,820 / unblink 13,938), 크롭 532,109장.
+-- 이벤트 단위: 19프레임 고정창.
++- 유효 이벤트 **27,758** (blink 13,820 / unblink 13,938). 추출 파이프라인은 고유 크롭
++  **532,109장**을 저장하며, 겹치는 이벤트는 이 프레임을 재사용한다.
++- 이벤트 단위: 19프레임 고정창. 6프레임 이상 얼굴 미해소 이벤트는 제외한다.
+ 
+ **B. Protocol**
+ 
+-- **피험자 분리 5-fold**, 이벤트 수 + 수집 배치 **이중 층화**.
+-- **3 seed** (0,1,2). 15런.
+-- 임계값 격자·시드·분할·부트스트랩은 단일 구현을 공유.
+-- val 에서 고르고 val 에서 보고하지 않는다.
++- **피험자 분리 5-fold**, 이벤트 수 + 수집 배치 **이중 층화**, seed 0/1/2의 15런.
++- 회전 `i`에서 test = fold `i`, validation = fold `(i+1) mod 5`, 나머지는 train이다.
++- 임계값은 validation의 모든 고유 점수와 그 중점에서 Accuracy를 최대화해 한 번 고르고,
++  test에 바꾸지 않고 적용한다. 분할·시드·임계값 선택·부트스트랩은 단일 구현을 공유한다.
++- EAR 두 변형은 확률적 프론트엔드가 없으므로 세 seed에서 비트 동일해야 하며, 실제로 그렇다.
+ 
+-**C. Baselines**
++**C. Training**
++
++- 학습 방법은 BCE-with-logits + Adam(1e−3), batch 32, 최대 80 epoch, validation PR-AUC
++  기준 patience 10 early stopping이다. 매 런 deterministic 설정을 켠다.
++- Image-CNN은 mEBAL 구조를 64×160 그레이스케일 두 눈 크롭과 이벤트 라벨에 맞게 이식했다.
++  원문 프레임별 open/closed 학습과 같지 않다는 점은 베이스라인 해석에 계속 남긴다.
++
++**D. Baselines**
+ 
+ | 이름 | 설명 |
+ |---|---|
+@@ -182,18 +195,21 @@ Fig. 1 에서 **판정 헤드로 들어가는 화살표가 embedding vector 뿐*
+   ⚠️ 원문은 **프레임별 open/closed 라벨**로 학습했고 우리는 창당 라벨 하나뿐이라
+   (max-pooling MIL) **문헌 방법을 과소평가했을 수 있다. 각주 필수.**
+ 
+-**D. Metrics**
++**E. Metrics**
+ 
+-- 주 지표 **PR-AUC**. 함께 보고: ROC-AUC, Accuracy, Precision, Recall, F1.
+-- 판정: (ours − baseline) 차이의 **짝지은 피험자 클러스터 부트스트랩 95% CI**,
+-  비열등 마진 **δ = 0.02** (결과를 보기 전에 고정).
++- 주 지표 **PR-AUC**(blink를 positive class). 함께 보고: ROC-AUC, Accuracy, Precision,
++  Recall, F1. PR-AUC·ROC-AUC은 15런 평균±표준편차, 임계값 지표는 15런 평균으로 보고한다.
++- 판정: 시드 3개의 held-out 예측을 이어 붙인 뒤 피험자 57명을 복원추출해 PR-AUC 차이를
++  다시 계산하는 **짝지은 피험자 클러스터 부트스트랩 2,000회, 95% CI**. 비열등 마진
++  **δ = 0.02**는 최종 비교 전에 고정했다.
+ - Edge 지표: 파라미터 수, 모델 크기, MMAC, 프레임당 추론 시간, e2e 지연 p50/p95/p99,
+   sustained FPS, RSS peak, CPU %.
+ 
+-**E. Edge Platform**
++**F. Edge Platform**
+ 
+ - Raspberry Pi 5 (16 GB, active cooling), Debian 13, Python 3.11,
+-  onnxruntime (intra-op 2 threads, spinning disabled), MediaPipe, OpenCV (NEON FP16).
++  onnxruntime (intra-op 2 threads, spinning disabled). 지연 측정 frontend는 MediaPipe
++  FaceMesh(한 얼굴, `refine_landmarks=False`)이고, 정확도 실험은 mEBAL2 제공 mesh를 쓴다.
+ - CPU governor `performance`. 각 모드 5분 지속 측정. 스로틀 플래그 기록.
+ 
+ ---
+@@ -205,7 +221,7 @@ Fig. 1 에서 **판정 헤드로 들어가는 화살표가 embedding vector 뿐*
+ | Method | PR-AUC | ROC-AUC | Acc | Prec | Rec | F1 | MMAC | Params |
+ |---|---|---|---:|---:|---:|---:|---:|---:|
+ | EAR-rule | 0.8931 ± 0.0136 | 0.9169 ± 0.0146 | 0.8505 | 0.8268 | 0.8878 | 0.8550 | ~0 | 0 |
+-| EAR-head | 0.9724 ± 0.0096 | 0.9738 ± 0.0113 | 0.9276 | 0.9312 | 0.9228 | 0.9268 | — | — |
++| EAR-head | 0.9724 ± 0.0096 | 0.9738 ± 0.0113 | 0.9276 | 0.9312 | 0.9228 | 0.9268 | 0.0462 | 5,009 |
+ | Image-CNN (max, 문헌 원형) | 0.9114 ± **0.0291** | 0.9404 ± 0.0207 | 0.8917 | 0.8526 | 0.9480 | 0.8971 | 31.81 | 470,561 |
+ | Image-CNN (+ our temporal head) | **0.9906 ± 0.0037** | **0.9930 ± 0.0036** | 0.9651 | 0.9713 | 0.9584 | 0.9644 | 31.85 | 476,161 |
+ | **Ours** | 0.9886 ± 0.0038 | 0.9914 ± 0.0037 | 0.9620 | 0.9605 | 0.9636 | 0.9618 | **12.49** | **84,049** |
+@@ -223,25 +239,22 @@ Fig. 1 에서 **판정 헤드로 들어가는 화살표가 embedding vector 뿐*
+ | ours − Image-CNN(max) | +0.0766 | [+0.0556, +0.0986] | superior | +0.0772 ± 0.0291 | 0.0460 |
+ | Image-CNN(+head) − Image-CNN(max) | +0.0806 | [+0.0592, +0.1028] | superior | +0.0791 ± 0.0289 | 0.0460 |
+ 
+-### 🔵 2026-08-08 — 두 추정량을 "미측정"으로 뭉개지 않는다
++### 🔵 2026-08-11 — 두 요약값은 서로 다른 변동을 보여 준다
+ 
+-두 추정량은 **서로 다른 질문에 답한다.** 하나를 고르는 것이 아니라 둘 다 보고하고
+-해석을 붙인다.
++두 요약값은 **서로 다른 변동을 보여 준다.** 하나를 고르는 것이 아니라 둘 다 보고한다.
+ 
+ | 추정량 | 답하는 질문 | 값 |
+ |---|---|---|
+ | 풀링 피험자 클러스터 부트스트랩 | *"다른 57명을 뽑았다면?"* | −0.0040 [−0.0063, −0.0020] |
+ | 런평균 vs fold 내 시드 std | *"다른 시드로 재학습했다면?"* | −0.0019 ± 0.0024 vs 0.0031 |
+ 
+-피험자 단위 클러스터 부트스트랩은 **3시드 반복이 n 을 부풀리지 않으므로** 통계적으로
+-정당하다. 앞서 이 비교를 PROTOCOL §2 의 "미측정"으로만 적었던 것은 **과하게 보수적**이었다
+-(§2 는 런 간 상관을 무시한다).
++피험자 단위 클러스터 부트스트랩은 57명을 다시 뽑았을 때의 변동을, 런평균은 fold·seed
++반복의 변동을 요약한다. 두 값 모두 관측된 차이가 δ=0.02 안에 있음을 보인다.
+ 
+ > **본문 서술 (이대로 쓴다)**
+ >
+-> *"ours 는 image_cnn_head 보다 0.004 낮다. 이 차이는 피험자 재표집에 대해
+-> 안정적이지만(CI 가 0 을 배제) 시드 간 학습 변동(0.0031)과 같은 크기다.
+-> 어느 쪽이든 사전 등록한 δ=0.02 에 크게 못 미친다."*
++> *"ours 는 image_cnn_head 보다 0.004 낮다. 피험자 재표집 부트스트랩과 15런 평균은
++> 서로 다른 변동을 요약하지만, 어느 쪽에서도 이 차이는 사전 지정한 δ=0.02 안에 있다."*
+ 
+ **심사 대응은 회피가 아니라 인정으로 간다:**
+ *"0.99 척도에서 0.004(상대 0.4%) 낮다. 그 대가로 파라미터 5.7배·연산 2.6배가 적다.
+@@ -316,19 +329,16 @@ ours − image_cnn_head     −0.0048  [−0.0083, −0.0017]   ← 우리가 
+ | **안경** | 17 | 9,947 | 0.9845 | 0.9727 | **+0.0118** | **[+0.0061, +0.0165]** | **superior** |
+ | 미착용 | 40 | 17,811 | 0.9869 | 0.9698 | +0.0171 | [+0.0107, +0.0250] | **superior** |
+ 
+-**다섯 서브그룹 전부 superior.** 이전의 "안경군 이득 ≈ 0" 서술은 **철회한다.**
++**다섯 서브그룹 전부 superior.** Image-CNN(+head) 상대에서도 같은 다섯 그룹 전부가
++비열등 마진 안에 있다. 밝기·대비·선명도 3분위의 9개 그룹도 모두 ours 쪽을 가리킨다.
++이 광학 층화는 Fig. 2에 숫자를 별도 추가하지 않고 본문 한 문장으로만 보고한다.
+ 
+-> 🔴 **이것은 결과를 보고 추정량을 바꾼 것이 아니다.** `PROTOCOL.md` 부록 #13 이
+-> *"피험자 평균을 서브그룹의 주 숫자로 쓰지 말 것 — U1 은 안경군 이벤트의 1.1% 인데
+-> 피험자 평균에서 5.9% 를 차지한다"* 고 **미리** 지정했다. 사전 지정된 추정량으로
+-> 다시 낸 것이다. **논문에 이 순서를 밝힌다.**
++> 서브그룹은 피험자별 PR-AUC를 평균내지 않고 **이벤트를 풀링**한다. 그렇지 않으면 이벤트
++> 수가 적은 피험자도 같은 가중치를 받아, 예를 들어 한 피험자가 안경군 이벤트의 1.1%인데
++> 비가중 피험자 평균에서는 5.9%를 차지하는 문제가 생긴다.
+ 
+-- **전체 + 조건별 숫자를 항상 함께** 낸다. **이벤트 가중을 주 숫자로, 피험자 평균을 병기.**
+-- ⚠️ **안경군 CI 하한(+0.0061)이 추정량 편향과 같은 자릿수다.** PROTOCOL §0 이
+-  "런을 concat 해 AP 를 1회 계산하면 fold별 평균보다 0.002~0.003 낮다"고 실측해 뒀다.
+-  차이를 부트스트랩하므로 양쪽에 상쇄되지만, **안경군만은 추정량 선택에 민감할 수 있다** →
+-  두 추정량을 모두 보고한다.
+-- 아직 남은 조건: 광학 3분위 층화(미실시), 합성 저조도(P2).
++- **전체 + 조건별 숫자를 항상 함께** 낸다. 이벤트 가중 풀링을 주 숫자로 쓴다.
++- 남은 조건: 합성 저조도(P2).
+ - 평가할 수 없는 조건(실제 저조도, 거리, 고개 각도, 부분 깜빡임, 빠른/느린 깜빡임)은
+   **Limitations 에 명시**하고 표에 추정치로 채우지 않는다.
+ 
+@@ -351,8 +361,7 @@ MediaPipe 로 같은 메시를 뽑는다. 즉 e2e 의 **88% 가 공통 항**이
+ 생기는 차이는 **crop+encode+decide 11%** 안에서만 일어난다.
+ 
+ → e2e 한 열로 세 방법을 비교하면 **공통 비용이 분모를 채워 차이가 묻힌다.**
+-   인코더 MMAC 을 72% 줄여도(vpres→vdrop) e2e 는 3% 밖에 안 움직인다.
+-   그 표는 "세 방법이 다 비슷하다"는 잘못된 인상을 준다.
++   따라서 e2e 한 열만으로는 세 방법의 모델 비용 차이가 작게 보인다.
+ 
+ ### 재설계 — 공통 항과 방법 항을 분리한다
+ 
+@@ -385,7 +394,7 @@ mEBAL2 제공 랜드마크를 썼으므로 추가 비용이 0 이지만, **배
+ - ⚠️ **head 를 stride 19 로 세지 않는다.** 창 경계에서만 판정하면 깜빡임을 최대
+   18프레임(600 ms @30 fps) 늦게 잡는다. 연속 검출의 정직한 값은 stride 1 이다.
+ 
+-**Table II-b. Pi 5 런타임** ✅ **2026-08-06 실측 완료**
++**Table II-b. Pi 5 런타임** ✅ **2026-08-08 실측 완료**
+ (640×480 @ 30 fps, **각 모드 300 초 지속**, `--intra-threads 2 --no-spin`,
+ governor `performance`, `refine_landmarks=False`, **스로틀 없음**,
+ 온도 시작 49.4~51.6 → **p95 58.7~59.3 °C**, 종료 54.9~58.7 °C)
+@@ -417,14 +426,14 @@ governor `performance`, `refine_landmarks=False`, **스로틀 없음**,
+ | 1 | **네 방법 전부 G-E1 PASS.** e2e p99 가 예산 33.3 ms 의 **30~39%**. 스로틀 없음 |
+ | 2 | **표현 단계에서 ours 는 image_cnn 의 1/2.4** (0.86 vs 2.04 ms). MMAC 비 1/2.55 와 **거의 일치** — 정적 예측이 실측으로 검증됐다 |
+ | 3 | **method 소계로는 1/1.7** (1.78 vs 3.03 ms) |
+-| 4 | 🔴 **e2e 로는 11% 차이에 그친다** (11.27 vs 12.51). **얼굴 검출이 68~87% 를 먹기 때문** |
++| 4 | 🔴 Image-CNN(+head)의 e2e 중앙값은 ours보다 **11% 느리다** (12.51 vs 11.27 ms). **얼굴 검출이 68~87%를 차지한다** |
+ 
+ > ✅ **논문 문장 (확정)**
+ > *"On a Raspberry Pi 5, the embedding path costs 0.86 ms per frame at the representation
+-> stage versus 2.04 ms for the image-based CNN — a 2.4× reduction that matches the 2.6×
+-> MMAC ratio. End-to-end, however, the gain is only 11% (11.27 ms vs 12.51 ms), because
+-> face detection accounts for 68–87% of the pipeline. **On edge hardware the representation
+-> encoder is not the bottleneck; the face-detection frontend is.**"*
++> stage versus 2.04 ms for the image-based CNN — a 2.4× reduction consistent with the 2.6×
++> MMAC ratio. The image-based control has an 11% higher end-to-end median latency (12.51 ms
++> vs 11.27 ms), because face and landmark detection accounts for 68–87% of the pipeline
++> under these measurement conditions."*
+ 
+ > ⚠️ **image_cnn ONNX 는 무작위 가중치**(지연 전용). 하네스가 런 JSON 에 경고를 기록했다.
+ > **정확도 수치와 섞지 않는다.** 연산 그래프가 같으므로 지연은 유효하다.
+@@ -439,16 +448,16 @@ CPU +5%p 높다 — 차이가 작다.
+ 
+ - **판정 열은 `method 소계`** 다. e2e p99 는 **예산 게이트(G-E1 ≤ 33.3 ms)** 확인용이지
+   방법 비교용이 아니다. 둘의 역할을 섞지 않는다.
+-- 해상도를 720p 로 올리면 detect 비중이 더 커져 공통 항이 더 지배적이 된다
+-  (EXPERIMENT_PLAN §6-3). **보조 측정에서도 분해를 그대로 낸다.**
++- 720p 보조 측정은 출처 JSON·클립 매니페스트가 함께 확인될 때만 별도 부록에 넣는다.
++  현재 본문 주 측정은 640×480뿐이며, 해상도를 올릴수록 공통 detect 비용이 더 지배적일 수 있다.
+ 
+ ### 논지 (프레이밍)
+ 
+ - ❌ "엣지 실시간이 어렵다 → 시스템 기여" — v1 에서 예산의 36% 밖에 안 나와 이 프레이밍이
+   스스로 약해진 전례가 있다. v2 도 여유가 클 것으로 보인다.
+ - ✅ **"EAR 대비 벡터 표현의 추가 비용을 동일 조건에서 정량화했고, 그 비용이 파이프라인의
+-  몇 % 인지 분해해 보였다."** encoder 가 e2e 의 4% 라는 것은 약점이 아니라 **결과**다 —
+-  표현을 학습으로 얻는 대가가 검출기 비용에 묻힐 만큼 작다는 뜻이다.
++  어느 단계에 놓이는지 분해해 보였다."** 표현 단계의 비용 차이는 분명하지만, 측정 조건에서는
++  공통 landmark frontend가 e2e 지연의 대부분을 차지한다.
+ - ✅ head 0.0459 MMAC/frame 은 **병목 설계의 직접적 이득**이다. 병목이 없었다면
+   (F=512) 시간 헤드가 2.36 MMAC/frame 으로 **51배** 커진다. 이 대비를 한 줄 넣는다.
+ 
+@@ -478,9 +487,10 @@ CPU +5%p 높다 — 차이가 작다.
+ 
+ - 원본 눈 이미지 대신 encoder 의 embedding vector 만으로 눈 깜빡임을 검출하는 파이프라인을 제시.
+ - 피험자 분리 5-fold × 3 seed 에서 EAR 기반 및 이미지 기반 방법과 동일 조건 비교.
+-- Raspberry Pi 5 에서 실시간 동작 확인.
+-- Future work: 조도·자세·거리 조건이 라벨된 데이터셋에서의 강건성 검증,
+-  표현 수준의 정보 노출 분석. (**한 줄. 구체적 기법은 쓰지 않는다 — 특허 출원 전이다.**)
++- 가장 강한 이미지 기반 통제군 대비 δ=0.02에서 비열등, 파라미터 5.7배·연산 2.6배 절감.
++- Raspberry Pi 5에서 실시간 동작을 확인했고, 측정 조건에서는 landmark frontend가 남은 e2e 지연의
++  대부분을 차지한다.
++- Future work: 조도·자세·거리 조건이 라벨된 데이터셋에서의 강건성 검증. (**한 줄만 쓴다.**)
+ 
+ > 🔴 **Future work 서술 주의.** 특허 출원 전이라면 GRL·VIB 같은 구체적 억제 기법을
+ > 논문에 적지 않는다. 논문 공개가 특허 심사에서 선행 기술이 될 수 있다.
+@@ -489,14 +499,13 @@ CPU +5%p 높다 — 차이가 작다.
+ 
+ ## 작성 순서 제안
+ 
+-1. **III. Proposed Method** — 이미 다 확정돼 있다. Fig. 1 과 함께 먼저 쓴다.
+-2. **IV. Experimental Setup** — 프로토콜이 확정돼 있다.
+-3. **V-A Table I** — 3개 행은 이미 있다. Image-CNN 행만 비어 있다.
+-4. (실험) T3-1 → T5-x → V-C Table II
+-5. (실험) T4-1, T4-4 → V-B Fig. 2
+-6. **II. Related Work** — T6-1~T6-3 조사 후
+-7. **I. Introduction** — Contribution 이 확정된 뒤 마지막에
+-8. **VI. Conclusion**
++1. **III. Proposed Method** — Fig. 1과 함께 작성. 수식은 필요한 범위만 남긴다.
++2. **IV. Experimental Setup** — 데이터·분할·학습·통계·Pi 조건을 확정값으로 옮긴다.
++3. **V-A Table I / V-C Table II** — 5개 방법과 Pi 4모드 수치가 모두 채워져 있다.
++4. **V-B Fig. 2** — acquisition batch·안경 5개 서브그룹, 광학 3분위 결과는 본문 한 문장.
++5. **II. Related Work** — 인용 원문 확인 상태를 점검한 뒤 압축한다.
++6. **I. Introduction** — 정확도 우위가 아닌 비용·파이프라인 병목이라는 기여를 마지막에 정리한다.
++7. **VI. Conclusion** — 확정된 비교·비용·edge 결과만 한 단락으로 쓴다.
+ 
+ ---
+ 
+diff --git a/paper/IEEE_Sensors_letters_v2.tex b/paper/IEEE_Sensors_letters_v2.tex
+index f43dccd..faa27ee 100644
+--- a/paper/IEEE_Sensors_letters_v2.tex
++++ b/paper/IEEE_Sensors_letters_v2.tex
+@@ -19,6 +19,7 @@
+ \usepackage[noadjust]{cite}
+ \usepackage[T1]{fontenc}
+ \usepackage{amsmath}
++\usepackage{amssymb}
+ \interdisplaylinepenalty=2500
+ \usepackage[cmintegrals]{newtxmath}
+ \usepackage{bm}
+@@ -36,7 +37,7 @@
+ 
+ \begin{document}
+ 
+-\markboth{IEEE Sensors Letters}{0000000}
++\markboth{IEEE Sensors Letters}{Anonymous Manuscript}
+ 
+ \IEEELSENSarticlesubject{Sensor Applications}
+ 
+@@ -44,13 +45,9 @@
+ for Real-Time Operation on Edge Hardware}
+ 
+ \author{\IEEEauthorblockN{Anonymous Author(s)}%
+-\IEEEauthorblockA{Affiliation withheld for double-blind review}%
+-\thanks{Corresponding author: withheld for review.}%
+-\thanks{Associate Editor: [TBD].}%
+-\thanks{Digital Object Identifier 10.1109/LSENS.XXXX.XXXXXXX}}
+-\IEEELSENSmanuscriptreceived{Manuscript received [Month] [Day], [Year];
+-accepted [Month] [Day], [Year]. Date of publication [Month] [Day], [Year];
+-date of current version [Month] [Day], [Year].}
++\IEEEauthorblockA{Affiliation withheld for double-blind review}}
++% IEEE production metadata (DOI, dates, and Associate Editor) is assigned
++% after acceptance and is intentionally omitted from this blinded manuscript.
+ 
+ \IEEEtitleabstractindextext{%
+ \begin{abstract}
+@@ -69,9 +66,10 @@ within a non-inferiority margin of $\delta = 0.02$ fixed before the
+ comparison, while using $5.7\times$ fewer parameters and $2.6\times$
+ fewer multiply--accumulate operations. On a Raspberry Pi~5 at
+ $640\times480$, the representation stage costs $0.86$~ms per frame
+-versus $2.04$~ms for the image-based baseline, but the end-to-end gain
+-is only 11\%: face and landmark detection accounts for 68--87\% of the
+-pipeline, and is therefore the binding constraint at the edge.
++versus $2.04$~ms for the image-based control. Its end-to-end median
++latency is $11.27$~ms rather than $12.51$~ms for that control (the
++control is 11\% slower), because face and landmark detection accounts
++for 68--87\% of the pipeline under the measurement conditions.
+ \end{abstract}
+ \begin{IEEEkeywords}
+ Eye blink detection, learned representation, embedding, temporal
+@@ -86,8 +84,8 @@ convolutional network, edge computing, on-device inference.
+ Spontaneous eye blinking is a low-cost behavioural signal with several
+ sensing applications. Blink rate and blink completeness are used as
+ indicators of ocular surface stress during prolonged screen work
+-\cite{rosenfield2011}, and blink dynamics feed drowsiness and attention
+-estimation. Because webcams are now permanently present in office and
++\cite{rosenfield2011}, and blink dynamics can support drowsiness and
++attention estimation \cite{daza2020,fodor2023}. Because webcams are now permanently present in office and
+ in-vehicle settings, the practical question is less whether blinks can
+ be detected than at what cost they can be detected continuously, on the
+ device that already holds the camera.
+@@ -133,7 +131,8 @@ Blink detection has been addressed with landmark ratios and learned
+ temporal windows \cite{soukupova2016}, per-frame convolutional
+ classifiers with score aggregation \cite{daza2020}, and sequence models
+ including convolutional recurrent and transformer architectures
+-\cite{daza2024,fodor2023}. Recent work moves to unconstrained
++\cite{daza2024,fodor2023}. In-the-wild data have also been formalized
++as a dedicated benchmark \cite{hu2019}. Recent work moves to unconstrained
+ multi-person untrimmed video with a one-stage spatio-temporal
+ transformer, reporting 112~FPS for network forwarding on an NVIDIA~3090
+ GPU \cite{zeng2023}. That setting is complementary to ours: multiple
+@@ -145,28 +144,19 @@ differ.
+ % ⚠️ [검색요약] 상태의 인용 2건(arcaya2021, fodor2023) 이 이 문단에 있다.
+ %    **투고 전 원문 확인 필수.** arcaya2021 이 지연·파라미터를 실제로 보고하면
+ %    아래 문장을 그에 맞게 다시 써야 한다.
+-Embedded blink detection has been demonstrated on wearable hardware,
+-where a convolutional classifier improved over a thresholding rule while
+-keeping memory and battery overhead acceptable \cite{arcaya2021}. Beyond
+-such cases, however, the reported literature is difficult to place
+-alongside ours: most on-device studies evaluate drowsiness state rather
+-than blink events, so the label unit and the metric differ; those that
+-do report blink events typically give accuracy without latency,
+-operation counts or sustained throughput; and non-camera modalities such
+-as capacitive sensing change the input entirely
+-\cite{capacitive2024}. Within the scope of our search we did not find a
+-study reporting both event-level detection quality and a per-stage edge
+-latency breakdown for the same system, which is what we provide here.
++Embedded blink detection has also been demonstrated on wearable hardware
++\cite{arcaya2021}, while capacitive sensing uses a different input
++modality altogether \cite{capacitive2024}. These studies differ from
++ours in sensing modality, label unit, or reported deployment metrics;
++we therefore restrict direct speed and accuracy comparisons to methods
++evaluated under our common protocol.
+ 
+ Performing classification on a learned representation rather than on
+-pixels has been explored for blinks with a 3D autoencoder whose latent
+-code feeds a classifier \cite{nousias2025}. That work targets offline
+-analysis: the reported processing time for a 60~s recording is
+-135--225~s across their variants, i.e.\ none of them runs in real time,
+-although the hardware for that measurement is not stated in a form we
+-could verify. Our aim is the opposite end of the trade-off --- a
+-representation small enough that the encoder is no longer the dominant
+-cost on a general-purpose edge CPU.
++pixels has also been explored with a 3-D autoencoder whose latent code
++feeds a classifier \cite{nousias2025}. That work evaluates sequence
++models for offline video analysis, whereas we target a compact
++representation whose per-frame encoder cost can be measured on an edge
++CPU.
+ 
+ % =====================================================================
+ \section{Proposed Method}
+@@ -212,8 +202,8 @@ cost on a general-purpose edge CPU.
+ 16-dimensional embedding; the 19-frame window is assembled from buffered
+ vectors rather than re-encoded, so the temporal head costs 0.37\% of the
+ per-frame compute. The head uses symmetric dilated convolutions and is
+-therefore not causal within the window, but it reads only frames already
+-in the buffer and adds no buffering latency. No decoder is deployed.}
++therefore not causal within the window, but at a decision it consumes no
++frames beyond the current 19-frame buffer. No decoder is deployed.}
+ \label{fig_pipeline}
+ \end{figure}
+ 
+@@ -228,50 +218,103 @@ landmark coordinates are used only to derive the crop geometry and are
+ then discarded.
+ 
+ \subsection{Eye Crop Normalization}
+-The crop is centred on the midpoint of the two eye centres and rotated
+-so that the inter-ocular line is horizontal. Its width is set to
+-$2.2\times$ the inter-ocular distance and then resized to a fixed
+-resolution, so that the crop scale is normalized against changes in
+-camera distance. Pixel values are standardized per frame as
+-$(x-\mu)/\sigma$; this removes a global photometric shortcut that a
+-model could otherwise exploit instead of eyelid motion.
++Let $\bm p_L,\bm p_R\in\mathbb R^2$ be the landmark-derived eye centres,
++$d_{\mathrm{io}}=\lVert\bm p_R-\bm p_L\rVert_2$, and
++$\bm c=(\bm p_L+\bm p_R)/2$. We centre a crop at $\bm c$, rotate it so
++that the inter-ocular axis is horizontal, set its width to
++$w=2.2d_{\mathrm{io}}$, and resample it to a $H\times W=64\times160$
++grayscale image. Thus its source-image height is
++$h_{\mathrm{crop}}=(H/W)w=0.88d_{\mathrm{io}}$; the scale is therefore
++normalized against camera distance. Pixel values are standardized using
++only the current frame,
++\begin{equation}
++\tilde{x}_t=\frac{x_t-\mu_t}{\max(\sigma_t,0.255)},
++\label{eq:normalization}
++\end{equation}
++where $\mu_t$ and $\sigma_t$ are the crop mean and standard deviation.
++The $0.255$ floor equals $10^{-3}\times255$ and prevents division by
++zero in nearly uniform crops.
+ 
+ \subsection{Encoder Design and Vertical-Resolution Ablation}
+-The eyelid aperture is small relative to the crop: measured on our data,
+-the eyelid gap is $0.1201$ of the inter-ocular distance, i.e.\ about
+-$8.7$~px of the 64-px crop height. This observation motivated an
+-asymmetric encoder that reduces the horizontal axis by $32\times$ while
+-limiting the vertical total stride to $2$, on the reasoning that the
+-horizontal extent exists to hold two eyes side by side rather than to
+-carry resolution.
+-
+-That reasoning is not supported by the data, and we report the test
+-rather than the argument. We built a confound-free control, denoted
+-\emph{vdrop}, identical in kernels, channels and horizontal stride but
+-with vertical total stride $16$, which reduces the eyelid gap at the
+-bottleneck to $0.55$~px and the convolutional cost from $12.41$ to
+-$3.44$~MMAC. The predicted collapse did not occur: the difference is
+-$+0.0010$ with a 95\% CI of $[-0.0032,+0.0069]$, and a sweep over
+-$D \in \{8,16,32,64\}$ was likewise indistinguishable. We keep the
+-higher-resolution variant because all downstream artefacts are built on
+-it and, as Section~\ref{sec_edge} shows, its extra cost is invisible
+-end-to-end --- not because it performs better.
++The measured eyelid gap is $d_{\mathrm{lid}}/d_{\mathrm{io}}=0.1201$.
++With the crop geometry above, its height is
++\begin{equation}
++\frac{d_{\mathrm{lid}}}{h_{\mathrm{crop}}}H
++=\frac{0.1201W}{2.2}=8.73\ \mathrm{px},
++\label{eq:aperture}
++\end{equation}
++not $0.1201H$. The encoder has four Conv--BatchNorm--ReLU blocks with
++channels $(16,32,48,64)$, kernels $(3\times5,3\times3,3\times3,3\times3)$,
++and strides $(1,4),(2,2),(1,2),(1,2)$ in (vertical, horizontal) order.
++Same padding gives total strides of $2$ vertically and $32$
++horizontally. Horizontal average pooling produces a $64\times32$ map,
++which a linear layer maps to $D=16$. The encoder contains 79,424
++parameters and costs 12.44~MMAC per frame.
++
++We also ran a matched, but exploratory, \emph{vdrop} ablation: it keeps
++the kernels, channels, and horizontal strides unchanged while changing
++the vertical total stride from $2$ to $16$. It therefore reduces the
++aperture at the bottleneck from $4.37$ to $0.55$~px and convolutional
++cost from 12.41 to 3.44~MMAC. Across folds 0--1 and three seeds (six
++runs; 21 subjects), the paired PR-AUC estimate was $+0.0010$ for the
++proposed encoder versus \emph{vdrop} (95\% CI $[-0.0032,+0.0069]$).
++Because this ablation does not cover all five folds, we treat it as
++descriptive rather than as evidence that vertical resolution is
++irrelevant. We retain the proposed encoder for consistency with the
++remaining reported artefacts.
+ 
+ \subsection{Temporal Modeling on Embeddings}
+-Re-encoding all 19 frames at every decision would multiply the encoder
+-cost by 19 and exceed the edge budget. Instead each frame is encoded
+-once and the window is assembled from buffered vectors. Because the
+-buffer carries 16 numbers per frame rather than a $64\times160$ crop,
+-the temporal head is small: three dilated convolutions ($d=1,2,4$)
+-followed by an MLP cost $0.0459$~MMAC per frame at stride~1, which is
+-$0.37\%$ of the per-frame total. Without the bottleneck --- for
+-instance with a 512-dimensional feature map --- the same head would cost
+-$2.36$~MMAC per frame, $51\times$ more. Frames in which the face is not
+-resolved have no crop; filling them with zeros would make ``no change''
+-indistinguishable from ``unknown'', so a validity mask is carried
+-alongside the buffer and masked positions are excluded from pooling.
+-The head is evaluated at stride~1: deciding only at window boundaries
+-would delay detection by up to 18 frames, i.e.\ $600$~ms at 30~fps.
++Re-encoding all $T=19$ frames at every decision would multiply the
++encoder cost by 19. Instead, each frame is encoded once and the window
++is assembled from buffered vectors,
++\begin{equation}
++\bm z_t=f_\theta(\tilde{x}_t)\in\mathbb R^D,\qquad
++\bm Z_t=[\bm z_{t-T+1}^{\mathsf T};\ldots;\bm z_t^{\mathsf T}]
++\in\mathbb R^{T\times D}.
++\label{eq:buffer}
++\end{equation}
++An event with more than five unresolved frames is excluded; for every
++remaining event, $m_j\in\{0,1\}$ records whether window position $j$ is
++valid. The head uses three residual 1-D Conv--BatchNorm--ReLU layers
++with kernel size 3 and dilations $d_\ell\in\{1,2,4\}$:
++\begin{equation}
++\bm h_j^{(\ell)}=\operatorname{ReLU}\!\left(\operatorname{BN}_\ell\!\left(
++\sum_{q=-1}^{1}\bm W_q^{(\ell)}
++ [m_{j-d_\ell q}\bm h_{j-d_\ell q}^{(\ell-1)}]
+++\bm b^{(\ell)}\right)\right)+\bm h_j^{(\ell-1)},
++\label{eq:tcn}
++\end{equation}
++where $\bm h_j^{(0)}=\bm z_j$ and out-of-window indices are zero-padded.
++The mask is applied before every convolution and masked positions are
++excluded from both pooling operations,
++\begin{equation}
++\bm h_{\mathrm{avg}}=\frac{\sum_jm_j\bm h_j^{(3)}}{\max(1,\sum_jm_j)},\quad
++\bm h_{\mathrm{max}}=\max_{j:m_j=1}\bm h_j^{(3)},\quad
++p=\varsigma\!\left(\operatorname{MLP}([\,\bm h_{\mathrm{avg}};\bm h_{\mathrm{max}}\,])\right).
++\label{eq:pooling}
++\end{equation}
++The MLP has a 32-dimensional input, a 64-unit ReLU layer with dropout
++0.3, and one logit output. Symmetric padding means that a position can
++use later positions within its already collected window; the deployed
++decision nevertheless requires no frames beyond the current buffer. The
++head costs 0.0459~MMAC per stride-1 decision, 0.37\% of the 12.49~MMAC
++per-frame model total. A 512-dimensional feature map would raise this
++head cost to 2.36~MMAC.
++
++\subsection{Reference Formulation and Decision Criterion}
++For the EAR-rule baseline, $\mathrm{EAR}_j$ is the mean EAR of both eyes
++at valid position $j$. Let $j_f$ and $j_l$ be the first and last valid
++positions in the window. We use the relative drop
++\begin{equation}
++r_t=1-\frac{\min_{j:m_j=1}\mathrm{EAR}_j}
++{[\mathrm{EAR}_{j_f}+\mathrm{EAR}_{j_l}]/2},
++\label{eq:earrule}
++\end{equation}
++and select its classification threshold on the validation fold. For a
++reference method, $\Delta=\mathrm{PR\mbox{-}AUC}_{\mathrm{ours}}-
++\mathrm{PR\mbox{-}AUC}_{\mathrm{ref}}$ is non-inferior when the lower
++limit of its paired 95\% confidence interval exceeds $-\delta$, with
++$\delta=0.02$ specified before the final comparisons.
+ 
+ \subsection{Deployment}
+ The encoder and both heads are compiled to ONNX, together $335$~KB. No
+@@ -289,18 +332,33 @@ combines 38 subjects from the 2020 acquisition and 20 subjects added in
+ with several people in frame and, whenever the primary subject was not
+ resolved, a neighbouring person was cropped instead --- affecting 31\%
+ of that subject's events. The remaining 57 subjects yield 27{,}758
+-events (13{,}820 blink, 13{,}938 no-blink) and 532{,}109 crops. An event
+-is a fixed 19-frame window.
++events (13{,}820 blink, 13{,}938 no-blink). The extraction pipeline
++stores 532{,}109 unique cropped frames; overlapping events reuse these
++frames. Each event is a fixed 19-frame window, and events with more than
++five unresolved frames are excluded.
+ 
+ \subsection{Protocol}
+ We use subject-disjoint five-fold cross-validation, stratified jointly
+-by event count and acquisition batch, with three seeds (15 runs).
+-Thresholds are selected on validation folds and results are reported on
+-held-out test folds. All methods share one implementation of the folds,
+-seeds, threshold grid and bootstrap. As an independent check that the
+-runs are otherwise identical, the configurations differ only in the
+-frontend and output paths, and the two EAR baselines --- which do not
+-depend on the frontend --- are bit-identical across the three runs.
++by event count and acquisition batch, with three training seeds (15
++runs). For rotation $i$, fold $i$ is held out for testing, fold
++$(i+1)\bmod 5$ is used for validation, and the remaining folds are used
++for training. A threshold is selected only on the validation fold by
++maximizing accuracy over all unique score values and their midpoints;
++the selected threshold is then applied unchanged to the test fold. All
++methods share the folds, seeds, threshold-selection code, and bootstrap
++implementation. The two EAR baselines have no stochastic frontend and
++are consequently bit-identical across seeds.
++
++\subsection{Training}
++All learned methods use binary cross-entropy with logits and Adam
++($10^{-3}$), a batch size of 32, at most 80 epochs, and early stopping
++with patience 10 on validation PR-AUC. The random seeds are $0,1,2$;
++deterministic settings were enabled for every run. The Image-CNN
++control is adapted from the mEBAL architecture \cite{daza2020} to our
++$64\times160$ grayscale two-eye crop and event labels. This adaptation
++is explicit: the original method used per-frame open/closed labels,
++whereas its max-pooling variant here is trained by multiple-instance
++learning on event labels.
+ 
+ \subsection{Baselines}
+ Five methods are compared. \emph{EAR-rule} thresholds the relative EAR
+@@ -326,21 +384,27 @@ is thus trained under multiple-instance supervision and its performance
+ here may underestimate the original method.
+ 
+ \subsection{Metrics}
+-The primary metric is PR-AUC, with ROC-AUC, accuracy, precision, recall
+-and $F_1$ reported alongside. Comparisons use the paired
+-subject-clustered bootstrap of the difference, with a non-inferiority
+-margin $\delta = 0.02$ fixed before the comparisons were run. Cost is
+-reported as parameters, model size, multiply--accumulate operations per
+-frame, per-stage latency, end-to-end latency percentiles, sustained
+-frame rate, peak resident memory and CPU utilization.
++The primary metric is PR-AUC, with blink as the positive class;
++ROC-AUC, accuracy, precision, recall, and $F_1$ are reported alongside.
++PR-AUC and ROC-AUC in Table~\ref{table_main} are mean $\pm$ standard
++deviation over the 15 runs; the thresholded metrics are 15-run means.
++For each paired comparison, we concatenate the held-out predictions
++from the three seeds, resample the 57 subjects with replacement, and
++recompute the PR-AUC difference for 2,000 resamples. We report the 2.5th
++and 97.5th percentiles. The margin $\delta=0.02$ was specified before
++the final comparisons. Cost is reported as parameters, model size,
++multiply--accumulate operations per frame, per-stage latency,
++end-to-end latency percentiles, sustained frame rate, peak resident
++memory, and CPU utilization.
+ 
+ \subsection{Edge Platform}
+ Measurements are taken on a Raspberry Pi~5 (16~GB, active cooling)
+ running Debian~13 and Python~3.11, with ONNX Runtime restricted to two
+-intra-op threads and spinning disabled, and the landmark model without
+-attention refinement. The CPU governor is set to \texttt{performance}
+-and each mode is measured over 300~s of sustained $640\times480$
+-playback at 30~fps.
++intra-op threads and spinning disabled. The latency frontend uses
++MediaPipe FaceMesh with one face and \texttt{refine\_landmarks=False};
++the accuracy experiments use the meshes distributed with mEBAL2. The
++CPU governor is set to \texttt{performance}, and each mode is measured
++over 300~s of sustained $640\times480$ playback at 30~fps.
+ 
+ % =====================================================================
+ \section{Results and Discussion}
+@@ -353,7 +417,8 @@ playback at 30~fps.
+ \begin{table*}[!t]
+ \caption{Blink Detection Performance and Static Cost.
+ Subject-Disjoint 5-Fold $\times$ 3 Seeds, 57 Subjects, 27{,}758 Events.
+-Mean $\pm$ Standard Deviation over Folds.}
++PR-AUC and ROC-AUC: Mean $\pm$ Standard Deviation over 15 Runs;
++Other Metrics: 15-Run Means.}
+ \label{table_main}
+ \centering
+ \renewcommand{\arraystretch}{1.25}
+@@ -378,7 +443,9 @@ Image-CNN (max) aggregates per-frame scores by their maximum, following
+ \cite{daza2020}; that model was trained there with per-frame
+ open/closed labels, whereas our protocol supplies one label per
+ 19-frame window, so its performance here may be an underestimate of the
+-original method. Bold marks the best value in each column.}
++original method. Bold marks the highest value in each detection-metric
++column. For MMAC and Params, bold marks the lowest value among learned
++models; the EAR rule has no learned parameters.}
+ \end{table*}
+ 
+ \subsection{Detection Accuracy}
+@@ -387,26 +454,23 @@ the table is not ours: the image-based backbone with our temporal head
+ reaches $0.9906 \pm 0.0037$ against our $0.9886 \pm 0.0038$. Our claim
+ is about cost, not accuracy. The paired subject-clustered difference
+ between the two is $-0.0040$ with a 95\% CI of $[-0.0063,-0.0020]$,
+-which clears the pre-registered margin $\delta = 0.02$ by a wide
+-factor; on the same folds the proposed model uses $5.7\times$ fewer
++which satisfies the prespecified non-inferiority margin
++$\delta = 0.02$; on the same folds the proposed model uses $5.7\times$ fewer
+ parameters ($84{,}049$ against $476{,}161$) and $2.6\times$ fewer
+ multiply--accumulate operations per frame.
+ 
+-We report two estimators of that difference, because they answer
+-different questions. The subject-clustered bootstrap asks what would
+-happen with a different sample of 57 subjects and excludes zero. The
+-run-mean over folds and seeds asks what would happen on retraining, and
+-gives $-0.0019 \pm 0.0024$ against a within-fold seed standard deviation
+-of $0.0031$. In other words, the gap is stable under subject
+-resampling, yet of the same magnitude as ordinary training variation,
+-and on either estimator it is far inside $\delta$.
++We report two summaries of that difference because they answer different
++questions. The subject-clustered bootstrap describes variation under
++resampling of the 57 subjects. The 15-run mean difference is
++$-0.0019\pm0.0024$. Both summaries place the observed difference within
++the prespecified margin.
+ 
+ The comparison against the literature aggregation must be read
+ carefully. Our model is $+0.0766$ above Image-CNN (max), CI
+ $[+0.0556,+0.0986]$ --- but attaching our temporal head to that same
+-backbone yields $+0.0806$, CI $[+0.0592,+0.1028]$. The gap is therefore
+-attributable to temporal modelling, not to the representation, and the
+-first number should never be quoted alone. The same pattern separates
++backbone yields $+0.0806$, CI $[+0.0592,+0.1028]$. This pattern is
++consistent with temporal modelling accounting for much of the difference
++from Image-CNN (max), rather than the representation alone. The same pattern separates
+ the two EAR variants. Against the stronger EAR baseline our model is
+ $+0.0151$, CI $[+0.0106,+0.0203]$; all 15 runs were compared against
+ that stronger variant.
+@@ -422,7 +486,7 @@ that stronger variant.
+ \caption{Paired subject-clustered bootstrap difference in PR-AUC
+ (ours $-$ EAR + temporal head) by acquisition batch and eyewear, with
+ 95\% confidence intervals; event-weighted pooling, 2{,}000 resamples.
+-The dashed line marks the pre-registered non-inferiority margin.}
++The dashed line marks the prespecified non-inferiority margin.}
+ \label{fig_subgroups}
+ \end{figure}
+ 
+@@ -437,13 +501,10 @@ the non-inferiority margin. Stratifying instead by photometric terciles
+ of brightness, contrast and sharpness gives nine groups, all of which
+ favour the proposed model.
+ 
+-The estimator used here was specified in advance: subgroup numbers are
+-event-weighted rather than subject-averaged, because a subject-average
+-over-weights small contributors --- one subject accounts for 1.1\% of
+-the events in the glasses group but 5.9\% of a subject-average. We note
+-this because an earlier subject-averaged reading of the glasses group
+-gave a near-zero effect, and the change of reading was prescribed
+-before the result, not after it.
++Subgroup estimates pool events rather than average subject-level PR-AUCs,
++because the latter gives every subject equal weight despite unequal event
++counts. For example, one subject supplies 1.1\% of the glasses-group
++events but 5.9\% of an unweighted subject average.
+ 
+ \subsection{Model Complexity and Edge Performance}
+ \label{sec_edge}
+@@ -473,7 +534,7 @@ Image-CNN (+head)   & 0.67 & 2.05 & 0.31 & 3.03 & 13.10\\
+ Stages shared by all four modes, measured in the same runs: frame read
+ $1.00$--$1.02$~ms and landmark detection $8.32$--$8.46$~ms. That
+ detection is constant across modes is direct evidence that the four
+-methods share one frontend. End-to-end p50 is
++latency modes share one frontend. End-to-end p50 is
+ $9.56 / 11.27 / 12.26 / 12.51$~ms and sustained throughput
+ $104.2 / 88.5 / 81.3 / 79.7$~FPS in table order; peak resident memory is
+ $184$--$208$~MB, CPU utilization $140$--$146\%$ of 400\%, temperature
+@@ -487,34 +548,28 @@ Table~\ref{table_main}.}
+ At the representation stage the proposed encoder costs $0.86$~ms per
+ frame against $2.04$~ms for the image-based backbone, a $2.4\times$
+ reduction that closely matches the $2.6\times$ ratio in operation
+-counts --- the static prediction is confirmed on the device. Taking the
++counts, which is consistent with the device measurement. Taking the
+ method-specific stages together (crop, encode, decide) the ratio is
+ $1.7\times$.
+ 
+-End to end, however, the difference is only 11\%: $11.27$~ms against
+-$12.51$~ms at the median. The reason is visible in the shared stages:
+-landmark detection alone accounts for 68--87\% of the pipeline
+-depending on the mode. On this class of hardware the representation
+-encoder is not the bottleneck; the detection frontend is. All four
+-modes satisfy the real-time budget with room to spare, with 99th
+-percentile end-to-end latency at 30--39\% of the $33.3$~ms frame
+-period. We regard the small share of the encoder as a result rather
+-than a weakness: the price of learning the representation is small
+-enough to be absorbed by a cost every method already pays. It also
+-follows that the $3.6\times$ operation saving available from the
+-cheaper \emph{vdrop} encoder would move end-to-end latency by roughly
+-3\%, which is why we did not adopt it.
++End to end, the proposed system has a median latency of $11.27$~ms
++against $12.51$~ms for Image-CNN (+head); equivalently, that control is
++11\% slower than the proposed system. The shared landmark stage accounts
++for approximately 68--87\% of end-to-end latency, depending on the
++mode. Thus, under these measurement conditions, the landmark frontend
++dominates the remaining latency. All four modes satisfy the 30-FPS
++budget, with 99th-percentile end-to-end latency at 30--39\% of the
++$33.3$~ms frame period.
+ 
+ \subsection{Discussion and Limitations}
+-Aggregating per-frame scores by their maximum, without a learned
+-temporal model, was markedly seed-sensitive: a seed standard deviation
+-of $0.0291$ against $0.0038$ for the proposed model. We report this
+-without pressing it as a claim, since $n=15$ and we did not isolate the
+-cause.
++Across the 15 fold--seed runs, Image-CNN (max) has a PR-AUC standard
++deviation of $0.0291$, compared with $0.0038$ for the proposed model.
++This descriptive difference combines fold and seed variation, and its
++cause was not isolated.
+ 
+ Several limits are worth stating plainly. The advantage over the EAR
+ baseline is smaller for subjects wearing glasses than for those without,
+-and we did not determine why. One subject transfers poorly: PR-AUC
++and we did not determine why. One held-out subject performs poorly: PR-AUC
+ $0.8200$ against $0.9802$ for the EAR baseline, with 33 of 36 errors
+ being missed blinks and a train--test gap of $0.1798$ against a median
+ of $0.0063$ across subjects; seat contamination, crop geometry, missing
+@@ -534,11 +589,11 @@ the scope of this letter.
+ We detect blink events on 16-dimensional embeddings rather than on raw
+ eye images, and compared the approach against EAR-based and image-based
+ methods under one protocol on 57 subjects. The proposed model is
+-non-inferior to the strongest image-based control at a margin fixed in
+-advance while using $5.7\times$ fewer parameters and $2.6\times$ fewer
+-operations, and runs in real time on a Raspberry Pi~5. Per-stage
+-measurement shows that the remaining constraint at the edge is the
+-landmark detection frontend rather than the representation encoder.
++non-inferior to the strongest image-based control at a prespecified
++margin while using $5.7\times$ fewer parameters and $2.6\times$ fewer
++operations, and runs in real time on a Raspberry Pi~5. Under the tested
++configuration, the landmark detection frontend accounts for most of the
++remaining end-to-end latency.
+ Future work should evaluate robustness on data with labelled
+ illumination, pose and distance conditions.
+ 
+@@ -589,7 +644,7 @@ no.~10, art.~196, 2023.
+ \bibitem{nousias2025}
+ G.~Nousias, K.~K. Delibasis, and G.~Labiris, ``Blink detection using 3D
+ convolutional neural architectures and analysis of accumulated frame
+-predictions,'' \emph{J. Imaging}, vol.~11, no.~2, art.~27, 2025.
++predictions,'' \emph{J. Imaging}, vol.~11, no.~1, art.~27, 2025.
+ 
+ \bibitem{arcaya2021}
+ A.~Arcaya~Jordan, A.~Pegatoquet, A.~Castagnetti, J.~Raybaut, and
+@@ -597,9 +652,10 @@ P.~Le~Coz, ``Deep learning for eye blink detection implemented at the
+ edge,'' \emph{IEEE Embed. Syst. Lett.}, vol.~13, no.~3, pp.~130--133, 2021.
+ 
+ \bibitem{capacitive2024}
+-% ⚠️ 서지사항 미확인. Frontiers in Computer Science, 2024.
++M.~Liu, S.~Bian, Z.~Zhao, B.~Zhou, and P.~Lukowicz,
+ ``Energy-efficient, low-latency, and non-contact eye blink detection with
+-capacitive sensing,'' \emph{Front. Comput. Sci.}, 2024.
++capacitive sensing,'' \emph{Front. Comput. Sci.}, vol.~6,
++art.~1394397, 2024, doi: 10.3389/fcomp.2024.1394397.
+ 
+ \end{thebibliography}
+ 
+diff --git a/requirements-pi.txt b/requirements-pi.txt
+index 33d5486..1d29383 100644
+--- a/requirements-pi.txt
++++ b/requirements-pi.txt
+@@ -31,3 +31,4 @@ mediapipe==0.10.18
+ onnxruntime==1.19.2
+ opencv-contrib-python==4.11.0.86
+ psutil>=5.9.0
++pillow>=10.0.0  # pi_demo.py 한글 대시보드 렌더링
+diff --git a/src/v2/deploy/run_video.py b/src/v2/deploy/run_video.py
+index 0d6cbcf..dded673 100644
+--- a/src/v2/deploy/run_video.py
++++ b/src/v2/deploy/run_video.py
+@@ -181,9 +181,11 @@ def main() -> int:
+     repro.seal(0)
+     ap = argparse.ArgumentParser()
+     ap.add_argument("--mode", default="ours",
+-                    choices=["ours", "ear", "image_cnn_max", "image_cnn_head"],
+-                    help="image_cnn 은 두 변형을 **따로** 잰다. 백본이 같고 시간 처리만 "
+-                         "다르므로, 둘의 차이가 곧 head 의 지연 기여다")
++                    choices=["ours", "ear", "image_cnn_max", "image_cnn_head",
++                             "image_cnn_bilstm", "image_cnn_lstm"],
++                    help="image_cnn 은 변형을 **따로** 잰다. 백본이 같고 시간 처리만 "
++                         "다르므로, 서로의 차이가 곧 head 의 지연 기여다. "
++                         "bilstm/lstm 은 표1 추가작업 헤드(export_onnx_rnn.py)")
+     ap.add_argument("--source", default="0", help="카메라 인덱스 또는 영상 경로")
+     ap.add_argument("--width", type=int, default=640)
+     ap.add_argument("--height", type=int, default=480)
+@@ -235,7 +237,7 @@ def main() -> int:
+         sub = os.path.join(args.onnx_dir, args.mode)
+         enc_sess = make_session(os.path.join(sub, "backbone.onnx"),
+                                 args.intra_threads, args.no_spin)
+-        if args.mode == "image_cnn_head":
++        if args.mode in ("image_cnn_head", "image_cnn_bilstm", "image_cnn_lstm"):
+             head_sess = make_session(os.path.join(sub, "head.onnx"),
+                                      args.intra_threads, args.no_spin)
+         # 🔴 image_cnn 체크포인트가 없어 무작위 초기화로 export 했다.
+@@ -273,7 +275,8 @@ def main() -> int:
+             t_e2e.append((t2 - f0) * 1e3)
+             continue
+ 
+-        if args.mode in ("ours", "image_cnn_max", "image_cnn_head"):
++        if args.mode in ("ours", "image_cnn_max", "image_cnn_head",
++                        "image_cnn_bilstm", "image_cnn_lstm"):
+             g, _ = fe.crop_from_mesh(frame, mesh)
+             x = C.to_input_tensor(g) if g is not None else None
+             t3 = time.perf_counter()

@@ -1,0 +1,5 @@
+{
+  "n_model_subject_seed_combinations": 96,
+  "max_logit_change": 0.0,
+  "prediction_flips": 0
+}

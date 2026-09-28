@@ -1,0 +1,360 @@
+{
+  "run": {
+    "fold": 4,
+    "seed": 2,
+    "best_epoch": 9,
+    "best_epoch_earhead": 9,
+    "converged": true,
+    "converged_earhead": true,
+    "stopped_at": 19,
+    "stopped_at_earhead": 19,
+    "n_train": 16251,
+    "n_val": 6140,
+    "n_test": 5367,
+    "val_optimism_ap": -0.0029466099456294526,
+    "val_optimism_ap_earhead": -0.02144844290141601,
+    "baseline_used": "ear_head",
+    "ours": {
+      "accuracy": 0.9802496739332961,
+      "precision": 0.9773570898292502,
+      "recall": 0.9831964152352501,
+      "f1": 0.9802680565897244,
+      "fa": 0.022685013015991073,
+      "pr_auc": 0.9915233570949677,
+      "roc_auc": 0.9952640845021525,
+      "thr": -0.26209524273872375,
+      "tp": 2633,
+      "fp": 61,
+      "fn": 45,
+      "tn": 2628
+    },
+    "ear_head": {
+      "accuracy": 0.9472703558785168,
+      "precision": 0.9544592030360531,
+      "recall": 0.9391336818521284,
+      "f1": 0.9467344249952945,
+      "fa": 0.044626255113425065,
+      "pr_auc": 0.9798333564138948,
+      "roc_auc": 0.9834056875978838,
+      "thr": -0.2789430618286133,
+      "tp": 2515,
+      "fp": 120,
+      "fn": 163,
+      "tn": 2569
+    },
+    "ear_rule": {
+      "accuracy": 0.8555990311160797,
+      "precision": 0.8744588744588745,
+      "recall": 0.8297236743838685,
+      "f1": 0.8515041195631347,
+      "fa": 0.11863146150985497,
+      "pr_auc": 0.8944324879849554,
+      "roc_auc": 0.925207973957464,
+      "thr": 0.09781794255075148,
+      "tp": 2222,
+      "fp": 319,
+      "fn": 456,
+      "tn": 2370
+    },
+    "by_subject": {
+      "7": {
+        "n": 471,
+        "ours_pr_auc": 0.971911224208508,
+        "ear_head_pr_auc": 0.9570164254292792,
+        "ear_rule_pr_auc": 0.8387663621975956
+      },
+      "12": {
+        "n": 266,
+        "ours_pr_auc": 1.0,
+        "ear_head_pr_auc": 0.9973559232307667,
+        "ear_rule_pr_auc": 0.9797094602078755
+      },
+      "13": {
+        "n": 128,
+        "ours_pr_auc": 1.0,
+        "ear_head_pr_auc": 0.9955906829683357,
+        "ear_rule_pr_auc": 0.9940912490127906
+      },
+      "14": {
+        "n": 500,
+        "ours_pr_auc": 0.9750389436166627,
+        "ear_head_pr_auc": 0.9820753001729845,
+        "ear_rule_pr_auc": 0.8881791844363545
+      },
+      "20": {
+        "n": 321,
+        "ours_pr_auc": 0.9963596176550281,
+        "ear_head_pr_auc": 0.983939213987129,
+        "ear_rule_pr_auc": 0.974618613039747
+      },
+      "27": {
+        "n": 144,
+        "ours_pr_auc": 0.998486442930043,
+        "ear_head_pr_auc": 0.9709022375534878,
+        "ear_rule_pr_auc": 0.9069080259339608
+      },
+      "32": {
+        "n": 713,
+        "ours_pr_auc": 0.9920416826026407,
+        "ear_head_pr_auc": 0.981820762778014,
+        "ear_rule_pr_auc": 0.9131953423587794
+      },
+      "36": {
+        "n": 180,
+        "ours_pr_auc": 0.9998778998778998,
+        "ear_head_pr_auc": 0.9934987265758589,
+        "ear_rule_pr_auc": 0.9505503818142932
+      },
+      "41": {
+        "n": 866,
+        "ours_pr_auc": 0.9973464813968023,
+        "ear_head_pr_auc": 0.9741205065283198,
+        "ear_rule_pr_auc": 0.879254730544937
+      },
+      "52": {
+        "n": 530,
+        "ours_pr_auc": 1.0,
+        "ear_head_pr_auc": 0.9990592545052304,
+        "ear_rule_pr_auc": 0.9949960381336438
+      },
+      "55": {
+        "n": 967,
+        "ours_pr_auc": 0.9973222885701809,
+        "ear_head_pr_auc": 0.9828947520247834,
+        "ear_rule_pr_auc": 0.8946468488071928
+      },
+      "58": {
+        "n": 281,
+        "ours_pr_auc": 0.9997393226553093,
+        "ear_head_pr_auc": 0.9805415294664312,
+        "ear_rule_pr_auc": 0.8957910635324314
+      }
+    },
+    "seconds": 1315.8,
+    "scores_file": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\work\\nonpi_2026-09-21_maskfix\\results\\train_image_head_scores\\fold4_seed2.npz",
+    "history": [
+      {
+        "epoch": 1,
+        "train_loss": 0.33085593674268865,
+        "val_ap": 0.975113595298462
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.13407810551400523,
+        "val_ap": 0.9798633661850333
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.10057228506271615,
+        "val_ap": 0.983184654134269
+      },
+      {
+        "epoch": 4,
+        "train_loss": 0.08310766922955634,
+        "val_ap": 0.9867753583263054
+      },
+      {
+        "epoch": 5,
+        "train_loss": 0.07868525817963712,
+        "val_ap": 0.9869271313208015
+      },
+      {
+        "epoch": 6,
+        "train_loss": 0.06332864999724354,
+        "val_ap": 0.9763570012146221
+      },
+      {
+        "epoch": 7,
+        "train_loss": 0.0676125329381891,
+        "val_ap": 0.9752953328533763
+      },
+      {
+        "epoch": 8,
+        "train_loss": 0.05982982738831928,
+        "val_ap": 0.9884885710513295
+      },
+      {
+        "epoch": 9,
+        "train_loss": 0.06141606881138519,
+        "val_ap": 0.9885767471493383
+      },
+      {
+        "epoch": 10,
+        "train_loss": 0.05604776108613268,
+        "val_ap": 0.9839186168258551
+      },
+      {
+        "epoch": 11,
+        "train_loss": 0.05296513904739979,
+        "val_ap": 0.9850493844246861
+      },
+      {
+        "epoch": 12,
+        "train_loss": 0.05529279780960575,
+        "val_ap": 0.9876405382542415
+      },
+      {
+        "epoch": 13,
+        "train_loss": 0.048805575104674793,
+        "val_ap": 0.9875387031234191
+      },
+      {
+        "epoch": 14,
+        "train_loss": 0.04960425316239958,
+        "val_ap": 0.9865804081687336
+      },
+      {
+        "epoch": 15,
+        "train_loss": 0.04994617797960194,
+        "val_ap": 0.9797830600536549
+      },
+      {
+        "epoch": 16,
+        "train_loss": 0.04400831816575742,
+        "val_ap": 0.9842012923621396
+      },
+      {
+        "epoch": 17,
+        "train_loss": 0.04609076572488369,
+        "val_ap": 0.983369388623114
+      },
+      {
+        "epoch": 18,
+        "train_loss": 0.04274395077293493,
+        "val_ap": 0.9878692234136397
+      },
+      {
+        "epoch": 19,
+        "train_loss": 0.04418344881483448,
+        "val_ap": 0.9858179922101628
+      }
+    ],
+    "history_earhead": [
+      {
+        "epoch": 1,
+        "train_loss": 0.35229453086599954,
+        "val_ap": 0.9324742783119125
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.23037849283681988,
+        "val_ap": 0.9433830514789457
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.207529245197872,
+        "val_ap": 0.9454647219369445
+      },
+      {
+        "epoch": 4,
+        "train_loss": 0.195438569282691,
+        "val_ap": 0.9437820574865528
+      },
+      {
+        "epoch": 5,
+        "train_loss": 0.18605881893086834,
+        "val_ap": 0.9518804043855105
+      },
+      {
+        "epoch": 6,
+        "train_loss": 0.18529333407222642,
+        "val_ap": 0.9540931366566483
+      },
+      {
+        "epoch": 7,
+        "train_loss": 0.18493452332774044,
+        "val_ap": 0.9538768664804887
+      },
+      {
+        "epoch": 8,
+        "train_loss": 0.18030597891173256,
+        "val_ap": 0.9563515461654826
+      },
+      {
+        "epoch": 9,
+        "train_loss": 0.17854090461979777,
+        "val_ap": 0.9583849135124788
+      },
+      {
+        "epoch": 10,
+        "train_loss": 0.17480998215737853,
+        "val_ap": 0.9570589395106319
+      },
+      {
+        "epoch": 11,
+        "train_loss": 0.17173013419030256,
+        "val_ap": 0.9517068809425024
+      },
+      {
+        "epoch": 12,
+        "train_loss": 0.17334005781745376,
+        "val_ap": 0.9540612168340037
+      },
+      {
+        "epoch": 13,
+        "train_loss": 0.16960986069525713,
+        "val_ap": 0.95692862476561
+      },
+      {
+        "epoch": 14,
+        "train_loss": 0.1695406563650182,
+        "val_ap": 0.9574008185721355
+      },
+      {
+        "epoch": 15,
+        "train_loss": 0.16750512660545966,
+        "val_ap": 0.9579725758968596
+      },
+      {
+        "epoch": 16,
+        "train_loss": 0.16405420453612543,
+        "val_ap": 0.9554620376713215
+      },
+      {
+        "epoch": 17,
+        "train_loss": 0.16335627245398973,
+        "val_ap": 0.9507235681103899
+      },
+      {
+        "epoch": 18,
+        "train_loss": 0.16396319684443286,
+        "val_ap": 0.9564999873208831
+      },
+      {
+        "epoch": 19,
+        "train_loss": 0.16059230733347646,
+        "val_ap": 0.9557425774404606
+      }
+    ]
+  },
+  "scores": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\work\\nonpi_2026-09-21_maskfix\\results\\train_image_head_scores\\fold4_seed2.npz",
+  "models": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\work\\nonpi_2026-09-21_maskfix\\attempts\\image_head\\fold4_seed2\\attempt001\\models\\fold4_seed2",
+  "env": {
+    "seed": 0,
+    "deterministic": true,
+    "sealed": true,
+    "python": "3.12.14",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "numpy": "1.26.4",
+    "pythonhashseed": "0",
+    "cublas_workspace_config": ":4096:8",
+    "git_commit": "9ae8728a8100945261af0606fe29a43310c79f00",
+    "git_dirty": true,
+    "torch": "2.11.0+cu128",
+    "cuda_available": true,
+    "cuda_version": "12.8",
+    "cudnn_deterministic": true,
+    "cudnn_benchmark": false,
+    "gpu": "NVIDIA GeForce RTX 5080",
+    "_fingerprint_taken": "process_start"
+  },
+  "origin": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\work\\nonpi_2026-09-21_maskfix\\attempts\\image_head\\fold4_seed2\\attempt001\\result.json",
+  "hashes": {
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\work\\nonpi_2026-09-21_maskfix\\results\\train_image_head_scores\\fold4_seed2.npz": "e63ae0a05541a5238c6a4fc027a986273df1abfd344b673080c017754c6228f2",
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\work\\nonpi_2026-09-21_maskfix\\attempts\\image_head\\fold4_seed2\\attempt001\\models\\fold4_seed2\\encoder.pt": "1083dc2d8deab1bc78652f32d3959d1b370fc2de58e2abe4d55377aa3eb4388a",
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\work\\nonpi_2026-09-21_maskfix\\attempts\\image_head\\fold4_seed2\\attempt001\\models\\fold4_seed2\\head.pt": "f6fb6d8db4cb663a2d35a4ac7cccc0341d9cc323bb550c9075fc939c76b2be62",
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\work\\nonpi_2026-09-21_maskfix\\attempts\\image_head\\fold4_seed2\\attempt001\\models\\fold4_seed2\\earhead_front.pt": "a90082ec0d0c3ef0dea9e41184af01773cff546c89022594afaeecf032422161",
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\work\\nonpi_2026-09-21_maskfix\\attempts\\image_head\\fold4_seed2\\attempt001\\models\\fold4_seed2\\earhead_head.pt": "65c651e33b5c879610eef4aff1ff9538c64ccd4ddff232cfae07ea0e9081aa73"
+  },
+  "verified_at": "2026-09-22T10:55:55.238710+09:00"
+}

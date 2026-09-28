@@ -1,0 +1,15 @@
+{
+  "state": "running",
+  "updated": "2026-09-21T10:38:24.013302+09:00",
+  "controller_pid": 24360,
+  "variant": "vdrop",
+  "fold": 0,
+  "seed": 1,
+  "child_pid": 31956,
+  "log": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\work\\nonpi_2026-09-21\\attempts\\vdrop\\fold0_seed1\\attempt001\\train.log",
+  "completed": {
+    "gap": 6,
+    "vdrop": 1
+  },
+  "elapsed_fit_seconds": 720
+}

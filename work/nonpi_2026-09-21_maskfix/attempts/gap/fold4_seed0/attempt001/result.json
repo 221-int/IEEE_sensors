@@ -1,0 +1,608 @@
+{
+ "env": {
+  "seed": 0,
+  "deterministic": true,
+  "sealed": true,
+  "python": "3.12.14",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "numpy": "1.26.4",
+  "pythonhashseed": "0",
+  "cublas_workspace_config": ":4096:8",
+  "git_commit": "9ae8728a8100945261af0606fe29a43310c79f00",
+  "git_dirty": true,
+  "torch": "2.11.0+cu128",
+  "cuda_available": true,
+  "cuda_version": "12.8",
+  "cudnn_deterministic": true,
+  "cudnn_benchmark": false,
+  "gpu": "NVIDIA GeForce RTX 5080",
+  "_fingerprint_taken": "process_start",
+  "control_architecture": "image_cnn_gap: adaptive_avg_pool2d(1), 64->64->16, shared TCN",
+  "torch_num_threads": 4
+ },
+ "config": {
+  "data": "data/processed/v2",
+  "tag": "m22",
+  "arch": "vpres",
+  "front": "image_cnn_head",
+  "latent": 16,
+  "folds": [
+   4
+  ],
+  "seeds": [
+   0
+  ],
+  "max_epochs": 80,
+  "patience": 10,
+  "batch": 32,
+  "lr": 0.001,
+  "n_boot": 2000,
+  "ear_feats": "all4",
+  "save_models": true,
+  "models_dir": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\work\\nonpi_2026-09-21_maskfix\\attempts\\gap\\fold4_seed0\\attempt001\\models",
+  "log": true,
+  "out": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\work\\nonpi_2026-09-21_maskfix\\attempts\\gap\\fold4_seed0\\attempt001\\result.json"
+ },
+ "input_norm": "frame_standardize",
+ "runs": [
+  {
+   "fold": 4,
+   "seed": 0,
+   "best_epoch": 16,
+   "best_epoch_earhead": 43,
+   "converged": true,
+   "converged_earhead": true,
+   "stopped_at": 26,
+   "stopped_at_earhead": 53,
+   "n_train": 16251,
+   "n_val": 6140,
+   "n_test": 5367,
+   "val_optimism_ap": -0.005520261646857927,
+   "val_optimism_ap_earhead": -0.015227220241150197,
+   "baseline_used": "ear_head",
+   "ours": {
+    "accuracy": 0.9713061300540339,
+    "precision": 0.9494301994301995,
+    "recall": 0.9955190440627334,
+    "f1": 0.9719285453882611,
+    "fa": 0.05280773521755299,
+    "pr_auc": 0.9933704424289062,
+    "roc_auc": 0.9953911476818538,
+    "thr": -1.103281021118164,
+    "tp": 2666,
+    "fp": 142,
+    "fn": 12,
+    "tn": 2547
+   },
+   "ear_head": {
+    "accuracy": 0.9491335941866965,
+    "precision": 0.9461966604823747,
+    "recall": 0.9522031366691561,
+    "f1": 0.9491903964265772,
+    "fa": 0.05392339159538862,
+    "pr_auc": 0.978419506916853,
+    "roc_auc": 0.9834802591033478,
+    "thr": -0.14633187651634216,
+    "tp": 2550,
+    "fp": 145,
+    "fn": 128,
+    "tn": 2544
+   },
+   "ear_rule": {
+    "accuracy": 0.8555990311160797,
+    "precision": 0.8744588744588745,
+    "recall": 0.8297236743838685,
+    "f1": 0.8515041195631347,
+    "fa": 0.11863146150985497,
+    "pr_auc": 0.8944324879849554,
+    "roc_auc": 0.925207973957464,
+    "thr": 0.09781794255075148,
+    "tp": 2222,
+    "fp": 319,
+    "fn": 456,
+    "tn": 2370
+   },
+   "by_subject": {
+    "7": {
+     "n": 471,
+     "ours_pr_auc": 0.9741166705550802,
+     "ear_head_pr_auc": 0.9404745238905671,
+     "ear_rule_pr_auc": 0.8387663621975956
+    },
+    "12": {
+     "n": 266,
+     "ours_pr_auc": 0.9998902546093064,
+     "ear_head_pr_auc": 0.9977340659957117,
+     "ear_rule_pr_auc": 0.9797094602078755
+    },
+    "13": {
+     "n": 128,
+     "ours_pr_auc": 1.0,
+     "ear_head_pr_auc": 0.9970992359184899,
+     "ear_rule_pr_auc": 0.9940912490127906
+    },
+    "14": {
+     "n": 500,
+     "ours_pr_auc": 0.9806710052627525,
+     "ear_head_pr_auc": 0.969891207294345,
+     "ear_rule_pr_auc": 0.8881791844363545
+    },
+    "20": {
+     "n": 321,
+     "ours_pr_auc": 0.9976318947601372,
+     "ear_head_pr_auc": 0.9883705981729164,
+     "ear_rule_pr_auc": 0.974618613039747
+    },
+    "27": {
+     "n": 144,
+     "ours_pr_auc": 0.99631969707945,
+     "ear_head_pr_auc": 0.9607358139070878,
+     "ear_rule_pr_auc": 0.9069080259339608
+    },
+    "32": {
+     "n": 713,
+     "ours_pr_auc": 0.9957355461961072,
+     "ear_head_pr_auc": 0.9783029934431862,
+     "ear_rule_pr_auc": 0.9131953423587794
+    },
+    "36": {
+     "n": 180,
+     "ours_pr_auc": 0.9997584541062801,
+     "ear_head_pr_auc": 0.9917799125665292,
+     "ear_rule_pr_auc": 0.9505503818142932
+    },
+    "41": {
+     "n": 866,
+     "ours_pr_auc": 0.9963161515234871,
+     "ear_head_pr_auc": 0.9721865358219812,
+     "ear_rule_pr_auc": 0.879254730544937
+    },
+    "52": {
+     "n": 530,
+     "ours_pr_auc": 1.0,
+     "ear_head_pr_auc": 0.9983093008214748,
+     "ear_rule_pr_auc": 0.9949960381336438
+    },
+    "55": {
+     "n": 967,
+     "ours_pr_auc": 0.9973868945666512,
+     "ear_head_pr_auc": 0.9838547336761202,
+     "ear_rule_pr_auc": 0.8946468488071928
+    },
+    "58": {
+     "n": 281,
+     "ours_pr_auc": 0.9995342678954093,
+     "ear_head_pr_auc": 0.969843162600873,
+     "ear_rule_pr_auc": 0.8957910635324314
+    }
+   },
+   "seconds": 2086.2,
+   "scores_file": "C:/Users/sch/PycharmProjects/IEEE_sensors/work/nonpi_2026-09-21_maskfix/attempts/gap/fold4_seed0/attempt001/result_scores/fold4_seed0.npz",
+   "history": [
+    {
+     "epoch": 1,
+     "train_loss": 0.6985474066670935,
+     "val_ap": 0.5074055741888688
+    },
+    {
+     "epoch": 2,
+     "train_loss": 0.6934033524703264,
+     "val_ap": 0.5860677657962418
+    },
+    {
+     "epoch": 3,
+     "train_loss": 0.5829874226903338,
+     "val_ap": 0.862868617942907
+    },
+    {
+     "epoch": 4,
+     "train_loss": 0.16260105692197246,
+     "val_ap": 0.9689696943372845
+    },
+    {
+     "epoch": 5,
+     "train_loss": 0.12989747612677233,
+     "val_ap": 0.9751823525455829
+    },
+    {
+     "epoch": 6,
+     "train_loss": 0.11440254407866934,
+     "val_ap": 0.9741085828984797
+    },
+    {
+     "epoch": 7,
+     "train_loss": 0.1048224594921532,
+     "val_ap": 0.97645792610259
+    },
+    {
+     "epoch": 8,
+     "train_loss": 0.0971126705100349,
+     "val_ap": 0.9609751523696157
+    },
+    {
+     "epoch": 9,
+     "train_loss": 0.08625749260453978,
+     "val_ap": 0.9835097376662223
+    },
+    {
+     "epoch": 10,
+     "train_loss": 0.08286008287206752,
+     "val_ap": 0.9845750356878039
+    },
+    {
+     "epoch": 11,
+     "train_loss": 0.07961094977990785,
+     "val_ap": 0.984284116750887
+    },
+    {
+     "epoch": 12,
+     "train_loss": 0.08136164919690374,
+     "val_ap": 0.9756234674105294
+    },
+    {
+     "epoch": 13,
+     "train_loss": 0.06863128896508097,
+     "val_ap": 0.9838275728784506
+    },
+    {
+     "epoch": 14,
+     "train_loss": 0.06794114302300294,
+     "val_ap": 0.9799413885000722
+    },
+    {
+     "epoch": 15,
+     "train_loss": 0.0627160154500361,
+     "val_ap": 0.983590637286702
+    },
+    {
+     "epoch": 16,
+     "train_loss": 0.06199977350954851,
+     "val_ap": 0.9878501807820482
+    },
+    {
+     "epoch": 17,
+     "train_loss": 0.06074330753484436,
+     "val_ap": 0.9760596369945405
+    },
+    {
+     "epoch": 18,
+     "train_loss": 0.054288501801230224,
+     "val_ap": 0.9843316230645162
+    },
+    {
+     "epoch": 19,
+     "train_loss": 0.055918433141227165,
+     "val_ap": 0.9868867909720687
+    },
+    {
+     "epoch": 20,
+     "train_loss": 0.05601417741700837,
+     "val_ap": 0.9846111759545737
+    },
+    {
+     "epoch": 21,
+     "train_loss": 0.05455192260599585,
+     "val_ap": 0.9852726490269947
+    },
+    {
+     "epoch": 22,
+     "train_loss": 0.054379560646722114,
+     "val_ap": 0.9835801424415771
+    },
+    {
+     "epoch": 23,
+     "train_loss": 0.049022410858087145,
+     "val_ap": 0.9828645317077823
+    },
+    {
+     "epoch": 24,
+     "train_loss": 0.053521281869433404,
+     "val_ap": 0.9711416904156842
+    },
+    {
+     "epoch": 25,
+     "train_loss": 0.04553762388003987,
+     "val_ap": 0.9809932346241078
+    },
+    {
+     "epoch": 26,
+     "train_loss": 0.04700949732664658,
+     "val_ap": 0.9831608215816724
+    }
+   ],
+   "history_earhead": [
+    {
+     "epoch": 1,
+     "train_loss": 0.34597873318951633,
+     "val_ap": 0.9435572380908427
+    },
+    {
+     "epoch": 2,
+     "train_loss": 0.2171000285393553,
+     "val_ap": 0.9473644383791694
+    },
+    {
+     "epoch": 3,
+     "train_loss": 0.19614158810637458,
+     "val_ap": 0.9492336377954296
+    },
+    {
+     "epoch": 4,
+     "train_loss": 0.19181326360980275,
+     "val_ap": 0.9517830511200203
+    },
+    {
+     "epoch": 5,
+     "train_loss": 0.18637919139604583,
+     "val_ap": 0.9522140545099177
+    },
+    {
+     "epoch": 6,
+     "train_loss": 0.178102735599865,
+     "val_ap": 0.9532452490558856
+    },
+    {
+     "epoch": 7,
+     "train_loss": 0.18054618032064726,
+     "val_ap": 0.948355242412432
+    },
+    {
+     "epoch": 8,
+     "train_loss": 0.17669877610010892,
+     "val_ap": 0.9516635745812141
+    },
+    {
+     "epoch": 9,
+     "train_loss": 0.17297853479663539,
+     "val_ap": 0.9557876984098472
+    },
+    {
+     "epoch": 10,
+     "train_loss": 0.17428756638252804,
+     "val_ap": 0.9531624771384581
+    },
+    {
+     "epoch": 11,
+     "train_loss": 0.17006286194647843,
+     "val_ap": 0.9521073374712923
+    },
+    {
+     "epoch": 12,
+     "train_loss": 0.16619182340321662,
+     "val_ap": 0.9588969663524851
+    },
+    {
+     "epoch": 13,
+     "train_loss": 0.16688057782283072,
+     "val_ap": 0.9560938249832164
+    },
+    {
+     "epoch": 14,
+     "train_loss": 0.16659976270307242,
+     "val_ap": 0.9588781568844311
+    },
+    {
+     "epoch": 15,
+     "train_loss": 0.1645762528113516,
+     "val_ap": 0.9555221125225547
+    },
+    {
+     "epoch": 16,
+     "train_loss": 0.1628680082103262,
+     "val_ap": 0.9519786946432885
+    },
+    {
+     "epoch": 17,
+     "train_loss": 0.16087069586043168,
+     "val_ap": 0.9527743943969907
+    },
+    {
+     "epoch": 18,
+     "train_loss": 0.15803080792885826,
+     "val_ap": 0.9591327095865588
+    },
+    {
+     "epoch": 19,
+     "train_loss": 0.16243689430544145,
+     "val_ap": 0.957752437178239
+    },
+    {
+     "epoch": 20,
+     "train_loss": 0.1575999772425439,
+     "val_ap": 0.9564755588092759
+    },
+    {
+     "epoch": 21,
+     "train_loss": 0.15442559392985825,
+     "val_ap": 0.9569082336796904
+    },
+    {
+     "epoch": 22,
+     "train_loss": 0.15929952149627452,
+     "val_ap": 0.9585327681471837
+    },
+    {
+     "epoch": 23,
+     "train_loss": 0.15673354935329897,
+     "val_ap": 0.9585575994471368
+    },
+    {
+     "epoch": 24,
+     "train_loss": 0.15513692569104748,
+     "val_ap": 0.9595786829314306
+    },
+    {
+     "epoch": 25,
+     "train_loss": 0.15354621358746257,
+     "val_ap": 0.9595561193662164
+    },
+    {
+     "epoch": 26,
+     "train_loss": 0.1492863217523799,
+     "val_ap": 0.9578067730812914
+    },
+    {
+     "epoch": 27,
+     "train_loss": 0.1539540986751866,
+     "val_ap": 0.9574751972395233
+    },
+    {
+     "epoch": 28,
+     "train_loss": 0.14965070509766992,
+     "val_ap": 0.9570290883386173
+    },
+    {
+     "epoch": 29,
+     "train_loss": 0.14962351414968209,
+     "val_ap": 0.9604544765033276
+    },
+    {
+     "epoch": 30,
+     "train_loss": 0.14814411252177714,
+     "val_ap": 0.9607175161662267
+    },
+    {
+     "epoch": 31,
+     "train_loss": 0.1508250137714588,
+     "val_ap": 0.9563591751315534
+    },
+    {
+     "epoch": 32,
+     "train_loss": 0.14548575196170593,
+     "val_ap": 0.9583788724189227
+    },
+    {
+     "epoch": 33,
+     "train_loss": 0.14949514262933422,
+     "val_ap": 0.9616047336809331
+    },
+    {
+     "epoch": 34,
+     "train_loss": 0.14597153052771086,
+     "val_ap": 0.9603801365986127
+    },
+    {
+     "epoch": 35,
+     "train_loss": 0.14704909471942934,
+     "val_ap": 0.96078036195839
+    },
+    {
+     "epoch": 36,
+     "train_loss": 0.1468361862295848,
+     "val_ap": 0.9610371062367896
+    },
+    {
+     "epoch": 37,
+     "train_loss": 0.14683375320033465,
+     "val_ap": 0.9606024808924107
+    },
+    {
+     "epoch": 38,
+     "train_loss": 0.14640688651173336,
+     "val_ap": 0.9592186596437612
+    },
+    {
+     "epoch": 39,
+     "train_loss": 0.14607955753055032,
+     "val_ap": 0.9609235952524315
+    },
+    {
+     "epoch": 40,
+     "train_loss": 0.1441668040482391,
+     "val_ap": 0.9598521946771604
+    },
+    {
+     "epoch": 41,
+     "train_loss": 0.14414002502300535,
+     "val_ap": 0.9630016913348476
+    },
+    {
+     "epoch": 42,
+     "train_loss": 0.14280790804786928,
+     "val_ap": 0.9590747300497591
+    },
+    {
+     "epoch": 43,
+     "train_loss": 0.1398130956956749,
+     "val_ap": 0.9631922866757028
+    },
+    {
+     "epoch": 44,
+     "train_loss": 0.14034932778986495,
+     "val_ap": 0.9607343412881566
+    },
+    {
+     "epoch": 45,
+     "train_loss": 0.14191658371162813,
+     "val_ap": 0.9586423980182153
+    },
+    {
+     "epoch": 46,
+     "train_loss": 0.13722447284747932,
+     "val_ap": 0.9598054862542547
+    },
+    {
+     "epoch": 47,
+     "train_loss": 0.13930198283051462,
+     "val_ap": 0.9578605453466432
+    },
+    {
+     "epoch": 48,
+     "train_loss": 0.13937133888810696,
+     "val_ap": 0.9558630649448083
+    },
+    {
+     "epoch": 49,
+     "train_loss": 0.13866570341419085,
+     "val_ap": 0.960721777655009
+    },
+    {
+     "epoch": 50,
+     "train_loss": 0.13718177351425972,
+     "val_ap": 0.95920550706157
+    },
+    {
+     "epoch": 51,
+     "train_loss": 0.13614685344267652,
+     "val_ap": 0.958713245577467
+    },
+    {
+     "epoch": 52,
+     "train_loss": 0.13659492671731788,
+     "val_ap": 0.9571187299108285
+    },
+    {
+     "epoch": 53,
+     "train_loss": 0.13747434870475006,
+     "val_ap": 0.9569504932796942
+    }
+   ]
+  }
+ ],
+ "verdict": {
+  "delta": 0.02,
+  "metric": "pr_auc",
+  "paired_bootstrap": {
+   "point": 0.014950935512053176,
+   "ci_lo": 0.00948310287064225,
+   "ci_hi": 0.021027537588541836,
+   "std": 0.00285472149293082,
+   "n_boot": 2000,
+   "n_subjects": 12,
+   "alpha": 0.05
+  },
+  "verdict": "superior",
+  "per_run_diff": [
+   0.014950935512053176
+  ],
+  "fold_bootstrap": {
+   "point": 0.014950935512053176,
+   "ci_lo": NaN,
+   "ci_hi": NaN,
+   "n_folds": 1
+  }
+ },
+ "scores_dir": "C:/Users/sch/PycharmProjects/IEEE_sensors/work/nonpi_2026-09-21_maskfix/attempts/gap/fold4_seed0/attempt001/result_scores",
+ "models_dir": "C:/Users/sch/PycharmProjects/IEEE_sensors/work/nonpi_2026-09-21_maskfix/attempts/gap/fold4_seed0/attempt001/models",
+ "minutes": 34.8
+}

@@ -1,0 +1,106 @@
+{
+  "created": "2026-09-22T17:40:38.822323+09:00",
+  "tests": [
+    {
+      "command": [
+        "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\work\\nonpi_2026-09-22_review\\test_policy.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\work\\nonpi_2026-09-22_review\\test_entrypoints.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "-m",
+        "unittest",
+        "src.v2.deploy.test_pi_demo_ui",
+        "-v"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "run_video",
+        "--help"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "run_video_power",
+        "--help"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "pi_demo",
+        "--help"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "total_unittest_cases": 14,
+  "manuscript_unchanged": {
+    "C:\\Users\\sch\\Downloads\\MCE_blink_detection.tex": true,
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\work\\nonpi_2026-09-18\\manuscript\\MCE_blink_detection.tex": true,
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\work\\nonpi_2026-09-18\\manuscript\\MCE_blink_detection.pdf": true,
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\output\\pdf\\MCE_blink_detection_nonpi_review.pdf": true
+  },
+  "original_source_backups_verified": {
+    "src/v2/dataset/crop.py": true,
+    "src/v2/train_encoder.py": true,
+    "src/v2/deploy/run_video.py": true,
+    "src/v2/deploy/run_video_power.py": true,
+    "src/v2/deploy/pi_demo.py": true
+  },
+  "corrected_fit_records_verified": {
+    "vpres": 15,
+    "image_head": 15,
+    "vdrop": 15,
+    "gap": 15
+  },
+  "historical_frozen_source_changes": [
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\train_encoder.py",
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\dataset\\crop.py"
+  ],
+  "files": {
+    "src\\v2\\dataset\\crop.py": {
+      "before": "5ef3a73f9653e7eb8512e56e96e6b892afc3b2e4ffb6298a603448e050193f64",
+      "after": "d7a82feaa1cd636683434c11bbf1b2fe83e61d186e6ca3601e31906a7f6eb73d"
+    },
+    "src\\v2\\deploy\\pi_demo.py": {
+      "before": "3ccde7535a1bc04053389f1c8f16b5b19e248ccd2c6adbcdac876ee41c94b24e",
+      "after": "93985bed54beb04171bc6539bdd0d5a6c8a99f5f6c0003efff3ccb3cb20edb6b"
+    },
+    "src\\v2\\deploy\\run_video.py": {
+      "before": "5d76ce8c04ff84ef218a9af1e830f585b9e96b755ef0e5382dbadb2bc79df4c1",
+      "after": "69dcdaec2d7904164c63e7aee2efba18455e49890ecfcf24ed035a5143e0461f"
+    },
+    "src\\v2\\deploy\\run_video_power.py": {
+      "before": "a1338d02050d7e38a5af1f1bba662a2460c40b63243ac216199a5d4200f756d9",
+      "after": "ce314704b02fca920876f99d6d594f0aec179769feaa8038b6d463b075ab3886"
+    },
+    "src\\v2\\deploy\\test_pi_demo_ui.py": {
+      "before": "d47a90cdb5e39ad2c2767e317d95da6c1bab4f57d4c445848d074b7c42f476d1",
+      "after": "fae6c1d3459940722057cf966b3dbda715d1b96ef920cb9142fe35083dccf43f"
+    },
+    "src\\v2\\train_encoder.py": {
+      "before": "f142d382a82b8b7d14518d541aa89d8a8dede56893349de9b1498779416e912c",
+      "after": "020218841adfed7a111f1477eb563f230722512f3bccd7fe0ccd22555f27e867"
+    },
+    "src\\v2\\deploy\\inference_policy.py": {
+      "before": null,
+      "after": "2b7c4ff56a50596198e147687d1a5fc673ffb436d58ac530f648b05e3d6f3756"
+    }
+  },
+  "limitations": [
+    "Mock camera/ONNX integration checks are not new Pi measurements.",
+    "Old frozen queue intentionally cannot prepare against modified source; original files preserved.",
+    "Corrected-checkpoint ONNX exports are a separate next step."
+  ]
+}

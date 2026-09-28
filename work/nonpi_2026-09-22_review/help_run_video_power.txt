@@ -1,0 +1,41 @@
+usage: run_video_power.py [-h]
+                          [--mode {ours,ear,image_cnn_max,image_cnn_head,image_cnn_bilstm,image_cnn_lstm}]
+                          [--source SOURCE] [--width WIDTH] [--height HEIGHT]
+                          [--fps FPS] [--duration DURATION]
+                          [--onnx-dir ONNX_DIR]
+                          [--model-contract MODEL_CONTRACT]
+                          [--intra-threads INTRA_THREADS] [--no-spin]
+                          [--head-stride HEAD_STRIDE] [--refine-landmarks]
+                          [--power-hz POWER_HZ] [--idle-seconds IDLE_SECONDS]
+                          [--run-index RUN_INDEX] [--battery-mah BATTERY_MAH]
+                          [--battery-cell-v BATTERY_CELL_V]
+                          [--battery-eta BATTERY_ETA] [--out OUT]
+
+options:
+  -h, --help            show this help message and exit
+  --mode {ours,ear,image_cnn_max,image_cnn_head,image_cnn_bilstm,image_cnn_lstm}
+  --source SOURCE       카메라 인덱스 또는 영상 경로
+  --width WIDTH
+  --height HEIGHT
+  --fps FPS
+  --duration DURATION   초. 실측은 5분
+  --onnx-dir ONNX_DIR
+  --model-contract MODEL_CONTRACT
+                        Graph-hash-bound validation threshold JSON; auto-
+                        detect contract.json if omitted
+  --intra-threads INTRA_THREADS
+                        🔴 실측은 2. 안 주면 결과에 경고가 박힌다
+  --no-spin             실측은 필수. 빼면 27% 느려져 비교가 무효다
+  --head-stride HEAD_STRIDE
+  --refine-landmarks
+  --power-hz POWER_HZ   PMIC 폴링 주기(Hz). 5~10Hz 권장. 🔴 4모드 실행에서 동일값 고정
+  --idle-seconds IDLE_SECONDS
+                        추론 시작 전 유휴 상태 측정 시간(초). 30초 이상 권장
+  --run-index RUN_INDEX
+                        반복 실행 인덱스 (1..N). 결과 파일명에 들어간다
+  --battery-mah BATTERY_MAH
+                        배터리 환산용 예시 용량(mAh). 실제 타깃 기기 스펙 아님
+  --battery-cell-v BATTERY_CELL_V
+  --battery-eta BATTERY_ETA
+                        셀->5V 승압 컨버터 효율 가정치 (0.85~0.90)
+  --out OUT             기본값: results/v2/power_{mode}_480p_run{run-index}.json

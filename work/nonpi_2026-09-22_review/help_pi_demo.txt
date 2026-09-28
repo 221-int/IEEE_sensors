@@ -1,0 +1,51 @@
+usage: pi_demo.py [-h] [--source SOURCE] [--onnx-dir ONNX_DIR]
+                  [--mode {ours,ear}] [--width WIDTH] [--height HEIGHT]
+                  [--fps FPS] [--intra-threads INTRA_THREADS] [--no-spin]
+                  [--spin] [--canvas CANVAS] [--fullscreen] [--mirror]
+                  [--no-mirror] [--blink-th BLINK_TH]
+                  [--model-contract MODEL_CONTRACT] [--id-th ID_TH]
+                  [--id-window ID_WINDOW] [--no-blink-alert NO_BLINK_ALERT]
+                  [--baseline-min-sec BASELINE_MIN_SEC] [--profiles PROFILES]
+                  [--shot-dir SHOT_DIR] [--names NAMES] [--font FONT]
+                  [--headless] [--shot-every SHOT_EVERY] [--cmd-file CMD_FILE]
+                  [--duration DURATION] [--preview PNG]
+
+Pi 5 실시간 시연 화면
+
+options:
+  -h, --help            show this help message and exit
+  --source SOURCE       맥북 MJPEG URL (예: http://192.168.0.31:8000/stream.mjpg)
+                        또는 로컬 카메라 인덱스
+  --onnx-dir ONNX_DIR
+  --mode {ours,ear}     ours = encoder+head, ear = 규칙 기반(모델 없이 화면 확인용)
+  --width WIDTH
+  --height HEIGHT
+  --fps FPS
+  --intra-threads INTRA_THREADS
+  --no-spin
+  --spin
+  --canvas CANVAS       창 크기 WxH
+  --fullscreen
+  --mirror              좌우 반전(셀카 뷰). --no-mirror 로 끔
+  --no-mirror
+  --blink-th BLINK_TH   Explicit exploratory threshold; otherwise use the
+                        graph-verified model contract
+  --model-contract MODEL_CONTRACT
+  --id-th ID_TH         식별 코사인 임계값
+  --id-window ID_WINDOW
+                        식별 벡터를 만들 때 평균낼 개안 프레임 수
+  --no-blink-alert NO_BLINK_ALERT
+                        무깜빡임 경고 초
+  --baseline-min-sec BASELINE_MIN_SEC
+                        이 시간 이상 관측해야 개인 기준선으로 전환
+  --profiles PROFILES
+  --shot-dir SHOT_DIR
+  --names NAMES
+  --font FONT           한글 TTF 경로(자동 탐색 실패 시)
+  --headless            창 없이 실행(SSH 전용). --shot-every 로 PNG 만 남긴다
+  --shot-every SHOT_EVERY
+                        N초마다 화면을 자동 저장(0=끔)
+  --cmd-file CMD_FILE   이 파일에 키를 한 글자 써 넣으면 그 키를 누른 것으로 친다. 창 없이(--headless)
+                        돌릴 때 다른 SSH 창에서 `echo 1 > /tmp/demo_cmd` 처럼 조작한다
+  --duration DURATION   N초 후 자동 종료(0=무한)
+  --preview PNG         카메라·모델 없이 예시 데이터 디자인 PNG 저장

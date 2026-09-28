@@ -1,0 +1,13 @@
+{
+  "src/v2/dataset/crop.py": "5ef3a73f9653e7eb8512e56e96e6b892afc3b2e4ffb6298a603448e050193f64",
+  "src/v2/train_encoder.py": "f142d382a82b8b7d14518d541aa89d8a8dede56893349de9b1498779416e912c",
+  "src/v2/deploy/run_video.py": "5d76ce8c04ff84ef218a9af1e830f585b9e96b755ef0e5382dbadb2bc79df4c1",
+  "src/v2/deploy/run_video_power.py": "a1338d02050d7e38a5af1f1bba662a2460c40b63243ac216199a5d4200f756d9",
+  "src/v2/deploy/pi_demo.py": "3ccde7535a1bc04053389f1c8f16b5b19e248ccd2c6adbcdac876ee41c94b24e",
+  "manuscript_hashes": {
+    "C:\\Users\\sch\\Downloads\\MCE_blink_detection.tex": "b72f81ec0747bc6693f21ab2afcc7a7d85908827cef8f67a8df89618cca0e868",
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\work\\nonpi_2026-09-18\\manuscript\\MCE_blink_detection.tex": "56f58c89936ad128a2e5cfc8e771aba0713561d2a518284bc518361dfed47b6b",
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\work\\nonpi_2026-09-18\\manuscript\\MCE_blink_detection.pdf": "b98cc78b7b56633865a84b7772c496c8aa4d85e5dff07f68ee7972658157f111",
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\output\\pdf\\MCE_blink_detection_nonpi_review.pdf": "b98cc78b7b56633865a84b7772c496c8aa4d85e5dff07f68ee7972658157f111"
+  }
+}

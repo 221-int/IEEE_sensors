@@ -1,0 +1,84 @@
+{
+  "numpy": "1.26.4",
+  "opencv": "4.11.0",
+  "cases": [
+    {
+      "subject": 19,
+      "frame": 33969,
+      "row": 108584,
+      "variants": {
+        "current_numpy126": {
+          "equal": false,
+          "max_diff": 24.0,
+          "mean_diff": 0.75888671875,
+          "changed_pixels": 4566,
+          "meta": {
+            "span_px": 110.45525360107422,
+            "tilt_deg": -3.859851121902466,
+            "crop_w_px": 243.0,
+            "crop_h_px": 98.0,
+            "interp_cubic": false,
+            "padded": false,
+            "center_x": 844.0007934570312,
+            "center_y": 426.07293701171875
+          }
+        },
+        "numpy2_scalar_promotion": {
+          "equal": true,
+          "max_diff": 0.0,
+          "mean_diff": 0.0,
+          "changed_pixels": 0,
+          "meta": {
+            "span_px": 110.45525360107422,
+            "tilt_deg": -3.859851121902466,
+            "crop_w_px": 244.0,
+            "crop_h_px": 98.0,
+            "interp_cubic": false,
+            "padded": false,
+            "center_x": 844.0007934570312,
+            "center_y": 426.07293701171875
+          }
+        }
+      }
+    },
+    {
+      "subject": 55,
+      "frame": 49892,
+      "row": 478776,
+      "variants": {
+        "current_numpy126": {
+          "equal": false,
+          "max_diff": 18.0,
+          "mean_diff": 0.73037109375,
+          "changed_pixels": 4558,
+          "meta": {
+            "span_px": 163.37261962890625,
+            "tilt_deg": -2.5469255447387695,
+            "crop_w_px": 359.0,
+            "crop_h_px": 144.0,
+            "interp_cubic": false,
+            "padded": false,
+            "center_x": 914.5142822265625,
+            "center_y": 457.3839416503906
+          }
+        },
+        "numpy2_scalar_promotion": {
+          "equal": true,
+          "max_diff": 0.0,
+          "mean_diff": 0.0,
+          "changed_pixels": 0,
+          "meta": {
+            "span_px": 163.37261962890625,
+            "tilt_deg": -2.5469255447387695,
+            "crop_w_px": 359.0,
+            "crop_h_px": 143.0,
+            "interp_cubic": false,
+            "padded": false,
+            "center_x": 914.5142822265625,
+            "center_y": 457.3839416503906
+          }
+        }
+      }
+    }
+  ]
+}

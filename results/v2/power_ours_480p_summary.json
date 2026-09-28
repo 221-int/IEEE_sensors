@@ -1,0 +1,38 @@
+{
+ "mode": "ours",
+ "n_runs_found": 3,
+ "n_runs_kept": 3,
+ "n_runs_discarded": 0,
+ "discarded_run_files": [],
+ "run_files": [
+  "results/v2/power_ours_480p_run1.json",
+  "results/v2/power_ours_480p_run2.json",
+  "results/v2/power_ours_480p_run3.json"
+ ],
+ "power_idle_w": {
+  "mean": 2.0966673386577495,
+  "std": 0.018719896283942553,
+  "n": 3
+ },
+ "power_active_w": {
+  "mean": 4.096617146285179,
+  "std": 0.04277982774205878,
+  "n": 3
+ },
+ "power_delta_w": {
+  "mean": 1.9999498076274287,
+  "std": 0.024432286869583725,
+  "n": 3
+ },
+ "energy_per_frame_mJ": {
+  "mean": 46.14903910921334,
+  "std": 0.3612967270981835,
+  "n": 3
+ },
+ "battery_hours_at_delta_power": {
+  "mean": 8.048912165313565,
+  "std": 0.09906401829347225,
+  "n": 3
+ },
+ "_warning": null
+}

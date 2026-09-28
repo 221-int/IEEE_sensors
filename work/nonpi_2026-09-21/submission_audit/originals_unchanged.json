@@ -1,0 +1,20 @@
+{
+  "source_hashes": {
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\train_encoder.py": true,
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\model\\encoder.py": true,
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\dataset\\crop.py": true,
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\common\\repro.py": true,
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\common\\thresholds.py": true,
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\common\\stats.py": true,
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\common\\splits.py": true,
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\src\\v2\\common\\folds_5fold.json": true,
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\data\\processed\\v2\\index.npz": true,
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\work\\nonpi_2026-09-18\\train_gap.py": true
+  },
+  "manuscript_hashes": {
+    "C:\\Users\\sch\\Downloads\\MCE_blink_detection.tex": true,
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\work\\nonpi_2026-09-18\\manuscript\\MCE_blink_detection.tex": true,
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\work\\nonpi_2026-09-18\\manuscript\\MCE_blink_detection.pdf": true,
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\output\\pdf\\MCE_blink_detection_nonpi_review.pdf": true
+  }
+}

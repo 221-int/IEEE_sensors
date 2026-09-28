@@ -1,0 +1,142 @@
+[
+  {
+    "variant": "ours",
+    "weights": "trained",
+    "fold": 0,
+    "seed": 0,
+    "checkpoint": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_encoder_final\\fold0_seed0",
+    "selection": "fixed fold0 seed0 for engineering verification; not selected for best accuracy",
+    "checkpoint_sha256": {
+      "encoder.pt": "83fffaf1052ed5d69b42d94b62906a84dc8c81e054dbdb1d8466f39ce21b88fd",
+      "head.pt": "cc6e40e12b11ffd453d318bbdd8fdb24b03d5d13748792b359280fc21812c64f"
+    },
+    "graph_sha256": {
+      "encoder.onnx": "385fd45c97941f0af2edbb3739d8e8827602470fc45b94436b8328b5e1c58d94",
+      "head.onnx": "d11ee4fdd972f5737382c65b3355e090c9c111602d5a99c3f530845a2cc7fa9c"
+    },
+    "input": {
+      "shape": [
+        "batch",
+        1,
+        64,
+        160
+      ],
+      "norm": "frame_standardize",
+      "margin": 2.2
+    },
+    "threshold_logit": -0.6398786306381226,
+    "threshold_probability": 0.3452739756190585,
+    "min_valid_frames": 14,
+    "event_len": 19,
+    "head_output": "probability (sigmoid in graph)",
+    "verification": {
+      "n_source_events": 16,
+      "n_frames": 304,
+      "event_indices": [
+        4978,
+        4979,
+        4980,
+        4981,
+        4982,
+        4983,
+        4984,
+        4985,
+        4832,
+        4833,
+        4834,
+        4835,
+        4836,
+        4837,
+        4838,
+        4839
+      ],
+      "encoder_max_abs_error": 2.86102294921875e-06,
+      "probability_max_abs_error": 5.960464477539063e-08,
+      "threshold_predictions_equal": true,
+      "mask_stress_missing_counts": [
+        0,
+        1,
+        5,
+        6,
+        19
+      ],
+      "mask_stress_max_probability_error": 6.51925802230835e-08
+    },
+    "deployment_policy": "Require complete 19-position ring and at least 14 valid frames; missing frames retain their time positions. Current-frame skip/abstention and event postprocessing must be explicitly declared by the caller.",
+    "limits": [
+      "No Raspberry Pi timing or power was measured.",
+      "Existing Pi results for random Image-CNN weights do not become trained-weight measurements by this export.",
+      "This export is a preparation artifact, not a replacement for final architecture selection."
+    ]
+  },
+  {
+    "variant": "image_head",
+    "weights": "trained",
+    "fold": 0,
+    "seed": 0,
+    "checkpoint": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\train_image_cnn_head_final\\fold0_seed0",
+    "selection": "fixed fold0 seed0 for engineering verification; not selected for best accuracy",
+    "checkpoint_sha256": {
+      "encoder.pt": "666a8c09b8c8484a6c9c8a102c6794639b43d4eb06fe9328c1164c750d5d5eab",
+      "head.pt": "faab65a7028006429bbf9f5464860e0cfce33e89481ed22430e60749110f3bc9"
+    },
+    "graph_sha256": {
+      "encoder.onnx": "6392af78eab6140bf2bfd0282186a002eba729854df65c71b45695d92927a622",
+      "head.onnx": "2baa78bfabcc66724f9994674de41f90805d571948f4828d52453da7ee1e23ab"
+    },
+    "input": {
+      "shape": [
+        "batch",
+        1,
+        64,
+        160
+      ],
+      "norm": "frame_standardize",
+      "margin": 2.2
+    },
+    "threshold_logit": -2.432532787322998,
+    "threshold_probability": 0.08072531256130315,
+    "min_valid_frames": 14,
+    "event_len": 19,
+    "head_output": "probability (sigmoid in graph)",
+    "verification": {
+      "n_source_events": 16,
+      "n_frames": 304,
+      "event_indices": [
+        4978,
+        4979,
+        4980,
+        4981,
+        4982,
+        4983,
+        4984,
+        4985,
+        4832,
+        4833,
+        4834,
+        4835,
+        4836,
+        4837,
+        4838,
+        4839
+      ],
+      "encoder_max_abs_error": 2.682209014892578e-07,
+      "probability_max_abs_error": 5.960464477539063e-08,
+      "threshold_predictions_equal": true,
+      "mask_stress_missing_counts": [
+        0,
+        1,
+        5,
+        6,
+        19
+      ],
+      "mask_stress_max_probability_error": 2.9802322387695312e-08
+    },
+    "deployment_policy": "Require complete 19-position ring and at least 14 valid frames; missing frames retain their time positions. Current-frame skip/abstention and event postprocessing must be explicitly declared by the caller.",
+    "limits": [
+      "No Raspberry Pi timing or power was measured.",
+      "Existing Pi results for random Image-CNN weights do not become trained-weight measurements by this export.",
+      "This export is a preparation artifact, not a replacement for final architecture selection."
+    ]
+  }
+]

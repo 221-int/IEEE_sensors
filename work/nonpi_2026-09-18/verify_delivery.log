@@ -1,0 +1,24 @@
+{
+  "original_files_checked": 608,
+  "original_files_changed": [],
+  "archive_unreadable_files": [
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\docs\\archive\\HANDOFF.md"
+  ],
+  "gap_cost": {
+    "encoder_params": 33264,
+    "head_params": 4625,
+    "encoder_mmac": 31.36832,
+    "head_mmac": 0.045888
+  },
+  "environment": {
+    "python": "3.12.14",
+    "numpy": "1.26.4",
+    "torch": "2.11.0+cu128",
+    "cuda": "12.8",
+    "gpu": "NVIDIA GeForce RTX 5080"
+  },
+  "notes": [
+    "Compare completed training in gap_completion_status.json; no partial accuracy promoted.",
+    "PDF review draft clears unassigned publication metadata and labels the first-page footer as Review draft."
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "passed": true,
+  "created": "2026-09-22T17:53:57.593680+09:00",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "machine": "AMD64",
+  "python": "3.12.14",
+  "numpy": "1.26.4",
+  "onnxruntime": "1.30.0",
+  "provider": "CPUExecutionProvider",
+  "models": 4,
+  "graphs": 8,
+  "reports": [
+    {
+      "contract": "onnx/fold0_seed0/contract.json",
+      "variant": "vpres",
+      "fold": 0,
+      "seed": 0,
+      "encoder_max_abs_error": 1.1920928955078125e-06,
+      "head_max_abs_error": 2.384185791015625e-07,
+      "eligible_mask_matches": true
+    },
+    {
+      "contract": "onnx/fold0_seed0/image_cnn_head/contract.json",
+      "variant": "image_head",
+      "fold": 0,
+      "seed": 0,
+      "encoder_max_abs_error": 7.450580596923828e-09,
+      "head_max_abs_error": 5.662441253662109e-07,
+      "eligible_mask_matches": true
+    },
+    {
+      "contract": "onnx/fold0_seed0/vdrop/contract.json",
+      "variant": "vdrop",
+      "fold": 0,
+      "seed": 0,
+      "encoder_max_abs_error": 3.5762786865234375e-07,
+      "head_max_abs_error": 1.1920928955078125e-07,
+      "eligible_mask_matches": true
+    },
+    {
+      "contract": "onnx/fold0_seed0/gap/contract.json",
+      "variant": "gap",
+      "fold": 0,
+      "seed": 0,
+      "encoder_max_abs_error": 1.4901161193847656e-08,
+      "head_max_abs_error": 4.76837158203125e-07,
+      "eligible_mask_matches": true
+    }
+  ],
+  "scope": "Graph/contract hashes and numerical fixtures only; not a video accuracy or latency/power benchmark."
+}

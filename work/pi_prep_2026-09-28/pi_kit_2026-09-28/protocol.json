@@ -1,0 +1,83 @@
+{
+ "protocol_id": "pi5_paced30_v1",
+ "created": "2026-09-28",
+ "status": "Fixed on PC before any Pi measurement with the corrected models. Values are design choices, not yet exercised on the Pi. Change only before the first reportable Pi run, by creating a new protocol_id; never after seeing mode comparisons.",
+ "input": {
+  "clip": "clips/eyeblink8_v9_cam.avi",
+  "source_in_repo": "data/_legacy_public/eyeblink8/eyeblink8/9/27122013_152435_cam.avi",
+  "sha256": "d895e84ad08b3a647bad25b6c696448e2e8305a5cd37968d7075b2cee2e38e0a",
+  "codec": "h264 in AVI, 640x480",
+  "frames_per_pass": 5134,
+  "frames_per_pass_note": "OpenCV 4.11 decodes 5134 frames although container metadata and the annotation list 5183. The Pi preflight re-decodes and refuses to start if its count differs.",
+  "decoded_sha256_pc_reference": "4ee08e3fad21d84090e41d245ba1d214013b6a27776b8743fe40cd158ce6199e",
+  "decoded_sha256_note": "PC OpenCV 4.11.0 (Windows). A different Pi digest is recorded but is not by itself a failure; count and file hash are hard checks.",
+  "timeline": "frame i is presented at t0 + i/30 s; active phase = 9000 timeline frames = clip pass 1 (5134) + first 3866 frames of pass 2; ring buffer and candidate state reset at the seam"
+ },
+ "run": {
+  "fps": 30.0,
+  "pacing": "drop",
+  "budget_ms": 33.333333333333336,
+  "warmup_s": 10.0,
+  "settle_s": 5.0,
+  "idle_pre_s": 60.0,
+  "active_s": 300.0,
+  "idle_post_s": 30.0,
+  "power_hz": 7.5,
+  "thermal_hz": 1.0,
+  "intra_threads": 2,
+  "no_spin": true,
+  "refine_landmarks": false,
+  "head_stride": 1
+ },
+ "session": {
+  "repeats": 5,
+  "order": "blocked randomisation: each block runs every mode of the set once in a seeded random permutation",
+  "order_seed": 20260928,
+  "reference_idle_s": 120,
+  "cooldown_min_s": 120,
+  "cooldown_temp_margin_c": 3.0,
+  "cooldown_max_extra_s": 600,
+  "process_per_run": "fresh Python process per run (models loaded inside the run, before warmup)"
+ },
+ "sets": {
+  "primary": {"modes": ["ours_vpres", "image_cnn_head", "ear_rule"], "run_prefix": "P_",
+              "purpose": "30 fps paced latency, deadline and PMIC power for the main comparison"},
+  "secondary": {"modes": ["ours_vpres", "vdrop", "gap"], "repeats": 3, "run_prefix": "S_",
+                "purpose": "optional candidate costs; ours_vpres repeated as the within-block reference"},
+  "freerun": {"modes": ["ours_vpres", "image_cnn_head", "ear_rule"], "repeats": 3, "run_prefix": "F_",
+              "run_overrides": {"pacing": "freerun"},
+              "purpose": "throughput diagnostic only; never pooled with or reported as 30 fps results"}
+ },
+ "device_preconditions": [
+  "Pi 5 with the active cooler attached; same case/orientation/room for the whole session; record room temperature by hand",
+  "conda env eyeblink (Python 3.11), requirements-pi.txt versions; record versions in env_check.json",
+  "cpufreq governor 'performance' on all CPUs (reset by reboot)",
+  "vcgencmd get_throttled == 0x0 at session start (reboot if sticky bits are set)",
+  "no desktop session/other load: headless, ssh only; HDMI, camera and USB peripherals in the same state for all runs; Wi-Fi/Ethernet state unchanged",
+  "bundle verified on this device: python verify_bundle.py --root bundle --out bundle/pi_model_verification.json"
+ ],
+ "definitions": {
+  "processing_ms": "finish - start: frame read/decode + FaceMesh + crop + encoder + head (+ grabs of dropped frames)",
+  "schedule_delay_ms": "start - arrival = backlog (previous frame overran) + dispatch (wake-up/loop overhead)",
+  "response_ms": "finish - arrival",
+  "wait_ms": "sleep before start; idle, excluded from processing",
+  "deadline_miss": "finish > arrival + 33.33 ms, or frame dropped",
+  "late_policy_drop": "if a newer frame has arrived, older waiting frames are dropped and kept as missing time positions",
+  "window_center_offset": "the 9-frame offset between window centre and output time is a model-definition delay, reported separately from response_ms",
+  "power": "PMIC rail sum (12 current rails, V*I), unverified as whole-board input power",
+  "delta_w": "mean(active) - mean(idle_pre)",
+  "incremental_mj_per_timeline_frame": "delta_w * active duration / 9000",
+  "total_mj_per_timeline_frame": "mean(active) * active duration / 9000"
+ },
+ "qc_code_enforced": {
+  "hard": ["Pi (aarch64 + vcgencmd)", "governor performance at start and end", "bundle verified on this device and ORT version", "equivalence gate", "intra_threads=2, no spin", "no throttle NOW bits in any 1 Hz sample and no new sticky bits", "PMIC: 0 read/parse errors, 0 missing rails, >= half of power_hz, max gap <= max(1 s, 3/power_hz) in idle_pre/active/idle_post", "clip hash and every completed pass length", "config equals protocol (plus set overrides) and protocol hash equal"],
+  "warnings": ["|idle_post - idle_pre| > max(0.05 W, 3 %)", "sticky throttle bits already set at start", "clip metadata fps != 30"],
+  "not_exclusion_reasons": ["deadline misses or drops (these are results: realtime_pass=false)", "values of latency or power"]
+ },
+ "analysis_plan": {
+  "primary_metrics": ["response_ms p99 and deadline misses (paced drop)", "processing_ms p50/p99 and stage p50", "delta_w and incremental_mj_per_timeline_frame"],
+  "comparison": "per-block paired difference mode - ours_vpres; report mean, SD and all values for the n blocks; no population CI claimed from 5 runs on one device",
+  "energy_comparisons_require": "workload_identical (no dropped frames) for both modes of a pair",
+  "reporting": "old 18 Pi runs (results/v2/power_*_480p_run*.json, free-run, previous models) stay historical and are never relabelled"
+ }
+}

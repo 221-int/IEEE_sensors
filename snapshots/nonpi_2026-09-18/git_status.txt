@@ -1,0 +1,53 @@
+ M docs/PAPER_OUTLINE.md
+ M paper/IEEE_Sensors_letters_v2.tex
+ M requirements-pi.txt
+ M src/v2/deploy/run_video.py
+?? .claude/
+?? .codex-pptx-edit/
+?? .codex-slide-review/
+?? .venv-nonpi/
+?? docs/DEMO_RUNBOOK.md
+?? docs/EYE_WELLNESS_UI.md
+?? docs/demo_layout_preview.png
+?? models/v2/onnx/image_cnn_bilstm/
+?? models/v2/onnx/image_cnn_lstm/
+?? output/
+?? paper/paper_assets/
+?? results/v2/demo_shots/
+?? results/v2/export_onnx_rnn.json
+?? results/v2/power_ear_480p_run1.json
+?? results/v2/power_ear_480p_run2.json
+?? results/v2/power_ear_480p_run3.json
+?? results/v2/power_ear_480p_summary.json
+?? results/v2/power_image_cnn_bilstm_480p_run1.json
+?? results/v2/power_image_cnn_bilstm_480p_run2.json
+?? results/v2/power_image_cnn_bilstm_480p_run3.json
+?? results/v2/power_image_cnn_bilstm_480p_summary.json
+?? results/v2/power_image_cnn_head_480p_run1.json
+?? results/v2/power_image_cnn_head_480p_run2.json
+?? results/v2/power_image_cnn_head_480p_run3.json
+?? results/v2/power_image_cnn_head_480p_summary.json
+?? results/v2/power_image_cnn_lstm_480p_run1.json
+?? results/v2/power_image_cnn_lstm_480p_run2.json
+?? results/v2/power_image_cnn_lstm_480p_run3.json
+?? results/v2/power_image_cnn_lstm_480p_summary.json
+?? results/v2/power_image_cnn_max_480p_run1.json
+?? results/v2/power_image_cnn_max_480p_run2.json
+?? results/v2/power_image_cnn_max_480p_run3.json
+?? results/v2/power_image_cnn_max_480p_summary.json
+?? results/v2/power_ours_480p_run1.json
+?? results/v2/power_ours_480p_run2.json
+?? results/v2/power_ours_480p_run3.json
+?? results/v2/power_ours_480p_summary.json
+?? snapshots/
+?? src/tools/mac_camera_server.py
+?? src/v2/deploy/export_onnx_rnn.py
+?? src/v2/deploy/pi_demo.py
+?? src/v2/deploy/pmic_power.py
+?? src/v2/deploy/power_bench_runner.py
+?? src/v2/deploy/run_video_power.py
+?? src/v2/deploy/test_pi_demo_ui.py
+?? src/v2/deploy/test_pmic_power.py
+?? src/v2/model/rnn_head.py
+?? tmp/
+?? work/

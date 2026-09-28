@@ -1,0 +1,19 @@
+{
+  "contrast": "vpres_minus_image_head",
+  "estimand": "mean of 15 held-out AP differences",
+  "ci": {
+    "point": -0.0022665024466601274,
+    "ci_lo": -0.004491907244763344,
+    "ci_hi": -0.0002244514088910626,
+    "std": 0.0011054656106638157,
+    "n_boot": 2000,
+    "n_subjects": 57,
+    "alpha": 0.05
+  },
+  "ni": {
+    "0.02": "non_inferior",
+    "0.01": "non_inferior",
+    "0.005": "non_inferior"
+  },
+  "limitations": "Conditional on the 60 fixed fits; sample people together across seeds. Not uncertainty from repeated retraining."
+}

@@ -1,0 +1,32 @@
+이벤트 27,758 (결측정책으로 제외 970)  n=27758 classes=2 (불균형 13820~13938) uniform=0.5000 majority=0.5021
+프론트 image_cnn_head (mEBAL 원문 구조)  D=16  정규화 frame_standardize  max_epochs 80 patience 10  batch 32
+
+  fold 4 seed 0
+      [cnn] ep   1  loss 0.3296  val AP 0.9848  *
+      [cnn] ep   5  loss 0.0729  val AP 0.9877
+      [cnn] ep  10  loss 0.0553  val AP 0.9850
+      [cnn] ep  15  loss 0.0448  val AP 0.9878
+      [cnn] val AP 가 10 에폭 정체 -> ep 17 에서 중단 (최고 ep 7)
+      [earhead] ep   1  loss 0.3460  val AP 0.9436  *
+      [earhead] ep   5  loss 0.1864  val AP 0.9522  *
+      [earhead] ep  10  loss 0.1743  val AP 0.9532
+      [earhead] ep  15  loss 0.1646  val AP 0.9555
+      [earhead] ep  20  loss 0.1576  val AP 0.9565
+      [earhead] ep  25  loss 0.1535  val AP 0.9596
+      [earhead] ep  30  loss 0.1481  val AP 0.9607  *
+      [earhead] ep  35  loss 0.1470  val AP 0.9608
+      [earhead] ep  40  loss 0.1442  val AP 0.9599
+      [earhead] ep  45  loss 0.1419  val AP 0.9586
+      [earhead] ep  50  loss 0.1372  val AP 0.9592
+      [earhead] val AP 가 10 에폭 정체 -> ep 53 에서 중단 (최고 ep 43)
+    ours PR-AUC 0.9934 | ear_head 0.9784 | ear_rule 0.8944 | 비교상대 ear_head 차이 +0.0150  (ep 7/43, 1608s)
+
+================================================================
+  ours      PR-AUC 0.9934  (n=1)
+  ear_head  PR-AUC 0.9784  (n=1)
+  ear_rule  PR-AUC 0.8944  (n=1)
+  차이(ours-EAR) +0.0150  95% CI [+0.0096, +0.0209]
+  delta = 0.02  ->  판정: **superior**
+  val 낙관(AP) 평균 -0.0026
+  -> C:\Users\sch\PycharmProjects\IEEE_sensors\work\nonpi_2026-09-21_maskfix\attempts\image_head\fold4_seed0\attempt001\result.json
+  -> C:\Users\sch\PycharmProjects\IEEE_sensors\work\nonpi_2026-09-21_maskfix\attempts\image_head\fold4_seed0\attempt001\result_scores/  (런별 test 점수. 서브그룹 분석은 여기서 한다)

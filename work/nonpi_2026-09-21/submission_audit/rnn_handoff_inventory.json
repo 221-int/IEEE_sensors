@@ -1,0 +1,52 @@
+[
+  {
+    "path": "C:\\Users\\sch\\Downloads\\전력측정_전달본.zip",
+    "sha256": "fd3e727067e6c8a53bfe9367271460e2efb8155539cf2ed726c4348bf2be4878",
+    "members": [
+      {
+        "name": "전력측정_전달본/pmic_power.py",
+        "bytes": 7676
+      },
+      {
+        "name": "전력측정_전달본/power_bench_runner.py",
+        "bytes": 6897
+      },
+      {
+        "name": "전력측정_전달본/run_video_power.py",
+        "bytes": 22451
+      },
+      {
+        "name": "전력측정_전달본/test_pmic_power.py",
+        "bytes": 6556
+      },
+      {
+        "name": "전력측정_전달본/전력측정_구현결과.md",
+        "bytes": 10905
+      }
+    ],
+    "raw_files": []
+  },
+  {
+    "path": "C:\\Users\\sch\\Downloads\\표1_추가작업_결과.zip",
+    "sha256": "8dc28a57baca342f98a2af8eb31afbb8caec4c4a729294f6d2172c52a04a988e",
+    "members": [
+      {
+        "name": "표1_추가작업_결과/merge_runs.py",
+        "bytes": 14520
+      },
+      {
+        "name": "표1_추가작업_결과/rnn_head.py",
+        "bytes": 4979
+      },
+      {
+        "name": "표1_추가작업_결과/train_encoder_rnn.py",
+        "bytes": 6663
+      },
+      {
+        "name": "표1_추가작업_결과/표1_추가작업_결과.md",
+        "bytes": 19160
+      }
+    ],
+    "raw_files": []
+  }
+]

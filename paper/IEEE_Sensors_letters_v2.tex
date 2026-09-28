@@ -19,6 +19,7 @@
 \usepackage[noadjust]{cite}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath}
+\usepackage{amssymb}
 \interdisplaylinepenalty=2500
 \usepackage[cmintegrals]{newtxmath}
 \usepackage{bm}
@@ -36,7 +37,7 @@
 
 \begin{document}
 
-\markboth{IEEE Sensors Letters}{0000000}
+\markboth{IEEE Sensors Letters}{Anonymous Manuscript}
 
 \IEEELSENSarticlesubject{Sensor Applications}
 
@@ -44,13 +45,9 @@
 for Real-Time Operation on Edge Hardware}
 
 \author{\IEEEauthorblockN{Anonymous Author(s)}%
-\IEEEauthorblockA{Affiliation withheld for double-blind review}%
-\thanks{Corresponding author: withheld for review.}%
-\thanks{Associate Editor: [TBD].}%
-\thanks{Digital Object Identifier 10.1109/LSENS.XXXX.XXXXXXX}}
-\IEEELSENSmanuscriptreceived{Manuscript received [Month] [Day], [Year];
-accepted [Month] [Day], [Year]. Date of publication [Month] [Day], [Year];
-date of current version [Month] [Day], [Year].}
+\IEEEauthorblockA{Affiliation withheld for double-blind review}}
+% IEEE production metadata (DOI, dates, and Associate Editor) is assigned
+% after acceptance and is intentionally omitted from this blinded manuscript.
 
 \IEEEtitleabstractindextext{%
 \begin{abstract}
@@ -69,9 +66,10 @@ within a non-inferiority margin of $\delta = 0.02$ fixed before the
 comparison, while using $5.7\times$ fewer parameters and $2.6\times$
 fewer multiply--accumulate operations. On a Raspberry Pi~5 at
 $640\times480$, the representation stage costs $0.86$~ms per frame
-versus $2.04$~ms for the image-based baseline, but the end-to-end gain
-is only 11\%: face and landmark detection accounts for 68--87\% of the
-pipeline, and is therefore the binding constraint at the edge.
+versus $2.04$~ms for the image-based control. Its end-to-end median
+latency is $11.27$~ms rather than $12.51$~ms for that control (the
+control is 11\% slower), because face and landmark detection accounts
+for 68--87\% of the pipeline under the measurement conditions.
 \end{abstract}
 \begin{IEEEkeywords}
 Eye blink detection, learned representation, embedding, temporal
@@ -86,8 +84,8 @@ convolutional network, edge computing, on-device inference.
 Spontaneous eye blinking is a low-cost behavioural signal with several
 sensing applications. Blink rate and blink completeness are used as
 indicators of ocular surface stress during prolonged screen work
-\cite{rosenfield2011}, and blink dynamics feed drowsiness and attention
-estimation. Because webcams are now permanently present in office and
+\cite{rosenfield2011}, and blink dynamics can support drowsiness and
+attention estimation \cite{daza2020,fodor2023}. Because webcams are now permanently present in office and
 in-vehicle settings, the practical question is less whether blinks can
 be detected than at what cost they can be detected continuously, on the
 device that already holds the camera.
@@ -133,7 +131,8 @@ Blink detection has been addressed with landmark ratios and learned
 temporal windows \cite{soukupova2016}, per-frame convolutional
 classifiers with score aggregation \cite{daza2020}, and sequence models
 including convolutional recurrent and transformer architectures
-\cite{daza2024,fodor2023}. Recent work moves to unconstrained
+\cite{daza2024,fodor2023}. In-the-wild data have also been formalized
+as a dedicated benchmark \cite{hu2019}. Recent work moves to unconstrained
 multi-person untrimmed video with a one-stage spatio-temporal
 transformer, reporting 112~FPS for network forwarding on an NVIDIA~3090
 GPU \cite{zeng2023}. That setting is complementary to ours: multiple
@@ -145,28 +144,19 @@ differ.
 % ⚠️ [검색요약] 상태의 인용 2건(arcaya2021, fodor2023) 이 이 문단에 있다.
 %    **투고 전 원문 확인 필수.** arcaya2021 이 지연·파라미터를 실제로 보고하면
 %    아래 문장을 그에 맞게 다시 써야 한다.
-Embedded blink detection has been demonstrated on wearable hardware,
-where a convolutional classifier improved over a thresholding rule while
-keeping memory and battery overhead acceptable \cite{arcaya2021}. Beyond
-such cases, however, the reported literature is difficult to place
-alongside ours: most on-device studies evaluate drowsiness state rather
-than blink events, so the label unit and the metric differ; those that
-do report blink events typically give accuracy without latency,
-operation counts or sustained throughput; and non-camera modalities such
-as capacitive sensing change the input entirely
-\cite{capacitive2024}. Within the scope of our search we did not find a
-study reporting both event-level detection quality and a per-stage edge
-latency breakdown for the same system, which is what we provide here.
+Embedded blink detection has also been demonstrated on wearable hardware
+\cite{arcaya2021}, while capacitive sensing uses a different input
+modality altogether \cite{capacitive2024}. These studies differ from
+ours in sensing modality, label unit, or reported deployment metrics;
+we therefore restrict direct speed and accuracy comparisons to methods
+evaluated under our common protocol.
 
 Performing classification on a learned representation rather than on
-pixels has been explored for blinks with a 3D autoencoder whose latent
-code feeds a classifier \cite{nousias2025}. That work targets offline
-analysis: the reported processing time for a 60~s recording is
-135--225~s across their variants, i.e.\ none of them runs in real time,
-although the hardware for that measurement is not stated in a form we
-could verify. Our aim is the opposite end of the trade-off --- a
-representation small enough that the encoder is no longer the dominant
-cost on a general-purpose edge CPU.
+pixels has also been explored with a 3-D autoencoder whose latent code
+feeds a classifier \cite{nousias2025}. That work evaluates sequence
+models for offline video analysis, whereas we target a compact
+representation whose per-frame encoder cost can be measured on an edge
+CPU.
 
 % =====================================================================
 \section{Proposed Method}
@@ -212,8 +202,8 @@ cost on a general-purpose edge CPU.
 16-dimensional embedding; the 19-frame window is assembled from buffered
 vectors rather than re-encoded, so the temporal head costs 0.37\% of the
 per-frame compute. The head uses symmetric dilated convolutions and is
-therefore not causal within the window, but it reads only frames already
-in the buffer and adds no buffering latency. No decoder is deployed.}
+therefore not causal within the window, but at a decision it consumes no
+frames beyond the current 19-frame buffer. No decoder is deployed.}
 \label{fig_pipeline}
 \end{figure}
 
@@ -228,50 +218,103 @@ landmark coordinates are used only to derive the crop geometry and are
 then discarded.
 
 \subsection{Eye Crop Normalization}
-The crop is centred on the midpoint of the two eye centres and rotated
-so that the inter-ocular line is horizontal. Its width is set to
-$2.2\times$ the inter-ocular distance and then resized to a fixed
-resolution, so that the crop scale is normalized against changes in
-camera distance. Pixel values are standardized per frame as
-$(x-\mu)/\sigma$; this removes a global photometric shortcut that a
-model could otherwise exploit instead of eyelid motion.
+Let $\bm p_L,\bm p_R\in\mathbb R^2$ be the landmark-derived eye centres,
+$d_{\mathrm{io}}=\lVert\bm p_R-\bm p_L\rVert_2$, and
+$\bm c=(\bm p_L+\bm p_R)/2$. We centre a crop at $\bm c$, rotate it so
+that the inter-ocular axis is horizontal, set its width to
+$w=2.2d_{\mathrm{io}}$, and resample it to a $H\times W=64\times160$
+grayscale image. Thus its source-image height is
+$h_{\mathrm{crop}}=(H/W)w=0.88d_{\mathrm{io}}$; the scale is therefore
+normalized against camera distance. Pixel values are standardized using
+only the current frame,
+\begin{equation}
+\tilde{x}_t=\frac{x_t-\mu_t}{\max(\sigma_t,0.255)},
+\label{eq:normalization}
+\end{equation}
+where $\mu_t$ and $\sigma_t$ are the crop mean and standard deviation.
+The $0.255$ floor equals $10^{-3}\times255$ and prevents division by
+zero in nearly uniform crops.
 
 \subsection{Encoder Design and Vertical-Resolution Ablation}
-The eyelid aperture is small relative to the crop: measured on our data,
-the eyelid gap is $0.1201$ of the inter-ocular distance, i.e.\ about
-$8.7$~px of the 64-px crop height. This observation motivated an
-asymmetric encoder that reduces the horizontal axis by $32\times$ while
-limiting the vertical total stride to $2$, on the reasoning that the
-horizontal extent exists to hold two eyes side by side rather than to
-carry resolution.
+The measured eyelid gap is $d_{\mathrm{lid}}/d_{\mathrm{io}}=0.1201$.
+With the crop geometry above, its height is
+\begin{equation}
+\frac{d_{\mathrm{lid}}}{h_{\mathrm{crop}}}H
+=\frac{0.1201W}{2.2}=8.73\ \mathrm{px},
+\label{eq:aperture}
+\end{equation}
+not $0.1201H$. The encoder has four Conv--BatchNorm--ReLU blocks with
+channels $(16,32,48,64)$, kernels $(3\times5,3\times3,3\times3,3\times3)$,
+and strides $(1,4),(2,2),(1,2),(1,2)$ in (vertical, horizontal) order.
+Same padding gives total strides of $2$ vertically and $32$
+horizontally. Horizontal average pooling produces a $64\times32$ map,
+which a linear layer maps to $D=16$. The encoder contains 79,424
+parameters and costs 12.44~MMAC per frame.
 
-That reasoning is not supported by the data, and we report the test
-rather than the argument. We built a confound-free control, denoted
-\emph{vdrop}, identical in kernels, channels and horizontal stride but
-with vertical total stride $16$, which reduces the eyelid gap at the
-bottleneck to $0.55$~px and the convolutional cost from $12.41$ to
-$3.44$~MMAC. The predicted collapse did not occur: the difference is
-$+0.0010$ with a 95\% CI of $[-0.0032,+0.0069]$, and a sweep over
-$D \in \{8,16,32,64\}$ was likewise indistinguishable. We keep the
-higher-resolution variant because all downstream artefacts are built on
-it and, as Section~\ref{sec_edge} shows, its extra cost is invisible
-end-to-end --- not because it performs better.
+We also ran a matched, but exploratory, \emph{vdrop} ablation: it keeps
+the kernels, channels, and horizontal strides unchanged while changing
+the vertical total stride from $2$ to $16$. It therefore reduces the
+aperture at the bottleneck from $4.37$ to $0.55$~px and convolutional
+cost from 12.41 to 3.44~MMAC. Across folds 0--1 and three seeds (six
+runs; 21 subjects), the paired PR-AUC estimate was $+0.0010$ for the
+proposed encoder versus \emph{vdrop} (95\% CI $[-0.0032,+0.0069]$).
+Because this ablation does not cover all five folds, we treat it as
+descriptive rather than as evidence that vertical resolution is
+irrelevant. We retain the proposed encoder for consistency with the
+remaining reported artefacts.
 
 \subsection{Temporal Modeling on Embeddings}
-Re-encoding all 19 frames at every decision would multiply the encoder
-cost by 19 and exceed the edge budget. Instead each frame is encoded
-once and the window is assembled from buffered vectors. Because the
-buffer carries 16 numbers per frame rather than a $64\times160$ crop,
-the temporal head is small: three dilated convolutions ($d=1,2,4$)
-followed by an MLP cost $0.0459$~MMAC per frame at stride~1, which is
-$0.37\%$ of the per-frame total. Without the bottleneck --- for
-instance with a 512-dimensional feature map --- the same head would cost
-$2.36$~MMAC per frame, $51\times$ more. Frames in which the face is not
-resolved have no crop; filling them with zeros would make ``no change''
-indistinguishable from ``unknown'', so a validity mask is carried
-alongside the buffer and masked positions are excluded from pooling.
-The head is evaluated at stride~1: deciding only at window boundaries
-would delay detection by up to 18 frames, i.e.\ $600$~ms at 30~fps.
+Re-encoding all $T=19$ frames at every decision would multiply the
+encoder cost by 19. Instead, each frame is encoded once and the window
+is assembled from buffered vectors,
+\begin{equation}
+\bm z_t=f_\theta(\tilde{x}_t)\in\mathbb R^D,\qquad
+\bm Z_t=[\bm z_{t-T+1}^{\mathsf T};\ldots;\bm z_t^{\mathsf T}]
+\in\mathbb R^{T\times D}.
+\label{eq:buffer}
+\end{equation}
+An event with more than five unresolved frames is excluded; for every
+remaining event, $m_j\in\{0,1\}$ records whether window position $j$ is
+valid. The head uses three residual 1-D Conv--BatchNorm--ReLU layers
+with kernel size 3 and dilations $d_\ell\in\{1,2,4\}$:
+\begin{equation}
+\bm h_j^{(\ell)}=\operatorname{ReLU}\!\left(\operatorname{BN}_\ell\!\left(
+\sum_{q=-1}^{1}\bm W_q^{(\ell)}
+ [m_{j-d_\ell q}\bm h_{j-d_\ell q}^{(\ell-1)}]
++\bm b^{(\ell)}\right)\right)+\bm h_j^{(\ell-1)},
+\label{eq:tcn}
+\end{equation}
+where $\bm h_j^{(0)}=\bm z_j$ and out-of-window indices are zero-padded.
+The mask is applied before every convolution and masked positions are
+excluded from both pooling operations,
+\begin{equation}
+\bm h_{\mathrm{avg}}=\frac{\sum_jm_j\bm h_j^{(3)}}{\max(1,\sum_jm_j)},\quad
+\bm h_{\mathrm{max}}=\max_{j:m_j=1}\bm h_j^{(3)},\quad
+p=\varsigma\!\left(\operatorname{MLP}([\,\bm h_{\mathrm{avg}};\bm h_{\mathrm{max}}\,])\right).
+\label{eq:pooling}
+\end{equation}
+The MLP has a 32-dimensional input, a 64-unit ReLU layer with dropout
+0.3, and one logit output. Symmetric padding means that a position can
+use later positions within its already collected window; the deployed
+decision nevertheless requires no frames beyond the current buffer. The
+head costs 0.0459~MMAC per stride-1 decision, 0.37\% of the 12.49~MMAC
+per-frame model total. A 512-dimensional feature map would raise this
+head cost to 2.36~MMAC.
+
+\subsection{Reference Formulation and Decision Criterion}
+For the EAR-rule baseline, $\mathrm{EAR}_j$ is the mean EAR of both eyes
+at valid position $j$. Let $j_f$ and $j_l$ be the first and last valid
+positions in the window. We use the relative drop
+\begin{equation}
+r_t=1-\frac{\min_{j:m_j=1}\mathrm{EAR}_j}
+{[\mathrm{EAR}_{j_f}+\mathrm{EAR}_{j_l}]/2},
+\label{eq:earrule}
+\end{equation}
+and select its classification threshold on the validation fold. For a
+reference method, $\Delta=\mathrm{PR\mbox{-}AUC}_{\mathrm{ours}}-
+\mathrm{PR\mbox{-}AUC}_{\mathrm{ref}}$ is non-inferior when the lower
+limit of its paired 95\% confidence interval exceeds $-\delta$, with
+$\delta=0.02$ specified before the final comparisons.
 
 \subsection{Deployment}
 The encoder and both heads are compiled to ONNX, together $335$~KB. No
@@ -289,18 +332,33 @@ combines 38 subjects from the 2020 acquisition and 20 subjects added in
 with several people in frame and, whenever the primary subject was not
 resolved, a neighbouring person was cropped instead --- affecting 31\%
 of that subject's events. The remaining 57 subjects yield 27{,}758
-events (13{,}820 blink, 13{,}938 no-blink) and 532{,}109 crops. An event
-is a fixed 19-frame window.
+events (13{,}820 blink, 13{,}938 no-blink). The extraction pipeline
+stores 532{,}109 unique cropped frames; overlapping events reuse these
+frames. Each event is a fixed 19-frame window, and events with more than
+five unresolved frames are excluded.
 
 \subsection{Protocol}
 We use subject-disjoint five-fold cross-validation, stratified jointly
-by event count and acquisition batch, with three seeds (15 runs).
-Thresholds are selected on validation folds and results are reported on
-held-out test folds. All methods share one implementation of the folds,
-seeds, threshold grid and bootstrap. As an independent check that the
-runs are otherwise identical, the configurations differ only in the
-frontend and output paths, and the two EAR baselines --- which do not
-depend on the frontend --- are bit-identical across the three runs.
+by event count and acquisition batch, with three training seeds (15
+runs). For rotation $i$, fold $i$ is held out for testing, fold
+$(i+1)\bmod 5$ is used for validation, and the remaining folds are used
+for training. A threshold is selected only on the validation fold by
+maximizing accuracy over all unique score values and their midpoints;
+the selected threshold is then applied unchanged to the test fold. All
+methods share the folds, seeds, threshold-selection code, and bootstrap
+implementation. The two EAR baselines have no stochastic frontend and
+are consequently bit-identical across seeds.
+
+\subsection{Training}
+All learned methods use binary cross-entropy with logits and Adam
+($10^{-3}$), a batch size of 32, at most 80 epochs, and early stopping
+with patience 10 on validation PR-AUC. The random seeds are $0,1,2$;
+deterministic settings were enabled for every run. The Image-CNN
+control is adapted from the mEBAL architecture \cite{daza2020} to our
+$64\times160$ grayscale two-eye crop and event labels. This adaptation
+is explicit: the original method used per-frame open/closed labels,
+whereas its max-pooling variant here is trained by multiple-instance
+learning on event labels.
 
 \subsection{Baselines}
 Five methods are compared. \emph{EAR-rule} thresholds the relative EAR
@@ -326,21 +384,27 @@ is thus trained under multiple-instance supervision and its performance
 here may underestimate the original method.
 
 \subsection{Metrics}
-The primary metric is PR-AUC, with ROC-AUC, accuracy, precision, recall
-and $F_1$ reported alongside. Comparisons use the paired
-subject-clustered bootstrap of the difference, with a non-inferiority
-margin $\delta = 0.02$ fixed before the comparisons were run. Cost is
-reported as parameters, model size, multiply--accumulate operations per
-frame, per-stage latency, end-to-end latency percentiles, sustained
-frame rate, peak resident memory and CPU utilization.
+The primary metric is PR-AUC, with blink as the positive class;
+ROC-AUC, accuracy, precision, recall, and $F_1$ are reported alongside.
+PR-AUC and ROC-AUC in Table~\ref{table_main} are mean $\pm$ standard
+deviation over the 15 runs; the thresholded metrics are 15-run means.
+For each paired comparison, we concatenate the held-out predictions
+from the three seeds, resample the 57 subjects with replacement, and
+recompute the PR-AUC difference for 2,000 resamples. We report the 2.5th
+and 97.5th percentiles. The margin $\delta=0.02$ was specified before
+the final comparisons. Cost is reported as parameters, model size,
+multiply--accumulate operations per frame, per-stage latency,
+end-to-end latency percentiles, sustained frame rate, peak resident
+memory, and CPU utilization.
 
 \subsection{Edge Platform}
 Measurements are taken on a Raspberry Pi~5 (16~GB, active cooling)
 running Debian~13 and Python~3.11, with ONNX Runtime restricted to two
-intra-op threads and spinning disabled, and the landmark model without
-attention refinement. The CPU governor is set to \texttt{performance}
-and each mode is measured over 300~s of sustained $640\times480$
-playback at 30~fps.
+intra-op threads and spinning disabled. The latency frontend uses
+MediaPipe FaceMesh with one face and \texttt{refine\_landmarks=False};
+the accuracy experiments use the meshes distributed with mEBAL2. The
+CPU governor is set to \texttt{performance}, and each mode is measured
+over 300~s of sustained $640\times480$ playback at 30~fps.
 
 % =====================================================================
 \section{Results and Discussion}
@@ -353,7 +417,8 @@ playback at 30~fps.
 \begin{table*}[!t]
 \caption{Blink Detection Performance and Static Cost.
 Subject-Disjoint 5-Fold $\times$ 3 Seeds, 57 Subjects, 27{,}758 Events.
-Mean $\pm$ Standard Deviation over Folds.}
+PR-AUC and ROC-AUC: Mean $\pm$ Standard Deviation over 15 Runs;
+Other Metrics: 15-Run Means.}
 \label{table_main}
 \centering
 \renewcommand{\arraystretch}{1.25}
@@ -378,7 +443,9 @@ Image-CNN (max) aggregates per-frame scores by their maximum, following
 \cite{daza2020}; that model was trained there with per-frame
 open/closed labels, whereas our protocol supplies one label per
 19-frame window, so its performance here may be an underestimate of the
-original method. Bold marks the best value in each column.}
+original method. Bold marks the highest value in each detection-metric
+column. For MMAC and Params, bold marks the lowest value among learned
+models; the EAR rule has no learned parameters.}
 \end{table*}
 
 \subsection{Detection Accuracy}
@@ -387,26 +454,23 @@ the table is not ours: the image-based backbone with our temporal head
 reaches $0.9906 \pm 0.0037$ against our $0.9886 \pm 0.0038$. Our claim
 is about cost, not accuracy. The paired subject-clustered difference
 between the two is $-0.0040$ with a 95\% CI of $[-0.0063,-0.0020]$,
-which clears the pre-registered margin $\delta = 0.02$ by a wide
-factor; on the same folds the proposed model uses $5.7\times$ fewer
+which satisfies the prespecified non-inferiority margin
+$\delta = 0.02$; on the same folds the proposed model uses $5.7\times$ fewer
 parameters ($84{,}049$ against $476{,}161$) and $2.6\times$ fewer
 multiply--accumulate operations per frame.
 
-We report two estimators of that difference, because they answer
-different questions. The subject-clustered bootstrap asks what would
-happen with a different sample of 57 subjects and excludes zero. The
-run-mean over folds and seeds asks what would happen on retraining, and
-gives $-0.0019 \pm 0.0024$ against a within-fold seed standard deviation
-of $0.0031$. In other words, the gap is stable under subject
-resampling, yet of the same magnitude as ordinary training variation,
-and on either estimator it is far inside $\delta$.
+We report two summaries of that difference because they answer different
+questions. The subject-clustered bootstrap describes variation under
+resampling of the 57 subjects. The 15-run mean difference is
+$-0.0019\pm0.0024$. Both summaries place the observed difference within
+the prespecified margin.
 
 The comparison against the literature aggregation must be read
 carefully. Our model is $+0.0766$ above Image-CNN (max), CI
 $[+0.0556,+0.0986]$ --- but attaching our temporal head to that same
-backbone yields $+0.0806$, CI $[+0.0592,+0.1028]$. The gap is therefore
-attributable to temporal modelling, not to the representation, and the
-first number should never be quoted alone. The same pattern separates
+backbone yields $+0.0806$, CI $[+0.0592,+0.1028]$. This pattern is
+consistent with temporal modelling accounting for much of the difference
+from Image-CNN (max), rather than the representation alone. The same pattern separates
 the two EAR variants. Against the stronger EAR baseline our model is
 $+0.0151$, CI $[+0.0106,+0.0203]$; all 15 runs were compared against
 that stronger variant.
@@ -422,7 +486,7 @@ that stronger variant.
 \caption{Paired subject-clustered bootstrap difference in PR-AUC
 (ours $-$ EAR + temporal head) by acquisition batch and eyewear, with
 95\% confidence intervals; event-weighted pooling, 2{,}000 resamples.
-The dashed line marks the pre-registered non-inferiority margin.}
+The dashed line marks the prespecified non-inferiority margin.}
 \label{fig_subgroups}
 \end{figure}
 
@@ -437,13 +501,10 @@ the non-inferiority margin. Stratifying instead by photometric terciles
 of brightness, contrast and sharpness gives nine groups, all of which
 favour the proposed model.
 
-The estimator used here was specified in advance: subgroup numbers are
-event-weighted rather than subject-averaged, because a subject-average
-over-weights small contributors --- one subject accounts for 1.1\% of
-the events in the glasses group but 5.9\% of a subject-average. We note
-this because an earlier subject-averaged reading of the glasses group
-gave a near-zero effect, and the change of reading was prescribed
-before the result, not after it.
+Subgroup estimates pool events rather than average subject-level PR-AUCs,
+because the latter gives every subject equal weight despite unequal event
+counts. For example, one subject supplies 1.1\% of the glasses-group
+events but 5.9\% of an unweighted subject average.
 
 \subsection{Model Complexity and Edge Performance}
 \label{sec_edge}
@@ -473,7 +534,7 @@ Image-CNN (+head)   & 0.67 & 2.05 & 0.31 & 3.03 & 13.10\\
 Stages shared by all four modes, measured in the same runs: frame read
 $1.00$--$1.02$~ms and landmark detection $8.32$--$8.46$~ms. That
 detection is constant across modes is direct evidence that the four
-methods share one frontend. End-to-end p50 is
+latency modes share one frontend. End-to-end p50 is
 $9.56 / 11.27 / 12.26 / 12.51$~ms and sustained throughput
 $104.2 / 88.5 / 81.3 / 79.7$~FPS in table order; peak resident memory is
 $184$--$208$~MB, CPU utilization $140$--$146\%$ of 400\%, temperature
@@ -487,34 +548,28 @@ Table~\ref{table_main}.}
 At the representation stage the proposed encoder costs $0.86$~ms per
 frame against $2.04$~ms for the image-based backbone, a $2.4\times$
 reduction that closely matches the $2.6\times$ ratio in operation
-counts --- the static prediction is confirmed on the device. Taking the
+counts, which is consistent with the device measurement. Taking the
 method-specific stages together (crop, encode, decide) the ratio is
 $1.7\times$.
 
-End to end, however, the difference is only 11\%: $11.27$~ms against
-$12.51$~ms at the median. The reason is visible in the shared stages:
-landmark detection alone accounts for 68--87\% of the pipeline
-depending on the mode. On this class of hardware the representation
-encoder is not the bottleneck; the detection frontend is. All four
-modes satisfy the real-time budget with room to spare, with 99th
-percentile end-to-end latency at 30--39\% of the $33.3$~ms frame
-period. We regard the small share of the encoder as a result rather
-than a weakness: the price of learning the representation is small
-enough to be absorbed by a cost every method already pays. It also
-follows that the $3.6\times$ operation saving available from the
-cheaper \emph{vdrop} encoder would move end-to-end latency by roughly
-3\%, which is why we did not adopt it.
+End to end, the proposed system has a median latency of $11.27$~ms
+against $12.51$~ms for Image-CNN (+head); equivalently, that control is
+11\% slower than the proposed system. The shared landmark stage accounts
+for approximately 68--87\% of end-to-end latency, depending on the
+mode. Thus, under these measurement conditions, the landmark frontend
+dominates the remaining latency. All four modes satisfy the 30-FPS
+budget, with 99th-percentile end-to-end latency at 30--39\% of the
+$33.3$~ms frame period.
 
 \subsection{Discussion and Limitations}
-Aggregating per-frame scores by their maximum, without a learned
-temporal model, was markedly seed-sensitive: a seed standard deviation
-of $0.0291$ against $0.0038$ for the proposed model. We report this
-without pressing it as a claim, since $n=15$ and we did not isolate the
-cause.
+Across the 15 fold--seed runs, Image-CNN (max) has a PR-AUC standard
+deviation of $0.0291$, compared with $0.0038$ for the proposed model.
+This descriptive difference combines fold and seed variation, and its
+cause was not isolated.
 
 Several limits are worth stating plainly. The advantage over the EAR
 baseline is smaller for subjects wearing glasses than for those without,
-and we did not determine why. One subject transfers poorly: PR-AUC
+and we did not determine why. One held-out subject performs poorly: PR-AUC
 $0.8200$ against $0.9802$ for the EAR baseline, with 33 of 36 errors
 being missed blinks and a train--test gap of $0.1798$ against a median
 of $0.0063$ across subjects; seat contamination, crop geometry, missing
@@ -534,11 +589,11 @@ the scope of this letter.
 We detect blink events on 16-dimensional embeddings rather than on raw
 eye images, and compared the approach against EAR-based and image-based
 methods under one protocol on 57 subjects. The proposed model is
-non-inferior to the strongest image-based control at a margin fixed in
-advance while using $5.7\times$ fewer parameters and $2.6\times$ fewer
-operations, and runs in real time on a Raspberry Pi~5. Per-stage
-measurement shows that the remaining constraint at the edge is the
-landmark detection frontend rather than the representation encoder.
+non-inferior to the strongest image-based control at a prespecified
+margin while using $5.7\times$ fewer parameters and $2.6\times$ fewer
+operations, and runs in real time on a Raspberry Pi~5. Under the tested
+configuration, the landmark detection frontend accounts for most of the
+remaining end-to-end latency.
 Future work should evaluate robustness on data with labelled
 illumination, pose and distance conditions.
 
@@ -589,7 +644,7 @@ no.~10, art.~196, 2023.
 \bibitem{nousias2025}
 G.~Nousias, K.~K. Delibasis, and G.~Labiris, ``Blink detection using 3D
 convolutional neural architectures and analysis of accumulated frame
-predictions,'' \emph{J. Imaging}, vol.~11, no.~2, art.~27, 2025.
+predictions,'' \emph{J. Imaging}, vol.~11, no.~1, art.~27, 2025.
 
 \bibitem{arcaya2021}
 A.~Arcaya~Jordan, A.~Pegatoquet, A.~Castagnetti, J.~Raybaut, and
@@ -597,9 +652,10 @@ P.~Le~Coz, ``Deep learning for eye blink detection implemented at the
 edge,'' \emph{IEEE Embed. Syst. Lett.}, vol.~13, no.~3, pp.~130--133, 2021.
 
 \bibitem{capacitive2024}
-% ⚠️ 서지사항 미확인. Frontiers in Computer Science, 2024.
+M.~Liu, S.~Bian, Z.~Zhao, B.~Zhou, and P.~Lukowicz,
 ``Energy-efficient, low-latency, and non-contact eye blink detection with
-capacitive sensing,'' \emph{Front. Comput. Sci.}, 2024.
+capacitive sensing,'' \emph{Front. Comput. Sci.}, vol.~6,
+art.~1394397, 2024, doi: 10.3389/fcomp.2024.1394397.
 
 \end{thebibliography}
 

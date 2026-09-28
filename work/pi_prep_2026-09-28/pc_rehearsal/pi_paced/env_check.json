@@ -1,0 +1,56 @@
+{
+ "created": "2026-09-28T11:11:53.026010+09:00",
+ "machine": "AMD64",
+ "platform": "Windows-11-10.0.26200-SP0",
+ "versions": {
+  "python": "3.12.14",
+  "executable": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\.venv-nonpi\\Scripts\\python.exe",
+  "numpy": "1.26.4",
+  "onnxruntime": "1.30.0",
+  "cv2": "4.11.0",
+  "mediapipe": "0.10.18",
+  "psutil": "unavailable: ModuleNotFoundError"
+ },
+ "snapshot": {
+  "temp_c": null,
+  "throttled": {
+   "raw": null,
+   "now": [],
+   "sticky": []
+  },
+  "arm_hz": null,
+  "governors": {},
+  "fan": {
+   "rpm": null,
+   "pwm": null
+  },
+  "model": null,
+  "cmdline_has_vcgencmd": false
+ },
+ "os_release": null,
+ "kernel_cmdline": null,
+ "vcgencmd_version": null,
+ "config_arm_freq": null,
+ "pmic_audit": [
+  {
+   "raw": null
+  },
+  {
+   "raw": null
+  },
+  {
+   "raw": null
+  }
+ ],
+ "version_differences_from_requirements_pi": {
+  "onnxruntime": "1.30.0"
+ },
+ "problems": [
+  "not a Pi (aarch64 + vcgencmd)",
+  "governor: {}",
+  "throttled=None",
+  "pmic sample 0: no output",
+  "pmic sample 1: no output",
+  "pmic sample 2: no output"
+ ]
+}

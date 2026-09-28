@@ -1,0 +1,140 @@
+{
+ "session_id": "PC_DRYRUN_secondary",
+ "set": "secondary",
+ "exploratory": true,
+ "overrides": [
+  "warmup_s=3.0",
+  "settle_s=1.0",
+  "idle_pre_s=3.0",
+  "active_s=20.0",
+  "idle_post_s=2.0",
+  "repeats=1",
+  "cooldown_min_s=0",
+  "reference_idle_s=2",
+  "cooldown_max_extra_s=0"
+ ],
+ "protocol": "work\\pi_prep_2026-09-28\\protocol\\pi5_paced30_v1.json",
+ "protocol_sha256": "d571ede77999aa318c901fdc40d30641c9a14b779bbaf4ef5dffb80879c58522",
+ "protocol_id": "pi5_paced30_v1",
+ "run_config": {
+  "fps": 30.0,
+  "pacing": "drop",
+  "budget_ms": 33.333333333333336,
+  "warmup_s": 3.0,
+  "settle_s": 1.0,
+  "idle_pre_s": 3.0,
+  "active_s": 20.0,
+  "idle_post_s": 2.0,
+  "power_hz": 7.5,
+  "thermal_hz": 1.0,
+  "intra_threads": 2,
+  "no_spin": true,
+  "refine_landmarks": false,
+  "head_stride": 1
+ },
+ "session_config": {
+  "repeats": 1,
+  "order": "blocked randomisation: each block runs every mode of the set once in a seeded random permutation",
+  "order_seed": 20260928,
+  "reference_idle_s": 2,
+  "cooldown_min_s": 0,
+  "cooldown_temp_margin_c": 3.0,
+  "cooldown_max_extra_s": 0,
+  "process_per_run": "fresh Python process per run (models loaded inside the run, before warmup)"
+ },
+ "clip": "data/_legacy_public/eyeblink8/eyeblink8/9/27122013_152435_cam.avi",
+ "created": "2026-09-28T11:02:00.828414+09:00",
+ "preflight": {
+  "platform": {
+   "temp_c": null,
+   "throttled": {
+    "raw": null,
+    "now": [],
+    "sticky": []
+   },
+   "arm_hz": null,
+   "governors": {},
+   "fan": {
+    "rpm": null,
+    "pwm": null
+   },
+   "model": null,
+   "cmdline_has_vcgencmd": false
+  },
+  "clip_sha256": "d895e84ad08b3a647bad25b6c696448e2e8305a5cd37968d7075b2cee2e38e0a",
+  "decode": {
+   "frames": 5134,
+   "shape": [
+    480,
+    640,
+    3
+   ],
+   "decoded_sha256": "4ee08e3fad21d84090e41d245ba1d214013b6a27776b8743fe40cd158ce6199e",
+   "fps_meta": 30.0,
+   "opencv": "4.11.0",
+   "matches_pc_reference": true
+  },
+  "problems": [
+   "not a Raspberry Pi (aarch64 + vcgencmd)",
+   "governor not performance: {}",
+   "throttled=None [] (reboot / fix power & cooling)"
+  ]
+ },
+ "plan": [
+  {
+   "block": 1,
+   "order_index": 0,
+   "mode": "ours_vpres",
+   "run_id": "S_b01_ours_vpres"
+  },
+  {
+   "block": 1,
+   "order_index": 1,
+   "mode": "vdrop",
+   "run_id": "S_b01_vdrop"
+  },
+  {
+   "block": 1,
+   "order_index": 2,
+   "mode": "gap",
+   "run_id": "S_b01_gap"
+  },
+  {
+   "block": 2,
+   "order_index": 3,
+   "mode": "vdrop",
+   "run_id": "S_b02_vdrop"
+  },
+  {
+   "block": 2,
+   "order_index": 4,
+   "mode": "ours_vpres",
+   "run_id": "S_b02_ours_vpres"
+  },
+  {
+   "block": 2,
+   "order_index": 5,
+   "mode": "gap",
+   "run_id": "S_b02_gap"
+  },
+  {
+   "block": 3,
+   "order_index": 6,
+   "mode": "vdrop",
+   "run_id": "S_b03_vdrop"
+  },
+  {
+   "block": 3,
+   "order_index": 7,
+   "mode": "gap",
+   "run_id": "S_b03_gap"
+  },
+  {
+   "block": 3,
+   "order_index": 8,
+   "mode": "ours_vpres",
+   "run_id": "S_b03_ours_vpres"
+  }
+ ],
+ "reference_temp_c": null
+}

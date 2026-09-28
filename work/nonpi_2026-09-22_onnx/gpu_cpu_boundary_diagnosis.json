@@ -1,0 +1,86 @@
+{
+  "cases": [
+    {
+      "variant": "vdrop",
+      "fold": 0,
+      "seed": 0,
+      "event": 26522,
+      "label": 1,
+      "threshold": -1.6452163457870483,
+      "gpu": -1.6441410779953003,
+      "cpu": -1.6453349590301514,
+      "gpu_margin": 0.0010752677917480469,
+      "cpu_margin": -0.00011861324310302734,
+      "onnx_probability": 0.16174066066741943,
+      "probability_threshold": 0.16175652267552293,
+      "replayed_original_batch_gpu_logits": {
+        "True": -1.6441410779953003,
+        "False": -1.6453301906585693
+      },
+      "replay_tf32_on_minus_saved": 0.0,
+      "replay_tf32_off_minus_cpu": 4.76837158203125e-06
+    },
+    {
+      "variant": "vdrop",
+      "fold": 3,
+      "seed": 1,
+      "event": 19828,
+      "label": 0,
+      "threshold": -2.141387462615967,
+      "gpu": -2.1391029357910156,
+      "cpu": -2.142385482788086,
+      "gpu_margin": 0.002284526824951172,
+      "cpu_margin": -0.0009980201721191406,
+      "onnx_probability": 0.10504478216171265,
+      "probability_threshold": 0.1051387791001097,
+      "replayed_original_batch_gpu_logits": {
+        "True": -2.1391029357910156,
+        "False": -2.1423795223236084
+      },
+      "replay_tf32_on_minus_saved": 0.0,
+      "replay_tf32_off_minus_cpu": 5.9604644775390625e-06
+    },
+    {
+      "variant": "gap",
+      "fold": 3,
+      "seed": 2,
+      "event": 24448,
+      "label": 1,
+      "threshold": -0.32871127128601074,
+      "gpu": -0.3292241096496582,
+      "cpu": -0.32622575759887695,
+      "gpu_margin": -0.0005128383636474609,
+      "cpu_margin": 0.002485513687133789,
+      "onnx_probability": 0.41916000843048096,
+      "probability_threshold": 0.41855422370556383,
+      "replayed_original_batch_gpu_logits": {
+        "True": -0.3292241096496582,
+        "False": -0.3262200355529785
+      },
+      "replay_tf32_on_minus_saved": 0.0,
+      "replay_tf32_off_minus_cpu": 5.7220458984375e-06
+    },
+    {
+      "variant": "vdrop",
+      "fold": 4,
+      "seed": 2,
+      "event": 18198,
+      "label": 1,
+      "threshold": -4.051202297210693,
+      "gpu": -4.051965713500977,
+      "cpu": -4.050936222076416,
+      "gpu_margin": -0.0007634162902832031,
+      "cpu_margin": 0.00026607513427734375,
+      "onnx_probability": 0.017108261585235596,
+      "probability_threshold": 0.017103809434494993,
+      "replayed_original_batch_gpu_logits": {
+        "True": -4.051965713500977,
+        "False": -4.050940036773682
+      },
+      "replay_tf32_on_minus_saved": 0.0,
+      "replay_tf32_off_minus_cpu": -3.814697265625e-06
+    }
+  ],
+  "scope": "Four selected boundary cases only. TF32 on/off inference diagnostic, no training or threshold change.",
+  "caution": "Historical training metadata did not explicitly store TF32 flags; matched replay is evidence, not a complete historical runtime proof."
+}

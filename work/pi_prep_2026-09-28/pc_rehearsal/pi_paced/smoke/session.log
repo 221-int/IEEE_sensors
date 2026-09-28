@@ -1,0 +1,17 @@
+2026-09-28T11:12:24.092438+09:00 session SMOKE set=primary exploratory=True protocol=protocol.json
+2026-09-28T11:12:28.009814+09:00 PREFLIGHT: not a Raspberry Pi (aarch64 + vcgencmd)
+2026-09-28T11:12:28.009814+09:00 PREFLIGHT: governor not performance: {}
+2026-09-28T11:12:28.009814+09:00 PREFLIGHT: throttled=None [] (reboot / fix power & cooling)
+2026-09-28T11:12:28.011816+09:00 reference idle 10s for session temperature
+2026-09-28T11:12:38.044809+09:00 reference temp None
+2026-09-28T11:12:38.044809+09:00 run P_b01_ours_vpres (block 1, #0): C:\Users\sch\PycharmProjects\IEEE_sensors\.venv-nonpi\Scripts\python.exe -m src.v2.deploy.run_paced --mode ours_vpres --bundle-root bundle --bundle-verification bundle\pi_model_verification.json --equivalence-gate results\v2\check_equivalence.json --source clips/eyeblink8_v9_cam.avi --expected-clip-sha256 d895e84ad08b3a647bad25b6c696448e2e8305a5cd37968d7075b2cee2e38e0a --expected-clip-frames 5134 --protocol protocol.json --protocol-set primary --out-dir results\pi_paced\SMOKE --run-id P_b01_ours_vpres --session-id SMOKE --block 1 --order-index 0 --fps 30.0 --pacing drop --budget-ms 33.333333333333336 --warmup-s 5.0 --settle-s 2.0 --idle-pre-s 15.0 --active-s 30.0 --idle-post-s 10.0 --power-hz 7.5 --thermal-hz 1.0 --intra-threads 2 --no-spin
+2026-09-28T11:13:42.458420+09:00 run P_b01_ours_vpres exit 0
+2026-09-28T11:13:42.458420+09:00 cooldown: minimum 30s
+2026-09-28T11:14:12.462616+09:00 cooldown done: {'waited_s': 30.0, 'target_c': None, 'temp_at_start_c': None, 'target_met': True}
+2026-09-28T11:14:12.462616+09:00 run P_b01_image_cnn_head (block 1, #1): C:\Users\sch\PycharmProjects\IEEE_sensors\.venv-nonpi\Scripts\python.exe -m src.v2.deploy.run_paced --mode image_cnn_head --bundle-root bundle --bundle-verification bundle\pi_model_verification.json --equivalence-gate results\v2\check_equivalence.json --source clips/eyeblink8_v9_cam.avi --expected-clip-sha256 d895e84ad08b3a647bad25b6c696448e2e8305a5cd37968d7075b2cee2e38e0a --expected-clip-frames 5134 --protocol protocol.json --protocol-set primary --out-dir results\pi_paced\SMOKE --run-id P_b01_image_cnn_head --session-id SMOKE --block 1 --order-index 1 --fps 30.0 --pacing drop --budget-ms 33.333333333333336 --warmup-s 5.0 --settle-s 2.0 --idle-pre-s 15.0 --active-s 30.0 --idle-post-s 10.0 --power-hz 7.5 --thermal-hz 1.0 --intra-threads 2 --no-spin
+2026-09-28T11:15:16.982217+09:00 run P_b01_image_cnn_head exit 0
+2026-09-28T11:15:16.982217+09:00 cooldown: minimum 30s
+2026-09-28T11:15:46.985628+09:00 cooldown done: {'waited_s': 30.0, 'target_c': None, 'temp_at_start_c': None, 'target_met': True}
+2026-09-28T11:15:46.985628+09:00 run P_b01_ear_rule (block 1, #2): C:\Users\sch\PycharmProjects\IEEE_sensors\.venv-nonpi\Scripts\python.exe -m src.v2.deploy.run_paced --mode ear_rule --bundle-root bundle --bundle-verification bundle\pi_model_verification.json --equivalence-gate results\v2\check_equivalence.json --source clips/eyeblink8_v9_cam.avi --expected-clip-sha256 d895e84ad08b3a647bad25b6c696448e2e8305a5cd37968d7075b2cee2e38e0a --expected-clip-frames 5134 --protocol protocol.json --protocol-set primary --out-dir results\pi_paced\SMOKE --run-id P_b01_ear_rule --session-id SMOKE --block 1 --order-index 2 --fps 30.0 --pacing drop --budget-ms 33.333333333333336 --warmup-s 5.0 --settle-s 2.0 --idle-pre-s 15.0 --active-s 30.0 --idle-post-s 10.0 --power-hz 7.5 --thermal-hz 1.0 --intra-threads 2 --no-spin
+2026-09-28T11:16:51.388508+09:00 run P_b01_ear_rule exit 0
+2026-09-28T11:16:51.413605+09:00 summary: reportable 0, excluded 3

@@ -1,0 +1,289 @@
+{
+  "comparisons": {
+    "vpres_minus_image_head": {
+      "pooled": {
+        "point": -0.0035474235407910726,
+        "ci_lo": -0.0064874104502755155,
+        "ci_hi": -0.0013820237027200326,
+        "std": 0.0012979136052773844,
+        "n_boot": 2000,
+        "n_subjects": 57,
+        "alpha": 0.05
+      },
+      "subject_macro": {
+        "point": -0.004472582884442527,
+        "ci_lo": -0.00837884624986773,
+        "ci_hi": -0.0017262330806562566,
+        "std": 0.0017632255450519088,
+        "n_boot": 2000,
+        "n_subjects": 57,
+        "alpha": 0.05
+      },
+      "noninferiority": [
+        {
+          "delta": 0.02,
+          "verdict": "non_inferior"
+        },
+        {
+          "delta": 0.01,
+          "verdict": "non_inferior"
+        },
+        {
+          "delta": 0.005,
+          "verdict": "inconclusive"
+        }
+      ]
+    },
+    "vpres_minus_gap": {
+      "pooled": {
+        "point": 0.00564812252403768,
+        "ci_lo": -0.0009388880086634993,
+        "ci_hi": 0.014907919383818502,
+        "std": 0.004120639555253479,
+        "n_boot": 2000,
+        "n_subjects": 57,
+        "alpha": 0.05
+      },
+      "subject_macro": {
+        "point": 0.0004765523692960829,
+        "ci_lo": -0.006684220258238858,
+        "ci_hi": 0.007340821908986245,
+        "std": 0.003657252074187996,
+        "n_boot": 2000,
+        "n_subjects": 57,
+        "alpha": 0.05
+      },
+      "noninferiority": [
+        {
+          "delta": 0.02,
+          "verdict": "non_inferior"
+        },
+        {
+          "delta": 0.01,
+          "verdict": "non_inferior"
+        },
+        {
+          "delta": 0.005,
+          "verdict": "non_inferior"
+        }
+      ]
+    },
+    "vdrop_minus_vpres": {
+      "pooled": {
+        "point": -0.0017186622922655825,
+        "ci_lo": -0.003903645247573173,
+        "ci_hi": 0.00017644183058829327,
+        "std": 0.001017312528448492,
+        "n_boot": 2000,
+        "n_subjects": 57,
+        "alpha": 0.05
+      },
+      "subject_macro": {
+        "point": -0.0008492762113411726,
+        "ci_lo": -0.0029003427802628493,
+        "ci_hi": 0.0010789574580152249,
+        "std": 0.0010055222003979983,
+        "n_boot": 2000,
+        "n_subjects": 57,
+        "alpha": 0.05
+      },
+      "noninferiority": [
+        {
+          "delta": 0.02,
+          "verdict": "non_inferior"
+        },
+        {
+          "delta": 0.01,
+          "verdict": "non_inferior"
+        },
+        {
+          "delta": 0.005,
+          "verdict": "non_inferior"
+        }
+      ]
+    },
+    "vdrop_minus_gap": {
+      "pooled": {
+        "point": 0.003929460231772097,
+        "ci_lo": -0.003206598954330128,
+        "ci_hi": 0.013395306424833229,
+        "std": 0.004207123619076112,
+        "n_boot": 2000,
+        "n_subjects": 57,
+        "alpha": 0.05
+      },
+      "subject_macro": {
+        "point": -0.0003727238420450893,
+        "ci_lo": -0.008015927230188735,
+        "ci_hi": 0.007232549367697471,
+        "std": 0.003963292685578626,
+        "n_boot": 2000,
+        "n_subjects": 57,
+        "alpha": 0.05
+      },
+      "noninferiority": [
+        {
+          "delta": 0.02,
+          "verdict": "non_inferior"
+        },
+        {
+          "delta": 0.01,
+          "verdict": "non_inferior"
+        },
+        {
+          "delta": 0.005,
+          "verdict": "non_inferior"
+        }
+      ]
+    },
+    "vdrop_minus_image_head": {
+      "pooled": {
+        "point": -0.005266085833056655,
+        "ci_lo": -0.008907951877686079,
+        "ci_hi": -0.002359334485393654,
+        "std": 0.0017094662769432715,
+        "n_boot": 2000,
+        "n_subjects": 57,
+        "alpha": 0.05
+      },
+      "subject_macro": {
+        "point": -0.005321859095783699,
+        "ci_lo": -0.01034527978764521,
+        "ci_hi": -0.0019287927956155376,
+        "std": 0.0021792802940011438,
+        "n_boot": 2000,
+        "n_subjects": 57,
+        "alpha": 0.05
+      },
+      "noninferiority": [
+        {
+          "delta": 0.02,
+          "verdict": "non_inferior"
+        },
+        {
+          "delta": 0.01,
+          "verdict": "non_inferior"
+        },
+        {
+          "delta": 0.005,
+          "verdict": "inconclusive"
+        }
+      ]
+    }
+  },
+  "metrics": {
+    "vpres": {
+      "pr_auc": {
+        "mean": 0.9882273018230477,
+        "sd": 0.005699086573204113
+      },
+      "recall": {
+        "mean": 0.9543544432995464,
+        "sd": 0.034543228223097196
+      },
+      "precision": {
+        "mean": 0.9658063008047395,
+        "sd": 0.016636253705517346
+      },
+      "f1": {
+        "mean": 0.9597209099733871,
+        "sd": 0.020834822856112704
+      },
+      "accuracy": {
+        "mean": 0.9603424292424311,
+        "sd": 0.019880725932902236
+      }
+    },
+    "image_head": {
+      "pr_auc": {
+        "mean": 0.9904938042697079,
+        "sd": 0.004194176729100412
+      },
+      "recall": {
+        "mean": 0.9633792912249852,
+        "sd": 0.028585403498578934
+      },
+      "precision": {
+        "mean": 0.9722251906197156,
+        "sd": 0.009949552726275415
+      },
+      "f1": {
+        "mean": 0.9676530698210114,
+        "sd": 0.018317610303485606
+      },
+      "accuracy": {
+        "mean": 0.9680974918270364,
+        "sd": 0.01769898795777673
+      }
+    },
+    "vdrop": {
+      "pr_auc": {
+        "mean": 0.9863514507331927,
+        "sd": 0.006968819501753776
+      },
+      "recall": {
+        "mean": 0.9463682211554766,
+        "sd": 0.039333289854146726
+      },
+      "precision": {
+        "mean": 0.9600818068253502,
+        "sd": 0.017302667129208537
+      },
+      "f1": {
+        "mean": 0.9528085017022735,
+        "sd": 0.024005263124927546
+      },
+      "accuracy": {
+        "mean": 0.9536313994431496,
+        "sd": 0.022962895711347818
+      }
+    },
+    "gap": {
+      "pr_auc": {
+        "mean": 0.9826209481145247,
+        "sd": 0.01512189006388704
+      },
+      "recall": {
+        "mean": 0.9159077088241073,
+        "sd": 0.08389943595166671
+      },
+      "precision": {
+        "mean": 0.9512938944147493,
+        "sd": 0.023664944579405583
+      },
+      "f1": {
+        "mean": 0.9313267624705373,
+        "sd": 0.04728283441302623
+      },
+      "accuracy": {
+        "mean": 0.9345864260895208,
+        "sd": 0.04164366950626979
+      }
+    }
+  },
+  "costs": {
+    "vpres": {
+      "params": 84049,
+      "mmac": 12.489536
+    },
+    "vdrop": {
+      "params": 55377,
+      "mmac": 3.490624
+    },
+    "gap": {
+      "params": 37889,
+      "mmac": 31.414208
+    },
+    "image_head": {
+      "params": 476161,
+      "mmac": 31.85248
+    }
+  },
+  "convergence_warnings": [],
+  "limitations": [
+    "Exploratory architecture selection, not untouched confirmatory evaluation.",
+    "Bootstrap conditions on fixed trained models; correlated fits are not independent people.",
+    "All four candidates are fresh corrected runs in the same environment; old results are historical.",
+    "No new Pi latency or power measurements; external validation remains necessary."
+  ]
+}

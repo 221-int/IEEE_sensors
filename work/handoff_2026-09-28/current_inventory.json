@@ -1,0 +1,257 @@
+{
+  "checked_at": "2026-09-28T10:32:17.161316+09:00",
+  "project": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors",
+  "scope": "File existence and SHA256 checks only; no new training or Pi measurement.",
+  "files": {
+    "docs/CHANGELOG.md": {
+      "exists": true,
+      "bytes": 11447,
+      "sha256": "fb006058ed2d620225b166b6050c44cbebb3b2d84b2d3bd0b51b2bfd68399d44"
+    },
+    "docs/EXPERIMENT_PLAN.md": {
+      "exists": true,
+      "bytes": 22822,
+      "sha256": "456ab081551a1fd498c3b88251dcfee83514ad7cf8f94d65222d6ebbe9ead276"
+    },
+    "docs/PAPER_OUTLINE.md": {
+      "exists": true,
+      "bytes": 31684,
+      "sha256": "792d9512903b20a3772e89a443f8354b6f3b042a9d541eef0735cc8b95bc6b3f"
+    },
+    "docs/PATENT_AND_FUTURE_WORK.md": {
+      "exists": true,
+      "bytes": 21292,
+      "sha256": "21a3b1c908dc2a7241149d9d6645c79543e5aa27773bf7a0b4c084214249fdaf"
+    },
+    "docs/STATUS_2026-08-08.md": {
+      "exists": true,
+      "bytes": 8102,
+      "sha256": "8d74fb3738bdfb4a49957222c47376692d9568f4d0fbc8492e1ce3cfc1e79251"
+    },
+    "docs/v2/PROTOCOL.md": {
+      "exists": true,
+      "bytes": 71484,
+      "sha256": "6e9d406ec814d87fcd72076770a8939a9e7039ddbda02b0a1cad75312b4faa81"
+    },
+    "requirements-pi.txt": {
+      "exists": true,
+      "bytes": 1852,
+      "sha256": "7b2c0016bb73aa6f7e695f79d24efec7cfc64c6538213f7f0a9cbc7790549796"
+    },
+    "src/v2/dataset/crop.py": {
+      "exists": true,
+      "bytes": 11952,
+      "sha256": "d7a82feaa1cd636683434c11bbf1b2fe83e61d186e6ca3601e31906a7f6eb73d"
+    },
+    "src/v2/deploy/frontend.py": {
+      "exists": true,
+      "bytes": 5788,
+      "sha256": "d78041a5f35884ab4fd2f4a4eb09c0b462e0dfa18646865728d234114674e59c"
+    },
+    "src/v2/deploy/inference_policy.py": {
+      "exists": true,
+      "bytes": 3582,
+      "sha256": "2b7c4ff56a50596198e147687d1a5fc673ffb436d58ac530f648b05e3d6f3756"
+    },
+    "src/v2/deploy/pi_demo.py": {
+      "exists": true,
+      "bytes": 51913,
+      "sha256": "93985bed54beb04171bc6539bdd0d5a6c8a99f5f6c0003efff3ccb3cb20edb6b"
+    },
+    "src/v2/deploy/pmic_power.py": {
+      "exists": true,
+      "bytes": 7676,
+      "sha256": "f7c89aec7c5122e708d89588bdeb4648005d268819824506b056b699fe1cc3b6"
+    },
+    "src/v2/deploy/power_bench_runner.py": {
+      "exists": true,
+      "bytes": 6944,
+      "sha256": "086d68aeaf4ec2a8ad50dd445f96f352deb0d569efd4097a480c4838f0162c9d"
+    },
+    "src/v2/deploy/run_video.py": {
+      "exists": true,
+      "bytes": 19517,
+      "sha256": "69dcdaec2d7904164c63e7aee2efba18455e49890ecfcf24ed035a5143e0461f"
+    },
+    "src/v2/deploy/run_video_power.py": {
+      "exists": true,
+      "bytes": 23780,
+      "sha256": "ce314704b02fca920876f99d6d594f0aec179769feaa8038b6d463b075ab3886"
+    },
+    "src/v2/deploy/test_pi_demo_ui.py": {
+      "exists": true,
+      "bytes": 6966,
+      "sha256": "fae6c1d3459940722057cf966b3dbda715d1b96ef920cb9142fe35083dccf43f"
+    },
+    "src/v2/train_encoder.py": {
+      "exists": true,
+      "bytes": 27679,
+      "sha256": "020218841adfed7a111f1477eb563f230722512f3bccd7fe0ccd22555f27e867"
+    },
+    "work/nonpi_2026-09-18/CITATION_AUDIT.md": {
+      "exists": true,
+      "bytes": 4393,
+      "sha256": "68fb66157249245b2128ffa9cd076f1ce1ae4a872925a88615513d86f720dd36"
+    },
+    "work/nonpi_2026-09-18/FUTURE_RESEARCH.md": {
+      "exists": true,
+      "bytes": 2554,
+      "sha256": "9d23123281509720299d3f7d0b7237b41f01512eae85e4d5c98222a74145f83d"
+    },
+    "work/nonpi_2026-09-21/submission_audit/rnn_handoff_inventory.json": {
+      "exists": true,
+      "bytes": 1380,
+      "sha256": "b5fc6765eba22e1768b79e1f973197cf3e3cee8096eea3f485d2f74d2c2fdb04"
+    },
+    "work/nonpi_2026-09-21_maskfix/PROTOCOL.md": {
+      "exists": true,
+      "bytes": 3201,
+      "sha256": "6f98fa11344b9797d5910ccef98c4f9da9aade2b4a93530f4dc1817a34aa94d5"
+    },
+    "work/nonpi_2026-09-21_maskfix/RESULTS.md": {
+      "exists": true,
+      "bytes": 908,
+      "sha256": "be90da8f084f5c17db37aa9d61fada9dbeff966e49a5f402ddb475ce85134811"
+    },
+    "work/nonpi_2026-09-21_maskfix/post_train/status.json": {
+      "exists": true,
+      "bytes": 226,
+      "sha256": "06d0a58c6a5fcfcb1effc2dd010d22c009bfa3460cc1049450910a83ca7a2032"
+    },
+    "work/nonpi_2026-09-21_maskfix/results/comparison.json": {
+      "exists": true,
+      "bytes": 7275,
+      "sha256": "a7ab9fbaad199ec88fe1fbc9b7988fd6b8349776ee10c6131b653fb6270d3fdb"
+    },
+    "work/nonpi_2026-09-22_onnx/DELIVERY.md": {
+      "exists": true,
+      "bytes": 3984,
+      "sha256": "22b211b4d24510caeb9c04dde2cbbf42bc7e4dc055cda94ec67ab9e6d4ccfbc5"
+    },
+    "work/nonpi_2026-09-22_onnx/README.md": {
+      "exists": true,
+      "bytes": 6416,
+      "sha256": "9abe4efe0967d9d79083825e52c3ba5fecb3488bb72170d0cd4958e093db99df"
+    },
+    "work/nonpi_2026-09-22_onnx/delivery_status.json": {
+      "exists": true,
+      "bytes": 469,
+      "sha256": "7b672b883b205a665418ace00ea25a9a308e75924760f3ba8b7271a4757aacc5"
+    },
+    "work/nonpi_2026-09-22_onnx/entrypoint_verification.json": {
+      "exists": true,
+      "bytes": 624,
+      "sha256": "6c9097babf66ebd6b40f92c1d4fe6aabd6e70d33af6bf63c74dd3e794857116d"
+    },
+    "work/nonpi_2026-09-22_onnx/gpu_cpu_boundary_diagnosis.json": {
+      "exists": true,
+      "bytes": 2897,
+      "sha256": "491e10d5918e9720d297664a025e8a8906ef706d05f28e73cd0b89732ae23d5b"
+    },
+    "work/nonpi_2026-09-22_onnx/packages.json": {
+      "exists": true,
+      "bytes": 21969,
+      "sha256": "7639b93eedc7dfd528b1615a7a4ef23d6a6ccaed7807a2ece421d7423f37d170"
+    },
+    "work/nonpi_2026-09-22_onnx/preserved_before.json": {
+      "exists": true,
+      "bytes": 3755,
+      "sha256": "b83195c0be1b0f705568a1e57bca7bb4b527f0ef4ddeb1c316609210deabf0e8"
+    },
+    "work/nonpi_2026-09-22_onnx/verification.json": {
+      "exists": true,
+      "bytes": 5831,
+      "sha256": "3e3e95f0ec6962fcb75e454a63522b2dae939add08f47235e9ba665b6c9dcff6"
+    },
+    "work/nonpi_2026-09-22_review/REVIEW.md": {
+      "exists": true,
+      "bytes": 13148,
+      "sha256": "cb202c771a72075573208ea4e568d7e1a672713c5e355f07dfab76593c585e91"
+    },
+    "work/nonpi_2026-09-22_review/changes.patch": {
+      "exists": true,
+      "bytes": 28161,
+      "sha256": "f8aa52a08710264b9aa27b7e2f6b99449f91ec832122c82b35e2a4d4c0721df7"
+    },
+    "work/nonpi_2026-09-22_review/recrop_prediction_comparison.json": {
+      "exists": true,
+      "bytes": 101,
+      "sha256": "671f02a85b1803873f2e6336a426ff4606baa1d8f93263a8ac4db3e5db29e181"
+    },
+    "work/nonpi_2026-09-22_review/recrop_summary.json": {
+      "exists": true,
+      "bytes": 1781,
+      "sha256": "85f2e128b0dfca6995f5025a14eeadbd9f28524f76ca94de24af74b16d7142a5"
+    },
+    "work/nonpi_2026-09-22_review/result_review.json": {
+      "exists": true,
+      "bytes": 72175,
+      "sha256": "f5473233058f3eb1563bc0e4c87feba5db668a1fbb8b8090178f173e4f973092"
+    },
+    "work/nonpi_2026-09-22_review/run_mean_ci.json": {
+      "exists": true,
+      "bytes": 563,
+      "sha256": "e77eef64e6882ae9672413ad70ef6a762bd250e1119affc8e2aee7da33350e6b"
+    },
+    "work/nonpi_2026-09-22_review/verification.json": {
+      "exists": true,
+      "bytes": 3710,
+      "sha256": "79cbb0cc1af9635a6a0466046735ca4a7c838852467b6a38ead907753ca778df"
+    }
+  },
+  "source_matches_2026_09_22_review": {
+    "src\\v2\\dataset\\crop.py": true,
+    "src\\v2\\deploy\\pi_demo.py": true,
+    "src\\v2\\deploy\\run_video.py": true,
+    "src\\v2\\deploy\\run_video_power.py": true,
+    "src\\v2\\deploy\\test_pi_demo_ui.py": true,
+    "src\\v2\\train_encoder.py": true,
+    "src\\v2\\deploy\\inference_policy.py": true
+  },
+  "legacy_models_and_manuscripts_match_onnx_snapshot": {
+    "C:\\Users\\sch\\Downloads\\MCE_blink_detection.tex": true,
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\work\\nonpi_2026-09-18\\manuscript\\MCE_blink_detection.tex": true,
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\work\\nonpi_2026-09-18\\manuscript\\MCE_blink_detection.pdf": true,
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\output\\pdf\\MCE_blink_detection_nonpi_review.pdf": true,
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\onnx\\encoder.onnx": true,
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\onnx\\head.onnx": true,
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\onnx\\ear_head\\head.onnx": true,
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\onnx\\ear_head\\lift.onnx": true,
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\onnx\\image_cnn_bilstm\\backbone.onnx": true,
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\onnx\\image_cnn_bilstm\\head.onnx": true,
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\onnx\\image_cnn_head\\backbone.onnx": true,
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\onnx\\image_cnn_head\\head.onnx": true,
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\onnx\\image_cnn_lstm\\backbone.onnx": true,
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\onnx\\image_cnn_lstm\\head.onnx": true,
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\models\\v2\\onnx\\image_cnn_max\\backbone.onnx": true,
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\work\\nonpi_2026-09-21\\trained_deployment\\verification.json": true,
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\work\\nonpi_2026-09-21\\trained_deployment\\image_head\\contract.json": true,
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\work\\nonpi_2026-09-21\\trained_deployment\\image_head\\encoder.onnx": true,
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\work\\nonpi_2026-09-21\\trained_deployment\\image_head\\head.onnx": true,
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\work\\nonpi_2026-09-21\\trained_deployment\\ours\\contract.json": true,
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\work\\nonpi_2026-09-21\\trained_deployment\\ours\\encoder.onnx": true,
+    "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\work\\nonpi_2026-09-21\\trained_deployment\\ours\\head.onnx": true
+  },
+  "corrected_model_packages": {
+    "corrected_onnx_pi_default.zip": {
+      "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\work\\nonpi_2026-09-22_onnx\\corrected_onnx_pi_default.zip",
+      "bytes": 2630734,
+      "sha256": "d9a2e7cecd794e1c686beb9484d6f4f1c1eb43f990bacc2c0bab1b9b23cb2a3d",
+      "matches_sidecar": true
+    },
+    "corrected_onnx_all_60.zip": {
+      "path": "C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\work\\nonpi_2026-09-22_onnx\\corrected_onnx_all_60.zip",
+      "bytes": 39336131,
+      "sha256": "88fc366935a6911b9242bc26f1a424e06d3ae201d8e21ad6bc3bdf6524c7e548",
+      "matches_sidecar": true
+    }
+  },
+  "fit_record_file_counts": {
+    "vpres": 15,
+    "image_head": 15,
+    "vdrop": 15,
+    "gap": 15
+  },
+  "git_status": " M docs/PAPER_OUTLINE.md\n M paper/IEEE_Sensors_letters_v2.tex\n M requirements-pi.txt\n M src/v2/dataset/crop.py\n M src/v2/deploy/run_video.py\n M src/v2/train_encoder.py\n?? .claude/\n?? .codex-pptx-edit/\n?? .codex-slide-review/\n?? .venv-nonpi/\n?? docs/DEMO_RUNBOOK.md\n?? docs/EYE_WELLNESS_UI.md\n?? docs/demo_layout_preview.png\n?? models/v2/onnx/image_cnn_bilstm/\n?? models/v2/onnx/image_cnn_lstm/\n?? output/\n?? paper/paper_assets/\n?? results/v2/demo_shots/\n?? results/v2/export_onnx_rnn.json\n?? results/v2/power_ear_480p_run1.json\n?? results/v2/power_ear_480p_run2.json\n?? results/v2/power_ear_480p_run3.json\n?? results/v2/power_ear_480p_summary.json\n?? results/v2/power_image_cnn_bilstm_480p_run1.json\n?? results/v2/power_image_cnn_bilstm_480p_run2.json\n?? results/v2/power_image_cnn_bilstm_480p_run3.json\n?? results/v2/power_image_cnn_bilstm_480p_summary.json\n?? results/v2/power_image_cnn_head_480p_run1.json\n?? results/v2/power_image_cnn_head_480p_run2.json\n?? results/v2/power_image_cnn_head_480p_run3.json\n?? results/v2/power_image_cnn_head_480p_summary.json\n?? results/v2/power_image_cnn_lstm_480p_run1.json\n?? results/v2/power_image_cnn_lstm_480p_run2.json\n?? results/v2/power_image_cnn_lstm_480p_run3.json\n?? results/v2/power_image_cnn_lstm_480p_summary.json\n?? results/v2/power_image_cnn_max_480p_run1.json\n?? results/v2/power_image_cnn_max_480p_run2.json\n?? results/v2/power_image_cnn_max_480p_run3.json\n?? results/v2/power_image_cnn_max_480p_summary.json\n?? results/v2/power_ours_480p_run1.json\n?? results/v2/power_ours_480p_run2.json\n?? results/v2/power_ours_480p_run3.json\n?? results/v2/power_ours_480p_summary.json\n?? snapshots/\n?? src/tools/mac_camera_server.py\n?? src/v2/deploy/export_onnx_rnn.py\n?? src/v2/deploy/inference_policy.py\n?? src/v2/deploy/pi_demo.py\n?? src/v2/deploy/pmic_power.py\n?? src/v2/deploy/power_bench_runner.py\n?? src/v2/deploy/run_video_power.py\n?? src/v2/deploy/test_pi_demo_ui.py\n?? src/v2/deploy/test_pmic_power.py\n?? src/v2/model/rnn_head.py\n?? tmp/\n?? work/\n",
+  "git_status_stderr": "warning: unable to access 'C:\\Users\\sch/.config/git/ignore': Permission denied\nwarning: unable to access 'C:\\Users\\sch/.config/git/ignore': Permission denied\n"
+}

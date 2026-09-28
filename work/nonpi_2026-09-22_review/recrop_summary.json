@@ -1,0 +1,64 @@
+{
+  "users": [
+    {
+      "subject": 15,
+      "source_frames_checked": 380,
+      "source_mismatch_frames": [],
+      "fresh_changed_crop_positions": 0,
+      "fresh_changed_valid_positions": 0
+    },
+    {
+      "subject": 19,
+      "source_frames_checked": 379,
+      "source_mismatch_frames": [],
+      "fresh_changed_crop_positions": 0,
+      "fresh_changed_valid_positions": 0
+    },
+    {
+      "subject": 3,
+      "source_frames_checked": 380,
+      "source_mismatch_frames": [],
+      "fresh_changed_crop_positions": 0,
+      "fresh_changed_valid_positions": 0
+    },
+    {
+      "subject": 46,
+      "source_frames_checked": 378,
+      "source_mismatch_frames": [],
+      "fresh_changed_crop_positions": 0,
+      "fresh_changed_valid_positions": 0
+    },
+    {
+      "subject": 48,
+      "source_frames_checked": 380,
+      "source_mismatch_frames": [],
+      "fresh_changed_crop_positions": 0,
+      "fresh_changed_valid_positions": 0
+    },
+    {
+      "subject": 54,
+      "source_frames_checked": 380,
+      "source_mismatch_frames": [],
+      "fresh_changed_crop_positions": 0,
+      "fresh_changed_valid_positions": 0
+    },
+    {
+      "subject": 55,
+      "source_frames_checked": 380,
+      "source_mismatch_frames": [],
+      "fresh_changed_crop_positions": 0,
+      "fresh_changed_valid_positions": 0
+    },
+    {
+      "subject": 56,
+      "source_frames_checked": 380,
+      "source_mismatch_frames": [],
+      "fresh_changed_crop_positions": 0,
+      "fresh_changed_valid_positions": 0
+    }
+  ],
+  "source_frames_checked": 3037,
+  "source_mismatches": 0,
+  "seconds": 364.51184153556824,
+  "limits": "Frozen 8-person/160-event sample only; 60-frame warmup per segment; no new participants."
+}

@@ -173,10 +173,12 @@ class Bundle:
     def batch(self, ids: np.ndarray) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
         """이벤트 인덱스 -> (x (B,19,1,H,W) float32, mask (B,19), y (B,))"""
         r = self.rows[ids]
-        flat = np.where(r >= 0, r, 0).ravel()
-        imgs = np.asarray(self.frames[flat])             # (B*19, H, W) uint8
-        x = C.batch_input(imgs)                          # 정규화는 crop.INPUT_NORM 하나만
-        x = x.reshape(len(ids), EVENT_LEN, 1, *x.shape[-2:])
+        present = r >= 0
+        # Match the corrected 2026-09-21 runs: zero missing inputs BEFORE
+        # encoder BatchNorm and never gather another person's placeholder.
+        x = np.zeros((len(ids), EVENT_LEN, 1, C.OUT_H, C.OUT_W), np.float32)
+        if present.any():
+            x[present] = C.batch_input(np.asarray(self.frames[r[present]]))
         return x, self.mask[ids], self.y[ids]
 
     def _ear_windows(self, ids: np.ndarray, cols=(2,)) -> np.ndarray:

@@ -1,0 +1,403 @@
+{
+  "n_events": 27758,
+  "n_subjects": 57,
+  "folds": [
+    {
+      "fold": 0,
+      "subjects": {
+        "test": 10,
+        "val": 11,
+        "train": 36
+      },
+      "events": {
+        "test": 6140,
+        "val": 5470,
+        "train": 16148
+      },
+      "overlap": 0
+    },
+    {
+      "fold": 1,
+      "subjects": {
+        "test": 11,
+        "val": 12,
+        "train": 34
+      },
+      "events": {
+        "test": 5470,
+        "val": 5383,
+        "train": 16905
+      },
+      "overlap": 0
+    },
+    {
+      "fold": 2,
+      "subjects": {
+        "test": 12,
+        "val": 12,
+        "train": 33
+      },
+      "events": {
+        "test": 5383,
+        "val": 5398,
+        "train": 16977
+      },
+      "overlap": 0
+    },
+    {
+      "fold": 3,
+      "subjects": {
+        "test": 12,
+        "val": 12,
+        "train": 33
+      },
+      "events": {
+        "test": 5398,
+        "val": 5367,
+        "train": 16993
+      },
+      "overlap": 0
+    },
+    {
+      "fold": 4,
+      "subjects": {
+        "test": 12,
+        "val": 10,
+        "train": 35
+      },
+      "events": {
+        "test": 5367,
+        "val": 6140,
+        "train": 16251
+      },
+      "overlap": 0
+    }
+  ],
+  "sidecar_checks": [
+    {
+      "model": "ours",
+      "fold": 0,
+      "seed": 0,
+      "ap_error": 0.0,
+      "confusion_equal": true
+    },
+    {
+      "model": "ours",
+      "fold": 0,
+      "seed": 1,
+      "ap_error": 0.0,
+      "confusion_equal": true
+    },
+    {
+      "model": "ours",
+      "fold": 0,
+      "seed": 2,
+      "ap_error": 0.0,
+      "confusion_equal": true
+    },
+    {
+      "model": "ours",
+      "fold": 1,
+      "seed": 0,
+      "ap_error": 0.0,
+      "confusion_equal": true
+    },
+    {
+      "model": "ours",
+      "fold": 1,
+      "seed": 1,
+      "ap_error": 0.0,
+      "confusion_equal": true
+    },
+    {
+      "model": "ours",
+      "fold": 1,
+      "seed": 2,
+      "ap_error": 0.0,
+      "confusion_equal": true
+    },
+    {
+      "model": "ours",
+      "fold": 2,
+      "seed": 0,
+      "ap_error": 0.0,
+      "confusion_equal": true
+    },
+    {
+      "model": "ours",
+      "fold": 2,
+      "seed": 1,
+      "ap_error": 0.0,
+      "confusion_equal": true
+    },
+    {
+      "model": "ours",
+      "fold": 2,
+      "seed": 2,
+      "ap_error": 0.0,
+      "confusion_equal": true
+    },
+    {
+      "model": "ours",
+      "fold": 3,
+      "seed": 0,
+      "ap_error": 0.0,
+      "confusion_equal": true
+    },
+    {
+      "model": "ours",
+      "fold": 3,
+      "seed": 1,
+      "ap_error": 0.0,
+      "confusion_equal": true
+    },
+    {
+      "model": "ours",
+      "fold": 3,
+      "seed": 2,
+      "ap_error": 0.0,
+      "confusion_equal": true
+    },
+    {
+      "model": "ours",
+      "fold": 4,
+      "seed": 0,
+      "ap_error": 0.0,
+      "confusion_equal": true
+    },
+    {
+      "model": "ours",
+      "fold": 4,
+      "seed": 1,
+      "ap_error": 0.0,
+      "confusion_equal": true
+    },
+    {
+      "model": "ours",
+      "fold": 4,
+      "seed": 2,
+      "ap_error": 0.0,
+      "confusion_equal": true
+    },
+    {
+      "model": "image_head",
+      "fold": 0,
+      "seed": 0,
+      "ap_error": 0.0,
+      "confusion_equal": true
+    },
+    {
+      "model": "image_head",
+      "fold": 0,
+      "seed": 1,
+      "ap_error": 0.0,
+      "confusion_equal": true
+    },
+    {
+      "model": "image_head",
+      "fold": 0,
+      "seed": 2,
+      "ap_error": 0.0,
+      "confusion_equal": true
+    },
+    {
+      "model": "image_head",
+      "fold": 1,
+      "seed": 0,
+      "ap_error": 0.0,
+      "confusion_equal": true
+    },
+    {
+      "model": "image_head",
+      "fold": 1,
+      "seed": 1,
+      "ap_error": 0.0,
+      "confusion_equal": true
+    },
+    {
+      "model": "image_head",
+      "fold": 1,
+      "seed": 2,
+      "ap_error": 0.0,
+      "confusion_equal": true
+    },
+    {
+      "model": "image_head",
+      "fold": 2,
+      "seed": 0,
+      "ap_error": 0.0,
+      "confusion_equal": true
+    },
+    {
+      "model": "image_head",
+      "fold": 2,
+      "seed": 1,
+      "ap_error": 0.0,
+      "confusion_equal": true
+    },
+    {
+      "model": "image_head",
+      "fold": 2,
+      "seed": 2,
+      "ap_error": 0.0,
+      "confusion_equal": true
+    },
+    {
+      "model": "image_head",
+      "fold": 3,
+      "seed": 0,
+      "ap_error": 0.0,
+      "confusion_equal": true
+    },
+    {
+      "model": "image_head",
+      "fold": 3,
+      "seed": 1,
+      "ap_error": 0.0,
+      "confusion_equal": true
+    },
+    {
+      "model": "image_head",
+      "fold": 3,
+      "seed": 2,
+      "ap_error": 0.0,
+      "confusion_equal": true
+    },
+    {
+      "model": "image_head",
+      "fold": 4,
+      "seed": 0,
+      "ap_error": 0.0,
+      "confusion_equal": true
+    },
+    {
+      "model": "image_head",
+      "fold": 4,
+      "seed": 1,
+      "ap_error": 0.0,
+      "confusion_equal": true
+    },
+    {
+      "model": "image_head",
+      "fold": 4,
+      "seed": 2,
+      "ap_error": 0.0,
+      "confusion_equal": true
+    },
+    {
+      "model": "ear_head",
+      "fold": 0,
+      "seed": 0,
+      "ap_error": 0.0,
+      "confusion_equal": true
+    },
+    {
+      "model": "ear_head",
+      "fold": 0,
+      "seed": 1,
+      "ap_error": 0.0,
+      "confusion_equal": true
+    },
+    {
+      "model": "ear_head",
+      "fold": 0,
+      "seed": 2,
+      "ap_error": 0.0,
+      "confusion_equal": true
+    },
+    {
+      "model": "ear_head",
+      "fold": 1,
+      "seed": 0,
+      "ap_error": 0.0,
+      "confusion_equal": true
+    },
+    {
+      "model": "ear_head",
+      "fold": 1,
+      "seed": 1,
+      "ap_error": 0.0,
+      "confusion_equal": true
+    },
+    {
+      "model": "ear_head",
+      "fold": 1,
+      "seed": 2,
+      "ap_error": 0.0,
+      "confusion_equal": true
+    },
+    {
+      "model": "ear_head",
+      "fold": 2,
+      "seed": 0,
+      "ap_error": 0.0,
+      "confusion_equal": true
+    },
+    {
+      "model": "ear_head",
+      "fold": 2,
+      "seed": 1,
+      "ap_error": 0.0,
+      "confusion_equal": true
+    },
+    {
+      "model": "ear_head",
+      "fold": 2,
+      "seed": 2,
+      "ap_error": 0.0,
+      "confusion_equal": true
+    },
+    {
+      "model": "ear_head",
+      "fold": 3,
+      "seed": 0,
+      "ap_error": 0.0,
+      "confusion_equal": true
+    },
+    {
+      "model": "ear_head",
+      "fold": 3,
+      "seed": 1,
+      "ap_error": 0.0,
+      "confusion_equal": true
+    },
+    {
+      "model": "ear_head",
+      "fold": 3,
+      "seed": 2,
+      "ap_error": 0.0,
+      "confusion_equal": true
+    },
+    {
+      "model": "ear_head",
+      "fold": 4,
+      "seed": 0,
+      "ap_error": 0.0,
+      "confusion_equal": true
+    },
+    {
+      "model": "ear_head",
+      "fold": 4,
+      "seed": 1,
+      "ap_error": 0.0,
+      "confusion_equal": true
+    },
+    {
+      "model": "ear_head",
+      "fold": 4,
+      "seed": 2,
+      "ap_error": 0.0,
+      "confusion_equal": true
+    }
+  ],
+  "normalization": {
+    "n": 912,
+    "max_abs_diff": 0.0
+  },
+  "row_subject_frame_alignment": true,
+  "limitations": [
+    "Sidecars have labels/subject order but no unique event IDs; their order is checked against trainer iteration order, not cryptographically recoverable event IDs.",
+    "No evidence of cross-split frame-index overlap; this is not a pixel-duplicate or identity-verification audit.",
+    "Threshold metric reproduction does not independently prove validation-only selection; training code is reviewed separately."
+  ]
+}

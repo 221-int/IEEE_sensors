@@ -1,0 +1,31 @@
+..[phase] settle    start wall=2026-09-28T02:11:55.904965+00:00
+[phase] settle    end   wall=2026-09-28T02:11:55.904965+00:00
+[phase] idle_pre  start wall=2026-09-28T02:11:55.904965+00:00
+[phase] idle_pre  end   wall=2026-09-28T02:11:55.904965+00:00
+[phase] active    start wall=2026-09-28T02:11:55.904965+00:00
+[phase] active    end   wall=2026-09-28T02:11:55.914962+00:00
+[phase] idle_post start wall=2026-09-28T02:11:55.914962+00:00
+[phase] idle_post end   wall=2026-09-28T02:11:55.914962+00:00
+.[phase] settle    start wall=2026-09-28T02:11:55.916960+00:00
+[phase] settle    end   wall=2026-09-28T02:11:55.916960+00:00
+[phase] idle_pre  start wall=2026-09-28T02:11:55.916960+00:00
+[phase] idle_pre  end   wall=2026-09-28T02:11:55.916960+00:00
+[phase] active    start wall=2026-09-28T02:11:55.916960+00:00
+[phase] active    end   wall=2026-09-28T02:11:55.919959+00:00
+[phase] idle_post start wall=2026-09-28T02:11:55.919959+00:00
+[phase] idle_post end   wall=2026-09-28T02:11:55.919959+00:00
+.[phase] warmup    start wall=2026-09-28T02:11:55.920955+00:00
+[phase] warmup    end   wall=2026-09-28T02:11:55.922960+00:00
+[phase] settle    start wall=2026-09-28T02:11:55.923969+00:00
+[phase] settle    end   wall=2026-09-28T02:11:55.923969+00:00
+[phase] idle_pre  start wall=2026-09-28T02:11:55.923969+00:00
+[phase] idle_pre  end   wall=2026-09-28T02:11:55.923969+00:00
+[phase] active    start wall=2026-09-28T02:11:55.923969+00:00
+[phase] active    end   wall=2026-09-28T02:11:55.933965+00:00
+[phase] idle_post start wall=2026-09-28T02:11:55.933965+00:00
+[phase] idle_post end   wall=2026-09-28T02:11:55.933965+00:00
+....................................
+----------------------------------------------------------------------
+Ran 40 tests in 0.255s
+
+OK

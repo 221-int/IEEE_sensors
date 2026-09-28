@@ -1,0 +1,40 @@
+COMMAND ['C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\work\\nonpi_2026-09-22_review\\test_policy.py']
+test_frozen_external_scores_match_online_policy (__main__.PolicyTests.test_frozen_external_scores_match_online_policy) ... ok
+test_missing_boundaries_and_current_frame (__main__.PolicyTests.test_missing_boundaries_and_current_frame) ... ok
+test_skipped_frames_and_abstention_event_breaks (__main__.PolicyTests.test_skipped_frames_and_abstention_event_breaks) ... ok
+test_threshold_contract_must_match_graphs (__main__.PolicyTests.test_threshold_contract_must_match_graphs) ... ok
+test_training_never_gathers_missing_row_and_matches_corrected_runner (__main__.PolicyTests.test_training_never_gathers_missing_row_and_matches_corrected_runner) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.305s
+
+OK
+
+COMMAND ['C:\\Users\\sch\\PycharmProjects\\IEEE_sensors\\work\\nonpi_2026-09-22_review\\test_entrypoints.py']
+test_both_benchmark_loops_match_offline_eligibility (__main__.EntryTests.test_both_benchmark_loops_match_offline_eligibility) ... ok
+test_demo_crop_failure_never_calls_ear_and_sequence_gaps_abstain (__main__.EntryTests.test_demo_crop_failure_never_calls_ear_and_sequence_gaps_abstain) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.444s
+
+OK
+
+COMMAND ['-m', 'unittest', 'src.v2.deploy.test_pi_demo_ui', '-v']
+디자인 미리보기 저장 (예시 데이터): C:\Users\Public\Documents\ESTsoft\CreatorTemp\tmpiy8r98a6\preview.png
+Inference policy: {"policy": "min14_current_valid_v1", "event_len": 19, "min_valid_frames": 14, "require_current_valid": true, "missing_time_positions": "retained", "event_rule": "contiguous threshold positives; abstention breaks interval", "center_offset_frames": 9, "threshold_probability": 0.5, "threshold_source": "explicit exploratory CLI override"}
+Active probability threshold: 0.5
+▶ Test CPU
+▶ 입력: 0
+▶ 프로필: C:\Users\Public\Documents\ESTsoft\CreatorTemp\tmpsyaoewz9\profiles.json (1명 로드)
+test_all_six_users_and_initial_baseline_visible (src.v2.deploy.test_pi_demo_ui.DashboardTests.test_all_six_users_and_initial_baseline_visible) ... ok
+test_canvas_sizes_and_preview_no_camera_or_profiles (src.v2.deploy.test_pi_demo_ui.DashboardTests.test_canvas_sizes_and_preview_no_camera_or_profiles) ... ok
+test_display_preserves_color_and_projects_landmarks_without_mutating_input (src.v2.deploy.test_pi_demo_ui.DashboardTests.test_display_preserves_color_and_projects_landmarks_without_mutating_input) ... ok
+test_eye_crop_changes_only_the_rectangle (src.v2.deploy.test_pi_demo_ui.DashboardTests.test_eye_crop_changes_only_the_rectangle) ... ok
+test_lost_face_and_stream_clear_identity_before_history_update (src.v2.deploy.test_pi_demo_ui.DashboardTests.test_lost_face_and_stream_clear_identity_before_history_update) ... ok
+test_missing_input_hides_stale_identity_and_live_metrics (src.v2.deploy.test_pi_demo_ui.DashboardTests.test_missing_input_hides_stale_identity_and_live_metrics) ... ok
+test_performance_footer_has_fps_and_actual_device (src.v2.deploy.test_pi_demo_ui.DashboardTests.test_performance_footer_has_fps_and_actual_device) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.418s
+
+OK

@@ -1,0 +1,3 @@
+{"block": 1, "order_index": 0, "mode": "ours_vpres", "run_id": "P_b01_ours_vpres", "exit_code": 0, "seconds": 33.29700000002049, "cooldown": null, "finished": "2026-09-28T10:58:29.163785+09:00"}
+{"block": 1, "order_index": 1, "mode": "image_cnn_head", "run_id": "P_b01_image_cnn_head", "exit_code": 0, "seconds": 31.561999999918044, "cooldown": {"waited_s": 0.0, "target_c": null, "temp_at_start_c": null, "target_met": true}, "finished": "2026-09-28T10:59:00.725455+09:00"}
+{"block": 1, "order_index": 2, "mode": "ear_rule", "run_id": "P_b01_ear_rule", "exit_code": 0, "seconds": 31.53200000000652, "cooldown": {"waited_s": 0.0, "target_c": null, "temp_at_start_c": null, "target_met": true}, "finished": "2026-09-28T10:59:32.246298+09:00"}

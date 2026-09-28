@@ -1,0 +1,143 @@
+[repro] PYTHONHASHSEED=0 로 재실행합니다: C:\Users\sch\PycharmProjects\IEEE_sensors\.venv-nonpi\Scripts\python.exe -m src.v2.deploy.run_video ...
+INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+W0000 00:00:1790561519.596230    6080 inference_feedback_manager.cc:114] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1790561519.602077    6080 inference_feedback_manager.cc:114] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1790561519.604016   23708 landmark_projection_calculator.cc:186] Using NORM_RECT without IMAGE_DIMENSIONS is only supported for the square ROI. Provide IMAGE_DIMENSIONS or use PROJECTION_MATRIX.
+
+모드 ours  2825 프레임 / 10.0s = 282.4 fps  (검출 실패 13)
+  stage         p50      p95      p99      max   (ms)
+  read         0.25     0.33     0.45     7.17
+  detect       2.59     3.22     3.69    18.20
+  crop         0.23     0.30     0.40     1.19
+  encode       0.24     0.32     0.54     0.70
+  head         0.14     0.18     0.25     0.52
+  e2e          3.46     4.15     4.67    26.33
+  p50 비중: read 7%  detect 75%  crop 7%  encode 7%  head 4%
+  G-E1 (e2e p99 <= 33.3ms, 스로틀 없음): PASS
+  ⚠️ 측정 길이 10.0s < 300s. 지속 성능이 아니다
+  ⚠️ vcgencmd 가 없다 — Pi 가 아니다. 이 숫자는 논문에 쓰지 않는다
+  -> results/pi_paced/smoke/run_video_ours.json
+[repro] PYTHONHASHSEED=0 로 재실행합니다: C:\Users\sch\PycharmProjects\IEEE_sensors\.venv-nonpi\Scripts\python.exe -m src.v2.deploy.run_video ...
+INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+W0000 00:00:1790561533.171342   22064 inference_feedback_manager.cc:114] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1790561533.177485    2556 inference_feedback_manager.cc:114] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1790561533.179472   27988 landmark_projection_calculator.cc:186] Using NORM_RECT without IMAGE_DIMENSIONS is only supported for the square ROI. Provide IMAGE_DIMENSIONS or use PROJECTION_MATRIX.
+
+모드 image_cnn_head  2598 프레임 / 10.0s = 259.8 fps  (검출 실패 13)
+  stage         p50      p95      p99      max   (ms)
+  read         0.26     0.35     0.49     7.45
+  detect       2.61     3.31     3.69    17.92
+  crop         0.24     0.32     0.43     0.83
+  encode       0.45     0.71     0.88     1.26
+  head         0.15     0.21     0.29     0.58
+  e2e          3.75     4.54     5.12    26.83
+  p50 비중: read 7%  detect 70%  crop 6%  encode 12%  head 4%
+  G-E1 (e2e p99 <= 33.3ms, 스로틀 없음): PASS
+  ⚠️ 측정 길이 10.0s < 300s. 지속 성능이 아니다
+  ⚠️ vcgencmd 가 없다 — Pi 가 아니다. 이 숫자는 논문에 쓰지 않는다
+  -> results/pi_paced/smoke/run_video_image_cnn_head.json
+2026-09-28T11:12:24.092438+09:00 session SMOKE set=primary exploratory=True protocol=protocol.json
+2026-09-28T11:12:28.009814+09:00 PREFLIGHT: not a Raspberry Pi (aarch64 + vcgencmd)
+2026-09-28T11:12:28.009814+09:00 PREFLIGHT: governor not performance: {}
+2026-09-28T11:12:28.009814+09:00 PREFLIGHT: throttled=None [] (reboot / fix power & cooling)
+2026-09-28T11:12:28.011816+09:00 reference idle 10s for session temperature
+2026-09-28T11:12:38.044809+09:00 reference temp None
+2026-09-28T11:12:38.044809+09:00 run P_b01_ours_vpres (block 1, #0): C:\Users\sch\PycharmProjects\IEEE_sensors\.venv-nonpi\Scripts\python.exe -m src.v2.deploy.run_paced --mode ours_vpres --bundle-root bundle --bundle-verification bundle\pi_model_verification.json --equivalence-gate results\v2\check_equivalence.json --source clips/eyeblink8_v9_cam.avi --expected-clip-sha256 d895e84ad08b3a647bad25b6c696448e2e8305a5cd37968d7075b2cee2e38e0a --expected-clip-frames 5134 --protocol protocol.json --protocol-set primary --out-dir results\pi_paced\SMOKE --run-id P_b01_ours_vpres --session-id SMOKE --block 1 --order-index 0 --fps 30.0 --pacing drop --budget-ms 33.333333333333336 --warmup-s 5.0 --settle-s 2.0 --idle-pre-s 15.0 --active-s 30.0 --idle-post-s 10.0 --power-hz 7.5 --thermal-hz 1.0 --intra-threads 2 --no-spin
+INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+W0000 00:00:1790561558.813678    2240 inference_feedback_manager.cc:114] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1790561558.819048    2240 inference_feedback_manager.cc:114] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+[phase] warmup    start wall=2026-09-28T02:12:38.827915+00:00
+W0000 00:00:1790561558.844765    4656 landmark_projection_calculator.cc:186] Using NORM_RECT without IMAGE_DIMENSIONS is only supported for the square ROI. Provide IMAGE_DIMENSIONS or use PROJECTION_MATRIX.
+[phase] warmup    end   wall=2026-09-28T02:12:43.828463+00:00
+[phase] settle    start wall=2026-09-28T02:12:43.836467+00:00
+[phase] settle    end   wall=2026-09-28T02:12:45.837262+00:00
+[phase] idle_pre  start wall=2026-09-28T02:12:45.837262+00:00
+[phase] idle_pre  end   wall=2026-09-28T02:13:00.837871+00:00
+[phase] active    start wall=2026-09-28T02:13:00.837871+00:00
+[phase] active    end   wall=2026-09-28T02:13:30.838664+00:00
+[phase] idle_post start wall=2026-09-28T02:13:30.838664+00:00
+[phase] idle_post end   wall=2026-09-28T02:13:40.839361+00:00
+ours_vpres P_b01_ours_vpres: processed 900/900, dropped 0, miss 0, response p99 5.914975281339139, reportable=False
+  ! not a Raspberry Pi run (no aarch64/vcgencmd): desktop dry run only
+  ! CPU governor not 'performance' at platform_start: {}
+  ! CPU governor not 'performance' at platform_end: {}
+  ! PMIC read/parse errors: 442
+  ! no PMIC samples in idle_pre
+  ! no PMIC samples in active
+  ! no PMIC samples in idle_post
+  -> results\pi_paced\SMOKE\P_b01_ours_vpres\run.json
+2026-09-28T11:13:42.458420+09:00 run P_b01_ours_vpres exit 0
+2026-09-28T11:13:42.458420+09:00 cooldown: minimum 30s
+2026-09-28T11:14:12.462616+09:00 cooldown done: {'waited_s': 30.0, 'target_c': None, 'temp_at_start_c': None, 'target_met': True}
+2026-09-28T11:14:12.462616+09:00 run P_b01_image_cnn_head (block 1, #1): C:\Users\sch\PycharmProjects\IEEE_sensors\.venv-nonpi\Scripts\python.exe -m src.v2.deploy.run_paced --mode image_cnn_head --bundle-root bundle --bundle-verification bundle\pi_model_verification.json --equivalence-gate results\v2\check_equivalence.json --source clips/eyeblink8_v9_cam.avi --expected-clip-sha256 d895e84ad08b3a647bad25b6c696448e2e8305a5cd37968d7075b2cee2e38e0a --expected-clip-frames 5134 --protocol protocol.json --protocol-set primary --out-dir results\pi_paced\SMOKE --run-id P_b01_image_cnn_head --session-id SMOKE --block 1 --order-index 1 --fps 30.0 --pacing drop --budget-ms 33.333333333333336 --warmup-s 5.0 --settle-s 2.0 --idle-pre-s 15.0 --active-s 30.0 --idle-post-s 10.0 --power-hz 7.5 --thermal-hz 1.0 --intra-threads 2 --no-spin
+INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+W0000 00:00:1790561653.249526   21992 inference_feedback_manager.cc:114] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1790561653.255254   21992 inference_feedback_manager.cc:114] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+[phase] warmup    start wall=2026-09-28T02:14:13.264385+00:00
+W0000 00:00:1790561653.282440   13672 landmark_projection_calculator.cc:186] Using NORM_RECT without IMAGE_DIMENSIONS is only supported for the square ROI. Provide IMAGE_DIMENSIONS or use PROJECTION_MATRIX.
+[phase] warmup    end   wall=2026-09-28T02:14:18.265619+00:00
+[phase] settle    start wall=2026-09-28T02:14:18.274153+00:00
+[phase] settle    end   wall=2026-09-28T02:14:20.274722+00:00
+[phase] idle_pre  start wall=2026-09-28T02:14:20.274722+00:00
+[phase] idle_pre  end   wall=2026-09-28T02:14:35.275348+00:00
+[phase] active    start wall=2026-09-28T02:14:35.275348+00:00
+[phase] active    end   wall=2026-09-28T02:15:05.276016+00:00
+[phase] idle_post start wall=2026-09-28T02:15:05.276016+00:00
+[phase] idle_post end   wall=2026-09-28T02:15:15.276788+00:00
+image_cnn_head P_b01_image_cnn_head: processed 900/900, dropped 0, miss 0, response p99 6.27500467468053, reportable=False
+  ! not a Raspberry Pi run (no aarch64/vcgencmd): desktop dry run only
+  ! CPU governor not 'performance' at platform_start: {}
+  ! CPU governor not 'performance' at platform_end: {}
+  ! PMIC read/parse errors: 441
+  ! no PMIC samples in idle_pre
+  ! no PMIC samples in active
+  ! no PMIC samples in idle_post
+  -> results\pi_paced\SMOKE\P_b01_image_cnn_head\run.json
+2026-09-28T11:15:16.982217+09:00 run P_b01_image_cnn_head exit 0
+2026-09-28T11:15:16.982217+09:00 cooldown: minimum 30s
+2026-09-28T11:15:46.985628+09:00 cooldown done: {'waited_s': 30.0, 'target_c': None, 'temp_at_start_c': None, 'target_met': True}
+2026-09-28T11:15:46.985628+09:00 run P_b01_ear_rule (block 1, #2): C:\Users\sch\PycharmProjects\IEEE_sensors\.venv-nonpi\Scripts\python.exe -m src.v2.deploy.run_paced --mode ear_rule --bundle-root bundle --bundle-verification bundle\pi_model_verification.json --equivalence-gate results\v2\check_equivalence.json --source clips/eyeblink8_v9_cam.avi --expected-clip-sha256 d895e84ad08b3a647bad25b6c696448e2e8305a5cd37968d7075b2cee2e38e0a --expected-clip-frames 5134 --protocol protocol.json --protocol-set primary --out-dir results\pi_paced\SMOKE --run-id P_b01_ear_rule --session-id SMOKE --block 1 --order-index 2 --fps 30.0 --pacing drop --budget-ms 33.333333333333336 --warmup-s 5.0 --settle-s 2.0 --idle-pre-s 15.0 --active-s 30.0 --idle-post-s 10.0 --power-hz 7.5 --thermal-hz 1.0 --intra-threads 2 --no-spin
+INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+W0000 00:00:1790561747.737543   26472 inference_feedback_manager.cc:114] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1790561747.743037   26472 inference_feedback_manager.cc:114] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+[phase] warmup    start wall=2026-09-28T02:15:47.750208+00:00
+W0000 00:00:1790561747.768027   10276 landmark_projection_calculator.cc:186] Using NORM_RECT without IMAGE_DIMENSIONS is only supported for the square ROI. Provide IMAGE_DIMENSIONS or use PROJECTION_MATRIX.
+[phase] warmup    end   wall=2026-09-28T02:15:52.751314+00:00
+[phase] settle    start wall=2026-09-28T02:15:52.759832+00:00
+[phase] settle    end   wall=2026-09-28T02:15:54.760288+00:00
+[phase] idle_pre  start wall=2026-09-28T02:15:54.760288+00:00
+[phase] idle_pre  end   wall=2026-09-28T02:16:09.760481+00:00
+[phase] active    start wall=2026-09-28T02:16:09.760481+00:00
+[phase] active    end   wall=2026-09-28T02:16:39.760950+00:00
+[phase] idle_post start wall=2026-09-28T02:16:39.760950+00:00
+[phase] idle_post end   wall=2026-09-28T02:16:49.761676+00:00
+ear_rule P_b01_ear_rule: processed 900/900, dropped 0, miss 0, response p99 5.074944286607206, reportable=False
+  ! not a Raspberry Pi run (no aarch64/vcgencmd): desktop dry run only
+  ! CPU governor not 'performance' at platform_start: {}
+  ! CPU governor not 'performance' at platform_end: {}
+  ! PMIC read/parse errors: 442
+  ! no PMIC samples in idle_pre
+  ! no PMIC samples in active
+  ! no PMIC samples in idle_post
+  -> results\pi_paced\SMOKE\P_b01_ear_rule\run.json
+2026-09-28T11:16:51.388508+09:00 run P_b01_ear_rule exit 0
+2026-09-28T11:16:51.413605+09:00 summary: reportable 0, excluded 3
+# Paced run summary — results\pi_paced\SMOKE
+
+Reportable runs: 0, excluded: 3
+
+| mode | n | response_p99_ms | processing_p50_ms | deadline_miss | dropped | detect_p50_ms | encode_p50_ms | idle_pre_w | active_w | delta_w | incremental_mj_per_timeline_frame | active_temp_max_c |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+
+mean ± SD across runs (descriptive). Power = PMIC rail sum, not board input power.
+
+- excluded P_b01_ear_rule (ear_rule): not a Raspberry Pi run (no aarch64/vcgencmd): desktop dry run only; CPU governor not 'performance' at platform_start: {}; CPU governor not 'performance' at platform_end: {}; PMIC read/parse errors: 442; no PMIC samples in idle_pre; no PMIC samples in active; no PMIC samples in idle_post
+- excluded P_b01_image_cnn_head (image_cnn_head): not a Raspberry Pi run (no aarch64/vcgencmd): desktop dry run only; CPU governor not 'performance' at platform_start: {}; CPU governor not 'performance' at platform_end: {}; PMIC read/parse errors: 441; no PMIC samples in idle_pre; no PMIC samples in active; no PMIC samples in idle_post
+- excluded P_b01_ours_vpres (ours_vpres): not a Raspberry Pi run (no aarch64/vcgencmd): desktop dry run only; CPU governor not 'performance' at platform_start: {}; CPU governor not 'performance' at platform_end: {}; PMIC read/parse errors: 442; no PMIC samples in idle_pre; no PMIC samples in active; no PMIC samples in idle_post
+
+-> results\pi_paced\SMOKE\smoke_check.json

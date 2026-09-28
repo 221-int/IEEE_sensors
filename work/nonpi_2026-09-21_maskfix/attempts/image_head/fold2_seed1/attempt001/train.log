@@ -1,0 +1,27 @@
+이벤트 27,758 (결측정책으로 제외 970)  n=27758 classes=2 (불균형 13820~13938) uniform=0.5000 majority=0.5021
+프론트 image_cnn_head (mEBAL 원문 구조)  D=16  정규화 frame_standardize  max_epochs 80 patience 10  batch 32
+
+  fold 2 seed 1
+      [cnn] ep   1  loss 0.3219  val AP 0.9832  *
+      [cnn] ep   5  loss 0.0669  val AP 0.9919
+      [cnn] ep  10  loss 0.0500  val AP 0.9946  *
+      [cnn] ep  15  loss 0.0427  val AP 0.9921
+      [cnn] ep  20  loss 0.0367  val AP 0.9934
+      [cnn] val AP 가 10 에폭 정체 -> ep 23 에서 중단 (최고 ep 13)
+      [earhead] ep   1  loss 0.3905  val AP 0.9666  *
+      [earhead] ep   5  loss 0.2146  val AP 0.9729
+      [earhead] ep  10  loss 0.2002  val AP 0.9761
+      [earhead] ep  15  loss 0.1891  val AP 0.9718
+      [earhead] ep  20  loss 0.1852  val AP 0.9749
+      [earhead] val AP 가 10 에폭 정체 -> ep 22 에서 중단 (최고 ep 12)
+    ours PR-AUC 0.9929 | ear_head 0.9835 | ear_rule 0.9066 | 비교상대 ear_head 차이 +0.0094  (ep 13/12, 1602s)
+
+================================================================
+  ours      PR-AUC 0.9929  (n=1)
+  ear_head  PR-AUC 0.9835  (n=1)
+  ear_rule  PR-AUC 0.9066  (n=1)
+  차이(ours-EAR) +0.0094  95% CI [+0.0030, +0.0203]
+  delta = 0.02  ->  판정: **superior**
+  val 낙관(AP) 평균 +0.0020
+  -> C:\Users\sch\PycharmProjects\IEEE_sensors\work\nonpi_2026-09-21_maskfix\attempts\image_head\fold2_seed1\attempt001\result.json
+  -> C:\Users\sch\PycharmProjects\IEEE_sensors\work\nonpi_2026-09-21_maskfix\attempts\image_head\fold2_seed1\attempt001\result_scores/  (런별 test 점수. 서브그룹 분석은 여기서 한다)

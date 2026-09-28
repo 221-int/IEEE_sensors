@@ -1,0 +1,11 @@
+이벤트 27,758 (결측정책으로 제외 970)  n=27758 classes=2 (불균형 13820~13938) uniform=0.5000 majority=0.5021
+구조 vdrop  D=16  정규화 frame_standardize  max_epochs 80 patience 10  batch 32
+
+  fold 0 seed 1
+      [cnn] ep   1  loss 0.2245  val AP 0.9705  *
+      [cnn] ep   5  loss 0.0417  val AP 0.9877
+      [cnn] ep  10  loss 0.0291  val AP 0.9833
+      [cnn] val AP 가 10 에폭 정체 -> ep 14 에서 중단 (최고 ep 4)
+      [earhead] ep   1  loss 0.3478  val AP 0.9396  *
+      [earhead] ep   5  loss 0.1682  val AP 0.9628  *
+      [earhead] ep  10  loss 0.1580  val AP 0.9630

@@ -1,0 +1,30 @@
+{
+  "models": 4,
+  "contracts": [
+    "onnx/fold0_seed0/contract.json",
+    "onnx/fold0_seed0/image_cnn_head/contract.json",
+    "onnx/fold0_seed0/vdrop/contract.json",
+    "onnx/fold0_seed0/gap/contract.json"
+  ],
+  "sha256": {
+    "onnx/fold0_seed0/contract.json": "d576d80c4a56fc11c28886155bc67cd349922aa501107135aea133ceb7d4c4df",
+    "onnx/fold0_seed0/encoder.onnx": "0e48bcad46b19981935d06e1db2995dc34f2588c3eca4f20a350fefafa166046",
+    "onnx/fold0_seed0/gap/contract.json": "7c6f39fafb909cf70b117a1344b96648e64e98afaa0a974101ad0878f3a7fafb",
+    "onnx/fold0_seed0/gap/encoder.onnx": "2b67fc3d1bd3c8bb433cd8333f7ed6ee744992e37fd5d890c40a246fb01abb2c",
+    "onnx/fold0_seed0/gap/head.onnx": "840ba477a132d852c633fd1b7d95a470f4f59092b43246b81ee7fb5c8adfbe16",
+    "onnx/fold0_seed0/gap/runtime_fixture.npz": "ca8e169721901c4191d48471d7054f4eb7e2979f0c55d538268d72ec44598b2a",
+    "onnx/fold0_seed0/head.onnx": "e025e25a63e320819619e7d00611659696c04ebc726912e8be795a3d896d57b0",
+    "onnx/fold0_seed0/image_cnn_head/backbone.onnx": "e995d45928eed37c2b27da099a941a1b245c842e3316db3e5afbd92ab20f9fad",
+    "onnx/fold0_seed0/image_cnn_head/contract.json": "1543019cf071ba903dade1af2d8c3bd6597ff3d760e49f45ce707cc8b8bf4f61",
+    "onnx/fold0_seed0/image_cnn_head/head.onnx": "ad4d607daaa3d7f0655829bbb9f3fbfd3149beb3934a0eead467a81afd1a615f",
+    "onnx/fold0_seed0/image_cnn_head/runtime_fixture.npz": "173c6f200fc45b2d5e92c582b5acf50a82f6e686befb158a4feabcedeba77c8f",
+    "onnx/fold0_seed0/runtime_fixture.npz": "b5e7b788dab015d0cc3fda92331dff1f664e68510b0508535f0fa7aaa0201430",
+    "onnx/fold0_seed0/vdrop/contract.json": "611156328ab27adf0861290841902d25771110bdfe990a36b5a20a43bc404065",
+    "onnx/fold0_seed0/vdrop/encoder.onnx": "b4a8c811c74588d3df991648ae85171835bab6eb283726c0f6986c43be6c98bd",
+    "onnx/fold0_seed0/vdrop/head.onnx": "1fdd5c18719f94d8929357b269e03b73aefd98610fffb8e4028beb250e182413",
+    "onnx/fold0_seed0/vdrop/runtime_fixture.npz": "2d49f948966d14b64b85c8684147393dbef30347d491e77b075cf282d8ea8aa7",
+    "README.md": "9abe4efe0967d9d79083825e52c3ba5fecb3488bb72170d0cd4958e093db99df",
+    "runtime/inference_policy.py": "2b7c4ff56a50596198e147687d1a5fc673ffb436d58ac530f648b05e3d6f3756",
+    "verify_bundle.py": "39b84cb0d8d7b80235208705bc3d2699eb84c22479ac4b219578452d126ffa90"
+  }
+}

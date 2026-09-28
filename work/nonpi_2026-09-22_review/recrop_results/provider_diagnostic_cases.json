@@ -1,0 +1,10 @@
+{
+  "scope": "diagnostic_cases",
+  "corrected_models": true,
+  "runs": [],
+  "limits": [
+    "Source domain, frozen selected sample; not independent external validation.",
+    "Diagnostic cases selected on old errors; stratified sample selected without predictions.",
+    "Warm-started segments, not uninterrupted streaming. No Pi measurements."
+  ]
+}

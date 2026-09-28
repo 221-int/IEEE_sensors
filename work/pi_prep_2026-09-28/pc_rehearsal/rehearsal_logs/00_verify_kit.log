@@ -1,0 +1,8 @@
+{
+ "kit": "pi_kit_2026-09-28",
+ "files_checked": 60,
+ "problems": [],
+ "unexpected_new_files": [
+  "rehearsal_logs/00_verify_kit.log"
+ ]
+}

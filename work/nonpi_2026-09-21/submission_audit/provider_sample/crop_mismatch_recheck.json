@@ -1,0 +1,18 @@
+[
+  {
+    "user": 19,
+    "frame": 33969,
+    "max_pixel_diff": 24.0,
+    "mean_pixel_diff": 0.75888671875,
+    "changed_pixels": 4566,
+    "total_pixels": 10240
+  },
+  {
+    "user": 55,
+    "frame": 49892,
+    "max_pixel_diff": 18.0,
+    "mean_pixel_diff": 0.73037109375,
+    "changed_pixels": 4558,
+    "total_pixels": 10240
+  }
+]

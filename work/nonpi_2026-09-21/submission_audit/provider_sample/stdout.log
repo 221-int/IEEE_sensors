@@ -1,0 +1,80 @@
+extract 3 4644921133
+landmark CSV 3
+decoded target 3 100
+decoded target 3 200
+decoded target 3 300
+finished U 3
+extract 48 3799405442
+landmark CSV 48
+decoded target 48 100
+decoded target 48 200
+decoded target 48 300
+finished U 48
+extract 46 5490547178
+landmark CSV 46
+decoded target 46 100
+decoded target 46 200
+decoded target 46 300
+finished U 46
+extract 56 5715477791
+landmark CSV 56
+decoded target 56 100
+decoded target 56 200
+decoded target 56 300
+finished U 56
+extract 15 4265602515
+landmark CSV 15
+decoded target 15 100
+decoded target 15 200
+decoded target 15 300
+finished U 15
+extract 55 6163952882
+landmark CSV 55
+decoded target 55 100
+decoded target 55 200
+decoded target 55 300
+finished U 55
+extract 19 5838226055
+landmark CSV 19
+decoded target 19 100
+decoded target 19 200
+decoded target 19 300
+finished U 19
+landmark CSV 54
+decoded target 54 100
+decoded target 54 200
+decoded target 54 300
+finished U 54
+{
+  "subjects": 8,
+  "events": 160,
+  "means": {
+    "ours": {
+      "subject_seed_mean_delta_ap": -0.008983204295704294,
+      "source_recall": 0.9875,
+      "fresh_recall_with_abstention_misses": 0.9,
+      "source_fp_per_run_mean": 0.4166666666666667,
+      "fresh_fp_per_run_mean": 0.2916666666666667
+    },
+    "image_head": {
+      "subject_seed_mean_delta_ap": -0.008837470399970399,
+      "source_recall": 0.9875,
+      "fresh_recall_with_abstention_misses": 0.9,
+      "source_fp_per_run_mean": 0.375,
+      "fresh_fp_per_run_mean": 0.4166666666666667
+    },
+    "ear_head": {
+      "subject_seed_mean_delta_ap": -0.01694211311277874,
+      "source_recall": 0.925,
+      "fresh_recall_with_abstention_misses": 0.8416666666666667,
+      "source_fp_per_run_mean": 0.8333333333333334,
+      "fresh_fp_per_run_mean": 0.625
+    }
+  },
+  "limitations": [
+    "Small stratified sample with equal stratum allocation and class-balanced subsampling; no population-wide or external-generalization claim.",
+    "Per-subject AP on up to 20 events is coarse. Three seed predictions are correlated, not three independent people.",
+    "AP conditions on common eligible events; recall also reports all sampled positive events, counting abstentions as misses.",
+    "No Pi time/power or uninterrupted continuous event detection is evaluated."
+  ]
+}

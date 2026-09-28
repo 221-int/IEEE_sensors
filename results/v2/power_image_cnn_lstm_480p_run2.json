@@ -1,0 +1,178 @@
+{
+ "run_index": 2,
+ "env": {
+  "seed": 0,
+  "deterministic": true,
+  "sealed": true,
+  "python": "3.11.15",
+  "platform": "Linux-6.18.39+rpt-rpi-2712-aarch64-with-glibc2.41",
+  "numpy": "1.26.4",
+  "pythonhashseed": "0",
+  "cublas_workspace_config": null,
+  "git_commit": null,
+  "git_dirty": false,
+  "torch": null
+ },
+ "config": {
+  "mode": "image_cnn_lstm",
+  "source": "clips/eyeblink8_c9_480p_x2.avi",
+  "width": 640,
+  "height": 480,
+  "fps": 30,
+  "duration": 300.0,
+  "onnx_dir": "models/v2/onnx",
+  "intra_threads": 2,
+  "no_spin": true,
+  "head_stride": 1,
+  "refine_landmarks": false,
+  "power_hz": 7.5,
+  "idle_seconds": 30.0,
+  "run_index": 2,
+  "battery_mah": 5000.0,
+  "battery_cell_v": 3.7,
+  "battery_eta": 0.87,
+  "out": "results/v2/power_image_cnn_lstm_480p_run2.json"
+ },
+ "platform": {
+  "machine": "aarch64",
+  "platform": "Linux-6.18.39+rpt-rpi-2712-aarch64-with-glibc2.41",
+  "cpu_governor": "performance",
+  "ort_intra_threads": 2,
+  "ort_spinning": "disabled",
+  "has_vcgencmd": true
+ },
+ "head_stride": 1,
+ "weights": "random (latency only)",
+ "frames": 10268,
+ "seconds": 128.56286322099913,
+ "sustained_fps": 79.86754294939233,
+ "n_no_detect": 20,
+ "detect_miss_rate": 0.0019477989871445266,
+ "n_decisions": 10230,
+ "stages_ms": {
+  "read": {
+   "n": 10268,
+   "p50": 1.0031400015577674,
+   "p95": 1.0683186999813188,
+   "p99": 1.1948754118566285,
+   "max": 5.5700669981888495,
+   "mean": 1.006954534280672
+  },
+  "detect": {
+   "n": 10268,
+   "p50": 8.415358999627642,
+   "p95": 8.68479005057452,
+   "p99": 8.934349261362513,
+   "max": 50.82817099901149,
+   "mean": 8.459984679098891
+  },
+  "crop": {
+   "n": 10248,
+   "p50": 0.6697540011373349,
+   "p95": 0.7122836985217873,
+   "p99": 0.8446844222999067,
+   "max": 1.123842997913016,
+   "mean": 0.6757487706772629
+  },
+  "encode": {
+   "n": 10248,
+   "p50": 2.034835000813473,
+   "p95": 2.0894261499051936,
+   "p99": 2.2927935897314455,
+   "max": 3.3019549991877284,
+   "mean": 2.04395327565641
+  },
+  "head": {
+   "n": 10230,
+   "p50": 0.33185000211233273,
+   "p95": 0.37609179998980835,
+   "p99": 0.4003277818628699,
+   "max": 0.5828649991599377,
+   "mean": 0.33726540491047674
+  },
+  "e2e": {
+   "n": 10268,
+   "p50": 12.468437998904847,
+   "p95": 12.807191550564312,
+   "p99": 13.114690641123161,
+   "max": 54.962915997748496,
+   "mean": 12.51736107382577
+  }
+ },
+ "thermal": {
+  "temp_start": 51.0,
+  "temp_end": 56.5,
+  "temp_p95": 57.6,
+  "throttled_start": "0x0",
+  "throttled_end": "0x0",
+  "throttled_flags": [],
+  "throttled_clean": true
+ },
+ "cpu_percent_mean": 118.47261146496815,
+ "rss_peak_mb": 202.964992,
+ "power_idle_w": 2.1000100652564155,
+ "power_active_w": 4.369877448347081,
+ "power_delta_w": 2.2698673830906655,
+ "energy_j_total": 561.3135312930717,
+ "energy_per_frame_mJ": 54.66629638615814,
+ "battery_estimate": {
+  "_note": "예시 참고용 — capacity_mah/cell_v 는 요청자가 임의로 넣은 값이지 실제 타깃 기기 스펙이 아니다. 논문 수치로 쓰지 말 것.",
+  "capacity_mah": 5000.0,
+  "cell_v": 3.7,
+  "boost_converter_eta": 0.87,
+  "battery_wh": 16.095,
+  "battery_hours_at_delta_power": 7.090722621021563,
+  "battery_hours_at_total_active_power": 3.683169651837257,
+  "_primary_metric": "battery_hours_at_delta_power"
+ },
+ "power_sampling": {
+  "hz": 7.5,
+  "idle_window_s": [
+   21854.221274189,
+   21884.221344276
+  ],
+  "active_window_s": [
+   21884.221344776,
+   22012.784207997
+  ],
+  "n_idle_samples": 189,
+  "n_active_samples": 809,
+  "parse_errors": 0,
+  "missing_rails": [],
+  "current_rails": [
+   "3V7_WL_SW",
+   "3V3_SYS",
+   "1V8_SYS",
+   "DDR_VDD2",
+   "DDR_VDDQ",
+   "1V1_SYS",
+   "0V8_SW",
+   "VDD_CORE",
+   "3V3_DAC",
+   "3V3_ADC",
+   "0V8_AON",
+   "HDMI"
+  ],
+  "volt_only_rails_excluded": [
+   "EXT5V_V",
+   "BATT_V"
+  ],
+  "rail_verified": false,
+  "rail_source": "https://github.com/jfikar/RPi5-power (커뮤니티 자료, 미검증)",
+  "pmic_raw_sample_first": " 3V7_WL_SW_A current(0)=0.09271335A\n   3V3_SYS_A current(1)=0.05465208A\n   1V8_SYS_A current(2)=0.17469150A\n  DDR_VDD2_A current(3)=0.02049453A\n  DDR_VDDQ_A current(4)=0.00000000A\n   1V1_SYS_A current(5)=0.17371550A\n    0V8_SW_A current(6)=0.27423630A\n  VDD_CORE_A current(7)=0.98229990A\n   3V3_DAC_A current(17)=0.00000000A\n   3V3_ADC_A current(18)=0.00000000A\n   0V8_AON_A current(16)=0.00268620A\n      HDMI_A current(22)=0.01294260A\n 3V7_WL_SW_V volt(8)=3.65894600V\n   3V3_SYS_V volt(9)=3.31745700V\n   1V8_SYS_V volt(10)=1.80512600V\n  DDR_VDD2_V volt(11)=1.10879000V\n  DDR_VDDQ_V volt(12)=0.60622650V\n   1V1_SYS_V volt(13)=1.10439400V\n    0V8_SW_V volt(14)=0.80183080V\n  VDD_CORE_V volt(15)=0.90068290V\n   3V3_DAC_V volt(20)=3.30860500V\n   3V3_ADC_V volt(21)=3.31684600V\n   0V8_AON_V volt(19)=0.79765500V\n      HDMI_V volt(23)=5.04376000V\n     EXT5V_V volt(24)=5.05716000V\n      BATT_V volt(25)=0.00000000V\n",
+  "_verification_todo": "착수 시 `vcgencmd pmic_read_adc` 1회 원문과 current_rails 목록·pmic_raw_sample_first 포맷을 대조할 것"
+ },
+ "discard_recommended": false,
+ "gate_G_E1": {
+  "budget_ms": 33.3,
+  "e2e_p99": 13.114690641123161,
+  "pass": true
+ },
+ "warnings": [
+  "image_cnn 가중치가 **무작위 초기화**다. 지연/전력은 유효하지만 이 런의 판정 출력(probs)은 의미가 없다"
+ ],
+ "equivalence_gate": {
+  "path": "results/v2/check_equivalence.json",
+  "authorized": true
+ }
+}

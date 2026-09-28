@@ -1,0 +1,532 @@
+--- before/src/v2/dataset/crop.py
++++ after/src/v2/dataset/crop.py
+@@ -120,8 +120,13 @@
+     crop_w = span * margin
+     crop_h = crop_w * out_h / out_w
+ 
+-    x0 = int(round(center[0] - crop_w / 2)); y0 = int(round(center[1] - crop_h / 2))
+-    x1 = int(round(center[0] + crop_w / 2)); y1 = int(round(center[1] + crop_h / 2))
++    # Pin float32 scalar arithmetic used by the NumPy 2 training-crop pipeline.
++    # Implicit NumPy 1.x promotion to float64 can move half-pixel bounds by 1px.
++    half_w, half_h = np.float32(crop_w / 2), np.float32(crop_h / 2)
++    x0 = int(round(np.float32(center[0] - half_w)))
++    y0 = int(round(np.float32(center[1] - half_h)))
++    x1 = int(round(np.float32(center[0] + half_w)))
++    y1 = int(round(np.float32(center[1] + half_h)))
+     pad = max(0, -x0, -y0, x1 - w, y1 - h)
+ 
+     d = re - le
+--- before/src/v2/deploy/pi_demo.py
++++ after/src/v2/deploy/pi_demo.py
+@@ -29,7 +29,7 @@
+   c         이번 세션 카운터 초기화(누적 이력은 유지)
+   x         등록 프로필 **전체 삭제**(비휘발성 파일까지)
+   [ / ]     식별 임계값 -0.01 / +0.01
+-  - / =     깜빡임 임계값 -0.02 / +0.02
++  깜빡임 임계값은 모델 계약에서 읽고 실행 중 고정한다.
+ """
+ 
+ from __future__ import annotations
+@@ -57,6 +57,7 @@
+ import cv2  # noqa: E402
+ 
+ from src.v2.dataset import crop as C  # noqa: E402
++from src.v2.deploy import inference_policy as IP  # noqa: E402
+ 
+ EVENT_LEN = 19          # head 의 시간창. run_video.py 와 같은 값이어야 한다
+ EMB_DIM = 16            # encoder.onnx 출력 차원
+@@ -549,7 +550,7 @@
+     card(576, 216, 680, 170)
+     title(594, 236, '02', '깜빡임 검출')
+     txt(1238, 237, f"판정 임계 {S['blink_th']:.2f}", 12, MUTED, anchor='rt')
+-    txt(594, 270, f"{S['prob']:.2f}" if valid else '—', 38, BLUE, True)
++    txt(594, 270, f"{S['prob']:.2f}" if valid and S.get('decision_valid', True) else '—', 38, BLUE, True)
+     txt(596, 326, '깜빡임 확률', 12, MUTED)
+     gx, gy, gw, gh = 752, 270, 486, 78
+     for yy in (gy, gy + gh // 2, gy + gh):
+@@ -676,7 +677,9 @@
+     ap.add_argument("--mirror", action="store_true", default=True,
+                     help="좌우 반전(셀카 뷰). --no-mirror 로 끔")
+     ap.add_argument("--no-mirror", dest="mirror", action="store_false")
+-    ap.add_argument("--blink-th", type=float, default=0.50)
++    ap.add_argument("--blink-th", type=float, default=None,
++                    help="Explicit exploratory threshold; otherwise use the graph-verified model contract")
++    ap.add_argument("--model-contract", default=None)
+     ap.add_argument("--id-th", type=float, default=0.85, help="식별 코사인 임계값")
+     ap.add_argument("--id-window", type=int, default=90,
+                     help="식별 벡터를 만들 때 평균낼 개안 프레임 수")
+@@ -721,6 +724,29 @@
+         data.tofile(args.preview)
+         print(f"디자인 미리보기 저장 (예시 데이터): {args.preview}")
+         return 0
++
++    contract = None
++    manual_blink_threshold = args.blink_th is not None
++    if args.mode == "ours":
++        contract = IP.load_contract(args.onnx_dir,
++            [os.path.join(args.onnx_dir, n) for n in ("encoder.onnx", "head.onnx")], args.model_contract)
++    if args.blink_th is None:
++        if contract is not None:
++            args.blink_th = contract["threshold_probability"]
++        elif args.mode == "ear":
++            args.blink_th = 0.5  # Explicitly a rule-demo operating point, not a trained threshold.
++        else:
++            ap.error("Model contract missing. Supply --model-contract or an explicit exploratory --blink-th; no implicit 0.5.")
++    if not 0 < args.blink_th < 1:
++        ap.error("--blink-th must be between 0 and 1")
++    active_policy = IP.metadata(contract)
++    active_policy["threshold_probability"] = args.blink_th
++    if manual_blink_threshold:
++        active_policy["threshold_source"] = "explicit exploratory CLI override"
++    elif args.mode == "ear":
++        active_policy["threshold_source"] = "EAR rule demo default; not a trained validation threshold"
++    print("Inference policy:", json.dumps(active_policy, ensure_ascii=False))
++    print("Active probability threshold:", args.blink_th)
+ 
+     from src.v2.deploy.frontend import EyeFrontend
+ 
+@@ -802,11 +828,23 @@
+     try:
+         while True:
+             t0 = time.perf_counter()
++            decision_valid = False
++            previous_seq = last_seq
+             frame, last_seq = reader.latest(last_seq, timeout=0.5)
+             t1 = time.perf_counter()
+             now = time.time()
+ 
+             if frame is not None:
++                # The latest-frame reader may skip frames. Keep their positions
++                # instead of compressing the 19-frame window in source time.
++                skipped = max(0, last_seq - previous_seq - 1) if previous_seq >= 0 else 0
++                IP.advance_missing(ring, skipped)
++                for _ in range(min(skipped, EVENT_LEN)):
++                    ear_ring.append(np.nan)
++                if skipped:
++                    in_blink = False
++                decision_valid = False
++                prob = 0.0
+                 if args.mirror:
+                     frame = cv2.flip(frame, 1)
+                 stage_hist["read"].append((t1 - t0) * 1e3)
+@@ -839,7 +877,7 @@
+                         ring.append(z)
+                         z_scale = max(z_scale * 0.995,
+                                       float(np.abs(z).max()) + 1e-6)
+-                        if len(ring) == EVENT_LEN:
++                        if IP.ring_ready(ring):
+                             zz = np.stack([v if v is not None
+                                            else np.zeros(EMB_DIM, np.float32)
+                                            for v in ring])[None].astype(np.float32)
+@@ -847,6 +885,7 @@
+                                           np.float32)
+                             prob = float(head.run(
+                                 None, {"vectors": zz, "mask": mk})[0].reshape(-1)[0])
++                            decision_valid = True
+                         t5 = time.perf_counter()
+                         stage_hist["head"].append((t5 - t4) * 1e3)
+                         stage_hist["e2e"].append((t5 - t1) * 1e3)
+@@ -854,36 +893,43 @@
+                         if prob < 0.2:
+                             v = z / (np.linalg.norm(z) + 1e-9)
+                             id_buf.append(v.astype(np.float32))
+-                    else:
++                    elif args.mode == "ear":
+                         e = C.ear_both(mesh)
+                         ear_ring.append(e["mean"])
+                         v = np.asarray(ear_ring, np.float64)
+                         ok = np.isfinite(v)
+-                        if ok.any() and len(v) >= 5:
++                        if len(v) == EVENT_LEN and IP.eligible_mask(ok):
+                             first = v[np.argmax(ok)]
+                             last = v[len(v) - 1 - np.argmax(ok[::-1])]
+                             edge = (first + last) / 2.0
+                             lo = np.nanmin(np.where(ok, v, np.inf))
+                             prob = float(np.clip((edge - lo) / (edge + 1e-9), 0, 1))
++                            decision_valid = True
+                         t4 = time.perf_counter()
+                         stage_hist["head"].append((t4 - t3) * 1e3)
+                         stage_hist["e2e"].append((t4 - t1) * 1e3)
++                    else:
++                        # Face exists but eye crop failed: abstain, never switch
++                        # a CNN's validation threshold onto the EAR rule.
++                        ring.append(None)
++                        id_buf.clear()
++                        ident_slot, ident_sim = None, 0.0
++                        in_blink = False
++                        stage_hist["e2e"].append((t3 - t1) * 1e3)
+ 
+                 prob_hist.append(prob)
+ 
+-                # --- 깜빡임 상태기계 (히스테리시스)
+-                hi, lo_th = args.blink_th, args.blink_th * 0.7
+-                if not in_blink and prob >= hi:
+-                    in_blink, blink_start = True, now
+-                elif in_blink and prob < lo_th:
+-                    in_blink = False
+-                    if 0.03 <= now - blink_start <= 1.2:
+-                        session_blinks += 1
+-                        blink_times.append(now)
+-                        last_blink_t = now
+-                        blink_flash = 8
+-                        if ident_slot:
+-                            prof.users[ident_slot]["blinks_total"] += 1
++                # Same contiguous-positive candidates as offline replay. Count
++                # at onset; a window score is not a physical closure duration.
++                in_blink, onset = IP.candidate_onset(
++                    prob if decision_valid else None, args.blink_th, in_blink)
++                if onset:
++                    session_blinks += 1
++                    blink_times.append(now)
++                    last_blink_t = now
++                    blink_flash = 8
++                    if ident_slot:
++                        prof.users[ident_slot]["blinks_total"] += 1
+ 
+                 # --- 식별
+                 if len(id_buf) >= max(10, args.id_window // 6):
+@@ -963,6 +1009,7 @@
+                 "res": (f"{frame.shape[1]}×{frame.shape[0]}" if frame is not None
+                         else f"{args.width}×{args.height}"),
+                 "prob": prob, "prob_hist": list(prob_hist),
++                "decision_valid": decision_valid,
+                 "blink_th": args.blink_th, "id_th": args.id_th,
+                 "session_blinks": session_blinks, "bpm": bpm, "since_blink": since,
+                 "nb_alert": args.no_blink_alert,
+@@ -1059,9 +1106,9 @@
+             elif k == ord("]"):
+                 args.id_th = round(min(1.0, args.id_th + 0.01), 3)
+             elif k == ord("-"):
+-                args.blink_th = round(max(0.05, args.blink_th - 0.02), 3)
++                print("Blink threshold is fixed for this run; restart with --blink-th for an exploratory override.")
+             elif k == ord("="):
+-                args.blink_th = round(min(0.95, args.blink_th + 0.02), 3)
++                print("Blink threshold is fixed for this run; restart with --blink-th for an exploratory override.")
+     except KeyboardInterrupt:
+         pass
+     finally:
+--- before/src/v2/deploy/run_video.py
++++ after/src/v2/deploy/run_video.py
+@@ -56,6 +56,7 @@
+ 
+ from src.v2.common import repro
+ from src.v2.dataset import crop as C
++from src.v2.deploy import inference_policy as IP
+ 
+ OUT = "results/v2/pi_run.json"
+ ONNX_DIR = "models/v2/onnx"
+@@ -192,23 +193,29 @@
+     ap.add_argument("--fps", type=int, default=30)
+     ap.add_argument("--duration", type=float, default=300.0, help="초. 실측은 5분")
+     ap.add_argument("--onnx-dir", default=ONNX_DIR)
++    ap.add_argument("--model-contract", default=None, help="Graph-hash-bound validation threshold JSON; auto-detect contract.json if omitted")
+     ap.add_argument("--intra-threads", type=int, default=0,
+                     help="🔴 실측은 2. 안 주면 결과에 경고가 박힌다")
+     ap.add_argument("--no-spin", action="store_true",
+-                    help="🔴 실측은 필수. 빼면 27% 느려져 비교가 무효다")
++                    help="🔴 실측은 필수. 빼면 27%% 느려져 비교가 무효다")
+     ap.add_argument("--head-stride", type=int, default=1,
+                     help="head 를 몇 프레임마다 돌리나. **기본 1** (매 프레임)")
+     ap.add_argument("--refine-landmarks", action="store_true",
+                     help="iris 서브모델(468->478). 크롭에 안 쓰는데 CPU 를 먹는다")
+     ap.add_argument("--out", default=OUT)
+     args = ap.parse_args()
++    if args.head_stride < 1:
++        ap.error("--head-stride must be positive")
+ 
+     import cv2
+     from src.v2.deploy.frontend import EyeFrontend
+ 
+     # 동치 게이트를 통과했는지 먼저 본다. 안 통과했으면 재도 의미가 없다.
+     eq_path = "results/v2/check_equivalence.json"
+-    eq = json.load(open(eq_path, encoding="utf-8")) if os.path.exists(eq_path) else None
++    eq = None
++    if os.path.exists(eq_path):
++        with open(eq_path, encoding="utf-8") as eq_file:
++            eq = json.load(eq_file)
+     if not (eq and eq.get("pi_measurement_authorized")):
+         print("🔴 train/serve 동치 게이트를 통과하지 않았습니다. "
+               "`python -m src.v2.deploy.check_equivalence` 를 먼저 통과시키십시오.\n"
+@@ -240,10 +247,16 @@
+         if args.mode in ("image_cnn_head", "image_cnn_bilstm", "image_cnn_lstm"):
+             head_sess = make_session(os.path.join(sub, "head.onnx"),
+                                      args.intra_threads, args.no_spin)
+-        # 🔴 image_cnn 체크포인트가 없어 무작위 초기화로 export 했다.
+-        # 지연은 구조·입력·하드웨어로 결정되므로 유효하지만 **정확도는 무의미하다.**
++        # Provenance and validation threshold are checked against graph hashes below.
+         random_weights = True
+ 
++    model_dir = args.onnx_dir if args.mode == "ours" else os.path.join(args.onnx_dir, args.mode)
++    contract = None
++    if head_sess is not None:
++        graph_names = ["encoder.onnx" if args.mode == "ours" else "backbone.onnx", "head.onnx"]
++        contract = IP.load_contract(model_dir, [os.path.join(model_dir, n) for n in graph_names], args.model_contract)
++    random_weights = contract is None and args.mode != "ear"
++    n_positive_decisions = 0
+     t_read, t_detect, t_crop, t_encode, t_head, t_e2e = ([] for _ in range(6))
+     ring: deque = deque(maxlen=EVENT_LEN)
+     ear_ring: deque = deque(maxlen=EVENT_LEN)
+@@ -291,7 +304,7 @@
+             ring.append(z)
+ 
+             t5 = t4
+-            if len(ring) == EVENT_LEN and n_frames % args.head_stride == 0:
++            if IP.ring_ready(ring) and n_frames % args.head_stride == 0:
+                 d = len(z)
+                 zz = np.stack([v if v is not None else np.zeros(d, np.float32)
+                                for v in ring])[None].astype(np.float32)
+@@ -306,6 +319,8 @@
+                 t5 = time.perf_counter()
+                 t_head.append((t5 - t4) * 1e3)
+                 probs.append(p)
++                if contract is not None:
++                    n_positive_decisions += int(p >= contract["threshold_probability"])
+                 n_decisions += 1
+             t_e2e.append((t5 - f0) * 1e3)
+         else:
+@@ -313,7 +328,8 @@
+             ear_ring.append(e["mean"] if "mean" in e else float(np.mean(list(e.values()))))
+             t3 = time.perf_counter()
+             t_crop.append((t3 - t2) * 1e3)
+-            if len(ear_ring) == EVENT_LEN and n_frames % args.head_stride == 0:
++            if (len(ear_ring) == EVENT_LEN and IP.eligible_mask(np.isfinite(ear_ring))
++                    and n_frames % args.head_stride == 0):
+                 probs.append(ear_drop_ratio(list(ear_ring)))
+                 n_decisions += 1
+             t4 = time.perf_counter()
+@@ -340,8 +356,7 @@
+     if read_temp() is None:
+         warn.append("vcgencmd 가 없다 — Pi 가 아니다. 이 숫자는 논문에 쓰지 않는다")
+     if random_weights:
+-        warn.append("image_cnn 가중치가 **무작위 초기화**다. 지연은 유효하지만 "
+-                    "이 런의 판정 출력(probs)은 의미가 없다")
++        warn.append("검증된 모델 계약이 없어 가중치 출처·validation 임계값은 미확인. 정확도 주장을 하지 않는다")
+ 
+     out = {
+         "env": repro.env_fingerprint(),
+@@ -353,7 +368,9 @@
+                      "ort_spinning": "disabled" if args.no_spin else "default(ENABLED)",
+                      "has_vcgencmd": bool(shutil.which("vcgencmd"))},
+         "head_stride": args.head_stride,
+-        "weights": "random (latency only)" if random_weights else "trained",
++        "weights": "rule (no weights)" if args.mode == "ear" else "unverified (latency only)" if random_weights else "trained (graph hash verified)",
++        "inference_policy": IP.metadata(contract),
++        "n_positive_decisions": n_positive_decisions if contract is not None else None,
+         "head_mmac_per_frame": 0.045888 if args.head_stride == 1 else None,
+         "_head_cost_note": "stride 1 이므로 head 는 매 프레임 0.0459 MMAC 이다. "
+                            "인코더 12.44 와 합쳐 12.49 MMAC/frame (head 0.37%).",
+--- before/src/v2/deploy/run_video_power.py
++++ after/src/v2/deploy/run_video_power.py
+@@ -46,6 +46,7 @@
+ 
+ from src.v2.common import repro
+ from src.v2.dataset import crop as C
++from src.v2.deploy import inference_policy as IP
+ from src.v2.deploy.pmic_power import (
+     CURRENT_RAILS,
+     PowerSampler,
+@@ -180,6 +181,7 @@
+     ap.add_argument("--fps", type=int, default=30)
+     ap.add_argument("--duration", type=float, default=300.0, help="초. 실측은 5분")
+     ap.add_argument("--onnx-dir", default=ONNX_DIR)
++    ap.add_argument("--model-contract", default=None, help="Graph-hash-bound validation threshold JSON; auto-detect contract.json if omitted")
+     ap.add_argument("--intra-threads", type=int, default=0,
+                     help="🔴 실측은 2. 안 주면 결과에 경고가 박힌다")
+     ap.add_argument("--no-spin", action="store_true",
+@@ -201,6 +203,8 @@
+     ap.add_argument("--out", default=None,
+                     help="기본값: results/v2/power_{mode}_480p_run{run-index}.json")
+     args = ap.parse_args()
++    if args.head_stride < 1:
++        ap.error("--head-stride must be positive")
+ 
+     if args.out is None:
+         args.out = os.path.join(
+@@ -210,7 +214,10 @@
+     from src.v2.deploy.frontend import EyeFrontend
+ 
+     eq_path = "results/v2/check_equivalence.json"
+-    eq = json.load(open(eq_path, encoding="utf-8")) if os.path.exists(eq_path) else None
++    eq = None
++    if os.path.exists(eq_path):
++        with open(eq_path, encoding="utf-8") as eq_file:
++            eq = json.load(eq_file)
+     if not (eq and eq.get("pi_measurement_authorized")):
+         print("🔴 train/serve 동치 게이트를 통과하지 않았습니다. "
+               "`python -m src.v2.deploy.check_equivalence` 를 먼저 통과시키십시오.")
+@@ -243,6 +250,13 @@
+                                      args.intra_threads, args.no_spin)
+         random_weights = True
+ 
++    model_dir = args.onnx_dir if args.mode == "ours" else os.path.join(args.onnx_dir, args.mode)
++    contract = None
++    if head_sess is not None:
++        graph_names = ["encoder.onnx" if args.mode == "ours" else "backbone.onnx", "head.onnx"]
++        contract = IP.load_contract(model_dir, [os.path.join(model_dir, n) for n in graph_names], args.model_contract)
++    random_weights = contract is None and args.mode != "ear"
++    n_positive_decisions = 0
+     t_read, t_detect, t_crop, t_encode, t_head, t_e2e = ([] for _ in range(6))
+     ring: deque = deque(maxlen=EVENT_LEN)
+     ear_ring: deque = deque(maxlen=EVENT_LEN)
+@@ -304,7 +318,7 @@
+             ring.append(z)
+ 
+             t5 = t4
+-            if len(ring) == EVENT_LEN and n_frames % args.head_stride == 0:
++            if IP.ring_ready(ring) and n_frames % args.head_stride == 0:
+                 d = len(z)
+                 zz = np.stack([v if v is not None else np.zeros(d, np.float32)
+                                for v in ring])[None].astype(np.float32)
+@@ -318,6 +332,8 @@
+                 t5 = time.perf_counter()
+                 t_head.append((t5 - t4) * 1e3)
+                 probs.append(p)
++                if contract is not None:
++                    n_positive_decisions += int(p >= contract["threshold_probability"])
+                 n_decisions += 1
+             t_e2e.append((t5 - f0) * 1e3)
+         else:
+@@ -325,7 +341,8 @@
+             ear_ring.append(e["mean"] if "mean" in e else float(np.mean(list(e.values()))))
+             t3 = time.perf_counter()
+             t_crop.append((t3 - t2) * 1e3)
+-            if len(ear_ring) == EVENT_LEN and n_frames % args.head_stride == 0:
++            if (len(ear_ring) == EVENT_LEN and IP.eligible_mask(np.isfinite(ear_ring))
++                    and n_frames % args.head_stride == 0):
+                 probs.append(ear_drop_ratio(list(ear_ring)))
+                 n_decisions += 1
+             t4 = time.perf_counter()
+@@ -372,8 +389,7 @@
+     if read_temp() is None:
+         warn.append("vcgencmd 가 없다 — Pi 가 아니다. 이 숫자는 논문에 쓰지 않는다")
+     if random_weights:
+-        warn.append("image_cnn 가중치가 **무작위 초기화**다. 지연/전력은 유효하지만 "
+-                    "이 런의 판정 출력(probs)은 의미가 없다")
++        warn.append("검증된 모델 계약이 없어 가중치 출처·validation 임계값은 미확인. 정확도 주장을 하지 않는다")
+     if args.idle_seconds < 30:
+         warn.append(f"--idle-seconds {args.idle_seconds}s < 30s. idle 기준선이 불안정할 수 있다")
+     if governor is not None and governor.strip() != "performance":
+@@ -404,7 +420,9 @@
+                      "ort_spinning": "disabled" if args.no_spin else "default(ENABLED)",
+                      "has_vcgencmd": bool(shutil.which("vcgencmd"))},
+         "head_stride": args.head_stride,
+-        "weights": "random (latency only)" if random_weights else "trained",
++        "weights": "rule (no weights)" if args.mode == "ear" else "unverified (latency only)" if random_weights else "trained (graph hash verified)",
++        "inference_policy": IP.metadata(contract),
++        "n_positive_decisions": n_positive_decisions if contract is not None else None,
+         "frames": n_frames, "seconds": elapsed,
+         "sustained_fps": n_frames / elapsed if elapsed else None,
+         "n_no_detect": n_nodetect,
+@@ -481,4 +499,4 @@
+ 
+ 
+ if __name__ == "__main__":
+-    raise SystemExit(main())+    raise SystemExit(main())
+--- before/src/v2/deploy/test_pi_demo_ui.py
++++ after/src/v2/deploy/test_pi_demo_ui.py
+@@ -122,7 +122,7 @@
+             profiles = demo.Profiles(path)
+             profiles.enroll('user1', '사용자 A', np.ones(16, np.float32))
+             with patch.dict(sys.modules, {'onnxruntime': ort, 'src.v2.deploy.frontend': fe_module}), \
+-                    patch.object(sys, 'argv', ['pi_demo', '--headless', '--profiles', path, '--id-window', '10']), \
++                    patch.object(sys, 'argv', ['pi_demo', '--headless', '--profiles', path, '--id-window', '10', '--blink-th', '0.5']), \
+                     patch.object(demo, 'StreamReader', return_value=reader), \
+                     patch.object(demo, 'render', side_effect=capture), \
+                     patch.object(demo, 'read_temp', return_value=None), \
+--- before/src/v2/train_encoder.py
++++ after/src/v2/train_encoder.py
+@@ -173,10 +173,12 @@
+     def batch(self, ids: np.ndarray) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+         """이벤트 인덱스 -> (x (B,19,1,H,W) float32, mask (B,19), y (B,))"""
+         r = self.rows[ids]
+-        flat = np.where(r >= 0, r, 0).ravel()
+-        imgs = np.asarray(self.frames[flat])             # (B*19, H, W) uint8
+-        x = C.batch_input(imgs)                          # 정규화는 crop.INPUT_NORM 하나만
+-        x = x.reshape(len(ids), EVENT_LEN, 1, *x.shape[-2:])
++        present = r >= 0
++        # Match the corrected 2026-09-21 runs: zero missing inputs BEFORE
++        # encoder BatchNorm and never gather another person's placeholder.
++        x = np.zeros((len(ids), EVENT_LEN, 1, C.OUT_H, C.OUT_W), np.float32)
++        if present.any():
++            x[present] = C.batch_input(np.asarray(self.frames[r[present]]))
+         return x, self.mask[ids], self.y[ids]
+ 
+     def _ear_windows(self, ids: np.ndarray, cols=(2,)) -> np.ndarray:
+--- /dev/null
++++ after/src/v2/deploy/inference_policy.py
+@@ -0,0 +1,75 @@
++"""Shared online eligibility and validation-threshold contract.
++
++19 time positions, >=14 valid crops, valid current crop, stride 1 by default.
++Missing positions never disappear from the time axis. Contiguous threshold
++crossings define candidate events; they are not eyelid-duration estimates.
++"""
++from pathlib import Path
++import hashlib
++import json
++import math
++import numpy as np
++
++EVENT_LEN = 19
++MIN_VALID = 14
++POLICY_ID = 'min14_current_valid_v1'
++
++def eligible_mask(mask):
++    mask = np.asarray(mask, dtype=bool)
++    if mask.shape[-1] != EVENT_LEN:
++        raise ValueError('Expected exactly 19 time positions')
++    return (mask.sum(axis=-1) >= MIN_VALID) & mask[..., -1]
++
++def ring_ready(ring):
++    return len(ring) == EVENT_LEN and bool(eligible_mask([x is not None for x in ring]))
++
++def advance_missing(ring, count):
++    """Retain skipped source-frame positions without unbounded work."""
++    for _ in range(min(max(int(count), 0), EVENT_LEN)):
++        ring.append(None)
++
++def candidate_onset(probability, threshold, was_positive):
++    """Abstention breaks a candidate interval, exactly like masked offline replay."""
++    positive = (probability is not None and np.isfinite(probability)
++                and probability >= threshold)
++    return bool(positive), bool(positive and not was_positive)
++
++def load_contract(model_dir, graph_paths, explicit_path=None):
++    """Load threshold only after verifying it belongs to the actual ONNX graphs.
++
++    No contract returns None for latency-only runs. An explicitly requested or
++    present but incompatible contract is an error, never a fallback to 0.5.
++    """
++    path = Path(explicit_path) if explicit_path else Path(model_dir)/'contract.json'
++    if not path.exists():
++        if explicit_path:
++            raise FileNotFoundError(path)
++        return None
++    data = json.loads(path.read_text(encoding='utf8'))
++    if data.get('event_len') != EVENT_LEN or data.get('min_valid_frames') != MIN_VALID:
++        raise ValueError('Model contract window/missing policy differs')
++    if data.get('weights') != 'trained':
++        raise ValueError('A validation threshold requires trained model weights')
++    if data.get('input', {}).get('norm') != 'frame_standardize':
++        raise ValueError('Model normalization contract differs')
++    if data.get('head_output') != 'probability (sigmoid in graph)':
++        raise ValueError('Expected probability ONNX head, not logits')
++    for p in graph_paths:
++        p = Path(p)
++        if hashlib.sha256(p.read_bytes()).hexdigest() != data.get('graph_sha256', {}).get(p.name):
++            raise ValueError('Graph hash mismatch: '+str(p))
++    thr = float(data['threshold_probability']); logit = float(data['threshold_logit'])
++    if not math.isfinite(logit) or not math.isfinite(thr) or not 0 < thr < 1:
++        raise ValueError('Invalid threshold')
++    expected = 1/(1+math.exp(-logit)) if logit >= 0 else math.exp(logit)/(1+math.exp(logit))
++    if abs(thr-expected) > 1e-7:
++        raise ValueError('Logit/probability thresholds disagree')
++    return data
++
++def metadata(contract=None):
++    return dict(policy=POLICY_ID,event_len=EVENT_LEN,min_valid_frames=MIN_VALID,
++                require_current_valid=True,missing_time_positions='retained',
++                event_rule='contiguous threshold positives; abstention breaks interval',
++                center_offset_frames=9,
++                threshold_probability=None if contract is None else contract['threshold_probability'],
++                threshold_source='unavailable; scores only' if contract is None else 'model contract: source validation')

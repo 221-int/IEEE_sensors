@@ -1,0 +1,5 @@
+2026-09-28T11:16:51.830351+09:00 session PRIMARY_v1 set=primary exploratory=False protocol=protocol.json
+2026-09-28T11:16:55.876666+09:00 PREFLIGHT: not a Raspberry Pi (aarch64 + vcgencmd)
+2026-09-28T11:16:55.876666+09:00 PREFLIGHT: governor not performance: {}
+2026-09-28T11:16:55.876666+09:00 PREFLIGHT: throttled=None [] (reboot / fix power & cooling)
+2026-09-28T11:16:55.876666+09:00 preflight failed; nothing measured
